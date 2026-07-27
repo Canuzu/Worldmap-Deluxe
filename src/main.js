@@ -112,6 +112,7 @@ async function main() {
 
   const state = {
     index: startIndex,
+    year: hash.year ?? atlasData.epochAt(startIndex).year,
     epoch: null,
     selected: null,
     lastAnchor: null,
@@ -152,7 +153,10 @@ async function main() {
     {
       epochs: atlasData.epochs,
       eras: atlasData.eras,
-      onChange: (index) => goto(index),
+      onChange: (index, { year } = {}) => {
+        if (year != null) state.year = year;
+        goto(index);
+      },
     },
   );
 
@@ -223,7 +227,9 @@ async function main() {
   function updateHash() {
     writeHash({
       map: atlas.map,
-      year: atlasData.epochAt(state.index).year,
+      // Das frei gewählte Jahr, nicht das Stichjahr des Kartenstands –
+      // ein geteilter Link führt damit exakt dorthin zurück.
+      year: state.year,
       selected: state.selected,
     });
   }
@@ -239,13 +245,12 @@ async function main() {
     if (next.view) {
       atlas.map.setView([next.view.lat, next.view.lng], next.view.zoom, { animate: true });
     }
-    if (next.year != null) {
+    if (next.year != null && next.year !== state.year) {
+      timeline.stop();
+      state.year = next.year;
       const index = atlasData.indexForYear(next.year);
-      if (index !== state.index) {
-        timeline.stop();
-        timeline.set(index, { silent: true });
-        await goto(index);
-      }
+      timeline.setYear(next.year, { silent: true });
+      if (index !== state.index) await goto(index);
     }
     if (next.selected && next.selected !== state.selected && state.epoch?.byName.has(next.selected)) {
       selectPolity(next.selected);
@@ -505,6 +510,9 @@ async function main() {
 
   document.addEventListener('keydown', (event) => {
     const inField = /^(INPUT|TEXTAREA|SELECT)$/.test(event.target.tagName);
+    // Der Zeitregler behandelt Pfeiltasten selbst; sonst zählte jeder
+    // Tastendruck doppelt, sobald er den Fokus hat.
+    const onTrack = event.target === $('track');
     if (event.key === 'Escape') {
       if (!modal.hidden) { modal.hidden = true; return; }
       if (!layersMenu.hidden || !legendBox.hidden) {
@@ -514,7 +522,7 @@ async function main() {
       if (panel.isOpen) panel.close();
       return;
     }
-    if (inField) return;
+    if (inField || onTrack) return;
 
     switch (event.key) {
       case '/':
@@ -526,8 +534,15 @@ async function main() {
         timeline.toggle();
         event.preventDefault();
         break;
-      case 'ArrowLeft': timeline.stop(); timeline.step(-1); event.preventDefault(); break;
-      case 'ArrowRight': timeline.stop(); timeline.step(1); event.preventDefault(); break;
+      case 'ArrowLeft':
+      case 'ArrowRight': {
+        const dir = event.key === 'ArrowRight' ? 1 : -1;
+        timeline.stop();
+        if (event.shiftKey) timeline.step(dir);
+        else timeline.setYear(timeline.year + dir);
+        event.preventDefault();
+        break;
+      }
       case 't': setTheme(prefs.theme === 'night' ? 'parchment' : 'night'); break;
       case 'e': togglePopover(layersMenu, $('btnLayers')); break;
       case 'l': togglePopover(legendBox, $('btnLegend')); break;
@@ -539,7 +554,7 @@ async function main() {
 
   /* --------------------------------------------------------------- Start */
 
-  timeline.set(startIndex, { silent: true });
+  timeline.setYear(state.year, { silent: true });
   timeline.render();
   await goto(startIndex, { animate: false });
   updateScale();

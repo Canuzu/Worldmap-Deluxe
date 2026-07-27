@@ -374,9 +374,9 @@
    "label": "700 n. Chr.",
    "title": "Arabische Expansion",
    "era": "earlymiddle",
-   "polities": 127,
-   "features": 133,
-   "bytes": 211329
+   "polities": 125,
+   "features": 125,
+   "bytes": 208718
   },
   {
    "year": 800,
@@ -397,8 +397,8 @@
    "title": "Zerfall der Großreiche",
    "era": "earlymiddle",
    "polities": 135,
-   "features": 138,
-   "bytes": 264254
+   "features": 135,
+   "bytes": 262141
   },
   {
    "year": 1000,
@@ -408,8 +408,8 @@
    "title": "Europa um die Jahrtausendwende",
    "era": "earlymiddle",
    "polities": 129,
-   "features": 132,
-   "bytes": 255242
+   "features": 129,
+   "bytes": 268836
   },
   {
    "year": 1100,
@@ -419,8 +419,8 @@
    "title": "Zeit der Kreuzzüge",
    "era": "highmiddle",
    "polities": 139,
-   "features": 150,
-   "bytes": 245746
+   "features": 139,
+   "bytes": 241984
   },
   {
    "year": 1200,
@@ -429,9 +429,9 @@
    "label": "1200 n. Chr.",
    "title": "Aufstieg der Mongolen",
    "era": "highmiddle",
-   "polities": 129,
-   "features": 136,
-   "bytes": 251524
+   "polities": 128,
+   "features": 128,
+   "bytes": 249356
   },
   {
    "year": 1279,
@@ -452,8 +452,8 @@
    "title": "Spätmittelalterliche Ordnung",
    "era": "highmiddle",
    "polities": 113,
-   "features": 115,
-   "bytes": 232352
+   "features": 113,
+   "bytes": 231170
   },
   {
    "year": 1400,
@@ -463,8 +463,8 @@
    "title": "Nach der Großen Pest",
    "era": "latemiddle",
    "polities": 115,
-   "features": 122,
-   "bytes": 261379
+   "features": 115,
+   "bytes": 259800
   },
   {
    "year": 1492,
@@ -507,8 +507,8 @@
    "title": "Zeitalter der Handelskompanien",
    "era": "earlymodern",
    "polities": 638,
-   "features": 661,
-   "bytes": 486187
+   "features": 638,
+   "bytes": 478502
   },
   {
    "year": 1650,
@@ -529,8 +529,8 @@
    "title": "Barockes Mächtesystem",
    "era": "absolutism",
    "polities": 584,
-   "features": 591,
-   "bytes": 478198
+   "features": 584,
+   "bytes": 473719
   },
   {
    "year": 1715,
@@ -540,8 +540,8 @@
    "title": "Nach dem Spanischen Erbfolgekrieg",
    "era": "absolutism",
    "polities": 600,
-   "features": 606,
-   "bytes": 486550
+   "features": 600,
+   "bytes": 481669
   },
   {
    "year": 1783,
@@ -573,8 +573,8 @@
    "title": "Wiener Kongress",
    "era": "revolution",
    "polities": 313,
-   "features": 328,
-   "bytes": 489882
+   "features": 313,
+   "bytes": 488805
   },
   {
    "year": 1880,
@@ -606,8 +606,8 @@
    "title": "Vorabend des Ersten Weltkriegs",
    "era": "worldwars",
    "polities": 142,
-   "features": 144,
-   "bytes": 338547
+   "features": 142,
+   "bytes": 337843
   },
   {
    "year": 1920,
@@ -617,8 +617,8 @@
    "title": "Nach den Pariser Vorortverträgen",
    "era": "worldwars",
    "polities": 163,
-   "features": 165,
-   "bytes": 388560
+   "features": 163,
+   "bytes": 387540
   },
   {
    "year": 1930,
@@ -628,8 +628,8 @@
    "title": "Zwischenkriegszeit",
    "era": "worldwars",
    "polities": 161,
-   "features": 163,
-   "bytes": 337796
+   "features": 161,
+   "bytes": 336866
   },
   {
    "year": 1938,

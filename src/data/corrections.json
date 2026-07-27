@@ -1,0 +1,98 @@
+{
+  "_hinweis": [
+    "Korrekturen am Kartendatensatz. Der Ursprungsdatensatz (historical-basemaps)",
+    "bezeichnet sich selbst als 'work in progress' und enthält belegbare Fehler –",
+    "vor allem Reiche, die Jahrhunderte nach ihrem Untergang noch eingezeichnet sind.",
+    "",
+    "'rename' weist ein Gebiet einem anderen Gemeinwesen zu. Grenzen zwischen zwei",
+    "gleich benannten Flächen verschwinden dadurch, die Gebiete verschmelzen –",
+    "so wird aus dem fälschlich getrennten Sasanidenreich und dem Umayyaden-",
+    "Kalifat im Jahr 700 wieder ein Reich.",
+    "",
+    "Aufgenommen wird nur, was fachlich unstrittig ist. Wo die Zuordnung unklar",
+    "ist, bleibt der Fehler lieber stehen und wird von check:zeit weiter gemeldet –",
+    "eine selbstbewusste falsche Korrektur wäre schlimmer als ein offener Befund."
+  ],
+
+  "700": {
+    "_begruendung": "Das Sasanidenreich endete 651 mit dem Tod Yazdegerds III.; Persien und der Jemen gehörten 700 zum Umayyaden-Kalifat. Die Sui-Dynastie endete 618. Das Westtürkische Khaganat wurde 657–659 von den Tang zerschlagen; im Siebenstromland folgten die Türgesch (699–766).",
+    "rename": {
+      "Sasanian Empire": "Umayyad Caliphate",
+      "Sasanian dependencies": "Umayyad Caliphate",
+      "Sui Empire": "Tang Empire",
+      "Western Gokturk Khaganate": "Türgesh Khaganate"
+    }
+  },
+
+  "900": {
+    "_begruendung": "Das Tibetische Reich zerfiel 842 nach der Ermordung Langdarmas; es folgte die Zeit der Zersplitterung. Das Uigurische Khaganat wurde 840 von den Jenissei-Kirgisen zerschlagen, die bis 924 die Mongolei beherrschten.",
+    "rename": {
+      "Tibetan Empire": "Tibet",
+      "Ouighurs": "Yenisei Kyrgyz"
+    }
+  },
+
+  "1000": {
+    "_begruendung": "Die dänisch-norwegische Union entstand erst 1380. Um 1000 herrschte Sven Gabelbart über ein dänisches Reich, das zeitweise Norwegen und England einschloss – als Personalunion, nicht als Staat 'Dänemark-Norwegen'.",
+    "rename": { "Denmark-Norway": "Denmark" }
+  },
+
+  "1100": {
+    "_begruendung": "Das Mongolische Weltreich entstand erst 1206 mit der Erhebung Temüdschins zum Dschingis Khan. Um 1100 lebten die mongolischen Stämme unabhängig voneinander in der östlichen Steppe.",
+    "rename": { "Mongols": "Mongol tribes" }
+  },
+
+  "1200": {
+    "_begruendung": "Das Fatimiden-Kalifat wurde 1171 von Saladin beendet; Ägypten und Syrien gehörten 1200 zum Ayyubiden-Sultanat. Huari und Tiahuanaco zerfielen um 1000; es folgte die Zeit der andinen Regionalreiche.",
+    "rename": {
+      "Fatimid Caliphate": "Ayyubid Sultanate",
+      "Huari Empire": "Andean states and chiefdoms",
+      "Tiahuanaco Empire": "Andean states and chiefdoms"
+    }
+  },
+
+  "1300": {
+    "_begruendung": "Das Großseldschukische Reich endete 1194. In Anatolien bestand bis 1308 das Sultanat der Rum-Seldschuken – ein eigener Staat, kein Kalifat.",
+    "rename": { "Seljuk Caliphate": "Sultanate of Rum" }
+  },
+
+  "1400": {
+    "_begruendung": "Die Yuan-Dynastie wurde 1368 aus China vertrieben. In der Steppe bestand die Nördliche Yuan-Dynastie fort, nicht mehr das Mongolische Weltreich.",
+    "rename": { "Great Khanate": "Northern Yuan" }
+  },
+
+  "1600": {
+    "_begruendung": "Das Inkareich endete 1533 mit der Hinrichtung Atahualpas, der Rückzugsstaat von Vilcabamba 1572. Um 1600 gehörte das Gebiet zum Vizekönigreich Peru.",
+    "rename": { "Inca Empire": "Vice-Royalty of Peru" }
+  },
+
+  "1700": {
+    "_begruendung": "Das Kaisertum Österreich wurde erst 1804 ausgerufen. Zuvor regierten die Habsburger einen Länderverband ohne gemeinsamen Staatsnamen.",
+    "rename": { "Austrian Empire": "Habsburg Monarchy" }
+  },
+
+  "1715": {
+    "_begruendung": "Siehe 1700 – das Kaisertum Österreich entstand erst 1804.",
+    "rename": { "Austrian Empire": "Habsburg Monarchy" }
+  },
+
+  "1815": {
+    "_begruendung": "Kanada entstand als Dominion erst 1867. 1815 bestanden dort britische Kolonien, zusammengefasst als Britisch-Nordamerika.",
+    "rename": { "Canada": "British North America" }
+  },
+
+  "1914": {
+    "_begruendung": "Die Republik Südafrika entstand 1961. 1914 bestand die Südafrikanische Union, ein Dominion des Britischen Empire.",
+    "rename": { "South Africa": "Union of South Africa" }
+  },
+
+  "1920": {
+    "_begruendung": "Der unabhängige Sudan entstand 1956. 1920 war das Gebiet das gemeinsam von Großbritannien und Ägypten verwaltete Kondominium.",
+    "rename": { "Sudan": "Anglo-Egyption Sudan" }
+  },
+
+  "1930": {
+    "_begruendung": "Siehe 1920 – der unabhängige Sudan entstand erst 1956.",
+    "rename": { "Sudan": "Anglo-Egyption Sudan" }
+  }
+}

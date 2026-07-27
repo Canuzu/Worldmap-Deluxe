@@ -93,6 +93,24 @@
 .year__title {
   font-size: .84rem;
   color: var(--ink-muted);
+}
+/* Liegt das gewählte Jahr zwischen zwei Kartenständen, wird der tatsächlich
+   gezeigte Stand hervorgehoben – die Karte soll nicht mehr behaupten, als
+   der Datensatz hergibt. */
+.year__title b {
+  color: var(--ink);
+  font-weight: 600;
+}
+.year__title.is-approx::before {
+  content: "";
+  display: inline-block;
+  width: .42rem; height: .42rem;
+  margin-right: .35rem;
+  border-radius: 50%;
+  background: var(--era-color, var(--gold));
+  vertical-align: middle;
+}
+.year__title {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

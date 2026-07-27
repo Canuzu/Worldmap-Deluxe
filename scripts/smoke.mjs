@@ -173,6 +173,37 @@ await check('Steinzeit-Zeitschnitt lädt vollständig', async () => {
   if (!/\d/.test(count)) throw new Error('keine Kennzahlen');
 });
 
+await check('Zeitleiste lässt sich jahresgenau wählen', async () => {
+  await page.evaluate(() => { location.hash = 'position=3/40/30&year=723'; });
+  await page.waitForTimeout(2200);
+  const year = await page.textContent('#yearBig');
+  if (!year.includes('723')) throw new Error(`Jahr: ${year}`);
+  const note = await page.textContent('#yearTitle');
+  if (!note.includes('700')) throw new Error(`Kartenstand fehlt: ${note}`);
+  // Pfeiltaste bewegt um genau ein Jahr
+  await page.locator('#track').focus();
+  await page.keyboard.press('ArrowRight');
+  await page.waitForTimeout(400);
+  const next = await page.textContent('#yearBig');
+  if (!next.includes('724')) throw new Error(`nach Pfeiltaste: ${next}`);
+});
+
+await check('Umayyaden reichen 700 bis Persien', async () => {
+  await page.evaluate(() => { location.hash = 'position=3/33/55&year=700'; });
+  await page.waitForTimeout(2200);
+  const found = await page.evaluate(() => {
+    const map = window.__atlasMap;
+    // Isfahan – 700 n. Chr. umayyadisch
+    const pt = map.latLngToContainerPoint([32.65, 51.67]);
+    return { x: Math.round(pt.x), y: Math.round(pt.y) };
+  });
+  await page.mouse.click(found.x, found.y);
+  await page.waitForSelector('#panel:not([hidden])', { timeout: 4000 });
+  const title = await page.textContent('.pnl__title');
+  if (!/Umayyaden/.test(title)) throw new Error(`Isfahan gehört zu: ${title}`);
+  await page.keyboard.press('Escape');
+});
+
 await check('Mobiles Format bleibt bedienbar', async () => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.waitForTimeout(800);

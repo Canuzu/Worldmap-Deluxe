@@ -1,6 +1,5 @@
 {
   "_hinweis": "Steckbriefe zu Ost-, Süd- und Südostasien sowie zur eurasischen Steppe.",
-
   "Zhou states": {
     "kind": "Staatenwelt",
     "wiki": "Zhou-Dynastie",
@@ -8,14 +7,17 @@
     "dissolved": -256,
     "periods": [
       {
-        "from": -1046, "to": -256,
+        "from": -1046,
+        "to": -256,
         "ruler": "Der Zhou-König als nomineller Oberherr",
         "rulerTitle": "Wang – Sohn des Himmels",
         "dynasty": "Zhou",
         "capital": "Haojing, später Luoyang",
         "government": "Lehnsordnung; ab 771 v. Chr. faktisch unabhängige Fürstentümer",
         "religion": "Ahnenkult, Himmelsverehrung",
-        "languages": ["Altchinesisch"],
+        "languages": [
+          "Altchinesisch"
+        ],
         "population": "ca. 20 bis 30 Mio.",
         "economy": "Hirse- und Reisanbau, Bronzeguss, ab 500 v. Chr. Eisen",
         "summary": [
@@ -25,7 +27,6 @@
       }
     ]
   },
-
   "Qin": {
     "kind": "Kaiserreich",
     "wiki": "Qin-Dynastie",
@@ -33,7 +34,8 @@
     "dissolved": -206,
     "periods": [
       {
-        "from": -246, "to": -206,
+        "from": -246,
+        "to": -206,
         "ruler": "Qin Shihuangdi",
         "rulerTitle": "Erster Erhabener Kaiser von Qin",
         "dynasty": "Qin",
@@ -41,7 +43,9 @@
         "capital": "Xianyang",
         "government": "Legalistischer Zentralstaat mit Präfekturen statt Lehen",
         "religion": "Staatsopfer, Unsterblichkeitssuche",
-        "languages": ["Altchinesisch"],
+        "languages": [
+          "Altchinesisch"
+        ],
         "population": "ca. 20 Mio.",
         "economy": "Zwangsarbeit an Großbauten, Kanalbau, Staatsmonopole",
         "summary": [
@@ -52,20 +56,29 @@
       }
     ]
   },
-
   "Han Empire": {
     "kind": "Kaiserreich",
     "wiki": "Han-Dynastie",
     "founded": -206,
     "dissolved": 220,
     "events": [
-      { "year": -138, "text": "Zhang Qian reist nach Zentralasien – die Seidenstraße entsteht." },
-      { "year": 105, "text": "Cai Lun beschreibt die Papierherstellung." },
-      { "year": 184, "text": "Aufstand der Gelben Turbane leitet den Zerfall ein." }
+      {
+        "year": -138,
+        "text": "Zhang Qian reist nach Zentralasien – die Seidenstraße entsteht."
+      },
+      {
+        "year": 105,
+        "text": "Cai Lun beschreibt die Papierherstellung."
+      },
+      {
+        "year": 184,
+        "text": "Aufstand der Gelben Turbane leitet den Zerfall ein."
+      }
     ],
     "periods": [
       {
-        "from": -206, "to": 220,
+        "from": -206,
+        "to": 220,
         "ruler": "Han Wudi",
         "rulerTitle": "Kaiser von Han",
         "dynasty": "Han",
@@ -73,7 +86,9 @@
         "capital": "Chang'an, später Luoyang",
         "government": "Beamtenstaat auf konfuzianischer Grundlage",
         "religion": "Konfuzianische Staatslehre, Ahnenkult, ab dem 1. Jh. Buddhismus",
-        "languages": ["Altchinesisch"],
+        "languages": [
+          "Altchinesisch"
+        ],
         "population": "ca. 58 Mio. (Zensus von 2 n. Chr.)",
         "economy": "Staatsmonopole auf Salz und Eisen, Seidenexport, Münzwirtschaft",
         "summary": [
@@ -83,13 +98,13 @@
       }
     ]
   },
-
   "Jin Empire": {
     "kind": "Kaiserreich",
     "wiki": "Jin-Dynastie (265–420)",
     "periods": [
       {
-        "from": 265, "to": 420,
+        "from": 265,
+        "to": 420,
         "ruler": "Sima Yan (Kaiser Wu)",
         "rulerTitle": "Kaiser von Jin",
         "dynasty": "Jin",
@@ -97,7 +112,9 @@
         "capital": "Luoyang, später Jiankang (Nanjing)",
         "government": "Kaisertum mit mächtigen Adelsclans",
         "religion": "Konfuzianismus, wachsender Buddhismus und Daoismus",
-        "languages": ["Mittelchinesisch"],
+        "languages": [
+          "Mittelchinesisch"
+        ],
         "population": "ca. 35 Mio.",
         "economy": "Reisanbau im Süden, Binnenhandel",
         "summary": [
@@ -107,7 +124,6 @@
       }
     ]
   },
-
   "Sui Empire": {
     "kind": "Kaiserreich",
     "wiki": "Sui-Dynastie",
@@ -115,7 +131,8 @@
     "dissolved": 618,
     "periods": [
       {
-        "from": 581, "to": 618,
+        "from": 581,
+        "to": 618,
         "ruler": "Sui Yangdi",
         "rulerTitle": "Kaiser von Sui",
         "dynasty": "Sui",
@@ -123,7 +140,9 @@
         "capital": "Daxing (Chang'an)",
         "government": "Zentralisiertes Kaisertum mit Sechs Ministerien",
         "religion": "Buddhismus als Staatsförderung, Konfuzianismus in der Verwaltung",
-        "languages": ["Mittelchinesisch"],
+        "languages": [
+          "Mittelchinesisch"
+        ],
         "population": "ca. 46 Mio.",
         "economy": "Kaiserkanal, staatliche Getreidespeicher",
         "summary": [
@@ -133,7 +152,6 @@
       }
     ]
   },
-
   "Tang Empire": {
     "kind": "Kaiserreich",
     "wiki": "Tang-Dynastie",
@@ -141,7 +159,8 @@
     "dissolved": 907,
     "periods": [
       {
-        "from": 618, "to": 907,
+        "from": 618,
+        "to": 907,
         "ruler": "Tang Xuanzong",
         "rulerTitle": "Kaiser von Tang",
         "dynasty": "Tang",
@@ -149,7 +168,11 @@
         "capital": "Chang'an (Xi'an)",
         "government": "Beamtenstaat mit Prüfungswesen",
         "religion": "Buddhismus, Daoismus, Konfuzianismus; auch Nestorianer und Manichäer",
-        "languages": ["Mittelchinesisch", "Sogdisch", "Türkisch"],
+        "languages": [
+          "Mittelchinesisch",
+          "Sogdisch",
+          "Türkisch"
+        ],
         "population": "ca. 60 Mio.",
         "economy": "Seidenstraßenhandel, Porzellan, Buchdruck mit Holztafeln",
         "summary": [
@@ -160,7 +183,6 @@
       }
     ]
   },
-
   "Song Empire": {
     "kind": "Kaiserreich",
     "wiki": "Song-Dynastie",
@@ -168,7 +190,8 @@
     "dissolved": 1279,
     "periods": [
       {
-        "from": 960, "to": 1279,
+        "from": 960,
+        "to": 1279,
         "ruler": "Song Shenzong",
         "rulerTitle": "Kaiser von Song",
         "dynasty": "Song",
@@ -176,7 +199,9 @@
         "capital": "Kaifeng, ab 1127 Hangzhou",
         "government": "Zivil dominierter Beamtenstaat",
         "religion": "Neokonfuzianismus, Buddhismus, Daoismus",
-        "languages": ["Mittelchinesisch"],
+        "languages": [
+          "Mittelchinesisch"
+        ],
         "population": "über 100 Mio. – erstmals in der Geschichte eines Staates",
         "economy": "Papiergeld, Massenproduktion von Eisen und Porzellan, Seehandel",
         "summary": [
@@ -187,20 +212,29 @@
       }
     ]
   },
-
   "Ming Empire": {
     "kind": "Kaiserreich",
     "wiki": "Ming-Dynastie",
     "founded": 1368,
     "dissolved": 1644,
     "events": [
-      { "year": 1405, "text": "Erste der sieben Expeditionen des Admirals Zheng He." },
-      { "year": 1421, "text": "Verlegung der Hauptstadt nach Peking." },
-      { "year": 1644, "text": "Aufständische nehmen Peking; die Mandschu übernehmen die Macht." }
+      {
+        "year": 1405,
+        "text": "Erste der sieben Expeditionen des Admirals Zheng He."
+      },
+      {
+        "year": 1421,
+        "text": "Verlegung der Hauptstadt nach Peking."
+      },
+      {
+        "year": 1644,
+        "text": "Aufständische nehmen Peking; die Mandschu übernehmen die Macht."
+      }
     ],
     "periods": [
       {
-        "from": 1368, "to": 1644,
+        "from": 1368,
+        "to": 1644,
         "ruler": "Yongle",
         "rulerTitle": "Kaiser von Ming",
         "dynasty": "Ming",
@@ -208,7 +242,9 @@
         "capital": "Nanjing, ab 1421 Peking",
         "government": "Absolutes Kaisertum mit Eunuchenverwaltung und Beamtenprüfung",
         "religion": "Konfuzianismus, Buddhismus, Daoismus",
-        "languages": ["Frühneuchinesisch"],
+        "languages": [
+          "Frühneuchinesisch"
+        ],
         "population": "ca. 160 Mio.",
         "economy": "Seide, Porzellan, Tee; Silberzustrom aus Amerika über Manila",
         "summary": [
@@ -219,21 +255,33 @@
       }
     ]
   },
-
   "Qing Empire": {
     "kind": "Kaiserreich",
     "wiki": "Qing-Dynastie",
     "founded": 1636,
     "dissolved": 1912,
     "events": [
-      { "year": 1683, "text": "Eingliederung Taiwans." },
-      { "year": 1842, "text": "Vertrag von Nanking nach dem Ersten Opiumkrieg." },
-      { "year": 1851, "text": "Taiping-Aufstand mit zig Millionen Toten beginnt." },
-      { "year": 1912, "text": "Abdankung des letzten Kaisers; Ausrufung der Republik." }
+      {
+        "year": 1683,
+        "text": "Eingliederung Taiwans."
+      },
+      {
+        "year": 1842,
+        "text": "Vertrag von Nanking nach dem Ersten Opiumkrieg."
+      },
+      {
+        "year": 1851,
+        "text": "Taiping-Aufstand mit zig Millionen Toten beginnt."
+      },
+      {
+        "year": 1912,
+        "text": "Abdankung des letzten Kaisers; Ausrufung der Republik."
+      }
     ],
     "periods": [
       {
-        "from": 1636, "to": 1795,
+        "from": 1636,
+        "to": 1795,
         "ruler": "Qianlong",
         "rulerTitle": "Kaiser von Qing",
         "dynasty": "Qing (Mandschu)",
@@ -241,7 +289,13 @@
         "capital": "Peking",
         "government": "Kaisertum einer mandschurischen Minderheit über eine han-chinesische Mehrheit",
         "religion": "Konfuzianismus, tibetischer Buddhismus, Islam in Xinjiang",
-        "languages": ["Chinesisch", "Mandschurisch", "Mongolisch", "Tibetisch", "Uigurisch"],
+        "languages": [
+          "Chinesisch",
+          "Mandschurisch",
+          "Mongolisch",
+          "Tibetisch",
+          "Uigurisch"
+        ],
         "population": "ca. 300 Mio. (1800)",
         "economy": "Landwirtschaft, Tee- und Seidenexport, Kanton-System für den Außenhandel",
         "summary": [
@@ -250,7 +304,8 @@
         ]
       },
       {
-        "from": 1796, "to": 1912,
+        "from": 1796,
+        "to": 1912,
         "ruler": "Kaiserinwitwe Cixi",
         "rulerTitle": "Regentin für minderjährige Kaiser",
         "dynasty": "Qing",
@@ -258,7 +313,10 @@
         "capital": "Peking",
         "government": "Kaisertum unter wachsendem Druck der Kolonialmächte",
         "religion": "Konfuzianismus, Buddhismus, Islam, Christentum",
-        "languages": ["Chinesisch", "Mandschurisch"],
+        "languages": [
+          "Chinesisch",
+          "Mandschurisch"
+        ],
         "population": "ca. 430 Mio.",
         "economy": "Opiumhandel, ungleiche Verträge, Vertragshäfen, erste Industrie",
         "summary": [
@@ -268,7 +326,6 @@
       }
     ]
   },
-
   "Chinese Warlords": {
     "kind": "Zerfallende Republik",
     "wiki": "Zeit der Warlords",
@@ -276,13 +333,16 @@
     "dissolved": 1928,
     "periods": [
       {
-        "from": 1912, "to": 1937,
+        "from": 1912,
+        "to": 1937,
         "ruler": "Konkurrierende Militärgouverneure",
         "rulerTitle": "Warlords (Dujun)",
         "capital": "Peking, ab 1927 Nanjing",
         "government": "Nominelle Republik, faktisch regionale Militärherrschaft",
         "religion": "Konfuzianismus, Buddhismus, Volksreligion",
-        "languages": ["Chinesisch"],
+        "languages": [
+          "Chinesisch"
+        ],
         "population": "ca. 470 Mio.",
         "economy": "Agrarwirtschaft, Küstenindustrie, Fremdkonzessionen",
         "summary": [
@@ -292,21 +352,23 @@
       }
     ]
   },
-
   "China": {
     "kind": "Volksrepublik",
     "wiki": "Volksrepublik China",
     "founded": 1949,
     "periods": [
       {
-        "from": 1945, "to": 1976,
+        "from": 1945,
+        "to": 1976,
         "ruler": "Mao Zedong",
         "rulerTitle": "Vorsitzender der Kommunistischen Partei Chinas",
         "reign": "1949–1976",
         "capital": "Peking",
         "government": "Sozialistischer Einparteienstaat",
         "religion": "Staatlich propagierter Atheismus",
-        "languages": ["Hochchinesisch und zahlreiche Regionalsprachen"],
+        "languages": [
+          "Hochchinesisch und zahlreiche Regionalsprachen"
+        ],
         "population": "ca. 550 bis 930 Mio.",
         "economy": "Planwirtschaft, Kollektivierung, Schwerindustrie",
         "summary": [
@@ -315,13 +377,16 @@
         ]
       },
       {
-        "from": 1977, "to": null,
+        "from": 1977,
+        "to": null,
         "ruler": "Deng Xiaoping, später Jiang Zemin, Hu Jintao, Xi Jinping",
         "rulerTitle": "Führung der Kommunistischen Partei",
         "capital": "Peking",
         "government": "Sozialistischer Einparteienstaat mit Marktwirtschaft",
         "religion": "Offiziell atheistisch; Buddhismus, Daoismus, Islam, Christentum geduldet",
-        "languages": ["Hochchinesisch"],
+        "languages": [
+          "Hochchinesisch"
+        ],
         "population": "ca. 1,41 Mrd.",
         "economy": "Fertigungsindustrie, Export, Infrastruktur, Hochtechnologie",
         "summary": [
@@ -331,13 +396,13 @@
       }
     ]
   },
-
   "Japan": {
     "kind": "Kaiserreich",
     "wiki": "Japan",
     "periods": [
       {
-        "from": 700, "to": 1191,
+        "from": 700,
+        "to": 1191,
         "ruler": "Fujiwara no Michinaga",
         "rulerTitle": "Regent für den Tennō",
         "dynasty": "Fujiwara",
@@ -345,7 +410,10 @@
         "capital": "Heian-kyō (Kyōto)",
         "government": "Kaisertum unter Regentschaft des Fujiwara-Klans",
         "religion": "Shintō und Buddhismus nebeneinander",
-        "languages": ["Altjapanisch", "Klassisches Chinesisch"],
+        "languages": [
+          "Altjapanisch",
+          "Klassisches Chinesisch"
+        ],
         "population": "ca. 6 Mio.",
         "economy": "Reisanbau, Adelsgüter (shōen)",
         "summary": [
@@ -354,7 +422,8 @@
         ]
       },
       {
-        "from": 1192, "to": 1867,
+        "from": 1192,
+        "to": 1867,
         "ruler": "Tokugawa Ieyasu und Nachfolger",
         "rulerTitle": "Shōgun; der Tennō bleibt religiöses Oberhaupt",
         "dynasty": "Tokugawa",
@@ -362,7 +431,9 @@
         "capital": "Edo (Tokio); Kaiserhof in Kyōto",
         "government": "Militärherrschaft über rund 260 Fürstentümer (han)",
         "religion": "Buddhismus und Shintō; Christentum verboten",
-        "languages": ["Japanisch"],
+        "languages": [
+          "Japanisch"
+        ],
         "population": "ca. 30 Mio.",
         "economy": "Reiswirtschaft, Binnenhandel, städtische Kultur in Edo und Ōsaka",
         "summary": [
@@ -371,13 +442,16 @@
         ]
       },
       {
-        "from": 1868, "to": null,
+        "from": 1868,
+        "to": null,
         "ruler": "Meiji-Tennō, später konstitutionelle Regierungen",
         "rulerTitle": "Tennō; Regierungschef ist der Premierminister",
         "capital": "Tokio",
         "government": "Konstitutionelle Monarchie",
         "religion": "Shintō und Buddhismus",
-        "languages": ["Japanisch"],
+        "languages": [
+          "Japanisch"
+        ],
         "population": "ca. 124 Mio.",
         "economy": "Hochtechnologie, Fahrzeugbau, Elektronik",
         "summary": [
@@ -387,7 +461,6 @@
       }
     ]
   },
-
   "Empire of Japan": {
     "kind": "Kaiserreich mit Kolonialbesitz",
     "wiki": "Japanisches Kaiserreich",
@@ -395,14 +468,19 @@
     "dissolved": 1947,
     "periods": [
       {
-        "from": 1868, "to": 1947,
+        "from": 1868,
+        "to": 1947,
         "ruler": "Hirohito (Shōwa-Tennō)",
         "rulerTitle": "Tennō",
         "reign": "1926–1989",
         "capital": "Tokio",
         "government": "Konstitutionelle Monarchie mit wachsendem Militäreinfluss",
         "religion": "Staats-Shintō",
-        "languages": ["Japanisch", "Koreanisch", "Chinesisch"],
+        "languages": [
+          "Japanisch",
+          "Koreanisch",
+          "Chinesisch"
+        ],
         "population": "ca. 105 Mio. mit Kolonien",
         "economy": "Schwerindustrie, Rüstung, Rohstoffe aus den besetzten Gebieten",
         "summary": [
@@ -412,13 +490,13 @@
       }
     ]
   },
-
   "Korea": {
     "kind": "Königreich",
     "wiki": "Geschichte Koreas",
     "periods": [
       {
-        "from": 918, "to": 1897,
+        "from": 918,
+        "to": 1897,
         "ruler": "Sejong der Große",
         "rulerTitle": "König von Joseon",
         "dynasty": "Joseon",
@@ -426,7 +504,10 @@
         "capital": "Hanseong (Seoul)",
         "government": "Konfuzianische Beamtenmonarchie",
         "religion": "Neokonfuzianismus als Staatslehre, Buddhismus zurückgedrängt",
-        "languages": ["Koreanisch", "Klassisches Chinesisch"],
+        "languages": [
+          "Koreanisch",
+          "Klassisches Chinesisch"
+        ],
         "population": "ca. 10 Mio.",
         "economy": "Reisanbau, Tributhandel mit China",
         "summary": [
@@ -436,7 +517,6 @@
       }
     ]
   },
-
   "Tibetan Empire": {
     "kind": "Großreich",
     "wiki": "Tibetisches Reich",
@@ -444,14 +524,17 @@
     "dissolved": 842,
     "periods": [
       {
-        "from": 618, "to": 842,
+        "from": 618,
+        "to": 842,
         "ruler": "Trisong Detsen",
         "rulerTitle": "Tsenpo – König von Tibet",
         "reign": "755–797",
         "capital": "Lhasa",
         "government": "Königtum über Adelsclans",
         "religion": "Bön, ab dem 8. Jahrhundert Buddhismus als Staatsreligion",
-        "languages": ["Alttibetisch"],
+        "languages": [
+          "Alttibetisch"
+        ],
         "population": "wenige Millionen",
         "economy": "Viehzucht, Kontrolle der Handelswege nach Zentralasien",
         "summary": [
@@ -461,31 +544,36 @@
       }
     ]
   },
-
   "Tibet": {
     "kind": "Geistliches Herrschaftsgebiet",
     "wiki": "Tibet",
     "periods": [
       {
-        "from": 1000, "to": 1642,
+        "from": 1000,
+        "to": 1642,
         "ruler": "Wechselnde Klosterherrschaften und Adelsgeschlechter",
         "rulerTitle": "Äbte und Fürsten",
         "capital": "Sakya, Shigatse, Lhasa",
         "government": "Verbindung von Kloster- und Adelsherrschaft",
         "religion": "Tibetischer Buddhismus",
-        "languages": ["Tibetisch"],
+        "languages": [
+          "Tibetisch"
+        ],
         "population": "ca. 2 Mio.",
         "economy": "Nomadische Viehzucht, Gerstenanbau, Salz- und Teehandel",
         "summary": "Nach dem Zerfall des Königreichs bestimmen die großen Klosterschulen die Politik. Unter den Mongolen entsteht das Verhältnis von weltlichem Schutzherrn und geistlichem Lehrer."
       },
       {
-        "from": 1643, "to": 1950,
+        "from": 1643,
+        "to": 1950,
         "ruler": "Der jeweilige Dalai Lama",
         "rulerTitle": "Dalai Lama – geistliches und weltliches Oberhaupt",
         "capital": "Lhasa, Potala-Palast",
         "government": "Theokratie mit Klosterverwaltung und Adel",
         "religion": "Tibetischer Buddhismus (Gelug-Schule)",
-        "languages": ["Tibetisch"],
+        "languages": [
+          "Tibetisch"
+        ],
         "population": "ca. 1 bis 3 Mio.",
         "economy": "Viehzucht, Klosterwirtschaft, Handel über Himalaya-Pässe",
         "summary": [
@@ -495,7 +583,6 @@
       }
     ]
   },
-
   "Xiongnu": {
     "kind": "Steppenreich",
     "wiki": "Xiongnu",
@@ -503,14 +590,17 @@
     "dissolved": 155,
     "periods": [
       {
-        "from": -209, "to": 155,
+        "from": -209,
+        "to": 155,
         "ruler": "Modu Chanyu",
         "rulerTitle": "Chanyu – Oberherr der Xiongnu",
         "reign": "209–174 v. Chr.",
         "capital": "Wanderhof in der Mongolei",
         "government": "Stammesbund unter einem gewählten Oberherrn",
         "religion": "Himmelsverehrung (Tengri)",
-        "languages": ["nicht sicher bestimmt, vermutlich altaisch"],
+        "languages": [
+          "nicht sicher bestimmt, vermutlich altaisch"
+        ],
         "population": "wenige Millionen",
         "economy": "Viehzucht, Tribute aus China, Kontrolle der Karawanenwege",
         "summary": [
@@ -520,7 +610,6 @@
       }
     ]
   },
-
   "Göktürks": {
     "kind": "Khaganat",
     "wiki": "Kök-Türken",
@@ -528,13 +617,16 @@
     "dissolved": 744,
     "periods": [
       {
-        "from": 552, "to": 744,
+        "from": 552,
+        "to": 744,
         "ruler": "Bumin Khagan und Nachfolger",
         "rulerTitle": "Khagan",
         "capital": "Ötüken im Altai",
         "government": "Doppelkhaganat aus Ost- und Westflügel",
         "religion": "Tengrismus",
-        "languages": ["Alttürkisch"],
+        "languages": [
+          "Alttürkisch"
+        ],
         "population": "wenige Millionen",
         "economy": "Viehzucht, Seidenhandel, Tribute",
         "summary": [
@@ -544,7 +636,6 @@
       }
     ]
   },
-
   "Khazars": {
     "kind": "Khaganat",
     "wiki": "Chasaren",
@@ -552,13 +643,18 @@
     "dissolved": 969,
     "periods": [
       {
-        "from": 650, "to": 969,
+        "from": 650,
+        "to": 969,
         "ruler": "Khagan und Bek in Doppelspitze",
         "rulerTitle": "Khagan",
         "capital": "Itil an der Wolgamündung",
         "government": "Khaganat mit sakralem Oberherrn und regierendem Stellvertreter",
         "religion": "Ein Teil der Führungsschicht nimmt im 9. Jahrhundert das Judentum an",
-        "languages": ["Chasarisch", "Hebräisch", "Arabisch"],
+        "languages": [
+          "Chasarisch",
+          "Hebräisch",
+          "Arabisch"
+        ],
         "population": "wenige Millionen",
         "economy": "Zölle auf den Handel zwischen Nordeuropa und dem Kalifat",
         "summary": [
@@ -568,21 +664,33 @@
       }
     ]
   },
-
   "Mongol Empire": {
     "kind": "Weltreich",
     "wiki": "Mongolisches Reich",
     "founded": 1206,
     "dissolved": 1368,
     "events": [
-      { "year": 1206, "text": "Temüdschin wird zum Dschingis Khan ausgerufen." },
-      { "year": 1258, "text": "Eroberung Bagdads; Ende des Abbasiden-Kalifats." },
-      { "year": 1260, "text": "Niederlage bei Ain Dschalut gegen die Mamluken." },
-      { "year": 1271, "text": "Kublai Khan gründet die Yuan-Dynastie in China." }
+      {
+        "year": 1206,
+        "text": "Temüdschin wird zum Dschingis Khan ausgerufen."
+      },
+      {
+        "year": 1258,
+        "text": "Eroberung Bagdads; Ende des Abbasiden-Kalifats."
+      },
+      {
+        "year": 1260,
+        "text": "Niederlage bei Ain Dschalut gegen die Mamluken."
+      },
+      {
+        "year": 1271,
+        "text": "Kublai Khan gründet die Yuan-Dynastie in China."
+      }
     ],
     "periods": [
       {
-        "from": 1206, "to": 1259,
+        "from": 1206,
+        "to": 1259,
         "ruler": "Dschingis Khan",
         "rulerTitle": "Großkhan",
         "dynasty": "Borjigin",
@@ -590,7 +698,12 @@
         "capital": "Karakorum",
         "government": "Militärisch gegliederter Stammesbund; Zehnerschaftssystem",
         "religion": "Tengrismus; auffallende Duldung aller Bekenntnisse",
-        "languages": ["Mongolisch", "Uigurisch", "Persisch", "Chinesisch"],
+        "languages": [
+          "Mongolisch",
+          "Uigurisch",
+          "Persisch",
+          "Chinesisch"
+        ],
         "population": "über 100 Mio. Untertanen",
         "economy": "Tribute, Beute, geschützte Karawanenwege",
         "summary": [
@@ -601,7 +714,8 @@
         "quote": "Ein Reiterbund verband erstmals China, Persien und Osteuropa in einem Herrschaftsraum."
       },
       {
-        "from": 1260, "to": 1368,
+        "from": 1260,
+        "to": 1368,
         "ruler": "Kublai Khan",
         "rulerTitle": "Großkhan, Kaiser von China",
         "dynasty": "Yuan",
@@ -609,7 +723,11 @@
         "capital": "Khanbaliq (Peking)",
         "government": "Vier Teilreiche unter nominellem Großkhan",
         "religion": "Tibetischer Buddhismus am Hof; Duldung anderer Religionen",
-        "languages": ["Mongolisch", "Chinesisch", "Persisch"],
+        "languages": [
+          "Mongolisch",
+          "Chinesisch",
+          "Persisch"
+        ],
         "population": "ca. 90 Mio. allein in China",
         "economy": "Papiergeld, Seidenstraßenhandel, Kaiserkanal",
         "summary": [
@@ -619,7 +737,6 @@
       }
     ]
   },
-
   "Khanate of the Golden Horde": {
     "kind": "Teilreich des Mongolenreiches",
     "wiki": "Goldene Horde",
@@ -627,7 +744,8 @@
     "dissolved": 1502,
     "periods": [
       {
-        "from": 1242, "to": 1502,
+        "from": 1242,
+        "to": 1502,
         "ruler": "Öz Beg Khan",
         "rulerTitle": "Khan der Goldenen Horde",
         "dynasty": "Dschutschiden",
@@ -635,7 +753,11 @@
         "capital": "Sarai an der Wolga",
         "government": "Khanat über tributpflichtige Fürstentümer",
         "religion": "Ab 1313 sunnitischer Islam als Staatsreligion",
-        "languages": ["Kiptschakisch", "Mongolisch", "Russisch"],
+        "languages": [
+          "Kiptschakisch",
+          "Mongolisch",
+          "Russisch"
+        ],
         "population": "ca. 5 Mio.",
         "economy": "Tribute der Rus-Fürstentümer, Karawanenhandel, Sklavenhandel",
         "summary": [
@@ -645,7 +767,6 @@
       }
     ]
   },
-
   "Ilkhanate": {
     "kind": "Teilreich des Mongolenreiches",
     "wiki": "Ilchane",
@@ -653,7 +774,8 @@
     "dissolved": 1335,
     "periods": [
       {
-        "from": 1256, "to": 1335,
+        "from": 1256,
+        "to": 1335,
         "ruler": "Ghazan",
         "rulerTitle": "Ilkhan",
         "dynasty": "Hülegüiden",
@@ -661,7 +783,11 @@
         "capital": "Täbris, Sultaniya",
         "government": "Khanat über persische Verwaltungstradition",
         "religion": "Zunächst schamanistisch und buddhistisch, ab 1295 Islam",
-        "languages": ["Persisch", "Mongolisch", "Arabisch"],
+        "languages": [
+          "Persisch",
+          "Mongolisch",
+          "Arabisch"
+        ],
         "population": "ca. 10 Mio.",
         "economy": "Seidenstraße, Steuerreform, Wiederaufbau der Bewässerung",
         "summary": [
@@ -671,7 +797,6 @@
       }
     ]
   },
-
   "Chagatai Khanate": {
     "kind": "Teilreich des Mongolenreiches",
     "wiki": "Tschagatai-Khanat",
@@ -679,21 +804,25 @@
     "dissolved": 1687,
     "periods": [
       {
-        "from": 1226, "to": 1687,
+        "from": 1226,
+        "to": 1687,
         "ruler": "Nachkommen Tschagatais",
         "rulerTitle": "Khan",
         "dynasty": "Tschagataiden",
         "capital": "Almaliq, später Samarkand und Kaschgar",
         "government": "Khanat über Oasenstädte und Steppenstämme",
         "religion": "Zunehmend sunnitischer Islam",
-        "languages": ["Tschagataisch", "Persisch", "Mongolisch"],
+        "languages": [
+          "Tschagataisch",
+          "Persisch",
+          "Mongolisch"
+        ],
         "population": "einige Millionen",
         "economy": "Karawanenhandel, Oasenlandwirtschaft",
         "summary": "Das mittlere der mongolischen Teilreiche umfasst Transoxanien und das Tarimbecken. Aus seiner westlichen Hälfte geht das Reich Timurs hervor."
       }
     ]
   },
-
   "Timurid Empire": {
     "kind": "Eroberungsreich",
     "wiki": "Timuriden",
@@ -701,7 +830,8 @@
     "dissolved": 1507,
     "periods": [
       {
-        "from": 1370, "to": 1507,
+        "from": 1370,
+        "to": 1507,
         "ruler": "Timur (Tamerlan)",
         "rulerTitle": "Emir",
         "dynasty": "Timuriden",
@@ -709,7 +839,10 @@
         "capital": "Samarkand",
         "government": "Militärmonarchie über eroberte Provinzen",
         "religion": "Sunnitischer Islam",
-        "languages": ["Tschagataisch", "Persisch"],
+        "languages": [
+          "Tschagataisch",
+          "Persisch"
+        ],
         "population": "ca. 20 Mio.",
         "economy": "Beute, Handwerkerverschleppung nach Samarkand, Fernhandel",
         "summary": [
@@ -720,7 +853,6 @@
       }
     ]
   },
-
   "Mauryan Empire": {
     "kind": "Großreich",
     "wiki": "Maurya-Reich",
@@ -728,7 +860,8 @@
     "dissolved": -185,
     "periods": [
       {
-        "from": -322, "to": -185,
+        "from": -322,
+        "to": -185,
         "ruler": "Ashoka",
         "rulerTitle": "Maharaja",
         "dynasty": "Maurya",
@@ -736,7 +869,11 @@
         "capital": "Pataliputra (Patna)",
         "government": "Zentralverwaltung mit Provinzgouverneuren und Spitzelwesen",
         "religion": "Nach der Kalinga-Schlacht Förderung des Buddhismus",
-        "languages": ["Prakrit", "Sanskrit", "Griechisch (Grenzedikte)"],
+        "languages": [
+          "Prakrit",
+          "Sanskrit",
+          "Griechisch (Grenzedikte)"
+        ],
         "population": "ca. 30 bis 50 Mio.",
         "economy": "Staatliche Landwirtschaft, Bergbau, Fernhandel",
         "summary": [
@@ -747,7 +884,6 @@
       }
     ]
   },
-
   "Gupta Empire": {
     "kind": "Großreich",
     "wiki": "Gupta-Reich",
@@ -755,7 +891,8 @@
     "dissolved": 550,
     "periods": [
       {
-        "from": 320, "to": 550,
+        "from": 320,
+        "to": 550,
         "ruler": "Chandragupta II.",
         "rulerTitle": "Maharajadhiraja",
         "dynasty": "Gupta",
@@ -763,7 +900,10 @@
         "capital": "Pataliputra",
         "government": "Großkönigtum über Vasallenfürsten",
         "religion": "Hinduismus; Buddhismus und Jainismus geduldet",
-        "languages": ["Sanskrit", "Prakrit"],
+        "languages": [
+          "Sanskrit",
+          "Prakrit"
+        ],
         "population": "ca. 50 Mio.",
         "economy": "Textil, Metallverarbeitung, Seehandel nach Südostasien",
         "summary": [
@@ -773,7 +913,6 @@
       }
     ]
   },
-
   "Kushan Empire": {
     "kind": "Großreich",
     "wiki": "Kuschana",
@@ -781,7 +920,8 @@
     "dissolved": 375,
     "periods": [
       {
-        "from": 30, "to": 375,
+        "from": 30,
+        "to": 375,
         "ruler": "Kanishka I.",
         "rulerTitle": "König der Könige",
         "dynasty": "Kuschan",
@@ -789,7 +929,11 @@
         "capital": "Purushapura (Peschawar), Mathura",
         "government": "Königtum über Handelsstädte und Steppengebiete",
         "religion": "Buddhismus gefördert, daneben iranische und griechische Kulte",
-        "languages": ["Baktrisch", "Griechisch", "Sanskrit"],
+        "languages": [
+          "Baktrisch",
+          "Griechisch",
+          "Sanskrit"
+        ],
         "population": "ca. 15 Mio.",
         "economy": "Drehscheibe der Seidenstraße zwischen Rom, Indien und China",
         "summary": [
@@ -799,7 +943,6 @@
       }
     ]
   },
-
   "Sultanate of Delhi": {
     "kind": "Sultanat",
     "wiki": "Sultanat von Delhi",
@@ -807,7 +950,8 @@
     "dissolved": 1526,
     "periods": [
       {
-        "from": 1206, "to": 1526,
+        "from": 1206,
+        "to": 1526,
         "ruler": "Muhammad bin Tughluq",
         "rulerTitle": "Sultan von Delhi",
         "dynasty": "Tughluq",
@@ -815,7 +959,11 @@
         "capital": "Delhi",
         "government": "Sultanat mit Militäraristokratie",
         "religion": "Sunnitischer Islam; hinduistische Mehrheitsbevölkerung",
-        "languages": ["Persisch", "Hindustani", "Sanskrit"],
+        "languages": [
+          "Persisch",
+          "Hindustani",
+          "Sanskrit"
+        ],
         "population": "ca. 40 Mio.",
         "economy": "Landsteuer, Handel, Münzwesen",
         "summary": [
@@ -825,7 +973,6 @@
       }
     ]
   },
-
   "Vijayanagara": {
     "kind": "Königreich",
     "wiki": "Vijayanagar",
@@ -833,7 +980,8 @@
     "dissolved": 1646,
     "periods": [
       {
-        "from": 1336, "to": 1646,
+        "from": 1336,
+        "to": 1646,
         "ruler": "Krishnadevaraya",
         "rulerTitle": "Maharaja von Vijayanagar",
         "dynasty": "Tuluva",
@@ -841,7 +989,12 @@
         "capital": "Vijayanagara (Hampi)",
         "government": "Königtum mit Militärgouverneuren (Nayakas)",
         "religion": "Hinduismus",
-        "languages": ["Kannada", "Telugu", "Tamil", "Sanskrit"],
+        "languages": [
+          "Kannada",
+          "Telugu",
+          "Tamil",
+          "Sanskrit"
+        ],
         "population": "ca. 18 Mio.",
         "economy": "Bewässerungsbau, Gewürz- und Diamantenhandel, Pferdeimport",
         "summary": [
@@ -851,20 +1004,29 @@
       }
     ]
   },
-
   "Mughal Empire": {
     "kind": "Kaiserreich",
     "wiki": "Mogulreich",
     "founded": 1526,
     "dissolved": 1857,
     "events": [
-      { "year": 1526, "text": "Babur siegt bei Panipat und gründet das Reich." },
-      { "year": 1632, "text": "Baubeginn des Tadsch Mahal." },
-      { "year": 1757, "text": "Schlacht bei Plassey – die Ostindien-Kompanie übernimmt Bengalen." }
+      {
+        "year": 1526,
+        "text": "Babur siegt bei Panipat und gründet das Reich."
+      },
+      {
+        "year": 1632,
+        "text": "Baubeginn des Tadsch Mahal."
+      },
+      {
+        "year": 1757,
+        "text": "Schlacht bei Plassey – die Ostindien-Kompanie übernimmt Bengalen."
+      }
     ],
     "periods": [
       {
-        "from": 1526, "to": 1657,
+        "from": 1526,
+        "to": 1657,
         "ruler": "Akbar der Große",
         "rulerTitle": "Padischah – Kaiser von Hindustan",
         "dynasty": "Timuriden-Moguln",
@@ -872,7 +1034,12 @@
         "capital": "Agra, Fatehpur Sikri, später Delhi",
         "government": "Zentralstaat mit Rangordnung (Mansabdari) und einheitlicher Landsteuer",
         "religion": "Sunnitischer Islam; Akbar hebt die Sondersteuer für Nichtmuslime auf",
-        "languages": ["Persisch", "Hindustani", "Sanskrit", "Tschagataisch"],
+        "languages": [
+          "Persisch",
+          "Hindustani",
+          "Sanskrit",
+          "Tschagataisch"
+        ],
         "population": "ca. 110 Mio.",
         "economy": "Textilexport – Indien liefert damals rund ein Viertel der Weltproduktion",
         "summary": [
@@ -881,7 +1048,8 @@
         ]
       },
       {
-        "from": 1658, "to": 1857,
+        "from": 1658,
+        "to": 1857,
         "ruler": "Aurangzeb",
         "rulerTitle": "Padischah",
         "dynasty": "Moguln",
@@ -889,7 +1057,10 @@
         "capital": "Delhi",
         "government": "Kaisertum mit zunehmend selbständigen Provinzen",
         "religion": "Strenger sunnitischer Islam; Wiedereinführung der Dschizya",
-        "languages": ["Persisch", "Urdu"],
+        "languages": [
+          "Persisch",
+          "Urdu"
+        ],
         "population": "ca. 150 Mio.",
         "economy": "Höchste Wirtschaftsleistung der Welt um 1700, danach rascher Verfall",
         "summary": [
@@ -899,7 +1070,6 @@
       }
     ]
   },
-
   "Maratha Confederacy": {
     "kind": "Fürstenbund",
     "wiki": "Marathenreich",
@@ -907,13 +1077,17 @@
     "dissolved": 1818,
     "periods": [
       {
-        "from": 1674, "to": 1818,
+        "from": 1674,
+        "to": 1818,
         "ruler": "Shivaji, später die Peshwas",
         "rulerTitle": "Chhatrapati; ab 1713 faktisch die Peshwas",
         "capital": "Raigad, später Pune",
         "government": "Bund weitgehend selbständiger Fürstenhäuser",
         "religion": "Hinduismus",
-        "languages": ["Marathi", "Persisch"],
+        "languages": [
+          "Marathi",
+          "Persisch"
+        ],
         "population": "ca. 50 Mio. im Einflussbereich",
         "economy": "Chauth – ein Viertel der Steuern eroberter Gebiete",
         "summary": [
@@ -923,7 +1097,6 @@
       }
     ]
   },
-
   "British Raj": {
     "kind": "Kolonialherrschaft",
     "wiki": "Britisch-Indien",
@@ -931,13 +1104,19 @@
     "dissolved": 1947,
     "periods": [
       {
-        "from": 1858, "to": 1947,
+        "from": 1858,
+        "to": 1947,
         "ruler": "Der Vizekönig im Namen der britischen Krone",
         "rulerTitle": "Vizekönig und Generalgouverneur von Indien",
         "capital": "Kalkutta, ab 1911 Neu-Delhi",
         "government": "Kronkolonie neben rund 560 Fürstenstaaten",
         "religion": "Hinduismus, Islam, Sikhismus, Christentum u. a.",
-        "languages": ["Englisch", "Hindustani", "Bengali", "Tamil u. v. a."],
+        "languages": [
+          "Englisch",
+          "Hindustani",
+          "Bengali",
+          "Tamil u. v. a."
+        ],
         "population": "ca. 350 Mio. (1941)",
         "economy": "Baumwolle, Jute, Tee, Eisenbahn; Niedergang des heimischen Textilhandwerks",
         "summary": [
@@ -948,20 +1127,23 @@
       }
     ]
   },
-
   "India": {
     "kind": "Bundesrepublik",
     "wiki": "Indien",
     "founded": 1947,
     "periods": [
       {
-        "from": 1947, "to": null,
+        "from": 1947,
+        "to": null,
         "ruler": "Jawaharlal Nehru, später wechselnde Premierminister",
         "rulerTitle": "Premierminister; Staatsoberhaupt ist der Präsident",
         "capital": "Neu-Delhi",
         "government": "Parlamentarische Bundesrepublik",
         "religion": "Hinduismus (ca. 80 %), Islam, Christentum, Sikhismus, Buddhismus",
-        "languages": ["Hindi", "Englisch und 20 weitere Amtssprachen"],
+        "languages": [
+          "Hindi",
+          "Englisch und 20 weitere Amtssprachen"
+        ],
         "population": "ca. 1,44 Mrd. – bevölkerungsreichster Staat der Erde",
         "economy": "Dienstleistungen, IT, Landwirtschaft, Industrie",
         "summary": [
@@ -971,7 +1153,6 @@
       }
     ]
   },
-
   "Khmer Empire": {
     "kind": "Königreich",
     "wiki": "Khmer-Reich",
@@ -979,14 +1160,18 @@
     "dissolved": 1431,
     "periods": [
       {
-        "from": 802, "to": 1431,
+        "from": 802,
+        "to": 1431,
         "ruler": "Jayavarman VII.",
         "rulerTitle": "Devaraja – Gottkönig",
         "reign": "1181–1218",
         "capital": "Angkor",
         "government": "Sakrales Königtum mit Tempelwirtschaft",
         "religion": "Hinduismus, unter Jayavarman VII. Mahayana-Buddhismus",
-        "languages": ["Altkhmer", "Sanskrit"],
+        "languages": [
+          "Altkhmer",
+          "Sanskrit"
+        ],
         "population": "ca. 1 Mio. im Ballungsraum Angkor",
         "economy": "Reisanbau mit ausgedehnten Wasserspeichern (Baray)",
         "summary": [
@@ -996,7 +1181,6 @@
       }
     ]
   },
-
   "Srivijaya Empire": {
     "kind": "Seehandelsreich",
     "wiki": "Srivijaya",
@@ -1004,13 +1188,17 @@
     "dissolved": 1288,
     "periods": [
       {
-        "from": 671, "to": 1288,
+        "from": 671,
+        "to": 1288,
         "ruler": "Maharaja von Srivijaya",
         "rulerTitle": "Maharaja",
         "capital": "Palembang auf Sumatra",
         "government": "Thalassokratie über Hafenstädte",
         "religion": "Mahayana-Buddhismus",
-        "languages": ["Altmalaiisch", "Sanskrit"],
+        "languages": [
+          "Altmalaiisch",
+          "Sanskrit"
+        ],
         "population": "schwer schätzbar",
         "economy": "Kontrolle der Malakkastraße, Gewürz- und Kampferhandel",
         "summary": [
@@ -1020,7 +1208,6 @@
       }
     ]
   },
-
   "Đại Việt": {
     "kind": "Königreich",
     "wiki": "Đại Việt",
@@ -1028,7 +1215,8 @@
     "dissolved": 1804,
     "periods": [
       {
-        "from": 1054, "to": 1804,
+        "from": 1054,
+        "to": 1804,
         "ruler": "Lê Thánh Tông",
         "rulerTitle": "Kaiser von Đại Việt",
         "dynasty": "Lê",
@@ -1036,7 +1224,10 @@
         "capital": "Thăng Long (Hanoi)",
         "government": "Konfuzianische Beamtenmonarchie",
         "religion": "Buddhismus und Konfuzianismus",
-        "languages": ["Vietnamesisch", "Klassisches Chinesisch"],
+        "languages": [
+          "Vietnamesisch",
+          "Klassisches Chinesisch"
+        ],
         "population": "ca. 5 Mio.",
         "economy": "Reisanbau im Delta, Küstenhandel",
         "summary": [
@@ -1046,7 +1237,6 @@
       }
     ]
   },
-
   "Ayutthaya": {
     "kind": "Königreich",
     "wiki": "Ayutthaya",
@@ -1054,14 +1244,18 @@
     "dissolved": 1767,
     "periods": [
       {
-        "from": 1351, "to": 1767,
+        "from": 1351,
+        "to": 1767,
         "ruler": "Narai",
         "rulerTitle": "König von Ayutthaya",
         "reign": "1656–1688",
         "capital": "Ayutthaya",
         "government": "Sakrales Königtum mit Sakdina-Rangordnung",
         "religion": "Theravada-Buddhismus",
-        "languages": ["Thai", "Pali"],
+        "languages": [
+          "Thai",
+          "Pali"
+        ],
         "population": "ca. 2 Mio.",
         "economy": "Reis, Teakholz, Zwischenhandel zwischen China, Indien und Europa",
         "summary": [
@@ -1071,14 +1265,14 @@
       }
     ]
   },
-
   "Rattanakosin Kingdom": {
     "kind": "Königreich",
     "wiki": "Rattanakosin",
     "founded": 1782,
     "periods": [
       {
-        "from": 1782, "to": 1932,
+        "from": 1782,
+        "to": 1932,
         "ruler": "Chulalongkorn (Rama V.)",
         "rulerTitle": "König von Siam",
         "dynasty": "Chakri",
@@ -1086,7 +1280,9 @@
         "capital": "Bangkok",
         "government": "Absolute Monarchie, ab 1932 konstitutionell",
         "religion": "Theravada-Buddhismus",
-        "languages": ["Thai"],
+        "languages": [
+          "Thai"
+        ],
         "population": "ca. 8 Mio.",
         "economy": "Reisexport, Teak, Zinn",
         "summary": [
@@ -1096,34 +1292,43 @@
       }
     ]
   },
-
   "Dutch East Indies": {
     "kind": "Kolonie",
     "wiki": "Niederländisch-Indien",
-    "founded": 1800,
+    "founded": 1602,
     "dissolved": 1949,
     "periods": [
       {
-        "from": 1602, "to": 1799,
+        "from": 1602,
+        "to": 1799,
         "kind": "Kompaniegebiet",
         "ruler": "Der Generalgouverneur der VOC",
         "rulerTitle": "Generalgouverneur der Vereinigten Ostindischen Kompanie",
         "capital": "Batavia (Jakarta)",
         "government": "Handelskompanie mit Hoheitsrechten",
         "religion": "Islam als Mehrheitsreligion; calvinistische Kolonialkirche",
-        "languages": ["Niederländisch", "Malaiisch", "Javanisch"],
+        "languages": [
+          "Niederländisch",
+          "Malaiisch",
+          "Javanisch"
+        ],
         "population": "ca. 10 Mio.",
         "economy": "Gewürzmonopol auf Muskat, Nelken und Pfeffer",
         "summary": "Die VOC durfte Krieg führen, Verträge schließen und Festungen bauen – ein Unternehmen mit staatlichen Vollmachten. 1799 geht sie bankrott, der Staat übernimmt."
       },
       {
-        "from": 1800, "to": 1949,
+        "from": 1800,
+        "to": 1949,
         "ruler": "Der niederländische Generalgouverneur",
         "rulerTitle": "Generalgouverneur",
         "capital": "Batavia (Jakarta)",
         "government": "Kolonialverwaltung mit indirekter Herrschaft über lokale Fürsten",
         "religion": "Islam, Hinduismus auf Bali, Christentum",
-        "languages": ["Niederländisch", "Malaiisch", "Javanisch"],
+        "languages": [
+          "Niederländisch",
+          "Malaiisch",
+          "Javanisch"
+        ],
         "population": "ca. 70 Mio. (1940)",
         "economy": "Kaffee, Zucker, Kautschuk, Erdöl; Zwangsanbausystem (cultuurstelsel)",
         "summary": [
@@ -1133,20 +1338,22 @@
       }
     ]
   },
-
   "Indonesia": {
     "kind": "Republik",
     "wiki": "Indonesien",
     "founded": 1945,
     "periods": [
       {
-        "from": 1945, "to": null,
+        "from": 1945,
+        "to": null,
         "ruler": "Sukarno, später wechselnde Präsidenten",
         "rulerTitle": "Präsident der Republik Indonesien",
         "capital": "Jakarta",
         "government": "Präsidiale Republik",
         "religion": "Islam (ca. 87 %), Christentum, Hinduismus",
-        "languages": ["Indonesisch und über 700 Regionalsprachen"],
+        "languages": [
+          "Indonesisch und über 700 Regionalsprachen"
+        ],
         "population": "ca. 280 Mio.",
         "economy": "Rohstoffe, Palmöl, Industrie, Tourismus",
         "summary": [
@@ -1156,20 +1363,22 @@
       }
     ]
   },
-
   "Mongolia": {
     "kind": "Republik",
     "wiki": "Mongolei",
     "founded": 1911,
     "periods": [
       {
-        "from": 1911, "to": null,
+        "from": 1911,
+        "to": null,
         "ruler": "Wechselnde Staatsoberhäupter",
         "rulerTitle": "Präsident; 1924–1992 Parteiführung",
         "capital": "Ulaanbaatar",
         "government": "Republik; 1924–1990 sozialistischer Einparteienstaat",
         "religion": "Tibetischer Buddhismus, Schamanismus",
-        "languages": ["Mongolisch"],
+        "languages": [
+          "Mongolisch"
+        ],
         "population": "ca. 3,4 Mio.",
         "economy": "Viehzucht, Bergbau auf Kupfer, Kohle und Gold",
         "summary": [

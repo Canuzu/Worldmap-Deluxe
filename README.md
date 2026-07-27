@@ -20,7 +20,7 @@ Religion, Bevölkerung, Wirtschaft, Wendepunkte und Nachbarn.
 
 | | |
 |---|---|
-| **Zeitregler** | 53 Zeitschnitte, jeder gleich breit; das Epochenband darüber ordnet ein, die Jahresachse darunter zeigt die tatsächliche Zeitspanne |
+| **Zeitregler** | jahresgenau wählbar; die Karte zeigt den nächstgelegenen der 53 Kartenstände und schreibt darunter, welcher das ist |
 | **Zeitreise** | Wiedergabetaste läuft alle Epochen durch, mit Überblendung zwischen den Zeitschnitten |
 | **Detailtafel** | Steckbrief je Gemeinwesen und Jahr – kuratierte Texte, Angaben aus dem Kartendatensatz, optional ein Wikipedia-Auszug |
 | **Nachbarn** | aus der Kartentopologie berechnet und anklickbar: eine Region lässt sich Nachbar für Nachbar erwandern |
@@ -130,6 +130,24 @@ Mit `--kueste <meter>` lässt sich die Auflösung der Küstenlinie ändern
 npm run build:data -- --kueste 150   # noch feiner, entsprechend größer
 ```
 
+### Korrekturen am Ursprungsdatensatz
+
+Der Ursprungsdatensatz bezeichnet sich selbst als „work in progress" und
+enthält belegbare Fehler – vor allem Reiche, die Jahrhunderte nach ihrem
+Untergang noch eingezeichnet sind. Im Zeitschnitt 700 etwa stand das 651
+untergegangene Sasanidenreich noch neben dem Umayyaden-Kalifat, sodass
+Persien nicht zum Kalifat gehörte.
+
+`npm run check:zeit` findet solche Fälle automatisch: Es prüft die in der
+Wissensbasis hinterlegten Gründungs- und Auflösungsjahre gegen jeden
+Zeitschnitt. `src/data/corrections.json` korrigiert die eindeutigen Fälle;
+`build-data.mjs` wendet sie an und verschmilzt dabei gleichnamig gewordene
+Nachbarflächen, sodass keine Grenze mitten durch ein Reich läuft.
+
+Aufgenommen wird nur, was fachlich unstrittig ist. Wo die richtige Zuordnung
+unklar ist, bleibt der Befund lieber offen stehen – eine selbstbewusste
+falsche Korrektur wäre schlimmer.
+
 ### Wissensbasis
 
 Die Steckbriefe stehen in `src/data/knowledge/` und sind epochenbezogen
@@ -162,8 +180,9 @@ falls aktiviert, einen Wikipedia-Auszug.
 
 | Taste | Wirkung |
 |---|---|
-| `←` `→` | einen Zeitschnitt zurück / vor |
-| `⇧` + `←` `→` | fünf Zeitschnitte springen |
+| `←` `→` | ein Jahr zurück / vor |
+| `⇧` + `←` `→` | zum vorigen / nächsten Kartenstand springen |
+| `Bild ↑` `Bild ↓` | zehn Jahre |
 | `Leertaste` | Zeitreise starten und anhalten |
 | `/` oder `S` | Suche |
 | `T` | Farbwelt wechseln |

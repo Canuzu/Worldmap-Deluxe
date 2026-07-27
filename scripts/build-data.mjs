@@ -34,6 +34,33 @@ const TMP = fs.mkdtempSync(path.join(os.tmpdir(), 'wmd-'));
 const MAPSHAPER = path.join(ROOT, 'node_modules/.bin/mapshaper');
 
 /**
+ * Korrekturen am Ursprungsdatensatz (siehe src/data/corrections.json).
+ * Sie werden vor allem anderen angewandt, damit gleichnamig gewordene
+ * Nachbarflächen im TopoJSON verschmelzen statt eine Grenze zu behalten.
+ */
+const CORRECTIONS = (() => {
+  const file = path.join(ROOT, 'src/data/corrections.json');
+  if (!fs.existsSync(file)) return {};
+  const raw = JSON.parse(fs.readFileSync(file, 'utf8'));
+  const out = {};
+  for (const [year, entry] of Object.entries(raw)) {
+    if (year.startsWith('_')) continue;
+    out[Number(year)] = entry;
+  }
+  return out;
+})();
+
+/** mapshaper-Ausdruck, der die Umbenennungen eines Zeitschnitts anwendet. */
+function renameExpression(year) {
+  const rename = CORRECTIONS[year]?.rename;
+  if (!rename) return null;
+  const cases = Object.entries(rename)
+    .map(([from, to]) => `if (NAME === ${JSON.stringify(from)}) NAME = ${JSON.stringify(to)};`)
+    .join(' ');
+  return cases;
+}
+
+/**
  * Auflösung der hochaufgelösten Küstenlinie in Metern. 300 m liegt unterhalb
  * der Pixelgröße der höchsten Zoomstufe (rund 150 m/px) und ist damit die
  * praktische Grenze des Sichtbaren. Über --kueste einstellbar.
@@ -188,9 +215,15 @@ function buildEpoch(entry) {
   const key = keyFor(entry.year);
   const topoPath = path.join(TMP, `${key}.topo.json`);
 
+  const fix = renameExpression(entry.year);
+
   mapshaper([
     src,
     '-filter', 'NAME != null && NAME !== ""',
+    ...(fix ? ['-each', fix] : []),
+    // Nach dem Umbenennen zusammengehörige Flächen verschmelzen, damit keine
+    // Grenze mitten durch ein Reich läuft.
+    ...(fix ? ['-dissolve2', 'NAME', 'copy-fields=SUBJECTO,PARTOF,BORDERPRECISION'] : []),
     '-filter-fields', 'NAME,SUBJECTO,PARTOF,BORDERPRECISION',
     '-rename-fields', 'n=NAME,s=SUBJECTO,p=PARTOF,b=BORDERPRECISION',
     '-o', 'format=topojson', `quantization=${QUANT}`, topoPath,
@@ -379,7 +412,8 @@ function main() {
     total += meta.bytes;
     console.log(
       `  ${meta.label.padStart(14)}  ${String(meta.polities).padStart(4)} Gemeinwesen  ` +
-      `${(meta.bytes / 1024).toFixed(0).padStart(4)} kB`,
+      `${(meta.bytes / 1024).toFixed(0).padStart(4)} kB` +
+      (CORRECTIONS[entry.year] ? '  ← korrigiert' : ''),
     );
     epochs.push(meta);
   }

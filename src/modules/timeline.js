@@ -8,7 +8,7 @@
  * die Jahreszahlen unter der Achse die tatsächliche Zeitspanne.
  */
 import { ERA_COLORS } from './palette.js';
-import { yearParts, yearShort, num } from './format.js';
+import { yearParts, yearShort, yearText, num, esc } from './format.js';
 
 export class Timeline {
   constructor(dom, { epochs, eras, onChange, onScrub }) {
@@ -18,6 +18,9 @@ export class Timeline {
     this.onChange = onChange;
     this.onScrub = onScrub ?? (() => {});
     this.index = 0;
+    // Das frei gewählte Jahr. Es ist unabhängig vom Zeitschnitt: Der Regler
+    // läuft jahresgenau, die Karte zeigt den nächstgelegenen Kartenstand.
+    this.year = epochs[0].year;
     this.playing = false;
     this._timer = null;
     this.playInterval = 1500;
@@ -38,6 +41,53 @@ export class Timeline {
 
   fraction(index) {
     return this.count < 2 ? 0 : index / (this.count - 1);
+  }
+
+  /**
+   * Reglerposition (0…1) → Jahr.
+   *
+   * Jeder Zeitschnitt belegt denselben Abschnitt der Achse – sonst entfiele
+   * fast der gesamte Regler auf die Steinzeit. Innerhalb eines Abschnitts
+   * wird linear zwischen den beiden benachbarten Zeitschnitten interpoliert,
+   * sodass sich jedes Jahr dazwischen anwählen lässt.
+   */
+  yearAt(t) {
+    const n = this.count - 1;
+    const pos = Math.max(0, Math.min(n, t * n));
+    const i = Math.min(n - 1, Math.floor(pos));
+    const frac = pos - i;
+    const a = this.epochs[i].year;
+    const b = this.epochs[i + 1].year;
+    return Math.round(a + (b - a) * frac);
+  }
+
+  /** Jahr → Reglerposition (0…1); Umkehrung von yearAt. */
+  fractionForYear(year) {
+    const n = this.count - 1;
+    const first = this.epochs[0].year;
+    const last = this.epochs[n].year;
+    if (year <= first) return 0;
+    if (year >= last) return 1;
+    for (let i = 0; i < n; i++) {
+      const a = this.epochs[i].year;
+      const b = this.epochs[i + 1].year;
+      if (year >= a && year <= b) {
+        const frac = b === a ? 0 : (year - a) / (b - a);
+        return (i + frac) / n;
+      }
+    }
+    return 1;
+  }
+
+  /** Index des Zeitschnitts, dessen Jahr dem gewählten am nächsten liegt. */
+  indexForYear(year) {
+    let best = 0;
+    let bestDelta = Infinity;
+    this.epochs.forEach((e, i) => {
+      const d = Math.abs(e.year - year);
+      if (d < bestDelta) { bestDelta = d; best = i; }
+    });
+    return best;
   }
 
   /* ------------------------------------------------------------- Aufbau */
@@ -172,11 +222,11 @@ export class Timeline {
 
   /* ------------------------------------------------------------ Bedienung */
 
-  _indexFromEvent(event) {
+  _yearFromEvent(event) {
     const rect = this.dom.track.getBoundingClientRect();
     const x = (event.clientX ?? 0) - rect.left;
     const t = Math.max(0, Math.min(1, x / rect.width));
-    return Math.round(t * (this.count - 1));
+    return this.yearAt(t);
   }
 
   _bind() {
@@ -184,9 +234,9 @@ export class Timeline {
     let dragging = false;
 
     const move = (event) => {
-      const index = this._indexFromEvent(event);
-      if (index !== this.index) this.set(index, { commit: false });
-      this._updateBubble(index);
+      const year = this._yearFromEvent(event);
+      if (year !== this.year) this.setYear(year, { commit: false });
+      this._updateBubble();
     };
 
     track.addEventListener('pointerdown', (event) => {
@@ -204,15 +254,21 @@ export class Timeline {
       dragging = false;
       track.classList.remove('is-dragging');
       try { track.releasePointerCapture(event.pointerId); } catch { /* egal */ }
-      this.set(this.index, { commit: true });
+      this.setYear(this.year, { commit: true });
     };
     track.addEventListener('pointerup', end);
     track.addEventListener('pointercancel', end);
 
     track.addEventListener('keydown', (event) => {
-      const jump = event.shiftKey ? 5 : 1;
-      if (event.key === 'ArrowLeft' || event.key === 'ArrowDown') this.step(-jump);
-      else if (event.key === 'ArrowRight' || event.key === 'ArrowUp') this.step(jump);
+      const back = event.key === 'ArrowLeft' || event.key === 'ArrowDown';
+      const fwd = event.key === 'ArrowRight' || event.key === 'ArrowUp';
+      if (back || fwd) {
+        const dir = fwd ? 1 : -1;
+        // Umschalt springt zum nächsten Kartenstand, sonst ein Jahr weiter.
+        if (event.shiftKey) this.step(dir);
+        else this.setYear(this.year + dir);
+      } else if (event.key === 'PageUp') this.setYear(this.year + 10);
+      else if (event.key === 'PageDown') this.setYear(this.year - 10);
       else if (event.key === 'Home') this.set(0);
       else if (event.key === 'End') this.set(this.count - 1);
       else return;
@@ -231,45 +287,70 @@ export class Timeline {
     });
   }
 
-  _updateBubble(index) {
-    const epoch = this.epochs[index];
-    this._bubble.textContent = epoch.label;
-    this._bubble.style.left = `${(this.fraction(index) * 100).toFixed(3)}%`;
+  _updateBubble() {
+    this._bubble.textContent = yearText(this.year);
+    this._bubble.style.left = `${(this.fractionForYear(this.year) * 100).toFixed(3)}%`;
   }
 
   /* ---------------------------------------------------------- Zustand */
 
-  set(index, { commit = true, silent = false } = {}) {
+  /** Zeitschnitt anspringen – setzt das Jahr auf dessen Stichjahr. */
+  set(index, options = {}) {
     const next = Math.max(0, Math.min(this.count - 1, index));
+    this.setYear(this.epochs[next].year, options);
+  }
+
+  /**
+   * Freies Jahr wählen. Die Karte wechselt nur, wenn dadurch ein anderer
+   * Kartenstand der nächstgelegene wird.
+   */
+  setYear(year, { commit = true, silent = false } = {}) {
+    const first = this.epochs[0].year;
+    const last = this.epochs[this.count - 1].year;
+    this.year = Math.max(first, Math.min(last, Math.round(year)));
+
+    const next = this.indexForYear(this.year);
     const changed = next !== this.index;
     this.index = next;
     this.render();
-    if (!silent && (changed || commit)) this.onChange(next, { commit });
+
+    if (!silent && (changed || commit)) this.onChange(next, { commit, year: this.year });
     if (changed) this.onScrub(next);
   }
 
+  /** Einen ganzen Zeitschnitt weiter. */
   step(delta) {
     this.set(this.index + delta);
   }
 
   render() {
     const epoch = this.epochs[this.index];
-    const t = this.fraction(this.index);
+    const t = this.fractionForYear(this.year);
 
     this.dom.handle.style.transform = `translateX(${(t * this.dom.track.clientWidth).toFixed(1)}px)`;
     this.dom.fill.style.width = `${(t * 100).toFixed(3)}%`;
     this._tickEls.forEach((el, i) => el.classList.toggle('is-active', i === this.index));
 
-    const { value, era } = yearParts(epoch.year);
+    const { value, era } = yearParts(this.year);
     this.dom.yearBig.innerHTML = `${value}<sub>${era}</sub>`;
 
     const eraDef = this.eras.find((e) => e.id === epoch.era);
     this.dom.yearEra.textContent = eraDef?.name ?? '';
-    this.dom.yearTitle.textContent = epoch.title ? `· ${epoch.title}` : '';
+
+    // Ehrlich bleiben: Der Datensatz kennt 53 Kartenstände. Wird ein Jahr
+    // dazwischen gewählt, muss sichtbar sein, welcher Stand gezeigt wird.
+    const exact = this.year === epoch.year;
+    this.dom.yearTitle.innerHTML = exact
+      ? (epoch.title ? `· ${esc(epoch.title)}` : '')
+      : `· Kartenstand <b>${esc(yearText(epoch.year))}</b>` +
+        (epoch.title ? ` · ${esc(epoch.title)}` : '');
+    this.dom.yearTitle.classList.toggle('is-approx', !exact);
     this.dom.timeline.style.setProperty('--era-color', ERA_COLORS[epoch.era] ?? 'var(--gold)');
 
-    this.dom.track.setAttribute('aria-valuenow', String(this.index));
-    this.dom.track.setAttribute('aria-valuetext', `${epoch.label}${epoch.title ? `, ${epoch.title}` : ''}`);
+    this.dom.track.setAttribute('aria-valuenow', String(this.year));
+    this.dom.track.setAttribute('aria-valuetext',
+      exact ? `${epoch.label}${epoch.title ? `, ${epoch.title}` : ''}`
+            : `${yearText(this.year)}, gezeigt wird der Kartenstand ${epoch.label}`);
     this.dom.prev.disabled = this.index === 0;
     this.dom.next.disabled = this.index === this.count - 1;
   }
