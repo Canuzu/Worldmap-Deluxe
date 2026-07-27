@@ -1,0 +1,265 @@
+/**
+ * Datenzugriff: Zeitschnitte, Basisgeometrien und Wissensbasis.
+ *
+ * Aus dem TopoJSON eines Zeitschnitts wird zusätzlich der
+ * Nachbarschaftsgraph abgeleitet – TopoJSON speichert gemeinsame Grenzen
+ * als geteilte Bögen, zwei Gemeinwesen mit gemeinsamem Bogen grenzen also
+ * aneinander. Das kostet nichts extra und liefert sowohl die Kartenfärbung
+ * als auch die Nachbarliste in der Detailtafel.
+ */
+import { feature as topoFeature } from 'topojson-client';
+
+const BASE = import.meta.env.BASE_URL || '/';
+const url = (p) => `${BASE}${p}`.replace(/([^:])\/{2,}/g, '$1/');
+
+async function getJSON(path) {
+  const res = await fetch(url(path));
+  if (!res.ok) throw new Error(`${path}: ${res.status} ${res.statusText}`);
+  return res.json();
+}
+
+function toFeatures(topo) {
+  const key = Object.keys(topo.objects)[0];
+  return topoFeature(topo, topo.objects[key]);
+}
+
+/** Alle Bogen-Indizes einer TopoJSON-Geometrie einsammeln. */
+function collectArcs(arcs, out) {
+  for (const item of arcs) {
+    if (Array.isArray(item)) collectArcs(item, out);
+    else out.push(item < 0 ? ~item : item);
+  }
+  return out;
+}
+
+/**
+ * Nachbarschaft über geteilte Bögen. Ein Bogen, der zu mehreren
+ * Gemeinwesen gehört, verbindet diese miteinander.
+ */
+function buildAdjacency(topo, keyOf) {
+  const objKey = Object.keys(topo.objects)[0];
+  const geometries = topo.objects[objKey].geometries;
+  const arcOwners = new Map();
+
+  geometries.forEach((geom) => {
+    const key = keyOf(geom.properties ?? {});
+    if (!key) return;
+    for (const arc of collectArcs(geom.arcs ?? [], [])) {
+      let owners = arcOwners.get(arc);
+      if (!owners) arcOwners.set(arc, (owners = new Set()));
+      owners.add(key);
+    }
+  });
+
+  const adjacency = new Map();
+  const link = (a, b) => {
+    if (a === b) return;
+    if (!adjacency.has(a)) adjacency.set(a, new Set());
+    adjacency.get(a).add(b);
+  };
+  for (const owners of arcOwners.values()) {
+    if (owners.size < 2) continue;
+    const list = [...owners];
+    for (let i = 0; i < list.length; i++) {
+      for (let j = i + 1; j < list.length; j++) {
+        link(list[i], list[j]);
+        link(list[j], list[i]);
+      }
+    }
+  }
+  return adjacency;
+}
+
+/** Zeitschnitt in die Form bringen, mit der Karte und Tafel arbeiten. */
+function prepareEpoch(meta, topo) {
+  const geojson = toFeatures(topo);
+
+  const byName = new Map();
+  for (const f of geojson.features) {
+    const p = f.properties;
+    const name = p.n;
+    if (!name) continue;
+    let entry = byName.get(name);
+    if (!entry) {
+      entry = {
+        name,
+        sovereign: p.s || null,
+        partOf: p.p || null,
+        precision: p.b ?? 0,
+        area: p.a ?? 0,
+        anchor: null,
+        labelBox: null,
+        labelArea: -1,
+        rank: p.r ?? 999,
+        features: [],
+      };
+      byName.set(name, entry);
+    }
+    entry.features.push(f);
+
+    // Beschriftet wird immer das flächengrößte Teilstück: Dänemark gehört
+    // nach Jütland, nicht nach Grönland.
+    if (p.c && (p.pa ?? 0) > entry.labelArea) {
+      entry.anchor = p.c;
+      entry.labelBox = p.bb ?? null;
+      entry.labelArea = p.pa ?? 0;
+    }
+    f.properties.key = name;
+  }
+
+  const adjacency = buildAdjacency(topo, (p) => p.n || null);
+  const sovereignAdjacency = buildAdjacency(topo, (p) => p.s || p.n || null);
+  const cultureAdjacency = buildAdjacency(topo, (p) => p.p || p.n || null);
+
+  for (const [name, entry] of byName) {
+    entry.neighbors = [...(adjacency.get(name) ?? [])]
+      .filter((n) => byName.has(n))
+      .sort((a, b) => (byName.get(b)?.area ?? 0) - (byName.get(a)?.area ?? 0));
+  }
+
+  const polities = [...byName.values()].sort((a, b) => b.area - a.area);
+
+  return {
+    meta,
+    geojson,
+    byName,
+    polities,
+    adjacency,
+    sovereignAdjacency,
+    cultureAdjacency,
+  };
+}
+
+export class AtlasData {
+  constructor() {
+    this.index = null;
+    this.eras = [];
+    this.epochs = [];
+    this.knowledge = null;
+    this.names = null;
+    this.base = {};
+    this._cache = new Map();
+    this._inflight = new Map();
+    this._maxCache = 10;
+  }
+
+  async boot(onProgress = () => {}) {
+    onProgress(.08, 'Zeitschnitte werden gelesen …');
+    this.index = await getJSON('data/epochs.json');
+    this.eras = this.index.eras;
+    this.epochs = this.index.epochs;
+
+    onProgress(.24, 'Wissensbasis wird geladen …');
+    const [knowledge, names] = await Promise.all([
+      getJSON('data/knowledge/polities.de.json').catch(() => ({ entries: {} })),
+      getJSON('data/knowledge/names.de.json').catch(() => ({ names: {} })),
+    ]);
+    this.knowledge = knowledge.entries ?? {};
+    this.knowledgeMeta = knowledge.meta ?? {};
+    this.names = names.names ?? {};
+    this.aliases = names.aliases ?? {};
+
+    onProgress(.46, 'Küstenlinien werden gezeichnet …');
+    const [land, lakes, rivers] = await Promise.all([
+      getJSON('data/base/land.json').then(toFeatures),
+      getJSON('data/base/lakes.json').then(toFeatures).catch(() => null),
+      getJSON('data/base/rivers.json').then(toFeatures).catch(() => null),
+    ]);
+    this.base = { land, lakes, rivers };
+
+    onProgress(.72, 'Karte wird aufgebaut …');
+    return this;
+  }
+
+  epochAt(index) {
+    return this.epochs[Math.max(0, Math.min(this.epochs.length - 1, index))];
+  }
+
+  /** Index des Zeitschnitts, der einem Jahr am nächsten liegt. */
+  indexForYear(year) {
+    let best = 0;
+    let bestDelta = Infinity;
+    this.epochs.forEach((e, i) => {
+      const d = Math.abs(e.year - year);
+      if (d < bestDelta) { bestDelta = d; best = i; }
+    });
+    return best;
+  }
+
+  eraById(id) {
+    return this.eras.find((e) => e.id === id) ?? null;
+  }
+
+  /** Zeitschnitt laden (mit Cache und Mehrfachanfragen-Schutz). */
+  async load(index) {
+    const meta = this.epochAt(index);
+    if (this._cache.has(meta.key)) {
+      const hit = this._cache.get(meta.key);
+      this._cache.delete(meta.key);
+      this._cache.set(meta.key, hit); // als zuletzt benutzt markieren
+      return hit;
+    }
+    if (this._inflight.has(meta.key)) return this._inflight.get(meta.key);
+
+    const task = getJSON(meta.file)
+      .then((topo) => {
+        const prepared = prepareEpoch(meta, topo);
+        this._cache.set(meta.key, prepared);
+        while (this._cache.size > this._maxCache) {
+          this._cache.delete(this._cache.keys().next().value);
+        }
+        this._inflight.delete(meta.key);
+        return prepared;
+      })
+      .catch((err) => {
+        this._inflight.delete(meta.key);
+        throw err;
+      });
+
+    this._inflight.set(meta.key, task);
+    return task;
+  }
+
+  /** Nachbarschnitte im Hintergrund holen, damit die Zeitreise flüssig läuft. */
+  prefetch(index) {
+    for (const i of [index + 1, index - 1, index + 2]) {
+      if (i < 0 || i >= this.epochs.length) continue;
+      const key = this.epochAt(i).key;
+      if (this._cache.has(key) || this._inflight.has(key)) continue;
+      this.load(i).catch(() => {});
+    }
+  }
+
+  /* ------------------------------------------------------ Wissensbasis */
+
+  /** Kanonischer Schlüssel: Schreibvarianten und Tippfehler zusammenführen. */
+  canonical(name) {
+    if (!name) return null;
+    return this.aliases[name] ?? name;
+  }
+
+  /** Deutsche Bezeichnung eines Namens aus dem Datensatz. */
+  germanName(name) {
+    if (!name) return '';
+    const canon = this.canonical(name);
+    return this.names[canon] ?? this.names[name] ?? name;
+  }
+
+  /**
+   * Wissenseintrag zu einem Gemeinwesen im gegebenen Jahr.
+   * Liefert den Stammeintrag und den passenden Zeitabschnitt.
+   */
+  lookup(name, year) {
+    const canon = this.canonical(name);
+    const entry = this.knowledge[canon] ?? this.knowledge[name] ?? null;
+    if (!entry) return null;
+    const periods = entry.periods ?? [];
+    const period =
+      periods.find((p) => (p.from ?? -Infinity) <= year && year <= (p.to ?? Infinity)) ??
+      periods.find((p) => (p.from ?? -Infinity) <= year) ??
+      periods[0] ?? null;
+    return { key: canon, entry, period };
+  }
+}
+
+export const atlasData = new AtlasData();

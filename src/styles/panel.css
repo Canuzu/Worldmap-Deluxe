@@ -1,0 +1,369 @@
+/* ============================================================
+   Detailtafel – Steckbrief eines Gemeinwesens
+   ============================================================ */
+
+.panel {
+  grid-area: panel;
+  position: relative;
+  width: var(--panel-w);
+  background: var(--surface-solid);
+  border-left: 1px solid var(--hairline);
+  box-shadow: -14px 0 44px rgba(0, 0, 0, .28);
+  animation: slideIn 280ms var(--ease);
+  overflow: hidden;
+}
+.panel[hidden] { display: none; }
+@keyframes slideIn { from { transform: translateX(100%); } }
+
+.panel__close {
+  position: absolute;
+  z-index: 3;
+  top: .8rem; right: .85rem;
+  width: 2.05rem; height: 2.05rem;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  color: var(--ink-muted);
+  background: color-mix(in srgb, var(--surface-solid) 70%, transparent);
+  backdrop-filter: blur(8px);
+}
+.panel__close:hover { color: var(--ink-strong); background: var(--surface-3); }
+
+.panel__scroll {
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--hairline-strong) transparent;
+}
+.panel__scroll::-webkit-scrollbar { width: 10px; }
+.panel__scroll::-webkit-scrollbar-thumb {
+  background: var(--hairline-strong);
+  border-radius: 99px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+
+/* ------------------------------------------------------------- Kopf */
+
+.pnl__hero {
+  position: relative;
+  padding: 1.5rem 1.4rem 1.2rem;
+  border-bottom: 1px solid var(--hairline);
+  background:
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--accent, var(--gold)) 22%, transparent) 0%,
+      transparent 88%);
+  overflow: hidden;
+}
+.pnl__hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--accent, var(--gold));
+}
+/* dezentes Kartenrelief im Kopfbereich */
+.pnl__hero::after {
+  content: "";
+  position: absolute;
+  right: -3rem; top: -2.5rem;
+  width: 13rem; height: 13rem;
+  border-radius: 50%;
+  border: 1px solid var(--hairline);
+  box-shadow: inset 0 0 0 1px var(--hairline), 0 0 0 2.6rem color-mix(in srgb, var(--accent, var(--gold)) 5%, transparent);
+  opacity: .4;
+  pointer-events: none;
+}
+
+.pnl__kicker {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  font-size: .68rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: .5rem;
+}
+.pnl__kicker .sw {
+  width: .62rem; height: .62rem;
+  border-radius: 2px;
+  background: var(--accent, var(--gold));
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .3);
+  flex: none;
+}
+.pnl__kicker b { color: var(--ink-muted); font-weight: 600; }
+
+.pnl__title {
+  font-family: var(--font-display);
+  font-size: 1.62rem;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -.012em;
+  color: var(--ink-strong);
+  margin: 0;
+  padding-right: 1.8rem;
+}
+.pnl__alt {
+  margin: .3rem 0 0;
+  font-size: .82rem;
+  color: var(--ink-faint);
+  font-style: italic;
+}
+
+.chips { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .85rem; }
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .32rem;
+  padding: .22rem .55rem;
+  border-radius: 99px;
+  font-size: .73rem;
+  background: var(--surface-2);
+  border: 1px solid var(--hairline);
+  color: var(--ink-muted);
+  white-space: nowrap;
+}
+.chip--action { cursor: pointer; transition: background var(--dur) var(--ease), color var(--dur) var(--ease); }
+.chip--action:hover { background: var(--surface-3); color: var(--ink-strong); }
+.chip .sw { width: .55rem; height: .55rem; border-radius: 2px; flex: none; }
+
+/* ---------------------------------------------------------- Abschnitt */
+
+.sec { padding: 1.15rem 1.4rem; border-bottom: 1px solid var(--hairline); }
+.sec:last-child { border-bottom: 0; }
+.sec__h {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .66rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 .75rem;
+}
+.sec__h::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--hairline);
+}
+
+/* ---------------------------------------------------------- Herrscher */
+
+.ruler {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: .9rem;
+  align-items: center;
+}
+.ruler__seal {
+  width: 3.3rem; height: 3.3rem;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--accent, var(--gold));
+  background: color-mix(in srgb, var(--accent, var(--gold)) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent, var(--gold)) 40%, transparent);
+  box-shadow: inset 0 0 0 3px var(--surface-solid), 0 0 0 1px var(--hairline);
+  overflow: hidden;
+}
+.ruler__seal img { width: 100%; height: 100%; object-fit: cover; }
+.ruler__name {
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  font-weight: 500;
+  color: var(--ink-strong);
+  line-height: 1.2;
+}
+.ruler__role { font-size: .82rem; color: var(--ink-muted); margin-top: .12rem; }
+.ruler__reign {
+  font-size: .73rem;
+  color: var(--ink-faint);
+  margin-top: .2rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ------------------------------------------------------------ Kacheln */
+
+.facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .5rem;
+}
+.fact {
+  padding: .6rem .7rem;
+  border-radius: var(--r-md);
+  background: var(--surface-2);
+  border: 1px solid var(--hairline);
+  min-width: 0;
+}
+.fact--wide { grid-column: 1 / -1; }
+.fact dt {
+  font-size: .63rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: .18rem;
+}
+.fact dd {
+  margin: 0;
+  font-size: .88rem;
+  color: var(--ink);
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+.fact dd .num {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* -------------------------------------------------------------- Text */
+
+.prose { font-size: .91rem; line-height: 1.62; color: var(--ink-muted); }
+.prose p { margin: 0 0 .7rem; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); font-weight: 600; }
+
+.pull {
+  margin: 0 0 .9rem;
+  padding-left: .85rem;
+  border-left: 2px solid var(--accent, var(--gold));
+  font-family: var(--font-display);
+  font-size: 1rem;
+  line-height: 1.45;
+  color: var(--ink);
+  font-style: italic;
+}
+
+/* ---------------------------------------------------------- Ereignisse */
+
+.events { list-style: none; margin: 0; padding: 0; position: relative; }
+.events::before {
+  content: "";
+  position: absolute;
+  left: 3.15rem; top: .45rem; bottom: .45rem;
+  width: 1px;
+  background: var(--hairline);
+}
+.events li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.7rem 1fr;
+  gap: .95rem;
+  padding: .3rem 0;
+  font-size: .86rem;
+  line-height: 1.45;
+}
+.events li::before {
+  content: "";
+  position: absolute;
+  left: 3.15rem; top: .78rem;
+  width: 7px; height: 7px;
+  margin-left: -3px;
+  border-radius: 50%;
+  background: var(--accent, var(--gold));
+  box-shadow: 0 0 0 3px var(--surface-solid);
+}
+.events time {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-size: .8rem;
+  color: var(--ink-faint);
+  padding-top: .04rem;
+}
+.events li.is-now time { color: var(--accent, var(--gold)); font-weight: 600; }
+.events span { color: var(--ink-muted); }
+.events li.is-now span { color: var(--ink); }
+
+/* ------------------------------------------------------------ Wikipedia */
+
+.wiki { display: grid; gap: .75rem; }
+.wiki__body { display: grid; grid-template-columns: auto 1fr; gap: .9rem; align-items: start; }
+.wiki__thumb {
+  width: 5.4rem;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--hairline);
+  overflow: hidden;
+  flex: none;
+  background: var(--surface-2);
+}
+.wiki__thumb img { display: block; width: 100%; height: auto; }
+.wiki__text { font-size: .87rem; line-height: 1.55; color: var(--ink-muted); }
+.wiki__more {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  font-size: .8rem;
+  margin-top: .4rem;
+}
+.wiki__skeleton {
+  display: grid;
+  gap: .45rem;
+}
+.wiki__skeleton i {
+  display: block;
+  height: .62rem;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--surface-2), var(--surface-3), var(--surface-2));
+  background-size: 200% 100%;
+  animation: shimmer 1.3s linear infinite;
+}
+.wiki__skeleton i:nth-child(2) { width: 92%; }
+.wiki__skeleton i:nth-child(3) { width: 74%; }
+@keyframes shimmer { to { background-position: -200% 0; } }
+
+/* --------------------------------------------------------------- Fuß */
+
+.pnl__foot {
+  padding: 1rem 1.4rem 1.6rem;
+  font-size: .72rem;
+  color: var(--ink-faint);
+  line-height: 1.5;
+}
+.pnl__foot a { color: var(--ink-muted); }
+
+.note {
+  display: flex;
+  gap: .5rem;
+  padding: .6rem .7rem;
+  border-radius: var(--r-md);
+  background: var(--surface-2);
+  border: 1px solid var(--hairline);
+  font-size: .78rem;
+  line-height: 1.5;
+  color: var(--ink-faint);
+}
+.note svg { flex: none; margin-top: .1rem; color: var(--ink-faint); }
+
+/* ---------------------------------------------------------- Kompakt */
+
+@media (max-width: 900px) {
+  .app { grid-template-columns: 1fr; grid-template-areas: "stage" "time"; }
+  .panel {
+    position: absolute;
+    z-index: 700;
+    top: 0; right: 0; bottom: 0;
+    width: min(24rem, 100%);
+    animation: slideIn 260ms var(--ease);
+  }
+}
+
+@media (max-width: 560px) {
+  .panel {
+    top: auto;
+    height: 68vh;
+    width: 100%;
+    border-left: 0;
+    border-top: 1px solid var(--hairline);
+    border-radius: var(--r-xl) var(--r-xl) 0 0;
+    animation: slideUp 260ms var(--ease);
+  }
+  @keyframes slideUp { from { transform: translateY(100%); } }
+  .brand { width: calc(100vw - 5rem); }
+  .brand__text span { display: none; }
+}

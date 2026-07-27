@@ -1,0 +1,31 @@
+{
+  "name": "worldmap-deluxe",
+  "version": "1.0.0",
+  "description": "Interaktiver historischer Weltatlas mit Zeitregler, Grenzen von 123.000 v. Chr. bis heute und Steckbriefen zu jedem Gemeinwesen.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "fetch:data": "node scripts/fetch-sources.mjs",
+    "build:data": "node scripts/build-data.mjs",
+    "build:knowledge": "node scripts/build-knowledge.mjs",
+    "check:data": "node scripts/check-knowledge.mjs",
+    "test": "node scripts/smoke.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Canuzu/Worldmap-Deluxe.git"
+  },
+  "dependencies": {
+    "leaflet": "^1.9.4",
+    "topojson-client": "^3.1.0"
+  },
+  "devDependencies": {
+    "mapshaper": "^0.7.48",
+    "playwright": "^1.62.0",
+    "vite": "^8.1.5"
+  },
+  "private": true,
+  "type": "module",
+  "license": "MIT"
+}

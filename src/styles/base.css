@@ -1,0 +1,277 @@
+/* ============================================================
+   Worldmap Deluxe – Grundlagen, Farbwelten, Typografie
+   ============================================================ */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  overscroll-behavior: none;
+}
+
+:root {
+  /* Schriften – bewusst nur Systemschriften, damit der Atlas ohne
+     externe Ressourcen und offline funktioniert. */
+  --font-ui: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+             "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
+                  Georgia, "Times New Roman", serif;
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 18px;
+  --r-xl: 24px;
+
+  --dur: 220ms;
+  --ease: cubic-bezier(.32, .72, .29, 1);
+
+  --panel-w: 25.5rem;
+  --safe-l: env(safe-area-inset-left, 0px);
+  --safe-r: env(safe-area-inset-right, 0px);
+  --safe-b: env(safe-area-inset-bottom, 0px);
+}
+
+/* ---------------------------------------------------------- Nachtatlas */
+
+[data-theme="night"] {
+  color-scheme: dark;
+
+  --ocean-1: #060b12;
+  --ocean-2: #0b1622;
+  --ocean-3: #102437;
+  --land: #27333f;
+  --land-edge: #4a6076;
+
+  --ink: #e9eff5;
+  --ink-strong: #ffffff;
+  --ink-muted: #93a7ba;
+  --ink-faint: #61748a;
+
+  --surface: rgba(12, 20, 30, .82);
+  --surface-solid: #0d1621;
+  --surface-2: rgba(255, 255, 255, .045);
+  --surface-3: rgba(255, 255, 255, .09);
+  --hairline: rgba(158, 190, 220, .16);
+  --hairline-strong: rgba(158, 190, 220, .3);
+
+  --gold: #e6bc79;
+  --gold-soft: #f0d3a4;
+  --azure: #74b3e8;
+  --rose: #e08a9b;
+
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px rgba(0, 0, 0, .45);
+  --shadow-2: 0 2px 6px rgba(0, 0, 0, .45), 0 22px 60px rgba(0, 0, 0, .55);
+
+  --border-line: rgba(228, 240, 252, .55);
+  --border-line-soft: rgba(228, 240, 252, .22);
+  --label-ink: #f2f7fb;
+  --label-halo: rgba(4, 9, 16, .92);
+  --fill-alpha: .58;
+  --grat: rgba(140, 180, 220, .1);
+  --river: rgba(96, 160, 205, .5);
+}
+
+/* ---------------------------------------------------------- Pergament */
+
+[data-theme="parchment"] {
+  color-scheme: light;
+
+  --ocean-1: #cadde5;
+  --ocean-2: #b6cfda;
+  --ocean-3: #a3c2d1;
+  --land: #f4ead4;
+  --land-edge: #9c8560;
+
+  --ink: #2f2618;
+  --ink-strong: #17120a;
+  --ink-muted: #6b5c44;
+  --ink-faint: #92836b;
+
+  --surface: rgba(253, 249, 240, .88);
+  --surface-solid: #fbf6ea;
+  --surface-2: rgba(60, 45, 20, .05);
+  --surface-3: rgba(60, 45, 20, .1);
+  --hairline: rgba(96, 76, 42, .2);
+  --hairline-strong: rgba(96, 76, 42, .36);
+
+  --gold: #a3702a;
+  --gold-soft: #8a5d1f;
+  --azure: #2f6d99;
+  --rose: #a8465c;
+
+  --shadow-1: 0 1px 2px rgba(70, 55, 25, .12), 0 8px 22px rgba(70, 55, 25, .14);
+  --shadow-2: 0 2px 8px rgba(70, 55, 25, .16), 0 22px 52px rgba(70, 55, 25, .2);
+
+  --border-line: rgba(70, 52, 26, .62);
+  --border-line-soft: rgba(70, 52, 26, .26);
+  --label-ink: #241c0e;
+  --label-halo: rgba(252, 248, 238, .94);
+  --fill-alpha: .52;
+  --grat: rgba(90, 70, 40, .12);
+  --river: rgba(60, 120, 160, .55);
+}
+
+body {
+  font-family: var(--font-ui);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--ocean-1);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -.01em;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+input { font: inherit; color: inherit; }
+
+a {
+  color: var(--azure);
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+
+::selection { background: var(--gold); color: #10161f; }
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Karte darf keinen Fokusrahmen bekommen, sonst blitzt er bei jedem Klick auf. */
+.map:focus,
+.map :focus { outline: none; }
+
+/* --------------------------------------------------------- Bausteine */
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-1);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+}
+
+.u-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--hairline-strong) transparent;
+}
+.u-scroll::-webkit-scrollbar { width: 9px; height: 9px; }
+.u-scroll::-webkit-scrollbar-thumb {
+  background: var(--hairline-strong);
+  border-radius: 99px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+.u-scroll::-webkit-scrollbar-track { background: transparent; }
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* -------------------------------------------------------- Ladeschirm */
+
+.boot {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(120% 90% at 50% 0%, var(--ocean-3), transparent 60%),
+    var(--ocean-1);
+  transition: opacity 500ms var(--ease), visibility 500ms;
+}
+.boot[hidden] { display: grid; opacity: 0; visibility: hidden; pointer-events: none; }
+
+.boot__inner { text-align: center; width: min(88vw, 24rem); }
+
+.boot__globe {
+  width: 74px; height: 74px;
+  margin: 0 auto 1.6rem;
+  position: relative;
+  border-radius: 50%;
+  border: 1.5px solid var(--hairline-strong);
+  animation: bootspin 9s linear infinite;
+}
+.boot__globe span {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid var(--hairline);
+}
+.boot__globe span:nth-child(1) { transform: scaleX(.32); }
+.boot__globe span:nth-child(2) { transform: scaleX(.68); }
+.boot__globe span:nth-child(3) {
+  border: 0;
+  border-top: 1.5px solid var(--hairline);
+  border-bottom: 1.5px solid var(--hairline);
+  inset: 24% 0;
+  border-radius: 0;
+}
+@keyframes bootspin { to { transform: rotate(360deg); } }
+
+.boot__title {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 500;
+  letter-spacing: .01em;
+  color: var(--ink-strong);
+}
+.boot__sub {
+  margin: .25rem 0 1.9rem;
+  font-size: .82rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.boot__bar {
+  height: 3px;
+  border-radius: 99px;
+  background: var(--surface-3);
+  overflow: hidden;
+}
+.boot__bar i {
+  display: block;
+  height: 100%;
+  width: 4%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-soft));
+  transition: width 320ms var(--ease);
+}
+.boot__status {
+  margin: .85rem 0 0;
+  font-size: .8rem;
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+  min-height: 1.2em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}

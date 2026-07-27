@@ -1,0 +1,45 @@
+/* ============================================================
+   Kartenebenen – Feinschliff über den Leaflet-Grundstil
+   ============================================================ */
+
+/* Leaflet setzt eigene Hintergründe; die Bühne bringt ihren eigenen mit. */
+.leaflet-container { background: transparent; }
+.leaflet-container a { color: var(--azure); }
+
+/* Panes ohne Zeigerereignisse werden in JS gesetzt; die aktive
+   Gemeinwesen-Ebene bekommt sie zurück. Hier nur der Cursor. */
+.leaflet-pane > canvas { image-rendering: auto; }
+
+/* Auswahl-Hervorhebung: eigener SVG-Layer, damit ein weicher Schein
+   möglich ist – auf Canvas ginge das nicht ohne Klimmzüge. */
+.leaflet-highlight-pane {
+  filter: drop-shadow(0 0 7px rgba(0, 0, 0, .55));
+}
+[data-theme="parchment"] .leaflet-highlight-pane {
+  filter: drop-shadow(0 1px 4px rgba(70, 52, 26, .4));
+}
+.sel-shape {
+  animation: selPop 320ms cubic-bezier(.32, .72, .29, 1);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+@keyframes selPop {
+  from { opacity: .25; }
+}
+
+/* Beschriftungscanvas nie interaktiv */
+.label-canvas { pointer-events: none; }
+
+/* Weiche Kanten der Landmaske: eine zweite, unscharfe Kontur unter der
+   scharfen erzeugt den Eindruck eines gedruckten Kartenblatts. */
+.leaflet-land-pane { filter: drop-shadow(0 1px 0 rgba(0, 0, 0, .25)); }
+[data-theme="parchment"] .leaflet-land-pane {
+  filter: drop-shadow(0 1px 1px rgba(120, 95, 55, .3));
+}
+
+/* Beim Wechsel des Zeitschnitts kurz weichzeichnen – das kaschiert das
+   harte Umspringen der Geometrien. */
+.leaflet-polityA-pane,
+.leaflet-polityB-pane {
+  will-change: opacity;
+}

@@ -1,0 +1,1182 @@
+{
+  "_hinweis": "Steckbriefe zu Ost-, Süd- und Südostasien sowie zur eurasischen Steppe.",
+
+  "Zhou states": {
+    "kind": "Staatenwelt",
+    "wiki": "Zhou-Dynastie",
+    "founded": -1046,
+    "dissolved": -256,
+    "periods": [
+      {
+        "from": -1046, "to": -256,
+        "ruler": "Der Zhou-König als nomineller Oberherr",
+        "rulerTitle": "Wang – Sohn des Himmels",
+        "dynasty": "Zhou",
+        "capital": "Haojing, später Luoyang",
+        "government": "Lehnsordnung; ab 771 v. Chr. faktisch unabhängige Fürstentümer",
+        "religion": "Ahnenkult, Himmelsverehrung",
+        "languages": ["Altchinesisch"],
+        "population": "ca. 20 bis 30 Mio.",
+        "economy": "Hirse- und Reisanbau, Bronzeguss, ab 500 v. Chr. Eisen",
+        "summary": [
+          "Die Zhou begründen das „Mandat des Himmels“: Herrschaft ist an Tugend gebunden und kann entzogen werden. Das bleibt zweitausend Jahre lang die Legitimationsformel chinesischer Dynastien.",
+          "Der Zerfall in konkurrierende Staaten bringt paradoxerweise die geistige Blüte der „Hundert Schulen“ hervor – Konfuzius, Laozi, Mozi und die Legalisten wirken alle in dieser Zeit."
+        ]
+      }
+    ]
+  },
+
+  "Qin": {
+    "kind": "Kaiserreich",
+    "wiki": "Qin-Dynastie",
+    "founded": -221,
+    "dissolved": -206,
+    "periods": [
+      {
+        "from": -246, "to": -206,
+        "ruler": "Qin Shihuangdi",
+        "rulerTitle": "Erster Erhabener Kaiser von Qin",
+        "dynasty": "Qin",
+        "reign": "221–210 v. Chr. als Kaiser",
+        "capital": "Xianyang",
+        "government": "Legalistischer Zentralstaat mit Präfekturen statt Lehen",
+        "religion": "Staatsopfer, Unsterblichkeitssuche",
+        "languages": ["Altchinesisch"],
+        "population": "ca. 20 Mio.",
+        "economy": "Zwangsarbeit an Großbauten, Kanalbau, Staatsmonopole",
+        "summary": [
+          "In elf Jahren vereint Qin die Streitenden Reiche und schafft den chinesischen Einheitsstaat: einheitliche Schrift, Maße, Gewichte und Wagenspurweiten.",
+          "Der Preis ist hart – Bücherverbrennungen, Massenfronarbeit an Mauer und Grabanlage. Die Terrakotta-Armee bei Xi'an gehört zu diesem Grabkomplex. Vier Jahre nach dem Tod des Kaisers stürzt die Dynastie."
+        ],
+        "quote": "Der Name China geht vermutlich auf diese fünfzehn Jahre zurück."
+      }
+    ]
+  },
+
+  "Han Empire": {
+    "kind": "Kaiserreich",
+    "wiki": "Han-Dynastie",
+    "founded": -206,
+    "dissolved": 220,
+    "events": [
+      { "year": -138, "text": "Zhang Qian reist nach Zentralasien – die Seidenstraße entsteht." },
+      { "year": 105, "text": "Cai Lun beschreibt die Papierherstellung." },
+      { "year": 184, "text": "Aufstand der Gelben Turbane leitet den Zerfall ein." }
+    ],
+    "periods": [
+      {
+        "from": -206, "to": 220,
+        "ruler": "Han Wudi",
+        "rulerTitle": "Kaiser von Han",
+        "dynasty": "Han",
+        "reign": "141–87 v. Chr.",
+        "capital": "Chang'an, später Luoyang",
+        "government": "Beamtenstaat auf konfuzianischer Grundlage",
+        "religion": "Konfuzianische Staatslehre, Ahnenkult, ab dem 1. Jh. Buddhismus",
+        "languages": ["Altchinesisch"],
+        "population": "ca. 58 Mio. (Zensus von 2 n. Chr.)",
+        "economy": "Staatsmonopole auf Salz und Eisen, Seidenexport, Münzwirtschaft",
+        "summary": [
+          "Die Han regieren zeitgleich mit Rom eine ähnlich große Bevölkerung – und führen einen Zensus durch, der bis heute als bemerkenswert genau gilt.",
+          "Die Beamtenprüfung, die Papierherstellung und die Seidenstraße gehen auf diese Epoche zurück. Chinas Mehrheitsbevölkerung nennt sich bis heute „Han“."
+        ]
+      }
+    ]
+  },
+
+  "Jin Empire": {
+    "kind": "Kaiserreich",
+    "wiki": "Jin-Dynastie (265–420)",
+    "periods": [
+      {
+        "from": 265, "to": 420,
+        "ruler": "Sima Yan (Kaiser Wu)",
+        "rulerTitle": "Kaiser von Jin",
+        "dynasty": "Jin",
+        "reign": "266–290",
+        "capital": "Luoyang, später Jiankang (Nanjing)",
+        "government": "Kaisertum mit mächtigen Adelsclans",
+        "religion": "Konfuzianismus, wachsender Buddhismus und Daoismus",
+        "languages": ["Mittelchinesisch"],
+        "population": "ca. 35 Mio.",
+        "economy": "Reisanbau im Süden, Binnenhandel",
+        "summary": [
+          "Die Jin einen China 280 noch einmal kurz, zerfallen aber im Streit der Prinzen. Ab 311 dringen Steppenvölker in den Norden ein, der Hof flieht nach Süden.",
+          "Es folgen fast drei Jahrhunderte Teilung – die Epoche der Sechzehn Reiche und der Nord- und Süddynastien."
+        ]
+      }
+    ]
+  },
+
+  "Sui Empire": {
+    "kind": "Kaiserreich",
+    "wiki": "Sui-Dynastie",
+    "founded": 581,
+    "dissolved": 618,
+    "periods": [
+      {
+        "from": 581, "to": 618,
+        "ruler": "Sui Yangdi",
+        "rulerTitle": "Kaiser von Sui",
+        "dynasty": "Sui",
+        "reign": "604–618",
+        "capital": "Daxing (Chang'an)",
+        "government": "Zentralisiertes Kaisertum mit Sechs Ministerien",
+        "religion": "Buddhismus als Staatsförderung, Konfuzianismus in der Verwaltung",
+        "languages": ["Mittelchinesisch"],
+        "population": "ca. 46 Mio.",
+        "economy": "Kaiserkanal, staatliche Getreidespeicher",
+        "summary": [
+          "Nach 300 Jahren Teilung einen die Sui China erneut. Der Kaiserkanal verbindet Jangtse und Gelben Fluss – bis heute die längste künstliche Wasserstraße der Welt.",
+          "Millionen Zwangsarbeiter und drei erfolglose Feldzüge gegen Korea führen zum Aufstand. Nach nur 37 Jahren endet die Dynastie – ihre Bauten aber tragen die folgende Tang-Blüte."
+        ]
+      }
+    ]
+  },
+
+  "Tang Empire": {
+    "kind": "Kaiserreich",
+    "wiki": "Tang-Dynastie",
+    "founded": 618,
+    "dissolved": 907,
+    "periods": [
+      {
+        "from": 618, "to": 907,
+        "ruler": "Tang Xuanzong",
+        "rulerTitle": "Kaiser von Tang",
+        "dynasty": "Tang",
+        "reign": "712–756",
+        "capital": "Chang'an (Xi'an)",
+        "government": "Beamtenstaat mit Prüfungswesen",
+        "religion": "Buddhismus, Daoismus, Konfuzianismus; auch Nestorianer und Manichäer",
+        "languages": ["Mittelchinesisch", "Sogdisch", "Türkisch"],
+        "population": "ca. 60 Mio.",
+        "economy": "Seidenstraßenhandel, Porzellan, Buchdruck mit Holztafeln",
+        "summary": [
+          "Chang'an ist im 8. Jahrhundert mit rund einer Million Einwohnern die größte Stadt der Welt – und eine der weltoffensten: Perser, Araber, Sogder, Japaner leben dort.",
+          "Die Tang-Zeit gilt als goldenes Zeitalter der chinesischen Dichtung. Der Aufstand des An Lushan ab 755 kostet Millionen Menschenleben und schwächt die Dynastie dauerhaft.",
+          "Mit Wu Zetian besteigt in dieser Epoche die einzige Frau in Chinas Geschichte als Kaiserin aus eigenem Recht den Thron."
+        ]
+      }
+    ]
+  },
+
+  "Song Empire": {
+    "kind": "Kaiserreich",
+    "wiki": "Song-Dynastie",
+    "founded": 960,
+    "dissolved": 1279,
+    "periods": [
+      {
+        "from": 960, "to": 1279,
+        "ruler": "Song Shenzong",
+        "rulerTitle": "Kaiser von Song",
+        "dynasty": "Song",
+        "reign": "1067–1085",
+        "capital": "Kaifeng, ab 1127 Hangzhou",
+        "government": "Zivil dominierter Beamtenstaat",
+        "religion": "Neokonfuzianismus, Buddhismus, Daoismus",
+        "languages": ["Mittelchinesisch"],
+        "population": "über 100 Mio. – erstmals in der Geschichte eines Staates",
+        "economy": "Papiergeld, Massenproduktion von Eisen und Porzellan, Seehandel",
+        "summary": [
+          "Die Song-Zeit bringt eine wirtschaftliche Revolution: das erste staatliche Papiergeld der Welt, Kompass, Buchdruck mit beweglichen Lettern, Schwarzpulver.",
+          "Militärisch bleibt das Reich schwach. 1127 geht der Norden an die Jurchen verloren, 1279 fällt der Süden an die Mongolen."
+        ],
+        "quote": "Die Eisenproduktion um 1078 erreichte ein Niveau, das Europa erst 700 Jahre später schaffte."
+      }
+    ]
+  },
+
+  "Ming Empire": {
+    "kind": "Kaiserreich",
+    "wiki": "Ming-Dynastie",
+    "founded": 1368,
+    "dissolved": 1644,
+    "events": [
+      { "year": 1405, "text": "Erste der sieben Expeditionen des Admirals Zheng He." },
+      { "year": 1421, "text": "Verlegung der Hauptstadt nach Peking." },
+      { "year": 1644, "text": "Aufständische nehmen Peking; die Mandschu übernehmen die Macht." }
+    ],
+    "periods": [
+      {
+        "from": 1368, "to": 1644,
+        "ruler": "Yongle",
+        "rulerTitle": "Kaiser von Ming",
+        "dynasty": "Ming",
+        "reign": "1402–1424",
+        "capital": "Nanjing, ab 1421 Peking",
+        "government": "Absolutes Kaisertum mit Eunuchenverwaltung und Beamtenprüfung",
+        "religion": "Konfuzianismus, Buddhismus, Daoismus",
+        "languages": ["Frühneuchinesisch"],
+        "population": "ca. 160 Mio.",
+        "economy": "Seide, Porzellan, Tee; Silberzustrom aus Amerika über Manila",
+        "summary": [
+          "Nach der Mongolenherrschaft stellen die Ming die Han-Dynastie wieder her. Zheng Hes Flotten erreichen Ostafrika – mit Schiffen, die alles Europäische der Zeit übertreffen.",
+          "1433 werden die Fahrten eingestellt und der Blick nach innen gerichtet. Die Große Mauer erhält ihre heutige Gestalt, die Verbotene Stadt entsteht.",
+          "Amerikanisches Silber fließt über Manila nach China und macht das Reich zum Endpunkt des ersten globalen Handelskreislaufs."
+        ]
+      }
+    ]
+  },
+
+  "Qing Empire": {
+    "kind": "Kaiserreich",
+    "wiki": "Qing-Dynastie",
+    "founded": 1636,
+    "dissolved": 1912,
+    "events": [
+      { "year": 1683, "text": "Eingliederung Taiwans." },
+      { "year": 1842, "text": "Vertrag von Nanking nach dem Ersten Opiumkrieg." },
+      { "year": 1851, "text": "Taiping-Aufstand mit zig Millionen Toten beginnt." },
+      { "year": 1912, "text": "Abdankung des letzten Kaisers; Ausrufung der Republik." }
+    ],
+    "periods": [
+      {
+        "from": 1636, "to": 1795,
+        "ruler": "Qianlong",
+        "rulerTitle": "Kaiser von Qing",
+        "dynasty": "Qing (Mandschu)",
+        "reign": "1735–1796",
+        "capital": "Peking",
+        "government": "Kaisertum einer mandschurischen Minderheit über eine han-chinesische Mehrheit",
+        "religion": "Konfuzianismus, tibetischer Buddhismus, Islam in Xinjiang",
+        "languages": ["Chinesisch", "Mandschurisch", "Mongolisch", "Tibetisch", "Uigurisch"],
+        "population": "ca. 300 Mio. (1800)",
+        "economy": "Landwirtschaft, Tee- und Seidenexport, Kanton-System für den Außenhandel",
+        "summary": [
+          "Unter Qianlong erreicht China seine größte Ausdehnung: Xinjiang, die Mongolei und Tibet werden eingegliedert. Die Bevölkerung verdreifacht sich im 18. Jahrhundert.",
+          "Der Handel mit Europa läuft ausschließlich über Kanton. Das Reich sieht sich als Zentrum der Welt und hat an europäischen Waren kaum Interesse."
+        ]
+      },
+      {
+        "from": 1796, "to": 1912,
+        "ruler": "Kaiserinwitwe Cixi",
+        "rulerTitle": "Regentin für minderjährige Kaiser",
+        "dynasty": "Qing",
+        "reign": "1861–1908",
+        "capital": "Peking",
+        "government": "Kaisertum unter wachsendem Druck der Kolonialmächte",
+        "religion": "Konfuzianismus, Buddhismus, Islam, Christentum",
+        "languages": ["Chinesisch", "Mandschurisch"],
+        "population": "ca. 430 Mio.",
+        "economy": "Opiumhandel, ungleiche Verträge, Vertragshäfen, erste Industrie",
+        "summary": [
+          "Die Opiumkriege erzwingen die Öffnung des Landes; Hongkong wird britisch, Vertragshäfen entstehen. Der Taiping-Aufstand fordert 20 bis 30 Millionen Menschenleben.",
+          "Reformversuche kommen zu spät. 1912 dankt der sechsjährige Puyi ab – nach über zweitausend Jahren endet das chinesische Kaisertum."
+        ]
+      }
+    ]
+  },
+
+  "Chinese Warlords": {
+    "kind": "Zerfallende Republik",
+    "wiki": "Zeit der Warlords",
+    "founded": 1916,
+    "dissolved": 1928,
+    "periods": [
+      {
+        "from": 1912, "to": 1937,
+        "ruler": "Konkurrierende Militärgouverneure",
+        "rulerTitle": "Warlords (Dujun)",
+        "capital": "Peking, ab 1927 Nanjing",
+        "government": "Nominelle Republik, faktisch regionale Militärherrschaft",
+        "religion": "Konfuzianismus, Buddhismus, Volksreligion",
+        "languages": ["Chinesisch"],
+        "population": "ca. 470 Mio.",
+        "economy": "Agrarwirtschaft, Küstenindustrie, Fremdkonzessionen",
+        "summary": [
+          "Nach dem Tod Yuan Shikais 1916 zerfällt China in Machtbereiche konkurrierender Generäle. Die Zentralregierung kontrolliert kaum mehr als Peking.",
+          "Der Nordfeldzug der Kuomintang eint das Land 1928 formal. Der Bürgerkrieg mit den Kommunisten und die japanische Invasion ab 1931 halten die Zersplitterung faktisch aufrecht."
+        ]
+      }
+    ]
+  },
+
+  "China": {
+    "kind": "Volksrepublik",
+    "wiki": "Volksrepublik China",
+    "founded": 1949,
+    "periods": [
+      {
+        "from": 1945, "to": 1976,
+        "ruler": "Mao Zedong",
+        "rulerTitle": "Vorsitzender der Kommunistischen Partei Chinas",
+        "reign": "1949–1976",
+        "capital": "Peking",
+        "government": "Sozialistischer Einparteienstaat",
+        "religion": "Staatlich propagierter Atheismus",
+        "languages": ["Hochchinesisch und zahlreiche Regionalsprachen"],
+        "population": "ca. 550 bis 930 Mio.",
+        "economy": "Planwirtschaft, Kollektivierung, Schwerindustrie",
+        "summary": [
+          "1949 endet der Bürgerkrieg mit dem Sieg der Kommunisten; die Republik zieht sich nach Taiwan zurück.",
+          "Der „Große Sprung nach vorn“ löst 1959–1961 eine Hungersnot mit zig Millionen Toten aus. Die Kulturrevolution ab 1966 lähmt Bildung und Verwaltung ein Jahrzehnt lang."
+        ]
+      },
+      {
+        "from": 1977, "to": null,
+        "ruler": "Deng Xiaoping, später Jiang Zemin, Hu Jintao, Xi Jinping",
+        "rulerTitle": "Führung der Kommunistischen Partei",
+        "capital": "Peking",
+        "government": "Sozialistischer Einparteienstaat mit Marktwirtschaft",
+        "religion": "Offiziell atheistisch; Buddhismus, Daoismus, Islam, Christentum geduldet",
+        "languages": ["Hochchinesisch"],
+        "population": "ca. 1,41 Mrd.",
+        "economy": "Fertigungsindustrie, Export, Infrastruktur, Hochtechnologie",
+        "summary": [
+          "Dengs Reformen ab 1978 öffnen die Wirtschaft. In vier Jahrzehnten steigen mehrere Hundert Millionen Menschen aus der absoluten Armut auf – der größte Wohlstandssprung der Geschichte.",
+          "Politisch bleibt das System eine Einparteienherrschaft; die Proteste von 1989 werden gewaltsam beendet."
+        ]
+      }
+    ]
+  },
+
+  "Japan": {
+    "kind": "Kaiserreich",
+    "wiki": "Japan",
+    "periods": [
+      {
+        "from": 700, "to": 1191,
+        "ruler": "Fujiwara no Michinaga",
+        "rulerTitle": "Regent für den Tennō",
+        "dynasty": "Fujiwara",
+        "reign": "995–1027",
+        "capital": "Heian-kyō (Kyōto)",
+        "government": "Kaisertum unter Regentschaft des Fujiwara-Klans",
+        "religion": "Shintō und Buddhismus nebeneinander",
+        "languages": ["Altjapanisch", "Klassisches Chinesisch"],
+        "population": "ca. 6 Mio.",
+        "economy": "Reisanbau, Adelsgüter (shōen)",
+        "summary": [
+          "Die Heian-Zeit ist die Blüte der höfischen Kultur. Am Hof entsteht um 1010 das „Genji Monogatari“ der Hofdame Murasaki Shikibu – oft als erster Roman der Weltliteratur bezeichnet.",
+          "Der Tennō regiert, aber herrscht nicht: Die tatsächliche Macht liegt beim Fujiwara-Klan, später bei den Shogunen."
+        ]
+      },
+      {
+        "from": 1192, "to": 1867,
+        "ruler": "Tokugawa Ieyasu und Nachfolger",
+        "rulerTitle": "Shōgun; der Tennō bleibt religiöses Oberhaupt",
+        "dynasty": "Tokugawa",
+        "reign": "1603–1868 (Dynastie)",
+        "capital": "Edo (Tokio); Kaiserhof in Kyōto",
+        "government": "Militärherrschaft über rund 260 Fürstentümer (han)",
+        "religion": "Buddhismus und Shintō; Christentum verboten",
+        "languages": ["Japanisch"],
+        "population": "ca. 30 Mio.",
+        "economy": "Reiswirtschaft, Binnenhandel, städtische Kultur in Edo und Ōsaka",
+        "summary": [
+          "Zweieinhalb Jahrhunderte Frieden unter der Abschließungspolitik: Außenkontakte nur über Nagasaki mit Niederländern und Chinesen.",
+          "Edo hat um 1720 rund eine Million Einwohner und ist damit vermutlich die größte Stadt der Welt. Die Ankunft amerikanischer Kriegsschiffe 1853 erzwingt die Öffnung."
+        ]
+      },
+      {
+        "from": 1868, "to": null,
+        "ruler": "Meiji-Tennō, später konstitutionelle Regierungen",
+        "rulerTitle": "Tennō; Regierungschef ist der Premierminister",
+        "capital": "Tokio",
+        "government": "Konstitutionelle Monarchie",
+        "religion": "Shintō und Buddhismus",
+        "languages": ["Japanisch"],
+        "population": "ca. 124 Mio.",
+        "economy": "Hochtechnologie, Fahrzeugbau, Elektronik",
+        "summary": [
+          "Die Meiji-Restauration von 1868 verwandelt Japan binnen einer Generation in einen Industrie- und Militärstaat – der einzige nichtwestliche Staat, der die Kolonisierung abwendet.",
+          "Nach der Niederlage 1945 wird Japan Demokratie und steigt bis 1968 zur zweitgrößten Volkswirtschaft der Welt auf."
+        ]
+      }
+    ]
+  },
+
+  "Empire of Japan": {
+    "kind": "Kaiserreich mit Kolonialbesitz",
+    "wiki": "Japanisches Kaiserreich",
+    "founded": 1868,
+    "dissolved": 1947,
+    "periods": [
+      {
+        "from": 1868, "to": 1947,
+        "ruler": "Hirohito (Shōwa-Tennō)",
+        "rulerTitle": "Tennō",
+        "reign": "1926–1989",
+        "capital": "Tokio",
+        "government": "Konstitutionelle Monarchie mit wachsendem Militäreinfluss",
+        "religion": "Staats-Shintō",
+        "languages": ["Japanisch", "Koreanisch", "Chinesisch"],
+        "population": "ca. 105 Mio. mit Kolonien",
+        "economy": "Schwerindustrie, Rüstung, Rohstoffe aus den besetzten Gebieten",
+        "summary": [
+          "Siege über China 1895 und Russland 1905 machen Japan zur ersten asiatischen Großmacht der Moderne. Taiwan und Korea werden Kolonien.",
+          "Ab 1931 folgt die Expansion in China, ab 1941 der Pazifikkrieg. Die Kapitulation 1945 nach den Atombombenabwürfen auf Hiroshima und Nagasaki beendet das Kaiserreich alter Prägung."
+        ]
+      }
+    ]
+  },
+
+  "Korea": {
+    "kind": "Königreich",
+    "wiki": "Geschichte Koreas",
+    "periods": [
+      {
+        "from": 918, "to": 1897,
+        "ruler": "Sejong der Große",
+        "rulerTitle": "König von Joseon",
+        "dynasty": "Joseon",
+        "reign": "1418–1450",
+        "capital": "Hanseong (Seoul)",
+        "government": "Konfuzianische Beamtenmonarchie",
+        "religion": "Neokonfuzianismus als Staatslehre, Buddhismus zurückgedrängt",
+        "languages": ["Koreanisch", "Klassisches Chinesisch"],
+        "population": "ca. 10 Mio.",
+        "economy": "Reisanbau, Tributhandel mit China",
+        "summary": [
+          "Sejong lässt 1443 das Hangeul-Alphabet entwickeln – eine der wenigen planmäßig entworfenen Schriften der Welt, gedacht als Bildung für alle statt nur für Gelehrte.",
+          "Joseon besteht über 500 Jahre. Nach japanischen und mandschurischen Invasionen schottet sich das Land ab und heißt in westlichen Berichten „Einsiedlerkönigreich“."
+        ]
+      }
+    ]
+  },
+
+  "Tibetan Empire": {
+    "kind": "Großreich",
+    "wiki": "Tibetisches Reich",
+    "founded": 618,
+    "dissolved": 842,
+    "periods": [
+      {
+        "from": 618, "to": 842,
+        "ruler": "Trisong Detsen",
+        "rulerTitle": "Tsenpo – König von Tibet",
+        "reign": "755–797",
+        "capital": "Lhasa",
+        "government": "Königtum über Adelsclans",
+        "religion": "Bön, ab dem 8. Jahrhundert Buddhismus als Staatsreligion",
+        "languages": ["Alttibetisch"],
+        "population": "wenige Millionen",
+        "economy": "Viehzucht, Kontrolle der Handelswege nach Zentralasien",
+        "summary": [
+          "Auf dem Höhepunkt reicht das Reich vom Pamir bis nach Yunnan; 763 nehmen tibetische Truppen sogar kurz die Tang-Hauptstadt Chang'an ein.",
+          "Trisong Detsen holt indische Meister ins Land und macht den Buddhismus zur Staatsreligion – die Wurzel des tibetischen Buddhismus."
+        ]
+      }
+    ]
+  },
+
+  "Tibet": {
+    "kind": "Geistliches Herrschaftsgebiet",
+    "wiki": "Tibet",
+    "periods": [
+      {
+        "from": 1000, "to": 1642,
+        "ruler": "Wechselnde Klosterherrschaften und Adelsgeschlechter",
+        "rulerTitle": "Äbte und Fürsten",
+        "capital": "Sakya, Shigatse, Lhasa",
+        "government": "Verbindung von Kloster- und Adelsherrschaft",
+        "religion": "Tibetischer Buddhismus",
+        "languages": ["Tibetisch"],
+        "population": "ca. 2 Mio.",
+        "economy": "Nomadische Viehzucht, Gerstenanbau, Salz- und Teehandel",
+        "summary": "Nach dem Zerfall des Königreichs bestimmen die großen Klosterschulen die Politik. Unter den Mongolen entsteht das Verhältnis von weltlichem Schutzherrn und geistlichem Lehrer."
+      },
+      {
+        "from": 1643, "to": 1950,
+        "ruler": "Der jeweilige Dalai Lama",
+        "rulerTitle": "Dalai Lama – geistliches und weltliches Oberhaupt",
+        "capital": "Lhasa, Potala-Palast",
+        "government": "Theokratie mit Klosterverwaltung und Adel",
+        "religion": "Tibetischer Buddhismus (Gelug-Schule)",
+        "languages": ["Tibetisch"],
+        "population": "ca. 1 bis 3 Mio.",
+        "economy": "Viehzucht, Klosterwirtschaft, Handel über Himalaya-Pässe",
+        "summary": [
+          "Der 5. Dalai Lama vereint 1642 mit mongolischer Hilfe die geistliche und weltliche Macht und beginnt den Bau des Potala.",
+          "Zwischen Qing-Oberhoheit, britischen Interessen und faktischer Selbständigkeit bleibt Tibets Status umstritten. 1950/51 wird es in die Volksrepublik China eingegliedert."
+        ]
+      }
+    ]
+  },
+
+  "Xiongnu": {
+    "kind": "Steppenreich",
+    "wiki": "Xiongnu",
+    "founded": -209,
+    "dissolved": 155,
+    "periods": [
+      {
+        "from": -209, "to": 155,
+        "ruler": "Modu Chanyu",
+        "rulerTitle": "Chanyu – Oberherr der Xiongnu",
+        "reign": "209–174 v. Chr.",
+        "capital": "Wanderhof in der Mongolei",
+        "government": "Stammesbund unter einem gewählten Oberherrn",
+        "religion": "Himmelsverehrung (Tengri)",
+        "languages": ["nicht sicher bestimmt, vermutlich altaisch"],
+        "population": "wenige Millionen",
+        "economy": "Viehzucht, Tribute aus China, Kontrolle der Karawanenwege",
+        "summary": [
+          "Der erste große Steppenbund der Geschichte zwingt die Han-Dynastie über Jahrzehnte zu Tributzahlungen und Heiratsbündnissen.",
+          "Die Auseinandersetzung mit den Xiongnu ist der Anlass für Chinas Vorstoß nach Zentralasien – und damit für die Öffnung der Seidenstraße."
+        ]
+      }
+    ]
+  },
+
+  "Göktürks": {
+    "kind": "Khaganat",
+    "wiki": "Kök-Türken",
+    "founded": 552,
+    "dissolved": 744,
+    "periods": [
+      {
+        "from": 552, "to": 744,
+        "ruler": "Bumin Khagan und Nachfolger",
+        "rulerTitle": "Khagan",
+        "capital": "Ötüken im Altai",
+        "government": "Doppelkhaganat aus Ost- und Westflügel",
+        "religion": "Tengrismus",
+        "languages": ["Alttürkisch"],
+        "population": "wenige Millionen",
+        "economy": "Viehzucht, Seidenhandel, Tribute",
+        "summary": [
+          "Das erste Reich, das sich selbst „türkisch“ nennt, reicht von der Mandschurei bis zum Schwarzen Meer und verbindet China mit Byzanz.",
+          "Die Orchon-Inschriften des 8. Jahrhunderts sind die ältesten bekannten Texte in einer Türksprache."
+        ]
+      }
+    ]
+  },
+
+  "Khazars": {
+    "kind": "Khaganat",
+    "wiki": "Chasaren",
+    "founded": 650,
+    "dissolved": 969,
+    "periods": [
+      {
+        "from": 650, "to": 969,
+        "ruler": "Khagan und Bek in Doppelspitze",
+        "rulerTitle": "Khagan",
+        "capital": "Itil an der Wolgamündung",
+        "government": "Khaganat mit sakralem Oberherrn und regierendem Stellvertreter",
+        "religion": "Ein Teil der Führungsschicht nimmt im 9. Jahrhundert das Judentum an",
+        "languages": ["Chasarisch", "Hebräisch", "Arabisch"],
+        "population": "wenige Millionen",
+        "economy": "Zölle auf den Handel zwischen Nordeuropa und dem Kalifat",
+        "summary": [
+          "Die Chasaren halten zwei Jahrhunderte lang die arabische Expansion nach Norden auf – mit erheblichen Folgen für Osteuropa.",
+          "Ihre Oberschicht wählt das Judentum, wohl auch, um zwischen christlichem Byzanz und islamischem Kalifat unabhängig zu bleiben. 969 zerstört die Kiewer Rus ihre Hauptstadt."
+        ]
+      }
+    ]
+  },
+
+  "Mongol Empire": {
+    "kind": "Weltreich",
+    "wiki": "Mongolisches Reich",
+    "founded": 1206,
+    "dissolved": 1368,
+    "events": [
+      { "year": 1206, "text": "Temüdschin wird zum Dschingis Khan ausgerufen." },
+      { "year": 1258, "text": "Eroberung Bagdads; Ende des Abbasiden-Kalifats." },
+      { "year": 1260, "text": "Niederlage bei Ain Dschalut gegen die Mamluken." },
+      { "year": 1271, "text": "Kublai Khan gründet die Yuan-Dynastie in China." }
+    ],
+    "periods": [
+      {
+        "from": 1206, "to": 1259,
+        "ruler": "Dschingis Khan",
+        "rulerTitle": "Großkhan",
+        "dynasty": "Borjigin",
+        "reign": "1206–1227",
+        "capital": "Karakorum",
+        "government": "Militärisch gegliederter Stammesbund; Zehnerschaftssystem",
+        "religion": "Tengrismus; auffallende Duldung aller Bekenntnisse",
+        "languages": ["Mongolisch", "Uigurisch", "Persisch", "Chinesisch"],
+        "population": "über 100 Mio. Untertanen",
+        "economy": "Tribute, Beute, geschützte Karawanenwege",
+        "summary": [
+          "Aus zerstrittenen Steppenclans formt Dschingis Khan in zwanzig Jahren die schlagkräftigste Armee ihrer Zeit. Beförderung nach Leistung statt Herkunft ist dabei ein Grundprinzip.",
+          "Das Reich wird das größte zusammenhängende Landreich der Geschichte – etwa 24 Millionen Quadratkilometer.",
+          "Die Eroberungen kosten Millionen Menschenleben. Zugleich sichert die „Pax Mongolica“ den Fernhandel von Korea bis Ungarn; Marco Polo reist auf diesen Wegen."
+        ],
+        "quote": "Ein Reiterbund verband erstmals China, Persien und Osteuropa in einem Herrschaftsraum."
+      },
+      {
+        "from": 1260, "to": 1368,
+        "ruler": "Kublai Khan",
+        "rulerTitle": "Großkhan, Kaiser von China",
+        "dynasty": "Yuan",
+        "reign": "1260–1294",
+        "capital": "Khanbaliq (Peking)",
+        "government": "Vier Teilreiche unter nominellem Großkhan",
+        "religion": "Tibetischer Buddhismus am Hof; Duldung anderer Religionen",
+        "languages": ["Mongolisch", "Chinesisch", "Persisch"],
+        "population": "ca. 90 Mio. allein in China",
+        "economy": "Papiergeld, Seidenstraßenhandel, Kaiserkanal",
+        "summary": [
+          "Nach dem Streit um die Nachfolge zerfällt das Reich in vier Teile: Yuan-China, Ilchanat, Goldene Horde und Tschagatai-Chanat.",
+          "Kublai vollendet 1279 die Eroberung Südchinas. Zwei Invasionsflotten gegen Japan scheitern an Taifunen – in Japan als „Kamikaze“, Götterwind, erinnert."
+        ]
+      }
+    ]
+  },
+
+  "Khanate of the Golden Horde": {
+    "kind": "Teilreich des Mongolenreiches",
+    "wiki": "Goldene Horde",
+    "founded": 1242,
+    "dissolved": 1502,
+    "periods": [
+      {
+        "from": 1242, "to": 1502,
+        "ruler": "Öz Beg Khan",
+        "rulerTitle": "Khan der Goldenen Horde",
+        "dynasty": "Dschutschiden",
+        "reign": "1313–1341",
+        "capital": "Sarai an der Wolga",
+        "government": "Khanat über tributpflichtige Fürstentümer",
+        "religion": "Ab 1313 sunnitischer Islam als Staatsreligion",
+        "languages": ["Kiptschakisch", "Mongolisch", "Russisch"],
+        "population": "ca. 5 Mio.",
+        "economy": "Tribute der Rus-Fürstentümer, Karawanenhandel, Sklavenhandel",
+        "summary": [
+          "Die russischen Fürstentümer bleiben bestehen, müssen aber Tribut zahlen und ihre Herrschaft in Sarai bestätigen lassen – rund 240 Jahre lang.",
+          "Genau diese Rolle als Steuereintreiber macht Moskau groß. 1480 endet die Oberherrschaft, im 16. Jahrhundert zerfällt die Horde in Einzelchanate."
+        ]
+      }
+    ]
+  },
+
+  "Ilkhanate": {
+    "kind": "Teilreich des Mongolenreiches",
+    "wiki": "Ilchane",
+    "founded": 1256,
+    "dissolved": 1335,
+    "periods": [
+      {
+        "from": 1256, "to": 1335,
+        "ruler": "Ghazan",
+        "rulerTitle": "Ilkhan",
+        "dynasty": "Hülegüiden",
+        "reign": "1295–1304",
+        "capital": "Täbris, Sultaniya",
+        "government": "Khanat über persische Verwaltungstradition",
+        "religion": "Zunächst schamanistisch und buddhistisch, ab 1295 Islam",
+        "languages": ["Persisch", "Mongolisch", "Arabisch"],
+        "population": "ca. 10 Mio.",
+        "economy": "Seidenstraße, Steuerreform, Wiederaufbau der Bewässerung",
+        "summary": [
+          "Hülegü zerstört 1258 Bagdad und beendet das Abbasiden-Kalifat – ein Einschnitt, der in der islamischen Welt bis heute nachwirkt.",
+          "Unter Ghazan nehmen die Ilchane den Islam an. Raschid ad-Din verfasst an ihrem Hof eine der ersten Weltgeschichten, die Europa, Indien und China einbezieht."
+        ]
+      }
+    ]
+  },
+
+  "Chagatai Khanate": {
+    "kind": "Teilreich des Mongolenreiches",
+    "wiki": "Tschagatai-Khanat",
+    "founded": 1226,
+    "dissolved": 1687,
+    "periods": [
+      {
+        "from": 1226, "to": 1687,
+        "ruler": "Nachkommen Tschagatais",
+        "rulerTitle": "Khan",
+        "dynasty": "Tschagataiden",
+        "capital": "Almaliq, später Samarkand und Kaschgar",
+        "government": "Khanat über Oasenstädte und Steppenstämme",
+        "religion": "Zunehmend sunnitischer Islam",
+        "languages": ["Tschagataisch", "Persisch", "Mongolisch"],
+        "population": "einige Millionen",
+        "economy": "Karawanenhandel, Oasenlandwirtschaft",
+        "summary": "Das mittlere der mongolischen Teilreiche umfasst Transoxanien und das Tarimbecken. Aus seiner westlichen Hälfte geht das Reich Timurs hervor."
+      }
+    ]
+  },
+
+  "Timurid Empire": {
+    "kind": "Eroberungsreich",
+    "wiki": "Timuriden",
+    "founded": 1370,
+    "dissolved": 1507,
+    "periods": [
+      {
+        "from": 1370, "to": 1507,
+        "ruler": "Timur (Tamerlan)",
+        "rulerTitle": "Emir",
+        "dynasty": "Timuriden",
+        "reign": "1370–1405",
+        "capital": "Samarkand",
+        "government": "Militärmonarchie über eroberte Provinzen",
+        "religion": "Sunnitischer Islam",
+        "languages": ["Tschagataisch", "Persisch"],
+        "population": "ca. 20 Mio.",
+        "economy": "Beute, Handwerkerverschleppung nach Samarkand, Fernhandel",
+        "summary": [
+          "Timur erobert von Delhi bis Ankara und lässt die besten Handwerker seiner Zeit nach Samarkand bringen – die Stadt wird zum Zentrum islamischer Kunst.",
+          "Sein Enkel Ulugh Beg baut in Samarkand eine Sternwarte und erstellt einen Sternenkatalog, der bis Kepler unübertroffen bleibt.",
+          "Aus dieser Dynastie stammt Babur, der Gründer des Mogulreichs."
+        ]
+      }
+    ]
+  },
+
+  "Mauryan Empire": {
+    "kind": "Großreich",
+    "wiki": "Maurya-Reich",
+    "founded": -322,
+    "dissolved": -185,
+    "periods": [
+      {
+        "from": -322, "to": -185,
+        "ruler": "Ashoka",
+        "rulerTitle": "Maharaja",
+        "dynasty": "Maurya",
+        "reign": "268–232 v. Chr.",
+        "capital": "Pataliputra (Patna)",
+        "government": "Zentralverwaltung mit Provinzgouverneuren und Spitzelwesen",
+        "religion": "Nach der Kalinga-Schlacht Förderung des Buddhismus",
+        "languages": ["Prakrit", "Sanskrit", "Griechisch (Grenzedikte)"],
+        "population": "ca. 30 bis 50 Mio.",
+        "economy": "Staatliche Landwirtschaft, Bergbau, Fernhandel",
+        "summary": [
+          "Das erste Reich, das fast den gesamten indischen Subkontinent umfasst. Das Arthashastra beschreibt seine Staatskunst mit einer Nüchternheit, die an Machiavelli erinnert.",
+          "Ashoka wendet sich nach dem blutigen Kalinga-Feldzug vom Krieg ab und lässt seine Grundsätze auf Felsen und Säulen in ganz Indien einmeißeln – die frühesten datierbaren Inschriften Südasiens.",
+          "Das Ashoka-Rad ziert bis heute die Flagge Indiens."
+        ]
+      }
+    ]
+  },
+
+  "Gupta Empire": {
+    "kind": "Großreich",
+    "wiki": "Gupta-Reich",
+    "founded": 320,
+    "dissolved": 550,
+    "periods": [
+      {
+        "from": 320, "to": 550,
+        "ruler": "Chandragupta II.",
+        "rulerTitle": "Maharajadhiraja",
+        "dynasty": "Gupta",
+        "reign": "375–415",
+        "capital": "Pataliputra",
+        "government": "Großkönigtum über Vasallenfürsten",
+        "religion": "Hinduismus; Buddhismus und Jainismus geduldet",
+        "languages": ["Sanskrit", "Prakrit"],
+        "population": "ca. 50 Mio.",
+        "economy": "Textil, Metallverarbeitung, Seehandel nach Südostasien",
+        "summary": [
+          "Die Gupta-Zeit gilt als klassisches Zeitalter Indiens: Kalidasas Dichtung, die Ajanta-Malereien, die Ausformung des Hindu-Tempelbaus.",
+          "Aryabhata berechnet die Kreiszahl auf vier Stellen und rechnet mit der Erdrotation. Das dezimale Stellenwertsystem mit der Null entsteht in diesem Umfeld und gelangt über die arabische Welt nach Europa."
+        ]
+      }
+    ]
+  },
+
+  "Kushan Empire": {
+    "kind": "Großreich",
+    "wiki": "Kuschana",
+    "founded": 30,
+    "dissolved": 375,
+    "periods": [
+      {
+        "from": 30, "to": 375,
+        "ruler": "Kanishka I.",
+        "rulerTitle": "König der Könige",
+        "dynasty": "Kuschan",
+        "reign": "ca. 127–150",
+        "capital": "Purushapura (Peschawar), Mathura",
+        "government": "Königtum über Handelsstädte und Steppengebiete",
+        "religion": "Buddhismus gefördert, daneben iranische und griechische Kulte",
+        "languages": ["Baktrisch", "Griechisch", "Sanskrit"],
+        "population": "ca. 15 Mio.",
+        "economy": "Drehscheibe der Seidenstraße zwischen Rom, Indien und China",
+        "summary": [
+          "Das Kuschanreich verbindet vier Kulturkreise. In der Kunst von Gandhara verschmelzen griechische Formen mit buddhistischen Inhalten – hier entstehen die ersten Buddha-Statuen in Menschengestalt.",
+          "Über kuschanische Handelswege gelangt der Buddhismus nach Zentralasien und China."
+        ]
+      }
+    ]
+  },
+
+  "Sultanate of Delhi": {
+    "kind": "Sultanat",
+    "wiki": "Sultanat von Delhi",
+    "founded": 1206,
+    "dissolved": 1526,
+    "periods": [
+      {
+        "from": 1206, "to": 1526,
+        "ruler": "Muhammad bin Tughluq",
+        "rulerTitle": "Sultan von Delhi",
+        "dynasty": "Tughluq",
+        "reign": "1325–1351",
+        "capital": "Delhi",
+        "government": "Sultanat mit Militäraristokratie",
+        "religion": "Sunnitischer Islam; hinduistische Mehrheitsbevölkerung",
+        "languages": ["Persisch", "Hindustani", "Sanskrit"],
+        "population": "ca. 40 Mio.",
+        "economy": "Landsteuer, Handel, Münzwesen",
+        "summary": [
+          "Fünf Dynastien in gut drei Jahrhunderten. Das Sultanat wehrt mehrere mongolische Einfälle ab und bewahrt Nordindien so vor der Verwüstung.",
+          "Aus dem Nebeneinander von Persisch und lokalen Sprachen entsteht das Hindustani, aus dem später Hindi und Urdu hervorgehen."
+        ]
+      }
+    ]
+  },
+
+  "Vijayanagara": {
+    "kind": "Königreich",
+    "wiki": "Vijayanagar",
+    "founded": 1336,
+    "dissolved": 1646,
+    "periods": [
+      {
+        "from": 1336, "to": 1646,
+        "ruler": "Krishnadevaraya",
+        "rulerTitle": "Maharaja von Vijayanagar",
+        "dynasty": "Tuluva",
+        "reign": "1509–1529",
+        "capital": "Vijayanagara (Hampi)",
+        "government": "Königtum mit Militärgouverneuren (Nayakas)",
+        "religion": "Hinduismus",
+        "languages": ["Kannada", "Telugu", "Tamil", "Sanskrit"],
+        "population": "ca. 18 Mio.",
+        "economy": "Bewässerungsbau, Gewürz- und Diamantenhandel, Pferdeimport",
+        "summary": [
+          "Die Hauptstadt Hampi zählt im 16. Jahrhundert zu den größten Städten der Welt; portugiesische Besucher vergleichen sie mit Rom.",
+          "1565 unterliegt das Reich einer Koalition der Dekkan-Sultanate. Die Ruinen von Hampi sind heute Weltkulturerbe."
+        ]
+      }
+    ]
+  },
+
+  "Mughal Empire": {
+    "kind": "Kaiserreich",
+    "wiki": "Mogulreich",
+    "founded": 1526,
+    "dissolved": 1857,
+    "events": [
+      { "year": 1526, "text": "Babur siegt bei Panipat und gründet das Reich." },
+      { "year": 1632, "text": "Baubeginn des Tadsch Mahal." },
+      { "year": 1757, "text": "Schlacht bei Plassey – die Ostindien-Kompanie übernimmt Bengalen." }
+    ],
+    "periods": [
+      {
+        "from": 1526, "to": 1657,
+        "ruler": "Akbar der Große",
+        "rulerTitle": "Padischah – Kaiser von Hindustan",
+        "dynasty": "Timuriden-Moguln",
+        "reign": "1556–1605",
+        "capital": "Agra, Fatehpur Sikri, später Delhi",
+        "government": "Zentralstaat mit Rangordnung (Mansabdari) und einheitlicher Landsteuer",
+        "religion": "Sunnitischer Islam; Akbar hebt die Sondersteuer für Nichtmuslime auf",
+        "languages": ["Persisch", "Hindustani", "Sanskrit", "Tschagataisch"],
+        "population": "ca. 110 Mio.",
+        "economy": "Textilexport – Indien liefert damals rund ein Viertel der Weltproduktion",
+        "summary": [
+          "Akbar regiert ein überwiegend hinduistisches Reich und setzt bewusst auf Ausgleich: Er schafft die Kopfsteuer für Nichtmuslime ab, heiratet Rajputen-Prinzessinnen und lädt Gelehrte aller Religionen an seinen Hof.",
+          "Sein Enkel Shah Jahan lässt für seine verstorbene Frau Mumtaz Mahal den Tadsch Mahal errichten."
+        ]
+      },
+      {
+        "from": 1658, "to": 1857,
+        "ruler": "Aurangzeb",
+        "rulerTitle": "Padischah",
+        "dynasty": "Moguln",
+        "reign": "1658–1707",
+        "capital": "Delhi",
+        "government": "Kaisertum mit zunehmend selbständigen Provinzen",
+        "religion": "Strenger sunnitischer Islam; Wiedereinführung der Dschizya",
+        "languages": ["Persisch", "Urdu"],
+        "population": "ca. 150 Mio.",
+        "economy": "Höchste Wirtschaftsleistung der Welt um 1700, danach rascher Verfall",
+        "summary": [
+          "Unter Aurangzeb erreicht das Reich seine größte Ausdehnung – und überdehnt sich in Dauerkriegen gegen die Marathen im Dekkan.",
+          "Nach 1707 zerfällt die Zentralgewalt. Die britische Ostindien-Kompanie füllt das Machtvakuum; 1857 endet das Reich nach dem niedergeschlagenen Aufstand formal."
+        ]
+      }
+    ]
+  },
+
+  "Maratha Confederacy": {
+    "kind": "Fürstenbund",
+    "wiki": "Marathenreich",
+    "founded": 1674,
+    "dissolved": 1818,
+    "periods": [
+      {
+        "from": 1674, "to": 1818,
+        "ruler": "Shivaji, später die Peshwas",
+        "rulerTitle": "Chhatrapati; ab 1713 faktisch die Peshwas",
+        "capital": "Raigad, später Pune",
+        "government": "Bund weitgehend selbständiger Fürstenhäuser",
+        "religion": "Hinduismus",
+        "languages": ["Marathi", "Persisch"],
+        "population": "ca. 50 Mio. im Einflussbereich",
+        "economy": "Chauth – ein Viertel der Steuern eroberter Gebiete",
+        "summary": [
+          "Shivaji baut mit Bergfestungen und beweglicher Kriegführung eine Macht auf, die dem Mogulreich über Jahrzehnte standhält.",
+          "Im 18. Jahrhundert beherrschen die Marathen weite Teile Indiens. Die Niederlage bei Panipat 1761 und drei Kriege gegen die Briten beenden ihre Vorherrschaft."
+        ]
+      }
+    ]
+  },
+
+  "British Raj": {
+    "kind": "Kolonialherrschaft",
+    "wiki": "Britisch-Indien",
+    "founded": 1858,
+    "dissolved": 1947,
+    "periods": [
+      {
+        "from": 1858, "to": 1947,
+        "ruler": "Der Vizekönig im Namen der britischen Krone",
+        "rulerTitle": "Vizekönig und Generalgouverneur von Indien",
+        "capital": "Kalkutta, ab 1911 Neu-Delhi",
+        "government": "Kronkolonie neben rund 560 Fürstenstaaten",
+        "religion": "Hinduismus, Islam, Sikhismus, Christentum u. a.",
+        "languages": ["Englisch", "Hindustani", "Bengali", "Tamil u. v. a."],
+        "population": "ca. 350 Mio. (1941)",
+        "economy": "Baumwolle, Jute, Tee, Eisenbahn; Niedergang des heimischen Textilhandwerks",
+        "summary": [
+          "Nach dem Aufstand von 1857 übernimmt die Krone die Herrschaft von der Ostindien-Kompanie. Eisenbahn, Telegraf und einheitliche Verwaltung entstehen – im Dienst der Ausfuhr.",
+          "Mehrere große Hungersnöte fordern Millionen Opfer. Die von Gandhi geprägte Unabhängigkeitsbewegung setzt auf gewaltfreien Widerstand.",
+          "1947 endet die Herrschaft mit der Teilung in Indien und Pakistan; die Fluchtbewegungen kosten Hunderttausende das Leben."
+        ]
+      }
+    ]
+  },
+
+  "India": {
+    "kind": "Bundesrepublik",
+    "wiki": "Indien",
+    "founded": 1947,
+    "periods": [
+      {
+        "from": 1947, "to": null,
+        "ruler": "Jawaharlal Nehru, später wechselnde Premierminister",
+        "rulerTitle": "Premierminister; Staatsoberhaupt ist der Präsident",
+        "capital": "Neu-Delhi",
+        "government": "Parlamentarische Bundesrepublik",
+        "religion": "Hinduismus (ca. 80 %), Islam, Christentum, Sikhismus, Buddhismus",
+        "languages": ["Hindi", "Englisch und 20 weitere Amtssprachen"],
+        "population": "ca. 1,44 Mrd. – bevölkerungsreichster Staat der Erde",
+        "economy": "Dienstleistungen, IT, Landwirtschaft, Industrie",
+        "summary": [
+          "Die Verfassung von 1950 ist die längste geschriebene Verfassung der Welt und schafft die Unberührbarkeit formal ab.",
+          "Indien ist seit der Unabhängigkeit durchgehend – mit Ausnahme des Ausnahmezustands 1975–1977 – demokratisch verfasst und die bevölkerungsreichste Demokratie überhaupt."
+        ]
+      }
+    ]
+  },
+
+  "Khmer Empire": {
+    "kind": "Königreich",
+    "wiki": "Khmer-Reich",
+    "founded": 802,
+    "dissolved": 1431,
+    "periods": [
+      {
+        "from": 802, "to": 1431,
+        "ruler": "Jayavarman VII.",
+        "rulerTitle": "Devaraja – Gottkönig",
+        "reign": "1181–1218",
+        "capital": "Angkor",
+        "government": "Sakrales Königtum mit Tempelwirtschaft",
+        "religion": "Hinduismus, unter Jayavarman VII. Mahayana-Buddhismus",
+        "languages": ["Altkhmer", "Sanskrit"],
+        "population": "ca. 1 Mio. im Ballungsraum Angkor",
+        "economy": "Reisanbau mit ausgedehnten Wasserspeichern (Baray)",
+        "summary": [
+          "Angkor ist die größte vorindustrielle Stadtlandschaft der Welt – Luftbildaufnahmen zeigen ein Siedlungsgebiet von rund 1.000 Quadratkilometern.",
+          "Angkor Wat, im 12. Jahrhundert als Vishnu-Tempel errichtet, ist bis heute das größte religiöse Bauwerk der Erde. Der Zerfall des Bewässerungssystems trägt zum Niedergang bei."
+        ]
+      }
+    ]
+  },
+
+  "Srivijaya Empire": {
+    "kind": "Seehandelsreich",
+    "wiki": "Srivijaya",
+    "founded": 671,
+    "dissolved": 1288,
+    "periods": [
+      {
+        "from": 671, "to": 1288,
+        "ruler": "Maharaja von Srivijaya",
+        "rulerTitle": "Maharaja",
+        "capital": "Palembang auf Sumatra",
+        "government": "Thalassokratie über Hafenstädte",
+        "religion": "Mahayana-Buddhismus",
+        "languages": ["Altmalaiisch", "Sanskrit"],
+        "population": "schwer schätzbar",
+        "economy": "Kontrolle der Malakkastraße, Gewürz- und Kampferhandel",
+        "summary": [
+          "Srivijaya beherrscht die Meerenge zwischen Indischem Ozean und Südchinesischem Meer – die wichtigste Handelsroute Asiens.",
+          "Der chinesische Mönch Yijing verbringt hier Jahre und berichtet von über tausend buddhistischen Gelehrten. Das Altmalaiische dieser Zeit ist Vorläufer des heutigen Indonesisch und Malaysisch."
+        ]
+      }
+    ]
+  },
+
+  "Đại Việt": {
+    "kind": "Königreich",
+    "wiki": "Đại Việt",
+    "founded": 1054,
+    "dissolved": 1804,
+    "periods": [
+      {
+        "from": 1054, "to": 1804,
+        "ruler": "Lê Thánh Tông",
+        "rulerTitle": "Kaiser von Đại Việt",
+        "dynasty": "Lê",
+        "reign": "1460–1497",
+        "capital": "Thăng Long (Hanoi)",
+        "government": "Konfuzianische Beamtenmonarchie",
+        "religion": "Buddhismus und Konfuzianismus",
+        "languages": ["Vietnamesisch", "Klassisches Chinesisch"],
+        "population": "ca. 5 Mio.",
+        "economy": "Reisanbau im Delta, Küstenhandel",
+        "summary": [
+          "Nach tausend Jahren chinesischer Herrschaft behauptet Đại Việt seine Unabhängigkeit und wehrt im 13. Jahrhundert dreimal mongolische Invasionen ab.",
+          "Das Gesetzbuch von 1483 gewährt Frauen ungewöhnlich weitgehende Erb- und Eigentumsrechte. Über Jahrhunderte dehnt sich das Reich nach Süden aus."
+        ]
+      }
+    ]
+  },
+
+  "Ayutthaya": {
+    "kind": "Königreich",
+    "wiki": "Ayutthaya",
+    "founded": 1351,
+    "dissolved": 1767,
+    "periods": [
+      {
+        "from": 1351, "to": 1767,
+        "ruler": "Narai",
+        "rulerTitle": "König von Ayutthaya",
+        "reign": "1656–1688",
+        "capital": "Ayutthaya",
+        "government": "Sakrales Königtum mit Sakdina-Rangordnung",
+        "religion": "Theravada-Buddhismus",
+        "languages": ["Thai", "Pali"],
+        "population": "ca. 2 Mio.",
+        "economy": "Reis, Teakholz, Zwischenhandel zwischen China, Indien und Europa",
+        "summary": [
+          "Ayutthaya ist im 17. Jahrhundert eine internationale Handelsstadt mit portugiesischen, japanischen, persischen und französischen Vierteln.",
+          "1767 wird die Stadt von birmanischen Truppen zerstört. Der Nachfolgestaat Rattanakosin entsteht wenige Jahre später in Bangkok."
+        ]
+      }
+    ]
+  },
+
+  "Rattanakosin Kingdom": {
+    "kind": "Königreich",
+    "wiki": "Rattanakosin",
+    "founded": 1782,
+    "periods": [
+      {
+        "from": 1782, "to": 1932,
+        "ruler": "Chulalongkorn (Rama V.)",
+        "rulerTitle": "König von Siam",
+        "dynasty": "Chakri",
+        "reign": "1868–1910",
+        "capital": "Bangkok",
+        "government": "Absolute Monarchie, ab 1932 konstitutionell",
+        "religion": "Theravada-Buddhismus",
+        "languages": ["Thai"],
+        "population": "ca. 8 Mio.",
+        "economy": "Reisexport, Teak, Zinn",
+        "summary": [
+          "Siam ist der einzige Staat Südostasiens, der nie kolonisiert wird – durch geschickte Diplomatie zwischen Briten und Franzosen und durch tiefgreifende eigene Reformen.",
+          "Chulalongkorn schafft die Sklaverei ab, baut Eisenbahnen und eine moderne Verwaltung auf. 1932 wird die Monarchie konstitutionell."
+        ]
+      }
+    ]
+  },
+
+  "Dutch East Indies": {
+    "kind": "Kolonie",
+    "wiki": "Niederländisch-Indien",
+    "founded": 1800,
+    "dissolved": 1949,
+    "periods": [
+      {
+        "from": 1602, "to": 1799,
+        "kind": "Kompaniegebiet",
+        "ruler": "Der Generalgouverneur der VOC",
+        "rulerTitle": "Generalgouverneur der Vereinigten Ostindischen Kompanie",
+        "capital": "Batavia (Jakarta)",
+        "government": "Handelskompanie mit Hoheitsrechten",
+        "religion": "Islam als Mehrheitsreligion; calvinistische Kolonialkirche",
+        "languages": ["Niederländisch", "Malaiisch", "Javanisch"],
+        "population": "ca. 10 Mio.",
+        "economy": "Gewürzmonopol auf Muskat, Nelken und Pfeffer",
+        "summary": "Die VOC durfte Krieg führen, Verträge schließen und Festungen bauen – ein Unternehmen mit staatlichen Vollmachten. 1799 geht sie bankrott, der Staat übernimmt."
+      },
+      {
+        "from": 1800, "to": 1949,
+        "ruler": "Der niederländische Generalgouverneur",
+        "rulerTitle": "Generalgouverneur",
+        "capital": "Batavia (Jakarta)",
+        "government": "Kolonialverwaltung mit indirekter Herrschaft über lokale Fürsten",
+        "religion": "Islam, Hinduismus auf Bali, Christentum",
+        "languages": ["Niederländisch", "Malaiisch", "Javanisch"],
+        "population": "ca. 70 Mio. (1940)",
+        "economy": "Kaffee, Zucker, Kautschuk, Erdöl; Zwangsanbausystem (cultuurstelsel)",
+        "summary": [
+          "Das Zwangsanbausystem verpflichtet javanische Bauern, einen Teil ihrer Felder für den Export zu bebauen. Die Erträge tragen zeitweise ein Drittel des niederländischen Staatshaushalts.",
+          "Nach japanischer Besetzung und vierjährigem Unabhängigkeitskrieg erkennen die Niederlande 1949 die Republik Indonesien an."
+        ]
+      }
+    ]
+  },
+
+  "Indonesia": {
+    "kind": "Republik",
+    "wiki": "Indonesien",
+    "founded": 1945,
+    "periods": [
+      {
+        "from": 1945, "to": null,
+        "ruler": "Sukarno, später wechselnde Präsidenten",
+        "rulerTitle": "Präsident der Republik Indonesien",
+        "capital": "Jakarta",
+        "government": "Präsidiale Republik",
+        "religion": "Islam (ca. 87 %), Christentum, Hinduismus",
+        "languages": ["Indonesisch und über 700 Regionalsprachen"],
+        "population": "ca. 280 Mio.",
+        "economy": "Rohstoffe, Palmöl, Industrie, Tourismus",
+        "summary": [
+          "Der größte Inselstaat der Erde vereint über 17.000 Inseln und mehrere Hundert Ethnien unter dem Leitwort „Einheit in Vielfalt“.",
+          "Indonesien hat die größte muslimische Bevölkerung weltweit und ist seit 1998 eine Demokratie."
+        ]
+      }
+    ]
+  },
+
+  "Mongolia": {
+    "kind": "Republik",
+    "wiki": "Mongolei",
+    "founded": 1911,
+    "periods": [
+      {
+        "from": 1911, "to": null,
+        "ruler": "Wechselnde Staatsoberhäupter",
+        "rulerTitle": "Präsident; 1924–1992 Parteiführung",
+        "capital": "Ulaanbaatar",
+        "government": "Republik; 1924–1990 sozialistischer Einparteienstaat",
+        "religion": "Tibetischer Buddhismus, Schamanismus",
+        "languages": ["Mongolisch"],
+        "population": "ca. 3,4 Mio.",
+        "economy": "Viehzucht, Bergbau auf Kupfer, Kohle und Gold",
+        "summary": [
+          "Nach dem Ende der Qing-Herrschaft erklärt sich die Äußere Mongolei 1911 für unabhängig; 1924 entsteht der zweite sozialistische Staat der Welt.",
+          "Mit rund zwei Einwohnern je Quadratkilometer ist die Mongolei der am dünnsten besiedelte souveräne Staat der Erde. Seit 1990 ist sie eine parlamentarische Demokratie."
+        ]
+      }
+    ]
+  }
+}

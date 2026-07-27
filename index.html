@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="de" data-theme="night">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Worldmap Deluxe – Historischer Weltatlas</title>
+  <meta name="description" content="Interaktiver historischer Weltatlas: 53 Zeitschnitte von 123.000 v. Chr. bis heute. Grenzen verschieben, Reiche anklicken, Herrscher und Hintergründe nachlesen." />
+  <meta name="color-scheme" content="dark light" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%230d1b2a'/%3E%3Cpath d='M16 2a14 14 0 100 28 14 14 0 000-28zm0 2.4c1.9 2 3.2 5.3 3.5 9.4h-7c.3-4.1 1.6-7.4 3.5-9.4zM12.9 5.2c-1.2 2.2-2 5.2-2.2 8.6H5.1a11.7 11.7 0 017.8-8.6zm6.2 0a11.7 11.7 0 017.8 8.6h-5.6c-.2-3.4-1-6.4-2.2-8.6zM5.1 16.2h5.6c.2 3.4 1 6.4 2.2 8.6a11.7 11.7 0 01-7.8-8.6zm7.9 0h7c-.3 4.1-1.6 7.4-3.5 9.4-1.9-2-3.2-5.3-3.5-9.4zm9.3 0h5.6a11.7 11.7 0 01-7.8 8.6c1.2-2.2 2-5.2 2.2-8.6z' fill='%23e6c88a'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <!-- Ladebildschirm ------------------------------------------------------ -->
+  <div class="boot" id="boot">
+    <div class="boot__inner">
+      <div class="boot__globe" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+      <h1 class="boot__title">Worldmap&nbsp;Deluxe</h1>
+      <p class="boot__sub">Historischer Weltatlas</p>
+      <div class="boot__bar"><i id="bootBar"></i></div>
+      <p class="boot__status" id="bootStatus">Kartenwerk wird vorbereitet …</p>
+    </div>
+  </div>
+
+  <div class="app" id="app" hidden>
+    <!-- Karte ------------------------------------------------------------ -->
+    <div class="stage">
+      <div id="map" class="map" role="application" aria-label="Historische Weltkarte"></div>
+
+      <!-- Kopfzeile links: Marke + Suche -->
+      <header class="brand card" id="brand">
+        <button class="brand__mark" id="btnAbout" type="button" title="Über dieses Kartenwerk">
+          <svg viewBox="0 0 32 32" aria-hidden="true" width="30" height="30">
+            <circle cx="16" cy="16" r="14.5" class="brand__disc" />
+            <path d="M16 1.5a14.5 14.5 0 100 29 14.5 14.5 0 000-29zm0 2.5c2 2 3.3 5.5 3.6 9.7h-7.2C12.7 9.5 14 6 16 4zM12.8 4.8c-1.2 2.3-2 5.4-2.3 8.9H4.7a12.1 12.1 0 018.1-8.9zm6.4 0a12.1 12.1 0 018.1 8.9h-5.8c-.3-3.5-1.1-6.6-2.3-8.9zM4.7 16.3h5.8c.3 3.5 1.1 6.6 2.3 8.9a12.1 12.1 0 01-8.1-8.9zm8.1 0h7.2c-.3 4.2-1.6 7.7-3.6 9.7-2-2-3.3-5.5-3.6-9.7zm9.7 0h5.8a12.1 12.1 0 01-8.1 8.9c1.2-2.3 2-5.4 2.3-8.9z" class="brand__grid" />
+          </svg>
+        </button>
+        <div class="brand__text">
+          <strong>Worldmap Deluxe</strong>
+          <span>Historischer Weltatlas</span>
+        </div>
+        <div class="brand__search">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M10.5 3a7.5 7.5 0 015.9 12.1l4.3 4.3-1.4 1.4-4.3-4.3A7.5 7.5 0 1110.5 3zm0 2a5.5 5.5 0 100 11 5.5 5.5 0 000-11z" fill="currentColor"/></svg>
+          <input id="search" type="search" autocomplete="off" spellcheck="false"
+                 placeholder="Reich, Volk oder Land suchen …" aria-label="Suche im aktuellen Zeitschnitt" />
+          <kbd>/</kbd>
+        </div>
+        <ul class="suggest" id="suggest" role="listbox" hidden></ul>
+      </header>
+
+      <!-- Werkzeugleiste rechts -->
+      <div class="tools">
+        <button class="tool" id="btnTheme" type="button" title="Darstellung wechseln (T)" aria-label="Darstellung wechseln">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 3a9 9 0 100 18 9 9 0 000-18zm0 2v14a7 7 0 010-14z" fill="currentColor"/></svg>
+        </button>
+        <button class="tool" id="btnLayers" type="button" title="Ebenen & Einfärbung (E)" aria-label="Ebenen und Einfärbung">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5zm0 7.7l6.6-3.7L21 12l-9 5-9-5 2.4-1.3L12 10.7zm0 4.6l6.6-3.7L21 16l-9 5-9-5 2.4-1.3L12 15.3z" fill="currentColor"/></svg>
+        </button>
+        <button class="tool" id="btnLegend" type="button" title="Legende (L)" aria-label="Legende">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 5h6v6H4V5zm10 1h6v2h-6V6zm0 4h6v2h-6v-2zM4 13h6v6H4v-6zm10 1h6v2h-6v-2zm0 4h6v2h-6v-2z" fill="currentColor"/></svg>
+        </button>
+        <button class="tool" id="btnHome" type="button" title="Ansicht zurücksetzen (0)" aria-label="Ansicht zurücksetzen">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 3l9 8h-3v9h-4v-6h-4v6H6v-9H3l9-8z" fill="currentColor"/></svg>
+        </button>
+        <div class="tools__zoom">
+          <button class="tool" id="btnZoomIn" type="button" title="Vergrößern" aria-label="Vergrößern">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M11 5h2v6h6v2h-6v6h-2v-6H5v-2h6V5z" fill="currentColor"/></svg>
+          </button>
+          <button class="tool" id="btnZoomOut" type="button" title="Verkleinern" aria-label="Verkleinern">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 11h14v2H5z" fill="currentColor"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Ebenen-Menü -->
+      <div class="popover card" id="layersMenu" hidden>
+        <h3>Einfärbung</h3>
+        <div class="segmented" id="colorModes" role="radiogroup" aria-label="Einfärbung">
+          <button type="button" role="radio" data-mode="polity" aria-checked="true">Gemeinwesen</button>
+          <button type="button" role="radio" data-mode="sovereign" aria-checked="false">Oberhoheit</button>
+          <button type="button" role="radio" data-mode="culture" aria-checked="false">Kulturraum</button>
+          <button type="button" role="radio" data-mode="precision" aria-checked="false">Grenzgüte</button>
+        </div>
+        <h3>Ebenen</h3>
+        <label class="switch"><input type="checkbox" id="optLabels" checked><span></span>Beschriftungen</label>
+        <label class="switch"><input type="checkbox" id="optRivers"><span></span>Flüsse &amp; Seen</label>
+        <label class="switch"><input type="checkbox" id="optGraticule"><span></span>Gradnetz</label>
+        <label class="switch"><input type="checkbox" id="optBorders" checked><span></span>Grenzlinien</label>
+        <h3>Inhalte</h3>
+        <label class="switch"><input type="checkbox" id="optWiki" checked><span></span>Wikipedia-Auszüge laden</label>
+        <p class="popover__note">Lädt bei Bedarf Kurztexte und Bilder von de.wikipedia.org.</p>
+      </div>
+
+      <!-- Legende -->
+      <div class="popover card popover--legend" id="legendBox" hidden>
+        <h3 id="legendTitle">Legende</h3>
+        <ul class="legend" id="legendList"></ul>
+      </div>
+
+      <!-- Hinweis-Tooltip an der Maus -->
+      <div class="hovertip" id="hovertip" hidden></div>
+
+      <!-- Maßstab & Quellen -->
+      <div class="credits">
+        <span id="scaleBar" class="scalebar"><i></i><b>–</b></span>
+        <button type="button" id="btnCredits" class="credits__link">Datenquellen</button>
+      </div>
+    </div>
+
+    <!-- Detailtafel ------------------------------------------------------- -->
+    <aside class="panel" id="panel" aria-live="polite" hidden>
+      <button class="panel__close" id="panelClose" type="button" aria-label="Tafel schließen">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6.4 5l5.6 5.6L17.6 5 19 6.4 13.4 12 19 17.6 17.6 19 12 13.4 6.4 19 5 17.6 10.6 12 5 6.4 6.4 5z" fill="currentColor"/></svg>
+      </button>
+      <div class="panel__scroll" id="panelBody"></div>
+    </aside>
+
+    <!-- Zeitleiste --------------------------------------------------------- -->
+    <footer class="timeline" id="timeline">
+      <div class="timeline__head">
+        <div class="timeline__controls">
+          <button class="tbtn" id="btnPrev" type="button" title="Vorheriger Zeitschnitt (←)" aria-label="Vorheriger Zeitschnitt">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M15.4 5L8.4 12l7 7 1.4-1.4L11.2 12l5.6-5.6L15.4 5z" fill="currentColor"/></svg>
+          </button>
+          <button class="tbtn tbtn--play" id="btnPlay" type="button" title="Zeitreise starten (Leertaste)" aria-label="Zeitreise starten">
+            <svg class="i-play" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M8 5l11 7-11 7V5z" fill="currentColor"/></svg>
+            <svg class="i-pause" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" hidden><path d="M7 5h3.5v14H7V5zm6.5 0H17v14h-3.5V5z" fill="currentColor"/></svg>
+          </button>
+          <button class="tbtn" id="btnNext" type="button" title="Nächster Zeitschnitt (→)" aria-label="Nächster Zeitschnitt">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M8.6 5L7.2 6.4 12.8 12l-5.6 5.6L8.6 19l7-7-7-7z" fill="currentColor"/></svg>
+          </button>
+        </div>
+
+        <div class="timeline__readout">
+          <div class="year" id="yearBig">1815</div>
+          <div class="year__meta">
+            <span class="year__era" id="yearEra">Epoche</span>
+            <span class="year__title" id="yearTitle"></span>
+          </div>
+        </div>
+
+        <div class="timeline__stats" id="epochStats"></div>
+      </div>
+
+      <div class="track" id="track" tabindex="0" role="slider"
+           aria-label="Zeitregler" aria-valuemin="0" aria-valuemax="52" aria-valuenow="0" aria-valuetext="">
+        <div class="track__eras" id="trackEras"></div>
+        <div class="track__ticks" id="trackTicks"></div>
+        <div class="track__fill" id="trackFill"></div>
+        <div class="track__handle" id="trackHandle"><b></b></div>
+      </div>
+      <div class="track__scale" id="trackScale"></div>
+    </footer>
+
+    <!-- Modale Textfenster ------------------------------------------------- -->
+    <div class="modal" id="modal" hidden>
+      <div class="modal__backdrop" data-close></div>
+      <div class="modal__card card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="modal__close" type="button" data-close aria-label="Schließen">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6.4 5l5.6 5.6L17.6 5 19 6.4 13.4 12 19 17.6 17.6 19 12 13.4 6.4 19 5 17.6 10.6 12 5 6.4 6.4 5z" fill="currentColor"/></svg>
+        </button>
+        <h2 id="modalTitle"></h2>
+        <div id="modalBody"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

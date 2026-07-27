@@ -1,0 +1,667 @@
+{
+  "_hinweis": "Steckbriefe zu Kultur- und Wirtschaftsräumen. Der Datensatz fasst hier große Gebiete zusammen, in denen keine Staaten im heutigen Sinn bestanden – die Angaben beschreiben deshalb Lebensweisen, nicht Regierungen.",
+
+  "Archaic Amerindian hunter-gatherers": {
+    "kind": "Wildbeutergesellschaften",
+    "wiki": "Archaische Periode (Amerika)",
+    "periods": [
+      {
+        "from": -10000, "to": -1000,
+        "ruler": "Keine dauerhafte Herrschaft",
+        "rulerTitle": "Gruppen von 20 bis 50 Personen; Ansehen statt Amt",
+        "capital": "Saisonale Lagerplätze",
+        "government": "Egalitäre Bandgesellschaften",
+        "religion": "Schamanismus, Tier- und Ahnengeister",
+        "languages": ["Vorläufer der späteren amerikanischen Sprachfamilien"],
+        "population": "wenige Millionen auf zwei Kontinenten",
+        "economy": "Jagd, Fischfang, Sammeln; regionale Anfänge des Gartenbaus",
+        "summary": [
+          "Nach dem Ende der Eiszeit passen sich die Bevölkerungen Amerikas an sehr verschiedene Lebensräume an – vom Regenwald bis zur Hochanden-Steppe.",
+          "In dieser Zeit werden Mais, Bohnen, Kürbis, Kartoffeln und Maniok domestiziert. Diese Pflanzen ernähren heute einen erheblichen Teil der Menschheit.",
+          "Der Datensatz zeichnet eine große Fläche; tatsächlich bestanden dort Hunderte eigenständige Sprach- und Kulturgruppen."
+        ]
+      }
+    ]
+  },
+
+  "Homo heidelbergensis": {
+    "kind": "Menschenform",
+    "wiki": "Homo heidelbergensis",
+    "periods": [
+      {
+        "from": -700000, "to": -200000,
+        "ruler": "keine",
+        "rulerTitle": "—",
+        "capital": "—",
+        "government": "Kleingruppen",
+        "religion": "keine Belege",
+        "languages": ["unbekannt"],
+        "population": "unbekannt",
+        "economy": "Großwildjagd, Sammeln",
+        "summary": [
+          "Homo heidelbergensis gilt als gemeinsamer Vorfahr von Neandertaler und modernem Menschen und lebte in Afrika und Europa.",
+          "Die Schöninger Speere aus Niedersachsen sind rund 300.000 Jahre alt – die ältesten vollständig erhaltenen Jagdwaffen der Menschheit und ein Beleg für geplante Gemeinschaftsjagd."
+        ]
+      }
+    ]
+  },
+
+  "Saharan Pastoral Nomads": {
+    "kind": "Hirtenkulturen",
+    "wiki": "Grüne Sahara",
+    "periods": [
+      {
+        "from": -9000, "to": -1000,
+        "ruler": "Keine übergreifende Herrschaft",
+        "rulerTitle": "Familien- und Herdenverbände",
+        "capital": "Wanderweiden entlang von Seen und Flusstälern",
+        "government": "Verwandtschaftsgruppen",
+        "religion": "Rinderkult, Felsbildkunst",
+        "languages": ["Vorläufer afroasiatischer und nilosaharanischer Sprachen"],
+        "population": "einige Hunderttausend",
+        "economy": "Rinder-, Schaf- und Ziegenhaltung, Fischfang an Binnenseen",
+        "summary": [
+          "Die Sahara war zwischen etwa 9000 und 3000 v. Chr. eine Savanne mit Seen und Flüssen – die „Grüne Sahara“. Felsbilder in Tassili n'Ajjer zeigen Rinderherden, Flusspferde und Schwimmer.",
+          "Mit der Austrocknung ab etwa 3500 v. Chr. ziehen die Menschen an den Nil, in die Sahelzone und an die Küsten. Diese Wanderung gehört zur Vorgeschichte der ägyptischen Hochkultur."
+        ],
+        "quote": "Ein Felsbild im Wadi Sura zeigt Schwimmende – mitten in der heutigen Libyschen Wüste."
+      }
+    ]
+  },
+
+  "Paleo-Siberian hunter-gatherers": {
+    "kind": "Wildbeutergesellschaften",
+    "wiki": "Paläosibirische Völker",
+    "periods": [
+      {
+        "from": -20000, "to": 1600,
+        "ruler": "Keine dauerhafte Herrschaft",
+        "rulerTitle": "Lagergemeinschaften und Schamanen",
+        "capital": "Wandernde Lager",
+        "government": "Kleingruppen entlang der Flusssysteme",
+        "religion": "Schamanismus – das Wort stammt aus dem Tungusischen",
+        "languages": ["Jukagirisch, Tschuktschisch, Ketisch u. a."],
+        "population": "wenige Hunderttausend",
+        "economy": "Rentierjagd, später Rentierhaltung, Fischfang, Pelzhandel",
+        "summary": [
+          "Sibirien wird seit mindestens 30.000 Jahren bewohnt. Von hier aus erreichten Menschen über Beringia den amerikanischen Doppelkontinent.",
+          "Der Begriff „Schamane“ stammt aus dem Tungusischen und gelangte über russische Berichte des 17. Jahrhunderts nach Europa.",
+          "Ab dem 16. Jahrhundert dringen russische Pelzhändler vor; der Tribut in Zobelfellen (Jassak) verändert die Lebensweise grundlegend."
+        ]
+      }
+    ]
+  },
+
+  "Siberians": {
+    "kind": "Völker Nordasiens",
+    "wiki": "Sibirien",
+    "periods": [
+      {
+        "from": 1200, "to": 1700,
+        "ruler": "Lokale Fürsten und Clanälteste",
+        "rulerTitle": "Stammesfürsten; im Westen das Chanat Sibir",
+        "capital": "Isker/Qashliq am Irtysch",
+        "government": "Clanverbände; im Südwesten ein türkisches Chanat",
+        "religion": "Schamanismus, im Süden Islam",
+        "languages": ["Tatarisch", "Chantisch", "Jakutisch", "Ewenkisch"],
+        "population": "ca. 200.000 bis 300.000",
+        "economy": "Jagd, Rentierhaltung, Fischfang, Pelzhandel",
+        "summary": [
+          "Auf einem Gebiet größer als Europa leben zu dieser Zeit vermutlich weniger Menschen als in einer mittelalterlichen Großstadt.",
+          "1582 beginnt der Kosakenführer Jermak die russische Eroberung. In nur 60 Jahren erreichen russische Trupps den Pazifik – angetrieben vom Pelzhandel."
+        ]
+      }
+    ]
+  },
+
+  "Arctic marine mammal hunters": {
+    "kind": "Arktische Jägerkulturen",
+    "wiki": "Arktis",
+    "periods": [
+      {
+        "from": -5000, "to": 1900,
+        "ruler": "Keine dauerhafte Herrschaft",
+        "rulerTitle": "Familienverbände; angesehene Jäger als Wortführer",
+        "capital": "Winterlager an eisfreien Küstenabschnitten",
+        "government": "Egalitäre Gemeinschaften mit strengen Teilungsregeln",
+        "religion": "Schamanismus, Seelenvorstellungen der Jagdtiere",
+        "languages": ["Eskimo-aleutische Sprachen"],
+        "population": "einige Zehntausend",
+        "economy": "Wal-, Robben- und Walrossjagd, Fischfang",
+        "summary": [
+          "Ohne Ackerbau und Holz entstehen hier Techniken von bemerkenswerter Präzision: Kajak, Harpune mit Drehspitze, Schneebrille aus Knochen, Iglu.",
+          "Das Teilen der Jagdbeute ist verpflichtend – in einer Umwelt, in der jede einzelne Jagd scheitern kann, ist Verteilung die wirksamste Vorsorge."
+        ]
+      }
+    ]
+  },
+
+  "Subarctic forest hunter-gatherers": {
+    "kind": "Waldjägerkulturen",
+    "wiki": "Subarktis",
+    "periods": [
+      {
+        "from": -6000, "to": 1900,
+        "ruler": "Keine dauerhafte Herrschaft",
+        "rulerTitle": "Familienbände, saisonale Zusammenkünfte",
+        "capital": "Wanderlager im borealen Wald",
+        "government": "Bewegliche Kleingruppen",
+        "religion": "Schamanismus, Tiergeister",
+        "languages": ["Algonkin- und Athapaskische Sprachen"],
+        "population": "einige Hunderttausend",
+        "economy": "Elch- und Karibujagd, Fischfang, später Pelzhandel",
+        "summary": [
+          "Der boreale Nadelwald zieht sich als geschlossenes Band um die Nordhalbkugel. Er ernährt nur wenige Menschen je Quadratkilometer – Beweglichkeit ist überlebenswichtig.",
+          "Birkenrindenkanu und Schneeschuh sind Erfindungen dieser Kulturen; der europäische Pelzhandel übernahm beides unverändert."
+        ]
+      }
+    ]
+  },
+
+  "Amazon hunter-gatherers": {
+    "kind": "Regenwaldgesellschaften",
+    "wiki": "Amazonasbecken",
+    "periods": [
+      {
+        "from": -8000, "to": 1900,
+        "ruler": "Keine übergreifende Herrschaft",
+        "rulerTitle": "Dorfvorsteher, Schamanen",
+        "capital": "Dörfer entlang der Flüsse",
+        "government": "Dorfgemeinschaften, am Amazonas auch größere Häuptlingstümer",
+        "religion": "Schamanismus, Geister von Tieren und Pflanzen",
+        "languages": ["Tupí, Arawak, Karib, Pano und viele weitere Familien"],
+        "population": "Schätzungen bis 8 Mio. vor 1500",
+        "economy": "Maniokanbau, Fischfang, Jagd, Waldgärten",
+        "summary": [
+          "Der Amazonas galt lange als menschenleere Wildnis. Fernerkundung und Bodenkunde zeigen ein anderes Bild: Erdwerke, Straßen und die künstlich angelegte, dauerhaft fruchtbare „Terra preta“.",
+          "Ein erheblicher Teil des Regenwaldes ist mitgestaltet – die Häufung von Nutzbäumen wie Paranuss und Palmen geht auf jahrtausendelange Pflege zurück.",
+          "Nach 1500 brechen die Bevölkerungen durch eingeschleppte Krankheiten zusammen, oft bevor Europäer die Regionen überhaupt betreten."
+        ]
+      }
+    ]
+  },
+
+  "Manioc farmers": {
+    "kind": "Anbaugesellschaften",
+    "wiki": "Maniok",
+    "periods": [
+      {
+        "from": -6000, "to": 1500,
+        "ruler": "Keine übergreifende Herrschaft",
+        "rulerTitle": "Dorfgemeinschaften",
+        "capital": "Flussdörfer",
+        "government": "Dorf- und Verwandtschaftsverbände",
+        "religion": "Naturgeister, Schamanismus",
+        "languages": ["Arawak, Tupí u. a."],
+        "population": "einige Millionen",
+        "economy": "Brandrodungsfeldbau mit Maniok, Fischfang",
+        "summary": [
+          "Der Bittermaniok enthält Blausäureverbindungen und ist roh giftig. Die Verarbeitung – Reiben, Auspressen in einer geflochtenen Röhre, Rösten – ist eine der frühesten chemischen Verfahrenstechniken der Menschheit.",
+          "Maniok ernährt heute weltweit über 800 Millionen Menschen, vor allem in Afrika."
+        ]
+      }
+    ]
+  },
+
+  "Savanna hunter-gatherers": {
+    "kind": "Wildbeutergesellschaften",
+    "wiki": "Savanne",
+    "periods": [
+      {
+        "from": -50000, "to": 1800,
+        "ruler": "Keine dauerhafte Herrschaft",
+        "rulerTitle": "Kleingruppen, Entscheidungen im Gespräch",
+        "capital": "saisonale Lager an Wasserstellen",
+        "government": "Egalitäre Bandgesellschaften",
+        "religion": "Ahnen- und Naturgeister",
+        "languages": ["zahlreiche, meist nicht überliefert"],
+        "population": "unbekannt",
+        "economy": "Sammeln von Knollen und Früchten, Jagd, Honig",
+        "summary": [
+          "Die afrikanische Savanne ist der Lebensraum, in dem sich der moderne Mensch entwickelt hat. Jagen und Sammeln ist die mit Abstand längste Wirtschaftsform der Menschheitsgeschichte.",
+          "Ethnografische Untersuchungen zeigen, dass Sammelnde – meist Frauen – oft den größeren Teil der Nahrung beisteuerten, nicht die Jäger."
+        ]
+      }
+    ]
+  },
+
+  "Desert hunter-gatherers": {
+    "kind": "Wildbeutergesellschaften",
+    "wiki": "Wüste",
+    "periods": [
+      {
+        "from": -20000, "to": 1900,
+        "ruler": "Keine dauerhafte Herrschaft",
+        "rulerTitle": "Kleingruppen",
+        "capital": "Wasserstellen als Fixpunkte",
+        "government": "Bewegliche Familienverbände",
+        "religion": "Ortsgebundene Kulte an Wasserstellen",
+        "languages": ["verschiedene"],
+        "population": "sehr gering",
+        "economy": "Sammeln, Kleinwildjagd, Kenntnis verborgener Wasservorkommen",
+        "summary": "In Trockengebieten entscheidet Wissen über Wasser über Leben und Tod. Die Kenntnis jeder Quelle, jedes wasserführenden Wurzelstocks wurde über Generationen weitergegeben – als Erzählung, Lied und Weg."
+      }
+    ]
+  },
+
+  "West African cereal farmers": {
+    "kind": "Ackerbaugesellschaften",
+    "wiki": "Sahel",
+    "periods": [
+      {
+        "from": -3000, "to": 1900,
+        "ruler": "Dorf- und Landschaftsoberhäupter",
+        "rulerTitle": "Erdherren und Dorfälteste",
+        "capital": "Jenné-Jeno, Dorfverbände",
+        "government": "Dorfgemeinschaften, teils städtische Verbände",
+        "religion": "Ahnenverehrung, später Islam",
+        "languages": ["Mande-, Voltaische und Atlantische Sprachen"],
+        "population": "einige Millionen",
+        "economy": "Hirse, Sorghum, afrikanischer Reis, Baumwolle, Eisenverhüttung",
+        "summary": [
+          "In Westafrika werden Perlhirse, Sorghum und der afrikanische Reis (Oryza glaberrima) eigenständig domestiziert – unabhängig vom Nahen Osten.",
+          "Jenné-Jeno am Niger ist seit etwa 250 v. Chr. besiedelt und wuchs offenbar ohne König und ohne Stadtmauer – eine Stadt aus Handwerkervierteln."
+        ]
+      }
+    ]
+  },
+
+  "Eastern North American hunter-gatherers": {
+    "kind": "Wildbeuter- und Gartenbaugesellschaften",
+    "wiki": "Woodland-Periode",
+    "periods": [
+      {
+        "from": -3000, "to": 1600,
+        "ruler": "Dorfvorsteher und Ratsversammlungen",
+        "rulerTitle": "Sachems und Ratsversammlungen",
+        "capital": "Dörfer, Erdwerke wie Cahokia",
+        "government": "Von Dorfgemeinschaften bis zu Bünden wie der Haudenosaunee",
+        "religion": "Ahnenverehrung, Erdwerke als Kultplätze",
+        "languages": ["Algonkin-, Irokesische und Sioux-Sprachen"],
+        "population": "einige Millionen",
+        "economy": "Mais, Bohnen und Kürbis („die drei Schwestern“), Jagd, Fischfang",
+        "summary": [
+          "Im östlichen Nordamerika wurden eigenständig Pflanzen wie Gänsefuß und Sonnenblume domestiziert, bevor der Mais aus Mexiko übernommen wurde.",
+          "Cahokia am Mississippi zählt um 1100 rund 15.000 Einwohner – mehr als das damalige London. Die Monks Mound ist der größte vorkoloniale Erdbau Amerikas.",
+          "Der Bund der Haudenosaunee mit seiner Ratsverfassung wurde von Beobachtern der amerikanischen Gründerzeit ausdrücklich als Vorbild diskutiert."
+        ]
+      }
+    ]
+  },
+
+  "Plain bison hunters": {
+    "kind": "Präriejägerkulturen",
+    "wiki": "Prärie-Indianer",
+    "periods": [
+      {
+        "from": -8000, "to": 1880,
+        "ruler": "Kriegs- und Friedenshäuptlinge",
+        "rulerTitle": "Häuptlinge auf Zeit, Kriegerbünde",
+        "capital": "Wandernde Tipi-Lager",
+        "government": "Bandgesellschaften mit saisonalen Großversammlungen",
+        "religion": "Sonnentanz, Visionssuche",
+        "languages": ["Sioux-, Algonkin-, Uto-aztekische Sprachen"],
+        "population": "einige Hunderttausend",
+        "economy": "Bisonjagd; ab dem 17. Jahrhundert beritten",
+        "summary": [
+          "Vom Bison stammen Nahrung, Kleidung, Zeltbahn, Werkzeug und Brennstoff – eine Wirtschaft, die auf einer einzigen Tierart beruht.",
+          "Das Pferd, aus spanischen Beständen entlaufen, erreicht die Prärie im 17. Jahrhundert und schafft binnen Generationen eine völlig neue Lebensweise.",
+          "Um 1800 leben schätzungsweise 30 bis 60 Millionen Bisons in Nordamerika. 1889 sind es weniger als tausend – das Ende dieser Kulturen als eigenständige Wirtschaftsform."
+        ]
+      }
+    ]
+  },
+
+  "Finno-Ugric taiga hunter-gatherers": {
+    "kind": "Waldvölker",
+    "wiki": "Finno-ugrische Völker",
+    "periods": [
+      {
+        "from": -4000, "to": 1600,
+        "ruler": "Clanälteste",
+        "rulerTitle": "Familien- und Clanoberhäupter",
+        "capital": "Siedlungen an Flüssen und Seen",
+        "government": "Verwandtschaftsverbände",
+        "religion": "Schamanismus, Bärenkult",
+        "languages": ["Finnisch, Estnisch, Ungarisch, Mari, Chantisch u. a."],
+        "population": "einige Hunderttausend",
+        "economy": "Jagd, Fischfang, Waldbienenzucht, Pelzhandel",
+        "summary": [
+          "Die finno-ugrischen Sprachen erstrecken sich vom Ostseeraum bis nach Westsibirien – ein Sprachband quer durch die Taiga.",
+          "Der Skilauf gehört zu den ältesten Fortbewegungstechniken dieser Region; Felsbilder in Karelien zeigen ihn seit rund 6.000 Jahren."
+        ]
+      }
+    ]
+  },
+
+  "Proto-Altaic pastoralists": {
+    "kind": "Frühe Steppenhirten",
+    "wiki": "Eurasische Steppe",
+    "periods": [
+      {
+        "from": -3000, "to": -500,
+        "ruler": "Clanoberhäupter",
+        "rulerTitle": "Anführer der Herdenverbände",
+        "capital": "Wanderweiden zwischen Altai und Mandschurei",
+        "government": "Verwandtschaftsverbände",
+        "religion": "Himmelsverehrung",
+        "languages": ["Vorläufer türkischer, mongolischer und tungusischer Sprachen"],
+        "population": "wenige Hunderttausend",
+        "economy": "Pferde-, Schaf- und Rinderhaltung",
+        "summary": [
+          "Die Domestizierung des Pferdes und die Erfindung des Streitwagens verändern die Steppe zum beweglichsten Kulturraum der Alten Welt.",
+          "Aus diesen Hirtenkulturen gehen später Xiongnu, Türken und Mongolen hervor – Reiche, die den Verlauf der eurasischen Geschichte mitbestimmen."
+        ]
+      }
+    ]
+  },
+
+  "Austro-Asiatic rice farmers": {
+    "kind": "Reisbaugesellschaften",
+    "wiki": "Austroasiatische Sprachen",
+    "periods": [
+      {
+        "from": -4000, "to": 500,
+        "ruler": "Dorfgemeinschaften und frühe Fürstentümer",
+        "rulerTitle": "Dorfälteste, später Fürsten",
+        "capital": "Dörfer in den Flussdeltas",
+        "government": "Dorfverbände, aus denen Stadtstaaten hervorgehen",
+        "religion": "Geisterglaube, später Buddhismus und Hinduismus",
+        "languages": ["Khmer, Vietnamesisch, Mon, Munda"],
+        "population": "einige Millionen",
+        "economy": "Nassreisanbau, Bronze- und Eisenverarbeitung",
+        "summary": [
+          "Der Nassreisanbau ernährt auf gleicher Fläche ein Vielfaches der Menschen, die Trockenfeldbau tragen kann – die Grundlage der hohen Bevölkerungsdichte Südostasiens.",
+          "Die Dong-Son-Kultur in Nordvietnam produziert ab etwa 600 v. Chr. Bronzetrommeln von bis zu einer Tonne Gewicht, die über ganz Südostasien gehandelt werden."
+        ]
+      }
+    ]
+  },
+
+  "Austroasian rice cultures": {
+    "kind": "Reisbaugesellschaften",
+    "wiki": "Reisanbau",
+    "periods": [
+      {
+        "from": -6000, "to": -1000,
+        "ruler": "Dorfgemeinschaften",
+        "rulerTitle": "Dorfälteste",
+        "capital": "Dörfer an Flüssen",
+        "government": "Verwandtschaftsverbände",
+        "religion": "Ahnen- und Geisterglaube",
+        "languages": ["frühe austroasiatische Sprachen"],
+        "population": "einige Millionen",
+        "economy": "Reisanbau, Fischzucht, Schweinehaltung",
+        "summary": "Der Reis wird im Jangtse-Tal um 7000 v. Chr. domestiziert und breitet sich von dort nach Süden und Westen aus – eine der folgenreichsten Pflanzenzähmungen der Geschichte."
+      }
+    ]
+  },
+
+  "Mesoamerican hunter-gatherers and maïze farmers": {
+    "kind": "Frühe Anbaugesellschaften",
+    "wiki": "Mesoamerika",
+    "periods": [
+      {
+        "from": -8000, "to": -1200,
+        "ruler": "Keine dauerhafte Herrschaft",
+        "rulerTitle": "Familienverbände, später Dorfvorsteher",
+        "capital": "Höhlen und frühe Dörfer im Hochland",
+        "government": "Kleingruppen, zunehmend sesshafte Dörfer",
+        "religion": "Frühe Fruchtbarkeitskulte",
+        "languages": ["Vorläufer von Maya-, Oto-Mangue- und Uto-aztekischen Sprachen"],
+        "population": "wenige Hunderttausend",
+        "economy": "Sammeln, Jagd, beginnender Maisanbau",
+        "summary": [
+          "Aus dem unscheinbaren Wildgras Teosinte entsteht über Jahrtausende der Mais – eine der eindrucksvollsten Züchtungsleistungen der Menschheit.",
+          "Ebenso bedeutsam ist die Nixtamalisation: Das Kochen der Körner in Kalkwasser macht das Vitamin Niacin verfügbar und verhindert Mangelerkrankungen. Ohne dieses Verfahren wäre eine maisbasierte Ernährung nicht tragfähig gewesen."
+        ]
+      }
+    ]
+  },
+
+  "central Asian khanates": {
+    "kind": "Oasenstaaten",
+    "wiki": "Chanat Buchara",
+    "periods": [
+      {
+        "from": 1500, "to": 1880,
+        "ruler": "Emire und Chane von Buchara, Chiwa und Kokand",
+        "rulerTitle": "Emir bzw. Chan",
+        "capital": "Buchara, Chiwa, Kokand",
+        "government": "Konkurrierende Chanate über Oasenstädte und Nomadenstämme",
+        "religion": "Sunnitischer Islam",
+        "languages": ["Persisch (Tadschikisch)", "Usbekisch", "Turkmenisch"],
+        "population": "ca. 4 Mio.",
+        "economy": "Karawanenhandel, Baumwolle, Seide, Bewässerungslandwirtschaft",
+        "summary": [
+          "Buchara und Samarkand bleiben Zentren islamischer Gelehrsamkeit, verlieren aber wirtschaftlich an Bedeutung, als der Seehandel die Seidenstraße überholt.",
+          "Im 19. Jahrhundert werden die Chanate zum Schauplatz des „Great Game“ zwischen Russland und Großbritannien. Bis 1876 geraten alle unter russische Kontrolle."
+        ]
+      }
+    ]
+  },
+
+  "Cuman-Kipchak confederation": {
+    "kind": "Nomadenkonföderation",
+    "wiki": "Kumanen",
+    "founded": 1000,
+    "dissolved": 1241,
+    "periods": [
+      {
+        "from": 1000, "to": 1241,
+        "ruler": "Khane einzelner Verbände",
+        "rulerTitle": "Khan",
+        "capital": "kein fester Ort – die Steppe hieß „Desht-i Qipchaq“",
+        "government": "Lockerer Verband selbständiger Horden",
+        "religion": "Tengrismus, teilweise Christentum und Islam",
+        "languages": ["Kiptschakisch"],
+        "population": "wenige Millionen",
+        "economy": "Viehzucht, Sklavenhandel, Söldnerdienste",
+        "summary": [
+          "Die Kiptschaken beherrschen die Steppe von der Donau bis zum Irtysch und sind Nachbarn, Gegner und Heiratspartner der Rus-Fürsten.",
+          "Der Codex Cumanicus, um 1300 von europäischen Missionaren verfasst, ist eines der ältesten Wörterbücher einer Türksprache.",
+          "1241 werden sie von den Mongolen unterworfen; viele fliehen nach Ungarn, andere werden als Mamluken nach Ägypten verkauft."
+        ]
+      }
+    ]
+  },
+
+  "Kara Khitai Khaganate": {
+    "kind": "Khaganat",
+    "wiki": "Kara Kitai",
+    "founded": 1124,
+    "dissolved": 1218,
+    "periods": [
+      {
+        "from": 1124, "to": 1218,
+        "ruler": "Yelü Dashi und Nachfolger",
+        "rulerTitle": "Gurkhan",
+        "capital": "Balasagun",
+        "government": "Khaganat über muslimische Oasenstädte",
+        "religion": "Buddhismus und Nestorianismus der Herrschenden; muslimische Mehrheit",
+        "languages": ["Kitanisch", "Chinesisch", "Persisch", "Türkisch"],
+        "population": "einige Millionen",
+        "economy": "Seidenstraßenhandel, Oasenlandwirtschaft",
+        "summary": [
+          "Nach dem Sturz der Liao-Dynastie ziehen Reste des Kitan-Adels nach Westen und gründen in Zentralasien ein neues Reich.",
+          "Berichte über einen mächtigen nichtmuslimischen Herrscher im Osten nährten in Europa die Legende vom Priesterkönig Johannes."
+        ]
+      }
+    ]
+  },
+
+  "Oghuz Turks": {
+    "kind": "Stammesbund",
+    "wiki": "Oghusen",
+    "periods": [
+      {
+        "from": 750, "to": 1150,
+        "ruler": "Yabgu – Oberhaupt des Bundes",
+        "rulerTitle": "Yabgu",
+        "capital": "Yengikent am Syrdarja",
+        "government": "Stammesbund aus 24 Verbänden",
+        "religion": "Tengrismus, ab dem 10. Jahrhundert zunehmend Islam",
+        "languages": ["Oghusisch"],
+        "population": "wenige Millionen",
+        "economy": "Viehzucht, Karawanenzölle, Söldnerdienste",
+        "summary": [
+          "Aus den Oghusen gehen die Seldschuken und später die Osmanen hervor. Türkisch, Aserbaidschanisch und Turkmenisch sind heute oghusische Sprachen.",
+          "Das Buch des Dede Korkut, im 15. Jahrhundert aufgeschrieben, bewahrt ihre Heldenepen."
+        ]
+      }
+    ]
+  },
+
+  "Karasuk culture": {
+    "kind": "Bronzezeitliche Kultur",
+    "wiki": "Karasuk-Kultur",
+    "periods": [
+      {
+        "from": -1500, "to": -800,
+        "ruler": "unbekannt",
+        "rulerTitle": "—",
+        "capital": "Grabfelder am oberen Jenissei",
+        "government": "Clanverbände",
+        "religion": "Grabkulte mit Steinkisten",
+        "languages": ["unbekannt"],
+        "population": "wenige Zehntausend",
+        "economy": "Viehzucht, Bronzeguss",
+        "summary": "Die Karasuk-Kultur Südsibiriens ist für ihre Bronzemesser mit Tierkopfgriffen bekannt. Ihre Formen finden sich bis nach Nordchina – ein früher Beleg für Austausch über die Steppe."
+      }
+    ]
+  },
+
+  "Andronovo": {
+    "kind": "Bronzezeitliche Kultur",
+    "wiki": "Andronowo-Kultur",
+    "periods": [
+      {
+        "from": -2000, "to": -900,
+        "ruler": "unbekannt",
+        "rulerTitle": "—",
+        "capital": "Befestigte Siedlungen wie Sintaschta und Arkaim",
+        "government": "Clanverbände mit Kriegereliten",
+        "religion": "Pferde- und Wagenopfer",
+        "languages": ["Frühe indoiranische Sprachen"],
+        "population": "einige Hunderttausend",
+        "economy": "Viehzucht, Kupfer- und Zinnbergbau, Wagenbau",
+        "summary": [
+          "In Sintaschta finden sich die ältesten bekannten Speichenrad-Streitwagen der Welt – rund 2000 v. Chr.",
+          "Die Andronowo-Kultur gilt vielen Forschenden als Ausgangspunkt der indoiranischen Wanderungen nach Iran und Indien."
+        ]
+      }
+    ]
+  },
+
+  "Antarctica": {
+    "kind": "Kondominium ohne Staatsgewalt",
+    "wiki": "Antarktika",
+    "periods": [
+      {
+        "from": 1900, "to": null,
+        "ruler": "Kein Staat – Verwaltung durch die Vertragsstaaten gemeinsam",
+        "rulerTitle": "Konsultativtreffen des Antarktisvertrags",
+        "capital": "keine",
+        "government": "Antarktisvertrag von 1959: militärfrei, forschungsoffen, Gebietsansprüche eingefroren",
+        "religion": "—",
+        "languages": ["Sprachen der Forschungsstationen"],
+        "population": "1.000 bis 4.500 Personen je nach Jahreszeit",
+        "economy": "Forschung; Bergbau ist bis mindestens 2048 verboten",
+        "summary": [
+          "Der Antarktisvertrag von 1959 stellt einen ganzen Kontinent unter gemeinsame friedliche Nutzung – eines der erfolgreichsten Abkommen des Kalten Krieges, unterzeichnet von Ost und West.",
+          "Der Eispanzer speichert etwa 60 Prozent des Süßwassers der Erde. Bohrkerne aus ihm liefern ein Klimaarchiv über 800.000 Jahre."
+        ]
+      }
+    ]
+  },
+
+  "Pampas cultures": {
+    "kind": "Steppenjägerkulturen",
+    "wiki": "Pampa",
+    "periods": [
+      {
+        "from": -8000, "to": 1880,
+        "ruler": "Keine dauerhafte Herrschaft",
+        "rulerTitle": "Anführer auf Zeit",
+        "capital": "Wanderlager",
+        "government": "Bewegliche Gruppen",
+        "religion": "Naturgeister, Ahnenkult",
+        "languages": ["Günün a künä, Mapudungun, Tehuelche"],
+        "population": "einige Zehntausend",
+        "economy": "Guanako- und Nandujagd, ab dem 17. Jahrhundert beritten",
+        "summary": [
+          "Die Bolas – über Riemen verbundene Steinkugeln – sind die kennzeichnende Jagdwaffe der Pampa und wurden später von den Gauchos übernommen.",
+          "Die argentinische „Wüstenkampagne“ ab 1878 beendet die Eigenständigkeit dieser Gesellschaften gewaltsam."
+        ]
+      }
+    ]
+  },
+
+  "Hindu kingdoms": {
+    "kind": "Staatenwelt",
+    "wiki": "Geschichte Indiens",
+    "periods": [
+      {
+        "from": -500, "to": 1700,
+        "ruler": "Zahlreiche regionale Dynastien",
+        "rulerTitle": "Raja, Maharaja",
+        "capital": "je nach Reich – Kannauj, Thanjavur, Madurai u. a.",
+        "government": "Konkurrierende Königreiche mit Lehnsfürsten (Samanta)",
+        "religion": "Hinduismus, daneben Jainismus und Buddhismus",
+        "languages": ["Sanskrit", "Tamil", "Telugu", "Kannada", "Prakrit"],
+        "population": "mehrere Zehn Millionen",
+        "economy": "Landwirtschaft, Tempelwirtschaft, Fernhandel bis Rom und Südostasien",
+        "summary": [
+          "Der Datensatz fasst hier eine Vielzahl eigenständiger Reiche zusammen – von den Cholas im Süden bis zu den Rajputen im Norden.",
+          "Die Tempel dieser Reiche sind zugleich Banken, Schulen und Arbeitgeber. Der Brihadeeswarar-Tempel der Cholas von 1010 trägt einen 80 Tonnen schweren Kuppelstein.",
+          "Über den Seehandel gelangen Hinduismus und Buddhismus nach Südostasien – Angkor und Borobudur gehen auf diesen Austausch zurück."
+        ]
+      }
+    ]
+  },
+
+  "Islamic city-states": {
+    "kind": "Handelsstädte",
+    "wiki": "Swahili-Küste",
+    "periods": [
+      {
+        "from": 900, "to": 1600,
+        "ruler": "Sultane einzelner Städte",
+        "rulerTitle": "Sultan",
+        "capital": "Kilwa, Mombasa, Malindi, Sansibar",
+        "government": "Selbständige Stadtstaaten in loser Konkurrenz",
+        "religion": "Sunnitischer Islam",
+        "languages": ["Suaheli", "Arabisch"],
+        "population": "je Stadt einige Zehntausend",
+        "economy": "Gold aus Simbabwe, Elfenbein, Sklavenhandel, Monsunhandel nach Indien",
+        "summary": [
+          "Entlang der ostafrikanischen Küste entsteht eine Kette wohlhabender Handelsstädte. Das Suaheli verbindet Bantu-Grammatik mit arabischem Wortschatz.",
+          "Ibn Battuta besucht Kilwa 1331 und nennt es eine der schönsten Städte der Welt. Chinesisches Porzellan aus dieser Zeit findet sich in den Ruinen.",
+          "Ab 1500 zerstören portugiesische Flotten die Vormacht der Städte."
+        ]
+      }
+    ]
+  },
+
+  "Slavonic tribes": {
+    "kind": "Stammesverbände",
+    "wiki": "Slawen",
+    "periods": [
+      {
+        "from": 500, "to": 1000,
+        "ruler": "Stammesfürsten",
+        "rulerTitle": "Fürst (Knjaz)",
+        "capital": "Burgwälle als Zentren",
+        "government": "Stammesverbände mit Volksversammlungen",
+        "religion": "Slawische Vielgötterei, ab dem 9. Jahrhundert Christianisierung",
+        "languages": ["Urslawisch"],
+        "population": "einige Millionen",
+        "economy": "Ackerbau, Bienenzucht, Pelz- und Wachshandel",
+        "summary": [
+          "Zwischen dem 6. und 8. Jahrhundert breiten sich slawische Gruppen über halb Europa aus – von der Elbe bis zur Wolga, von der Ostsee bis zur Peloponnes.",
+          "Die Mission der Brüder Kyrill und Method schafft im 9. Jahrhundert eine eigene Schrift; aus der glagolitischen entwickelt sich die kyrillische."
+        ]
+      }
+    ]
+  }
+}

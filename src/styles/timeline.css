@@ -1,0 +1,265 @@
+/* ============================================================
+   Zeitleiste – Epochenband, Zeitschnitt-Marken, Regler
+   ============================================================ */
+
+.timeline {
+  grid-area: time;
+  position: relative;
+  z-index: 600;
+  padding: .55rem clamp(.9rem, 3vw, 2rem) calc(.7rem + var(--safe-b));
+  background: linear-gradient(180deg,
+              color-mix(in srgb, var(--surface-solid) 55%, transparent) 0%,
+              var(--surface-solid) 42%);
+  border-top: 1px solid var(--hairline);
+  backdrop-filter: blur(22px) saturate(150%);
+  -webkit-backdrop-filter: blur(22px) saturate(150%);
+  user-select: none;
+}
+
+.timeline__head {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: .45rem;
+}
+
+.timeline__controls { display: flex; align-items: center; gap: .3rem; }
+
+.tbtn {
+  width: 2.2rem; height: 2.2rem;
+  display: grid; place-items: center;
+  border-radius: var(--r-sm);
+  color: var(--ink-muted);
+  transition: color var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+.tbtn:hover { color: var(--ink-strong); background: var(--surface-2); }
+.tbtn:disabled { opacity: .3; cursor: default; }
+.tbtn:disabled:hover { background: none; color: var(--ink-muted); }
+
+.tbtn--play {
+  width: 2.55rem; height: 2.55rem;
+  border-radius: 50%;
+  color: var(--ocean-1);
+  background: var(--gold);
+  box-shadow: 0 2px 14px color-mix(in srgb, var(--gold) 45%, transparent);
+}
+[data-theme="parchment"] .tbtn--play { color: #fdf8ec; }
+.tbtn--play:hover {
+  color: var(--ocean-1);
+  background: var(--gold-soft);
+  transform: scale(1.05);
+}
+[data-theme="parchment"] .tbtn--play:hover { color: #fdf8ec; }
+
+/* ------------------------------------------------------- Jahresanzeige */
+
+.timeline__readout {
+  display: flex;
+  align-items: baseline;
+  gap: .85rem;
+  min-width: 0;
+}
+
+.year {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.4vw, 2.15rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -.015em;
+  color: var(--ink-strong);
+  font-variant-numeric: tabular-nums lining-nums;
+  white-space: nowrap;
+}
+.year sub {
+  font-family: var(--font-ui);
+  font-size: .42em;
+  font-weight: 500;
+  letter-spacing: .06em;
+  bottom: 0;
+  margin-left: .28em;
+  color: var(--ink-faint);
+}
+
+.year__meta { display: grid; gap: .1rem; min-width: 0; }
+.year__era {
+  font-size: .66rem;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+  color: var(--era-color, var(--gold));
+  font-weight: 600;
+  white-space: nowrap;
+}
+.year__title {
+  font-size: .84rem;
+  color: var(--ink-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.timeline__stats {
+  display: flex;
+  gap: 1.1rem;
+  font-size: .72rem;
+  color: var(--ink-faint);
+  white-space: nowrap;
+}
+.timeline__stats b {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  font-weight: 500;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.15;
+}
+
+/* ------------------------------------------------------------ Regler */
+
+.track {
+  position: relative;
+  height: 2.5rem;
+  cursor: pointer;
+  touch-action: none;
+  outline: none;
+}
+
+.track__eras {
+  position: absolute;
+  left: 0; right: 0; top: .35rem;
+  height: 1.1rem;
+  display: flex;
+  border-radius: 4px;
+  overflow: hidden;
+  opacity: .85;
+}
+.track__eras i {
+  position: relative;
+  height: 100%;
+  background: var(--c);
+  display: block;
+  min-width: 0;
+}
+.track__eras i + i { box-shadow: inset 1px 0 0 rgba(0, 0, 0, .3); }
+.track__eras i b {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: .6rem;
+  font-weight: 600;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .92);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .5);
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0 .3rem;
+}
+
+.track__ticks {
+  position: absolute;
+  left: 0; right: 0;
+  top: 1.75rem;
+  height: .55rem;
+}
+.track__ticks i {
+  position: absolute;
+  bottom: 0;
+  width: 1px;
+  height: .3rem;
+  margin-left: -.5px;
+  background: var(--hairline-strong);
+  transition: height var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+.track__ticks i.is-major { height: .55rem; background: var(--ink-faint); }
+.track__ticks i.is-active { background: var(--gold); height: .55rem; }
+
+.track__fill {
+  position: absolute;
+  left: 0; top: .35rem;
+  height: 1.1rem;
+  border-radius: 4px 0 0 4px;
+  background: linear-gradient(90deg,
+              rgba(255, 255, 255, .16), rgba(255, 255, 255, .06));
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+.track__handle {
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 2.05rem;
+  pointer-events: none;
+  will-change: transform;
+}
+.track__handle::before {
+  content: "";
+  position: absolute;
+  left: -1px; top: .1rem;
+  width: 2px;
+  height: 1.6rem;
+  border-radius: 2px;
+  background: var(--ink-strong);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .35), 0 0 12px rgba(0, 0, 0, .5);
+}
+.track__handle b {
+  position: absolute;
+  left: 50%; top: 1.55rem;
+  width: .92rem; height: .92rem;
+  margin-left: -.46rem;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 2px solid var(--surface-solid);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, .5);
+  transition: transform 140ms var(--ease);
+}
+.track.is-dragging .track__handle b,
+.track:hover .track__handle b { transform: scale(1.22); }
+.track:focus-visible .track__handle b { box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 50%, transparent); }
+
+.track__scale {
+  position: relative;
+  height: 1rem;
+  margin-top: -.15rem;
+}
+.track__scale i {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  font-size: .64rem;
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Sprungmarken beim Ziehen */
+.track__bubble {
+  position: absolute;
+  bottom: 2.7rem;
+  transform: translateX(-50%);
+  padding: .22rem .55rem;
+  border-radius: var(--r-sm);
+  background: var(--surface-solid);
+  border: 1px solid var(--hairline-strong);
+  box-shadow: var(--shadow-1);
+  font-size: .76rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-strong);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 140ms var(--ease);
+}
+.track.is-dragging .track__bubble { opacity: 1; }
+
+/* --------------------------------------------------------- Kompakt */
+
+@media (max-width: 720px) {
+  .timeline__head { grid-template-columns: auto 1fr; gap: .7rem; }
+  .timeline__stats { display: none; }
+  .track__eras i b { font-size: .55rem; }
+}

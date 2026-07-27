@@ -1,0 +1,701 @@
+{
+ "generated": "2026-07-27",
+ "source": {
+  "name": "Historical Basemaps",
+  "author": "André Ourednik u. a.",
+  "url": "https://github.com/aourednik/historical-basemaps",
+  "license": "GPL-3.0"
+ },
+ "eras": [
+  {
+   "id": "iceage",
+   "from": null,
+   "to": -9001,
+   "name": "Eiszeitalter",
+   "short": "Eiszeit"
+  },
+  {
+   "id": "neolithic",
+   "from": -9000,
+   "to": -3001,
+   "name": "Jungsteinzeit",
+   "short": "Neolithikum"
+  },
+  {
+   "id": "bronze",
+   "from": -3000,
+   "to": -1201,
+   "name": "Bronzezeit",
+   "short": "Bronze"
+  },
+  {
+   "id": "iron",
+   "from": -1200,
+   "to": -501,
+   "name": "Eisenzeit",
+   "short": "Eisen"
+  },
+  {
+   "id": "antiquity",
+   "from": -500,
+   "to": 475,
+   "name": "Antike",
+   "short": "Antike"
+  },
+  {
+   "id": "earlymiddle",
+   "from": 476,
+   "to": 1000,
+   "name": "Frühmittelalter",
+   "short": "Frühma."
+  },
+  {
+   "id": "highmiddle",
+   "from": 1001,
+   "to": 1300,
+   "name": "Hochmittelalter",
+   "short": "Hochma."
+  },
+  {
+   "id": "latemiddle",
+   "from": 1301,
+   "to": 1492,
+   "name": "Spätmittelalter",
+   "short": "Spätma."
+  },
+  {
+   "id": "earlymodern",
+   "from": 1493,
+   "to": 1648,
+   "name": "Frühe Neuzeit",
+   "short": "Frühe NZ"
+  },
+  {
+   "id": "absolutism",
+   "from": 1649,
+   "to": 1788,
+   "name": "Zeitalter des Absolutismus",
+   "short": "Absolutismus"
+  },
+  {
+   "id": "revolution",
+   "from": 1789,
+   "to": 1870,
+   "name": "Revolutionen & Nationalstaaten",
+   "short": "Revolutionen"
+  },
+  {
+   "id": "imperialism",
+   "from": 1871,
+   "to": 1913,
+   "name": "Hochimperialismus",
+   "short": "Imperialismus"
+  },
+  {
+   "id": "worldwars",
+   "from": 1914,
+   "to": 1945,
+   "name": "Zeitalter der Weltkriege",
+   "short": "Weltkriege"
+  },
+  {
+   "id": "coldwar",
+   "from": 1946,
+   "to": 1991,
+   "name": "Kalter Krieg",
+   "short": "Kalter Krieg"
+  },
+  {
+   "id": "present",
+   "from": 1992,
+   "to": null,
+   "name": "Gegenwart",
+   "short": "Gegenwart"
+  }
+ ],
+ "epochs": [
+  {
+   "year": -123000,
+   "key": "bc123000",
+   "file": "data/epochs/bc123000.json",
+   "label": "123.000 v. Chr.",
+   "title": "Frühe Menschenformen",
+   "era": "iceage",
+   "polities": 3,
+   "features": 4,
+   "bytes": 6653
+  },
+  {
+   "year": -10000,
+   "key": "bc10000",
+   "file": "data/epochs/bc10000.json",
+   "label": "10.000 v. Chr.",
+   "title": "Ende der letzten Eiszeit",
+   "era": "iceage",
+   "polities": 14,
+   "features": 16,
+   "bytes": 9494
+  },
+  {
+   "year": -8000,
+   "key": "bc8000",
+   "file": "data/epochs/bc8000.json",
+   "label": "8000 v. Chr.",
+   "title": "Beginn der Sesshaftigkeit",
+   "era": "neolithic",
+   "polities": 15,
+   "features": 17,
+   "bytes": 10277
+  },
+  {
+   "year": -5000,
+   "key": "bc5000",
+   "file": "data/epochs/bc5000.json",
+   "label": "5000 v. Chr.",
+   "title": "Frühe Ackerbaukulturen",
+   "era": "neolithic",
+   "polities": 29,
+   "features": 29,
+   "bytes": 35005
+  },
+  {
+   "year": -4000,
+   "key": "bc4000",
+   "file": "data/epochs/bc4000.json",
+   "label": "4000 v. Chr.",
+   "title": "Vor den ersten Städten",
+   "era": "neolithic",
+   "polities": 23,
+   "features": 23,
+   "bytes": 12678
+  },
+  {
+   "year": -3000,
+   "key": "bc3000",
+   "file": "data/epochs/bc3000.json",
+   "label": "3000 v. Chr.",
+   "title": "Erste Hochkulturen",
+   "era": "bronze",
+   "polities": 25,
+   "features": 25,
+   "bytes": 13568
+  },
+  {
+   "year": -2000,
+   "key": "bc2000",
+   "file": "data/epochs/bc2000.json",
+   "label": "2000 v. Chr.",
+   "title": "Bronzezeitliche Reiche",
+   "era": "bronze",
+   "polities": 45,
+   "features": 45,
+   "bytes": 36280
+  },
+  {
+   "year": -1500,
+   "key": "bc1500",
+   "file": "data/epochs/bc1500.json",
+   "label": "1500 v. Chr.",
+   "title": "Blüte des Neuen Reichs",
+   "era": "bronze",
+   "polities": 68,
+   "features": 69,
+   "bytes": 48947
+  },
+  {
+   "year": -1000,
+   "key": "bc1000",
+   "file": "data/epochs/bc1000.json",
+   "label": "1000 v. Chr.",
+   "title": "Umbruch nach dem Bronzezeitkollaps",
+   "era": "iron",
+   "polities": 69,
+   "features": 70,
+   "bytes": 49157
+  },
+  {
+   "year": -700,
+   "key": "bc700",
+   "file": "data/epochs/bc700.json",
+   "label": "700 v. Chr.",
+   "title": "Assyrien und die Eisenzeit",
+   "era": "iron",
+   "polities": 73,
+   "features": 80,
+   "bytes": 51319
+  },
+  {
+   "year": -500,
+   "key": "bc500",
+   "file": "data/epochs/bc500.json",
+   "label": "500 v. Chr.",
+   "title": "Perserreich und griechische Poleis",
+   "era": "antiquity",
+   "polities": 74,
+   "features": 77,
+   "bytes": 47398
+  },
+  {
+   "year": -400,
+   "key": "bc400",
+   "file": "data/epochs/bc400.json",
+   "label": "400 v. Chr.",
+   "title": "Klassisches Griechenland",
+   "era": "antiquity",
+   "polities": 76,
+   "features": 81,
+   "bytes": 50737
+  },
+  {
+   "year": -323,
+   "key": "bc323",
+   "file": "data/epochs/bc323.json",
+   "label": "323 v. Chr.",
+   "title": "Tod Alexanders des Großen",
+   "era": "antiquity",
+   "polities": 68,
+   "features": 75,
+   "bytes": 42007
+  },
+  {
+   "year": -300,
+   "key": "bc300",
+   "file": "data/epochs/bc300.json",
+   "label": "300 v. Chr.",
+   "title": "Diadochenreiche",
+   "era": "antiquity",
+   "polities": 73,
+   "features": 79,
+   "bytes": 43228
+  },
+  {
+   "year": -200,
+   "key": "bc200",
+   "file": "data/epochs/bc200.json",
+   "label": "200 v. Chr.",
+   "title": "Rom und Han greifen aus",
+   "era": "antiquity",
+   "polities": 86,
+   "features": 86,
+   "bytes": 55227
+  },
+  {
+   "year": -100,
+   "key": "bc100",
+   "file": "data/epochs/bc100.json",
+   "label": "100 v. Chr.",
+   "title": "Späte Römische Republik",
+   "era": "antiquity",
+   "polities": 84,
+   "features": 85,
+   "bytes": 47945
+  },
+  {
+   "year": -1,
+   "key": "bc1",
+   "file": "data/epochs/bc1.json",
+   "label": "1 v. Chr.",
+   "title": "Zeitenwende",
+   "era": "antiquity",
+   "polities": 79,
+   "features": 80,
+   "bytes": 51995
+  },
+  {
+   "year": 100,
+   "key": "ad100",
+   "file": "data/epochs/ad100.json",
+   "label": "100 n. Chr.",
+   "title": "Rom auf dem Höhepunkt",
+   "era": "antiquity",
+   "polities": 83,
+   "features": 85,
+   "bytes": 53463
+  },
+  {
+   "year": 200,
+   "key": "ad200",
+   "file": "data/epochs/ad200.json",
+   "label": "200 n. Chr.",
+   "title": "Reiche im Umbruch",
+   "era": "antiquity",
+   "polities": 69,
+   "features": 70,
+   "bytes": 48234
+  },
+  {
+   "year": 300,
+   "key": "ad300",
+   "file": "data/epochs/ad300.json",
+   "label": "300 n. Chr.",
+   "title": "Krise und Neuordnung",
+   "era": "antiquity",
+   "polities": 71,
+   "features": 71,
+   "bytes": 48577
+  },
+  {
+   "year": 400,
+   "key": "ad400",
+   "file": "data/epochs/ad400.json",
+   "label": "400 n. Chr.",
+   "title": "Völkerwanderung",
+   "era": "antiquity",
+   "polities": 79,
+   "features": 80,
+   "bytes": 49680
+  },
+  {
+   "year": 500,
+   "key": "ad500",
+   "file": "data/epochs/ad500.json",
+   "label": "500 n. Chr.",
+   "title": "Nach dem Fall Westroms",
+   "era": "earlymiddle",
+   "polities": 87,
+   "features": 92,
+   "bytes": 51200
+  },
+  {
+   "year": 600,
+   "key": "ad600",
+   "file": "data/epochs/ad600.json",
+   "label": "600 n. Chr.",
+   "title": "Vorabend des Islam",
+   "era": "earlymiddle",
+   "polities": 83,
+   "features": 88,
+   "bytes": 53381
+  },
+  {
+   "year": 700,
+   "key": "ad700",
+   "file": "data/epochs/ad700.json",
+   "label": "700 n. Chr.",
+   "title": "Arabische Expansion",
+   "era": "earlymiddle",
+   "polities": 127,
+   "features": 133,
+   "bytes": 61925
+  },
+  {
+   "year": 800,
+   "key": "ad800",
+   "file": "data/epochs/ad800.json",
+   "label": "800 n. Chr.",
+   "title": "Karl der Große wird Kaiser",
+   "era": "earlymiddle",
+   "polities": 117,
+   "features": 122,
+   "bytes": 66712
+  },
+  {
+   "year": 900,
+   "key": "ad900",
+   "file": "data/epochs/ad900.json",
+   "label": "900 n. Chr.",
+   "title": "Zerfall der Großreiche",
+   "era": "earlymiddle",
+   "polities": 135,
+   "features": 138,
+   "bytes": 73511
+  },
+  {
+   "year": 1000,
+   "key": "ad1000",
+   "file": "data/epochs/ad1000.json",
+   "label": "1000 n. Chr.",
+   "title": "Europa um die Jahrtausendwende",
+   "era": "earlymiddle",
+   "polities": 129,
+   "features": 132,
+   "bytes": 70713
+  },
+  {
+   "year": 1100,
+   "key": "ad1100",
+   "file": "data/epochs/ad1100.json",
+   "label": "1100 n. Chr.",
+   "title": "Zeit der Kreuzzüge",
+   "era": "highmiddle",
+   "polities": 139,
+   "features": 150,
+   "bytes": 72745
+  },
+  {
+   "year": 1200,
+   "key": "ad1200",
+   "file": "data/epochs/ad1200.json",
+   "label": "1200 n. Chr.",
+   "title": "Aufstieg der Mongolen",
+   "era": "highmiddle",
+   "polities": 129,
+   "features": 136,
+   "bytes": 68972
+  },
+  {
+   "year": 1279,
+   "key": "ad1279",
+   "file": "data/epochs/ad1279.json",
+   "label": "1279 n. Chr.",
+   "title": "Das Mongolenreich am Zenit",
+   "era": "highmiddle",
+   "polities": 113,
+   "features": 116,
+   "bytes": 61008
+  },
+  {
+   "year": 1300,
+   "key": "ad1300",
+   "file": "data/epochs/ad1300.json",
+   "label": "1300 n. Chr.",
+   "title": "Spätmittelalterliche Ordnung",
+   "era": "highmiddle",
+   "polities": 113,
+   "features": 115,
+   "bytes": 59721
+  },
+  {
+   "year": 1400,
+   "key": "ad1400",
+   "file": "data/epochs/ad1400.json",
+   "label": "1400 n. Chr.",
+   "title": "Nach der Großen Pest",
+   "era": "latemiddle",
+   "polities": 115,
+   "features": 122,
+   "bytes": 64441
+  },
+  {
+   "year": 1492,
+   "key": "ad1492",
+   "file": "data/epochs/ad1492.json",
+   "label": "1492 n. Chr.",
+   "title": "Beginn der europäischen Expansion",
+   "era": "latemiddle",
+   "polities": 1307,
+   "features": 1317,
+   "bytes": 580032
+  },
+  {
+   "year": 1500,
+   "key": "ad1500",
+   "file": "data/epochs/ad1500.json",
+   "label": "1500 n. Chr.",
+   "title": "Renaissance und Entdeckungen",
+   "era": "earlymodern",
+   "polities": 139,
+   "features": 143,
+   "bytes": 81333
+  },
+  {
+   "year": 1530,
+   "key": "ad1530",
+   "file": "data/epochs/ad1530.json",
+   "label": "1530 n. Chr.",
+   "title": "Reformation und Konquista",
+   "era": "earlymodern",
+   "polities": 269,
+   "features": 278,
+   "bytes": 107057
+  },
+  {
+   "year": 1600,
+   "key": "ad1600",
+   "file": "data/epochs/ad1600.json",
+   "label": "1600 n. Chr.",
+   "title": "Zeitalter der Handelskompanien",
+   "era": "earlymodern",
+   "polities": 638,
+   "features": 661,
+   "bytes": 242764
+  },
+  {
+   "year": 1650,
+   "key": "ad1650",
+   "file": "data/epochs/ad1650.json",
+   "label": "1650 n. Chr.",
+   "title": "Nach dem Dreißigjährigen Krieg",
+   "era": "absolutism",
+   "polities": 593,
+   "features": 598,
+   "bytes": 225868
+  },
+  {
+   "year": 1700,
+   "key": "ad1700",
+   "file": "data/epochs/ad1700.json",
+   "label": "1700 n. Chr.",
+   "title": "Barockes Mächtesystem",
+   "era": "absolutism",
+   "polities": 584,
+   "features": 591,
+   "bytes": 223827
+  },
+  {
+   "year": 1715,
+   "key": "ad1715",
+   "file": "data/epochs/ad1715.json",
+   "label": "1715 n. Chr.",
+   "title": "Nach dem Spanischen Erbfolgekrieg",
+   "era": "absolutism",
+   "polities": 600,
+   "features": 606,
+   "bytes": 229570
+  },
+  {
+   "year": 1783,
+   "key": "ad1783",
+   "file": "data/epochs/ad1783.json",
+   "label": "1783 n. Chr.",
+   "title": "Unabhängigkeit der USA",
+   "era": "absolutism",
+   "polities": 549,
+   "features": 564,
+   "bytes": 217506
+  },
+  {
+   "year": 1800,
+   "key": "ad1800",
+   "file": "data/epochs/ad1800.json",
+   "label": "1800 n. Chr.",
+   "title": "Napoleonische Umwälzung",
+   "era": "revolution",
+   "polities": 546,
+   "features": 558,
+   "bytes": 216836
+  },
+  {
+   "year": 1815,
+   "key": "ad1815",
+   "file": "data/epochs/ad1815.json",
+   "label": "1815 n. Chr.",
+   "title": "Wiener Kongress",
+   "era": "revolution",
+   "polities": 313,
+   "features": 328,
+   "bytes": 142885
+  },
+  {
+   "year": 1880,
+   "key": "ad1880",
+   "file": "data/epochs/ad1880.json",
+   "label": "1880 n. Chr.",
+   "title": "Wettlauf um Afrika",
+   "era": "imperialism",
+   "polities": 169,
+   "features": 173,
+   "bytes": 91552
+  },
+  {
+   "year": 1900,
+   "key": "ad1900",
+   "file": "data/epochs/ad1900.json",
+   "label": "1900 n. Chr.",
+   "title": "Die Welt der Imperien",
+   "era": "imperialism",
+   "polities": 165,
+   "features": 222,
+   "bytes": 100178
+  },
+  {
+   "year": 1914,
+   "key": "ad1914",
+   "file": "data/epochs/ad1914.json",
+   "label": "1914 n. Chr.",
+   "title": "Vorabend des Ersten Weltkriegs",
+   "era": "worldwars",
+   "polities": 142,
+   "features": 144,
+   "bytes": 81161
+  },
+  {
+   "year": 1920,
+   "key": "ad1920",
+   "file": "data/epochs/ad1920.json",
+   "label": "1920 n. Chr.",
+   "title": "Nach den Pariser Vorortverträgen",
+   "era": "worldwars",
+   "polities": 163,
+   "features": 165,
+   "bytes": 80387
+  },
+  {
+   "year": 1930,
+   "key": "ad1930",
+   "file": "data/epochs/ad1930.json",
+   "label": "1930 n. Chr.",
+   "title": "Zwischenkriegszeit",
+   "era": "worldwars",
+   "polities": 161,
+   "features": 163,
+   "bytes": 84950
+  },
+  {
+   "year": 1938,
+   "key": "ad1938",
+   "file": "data/epochs/ad1938.json",
+   "label": "1938 n. Chr.",
+   "title": "Vorabend des Zweiten Weltkriegs",
+   "era": "worldwars",
+   "polities": 171,
+   "features": 175,
+   "bytes": 82594
+  },
+  {
+   "year": 1945,
+   "key": "ad1945",
+   "file": "data/epochs/ad1945.json",
+   "label": "1945 n. Chr.",
+   "title": "Ende des Zweiten Weltkriegs",
+   "era": "worldwars",
+   "polities": 183,
+   "features": 185,
+   "bytes": 85332
+  },
+  {
+   "year": 1960,
+   "key": "ad1960",
+   "file": "data/epochs/ad1960.json",
+   "label": "1960 n. Chr.",
+   "title": "Afrikanisches Jahr der Unabhängigkeit",
+   "era": "coldwar",
+   "polities": 157,
+   "features": 160,
+   "bytes": 88795
+  },
+  {
+   "year": 1994,
+   "key": "ad1994",
+   "file": "data/epochs/ad1994.json",
+   "label": "1994 n. Chr.",
+   "title": "Nach dem Ende der Sowjetunion",
+   "era": "present",
+   "polities": 193,
+   "features": 197,
+   "bytes": 93738
+  },
+  {
+   "year": 2000,
+   "key": "ad2000",
+   "file": "data/epochs/ad2000.json",
+   "label": "2000 n. Chr.",
+   "title": "Jahrtausendwende",
+   "era": "present",
+   "polities": 193,
+   "features": 198,
+   "bytes": 93906
+  },
+  {
+   "year": 2010,
+   "key": "ad2010",
+   "file": "data/epochs/ad2010.json",
+   "label": "2010 n. Chr.",
+   "title": "Gegenwart",
+   "era": "present",
+   "polities": 193,
+   "features": 198,
+   "bytes": 93897
+  }
+ ]
+}

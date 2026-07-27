@@ -1,0 +1,1090 @@
+{
+  "_hinweis": "Ergänzende Steckbriefe – kürzer gehalten als die Hauptartikel, aber mit denselben Angaben zu Herrschaft, Wirtschaft und Einordnung.",
+
+  "Uyghur Khaganate": {
+    "kind": "Khaganat",
+    "wiki": "Uigurisches Khaganat",
+    "founded": 744,
+    "dissolved": 840,
+    "periods": [
+      {
+        "from": 744, "to": 840,
+        "ruler": "Bögü Khagan",
+        "rulerTitle": "Khagan",
+        "capital": "Ordu-Baliq am Orchon",
+        "government": "Khaganat über Steppenstämme und Oasenstädte",
+        "religion": "Manichäismus als Staatsreligion – ein weltweit einmaliger Fall",
+        "languages": ["Alttürkisch", "Sogdisch"],
+        "population": "wenige Millionen",
+        "economy": "Pferdehandel mit den Tang, Seidenzölle",
+        "summary": [
+          "Die Uiguren retten 757 die Tang-Dynastie vor dem Aufstand des An Lushan und lassen sich dafür jährlich Zehntausende Ballen Seide zahlen.",
+          "Ordu-Baliq ist die erste dauerhafte Stadt der Mongolei. Nach dem Zusammenbruch 840 ziehen uigurische Gruppen ins Tarimbecken – die Vorgeschichte des heutigen Xinjiang."
+        ]
+      }
+    ]
+  },
+
+  "Rouran Khaganate": {
+    "kind": "Khaganat",
+    "wiki": "Rouran",
+    "founded": 330,
+    "dissolved": 555,
+    "periods": [
+      {
+        "from": 330, "to": 555,
+        "ruler": "Shelun",
+        "rulerTitle": "Khagan – der Titel wird hier erstmals geführt",
+        "capital": "Wanderhof in der Mongolei",
+        "government": "Stammesbund",
+        "religion": "Tengrismus, buddhistische Einflüsse",
+        "languages": ["vermutlich protomongolisch"],
+        "population": "wenige Hunderttausend",
+        "economy": "Viehzucht, Tribute aus Nordchina",
+        "summary": [
+          "Die Rouran führen als Erste den Titel „Khagan“, den später Türken und Mongolen übernehmen.",
+          "555 werden sie von ihren eigenen Untertanen, den Göktürken, gestürzt. Ein Teil zieht nach Westen – manche Forschende sehen darin den Ursprung der europäischen Awaren."
+        ]
+      }
+    ]
+  },
+
+  "Yuezhi": {
+    "kind": "Nomadenverband",
+    "wiki": "Yuezhi",
+    "periods": [
+      {
+        "from": -200, "to": 30,
+        "ruler": "Fürsten der fünf Teilstämme",
+        "rulerTitle": "Yabgu",
+        "capital": "Baktrien nach der Westwanderung",
+        "government": "Fünf Teilfürstentümer",
+        "religion": "Iranische Kulte, später Buddhismus",
+        "languages": ["Baktrisch", "vermutlich tocharische Vorläufer"],
+        "population": "einige Hunderttausend",
+        "economy": "Viehzucht, Jadehandel, später Seidenstraßenzölle",
+        "summary": [
+          "Von den Xiongnu aus dem Gansu-Korridor vertrieben, wandern die Yuezhi bis nach Baktrien – eine Kettenreaktion, die auch das griechisch-baktrische Königreich beendet.",
+          "Aus einem ihrer fünf Teilstämme geht das Kuschanreich hervor."
+        ]
+      }
+    ]
+  },
+
+  "Kimek-Kipchak khaganate": {
+    "kind": "Khaganat",
+    "wiki": "Kimek",
+    "periods": [
+      {
+        "from": 850, "to": 1150,
+        "ruler": "Khagan der Kimek",
+        "rulerTitle": "Khagan",
+        "capital": "Wanderhof am Irtysch",
+        "government": "Bund aus sieben Stämmen",
+        "religion": "Tengrismus, wachsender Islam",
+        "languages": ["Kiptschakisch"],
+        "population": "wenige Millionen",
+        "economy": "Viehzucht, Pelz- und Sklavenhandel",
+        "summary": "Der Kimek-Bund beherrscht die westsibirische Steppe. Aus ihm gehen die Kiptschaken hervor, die später bis an die Donau ziehen."
+      }
+    ]
+  },
+
+  "White Horde": {
+    "kind": "Teilreich der Goldenen Horde",
+    "wiki": "Weiße Horde",
+    "periods": [
+      {
+        "from": 1250, "to": 1450,
+        "ruler": "Urus Khan, später Tochtamysch",
+        "rulerTitle": "Khan",
+        "capital": "Sygnak am Syrdarja",
+        "government": "Khanat unter dschutschidischen Fürsten",
+        "religion": "Islam",
+        "languages": ["Kiptschakisch", "Mongolisch"],
+        "population": "einige Hunderttausend",
+        "economy": "Viehzucht, Karawanenhandel",
+        "summary": "Der östliche Flügel der Goldenen Horde in der kasachischen Steppe. Aus ihm gehen im 15. Jahrhundert das Usbeken- und das Kasachen-Chanat hervor."
+      }
+    ]
+  },
+
+  "Blue Horde": {
+    "kind": "Teilreich der Goldenen Horde",
+    "wiki": "Blaue Horde",
+    "periods": [
+      {
+        "from": 1250, "to": 1450,
+        "ruler": "Dschutschidische Khane",
+        "rulerTitle": "Khan",
+        "capital": "Wanderlager in der Steppe",
+        "government": "Khanat",
+        "religion": "Islam",
+        "languages": ["Kiptschakisch"],
+        "population": "einige Hunderttausend",
+        "economy": "Viehzucht, Tribute",
+        "summary": "Der andere Flügel der Goldenen Horde. Welche Farbbezeichnung für welchen Reichsteil stand, ist in den Quellen uneinheitlich überliefert."
+      }
+    ]
+  },
+
+  "Nogai Horde": {
+    "kind": "Nomadenverband",
+    "wiki": "Nogaier-Horde",
+    "periods": [
+      {
+        "from": 1440, "to": 1634,
+        "ruler": "Bii – Oberhaupt der Mangyten",
+        "rulerTitle": "Bii",
+        "capital": "Saraitschik am Ural",
+        "government": "Stammesverband ohne dschingisidischen Khan",
+        "religion": "Sunnitischer Islam",
+        "languages": ["Nogaisch"],
+        "population": "einige Hunderttausend",
+        "economy": "Pferdezucht, Handel mit Moskau",
+        "summary": "Die Nogaier verkaufen bis zu 50.000 Pferde jährlich nach Moskau. Unter russischem und kalmückischem Druck zerfällt der Verband im 17. Jahrhundert."
+      }
+    ]
+  },
+
+  "Kazakh Khanate": {
+    "kind": "Chanat",
+    "wiki": "Kasachen-Chanat",
+    "founded": 1465,
+    "dissolved": 1847,
+    "periods": [
+      {
+        "from": 1465, "to": 1847,
+        "ruler": "Ablai Khan",
+        "rulerTitle": "Khan",
+        "reign": "1771–1781",
+        "capital": "Turkestan (Yasy)",
+        "government": "Chanat mit drei Stammesverbänden (Jüz)",
+        "religion": "Sunnitischer Islam",
+        "languages": ["Kasachisch"],
+        "population": "ca. 3 Mio.",
+        "economy": "Viehzucht, Karawanenhandel",
+        "summary": [
+          "Die Gliederung in drei Jüz – Groß-, Mittel- und Kleinjüz – prägt die kasachische Gesellschaft bis heute.",
+          "Im 18. Jahrhundert sucht das Chanat gegen die Dsungaren russischen Schutz; daraus wird schrittweise Eingliederung ins Zarenreich."
+        ]
+      }
+    ]
+  },
+
+  "Kazakhstan": {
+    "kind": "Republik",
+    "wiki": "Kasachstan",
+    "founded": 1991,
+    "periods": [
+      {
+        "from": 1991, "to": null,
+        "ruler": "Nursultan Nasarbajew, später Kassym-Schomart Tokajew",
+        "rulerTitle": "Präsident der Republik Kasachstan",
+        "capital": "Astana (zeitweise Nur-Sultan)",
+        "government": "Präsidiale Republik",
+        "religion": "Sunnitischer Islam, orthodoxes Christentum",
+        "languages": ["Kasachisch", "Russisch"],
+        "population": "ca. 20 Mio.",
+        "economy": "Erdöl, Uran, Getreide, Metalle",
+        "summary": [
+          "Der größte Binnenstaat der Erde. Kasachstan gab nach 1991 als einziges Land freiwillig ein einsatzbereites Kernwaffenarsenal ab.",
+          "Von Baikonur aus starten seit 1957 Raumflüge – auch der erste Mensch im All."
+        ]
+      }
+    ]
+  },
+
+  "Turan": {
+    "kind": "Steppenraum",
+    "wiki": "Turan",
+    "periods": [
+      {
+        "from": 1500, "to": 1850,
+        "ruler": "Wechselnde Stammesverbände",
+        "rulerTitle": "Chane und Bii",
+        "capital": "kein Zentrum",
+        "government": "Nomadische Verbände zwischen den Oasenchanaten",
+        "religion": "Sunnitischer Islam",
+        "languages": ["Turkmenisch", "Kasachisch", "Usbekisch"],
+        "population": "einige Millionen",
+        "economy": "Viehzucht, Karawanenwesen",
+        "summary": "„Turan“ ist eine alte persische Bezeichnung für das Land jenseits des Oxus – die Steppe der Nomaden im Gegensatz zum sesshaften Iran."
+      }
+    ]
+  },
+
+  "Buyid Emirates": {
+    "kind": "Emirate",
+    "wiki": "Buyiden",
+    "founded": 934,
+    "dissolved": 1062,
+    "periods": [
+      {
+        "from": 934, "to": 1062,
+        "ruler": "Adud ad-Daula",
+        "rulerTitle": "Emir der Emire",
+        "reign": "949–983",
+        "capital": "Schiras, Bagdad, Rey",
+        "government": "Teilherrschaften einer Familie über Iran und Irak",
+        "religion": "Zwölferschia; der sunnitische Kalif bleibt im Amt",
+        "languages": ["Persisch", "Arabisch"],
+        "population": "einige Millionen",
+        "economy": "Bewässerungslandwirtschaft, Handel, Dammbau",
+        "summary": [
+          "Die schiitischen Buyiden beherrschen ab 945 Bagdad, lassen den sunnitischen Kalifen aber im Amt – die Trennung von religiöser Würde und tatsächlicher Macht wird dauerhaft.",
+          "Der Band-e Amir bei Schiras zählt zu den bedeutendsten Staudämmen des Mittelalters."
+        ]
+      }
+    ]
+  },
+
+  "Aq Qoyunlu": {
+    "kind": "Stammesföderation",
+    "wiki": "Aq Qoyunlu",
+    "founded": 1378,
+    "dissolved": 1501,
+    "periods": [
+      {
+        "from": 1378, "to": 1501,
+        "ruler": "Uzun Hasan",
+        "rulerTitle": "Sultan",
+        "reign": "1453–1478",
+        "capital": "Diyarbakır, später Täbris",
+        "government": "Föderation turkmenischer Stämme",
+        "religion": "Sunnitischer Islam",
+        "languages": ["Aserbaidschanisch", "Persisch", "Armenisch"],
+        "population": "einige Millionen",
+        "economy": "Seidenhandel, Viehzucht",
+        "summary": [
+          "Die „Weißen Hammel“ beherrschen Ostanatolien, Aserbaidschan und Westiran. Uzun Hasan sucht Bündnisse mit Venedig gegen die Osmanen.",
+          "1501 lösen die Safawiden die Föderation ab."
+        ]
+      }
+    ]
+  },
+
+  "Almoravid dynasty": {
+    "kind": "Berberreich",
+    "wiki": "Almoraviden",
+    "founded": 1040,
+    "dissolved": 1147,
+    "periods": [
+      {
+        "from": 1040, "to": 1147,
+        "ruler": "Yusuf ibn Taschfin",
+        "rulerTitle": "Amir al-Muslimin",
+        "reign": "1061–1106",
+        "capital": "Marrakesch (gegründet 1070)",
+        "government": "Religiös begründetes Reich über Berberstämme",
+        "religion": "Sunnitischer Islam (Maliki-Schule)",
+        "languages": ["Berbersprachen", "Arabisch"],
+        "population": "einige Millionen",
+        "economy": "Goldhandel über die Sahara, Viehzucht",
+        "summary": [
+          "Aus einer Reformbewegung sanhadjischer Berber entsteht ein Reich vom Senegal bis nach Zaragoza – der erste Staat, der die Sahara politisch überbrückt.",
+          "Der almoravidische Golddinar ist eine der angesehensten Münzen des Mittelmeerraums; christliche Herrscher ahmen ihn nach."
+        ]
+      }
+    ]
+  },
+
+  "Berbers": {
+    "kind": "Völker Nordafrikas",
+    "wiki": "Berber",
+    "periods": [
+      {
+        "from": -3000, "to": null,
+        "ruler": "Stammesverbände, zeitweise eigene Reiche",
+        "rulerTitle": "Amghar – Stammesoberhaupt",
+        "capital": "kein Zentrum; Bezugspunkte Fès, Kairouan, Ghadames",
+        "government": "Stammesräte (Jemaa), zeitweise Königreiche wie Numidien",
+        "religion": "Traditionelle Kulte, Christentum in der Antike, später Islam",
+        "languages": ["Tamazight in zahlreichen Varianten"],
+        "population": "heute ca. 25 bis 30 Mio.",
+        "economy": "Oasenlandwirtschaft, Viehzucht, Karawanenhandel",
+        "summary": [
+          "Die Imazighen – „die Freien“ – sind die älteste bezeugte Bevölkerung Nordafrikas. Ihre Schrift Tifinagh geht auf das antike Libysche zurück.",
+          "Aus ihren Reihen stammen der Kirchenvater Augustinus, der Feldherr Hannibals Verbündeter Massinissa und die Dynastien der Almoraviden und Almohaden.",
+          "Marokko und Algerien haben Tamazight erst 2011 bzw. 2016 als Amtssprache anerkannt."
+        ]
+      }
+    ]
+  },
+
+  "Arabs": {
+    "kind": "Stammesgesellschaften",
+    "wiki": "Araber",
+    "periods": [
+      {
+        "from": -800, "to": 600,
+        "ruler": "Stammesscheichs",
+        "rulerTitle": "Scheich – Erster unter Gleichen",
+        "capital": "kein Zentrum; Handelsorte Mekka, Petra, Ma'rib",
+        "government": "Stammesverbände mit Beratungsversammlungen",
+        "religion": "Vielgötterei, jüdische und christliche Gemeinden",
+        "languages": ["Altarabisch"],
+        "population": "einige Millionen",
+        "economy": "Kamelkarawanen, Weihrauch, Oasenlandwirtschaft",
+        "summary": [
+          "Die Domestizierung des Dromedars macht die arabische Halbinsel zur Landbrücke zwischen Indischem Ozean und Mittelmeer.",
+          "Die vorislamische Dichtung dieser Stämme gilt bis heute als sprachliche Grundlage des klassischen Arabisch."
+        ]
+      }
+    ]
+  },
+
+  "Bedouins": {
+    "kind": "Nomadengesellschaften",
+    "wiki": "Beduinen",
+    "periods": [
+      {
+        "from": -1000, "to": null,
+        "ruler": "Scheichs der Stämme",
+        "rulerTitle": "Scheich",
+        "capital": "kein fester Ort",
+        "government": "Stammesverbände mit Rat der Ältesten",
+        "religion": "Islam",
+        "languages": ["Arabisch"],
+        "population": "einige Millionen",
+        "economy": "Kamel- und Ziegenzucht, Karawanenschutz, Handel",
+        "summary": [
+          "Der Name bedeutet schlicht „Wüstenbewohner“. Gastfreundschaft ist in dieser Umwelt keine Höflichkeit, sondern eine überlebenswichtige Regel.",
+          "Die Grenzziehungen des 20. Jahrhunderts durchschneiden Wanderwege, die über Jahrhunderte bestanden hatten."
+        ]
+      }
+    ]
+  },
+
+  "Semites": {
+    "kind": "Sprachfamilie",
+    "wiki": "Semitische Sprachen",
+    "periods": [
+      {
+        "from": -3000, "to": -500,
+        "ruler": "Zahlreiche Stadtstaaten und Königreiche",
+        "rulerTitle": "Könige von Akkad, Babylon, Assur, Tyros u. a.",
+        "capital": "Akkad, Babylon, Assur, Ugarit",
+        "government": "Stadtstaaten, später Territorialreiche",
+        "religion": "Vielgötterei; hier entsteht auch der frühe Monotheismus",
+        "languages": ["Akkadisch", "Aramäisch", "Phönizisch", "Hebräisch"],
+        "population": "einige Millionen",
+        "economy": "Bewässerungsackerbau, Fernhandel, Seehandel der Phönizier",
+        "summary": [
+          "Der Datensatz fasst hier den semitischen Sprachraum zusammen. Aus ihm gehen Akkad, Babylon, Assyrien und die phönizischen Städte hervor.",
+          "Die phönizische Konsonantenschrift ist die Wurzel des griechischen, lateinischen, hebräischen und arabischen Alphabets – und damit fast aller heute gebräuchlichen Schriften."
+        ]
+      }
+    ]
+  },
+
+  "Vedic Aryans": {
+    "kind": "Frühe indoarische Gesellschaft",
+    "wiki": "Vedische Zeit",
+    "periods": [
+      {
+        "from": -1500, "to": -500,
+        "ruler": "Raja eines Stammes",
+        "rulerTitle": "Raja, kontrolliert von Volksversammlungen (Sabha, Samiti)",
+        "capital": "keine Städte in der Frühphase",
+        "government": "Stammeskönigtümer mit Beratungsversammlungen",
+        "religion": "Vedische Opferreligion – Vorläufer des Hinduismus",
+        "languages": ["Vedisches Sanskrit"],
+        "population": "einige Millionen",
+        "economy": "Viehzucht, später Ackerbau am Ganges",
+        "summary": [
+          "Der Rigveda wurde über mehr als tausend Jahre mündlich weitergegeben, bevor er niedergeschrieben wurde – mit Merktechniken, die den Wortlaut erstaunlich genau bewahrten.",
+          "In dieser Zeit entstehen die Grundlagen des Hinduismus ebenso wie die frühen Formen der Ständeordnung."
+        ]
+      }
+    ]
+  },
+
+  "Dravidians": {
+    "kind": "Sprach- und Kulturraum",
+    "wiki": "Draviden",
+    "periods": [
+      {
+        "from": -2000, "to": 1500,
+        "ruler": "Regionale Dynastien",
+        "rulerTitle": "Könige der Chera, Chola und Pandya",
+        "capital": "Madurai, Thanjavur, Kanchipuram",
+        "government": "Königreiche und Kaufmannsgilden",
+        "religion": "Hinduismus, Jainismus, Buddhismus",
+        "languages": ["Tamil", "Telugu", "Kannada", "Malayalam"],
+        "population": "mehrere Zehn Millionen",
+        "economy": "Reisanbau, Gewürz- und Textilhandel nach Rom und Südostasien",
+        "summary": [
+          "Das Tamil gehört zu den ältesten durchgehend belegten Literatursprachen der Welt; die Sangam-Dichtung reicht bis ins letzte vorchristliche Jahrhundert zurück.",
+          "Römische Goldmünzen finden sich zu Tausenden in Südindien – Plinius klagte über den Abfluss von Edelmetall für Pfeffer und Seide."
+        ]
+      }
+    ]
+  },
+
+  "Tibetans": {
+    "kind": "Hochlandgesellschaften",
+    "wiki": "Tibeter",
+    "periods": [
+      {
+        "from": -2000, "to": 600,
+        "ruler": "Clanfürsten des Hochlands",
+        "rulerTitle": "Stammesfürsten",
+        "capital": "Yarlung-Tal",
+        "government": "Clanverbände",
+        "religion": "Bön",
+        "languages": ["Tibetische Sprachen"],
+        "population": "wenige Millionen",
+        "economy": "Yakhaltung, Gerstenanbau, Salzhandel",
+        "summary": [
+          "Das Leben auf über 4.000 Metern erforderte eine besondere Anpassung: Tibetische Bevölkerungen tragen Genvarianten, die die Sauerstoffverwertung verbessern – vermutlich von den Denisova-Menschen übernommen.",
+          "Aus den Clans des Yarlung-Tals geht im 7. Jahrhundert das Tibetische Reich hervor."
+        ]
+      }
+    ]
+  },
+
+  "Thai": {
+    "kind": "Tai-Sprachvölker",
+    "wiki": "Tai-Völker",
+    "periods": [
+      {
+        "from": -500, "to": 1300,
+        "ruler": "Fürsten der Mueang",
+        "rulerTitle": "Chao Mueang – Herr eines Talbeckens",
+        "capital": "Talsiedlungen (Mueang)",
+        "government": "Netz halbautonomer Fürstentümer",
+        "religion": "Geisterglaube, später Theravada-Buddhismus",
+        "languages": ["Tai-Kadai-Sprachen"],
+        "population": "einige Millionen",
+        "economy": "Nassreisanbau in Talbecken",
+        "summary": [
+          "Die Tai-Völker wandern über Jahrhunderte aus Südchina nach Süden und gründen ein Netz von Mueang – Fürstentümern rund um ein bewässerbares Talbecken.",
+          "Aus dieser Struktur gehen Sukhothai, Lan Na, Laos und die Shan-Staaten hervor."
+        ]
+      }
+    ]
+  },
+
+  "Tupis": {
+    "kind": "Dorfgesellschaften",
+    "wiki": "Tupí",
+    "periods": [
+      {
+        "from": 500, "to": 1700,
+        "ruler": "Dorfvorsteher und Kriegsanführer",
+        "rulerTitle": "Morubixaba",
+        "capital": "Dörfer aus Gemeinschaftshäusern",
+        "government": "Selbständige Dörfer in wechselnden Bündnissen",
+        "religion": "Schamanismus, Suche nach dem „Land ohne Übel“",
+        "languages": ["Tupí-Guaraní"],
+        "population": "ca. 1 Mio. um 1500",
+        "economy": "Maniok, Fischfang, Jagd",
+        "summary": [
+          "Die Tupí besiedeln zur Ankunft der Portugiesen weite Teile der brasilianischen Küste. Ihre Sprache wird als Língua Geral bis ins 18. Jahrhundert zur Verkehrssprache Brasiliens.",
+          "Tausende brasilianische Ortsnamen und viele Wörter wie Jaguar, Tapir, Ananas und Piranha stammen aus dem Tupí."
+        ]
+      }
+    ]
+  },
+
+  "Tekohá (Guarani)": {
+    "kind": "Dorfgesellschaften",
+    "wiki": "Guaraní",
+    "periods": [
+      {
+        "from": 500, "to": null,
+        "ruler": "Dorfvorsteher und Schamanen",
+        "rulerTitle": "Mburuvicha",
+        "capital": "Tekohá – Dorf und Lebensraum zugleich",
+        "government": "Selbständige Dorfgemeinschaften",
+        "religion": "Ñande Ru, Suche nach dem Land ohne Übel",
+        "languages": ["Guaraní"],
+        "population": "einige Hunderttausend",
+        "economy": "Mais, Maniok, Jagd, Mate",
+        "summary": [
+          "„Tekohá“ bezeichnet nicht nur den Ort, sondern die Bedingungen, unter denen ein Leben nach Guaraní-Art möglich ist – Land, Wald und Gemeinschaft zusammen.",
+          "Guaraní ist heute neben Spanisch Amtssprache Paraguays und wird dort von der Mehrheit gesprochen – weltweit ungewöhnlich für eine indigene Sprache."
+        ]
+      }
+    ]
+  },
+
+  "Dënéndeh": {
+    "kind": "Gebiet der Dene",
+    "wiki": "Dene",
+    "periods": [
+      {
+        "from": 800, "to": null,
+        "ruler": "Anführer auf Zeit",
+        "rulerTitle": "Anerkannte Jagd- und Ratsführer",
+        "capital": "kein Zentrum",
+        "government": "Regionale Gruppen mit Konsensentscheidungen",
+        "religion": "Schamanismus, Achtung vor den Tiergeistern",
+        "languages": ["Athapaskische Sprachen"],
+        "population": "einige Zehntausend",
+        "economy": "Karibujagd, Fischfang, Fallenstellerei",
+        "summary": [
+          "„Dënéndeh“ heißt „Land der Menschen“ und bezeichnet den Nordwesten Kanadas. Die Dene folgen den Karibuherden über weite Strecken.",
+          "Athapaskische Sprachen reichen bis in den Südwesten der USA – Navajo und Apache gehören zur selben Familie."
+        ]
+      }
+    ]
+  },
+
+  "Inuit": {
+    "kind": "Arktische Gesellschaften",
+    "wiki": "Inuit",
+    "periods": [
+      {
+        "from": 1200, "to": null,
+        "ruler": "Keine dauerhafte Herrschaft",
+        "rulerTitle": "Familienverbände; Angakkuq als Schamanen",
+        "capital": "Küstensiedlungen; heute Iqaluit und Nuuk",
+        "government": "Traditionell Lagergemeinschaften; heute Selbstverwaltung in Nunavut und Grönland",
+        "religion": "Traditionell Schamanismus, heute überwiegend christlich",
+        "languages": ["Inuktitut", "Grönländisch", "Iñupiaq"],
+        "population": "ca. 180.000",
+        "economy": "Jagd, Fischerei, Kunsthandwerk, Verwaltung",
+        "summary": [
+          "1999 entsteht mit Nunavut ein kanadisches Territorium unter Inuit-Selbstverwaltung – rund ein Fünftel der Landfläche Kanadas.",
+          "Grönland erhielt 1979 die innere Autonomie und 2009 weitgehende Selbstverwaltung; Grönländisch ist dort alleinige Amtssprache."
+        ]
+      }
+    ]
+  },
+
+  "Michif Piyii (Métis)": {
+    "kind": "Nation",
+    "wiki": "Métis",
+    "periods": [
+      {
+        "from": 1700, "to": null,
+        "ruler": "Gewählte Räte, im 19. Jahrhundert Louis Riel",
+        "rulerTitle": "Präsident der provisorischen Regierung (1869/70)",
+        "capital": "Red River Settlement (Winnipeg)",
+        "government": "Gemeinschaften mit gewählten Räten und Jagdgesetzen",
+        "religion": "Katholizismus, verbunden mit indigener Tradition",
+        "languages": ["Michif – eine Mischsprache aus Cree und Französisch"],
+        "population": "ca. 600.000 in Kanada",
+        "economy": "Bisonjagd, Pemmikanhandel, Frachtfahrt",
+        "summary": [
+          "Aus Verbindungen französischer und schottischer Pelzhändler mit Cree- und Anishinaabe-Frauen entsteht eine eigenständige Nation mit eigener Sprache, Flagge und Rechtsordnung.",
+          "Die Red-River-Rebellion 1869/70 führt zur Gründung der Provinz Manitoba. Louis Riel wird 1885 hingerichtet und gilt heute als Gründervater Manitobas."
+        ]
+      }
+    ]
+  },
+
+  "Luisiana": {
+    "kind": "Kolonie",
+    "wiki": "Louisiana (Neufrankreich)",
+    "founded": 1682,
+    "dissolved": 1803,
+    "periods": [
+      {
+        "from": 1682, "to": 1803,
+        "ruler": "Französischer, ab 1762 spanischer Gouverneur",
+        "rulerTitle": "Gouverneur von Louisiana",
+        "capital": "New Orleans",
+        "government": "Kolonialverwaltung über ein riesiges, kaum besiedeltes Gebiet",
+        "religion": "Katholizismus; indigene Religionen",
+        "languages": ["Französisch", "Spanisch", "indigene Sprachen"],
+        "population": "einige Zehntausend Siedler",
+        "economy": "Pelzhandel, Indigo, Zucker, Sklavenarbeit",
+        "summary": [
+          "Louisiana umfasst das gesamte Einzugsgebiet des Mississippi – rund ein Drittel der heutigen USA.",
+          "1803 verkauft Napoleon das Gebiet für 15 Millionen Dollar an die Vereinigten Staaten. Der Louisiana Purchase verdoppelt deren Staatsgebiet auf einen Schlag."
+        ]
+      }
+    ]
+  },
+
+  "Vice-Royalty of New Granada": {
+    "kind": "Vizekönigreich",
+    "wiki": "Vizekönigreich Neugranada",
+    "founded": 1717,
+    "dissolved": 1819,
+    "periods": [
+      {
+        "from": 1717, "to": 1819,
+        "ruler": "Spanischer Vizekönig",
+        "rulerTitle": "Vizekönig von Neugranada",
+        "capital": "Bogotá",
+        "government": "Vizekönigreich",
+        "religion": "Katholizismus",
+        "languages": ["Spanisch", "Quechua", "Chibcha"],
+        "population": "ca. 2 Mio.",
+        "economy": "Gold, Smaragde, Kakao, Tabak",
+        "summary": [
+          "Neugranada umfasst das heutige Kolumbien, Venezuela, Ecuador und Panama.",
+          "1819 entsteht daraus unter Simón Bolívar Großkolumbien, das 1831 in Einzelstaaten zerfällt."
+        ]
+      }
+    ]
+  },
+
+  "Viceroyalty of the Río de la Plata": {
+    "kind": "Vizekönigreich",
+    "wiki": "Vizekönigreich des Río de la Plata",
+    "founded": 1776,
+    "dissolved": 1814,
+    "periods": [
+      {
+        "from": 1776, "to": 1814,
+        "ruler": "Spanischer Vizekönig",
+        "rulerTitle": "Vizekönig des Río de la Plata",
+        "capital": "Buenos Aires",
+        "government": "Vizekönigreich",
+        "religion": "Katholizismus",
+        "languages": ["Spanisch", "Guaraní", "Quechua"],
+        "population": "ca. 1 Mio.",
+        "economy": "Silber aus Potosí, Häute, Rinderzucht",
+        "summary": "1776 aus dem Vizekönigreich Peru herausgelöst, um den Silberweg über den Atlantik zu sichern. Aus ihm gehen Argentinien, Uruguay, Paraguay und Bolivien hervor."
+      }
+    ]
+  },
+
+  "United Provinces of La Plata": {
+    "kind": "Staatenbund",
+    "wiki": "Vereinigte Provinzen des Río de la Plata",
+    "founded": 1810,
+    "dissolved": 1831,
+    "periods": [
+      {
+        "from": 1810, "to": 1831,
+        "ruler": "Wechselnde Direktoren und Provinzgouverneure",
+        "rulerTitle": "Oberster Direktor",
+        "capital": "Buenos Aires",
+        "government": "Loser Bund selbständiger Provinzen",
+        "religion": "Katholizismus",
+        "languages": ["Spanisch"],
+        "population": "ca. 1 Mio.",
+        "economy": "Viehwirtschaft, Häuteexport",
+        "summary": "Die Mairevolution von 1810 löst die Verbindung zu Spanien; 1816 wird die Unabhängigkeit erklärt. Der Streit zwischen Zentralisten und Föderalisten prägt die folgenden Jahrzehnte."
+      }
+    ]
+  },
+
+  "Anglo-Egyption Sudan": {
+    "kind": "Kondominium",
+    "wiki": "Anglo-Ägyptischer Sudan",
+    "founded": 1899,
+    "dissolved": 1956,
+    "periods": [
+      {
+        "from": 1899, "to": 1956,
+        "ruler": "Britischer Generalgouverneur",
+        "rulerTitle": "Generalgouverneur im Namen Großbritanniens und Ägyptens",
+        "capital": "Khartum",
+        "government": "Gemeinsame Verwaltung – faktisch britisch geführt",
+        "religion": "Islam im Norden, traditionelle Religionen und Christentum im Süden",
+        "languages": ["Arabisch", "Englisch", "Dinka", "Nuer"],
+        "population": "ca. 9 Mio.",
+        "economy": "Baumwolle aus dem Gezira-Bewässerungsprojekt, Gummiarabikum",
+        "summary": [
+          "Nach der Niederschlagung des Mahdi-Staates 1898 wird der Sudan formal gemeinsam von Großbritannien und Ägypten verwaltet.",
+          "Die getrennte Verwaltung von Nord und Süd legt den Grund für die späteren Bürgerkriege; 2011 wird der Südsudan unabhängig."
+        ]
+      }
+    ]
+  },
+
+  "Sudan": {
+    "kind": "Republik",
+    "wiki": "Sudan",
+    "founded": 1956,
+    "periods": [
+      {
+        "from": 1956, "to": null,
+        "ruler": "Wechselnde Präsidenten und Militärregierungen",
+        "rulerTitle": "Präsident",
+        "capital": "Khartum",
+        "government": "Republik mit häufigen Militärherrschaften",
+        "religion": "Sunnitischer Islam",
+        "languages": ["Arabisch", "Englisch"],
+        "population": "ca. 48 Mio.",
+        "economy": "Landwirtschaft, Gummiarabikum, Gold, Erdöl",
+        "summary": [
+          "Bis 2011 war der Sudan der flächengrößte Staat Afrikas. Zwei lange Bürgerkriege endeten mit der Abspaltung des Südsudan.",
+          "Der Sudan liefert einen Großteil des weltweit gehandelten Gummiarabikums – Bestandteil zahlreicher Getränke und Süßwaren."
+        ]
+      }
+    ]
+  },
+
+  "French Equatorial Africa": {
+    "kind": "Kolonialverband",
+    "wiki": "Französisch-Äquatorialafrika",
+    "founded": 1910,
+    "dissolved": 1958,
+    "periods": [
+      {
+        "from": 1910, "to": 1958,
+        "ruler": "Französischer Generalgouverneur",
+        "rulerTitle": "Generalgouverneur",
+        "capital": "Brazzaville",
+        "government": "Verband von vier Kolonien",
+        "religion": "Traditionelle Religionen, Christentum, Islam",
+        "languages": ["Französisch", "Sango", "Lingala", "Fang"],
+        "population": "ca. 5 Mio.",
+        "economy": "Holz, Kautschuk, Baumwolle; Zwangsarbeit",
+        "summary": [
+          "Aus dem Verband gehen Gabun, die Republik Kongo, die Zentralafrikanische Republik und der Tschad hervor.",
+          "1940 erklärt sich Brazzaville als erste Hauptstadt für das Freie Frankreich und dient bis 1943 als dessen Regierungssitz."
+        ]
+      }
+    ]
+  },
+
+  "Algeria": {
+    "kind": "Republik",
+    "wiki": "Algerien",
+    "periods": [
+      {
+        "from": 1830, "to": 1961,
+        "kind": "Französische Kolonie",
+        "ruler": "Französischer Generalgouverneur",
+        "rulerTitle": "Generalgouverneur",
+        "capital": "Algier",
+        "government": "Als Teil Frankreichs verwaltet, in Départements gegliedert",
+        "religion": "Sunnitischer Islam; katholische Siedlerminderheit",
+        "languages": ["Arabisch", "Tamazight", "Französisch"],
+        "population": "ca. 10 Mio.",
+        "economy": "Wein, Getreide, ab 1956 Erdöl und Erdgas in der Sahara",
+        "summary": [
+          "Algerien war keine gewöhnliche Kolonie, sondern staatsrechtlich Teil Frankreichs – ein Grund für die Härte des Unabhängigkeitskrieges.",
+          "Der Krieg 1954–1962 kostet nach algerischen Angaben bis zu einer Million Menschenleben und stürzt in Frankreich die Vierte Republik."
+        ]
+      },
+      {
+        "from": 1962, "to": null,
+        "kind": "Republik",
+        "ruler": "Wechselnde Präsidenten",
+        "rulerTitle": "Präsident der Demokratischen Volksrepublik Algerien",
+        "capital": "Algier",
+        "government": "Präsidiale Republik",
+        "religion": "Sunnitischer Islam",
+        "languages": ["Arabisch", "Tamazight"],
+        "population": "ca. 46 Mio.",
+        "economy": "Erdgas, Erdöl, Landwirtschaft",
+        "summary": "Mit rund 2,4 Millionen Quadratkilometern ist Algerien seit 2011 der flächengrößte Staat Afrikas. Vier Fünftel des Landes entfallen auf die Sahara."
+      }
+    ]
+  },
+
+  "Greenland": {
+    "kind": "Autonomes Gebiet",
+    "wiki": "Grönland",
+    "periods": [
+      {
+        "from": 985, "to": null,
+        "ruler": "Heute eigene Regierung (Naalakkersuisut)",
+        "rulerTitle": "Regierungschef Grönlands; Staatsoberhaupt ist der dänische Monarch",
+        "capital": "Nuuk",
+        "government": "Autonomer Bestandteil des Königreichs Dänemark",
+        "religion": "Lutherisches Christentum",
+        "languages": ["Grönländisch (Kalaallisut)", "Dänisch"],
+        "population": "ca. 57.000",
+        "economy": "Fischerei, Rohstoffe, staatliche Zuwendungen",
+        "summary": [
+          "Erik der Rote gründet 985 die ersten nordischen Siedlungen; sie erlöschen im 15. Jahrhundert. Die Inuit-Bevölkerung bleibt.",
+          "Grönland ist die größte Insel der Erde. 1985 verlässt es als bisher einziges Gebiet die Europäische Gemeinschaft – wegen der Fischereipolitik.",
+          "Seit 2009 hat Grönland weitgehende Selbstverwaltung; Kalaallisut ist alleinige Amtssprache."
+        ]
+      }
+    ]
+  },
+
+  "Denmark": {
+    "kind": "Königreich",
+    "wiki": "Dänemark",
+    "periods": [
+      {
+        "from": 900, "to": 1379,
+        "ruler": "Waldemar IV. Atterdag",
+        "rulerTitle": "König von Dänemark",
+        "reign": "1340–1375",
+        "capital": "Roskilde, später Kopenhagen",
+        "government": "Wahlkönigtum mit Reichsrat",
+        "religion": "Christianisierung im 10. Jahrhundert",
+        "languages": ["Altdänisch"],
+        "population": "ca. 700.000",
+        "economy": "Heringsfang, Ackerbau, Zölle im Öresund",
+        "summary": "Der Jellingstein aus dem 10. Jahrhundert nennt Harald Blauzahn als denjenigen, der „die Dänen christlich machte“ – die Geburtsurkunde des dänischen Königreichs."
+      },
+      {
+        "from": 1815, "to": null,
+        "ruler": "Wechselnde Monarchen und Regierungen",
+        "rulerTitle": "König bzw. Königin; Regierungschef ist der Staatsminister",
+        "capital": "Kopenhagen",
+        "government": "Parlamentarische Monarchie",
+        "religion": "Evangelisch-lutherische Volkskirche",
+        "languages": ["Dänisch"],
+        "population": "ca. 6 Mio.",
+        "economy": "Landwirtschaft, Pharma, Windenergie, Schifffahrt",
+        "summary": [
+          "Nach den Gebietsverlusten des 19. Jahrhunderts wird Dänemark zum Kleinstaat – und zu einem der wohlhabendsten Länder der Welt.",
+          "Das Königreich umfasst weiterhin Grönland und die Färöer als autonome Teile."
+        ]
+      }
+    ]
+  },
+
+  "New South Wales": {
+    "kind": "Britische Kolonie",
+    "wiki": "New South Wales",
+    "founded": 1788,
+    "periods": [
+      {
+        "from": 1788, "to": 1900,
+        "ruler": "Britischer Gouverneur",
+        "rulerTitle": "Gouverneur von New South Wales",
+        "capital": "Sydney",
+        "government": "Sträflingskolonie, ab 1856 mit eigener Regierung",
+        "religion": "Anglikanische Kirche, Katholizismus",
+        "languages": ["Englisch", "Aboriginal-Sprachen"],
+        "population": "ca. 1,3 Mio. (1900)",
+        "economy": "Wolle, Weizen, ab 1851 Goldrausch",
+        "summary": [
+          "1788 landet die First Fleet mit rund 750 Sträflingen in Port Jackson. Bis 1868 werden etwa 162.000 Verurteilte nach Australien verschifft.",
+          "Die Kolonie beanspruchte anfangs mehr als die Hälfte des Kontinents; aus ihr gingen Queensland, Victoria und Tasmanien hervor.",
+          "Für die Aboriginal-Bevölkerung bedeutet die Besiedlung Landverlust, Verfolgung und eingeschleppte Krankheiten."
+        ]
+      }
+    ]
+  },
+
+  "Hallstatt culture": {
+    "kind": "Eisenzeitliche Kultur",
+    "wiki": "Hallstattkultur",
+    "periods": [
+      {
+        "from": -800, "to": -450,
+        "ruler": "Fürsten der Höhensiedlungen",
+        "rulerTitle": "Fürst",
+        "capital": "Heuneburg, Hohenasperg, Hallstatt",
+        "government": "Fürstensitze mit Gefolgschaften",
+        "religion": "Grabkulte mit reichen Beigaben",
+        "languages": ["Frühkeltisch"],
+        "population": "einige Hunderttausend",
+        "economy": "Salzbergbau, Eisenverarbeitung, Fernhandel mit Etruskern und Griechen",
+        "summary": [
+          "Namensgebend ist das Gräberfeld von Hallstatt in Österreich, dessen Salzbergwerk seit über 3.000 Jahren in Betrieb ist.",
+          "Die Heuneburg an der Donau hatte eine Lehmziegelmauer nach mediterranem Vorbild – ein Hinweis auf enge Kontakte zur griechischen Welt.",
+          "Das Fürstinnengrab von Vix in Burgund enthielt einen 1,64 Meter hohen griechischen Bronzekrater – das größte erhaltene Gefäß der Antike."
+        ]
+      }
+    ]
+  },
+
+  "Urnfield cultures": {
+    "kind": "Bronzezeitliche Kultur",
+    "wiki": "Urnenfelderkultur",
+    "periods": [
+      {
+        "from": -1300, "to": -750,
+        "ruler": "unbekannt",
+        "rulerTitle": "—",
+        "capital": "Befestigte Höhensiedlungen",
+        "government": "Regionale Verbände",
+        "religion": "Brandbestattung in Urnenfeldern",
+        "languages": ["vermutlich frühindogermanische Dialekte"],
+        "population": "einige Millionen",
+        "economy": "Bronzeguss, Ackerbau, Fernhandel mit Bernstein und Zinn",
+        "summary": "Der Übergang von der Körper- zur Brandbestattung erfasst weite Teile Mitteleuropas – ein Wandel in der Vorstellung vom Tod, der sich archäologisch klar abzeichnet."
+      }
+    ]
+  },
+
+  "N. European Bronze Age cultures": {
+    "kind": "Bronzezeitliche Kultur",
+    "wiki": "Nordische Bronzezeit",
+    "periods": [
+      {
+        "from": -1700, "to": -500,
+        "ruler": "Häuptlinge mit Fernhandelsbeziehungen",
+        "rulerTitle": "Häuptlinge",
+        "capital": "Hofsiedlungen und Grabhügel",
+        "government": "Häuptlingstümer",
+        "religion": "Sonnenkult; Felsritzungen mit Schiffen und Sonnenscheiben",
+        "languages": ["vermutlich frühgermanische Dialekte"],
+        "population": "einige Hunderttausend",
+        "economy": "Bernsteinhandel gegen Bronze, Viehzucht, Ackerbau",
+        "summary": [
+          "Skandinavien besitzt weder Kupfer noch Zinn – alle Bronze der Zeit ist eingeführt, bezahlt mit Bernstein und wohl auch mit Pelzen.",
+          "Die Himmelsscheibe von Nebra und die Sonnenwagen dieser Kultur zeigen einen ausgeprägten Sonnenkult und astronomische Kenntnisse."
+        ]
+      }
+    ]
+  },
+
+  "Cimmerians": {
+    "kind": "Reiternomaden",
+    "wiki": "Kimmerier",
+    "periods": [
+      {
+        "from": -1200, "to": -600,
+        "ruler": "Stammesfürsten",
+        "rulerTitle": "König",
+        "capital": "kein fester Ort",
+        "government": "Stammesverbände",
+        "religion": "unbekannt",
+        "languages": ["vermutlich iranisch oder thrakisch"],
+        "population": "unbekannt",
+        "economy": "Viehzucht, Beutezüge",
+        "summary": "Die Kimmerier sind das erste Reitervolk, das in den schriftlichen Quellen des Vorderen Orients auftaucht. Assyrische Texte und Homer erwähnen sie; um 600 v. Chr. verlieren sich ihre Spuren."
+      }
+    ]
+  },
+
+  "Tungus": {
+    "kind": "Waldvölker Sibiriens",
+    "wiki": "Tungusen",
+    "periods": [
+      {
+        "from": -1000, "to": null,
+        "ruler": "Clanälteste",
+        "rulerTitle": "Clanoberhäupter, Schamanen",
+        "capital": "kein Zentrum",
+        "government": "Verwandtschaftsverbände",
+        "religion": "Schamanismus",
+        "languages": ["Ewenkisch", "Ewenisch", "Mandschurisch"],
+        "population": "einige Zehntausend",
+        "economy": "Rentierhaltung, Jagd, Fischfang",
+        "summary": [
+          "Die tungusischen Völker leben über ein Gebiet verstreut, das größer als Westeuropa ist – bei einer Bevölkerung von wenigen Zehntausend.",
+          "Zur selben Sprachfamilie gehört das Mandschurische; aus ihr ging die Dynastie hervor, die China von 1644 bis 1912 regierte."
+        ]
+      }
+    ]
+  },
+
+  "Dorset": {
+    "kind": "Arktische Kultur",
+    "wiki": "Dorsetkultur",
+    "founded": -500,
+    "dissolved": 1500,
+    "periods": [
+      {
+        "from": -500, "to": 1500,
+        "ruler": "keine",
+        "rulerTitle": "Kleingruppen",
+        "capital": "Winterlager an der Küste",
+        "government": "Familienverbände",
+        "religion": "Schamanismus; kleine Schnitzfiguren als Kultobjekte",
+        "languages": ["unbekannt"],
+        "population": "wenige Tausend",
+        "economy": "Robbenjagd, Fischfang",
+        "summary": [
+          "Die Dorsetkultur kennt weder Hundeschlitten noch Bogen – ihre Jagdtechnik ist eine völlig andere als die der später einwandernden Thule.",
+          "In den Sagas der Nordleute erscheinen sie vermutlich als „Skrælinge“. Um 1500 verschwinden sie; die Gründe sind ungeklärt."
+        ]
+      }
+    ]
+  },
+
+  "Rajput Kingdoms": {
+    "kind": "Fürstentümer",
+    "wiki": "Rajputen",
+    "periods": [
+      {
+        "from": 700, "to": 1900,
+        "ruler": "Rana Sanga und andere Fürsten",
+        "rulerTitle": "Rana, Maharana, Raja",
+        "capital": "Chittorgarh, Jodhpur, Amber, Mewar",
+        "government": "Konkurrierende Fürstentümer mit Kriegeradel",
+        "religion": "Hinduismus",
+        "languages": ["Rajasthani", "Hindi", "Sanskrit"],
+        "population": "einige Millionen",
+        "economy": "Landwirtschaft, Karawanenhandel, Festungsbau",
+        "summary": [
+          "Die Rajputen bilden im nördlichen Indien einen Kriegeradel mit ausgeprägtem Ehrkodex. Ihre Bergfestungen – Chittorgarh, Kumbhalgarh – gehören zu den größten Wehranlagen Asiens.",
+          "Manche Häuser verbünden sich mit den Moguln, andere leisten jahrhundertelang Widerstand. Bis 1947 bestehen die Rajputenstaaten als britische Fürstenstaaten fort."
+        ]
+      }
+    ]
+  },
+
+  "Iranian pastoralists": {
+    "kind": "Frühe Hirtenvölker",
+    "wiki": "Iranische Völker",
+    "periods": [
+      {
+        "from": -2000, "to": -600,
+        "ruler": "Clanfürsten",
+        "rulerTitle": "Stammesfürsten",
+        "capital": "kein Zentrum",
+        "government": "Wandernde Verbände",
+        "religion": "Frühe iranische Kulte; Zarathustra wirkt in dieser Zeit",
+        "languages": ["Altiranische Sprachen"],
+        "population": "einige Millionen",
+        "economy": "Pferde- und Schafhaltung, Wanderweidewirtschaft",
+        "summary": [
+          "Aus diesen Hirtenverbänden gehen Meder, Perser, Skythen und Parther hervor – und damit die Reiche, die Vorderasien über ein Jahrtausend prägen.",
+          "Zarathustras Lehre vom Gegensatz zwischen Wahrheit und Lüge zählt zu den frühesten dualistischen Religionen und beeinflusste Judentum, Christentum und Islam."
+        ]
+      }
+    ]
+  },
+
+  "Mandes": {
+    "kind": "Sprach- und Kulturgruppe",
+    "wiki": "Mande",
+    "periods": [
+      {
+        "from": 500, "to": 1900,
+        "ruler": "Clan- und Dorfoberhäupter, später Königshäuser",
+        "rulerTitle": "Mansa, Fama",
+        "capital": "Niani, Kangaba, Segu",
+        "government": "Verwandtschaftsverbände, aus denen Reiche hervorgehen",
+        "religion": "Traditionelle Religionen, später Islam",
+        "languages": ["Bambara", "Malinke", "Soninke", "Dioula"],
+        "population": "einige Millionen",
+        "economy": "Hirseanbau, Gold, Fernhandel, Schmiedehandwerk",
+        "summary": [
+          "Aus den Mande-Gesellschaften gehen die Reiche von Ghana, Mali und Segu hervor. Die Griots bewahren Geschichte, Recht und Genealogie als mündliche Überlieferung.",
+          "Die Kouroukan Fouga, um 1236 beschlossene Grundordnung des Mali-Reiches, regelt Rechte und Pflichten der Verbände – von der UNESCO als immaterielles Erbe anerkannt."
+        ]
+      }
+    ]
+  },
+
+  "T'atsaot'ine": {
+    "kind": "Dene-Gruppe",
+    "wiki": "Yellowknives",
+    "periods": [
+      {
+        "from": 1600, "to": null,
+        "ruler": "Anführer auf Zeit",
+        "rulerTitle": "Anerkannte Jagdführer",
+        "capital": "kein Zentrum – Gebiet um den Großen Sklavensee",
+        "government": "Regionale Gruppen",
+        "religion": "Schamanismus",
+        "languages": ["Tłı̨chǫ und verwandte athapaskische Sprachen"],
+        "population": "einige Tausend",
+        "economy": "Karibujagd, Fischfang, Kupferverarbeitung",
+        "summary": "Der Name geht auf Werkzeuge aus gediegenem Kupfer zurück, das die Gruppe am Coppermine River gewann. Die Stadt Yellowknife trägt ihn bis heute."
+      }
+    ]
+  },
+
+  "Proto-Tibetan cultures": {
+    "kind": "Frühe Hochlandkulturen",
+    "wiki": "Tibet",
+    "periods": [
+      {
+        "from": -3000, "to": 600,
+        "ruler": "Clanoberhäupter",
+        "rulerTitle": "Stammesfürsten",
+        "capital": "Hochtäler des Himalaya und des Kunlun",
+        "government": "Clanverbände",
+        "religion": "Bön und verwandte Vorstellungen",
+        "languages": ["Tibeto-birmanische Vorläufersprachen"],
+        "population": "wenige Hunderttausend",
+        "economy": "Yak- und Schafhaltung, Gerstenanbau, Salzgewinnung",
+        "summary": "Die Zähmung des Yaks macht das tibetische Hochland dauerhaft bewohnbar – er liefert Milch, Wolle, Fleisch, Transportkraft und mit getrocknetem Dung den einzigen verfügbaren Brennstoff."
+      }
+    ]
+  }
+}

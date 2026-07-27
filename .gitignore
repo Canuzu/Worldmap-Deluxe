@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.DS_Store
+*.log
+
+# Rohdaten der Kartenpipeline (~70 MB) – über `npm run fetch:data` beziehbar
+data-src/
