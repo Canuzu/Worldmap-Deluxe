@@ -1,5 +1,7 @@
 # Worldmap Deluxe
 
+**→ [canuzu.github.io/Worldmap-Deluxe](https://canuzu.github.io/Worldmap-Deluxe/)**
+
 Ein interaktiver historischer Weltatlas: **53 Zeitschnitte von 123.000 v. Chr. bis 2010**.
 Der Regler unten schiebt die Weltkarte durch die Jahrtausende – Reiche wachsen,
 Grenzen verschieben sich, Kulturen verschwinden. Ein Klick auf ein Gebiet öffnet
