@@ -21,6 +21,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Gebaut wird auf jedem Zweig, damit Fehler früh auffallen.
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -33,7 +34,11 @@ jobs:
         with:
           path: dist
 
+  # Veröffentlicht wird ausschließlich aus main. Vorher konnte ein Zweiglauf
+  # den Stand von main überschreiben – je nachdem, welcher Lauf zuletzt fertig
+  # wurde, stand mal der eine, mal der andere Stand im Netz.
   deploy:
+    if: github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
     environment:
