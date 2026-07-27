@@ -160,15 +160,29 @@ export class AtlasData {
     this.aliases = names.aliases ?? {};
 
     onProgress(.46, 'Küstenlinien werden gezeichnet …');
-    const [land, lakes, rivers] = await Promise.all([
-      getJSON('data/base/land.json').then(toFeatures),
-      getJSON('data/base/lakes.json').then(toFeatures).catch(() => null),
-      getJSON('data/base/rivers.json').then(toFeatures).catch(() => null),
-    ]);
-    this.base = { land, lakes, rivers };
+    // Nur die Übersichtsküste blockiert den Start; die hochaufgelöste Fassung
+    // und die Gewässer kommen später bzw. erst auf Anforderung.
+    this.base = { ocean: await getJSON('data/base/ocean.json').then(toFeatures) };
 
     onProgress(.72, 'Karte wird aufgebaut …');
     return this;
+  }
+
+  /** Hochaufgelöste Küstenlinie (Natural Earth 1:10 Mio.) nachladen. */
+  loadDetailedCoastline() {
+    this._oceanHd ??= getJSON('data/base/ocean-hd.json')
+      .then(toFeatures)
+      .catch(() => null);
+    return this._oceanHd;
+  }
+
+  /** Seen und Flüsse – werden erst geholt, wenn die Ebene eingeschaltet wird. */
+  loadWater() {
+    this._water ??= Promise.all([
+      getJSON('data/base/lakes.json').then(toFeatures).catch(() => null),
+      getJSON('data/base/rivers.json').then(toFeatures).catch(() => null),
+    ]).then(([lakes, rivers]) => ({ lakes, rivers }));
+    return this._water;
   }
 
   epochAt(index) {

@@ -52,6 +52,16 @@ await check('Suche findet und öffnet ein Gemeinwesen', async () => {
   await visible('.pnl__title');
 });
 
+await check('Klick auf die Karte wählt ein Gemeinwesen', async () => {
+  await page.keyboard.press('Escape');
+  // Mitteleuropa im Ausschnitt #position=3/40/20 – die Meeresebene darf den
+  // Klick nicht abfangen.
+  await page.mouse.click(720, 300);
+  await page.waitForSelector('#panel:not([hidden])', { timeout: 4000 });
+  const title = await page.textContent('.pnl__title');
+  if (!title.trim()) throw new Error('kein Titel');
+});
+
 await check('Detailtafel zeigt Steckbrief-Kacheln', async () => {
   const n = await page.locator('.fact').count();
   if (n < 2) throw new Error(`nur ${n} Kacheln`);

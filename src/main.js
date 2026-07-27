@@ -100,6 +100,7 @@ async function main() {
 
   const atlas = new AtlasMap($('map'), { theme: prefs.theme });
   atlas.setBaseData(atlasData.base);
+  window.__atlasMap = atlas.map; // Messhilfe für scripts/perf
   atlas.setLabelNames((name) => atlasData.germanName(name));
   atlas.setColorMode(prefs.colorMode);
   atlas.setShowLabels(prefs.labels);
@@ -320,6 +321,14 @@ async function main() {
 
   /* ----------------------------------------------------------- Maßstab */
 
+  /** Gewässer erst holen, wenn sie gebraucht werden. */
+  async function enableWater(on) {
+    if (on && !atlas.hasWaterData) {
+      atlas.setWaterData(await atlasData.loadWater());
+    }
+    atlas.setShowWater(on);
+  }
+
   function updateScale() {
     const info = atlas.scaleInfo();
     const bar = $('scaleBar');
@@ -461,7 +470,7 @@ async function main() {
   // Ebenen-Schalter
   const toggles = [
     ['optLabels', 'labels', (v) => atlas.setShowLabels(v)],
-    ['optRivers', 'rivers', (v) => atlas.setShowWater(v)],
+    ['optRivers', 'rivers', (v) => enableWater(v)],
     ['optGraticule', 'graticule', (v) => atlas.setShowGraticule(v)],
     ['optBorders', 'borders', (v) => atlas.setShowBorders(v)],
     ['optWiki', 'wiki', () => {}],
@@ -541,6 +550,13 @@ async function main() {
 
   progress(1, 'Fertig');
   window.setTimeout(() => { $('boot').hidden = true; }, 320);
+
+  // Erst nach dem ersten Bild: die hochaufgelöste Küstenlinie nachziehen und,
+  // falls voreingestellt, die Gewässer.
+  window.setTimeout(() => {
+    atlasData.loadDetailedCoastline().then((ocean) => atlas.setDetailedCoastline(ocean));
+    if (prefs.rivers) enableWater(true);
+  }, 600);
 }
 
 /* ------------------------------------------------------------- Texte */

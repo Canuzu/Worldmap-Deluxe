@@ -26,9 +26,9 @@
 .map {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(140% 110% at 50% -10%, var(--ocean-3) 0%, transparent 55%),
-    linear-gradient(178deg, var(--ocean-2) 0%, var(--ocean-1) 100%);
+  /* Der Hintergrund ist die Landfarbe: Alles, was weder Meer noch einem
+     Gemeinwesen zugeordnet ist, erscheint als unbeanspruchtes Land. */
+  background: var(--land);
   cursor: grab;
 }
 .map.is-grabbing { cursor: grabbing; }
@@ -54,10 +54,13 @@
   pointer-events: none;
   z-index: 400;
   background:
-    radial-gradient(120% 85% at 50% 45%, transparent 62%, rgba(0, 0, 0, .2) 100%);
+    radial-gradient(150% 115% at 50% -8%, rgba(120, 190, 255, .1), transparent 55%),
+    radial-gradient(120% 85% at 50% 45%, transparent 62%, rgba(0, 0, 0, .22) 100%);
 }
 [data-theme="parchment"] .stage::before {
-  background: radial-gradient(120% 85% at 50% 45%, transparent 58%, rgba(90, 70, 40, .16) 100%);
+  background:
+    radial-gradient(150% 115% at 50% -8%, rgba(255, 250, 230, .28), transparent 55%),
+    radial-gradient(120% 85% at 50% 45%, transparent 58%, rgba(90, 70, 40, .16) 100%);
 }
 
 .leaflet-container {

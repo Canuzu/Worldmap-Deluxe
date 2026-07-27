@@ -123,7 +123,7 @@
    "era": "iceage",
    "polities": 3,
    "features": 4,
-   "bytes": 6653
+   "bytes": 28308
   },
   {
    "year": -10000,
@@ -134,7 +134,7 @@
    "era": "iceage",
    "polities": 14,
    "features": 16,
-   "bytes": 9494
+   "bytes": 31175
   },
   {
    "year": -8000,
@@ -145,7 +145,7 @@
    "era": "neolithic",
    "polities": 15,
    "features": 17,
-   "bytes": 10277
+   "bytes": 34689
   },
   {
    "year": -5000,
@@ -156,7 +156,7 @@
    "era": "neolithic",
    "polities": 29,
    "features": 29,
-   "bytes": 35005
+   "bytes": 242645
   },
   {
    "year": -4000,
@@ -167,7 +167,7 @@
    "era": "neolithic",
    "polities": 23,
    "features": 23,
-   "bytes": 12678
+   "bytes": 43188
   },
   {
    "year": -3000,
@@ -178,7 +178,7 @@
    "era": "bronze",
    "polities": 25,
    "features": 25,
-   "bytes": 13568
+   "bytes": 45918
   },
   {
    "year": -2000,
@@ -189,7 +189,7 @@
    "era": "bronze",
    "polities": 45,
    "features": 45,
-   "bytes": 36280
+   "bytes": 168651
   },
   {
    "year": -1500,
@@ -200,7 +200,7 @@
    "era": "bronze",
    "polities": 68,
    "features": 69,
-   "bytes": 48947
+   "bytes": 201892
   },
   {
    "year": -1000,
@@ -211,7 +211,7 @@
    "era": "iron",
    "polities": 69,
    "features": 70,
-   "bytes": 49157
+   "bytes": 202221
   },
   {
    "year": -700,
@@ -222,7 +222,7 @@
    "era": "iron",
    "polities": 73,
    "features": 80,
-   "bytes": 51319
+   "bytes": 204585
   },
   {
    "year": -500,
@@ -233,7 +233,7 @@
    "era": "antiquity",
    "polities": 74,
    "features": 77,
-   "bytes": 47398
+   "bytes": 182940
   },
   {
    "year": -400,
@@ -244,7 +244,7 @@
    "era": "antiquity",
    "polities": 76,
    "features": 81,
-   "bytes": 50737
+   "bytes": 203206
   },
   {
    "year": -323,
@@ -255,7 +255,7 @@
    "era": "antiquity",
    "polities": 68,
    "features": 75,
-   "bytes": 42007
+   "bytes": 161477
   },
   {
    "year": -300,
@@ -266,7 +266,7 @@
    "era": "antiquity",
    "polities": 73,
    "features": 79,
-   "bytes": 43228
+   "bytes": 164440
   },
   {
    "year": -200,
@@ -277,7 +277,7 @@
    "era": "antiquity",
    "polities": 86,
    "features": 86,
-   "bytes": 55227
+   "bytes": 225318
   },
   {
    "year": -100,
@@ -288,7 +288,7 @@
    "era": "antiquity",
    "polities": 84,
    "features": 85,
-   "bytes": 47945
+   "bytes": 168127
   },
   {
    "year": -1,
@@ -299,7 +299,7 @@
    "era": "antiquity",
    "polities": 79,
    "features": 80,
-   "bytes": 51995
+   "bytes": 169649
   },
   {
    "year": 100,
@@ -310,7 +310,7 @@
    "era": "antiquity",
    "polities": 83,
    "features": 85,
-   "bytes": 53463
+   "bytes": 173056
   },
   {
    "year": 200,
@@ -321,7 +321,7 @@
    "era": "antiquity",
    "polities": 69,
    "features": 70,
-   "bytes": 48234
+   "bytes": 153166
   },
   {
    "year": 300,
@@ -332,7 +332,7 @@
    "era": "antiquity",
    "polities": 71,
    "features": 71,
-   "bytes": 48577
+   "bytes": 159097
   },
   {
    "year": 400,
@@ -343,7 +343,7 @@
    "era": "antiquity",
    "polities": 79,
    "features": 80,
-   "bytes": 49680
+   "bytes": 158143
   },
   {
    "year": 500,
@@ -354,7 +354,7 @@
    "era": "earlymiddle",
    "polities": 87,
    "features": 92,
-   "bytes": 51200
+   "bytes": 189730
   },
   {
    "year": 600,
@@ -365,7 +365,7 @@
    "era": "earlymiddle",
    "polities": 83,
    "features": 88,
-   "bytes": 53381
+   "bytes": 197269
   },
   {
    "year": 700,
@@ -376,7 +376,7 @@
    "era": "earlymiddle",
    "polities": 127,
    "features": 133,
-   "bytes": 61925
+   "bytes": 211329
   },
   {
    "year": 800,
@@ -387,7 +387,7 @@
    "era": "earlymiddle",
    "polities": 117,
    "features": 122,
-   "bytes": 66712
+   "bytes": 232076
   },
   {
    "year": 900,
@@ -398,7 +398,7 @@
    "era": "earlymiddle",
    "polities": 135,
    "features": 138,
-   "bytes": 73511
+   "bytes": 264254
   },
   {
    "year": 1000,
@@ -409,7 +409,7 @@
    "era": "earlymiddle",
    "polities": 129,
    "features": 132,
-   "bytes": 70713
+   "bytes": 255242
   },
   {
    "year": 1100,
@@ -420,7 +420,7 @@
    "era": "highmiddle",
    "polities": 139,
    "features": 150,
-   "bytes": 72745
+   "bytes": 245746
   },
   {
    "year": 1200,
@@ -431,7 +431,7 @@
    "era": "highmiddle",
    "polities": 129,
    "features": 136,
-   "bytes": 68972
+   "bytes": 251524
   },
   {
    "year": 1279,
@@ -442,7 +442,7 @@
    "era": "highmiddle",
    "polities": 113,
    "features": 116,
-   "bytes": 61008
+   "bytes": 234800
   },
   {
    "year": 1300,
@@ -453,7 +453,7 @@
    "era": "highmiddle",
    "polities": 113,
    "features": 115,
-   "bytes": 59721
+   "bytes": 232352
   },
   {
    "year": 1400,
@@ -464,7 +464,7 @@
    "era": "latemiddle",
    "polities": 115,
    "features": 122,
-   "bytes": 64441
+   "bytes": 261379
   },
   {
    "year": 1492,
@@ -475,7 +475,7 @@
    "era": "latemiddle",
    "polities": 1307,
    "features": 1317,
-   "bytes": 580032
+   "bytes": 1175062
   },
   {
    "year": 1500,
@@ -486,7 +486,7 @@
    "era": "earlymodern",
    "polities": 139,
    "features": 143,
-   "bytes": 81333
+   "bytes": 266829
   },
   {
    "year": 1530,
@@ -497,7 +497,7 @@
    "era": "earlymodern",
    "polities": 269,
    "features": 278,
-   "bytes": 107057
+   "bytes": 301731
   },
   {
    "year": 1600,
@@ -508,7 +508,7 @@
    "era": "earlymodern",
    "polities": 638,
    "features": 661,
-   "bytes": 242764
+   "bytes": 486187
   },
   {
    "year": 1650,
@@ -519,7 +519,7 @@
    "era": "absolutism",
    "polities": 593,
    "features": 598,
-   "bytes": 225868
+   "bytes": 488998
   },
   {
    "year": 1700,
@@ -530,7 +530,7 @@
    "era": "absolutism",
    "polities": 584,
    "features": 591,
-   "bytes": 223827
+   "bytes": 478198
   },
   {
    "year": 1715,
@@ -541,7 +541,7 @@
    "era": "absolutism",
    "polities": 600,
    "features": 606,
-   "bytes": 229570
+   "bytes": 486550
   },
   {
    "year": 1783,
@@ -552,7 +552,7 @@
    "era": "absolutism",
    "polities": 549,
    "features": 564,
-   "bytes": 217506
+   "bytes": 520997
   },
   {
    "year": 1800,
@@ -563,7 +563,7 @@
    "era": "revolution",
    "polities": 546,
    "features": 558,
-   "bytes": 216836
+   "bytes": 513964
   },
   {
    "year": 1815,
@@ -574,7 +574,7 @@
    "era": "revolution",
    "polities": 313,
    "features": 328,
-   "bytes": 142885
+   "bytes": 489882
   },
   {
    "year": 1880,
@@ -585,7 +585,7 @@
    "era": "imperialism",
    "polities": 169,
    "features": 173,
-   "bytes": 91552
+   "bytes": 344594
   },
   {
    "year": 1900,
@@ -596,7 +596,7 @@
    "era": "imperialism",
    "polities": 165,
    "features": 222,
-   "bytes": 100178
+   "bytes": 354997
   },
   {
    "year": 1914,
@@ -607,7 +607,7 @@
    "era": "worldwars",
    "polities": 142,
    "features": 144,
-   "bytes": 81161
+   "bytes": 338547
   },
   {
    "year": 1920,
@@ -618,7 +618,7 @@
    "era": "worldwars",
    "polities": 163,
    "features": 165,
-   "bytes": 80387
+   "bytes": 388560
   },
   {
    "year": 1930,
@@ -629,7 +629,7 @@
    "era": "worldwars",
    "polities": 161,
    "features": 163,
-   "bytes": 84950
+   "bytes": 337796
   },
   {
    "year": 1938,
@@ -640,7 +640,7 @@
    "era": "worldwars",
    "polities": 171,
    "features": 175,
-   "bytes": 82594
+   "bytes": 374194
   },
   {
    "year": 1945,
@@ -651,7 +651,7 @@
    "era": "worldwars",
    "polities": 183,
    "features": 185,
-   "bytes": 85332
+   "bytes": 363307
   },
   {
    "year": 1960,
@@ -662,7 +662,7 @@
    "era": "coldwar",
    "polities": 157,
    "features": 160,
-   "bytes": 88795
+   "bytes": 343564
   },
   {
    "year": 1994,
@@ -673,7 +673,7 @@
    "era": "present",
    "polities": 193,
    "features": 197,
-   "bytes": 93738
+   "bytes": 399446
   },
   {
    "year": 2000,
@@ -684,7 +684,7 @@
    "era": "present",
    "polities": 193,
    "features": 198,
-   "bytes": 93906
+   "bytes": 401576
   },
   {
    "year": 2010,
@@ -695,7 +695,7 @@
    "era": "present",
    "polities": 193,
    "features": 198,
-   "bytes": 93897
+   "bytes": 401567
   }
  ]
 }

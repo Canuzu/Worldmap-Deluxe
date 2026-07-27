@@ -12,7 +12,7 @@ Religion, Bevölkerung, Wirtschaft, Wendepunkte und Nachbarn.
 
 ![Pergament: die Welt 1279](docs/screenshot-pergament.png)
 
-<sup>Pergament – die Welt 1279, das Mongolenreich am Zenit</sup>
+<sup>Pergament – Nordwesteuropa 1600; die Küstenlinien folgen Natural Earth 1:10 Mio.</sup>
 
 ## Was der Atlas kann
 
@@ -32,6 +32,35 @@ historische Grenzen werden als Vektoren gezeichnet. Der Atlas läuft damit
 vollständig eigenständig und ohne Verbindung zu Drittanbietern – die einzige
 optionale Ausnahme sind die abschaltbaren Wikipedia-Auszüge.
 
+## Wie die Umrisse zustande kommen
+
+Historische Grenzdatensätze bringen ihre eigenen, meist groben Küstenlinien
+mit. Damit die Länder trotzdem exakt die Form haben, die sie auf einer
+heutigen Weltkarte haben, geht der Atlas einen Umweg:
+
+1. **Die Grenzverläufe werden nicht vereinfacht.** Die Rohdaten enthalten je
+   Zeitschnitt 30.000 bis 110.000 Stützpunkte – als quantisiertes TopoJSON
+   sind das 30 bis 500 kB je Datei. Jede Ausdünnung wäre sichtbar, ohne
+   nennenswert Ladezeit zu sparen.
+2. **Gezeichnet wird nicht das Land, sondern das Meer.** `ocean-hd.json` ist
+   ein einziges Polygon mit einem Loch je Landmasse, abgeleitet aus Natural
+   Earth 1:10 Mio. (rund 300 m Auflösung). Diese Ebene liegt **über** den
+   Grenzflächen und schneidet sie exakt an der echten Küstenlinie ab.
+3. **Ein schmaler Saum weitet jede Fläche um gut einen Pixel.** Das schließt
+   die Lücken, die entstehen, weil die historischen Umrisse nicht ganz bis an
+   die heutige Küste reichen. Nach außen schneidet das Meer den Überschuss
+   wieder ab.
+
+Der Umweg über das Meer statt eines Zuschnitts jeder einzelnen Epoche ist der
+Grund, warum das Ganze schlank bleibt: Beim Zuschneiden trüge jede der 53
+Dateien dieselben Küstenpunkte mit sich und wäre rund viermal so groß. So wird
+die Küstenlinie genau **einmal** geladen – und die Umrisse sind trotzdem exakt.
+
+Beim Zoomen ins Weltbild genügt eine grobe Küstenlinie (`ocean.json`, 210 kB
+gzip); die hochaufgelöste Fassung rückt im Hintergrund nach und wird ab
+Zoomstufe 4,2 eingeblendet. Seen und Flüsse werden erst geholt, wenn man die
+Ebene einschaltet.
+
 ## Schnellstart
 
 ```bash
@@ -40,7 +69,9 @@ npm run dev        # http://127.0.0.1:5173
 ```
 
 Die aufbereiteten Kartendaten liegen bereits unter `public/data/` im Repository
-(rund 4,5 MB). Für den Betrieb ist kein Datenbau nötig.
+(rund 22 MB). Für den Betrieb ist kein Datenbau nötig. Übertragen wird beim
+Aufruf nur ein Bruchteil davon: rund 210 kB Küstenlinie, ein Zeitschnitt
+(je nach Epoche 15–420 kB gzip) und die Wissensbasis.
 
 ```bash
 npm run build      # erzeugt dist/
@@ -86,11 +117,16 @@ npm run build:knowledge
 npm run check:data    # Abdeckung je Zeitschnitt
 ```
 
-`build-data.mjs` vereinfacht die Geometrien mit mapshaper (stärker bei großen
-Dateien), berechnet für jedes Teilstück den **Pol der Unzugänglichkeit** als
-Beschriftungsanker und die Fläche aus der *unvereinfachten* Quelle. Aus 69 MB
-werden so 4,5 MB, von denen je Zeitschnitt nur eine Datei geladen wird
-(meist 40–90 kB).
+`build-data.mjs` erzeugt die Meeresebene aus Natural Earth, berechnet für jedes
+Teilstück den **Pol der Unzugänglichkeit** als Beschriftungsanker und die
+Fläche aus der Originalquelle. Die Grenzverläufe selbst bleiben unangetastet.
+
+Mit `--kueste <meter>` lässt sich die Auflösung der Küstenlinie ändern
+(Vorgabe 300 m, das liegt unter der Pixelgröße der höchsten Zoomstufe):
+
+```bash
+npm run build:data -- --kueste 150   # noch feiner, entsprechend größer
+```
 
 ### Wissensbasis
 
@@ -141,7 +177,7 @@ falls aktiviert, einen Wikipedia-Auszug.
   von André Ourednik u. a., lizenziert unter **GPL-3.0**. Die Datensätze unter
   `public/data/epochs/` und `data-src/historical/` sind davon abgeleitet und
   stehen unter derselben Lizenz.
-- **Küstenlinien, Seen, Flüsse:** [Natural Earth](https://www.naturalearthdata.com/) (1:50 Mio.), gemeinfrei.
+- **Küstenlinien, Inseln, Seen, Flüsse:** [Natural Earth](https://www.naturalearthdata.com/) (1:10 Mio.), gemeinfrei.
 - **Ergänzende Kurztexte und Bilder:** deutschsprachige Wikipedia (CC BY-SA 4.0),
   zur Laufzeit nachgeladen und abschaltbar.
 - **Redaktionelle Steckbriefe:** für dieses Projekt verfasst.

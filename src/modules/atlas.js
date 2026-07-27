@@ -7,8 +7,13 @@
  * frei gestalten.
  *
  * Ebenenfolge (unten → oben):
- *   Land → Gemeinwesen A/B (Überblendung) → Gewässer → Gradnetz →
- *   Küstenkontur → Auswahl-Hervorhebung → Beschriftung
+ *   Landfarbe (Hintergrund) → Gemeinwesen A/B (Überblendung) →
+ *   Meer + Küstenlinie → Gewässer → Gradnetz → Auswahl → Beschriftung
+ *
+ * Der Kniff liegt in der Meeresebene: Sie ist nicht das Land, sondern dessen
+ * Gegenstück – ein Polygon mit einem Loch je Landmasse. Weil sie ÜBER den
+ * Grenzflächen liegt, enden diese exakt an der echten Küstenlinie, ohne dass
+ * jeder der 53 Zeitschnitte die Küstenpunkte selbst mitschleppen müsste.
  */
 import L from 'leaflet';
 import { createLabelLayer } from './labels.js';
@@ -17,17 +22,19 @@ import {
 } from './palette.js';
 
 const PANES = {
-  land: 210,
   polityA: 220,
   polityB: 230,
-  water: 240,
-  graticule: 244,
-  coast: 248,
+  ocean: 240,
+  water: 246,
+  graticule: 250,
   highlight: 256,
   label: 270,
 };
 
 const HOME = { center: [26, 12], zoom: 2.4 };
+
+/** Ab dieser Zoomstufe wird die hochaufgelöste Küstenlinie eingeblendet. */
+const COAST_HD_FROM_ZOOM = 4.2;
 
 /** Gradnetz alle 15° als GeoJSON – billiger als ein weiterer Datensatz. */
 function graticule(step = 15) {
@@ -55,6 +62,7 @@ export class AtlasMap {
     this.showGraticule = false;
 
     this.epoch = null;
+    this.coast = { lo: null, hi: null, level: 'lo' };
     this.colors = new Map();
     this.selected = null;
     this.hovered = null;
@@ -65,7 +73,7 @@ export class AtlasMap {
       center: HOME.center,
       zoom: HOME.zoom,
       minZoom: 1.6,
-      maxZoom: 8,
+      maxZoom: 10,
       zoomControl: false,
       attributionControl: false,
       preferCanvas: true,
@@ -90,6 +98,7 @@ export class AtlasMap {
     this.labelLayer = createLabelLayer({ pane: 'label' });
     this.labelLayer.addTo(this.map);
 
+    this.map.on('zoomend', () => this._syncCoastLevel());
     this.map.on('zoomend moveend', () => this._emit('view'));
     this.map.on('mousedown', () => el.classList.add('is-grabbing'));
     this.map.on('mouseup', () => el.classList.remove('is-grabbing'));
@@ -100,18 +109,16 @@ export class AtlasMap {
   /* ------------------------------------------------------------ Aufbau */
 
   _initBaseLayers() {
-    this.landLayer = L.geoJSON(null, {
-      pane: 'land',
-      renderer: L.canvas({ pane: 'land', padding: .3 }),
+    // Meer inklusive Küstenkontur – eine Ebene, dadurch sind Fläche und
+    // Linie zwangsläufig deckungsgleich.
+    this.oceanLayer = L.geoJSON(null, {
+      pane: 'ocean',
+      renderer: L.canvas({ pane: 'ocean', padding: .3 }),
       interactive: false,
-      smoothFactor: 1.1,
-    }).addTo(this.map);
-
-    this.coastLayer = L.geoJSON(null, {
-      pane: 'coast',
-      renderer: L.canvas({ pane: 'coast', padding: .3 }),
-      interactive: false,
-      smoothFactor: 1.1,
+      // Leaflet dünnt beim Projizieren auf Pixelgenauigkeit aus. 1 px ist
+      // unsichtbar, senkt die Punktzahl der Küstenlinie im Weltmaßstab aber
+      // um Größenordnungen und hält das Zoomen flüssig.
+      smoothFactor: 1,
     }).addTo(this.map);
 
     this.waterLayer = L.geoJSON(null, {
@@ -141,6 +148,7 @@ export class AtlasMap {
       el: this.map.getPane(pane),
       renderer: L.canvas({ pane, padding: .35 }),
       layer: null,
+      halo: null,
     }));
     this.slots.forEach((slot) => {
       slot.el.style.transition = 'opacity 300ms cubic-bezier(.32,.72,.29,1)';
@@ -149,11 +157,48 @@ export class AtlasMap {
     this.activeSlot = 0;
   }
 
-  setBaseData({ land, lakes, rivers }) {
-    if (land) {
-      this.landLayer.addData(land);
-      this.coastLayer.addData(land);
-    }
+  setBaseData({ ocean }) {
+    if (!ocean) return;
+    this.coast.lo = ocean;
+    this._applyCoast('lo');
+  }
+
+  /**
+   * Hochaufgelöste Küstenlinie bereitstellen. Eingesetzt wird sie erst ab
+   * mittlerer Zoomstufe: Im Weltmaßstab ist sie nicht von der Übersicht zu
+   * unterscheiden, kostet aber ein Vielfaches an Rechenzeit beim Zoomen.
+   */
+  setDetailedCoastline(ocean) {
+    if (!ocean) return;
+    this.coast.hi = ocean;
+    this._syncCoastLevel();
+  }
+
+  _applyCoast(level) {
+    const data = this.coast[level];
+    if (!data) return;
+    this.coast.level = level;
+    this.oceanLayer.clearLayers();
+    this.oceanLayer.addData(data);
+    this._styleBase();
+  }
+
+  /**
+   * Auflösungsstufe der Küstenlinie an die Zoomstufe koppeln. Der Wechsel
+   * wird kurz verzögert, damit er nicht in die laufende Zoom-Animation fällt.
+   */
+  _syncCoastLevel() {
+    const wanted = this.map.getZoom() >= COAST_HD_FROM_ZOOM && this.coast.hi ? 'hi' : 'lo';
+    if (wanted === this.coast.level) return;
+    clearTimeout(this._coastTimer);
+    this._coastTimer = window.setTimeout(() => {
+      const now = this.map.getZoom() >= COAST_HD_FROM_ZOOM && this.coast.hi ? 'hi' : 'lo';
+      if (now !== this.coast.level) this._applyCoast(now);
+    }, 140);
+  }
+
+  setWaterData({ lakes, rivers }) {
+    this.waterLayer.clearLayers();
     if (lakes) this.waterLayer.addData(lakes);
     if (rivers) this.waterLayer.addData(rivers);
     this._styleBase();
@@ -179,14 +224,21 @@ export class AtlasMap {
   }
 
   _styleBase() {
-    const land = this._cssVar('--land', '#1b2733');
     const edge = this._cssVar('--land-edge', '#2f4457');
     const river = this._cssVar('--river', '#5aa');
     const grat = this._cssVar('--grat', 'rgba(255,255,255,.08)');
     const ocean = this._cssVar('--ocean-2', '#0d1a28');
 
-    this.landLayer.setStyle({ fillColor: land, fillOpacity: 1, stroke: false });
-    this.coastLayer.setStyle({ stroke: true, color: edge, weight: .8, opacity: .9, fill: false });
+    this.oceanLayer.setStyle({
+      fillColor: ocean,
+      fillOpacity: 1,
+      fillRule: 'evenodd',
+      stroke: true,
+      color: edge,
+      weight: .9,
+      opacity: .95,
+      lineJoin: 'round',
+    });
     this.waterLayer.setStyle((f) => (
       f.geometry.type.includes('Line')
         ? { stroke: true, color: river, weight: .7, opacity: .75, fill: false }
@@ -274,7 +326,13 @@ export class AtlasMap {
 
   _restyleActive() {
     const slot = this.slots[this.activeSlot];
-    if (slot.layer) slot.layer.setStyle((f) => this._styleFeature(f));
+    if (!slot.layer) return;
+    const alpha = Number(this._cssVar('--fill-alpha', '.58'));
+    slot.halo?.setStyle((f) => {
+      const color = this.colorOf(this._colorKey(f.properties));
+      return { color, opacity: alpha };
+    });
+    slot.layer.setStyle((f) => this._styleFeature(f));
   }
 
   setColorMode(mode) {
@@ -303,6 +361,34 @@ export class AtlasMap {
       to.layer.remove();
       to.layer = null;
     }
+    if (to.halo) {
+      to.halo.remove();
+      to.halo = null;
+    }
+
+    // Saum in der eigenen Füllfarbe, nur als Linie. Er weitet jede Fläche um
+    // gut einen Pixel und schließt damit die schmalen Lücken, die entstehen,
+    // weil die historischen Umrisse nicht exakt an der heutigen Küste enden.
+    // Nach außen schneidet die Meeresebene den Überschuss wieder ab, nach
+    // innen deckt ihn die Füllung dieser Ebene ab.
+    to.halo = L.geoJSON(data.geojson, {
+      pane: to.pane,
+      renderer: to.renderer,
+      interactive: false,
+      smoothFactor: 1.0,
+      style: (f) => {
+        const color = this.colorOf(this._colorKey(f.properties));
+        return {
+          fill: false,
+          stroke: true,
+          color,
+          weight: 2.6,
+          opacity: Number(this._cssVar('--fill-alpha', '.58')),
+          lineJoin: 'round',
+          lineCap: 'round',
+        };
+      },
+    }).addTo(this.map);
 
     to.layer = L.geoJSON(data.geojson, {
       pane: to.pane,
@@ -332,10 +418,11 @@ export class AtlasMap {
 
     this.activeSlot = next;
     window.setTimeout(() => {
-      if (this.activeSlot !== this.slots.indexOf(from) && from.layer) {
-        from.layer.remove();
-        from.layer = null;
-      }
+      if (this.activeSlot === this.slots.indexOf(from)) return;
+      from.layer?.remove();
+      from.halo?.remove();
+      from.layer = null;
+      from.halo = null;
     }, animate ? 340 : 0);
 
     this._updateLabels();
@@ -424,6 +511,10 @@ export class AtlasMap {
     this.showWater = on;
     if (on) this.waterLayer.addTo(this.map);
     else this.waterLayer.remove();
+  }
+
+  get hasWaterData() {
+    return this.waterLayer.getLayers().length > 0;
   }
 
   setShowGraticule(on) {

@@ -5,7 +5,8 @@
  *
  *   public/data/epochs.json          Metadaten aller Zeitschnitte + Epochenbänder
  *   public/data/epochs/<key>.json    TopoJSON je Zeitschnitt (vereinfacht, quantisiert)
- *   public/data/base/land.json       Küstenlinien (Natural Earth 50 m)
+ *   public/data/base/ocean.json      Meeresfläche, grob (Natural Earth 10 m)
+ *   public/data/base/ocean-hd.json   Meeresfläche, hochaufgelöst
  *   public/data/base/lakes.json      Seen
  *   public/data/base/rivers.json     Flüsse
  *
@@ -31,6 +32,15 @@ const OUT_DIR = path.join(ROOT, 'public/data');
 const TMP = fs.mkdtempSync(path.join(os.tmpdir(), 'wmd-'));
 
 const MAPSHAPER = path.join(ROOT, 'node_modules/.bin/mapshaper');
+
+/**
+ * Auflösung der hochaufgelösten Küstenlinie in Metern. 300 m liegt unterhalb
+ * der Pixelgröße der höchsten Zoomstufe (rund 150 m/px) und ist damit die
+ * praktische Grenze des Sichtbaren. Über --kueste einstellbar.
+ */
+const COAST_INTERVAL = Number(
+  process.argv.find((a, i, all) => all[i - 1] === '--kueste') ?? 300,
+);
 
 /* ------------------------------------------------------------------ Epochen */
 
@@ -160,27 +170,30 @@ function mapshaper(args) {
   return execFileSync(MAPSHAPER, args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], maxBuffer: 1 << 28 });
 }
 
-/** Vereinfachungsgrad: große Rohdateien werden stärker ausgedünnt. */
-function simplifyRate(bytes) {
-  if (bytes > 3_000_000) return '8%';
-  if (bytes > 1_500_000) return '11%';
-  if (bytes > 500_000) return '15%';
-  return '25%';
-}
+/**
+ * Quantisierungsraster des TopoJSON. 1e6 entspricht über die Weltausdehnung
+ * rund 40 m – deutlich feiner als ein Bildschirmpixel bei der höchsten
+ * Zoomstufe und damit unsichtbar.
+ */
+const QUANT = '1e6';
 
+/**
+ * Grenzverläufe werden bewusst NICHT vereinfacht. Die Rohdaten enthalten je
+ * Zeitschnitt nur 30.000 bis 110.000 Stützpunkte; als quantisiertes TopoJSON
+ * mit geteilten Bögen bleibt das je Datei im Bereich weniger Hundert Kilobyte.
+ * Jede Ausdünnung wäre sichtbar, ohne nennenswert Ladezeit zu sparen.
+ */
 function buildEpoch(entry) {
   const src = path.join(HIST_DIR, entry.filename);
-  const bytes = fs.statSync(src).size;
   const key = keyFor(entry.year);
   const topoPath = path.join(TMP, `${key}.topo.json`);
 
   mapshaper([
     src,
     '-filter', 'NAME != null && NAME !== ""',
-    '-simplify', 'visvalingam', simplifyRate(bytes), 'keep-shapes',
     '-filter-fields', 'NAME,SUBJECTO,PARTOF,BORDERPRECISION',
     '-rename-fields', 'n=NAME,s=SUBJECTO,p=PARTOF,b=BORDERPRECISION',
-    '-o', 'format=topojson', 'quantization=1e5', topoPath,
+    '-o', 'format=topojson', `quantization=${QUANT}`, topoPath,
   ]);
 
   const topo = JSON.parse(fs.readFileSync(topoPath, 'utf8'));
@@ -240,13 +253,84 @@ function buildEpoch(entry) {
   };
 }
 
+/**
+ * Basisgeometrien aus Natural Earth 1:10 Mio.
+ *
+ * Erzeugt wird nicht die Landmasse, sondern ihr Gegenstück: **das Meer** als
+ * ein Polygon mit einem Loch je Landmasse. Diese Ebene liegt in der Karte
+ * über den Grenzflächen und schneidet sie damit an der echten Küstenlinie ab.
+ *
+ * Der Umweg lohnt sich: Ein Zuschnitt jedes einzelnen Zeitschnitts an der
+ * Küste würde jede der 53 Dateien um dieselben Küstenpunkte aufblähen (rund
+ * das Vierfache). So wird die Küstenlinie genau einmal geladen – und die
+ * Umrisse sind trotzdem exakt.
+ *
+ * Zwei Stufen: eine schlanke Übersicht für den sofortigen Start und eine
+ * hochaufgelöste Fassung, die im Hintergrund nachrückt.
+ */
 function buildBase() {
-  const jobs = [
-    { src: 'ne_50m_land.geojson', out: 'land.json', simplify: '10%', fields: [] },
-    { src: 'ne_50m_lakes.geojson', out: 'lakes.json', simplify: '12%', fields: [] },
-    { src: 'ne_50m_rivers_lake_centerlines.geojson', out: 'rivers.json', simplify: '12%', fields: [] },
+  const landSources = ['ne_10m_land.geojson', 'ne_10m_minor_islands.geojson']
+    .map((f) => path.join(NE_DIR, f))
+    .filter((f) => fs.existsSync(f));
+
+  if (!landSources.length) {
+    console.warn('  ! keine Landdaten gefunden – Basisebenen werden übersprungen');
+    return;
+  }
+
+  const merged = path.join(TMP, 'land-merged.json');
+  mapshaper([
+    ...landSources, 'combine-files',
+    '-merge-layers', 'force',
+    '-filter-fields',
+    '-o', 'format=geojson', merged,
+  ]);
+
+  // Große Binnenseen aus der Landmaske herausnehmen, damit Kaspisches Meer,
+  // Große Seen und Baikalsee als Wasser erscheinen statt als Staatsgebiet.
+  const lakesSrc = path.join(NE_DIR, 'ne_10m_lakes.geojson');
+  let landNet = merged;
+  if (fs.existsSync(lakesSrc)) {
+    const bigLakes = path.join(TMP, 'big-lakes.json');
+    mapshaper([
+      lakesSrc,
+      '-filter', 'scalerank <= 2',
+      '-filter-fields',
+      '-o', 'format=geojson', bigLakes,
+    ]);
+    landNet = path.join(TMP, 'land-net.json');
+    mapshaper([merged, '-erase', `source=${bigLakes}`, '-o', 'format=geojson', landNet]);
+  }
+
+  const levels = [
+    { out: 'ocean.json', interval: 4000, note: 'Übersicht' },
+    { out: 'ocean-hd.json', interval: COAST_INTERVAL, note: 'Detail' },
   ];
-  for (const job of jobs) {
+  for (const level of levels) {
+    const simplified = path.join(TMP, `land-${level.interval}.json`);
+    mapshaper([
+      landNet,
+      '-simplify', `interval=${level.interval}`, 'keep-shapes',
+      '-o', 'format=geojson', simplified,
+    ]);
+    const out = path.join(OUT_DIR, 'base', level.out);
+    // Weltrechteck über den gesamten schwenkbaren Bereich, abzüglich Land.
+    mapshaper([
+      '-rectangle', 'bbox=-360,-90,360,90',
+      '-erase', `source=${simplified}`,
+      '-o', 'format=topojson', `quantization=${QUANT}`, out,
+    ]);
+    console.log(
+      `  ${level.out.padEnd(14)} ${(fs.statSync(out).size / 1024).toFixed(0).padStart(5)} kB  ` +
+      `(${level.note}, ${level.interval} m)`,
+    );
+  }
+
+  const water = [
+    { src: 'ne_10m_lakes.geojson', out: 'lakes.json', interval: 400 },
+    { src: 'ne_10m_rivers_lake_centerlines.geojson', out: 'rivers.json', interval: 400 },
+  ];
+  for (const job of water) {
     const src = path.join(NE_DIR, job.src);
     if (!fs.existsSync(src)) {
       console.warn(`  ! übersprungen (fehlt): ${job.src}`);
@@ -255,11 +339,11 @@ function buildBase() {
     const out = path.join(OUT_DIR, 'base', job.out);
     mapshaper([
       src,
-      '-simplify', 'visvalingam', job.simplify, 'keep-shapes',
+      '-simplify', `interval=${job.interval}`, 'keep-shapes',
       '-filter-fields',
-      '-o', 'format=topojson', 'quantization=1e5', out,
+      '-o', 'format=topojson', `quantization=${QUANT}`, out,
     ]);
-    console.log(`  ${job.out.padEnd(14)} ${(fs.statSync(out).size / 1024).toFixed(0)} kB`);
+    console.log(`  ${job.out.padEnd(14)} ${(fs.statSync(out).size / 1024).toFixed(0).padStart(5)} kB`);
   }
 }
 
@@ -279,7 +363,7 @@ function main() {
   fs.mkdirSync(path.join(OUT_DIR, 'epochs'), { recursive: true });
   fs.mkdirSync(path.join(OUT_DIR, 'base'), { recursive: true });
 
-  console.log('› Basisgeometrien');
+  console.log('› Basisgeometrien (Meer als Gegenstück zur Landmasse)');
   buildBase();
 
   const index = JSON.parse(fs.readFileSync(indexPath, 'utf8')).years;

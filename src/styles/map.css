@@ -2,8 +2,11 @@
    Kartenebenen – Feinschliff über den Leaflet-Grundstil
    ============================================================ */
 
-/* Leaflet setzt eigene Hintergründe; die Bühne bringt ihren eigenen mit. */
-.leaflet-container { background: transparent; }
+/* Leaflet setzt einen eigenen grauen Hintergrund. Hier muss die Landfarbe
+   stehen: Sie ist es, die überall dort durchscheint, wo weder das Meer noch
+   ein Gemeinwesen zeichnet – also auf unbeanspruchtem Land.
+   Beide Selektoren treffen dasselbe Element, deshalb die doppelte Klasse. */
+.map.leaflet-container { background: var(--land); }
 .leaflet-container a { color: var(--azure); }
 
 /* Panes ohne Zeigerereignisse werden in JS gesetzt; die aktive
@@ -30,11 +33,12 @@
 /* Beschriftungscanvas nie interaktiv */
 .label-canvas { pointer-events: none; }
 
-/* Weiche Kanten der Landmaske: eine zweite, unscharfe Kontur unter der
-   scharfen erzeugt den Eindruck eines gedruckten Kartenblatts. */
-.leaflet-land-pane { filter: drop-shadow(0 1px 0 rgba(0, 0, 0, .25)); }
-[data-theme="parchment"] .leaflet-land-pane {
-  filter: drop-shadow(0 1px 1px rgba(120, 95, 55, .3));
+/* Die Meeresebene liegt über den Grenzflächen und schneidet sie an der
+   Küste ab. Ein zarter Schlagschatten nach innen lässt die Landmassen
+   plastisch wirken, wie auf einem gedruckten Kartenblatt. */
+.leaflet-ocean-pane { filter: drop-shadow(0 -1px 0 rgba(0, 0, 0, .35)); }
+[data-theme="parchment"] .leaflet-ocean-pane {
+  filter: drop-shadow(0 -1px 1px rgba(120, 95, 55, .28));
 }
 
 /* Beim Wechsel des Zeitschnitts kurz weichzeichnen – das kaschiert das
