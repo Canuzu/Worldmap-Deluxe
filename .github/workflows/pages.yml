@@ -10,9 +10,13 @@ permissions:
   pages: write
   id-token: write
 
+# Ein Lauf je Zweig. Früher lagen alle Zweige in derselben Gruppe mit
+# cancel-in-progress – zwei kurz nacheinander angestoßene Pushes haben sich
+# dann gegenseitig abgebrochen und die Veröffentlichung blieb auf dem alten
+# Stand stehen.
 concurrency:
-  group: pages
-  cancel-in-progress: true
+  group: pages-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   build:

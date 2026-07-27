@@ -6,6 +6,11 @@
 *::before,
 *::after { box-sizing: border-box; }
 
+/* Das hidden-Attribut ist HTML-eigen; im SVG-Namensraum greift die Regel des
+   Browsers nicht. Ohne diese Zeile standen Abspiel- und Pausensymbol
+   gleichzeitig in der Schaltfläche. */
+svg[hidden] { display: none; }
+
 html, body {
   height: 100%;
   margin: 0;

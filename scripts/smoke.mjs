@@ -98,11 +98,15 @@ await check('Zeitregler springt an eine andere Stelle', async () => {
 });
 
 await check('Zeitreise startet und hält an', async () => {
+  // Im Ruhezustand darf nur das Abspielsymbol stehen.
+  if (await page.locator('#btnPlay .i-pause').isVisible()) throw new Error('Pausensymbol im Ruhezustand sichtbar');
   await page.click('#btnPlay');
   await page.waitForTimeout(300);
-  const playing = await page.locator('#btnPlay .i-pause').isVisible();
+  if (!(await page.locator('#btnPlay .i-pause').isVisible())) throw new Error('Pausensymbol fehlt');
+  if (await page.locator('#btnPlay .i-play').isVisible()) throw new Error('Abspielsymbol während der Fahrt sichtbar');
   await page.click('#btnPlay');
-  if (!playing) throw new Error('Pausensymbol fehlt');
+  await page.waitForTimeout(200);
+  if (!(await page.locator('#btnPlay .i-play').isVisible())) throw new Error('Abspielsymbol kehrt nicht zurück');
 });
 
 await check('Farbwelt wechselt', async () => {

@@ -34,12 +34,13 @@
 .label-canvas { pointer-events: none; }
 
 /* Die Meeresebene liegt über den Grenzflächen und schneidet sie an der
-   Küste ab. Ein zarter Schlagschatten nach innen lässt die Landmassen
-   plastisch wirken, wie auf einem gedruckten Kartenblatt. */
-.leaflet-ocean-pane { filter: drop-shadow(0 -1px 0 rgba(0, 0, 0, .35)); }
-[data-theme="parchment"] .leaflet-ocean-pane {
-  filter: drop-shadow(0 -1px 1px rgba(120, 95, 55, .28));
-}
+   Küste ab.
+   Hier stand einmal ein drop-shadow für einen plastischen Küstensaum. Ein
+   CSS-Filter zwingt den Browser jedoch, die darunterliegende Zeichenfläche
+   neu zu rastern – auf Bildschirmen mit doppelter Punktdichte ging dabei die
+   halbe Auflösung verloren und die ganze Karte wirkte weichgezeichnet.
+   Der Küstensaum wird deshalb in atlas.js als eigene Linie gezeichnet. */
+.leaflet-ocean-pane { filter: none; }
 
 /* Beim Wechsel des Zeitschnitts kurz weichzeichnen – das kaschiert das
    harte Umspringen der Geometrien. */

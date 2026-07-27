@@ -10,7 +10,11 @@
 import { feature as topoFeature } from 'topojson-client';
 
 const BASE = import.meta.env.BASE_URL || '/';
-const url = (p) => `${BASE}${p}`.replace(/([^:])\/{2,}/g, '$1/');
+// __DATENSTAND__ wird beim Bauen eingesetzt (siehe vite.config.js) und hängt
+// an jeder Datenanfrage, damit nach einer Veröffentlichung nicht der alte
+// Zwischenspeicher ausgeliefert wird.
+const STAND = typeof __DATENSTAND__ === 'string' ? __DATENSTAND__ : 'dev';
+const url = (p) => `${BASE}${p}`.replace(/([^:])\/{2,}/g, '$1/') + `?v=${STAND}`;
 
 async function getJSON(path) {
   const res = await fetch(url(path));

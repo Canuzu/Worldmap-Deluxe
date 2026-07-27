@@ -115,10 +115,10 @@ export class AtlasMap {
       pane: 'ocean',
       renderer: L.canvas({ pane: 'ocean', padding: .3 }),
       interactive: false,
-      // Leaflet dünnt beim Projizieren auf Pixelgenauigkeit aus. 1 px ist
-      // unsichtbar, senkt die Punktzahl der Küstenlinie im Weltmaßstab aber
-      // um Größenordnungen und hält das Zoomen flüssig.
-      smoothFactor: 1,
+      // Leaflet dünnt beim Projizieren auf Pixelgenauigkeit aus. Leaflets
+      // Vorgabe von 1 px kappt sichtbar Buchten und Landzungen; 0.5 px
+      // behält sie und bleibt beim Zoomen flüssig.
+      smoothFactor: .5,
     }).addTo(this.map);
 
     this.waterLayer = L.geoJSON(null, {
@@ -375,7 +375,7 @@ export class AtlasMap {
       pane: to.pane,
       renderer: to.renderer,
       interactive: false,
-      smoothFactor: 1.0,
+      smoothFactor: .5,
       style: (f) => {
         const color = this.colorOf(this._colorKey(f.properties));
         return {
@@ -393,7 +393,7 @@ export class AtlasMap {
     to.layer = L.geoJSON(data.geojson, {
       pane: to.pane,
       renderer: to.renderer,
-      smoothFactor: 1.0,
+      smoothFactor: .5,
       style: (f) => this._styleFeature(f),
       onEachFeature: (feature, layer) => {
         layer.on('mouseover', () => this._onHover(feature.properties.n));

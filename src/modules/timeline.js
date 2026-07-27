@@ -387,8 +387,11 @@ export class Timeline {
 
   _syncPlayButton() {
     const btn = this.dom.play;
-    btn.querySelector('.i-play').hidden = this.playing;
-    btn.querySelector('.i-pause').hidden = !this.playing;
+    // SVGElement spiegelt das hidden-Attribut nicht als Eigenschaft – eine
+    // Zuweisung an .hidden legte nur ein totes Feld an, die Schaltfläche
+    // blieb stehen. Deshalb das Attribut selbst schalten.
+    btn.querySelector('.i-play').toggleAttribute('hidden', this.playing);
+    btn.querySelector('.i-pause').toggleAttribute('hidden', !this.playing);
     btn.title = this.playing ? 'Zeitreise anhalten (Leertaste)' : 'Zeitreise starten (Leertaste)';
     btn.setAttribute('aria-label', btn.title);
   }
