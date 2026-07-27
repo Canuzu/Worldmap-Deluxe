@@ -15,6 +15,7 @@
  *   s  SUBJECTO        übergeordnete Macht (Kolonialmacht o. Ä.)
  *   p  PARTOF          übergeordneter Kulturraum
  *   b  BORDERPRECISION 1 = grob, 2 = mittel, 3 = völkerrechtlich fixiert
+ *   o  OCCUPIER        Besatzungsmacht (nur in den Kriegsjahren 1940–1944)
  *   c  [lon, lat]      Ankerpunkt für die Beschriftung (Pol der Unzugänglichkeit)
  *   a  Fläche in km²
  */
@@ -27,6 +28,12 @@ import { anchorPoint } from './lib/polylabel.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const HIST_DIR = path.join(ROOT, 'data-src/historical');
+/**
+ * Selbst erzeugte Zwischenstände (siehe scripts/build-wwii.mjs). Der
+ * Ursprungsdatensatz springt von 1938 auf 1945; die Kriegsjahre entstehen
+ * daraus und liegen getrennt, damit data-src/historical unangetastet bleibt.
+ */
+const DERIVED_DIR = path.join(ROOT, 'data-src/derived');
 const NE_DIR = path.join(ROOT, 'data-src/naturalearth');
 const OUT_DIR = path.join(ROOT, 'public/data');
 const TMP = fs.mkdtempSync(path.join(os.tmpdir(), 'wmd-'));
@@ -140,6 +147,11 @@ const EPOCH_TITLES = {
   '1920': 'Nach den Pariser Vorortverträgen',
   '1930': 'Zwischenkriegszeit',
   '1938': 'Vorabend des Zweiten Weltkriegs',
+  '1940': 'Westfeldzug und Teilung Polens',
+  '1941': 'Unternehmen Barbarossa vor Moskau',
+  '1942': 'Größte Ausdehnung der Achsenmächte',
+  '1943': 'Wende: Stalingrad, Kursk, Landung in Italien',
+  '1944': 'Befreiung Westeuropas, Rote Armee an der Weichsel',
   '1945': 'Ende des Zweiten Weltkriegs',
   '1960': 'Afrikanisches Jahr der Unabhängigkeit',
   '1994': 'Nach dem Ende der Sowjetunion',
@@ -211,11 +223,20 @@ const QUANT = '1e6';
  * Jede Ausdünnung wäre sichtbar, ohne nennenswert Ladezeit zu sparen.
  */
 function buildEpoch(entry) {
-  const src = path.join(HIST_DIR, entry.filename);
+  const src = path.join(entry.derived ? DERIVED_DIR : HIST_DIR, entry.filename);
   const key = keyFor(entry.year);
   const topoPath = path.join(TMP, `${key}.topo.json`);
 
   const fix = renameExpression(entry.year);
+  // Die Kriegsjahre führen zusätzlich die Besatzungsmacht. Sie muss durch die
+  // ganze Kette mit: Zwei Flächen desselben Landes mit verschiedenen
+  // Besatzern sind zwei Gemeinwesen, keine Dublette.
+  const felder = entry.derived
+    ? 'NAME,SUBJECTO,PARTOF,BORDERPRECISION,OCCUPIER'
+    : 'NAME,SUBJECTO,PARTOF,BORDERPRECISION';
+  const umbenennung = entry.derived
+    ? 'n=NAME,s=SUBJECTO,p=PARTOF,b=BORDERPRECISION,o=OCCUPIER'
+    : 'n=NAME,s=SUBJECTO,p=PARTOF,b=BORDERPRECISION';
 
   mapshaper([
     src,
@@ -224,8 +245,8 @@ function buildEpoch(entry) {
     // Nach dem Umbenennen zusammengehörige Flächen verschmelzen, damit keine
     // Grenze mitten durch ein Reich läuft.
     ...(fix ? ['-dissolve2', 'NAME', 'copy-fields=SUBJECTO,PARTOF,BORDERPRECISION'] : []),
-    '-filter-fields', 'NAME,SUBJECTO,PARTOF,BORDERPRECISION',
-    '-rename-fields', 'n=NAME,s=SUBJECTO,p=PARTOF,b=BORDERPRECISION',
+    '-filter-fields', felder,
+    '-rename-fields', umbenennung,
     '-o', 'format=topojson', `quantization=${QUANT}`, topoPath,
   ]);
 
@@ -238,13 +259,21 @@ function buildEpoch(entry) {
   const decoded = topoFeature(topo, topo.objects[objKey]).features;
 
   // Flächen aus dem *unvereinfachten* Original, damit die Angaben belastbar sind.
+  // Geschlüsselt wird nach Gemeinwesen UND Besatzungsmacht: Das besetzte und
+  // das freie Frankreich von 1940 sind zwei Flächen, keine eine.
+  const schluessel = (name, besetzer) => `${name}\u0000${besetzer ?? ''}`;
   const raw = JSON.parse(fs.readFileSync(src, 'utf8'));
-  const rawArea = new Map();
+  const rawArea = new Map();       // Gemeinwesen + Besatzer → Fläche
+  const rawAreaByName = new Map(); // nur Gemeinwesen → Fläche, für den Größenrang
   for (const f of raw.features) {
     const name = f.properties?.NAME;
     if (!name) continue;
-    rawArea.set(name, (rawArea.get(name) ?? 0) + geometryArea(f.geometry));
+    const flaeche = geometryArea(f.geometry);
+    rawArea.set(schluessel(name, f.properties.OCCUPIER),
+      (rawArea.get(schluessel(name, f.properties.OCCUPIER)) ?? 0) + flaeche);
+    rawAreaByName.set(name, (rawAreaByName.get(name) ?? 0) + flaeche);
   }
+  const areaOf = (props) => rawArea.get(schluessel(props.n, props.o)) ?? 0;
 
   const r3 = (v) => Math.round(v * 1000) / 1000;
 
@@ -258,14 +287,18 @@ function buildEpoch(entry) {
       props.bb = anchor.bbox.map(r3);
       props.pa = Math.round(anchor.area * 100) / 100;
     }
-    props.a = Math.round(rawArea.get(props.n) ?? 0);
+    props.a = Math.round(areaOf(props));
     if (props.s === props.n) delete props.s;
     if (props.p === props.n) delete props.p;
+    if (!props.o) delete props.o;
   });
 
   // Rang nach Fläche – steuert Priorität und Schriftgröße der Beschriftung.
+  // Gerangt wird nach der Gesamtfläche des Gemeinwesens, nicht nach dem
+  // einzelnen Teilstück: Ein geteiltes Land rutscht sonst im Rang ab, obwohl
+  // es genauso groß ist wie zuvor.
   const byArea = [...new Set(geometries.map((g) => g.properties.n))]
-    .sort((a, b) => (rawArea.get(b) ?? 0) - (rawArea.get(a) ?? 0));
+    .sort((a, b) => (rawAreaByName.get(b) ?? 0) - (rawAreaByName.get(a) ?? 0));
   const rankOf = new Map(byArea.map((n, i) => [n, i]));
   geometries.forEach((g) => { g.properties.r = rankOf.get(g.properties.n) ?? 999; });
 
@@ -283,6 +316,11 @@ function buildEpoch(entry) {
     polities: byArea.length,
     features: geometries.length,
     bytes: fs.statSync(outFile).size,
+    // Nur bei den selbst ergänzten Kriegsjahren gesetzt: Stichtag des
+    // Frontverlaufs und der Hinweis, dass dieser Zeitschnitt nicht aus dem
+    // Ursprungsdatensatz stammt.
+    ...(entry.derived ? { stand: entry.stand, ergaenzt: true } : {}),
+    ...(geometries.some((g) => g.properties.o) ? { besatzung: true } : {}),
   };
 }
 
@@ -399,12 +437,24 @@ function main() {
   console.log('› Basisgeometrien (Meer als Gegenstück zur Landmasse)');
   buildBase();
 
-  const index = JSON.parse(fs.readFileSync(indexPath, 'utf8')).years;
+  // Ursprungsdatensatz und selbst erzeugte Kriegsjahre zu einer Liste
+  // zusammenführen und nach Jahr ordnen – die Zeitleiste erwartet sie in Folge.
+  const index = JSON.parse(fs.readFileSync(indexPath, 'utf8')).years.map((e) => ({ ...e }));
+  const derivedIndex = path.join(DERIVED_DIR, 'index.json');
+  if (fs.existsSync(derivedIndex)) {
+    for (const e of JSON.parse(fs.readFileSync(derivedIndex, 'utf8')).years) {
+      index.push({ ...e, derived: true });
+    }
+    index.sort((a, b) => a.year - b.year);
+  } else {
+    console.warn('  ! Kriegsjahre fehlen – bitte `npm run build:krieg` ausführen.');
+  }
+
   console.log(`\n› ${index.length} Zeitschnitte`);
   const epochs = [];
   let total = 0;
   for (const entry of index) {
-    if (!fs.existsSync(path.join(HIST_DIR, entry.filename))) {
+    if (!fs.existsSync(path.join(entry.derived ? DERIVED_DIR : HIST_DIR, entry.filename))) {
       console.warn(`  ! übersprungen (fehlt): ${entry.filename}`);
       continue;
     }

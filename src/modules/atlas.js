@@ -36,6 +36,48 @@ const HOME = { center: [26, 12], zoom: 2.4 };
 /** Ab dieser Zoomstufe wird die hochaufgelöste Küstenlinie eingeblendet. */
 const COAST_HD_FROM_ZOOM = 4.2;
 
+/* --------------------------------------------------------- Besatzung */
+
+/**
+ * Schraffur für besetztes Gebiet.
+ *
+ * Besatzung ist kein Eigentum: Norwegen war 1942 nicht Deutschland, sondern
+ * von Deutschland besetztes Norwegen. Die Karte muss deshalb beides zugleich
+ * zeigen – die Fläche behält die Farbe des Landes, darüber liegen schräge
+ * Streifen in der Farbe der Besatzungsmacht.
+ *
+ * Der Kniff: Leaflet schreibt die Füllfarbe unbesehen nach ctx.fillStyle, und
+ * das nimmt außer Farben auch ein CanvasPattern. So lässt sich auf der
+ * Zeichenfläche schraffieren, ohne Leaflet zu ändern.
+ */
+const HATCH_SIZE = 9;
+const hatchCache = new Map();
+
+function hatchFor(color) {
+  const cached = hatchCache.get(color);
+  if (cached) return cached;
+
+  const tile = document.createElement('canvas');
+  tile.width = HATCH_SIZE;
+  tile.height = HATCH_SIZE;
+  const c = tile.getContext('2d');
+  c.strokeStyle = color;
+  c.lineWidth = 2.4;
+  c.lineCap = 'square';
+  // Zwei versetzte Striche, damit die Schraffur über die Kachelgrenze hinweg
+  // durchläuft und keine Treppe entsteht.
+  for (const shift of [-HATCH_SIZE, 0]) {
+    c.beginPath();
+    c.moveTo(shift, HATCH_SIZE);
+    c.lineTo(shift + HATCH_SIZE, 0);
+    c.stroke();
+  }
+
+  const pattern = document.createElement('canvas').getContext('2d').createPattern(tile, 'repeat');
+  hatchCache.set(color, pattern);
+  return pattern;
+}
+
 /** Gradnetz alle 15° als GeoJSON – billiger als ein weiterer Datensatz. */
 function graticule(step = 15) {
   const lines = [];
@@ -60,6 +102,7 @@ export class AtlasMap {
     this.showBorders = true;
     this.showWater = false;
     this.showGraticule = false;
+    this.showOccupation = true;
 
     this.epoch = null;
     this.coast = { lo: null, hi: null, level: 'lo' };
@@ -149,6 +192,7 @@ export class AtlasMap {
       renderer: L.canvas({ pane, padding: .35 }),
       layer: null,
       halo: null,
+      occupation: null,
     }));
     this.slots.forEach((slot) => {
       slot.el.style.transition = 'opacity 300ms cubic-bezier(.32,.72,.29,1)';
@@ -260,7 +304,9 @@ export class AtlasMap {
 
   _colorKey(props) {
     switch (this.colorMode) {
-      case 'sovereign': return props.s || props.n;
+      // In der Oberhoheits-Ansicht zählt, wer tatsächlich herrscht: Über einem
+      // besetzten Land steht die Besatzungsmacht, nicht seine eigene Krone.
+      case 'sovereign': return props.o || props.s || props.n;
       case 'culture': return props.p || props.n;
       case 'precision': return `p${props.b ?? 0}`;
       default: return props.n;
@@ -324,6 +370,30 @@ export class AtlasMap {
     };
   }
 
+  /**
+   * Schraffur in der Farbe der Besatzungsmacht. Die Farbe wird über deren
+   * eigenen Namen geholt, damit besetztes Frankreich dieselben Streifen trägt
+   * wie das Deutsche Reich selbst – die Zuordnung soll ohne Legende lesbar sein.
+   */
+  _occupationStyle(feature) {
+    const besetzer = feature.properties.o;
+    if (!this.showOccupation || !besetzer) {
+      return { fill: false, stroke: false };
+    }
+    return {
+      fill: true,
+      fillColor: hatchFor(this.colorOfPolity(besetzer)),
+      fillOpacity: Number(this._cssVar('--hatch-alpha', '.85')),
+      stroke: false,
+      bubblingMouseEvents: false,
+    };
+  }
+
+  setOccupationVisible(on) {
+    this.showOccupation = !!on;
+    this.slots[this.activeSlot].occupation?.setStyle((f) => this._occupationStyle(f));
+  }
+
   _restyleActive() {
     const slot = this.slots[this.activeSlot];
     if (!slot.layer) return;
@@ -333,6 +403,7 @@ export class AtlasMap {
       return { color, opacity: alpha };
     });
     slot.layer.setStyle((f) => this._styleFeature(f));
+    slot.occupation?.setStyle((f) => this._occupationStyle(f));
   }
 
   setColorMode(mode) {
@@ -364,6 +435,10 @@ export class AtlasMap {
     if (to.halo) {
       to.halo.remove();
       to.halo = null;
+    }
+    if (to.occupation) {
+      to.occupation.remove();
+      to.occupation = null;
     }
 
     // Saum in der eigenen Füllfarbe, nur als Linie. Er weitet jede Fläche um
@@ -404,6 +479,23 @@ export class AtlasMap {
         });
       },
     }).addTo(this.map);
+
+    // Besetztes Gebiet: zuletzt hinzugefügt, damit die Schraffur über der
+    // Füllung liegt. Ohne Zeigerereignisse – der Klick soll die Fläche
+    // darunter treffen, nicht die Schraffur.
+    const besetzte = data.geojson.features.filter((f) => f.properties.o);
+    if (besetzte.length) {
+      to.occupation = L.geoJSON(
+        { type: 'FeatureCollection', features: besetzte },
+        {
+          pane: to.pane,
+          renderer: to.renderer,
+          interactive: false,
+          smoothFactor: .5,
+          style: (f) => this._occupationStyle(f),
+        },
+      ).addTo(this.map);
+    }
 
     from.el.style.pointerEvents = 'none';
     to.el.style.pointerEvents = 'auto';

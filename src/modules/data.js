@@ -96,10 +96,23 @@ function prepareEpoch(meta, topo) {
         labelArea: -1,
         rank: p.r ?? 999,
         features: [],
+        // Besatzungsmächte über diesem Gemeinwesen. Mehrere sind möglich:
+        // Polen war 1940 zugleich deutsch und sowjetisch besetzt.
+        occupiers: [],
+        _flaechen: new Set(),
       };
       byName.set(name, entry);
     }
     entry.features.push(f);
+
+    // Die Flächenangabe gilt je Kombination aus Gemeinwesen und Besatzer; ein
+    // Land aus mehreren Teilstücken darf sie nur einmal zählen.
+    const teil = p.o ?? '';
+    if (!entry._flaechen.has(teil)) {
+      entry._flaechen.add(teil);
+      if (entry._flaechen.size > 1) entry.area += p.a ?? 0;
+      if (p.o) entry.occupiers.push({ name: p.o, area: p.a ?? 0 });
+    }
 
     // Beschriftet wird immer das flächengrößte Teilstück: Dänemark gehört
     // nach Jütland, nicht nach Grönland.
@@ -112,13 +125,16 @@ function prepareEpoch(meta, topo) {
   }
 
   const adjacency = buildAdjacency(topo, (p) => p.n || null);
-  const sovereignAdjacency = buildAdjacency(topo, (p) => p.s || p.n || null);
+  // Wie in der Karte: Über einem besetzten Land steht die Besatzungsmacht.
+  const sovereignAdjacency = buildAdjacency(topo, (p) => p.o || p.s || p.n || null);
   const cultureAdjacency = buildAdjacency(topo, (p) => p.p || p.n || null);
 
   for (const [name, entry] of byName) {
     entry.neighbors = [...(adjacency.get(name) ?? [])]
       .filter((n) => byName.has(n))
       .sort((a, b) => (byName.get(b)?.area ?? 0) - (byName.get(a)?.area ?? 0));
+    entry.occupiers.sort((a, b) => b.area - a.area);
+    delete entry._flaechen;
   }
 
   const polities = [...byName.values()].sort((a, b) => b.area - a.area);

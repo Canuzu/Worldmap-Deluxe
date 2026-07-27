@@ -128,6 +128,16 @@
 .chip--action:hover { background: var(--surface-3); color: var(--ink-strong); }
 .chip .sw { width: .55rem; height: .55rem; border-radius: 2px; flex: none; }
 
+/* Besatzung ist keine Zugehörigkeit. Die Schräge nimmt die Schraffur der
+   Karte auf, damit Tafel und Fläche als dieselbe Aussage gelesen werden. */
+.chip--occupied {
+  border-color: color-mix(in srgb, var(--warn, #d98a52) 55%, transparent);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent 0 5px,
+    color-mix(in srgb, var(--warn, #d98a52) 16%, transparent) 5px 8px);
+}
+
 /* ---------------------------------------------------------- Abschnitt */
 
 .sec { padding: 1.15rem 1.4rem; border-bottom: 1px solid var(--hairline); }

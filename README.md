@@ -2,7 +2,7 @@
 
 **→ [canuzu.github.io/Worldmap-Deluxe](https://canuzu.github.io/Worldmap-Deluxe/)**
 
-Ein interaktiver historischer Weltatlas: **53 Zeitschnitte von 123.000 v. Chr. bis 2010**.
+Ein interaktiver historischer Weltatlas: **58 Zeitschnitte von 123.000 v. Chr. bis 2010**.
 Der Regler unten schiebt die Weltkarte durch die Jahrtausende – Reiche wachsen,
 Grenzen verschieben sich, Kulturen verschwinden. Ein Klick auf ein Gebiet öffnet
 den Steckbrief für genau dieses Jahr: Herrscher, Hauptstadt, Regierungsform,
@@ -20,10 +20,11 @@ Religion, Bevölkerung, Wirtschaft, Wendepunkte und Nachbarn.
 
 | | |
 |---|---|
-| **Zeitregler** | jahresgenau wählbar; die Karte zeigt den nächstgelegenen der 53 Kartenstände und schreibt darunter, welcher das ist |
+| **Zeitregler** | jahresgenau wählbar; die Karte zeigt den nächstgelegenen der 58 Kartenstände und schreibt darunter, welcher das ist |
 | **Zeitreise** | Wiedergabetaste läuft alle Epochen durch, mit Überblendung zwischen den Zeitschnitten |
 | **Detailtafel** | Steckbrief je Gemeinwesen und Jahr – kuratierte Texte, Angaben aus dem Kartendatensatz, optional ein Wikipedia-Auszug |
 | **Nachbarn** | aus der Kartentopologie berechnet und anklickbar: eine Region lässt sich Nachbar für Nachbar erwandern |
+| **Besetzte Gebiete** | 1940–1944: besetztes Land behält seine Farbe und trägt darüber eine Schraffur in der Farbe der Besatzungsmacht |
 | **Vier Einfärbungen** | nach Gemeinwesen, Oberhoheit, Kulturraum oder Genauigkeit des Grenzverlaufs |
 | **Suche** | über alle Gemeinwesen des aktuellen Zeitschnitts, deutsch und in der Schreibweise des Datensatzes |
 | **Zwei Farbwelten** | „Nachtatlas“ und „Pergament“ |
@@ -114,7 +115,8 @@ Neu erzeugen lassen sich die Web-Datensätze so:
 
 ```bash
 npm run fetch:data    # lädt historical-basemaps + Natural Earth nach data-src/
-npm run build:data    # vereinfacht, quantisiert, schreibt public/data/ (~20 s)
+npm run build:krieg   # erzeugt die Kriegsjahre 1940–1944 nach data-src/derived/
+npm run build:data    # quantisiert, schreibt public/data/ (~20 s)
 npm run build:knowledge
 npm run check:data    # Abdeckung je Zeitschnitt
 ```
@@ -147,6 +149,44 @@ Nachbarflächen, sodass keine Grenze mitten durch ein Reich läuft.
 Aufgenommen wird nur, was fachlich unstrittig ist. Wo die richtige Zuordnung
 unklar ist, bleibt der Befund lieber offen stehen – eine selbstbewusste
 falsche Korrektur wäre schlimmer.
+
+### Die fehlenden Kriegsjahre
+
+Der Ursprungsdatensatz springt von **1938 auf 1945** – der gesamte Zweite
+Weltkrieg fehlt. Er kennt außerdem gar keine Besatzung, sondern nur, wem ein
+Gebiet völkerrechtlich zugerechnet wird. Beides zusammen bedeutet: Der
+Vorstoß der Wehrmacht bis Stalingrad taucht auf der Karte nirgends auf.
+
+`src/data/wwii.json` beschreibt deshalb fünf Zwischenstände (1940, 1941, 1942,
+1943, 1944), jeweils auf einen Stichtag bezogen. Drei Arten von Änderung:
+
+| | |
+|---|---|
+| `umbenennen` | Der Staat ist untergegangen (Tschechoslowakei → Protektorat Böhmen und Mähren) |
+| `besetzt` | Das Land behält seinen Namen und bekommt eine Besatzungsmacht |
+| `teilungen` | Das Land wird an einer Frontlinie zerschnitten; jede Hälfte bekommt eigenen Namen oder eigenen Besetzer |
+
+Die Frontlinien liegen als Polygonzüge in derselben Datei, jeder mit
+Begründung. `npm run build:krieg` verschneidet sie über mapshaper mit dem
+Stand von 1938.
+
+**Besatzung ist kein Eigentum.** Norwegen war 1942 nicht Deutschland, sondern
+von Deutschland besetztes Norwegen. Die Karte zeigt deshalb beides: Die Fläche
+behält die Farbe des Landes, darüber liegt eine Schraffur in der Farbe der
+Besatzungsmacht. Nur in der Einfärbung „Oberhoheit“ tritt der Besetzer an die
+Stelle des Landes – dort ist genau das die Frage.
+
+Die Linien sind von Hand gezogen und auf kontinentalen Maßstab ausgelegt;
+einzelne Brückenköpfe und Kessel lösen sie nicht auf. Damit sie nicht
+unbemerkt verrutschen, prüft `npm run check:besatzung` 140 Stichproben gegen
+bekannte Daten – darunter die Orte, die trotz Belagerung nie gefallen sind:
+
+```
+Leningrad     frei  frei  frei  frei  frei   eingeschlossen, aber nie genommen
+Stalingrad    frei  frei  Ger.  frei  frei   nur im Herbst 1942
+Sewastopol    frei  frei  Ger.  Ger.  frei   hielt bis Juli 1942
+Paris         Ger.  Ger.  Ger.  Ger.  frei   befreit August 1944
+```
 
 ### Wissensbasis
 

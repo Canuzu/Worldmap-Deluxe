@@ -30,6 +30,7 @@ const prefs = {
   rivers: false,
   graticule: false,
   borders: true,
+  occupation: true,
   wiki: true,
   ...readPrefs(),
 };
@@ -100,7 +101,9 @@ async function main() {
 
   const atlas = new AtlasMap($('map'), { theme: prefs.theme });
   atlas.setBaseData(atlasData.base);
-  window.__atlasMap = atlas.map; // Messhilfe für scripts/perf
+  // Messhilfen für scripts/smoke.mjs und scripts/perf
+  window.__atlasMap = atlas.map;
+  window.__atlas = atlas;
   atlas.setLabelNames((name) => atlasData.germanName(name));
   atlas.setColorMode(prefs.colorMode);
   atlas.setShowLabels(prefs.labels);
@@ -314,9 +317,28 @@ async function main() {
     list.innerHTML = epoch.polities.slice(0, 16).map((p) => `
       <li data-name="${esc(p.name)}">
         <span class="sw" style="background:${esc(atlas.colorOfPolity(p.name))}"></span>
-        <span class="nm">${esc(atlasData.germanName(p.name))}</span>
+        <span class="nm">${esc(atlasData.germanName(p.name))}${p.occupiers?.length
+          ? ` <i class="occ" title="besetzt durch ${esc(p.occupiers.map((b) => atlasData.germanName(b.name)).join(', '))}">besetzt</i>`
+          : ''}</span>
         <span class="va">${esc(areaText(p.area))}</span>
       </li>`).join('');
+
+    // In den Kriegsjahren erklärt eine Zeile, was die Schraffur bedeutet –
+    // sonst bliebe die zweite Farbe auf einer Fläche unerklärt.
+    const besetzer = new Map();
+    for (const p of epoch.polities) {
+      for (const b of p.occupiers ?? []) besetzer.set(b.name, (besetzer.get(b.name) ?? 0) + 1);
+    }
+    if (besetzer.size) {
+      list.insertAdjacentHTML('beforeend', `
+        <li class="legend__note">Schraffiert = besetztes Gebiet, in der Farbe der Besatzungsmacht.</li>
+        ${[...besetzer.entries()].sort((a, b) => b[1] - a[1]).map(([name, count]) => `
+          <li data-name="${esc(name)}">
+            <span class="sw sw--hatch" style="--occ:${esc(atlas.colorOfPolity(name))}"></span>
+            <span class="nm">${esc(atlasData.germanName(name))} als Besatzungsmacht</span>
+            <span class="va">${num(count)} Gebiete</span>
+          </li>`).join('')}`);
+    }
   }
 
   $('legendList').addEventListener('click', (event) => {
@@ -478,6 +500,7 @@ async function main() {
     ['optRivers', 'rivers', (v) => enableWater(v)],
     ['optGraticule', 'graticule', (v) => atlas.setShowGraticule(v)],
     ['optBorders', 'borders', (v) => atlas.setShowBorders(v)],
+    ['optOccupation', 'occupation', (v) => atlas.setOccupationVisible(v)],
     ['optWiki', 'wiki', () => {}],
   ];
   for (const [id, key, apply] of toggles) {

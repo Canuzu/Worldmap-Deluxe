@@ -96,6 +96,15 @@ export class DetailPanel {
     const showOriginal = german !== name;
 
     const chips = [];
+    // Besatzung zuerst: Sie ist die für den Zeitschnitt wichtigste Aussage und
+    // widerspricht dem, was die Fläche allein nahelegt.
+    for (const b of entry.occupiers ?? []) {
+      if (b.name === name) continue;
+      chips.push(`<button class="chip chip--occupied chip--action" data-goto="${esc(b.name)}"
+        title="Das Gebiet blieb ${esc(german)}, stand aber unter fremder Herrschaft.">
+        <span class="sw" style="background:${esc(this.atlas.colorOfPolity(b.name))}"></span>
+        Besetzt durch ${esc(this.data.germanName(b.name))}</button>`);
+    }
     if (entry.sovereign && entry.sovereign !== name) {
       chips.push(`<button class="chip chip--action" data-goto="${esc(entry.sovereign)}">
         <span class="sw" style="background:${esc(this.atlas.colorOfPolity(entry.sovereign))}"></span>
@@ -122,6 +131,7 @@ export class DetailPanel {
   }
 
   _guessKind(entry) {
+    if (entry.occupiers?.length) return 'Besetztes Gebiet';
     if (entry.sovereign && entry.sovereign !== entry.name) return 'Abhängiges Gebiet';
     if (entry.precision === 1) return 'Kultur- oder Siedlungsraum';
     return 'Gemeinwesen';
@@ -171,6 +181,18 @@ export class DetailPanel {
     add('Wirtschaft', period?.economy, { wide: true });
 
     add('Fläche', `<span class="num">${esc(areaText(entry.area))}</span>`, { raw: true });
+    // Wie viel des Landes fremd besetzt war – die Zahl macht den Unterschied
+    // zwischen Randbesetzung und fast vollständiger Fremdherrschaft sichtbar.
+    // Bei genau einer Macht, die das ganze Gebiet hält, sagt die Kachel nichts,
+    // was nicht schon im Kopf der Tafel steht.
+    const besetzer = entry.occupiers ?? [];
+    for (const b of besetzer) {
+      const anteil = entry.area > 0 ? Math.round((b.area / entry.area) * 100) : 0;
+      if (besetzer.length === 1 && anteil >= 100) continue;
+      add(`Besetzt durch ${this.data.germanName(b.name)}`,
+        `<span class="num">${esc(areaText(b.area))}</span>${anteil ? ` · ${anteil} %` : ''}`,
+        { raw: true });
+    }
     add('Größenrang', `Nr. ${num(entry.rank + 1)} von ${num(epoch.polities.length)}`);
     if (base?.founded || base?.dissolved) {
       add('Bestand', rangeText(base.founded ?? null, base.dissolved ?? null));

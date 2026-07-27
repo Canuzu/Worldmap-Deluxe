@@ -1,0 +1,540 @@
+{
+  "_hinweis": [
+    "Der Ursprungsdatensatz (Historical Basemaps) springt von 1938 auf 1945 und kennt",
+    "keine Besatzung: Er zeigt nur, wem ein Gebiet völkerrechtlich zugerechnet wird.",
+    "Der Zweite Weltkrieg fällt damit vollständig aus der Karte heraus.",
+    "",
+    "Diese Datei ergänzt fünf Zwischenstände. Sie beschreibt keine neuen Staaten,",
+    "sondern Herrschaft über fremdes Gebiet: Ein besetztes Land behält seinen Namen",
+    "und bekommt zusätzlich eine Besatzungsmacht. Die Karte zeichnet beides – die",
+    "Fläche in der Farbe des Landes, darüber eine Schraffur in der Farbe des",
+    "Besetzers. So bleibt sichtbar, dass Norwegen 1942 nicht Deutschland war,",
+    "sondern von Deutschland besetztes Norwegen.",
+    "",
+    "Alle Ländernamen sind die des Ursprungsdatensatzes (englisch); die deutsche",
+    "Beschriftung entsteht wie überall sonst über names.de.json.",
+    "",
+    "Genauigkeit: Die Frontverläufe sind auf Stichtage bezogen (siehe 'stand') und",
+    "auf kontinentalen Maßstab ausgelegt. Einzelne Brückenköpfe, Kessel und",
+    "Frontbögen von wenigen Dutzend Kilometern sind darin nicht aufgelöst.",
+    "Wo Besatzungszonen zwischen mehreren Achsenmächten geteilt waren",
+    "(Jugoslawien, Griechenland), nennt die Karte die führende Macht."
+  ],
+  "_gebiete_hinweis": "Grenzlinien der Besatzungsgebiete als [Länge, Breite]. Sie werden gegen das jeweilige Land verschnitten; außerhalb des Landes liegende Teile der Fläche sind ohne Wirkung.",
+  "gebiete": {
+    "polen-molotow-ribbentrop": {
+      "_was": "Deutsch besetzter Westteil Polens nach der Demarkationslinie vom 28.9.1939 (Pisa, Narew, Bug, San).",
+      "ring": [
+        [14.0, 55.5], [22.9, 54.5], [22.7, 53.6], [21.6, 53.05], [21.1, 52.55],
+        [22.6, 52.3], [23.6, 52.05], [23.55, 51.55], [23.9, 50.8], [23.2, 50.4],
+        [22.8, 49.8], [22.6, 49.0], [14.0, 49.0], [14.0, 55.5]
+      ]
+    },
+    "polen-weichsel": {
+      "_was": "Deutsch gehaltener Westteil Polens im Dezember 1944, östlich davon steht die Rote Armee an Weichsel und Narew.",
+      "ring": [
+        [14.0, 55.5], [19.5, 55.0], [20.0, 54.0], [21.0, 53.3], [21.2, 52.4],
+        [21.0, 51.5], [21.8, 50.6], [22.5, 49.6], [22.6, 49.0], [14.0, 49.0],
+        [14.0, 55.5]
+      ]
+    },
+    "frankreich-besetzte-zone": {
+      "_was": "Besetzte Zone nach dem Waffenstillstand von Compiègne, Juni 1940: Norden und die gesamte Atlantikküste. Südöstlich der Demarkationslinie blieb der Vichy-Staat.",
+      "ring": [
+        [6.15, 46.15], [5.5, 47.0], [4.85, 46.78], [4.1, 46.45], [3.3, 46.55],
+        [2.4, 46.95], [2.07, 47.22], [1.0, 47.1], [0.7, 46.6], [0.15, 46.0],
+        [0.0, 45.3], [-0.5, 44.5], [-0.7, 43.6], [-1.24, 43.15], [-6.0, 43.0],
+        [-6.0, 52.0], [9.0, 52.0], [9.0, 46.2], [6.15, 46.15]
+      ]
+    },
+    "ostkarelien": {
+      "_was": "Von Finnland besetztes Ostkarelien 1941–1944, bis Swir und Onegasee. Die Murmanbahn blieb sowjetisch.",
+      "ring": [
+        [29.0, 66.3], [30.5, 65.0], [32.5, 64.3], [34.5, 62.9], [35.5, 61.6],
+        [36.0, 60.6], [33.5, 60.1], [30.5, 59.9], [28.5, 60.3], [28.0, 62.0],
+        [29.0, 66.3]
+      ]
+    },
+    "ostfront-1941": {
+      "_was": "Deutsch besetztes Gebiet der Sowjetunion am 5.12.1941, dem Tag vor der sowjetischen Gegenoffensive vor Moskau. Ausgespart bleiben, weil nie genommen: Leningrad (eingeschlossen, aber gehalten – die Linie läuft südlich der Stadt über Schlüsselburg), Moskau und die Festung Sewastopol, die sich bis Juli 1942 hielt.",
+      "ring": [
+        [29.4, 60.0], [30.6, 59.78], [31.1, 59.88], [32.6, 59.9], [33.6, 59.6],
+        [32.4, 58.8], [33.6, 57.8], [36.0, 57.0], [37.3, 56.3], [37.0, 55.4],
+        [37.6, 54.8], [38.2, 54.0], [38.6, 52.6], [37.2, 51.6], [37.9, 50.4],
+        [38.6, 49.0], [39.1, 48.0], [38.9, 47.6], [38.3, 47.1], [36.0, 45.2],
+        [34.2, 44.4], [34.0, 45.0], [33.2, 45.4], [27.0, 45.4], [24.0, 48.0],
+        [26.0, 54.0], [27.5, 56.5], [28.5, 58.5], [29.4, 60.0]
+      ]
+    },
+    "ostfront-1942": {
+      "_was": "Größte Ausdehnung der deutschen Besatzung, November 1942: Wolgabogen bei Stalingrad, Kalmückensteppe, Kaukasusvorland bis Mosdok und der Elbrus. Sewastopol war im Juli 1942 gefallen, die Krim damit ganz besetzt. Leningrad blieb eingeschlossen und ungenommen.",
+      "ring": [
+        [29.4, 60.0], [30.6, 59.78], [31.1, 59.88], [32.6, 59.9], [33.2, 59.2],
+        [32.0, 58.5], [34.0, 57.6], [34.2, 56.5], [35.2, 55.6], [34.5, 54.7],
+        [35.4, 53.8], [36.6, 53.2], [37.8, 52.4], [38.8, 51.6], [39.4, 51.7],
+        [40.6, 50.5], [42.0, 49.7], [43.4, 49.4], [44.6, 48.7], [45.6, 48.1],
+        [45.2, 46.6], [45.6, 45.2], [44.9, 43.7], [43.0, 43.2], [40.5, 43.6],
+        [39.0, 44.2], [37.8, 44.6], [36.0, 44.0], [33.0, 43.5], [27.0, 43.5],
+        [24.0, 48.0], [26.0, 54.0], [27.5, 56.5], [28.5, 58.5], [29.4, 60.0]
+      ]
+    },
+    "ostfront-1943": {
+      "_was": "Stand Dezember 1943, nach Kursk und dem Rückzug hinter den Dnjepr. Kiew war am 6.11.1943 gefallen; die Krim war abgeschnitten, wurde aber noch gehalten und ist als eigenes Gebiet erfasst.",
+      "ring": [
+        [29.4, 60.0], [30.6, 59.78], [31.3, 59.85], [31.9, 58.9], [31.6, 58.2],
+        [30.8, 57.6], [30.6, 56.4], [30.2, 55.3], [30.8, 54.0], [30.6, 52.6],
+        [29.4, 51.6], [29.0, 50.7], [30.4, 49.6], [32.0, 48.6], [33.6, 47.6],
+        [32.6, 46.6], [31.0, 45.6], [28.0, 45.0], [24.0, 48.0], [26.0, 54.0],
+        [27.5, 56.5], [28.5, 58.5], [29.4, 60.0]
+      ]
+    },
+    "krim": {
+      "_was": "Halbinsel Krim, bis Mai 1944 von der Wehrmacht gehalten.",
+      "ring": [
+        [32.4, 46.2], [36.7, 46.2], [36.7, 44.3], [32.4, 44.3], [32.4, 46.2]
+      ]
+    },
+    "kurland": {
+      "_was": "Kurland-Kessel: Die Heeresgruppe Nord war ab Oktober 1944 in Westlettland abgeschnitten und hielt sich bis zur Kapitulation.",
+      "ring": [
+        [20.6, 57.9], [22.6, 57.4], [23.2, 56.6], [21.6, 55.9], [20.6, 56.3],
+        [20.6, 57.9]
+      ]
+    },
+    "bessarabien": {
+      "_was": "Bessarabien und die Nordbukowina, im Juni 1940 von der Sowjetunion von Rumänien gefordert und besetzt.",
+      "ring": [
+        [26.6, 48.4], [30.2, 48.4], [30.2, 45.2], [28.5, 45.2], [26.6, 47.0],
+        [26.6, 48.4]
+      ]
+    },
+    "daenemark-kernland": {
+      "_was": "Dänemark ohne Grönland und Färöer. Grönland stand ab 1941 unter dem Schutz der USA, die Färöer wurden 1940 britisch besetzt – deutsch besetzt war nur das Kernland.",
+      "ring": [
+        [7.5, 58.2], [15.5, 58.2], [15.5, 54.4], [7.5, 54.4], [7.5, 58.2]
+      ]
+    },
+    "italien-gustavlinie": {
+      "_was": "Deutsch besetztes Italien im Dezember 1943: nördlich der Gustav-Linie vom Garigliano bis Ortona. Süditalien und Sardinien waren alliiert.",
+      "ring": [
+        [13.6, 41.2], [14.6, 42.4], [19.0, 42.4], [19.0, 48.0], [6.0, 48.0],
+        [6.0, 41.2], [13.6, 41.2]
+      ]
+    },
+    "italien-gotenlinie": {
+      "_was": "Deutsch besetztes Italien im Dezember 1944: nördlich der Gotenlinie zwischen Pisa und Rimini.",
+      "ring": [
+        [10.1, 43.9], [12.7, 44.1], [19.0, 44.1], [19.0, 48.0], [6.0, 48.0],
+        [6.0, 43.9], [10.1, 43.9]
+      ]
+    },
+    "niederlande-nord": {
+      "_was": "Nördlich von Rhein und Waal gelegene Niederlande, nach dem Scheitern von Market Garden bis Kriegsende besetzt (Hungerwinter).",
+      "ring": [
+        [3.0, 51.75], [7.5, 51.9], [7.5, 54.0], [3.0, 54.0], [3.0, 51.75]
+      ]
+    },
+    "jugoslawien-nordwest": {
+      "_was": "Im Dezember 1944 noch von der Wehrmacht gehaltener Nordwesten Jugoslawiens; Belgrad war im Oktober 1944 befreit worden.",
+      "ring": [
+        [13.0, 47.2], [19.5, 47.2], [19.5, 44.6], [16.2, 42.6], [13.0, 43.6],
+        [13.0, 47.2]
+      ]
+    },
+    "aegypten-west": {
+      "_was": "Westägypten bis El Alamein, im Sommer und Herbst 1942 von Panzerarmee Afrika gehalten.",
+      "ring": [
+        [24.0, 32.0], [29.0, 31.2], [29.0, 25.0], [24.0, 25.0], [24.0, 32.0]
+      ]
+    },
+    "birma": {
+      "_was": "Birma, 1942 von Japan erobert. Die Westgrenze folgt der Grenze nach Britisch-Indien: Imphal und Kohima blieben 1944 in britischer Hand, ebenso Chittagong.",
+      "ring": [
+        [96.0, 28.6], [102.0, 28.6], [102.0, 9.0], [98.0, 9.0], [96.0, 15.0],
+        [93.5, 17.0], [91.5, 19.0], [91.8, 21.0], [92.6, 22.2], [93.2, 23.0],
+        [94.0, 24.0], [94.5, 25.5], [95.5, 27.0], [96.0, 28.6]
+      ]
+    },
+    "china-ost": {
+      "_was": "Von Japan besetztes Ostchina: Nordchinesische Ebene, Jangtse-Tal bis Wuhan und die Küste bis Kanton. Das Landesinnere um Chongqing blieb chinesisch.",
+      "ring": [
+        [110.0, 41.5], [122.5, 41.5], [123.0, 31.0], [121.0, 22.0], [113.5, 21.5],
+        [110.0, 21.0], [108.5, 23.0], [111.0, 26.0], [112.5, 29.0], [110.5, 31.5],
+        [110.0, 34.0], [110.0, 41.5]
+      ]
+    }
+  },
+  "jahre": [
+    {
+      "year": 1940,
+      "stand": "Juli 1940",
+      "titel": "Westfeldzug und Teilung Polens",
+      "umbenennen": {
+        "Czechoslovakia": "Bohemia and Moravia"
+      },
+      "besetzt": {
+        "Bohemia and Moravia": "Germany",
+        "Norway": "Germany",
+        "Netherlands": "Germany",
+        "Belgium": "Germany",
+        "Luxembourg": "Germany",
+        "Albania": "Italy",
+        "Estonia": "USSR",
+        "Latvia": "USSR",
+        "Lithuania": "USSR"
+      },
+      "teilungen": [
+        {
+          "land": "Denmark",
+          "gebiet": "daenemark-kernland",
+          "innen": {
+            "besetzer": "Germany"
+          }
+        },
+        {
+          "land": "Poland",
+          "gebiet": "polen-molotow-ribbentrop",
+          "innen": {
+            "besetzer": "Germany"
+          },
+          "aussen": {
+            "besetzer": "USSR"
+          }
+        },
+        {
+          "land": "France",
+          "gebiet": "frankreich-besetzte-zone",
+          "innen": {
+            "besetzer": "Germany"
+          },
+          "aussen": {
+            "name": "Vichy France"
+          }
+        },
+        {
+          "land": "Romania",
+          "gebiet": "bessarabien",
+          "innen": {
+            "besetzer": "USSR"
+          }
+        }
+      ]
+    },
+    {
+      "year": 1941,
+      "stand": "Dezember 1941",
+      "titel": "Unternehmen Barbarossa vor Moskau",
+      "umbenennen": {
+        "Czechoslovakia": "Bohemia and Moravia",
+        "Ethiopia (Italy)": "Ethiopia"
+      },
+      "besetzt": {
+        "Bohemia and Moravia": "Germany",
+        "Norway": "Germany",
+        "Netherlands": "Germany",
+        "Belgium": "Germany",
+        "Luxembourg": "Germany",
+        "Poland": "Germany",
+        "Yugoslavia": "Germany",
+        "Greece": "Germany",
+        "Estonia": "Germany",
+        "Latvia": "Germany",
+        "Lithuania": "Germany",
+        "Albania": "Italy",
+        "French Indo-China": "Empire of Japan",
+        "Hong Kong": "Empire of Japan"
+      },
+      "teilungen": [
+        {
+          "land": "Denmark",
+          "gebiet": "daenemark-kernland",
+          "innen": {
+            "besetzer": "Germany"
+          }
+        },
+        {
+          "land": "France",
+          "gebiet": "frankreich-besetzte-zone",
+          "innen": {
+            "besetzer": "Germany"
+          },
+          "aussen": {
+            "name": "Vichy France"
+          }
+        },
+        {
+          "land": "USSR",
+          "gebiet": "ostkarelien",
+          "innen": {
+            "besetzer": "Finland"
+          }
+        },
+        {
+          "land": "USSR",
+          "gebiet": "ostfront-1941",
+          "innen": {
+            "besetzer": "Germany"
+          }
+        },
+        {
+          "land": "Chinese warlords",
+          "gebiet": "china-ost",
+          "innen": {
+            "besetzer": "Empire of Japan"
+          }
+        }
+      ]
+    },
+    {
+      "year": 1942,
+      "stand": "November 1942",
+      "titel": "Größte Ausdehnung der Achsenmächte",
+      "umbenennen": {
+        "Czechoslovakia": "Bohemia and Moravia",
+        "Ethiopia (Italy)": "Ethiopia"
+      },
+      "besetzt": {
+        "Bohemia and Moravia": "Germany",
+        "Norway": "Germany",
+        "Netherlands": "Germany",
+        "Belgium": "Germany",
+        "Luxembourg": "Germany",
+        "Poland": "Germany",
+        "Yugoslavia": "Germany",
+        "Greece": "Germany",
+        "Estonia": "Germany",
+        "Latvia": "Germany",
+        "Lithuania": "Germany",
+        "France": "Germany",
+        "Albania": "Italy",
+        "French Indo-China": "Empire of Japan",
+        "Hong Kong": "Empire of Japan",
+        "Philippines": "Empire of Japan",
+        "Dutch East Indies": "Empire of Japan",
+        "Malaysia": "Empire of Japan",
+        "Brunei": "Empire of Japan",
+        "Guam": "Empire of Japan",
+        "Gilbert and Elice Islands": "Empire of Japan"
+      },
+      "teilungen": [
+        {
+          "land": "Denmark",
+          "gebiet": "daenemark-kernland",
+          "innen": {
+            "besetzer": "Germany"
+          }
+        },
+        {
+          "land": "USSR",
+          "gebiet": "ostkarelien",
+          "innen": {
+            "besetzer": "Finland"
+          }
+        },
+        {
+          "land": "USSR",
+          "gebiet": "ostfront-1942",
+          "innen": {
+            "besetzer": "Germany"
+          }
+        },
+        {
+          "land": "Egypt",
+          "gebiet": "aegypten-west",
+          "innen": {
+            "besetzer": "Germany"
+          }
+        },
+        {
+          "land": "British Raj",
+          "gebiet": "birma",
+          "innen": {
+            "besetzer": "Empire of Japan"
+          }
+        },
+        {
+          "land": "Chinese warlords",
+          "gebiet": "china-ost",
+          "innen": {
+            "besetzer": "Empire of Japan"
+          }
+        }
+      ]
+    },
+    {
+      "year": 1943,
+      "stand": "Dezember 1943",
+      "titel": "Wende: Stalingrad, Kursk, Landung in Italien",
+      "umbenennen": {
+        "Czechoslovakia": "Bohemia and Moravia",
+        "Ethiopia (Italy)": "Ethiopia"
+      },
+      "besetzt": {
+        "Bohemia and Moravia": "Germany",
+        "Norway": "Germany",
+        "Netherlands": "Germany",
+        "Belgium": "Germany",
+        "Luxembourg": "Germany",
+        "Poland": "Germany",
+        "Yugoslavia": "Germany",
+        "Greece": "Germany",
+        "Estonia": "Germany",
+        "Latvia": "Germany",
+        "Lithuania": "Germany",
+        "France": "Germany",
+        "Albania": "Germany",
+        "Libya": "United Kingdom",
+        "Tunisia": "United Kingdom",
+        "French Indo-China": "Empire of Japan",
+        "Hong Kong": "Empire of Japan",
+        "Philippines": "Empire of Japan",
+        "Dutch East Indies": "Empire of Japan",
+        "Malaysia": "Empire of Japan",
+        "Brunei": "Empire of Japan",
+        "Guam": "Empire of Japan",
+        "Gilbert and Elice Islands": "Empire of Japan"
+      },
+      "teilungen": [
+        {
+          "land": "Denmark",
+          "gebiet": "daenemark-kernland",
+          "innen": {
+            "besetzer": "Germany"
+          }
+        },
+        {
+          "land": "USSR",
+          "gebiet": "ostkarelien",
+          "innen": {
+            "besetzer": "Finland"
+          }
+        },
+        {
+          "land": "USSR",
+          "gebiet": "ostfront-1943",
+          "innen": {
+            "besetzer": "Germany"
+          }
+        },
+        {
+          "land": "USSR",
+          "gebiet": "krim",
+          "innen": {
+            "besetzer": "Germany"
+          }
+        },
+        {
+          "land": "Italy",
+          "gebiet": "italien-gustavlinie",
+          "innen": {
+            "besetzer": "Germany"
+          }
+        },
+        {
+          "land": "British Raj",
+          "gebiet": "birma",
+          "innen": {
+            "besetzer": "Empire of Japan"
+          }
+        },
+        {
+          "land": "Chinese warlords",
+          "gebiet": "china-ost",
+          "innen": {
+            "besetzer": "Empire of Japan"
+          }
+        }
+      ]
+    },
+    {
+      "year": 1944,
+      "stand": "Dezember 1944",
+      "titel": "Befreiung Westeuropas, Rote Armee an der Weichsel",
+      "umbenennen": {
+        "Czechoslovakia": "Bohemia and Moravia",
+        "Ethiopia (Italy)": "Ethiopia"
+      },
+      "besetzt": {
+        "Bohemia and Moravia": "Germany",
+        "Norway": "Germany",
+        "Hungary": "Germany",
+        "Romania": "USSR",
+        "Bulgaria": "USSR",
+        "Estonia": "USSR",
+        "Lithuania": "USSR",
+        "Libya": "United Kingdom",
+        "Tunisia": "United Kingdom",
+        "French Indo-China": "Empire of Japan",
+        "Hong Kong": "Empire of Japan",
+        "Philippines": "Empire of Japan",
+        "Dutch East Indies": "Empire of Japan",
+        "Malaysia": "Empire of Japan",
+        "Brunei": "Empire of Japan"
+      },
+      "teilungen": [
+        {
+          "land": "Denmark",
+          "gebiet": "daenemark-kernland",
+          "innen": {
+            "besetzer": "Germany"
+          }
+        },
+        {
+          "land": "Poland",
+          "gebiet": "polen-weichsel",
+          "innen": {
+            "besetzer": "Germany"
+          },
+          "aussen": {
+            "besetzer": "USSR"
+          }
+        },
+        {
+          "land": "Latvia",
+          "gebiet": "kurland",
+          "innen": {
+            "besetzer": "Germany"
+          },
+          "aussen": {
+            "besetzer": "USSR"
+          }
+        },
+        {
+          "land": "Netherlands",
+          "gebiet": "niederlande-nord",
+          "innen": {
+            "besetzer": "Germany"
+          }
+        },
+        {
+          "land": "Italy",
+          "gebiet": "italien-gotenlinie",
+          "innen": {
+            "besetzer": "Germany"
+          }
+        },
+        {
+          "land": "Yugoslavia",
+          "gebiet": "jugoslawien-nordwest",
+          "innen": {
+            "besetzer": "Germany"
+          }
+        },
+        {
+          "land": "British Raj",
+          "gebiet": "birma",
+          "innen": {
+            "besetzer": "Empire of Japan"
+          }
+        },
+        {
+          "land": "Chinese warlords",
+          "gebiet": "china-ost",
+          "innen": {
+            "besetzer": "Empire of Japan"
+          }
+        }
+      ]
+    }
+  ]
+}

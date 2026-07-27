@@ -339,6 +339,37 @@
 .legend .nm { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .legend .va { font-size: .72rem; color: var(--ink-faint); font-variant-numeric: tabular-nums; }
 
+/* Besatzung – nimmt die Schraffur der Karte auf, damit Legende und Fläche
+   ohne Umweg als dieselbe Aussage gelesen werden. */
+.legend .sw--hatch {
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent 0 3px,
+    var(--occ, var(--gold)) 3px 6px);
+}
+.legend .occ {
+  font-style: normal;
+  font-size: .64rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  border: 1px solid var(--hairline-strong);
+  border-radius: 3px;
+  padding: 0 .22rem;
+  margin-left: .3rem;
+}
+.legend .legend__note {
+  cursor: default;
+  display: block;
+  margin-top: .5rem;
+  padding-top: .5rem;
+  border-top: 1px solid var(--hairline);
+  font-size: .72rem;
+  color: var(--ink-faint);
+  white-space: normal;
+}
+.legend .legend__note:hover { background: none; }
+
 /* ---------------------------------------------------------- Hovertip */
 
 .hovertip {

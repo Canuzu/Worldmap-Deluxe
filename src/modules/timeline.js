@@ -337,13 +337,16 @@ export class Timeline {
     const eraDef = this.eras.find((e) => e.id === epoch.era);
     this.dom.yearEra.textContent = eraDef?.name ?? '';
 
-    // Ehrlich bleiben: Der Datensatz kennt 53 Kartenstände. Wird ein Jahr
-    // dazwischen gewählt, muss sichtbar sein, welcher Stand gezeigt wird.
+    // Ehrlich bleiben: Der Datensatz kennt nur eine begrenzte Zahl von
+    // Kartenständen. Wird ein Jahr dazwischen gewählt, muss sichtbar sein,
+    // welcher Stand gezeigt wird. In den Kriegsjahren zählt zusätzlich der
+    // Monat – zwischen Juli und Dezember 1942 lag die Wende von Stalingrad.
     const exact = this.year === epoch.year;
-    this.dom.yearTitle.innerHTML = exact
-      ? (epoch.title ? `· ${esc(epoch.title)}` : '')
-      : `· Kartenstand <b>${esc(yearText(epoch.year))}</b>` +
-        (epoch.title ? ` · ${esc(epoch.title)}` : '');
+    const teile = [];
+    if (!exact) teile.push(`Kartenstand <b>${esc(yearText(epoch.year))}</b>`);
+    if (epoch.stand) teile.push(`Stand <b>${esc(epoch.stand)}</b>`);
+    if (epoch.title) teile.push(esc(epoch.title));
+    this.dom.yearTitle.innerHTML = teile.length ? `· ${teile.join(' · ')}` : '';
     this.dom.yearTitle.classList.toggle('is-approx', !exact);
     this.dom.timeline.style.setProperty('--era-color', ERA_COLORS[epoch.era] ?? 'var(--gold)');
 

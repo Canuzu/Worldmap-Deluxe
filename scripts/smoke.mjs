@@ -208,6 +208,73 @@ await check('Umayyaden reichen 700 bis Persien', async () => {
   await page.keyboard.press('Escape');
 });
 
+await check('Kriegsjahre sind vorhanden und nennen ihren Stichtag', async () => {
+  await page.evaluate(() => { location.hash = 'position=3/50/20&year=1942'; });
+  await page.waitForTimeout(2400);
+  const year = await page.textContent('#yearBig');
+  if (!year.includes('1942')) throw new Error(`Jahr: ${year}`);
+  const note = await page.textContent('#yearTitle');
+  if (!/November 1942/.test(note)) throw new Error(`Stichtag fehlt: ${note}`);
+});
+
+await check('Besetztes Gebiet wird als solches ausgewiesen', async () => {
+  // Minsk – November 1942 deutsch besetzt, aber weiterhin sowjetisch.
+  const pt = await page.evaluate(() => {
+    const c = window.__atlasMap.latLngToContainerPoint([53.90, 27.57]);
+    return { x: Math.round(c.x), y: Math.round(c.y) };
+  });
+  await page.mouse.click(pt.x, pt.y);
+  await page.waitForSelector('#panel:not([hidden])', { timeout: 4000 });
+  const title = await page.textContent('.pnl__title');
+  if (!/Sowjetunion/.test(title)) throw new Error(`Minsk gehört zu: ${title}`);
+  const chips = await page.$$eval('.chips .chip', (els) => els.map((e) => e.textContent.trim()));
+  if (!chips.some((c) => /Besetzt durch Deutschland/.test(c))) {
+    throw new Error(`keine Besatzung ausgewiesen: ${chips.join(' | ')}`);
+  }
+  await page.keyboard.press('Escape');
+});
+
+await check('Moskau und Leningrad bleiben unbesetzt', async () => {
+  const frei = await page.evaluate(() => {
+    const treffer = (lat, lng) => {
+      const feats = window.__atlas.epoch.geojson.features;
+      const drin = (pt, ring) => {
+        let inside = false;
+        for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+          const [xi, yi] = ring[i]; const [xj, yj] = ring[j];
+          if ((yi > pt[1]) !== (yj > pt[1])
+            && pt[0] < ((xj - xi) * (pt[1] - yi)) / (yj - yi) + xi) inside = !inside;
+        }
+        return inside;
+      };
+      for (const f of feats) {
+        const polys = f.geometry.type === 'MultiPolygon' ? f.geometry.coordinates : [f.geometry.coordinates];
+        for (const poly of polys) {
+          if (drin([lng, lat], poly[0]) && !poly.slice(1).some((h) => drin([lng, lat], h))) {
+            return f.properties.o ?? null;
+          }
+        }
+      }
+      return 'nicht gefunden';
+    };
+    return { moskau: treffer(55.75, 37.62), leningrad: treffer(59.93, 30.32), minsk: treffer(53.90, 27.57) };
+  });
+  if (frei.moskau) throw new Error(`Moskau: ${frei.moskau}`);
+  if (frei.leningrad) throw new Error(`Leningrad: ${frei.leningrad}`);
+  if (frei.minsk !== 'Germany') throw new Error(`Minsk: ${frei.minsk}`);
+});
+
+await check('Schraffur lässt sich abschalten', async () => {
+  await page.click('#btnLayers');
+  await page.locator('label.switch', { has: page.locator('#optOccupation') }).click();
+  await page.waitForTimeout(500);
+  if (await page.isChecked('#optOccupation')) throw new Error('Schalter blieb aktiv');
+  const aus = await page.evaluate(() => window.__atlas.showOccupation);
+  if (aus) throw new Error('Karte zeigt die Schraffur weiterhin');
+  await page.locator('label.switch', { has: page.locator('#optOccupation') }).click();
+  await page.keyboard.press('Escape');
+});
+
 await check('Mobiles Format bleibt bedienbar', async () => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.waitForTimeout(800);
