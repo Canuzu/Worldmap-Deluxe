@@ -487,6 +487,53 @@ await check('Legende ist mit der Tastatur bedienbar', async () => {
   await page.keyboard.press('Escape');
 });
 
+await check('Kartengrundlage wird angefordert und lässt sich wechseln', async () => {
+  await page.evaluate(() => { location.hash = 'position=4/48/12&year=1815'; });
+  await page.waitForTimeout(2200);
+  const url = await page.evaluate(() => window.__atlas.basemapLayer?._url ?? '');
+  if (!/World_Shaded_Relief/.test(url)) throw new Error(`Adresse: ${url || '(keine Ebene)'}`);
+  // Esri erwartet z/y/x, nicht z/x/y – eine vertauschte Reihenfolge liefert
+  // stillschweigend die falsche Kachel.
+  if (!/\{z\}\/\{y\}\/\{x\}$/.test(url)) throw new Error(`Kachelreihenfolge: ${url}`);
+
+  await page.click('#btnLayers');
+  await page.click('[data-basemap="physisch"]');
+  await page.waitForTimeout(600);
+  const zwei = await page.evaluate(() => window.__atlas.basemapLayer?._url ?? '');
+  if (!/World_Physical_Map/.test(zwei)) throw new Error(`nach Wechsel: ${zwei}`);
+
+  await page.click('[data-basemap=""]');
+  await page.waitForTimeout(600);
+  if (await page.evaluate(() => Boolean(window.__atlas.basemapLayer))) {
+    throw new Error('Ebene bleibt nach „Ohne“ bestehen');
+  }
+  await page.keyboard.press('Escape');
+});
+
+await check('Ohne erreichbare Kacheln bleibt die Karte vollständig', async () => {
+  // Der entscheidende Rückfall: Ist der Dienst stumm, darf die Karte nicht
+  // halb leer werden. Die Klasse is-basemap wird erst nach der ersten
+  // angekommenen Kachel gesetzt – in dieser Umgebung also nie.
+  await page.click('#btnLayers');
+  await page.click('[data-basemap="relief"]');
+  await page.waitForTimeout(1500);
+  await page.keyboard.press('Escape');
+
+  const gemeldet = await page.evaluate(() => window.__atlas.hasBasemap);
+  const klasse = await page.evaluate(() => document.getElementById('map').classList.contains('is-basemap'));
+  if (gemeldet !== klasse) throw new Error('Meldung und Klasse laufen auseinander');
+
+  // Ohne angekommene Kachel muss die eigene Landfarbe stehen bleiben.
+  if (!gemeldet) {
+    const hg = await page.evaluate(() => getComputedStyle(document.getElementById('map')).backgroundColor);
+    if (/rgba\(0, 0, 0, 0\)|transparent/.test(hg)) throw new Error('Landfarbe fehlt trotz stummem Dienst');
+    const hinweis = await page.textContent('#basemapNote');
+    if (!/Noch nicht geladen/.test(hinweis)) throw new Error('Ausbleiben wird nicht benannt');
+  }
+  const flaechen = await page.evaluate(() => document.querySelectorAll('.leaflet-pane canvas').length);
+  if (flaechen < 3) throw new Error(`nur ${flaechen} Zeichenflächen`);
+});
+
 await check('Mobiles Format bleibt bedienbar', async () => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.waitForTimeout(800);

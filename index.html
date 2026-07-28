@@ -89,6 +89,14 @@
 
       <!-- Ebenen-Menü -->
       <div class="popover card" id="layersMenu" hidden>
+        <h3>Kartengrundlage</h3>
+        <div class="segmented" id="basemaps" role="radiogroup" aria-label="Kartengrundlage">
+          <button type="button" role="radio" data-basemap="relief" aria-checked="true">Relief</button>
+          <button type="button" role="radio" data-basemap="physisch" aria-checked="false">Physisch</button>
+          <button type="button" role="radio" data-basemap="" aria-checked="false">Ohne</button>
+        </div>
+        <p class="popover__note" id="basemapNote">Geländekarte unter den historischen Grenzen – bewusst ohne heutige Straßen, Städte oder Staatsgrenzen. Wird sie nicht geladen, zeichnet der Atlas wie bisher alles selbst.</p>
+
         <h3>Einfärbung</h3>
         <div class="segmented" id="colorModes" role="radiogroup" aria-label="Einfärbung">
           <button type="button" role="radio" data-mode="polity" aria-checked="true">Gemeinwesen</button>

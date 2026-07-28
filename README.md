@@ -27,6 +27,7 @@ Religion, Bevölkerung, Wirtschaft, Wendepunkte und Nachbarn.
 | **Besetzte Gebiete** | 1940–1944: besetztes Land behält seine Farbe und trägt darüber eine Schraffur in der Farbe der Besatzungsmacht |
 | **Eiszeitliche Küstenlinie** | für die Zeitschnitte vor 10.000 v. Chr.: Doggerland, Beringia und Sundaland liegen trocken, so wie sie es waren |
 | **Landschaftsnamen** | Gebirge, Wüsten, Hochebenen – sie erklären, warum Grenzen verlaufen, wie sie verlaufen |
+| **Kartengrundlage** | wahlweise Relief- oder physische Geländekarte unter den historischen Grenzen – bewusst ohne heutige Straßen, Städte oder Staatsgrenzen. Abschaltbar; ohne sie zeichnet der Atlas wie zuvor alles selbst |
 | **Orte zur Orientierung** | heutige Städte mit deutschen Namen, gestaffelt nach Rang eingeblendet – ohne sie ist die Karte ab Zoomstufe 6 anhaltslos |
 | **Berühmte Schlachten** | Gaugamela, Hastings, Waterloo, Stalingrad – der Verlauf läuft Station für Station ab, die Stellungen verschieben sich mit |
 | **Nur die Karte** | <kbd>F</kbd> blendet alle Bedienelemente aus; Suche und Zeitleiste lassen sich einzeln zuklappen |
@@ -246,6 +247,26 @@ Zwei Regeln halten den Eingriff vertretbar:
    Gemeinwesen auch nur einen Quadratkilometer verliert – die Berberreiche im
    Landesinneren des Maghreb bleiben genau so stehen, wie sie sind.
 2. Jede Ergänzung trägt ihre Begründung in derselben Datei.
+
+### Kartengrundlage
+
+Der Atlas zeichnete lange **alles** selbst: Küstenlinien, Grenzen,
+Beschriftungen. Das macht ihn eigenständig und offlinefähig – und lässt ihn
+flächig wirken, weil unter den Grenzen nichts liegt außer Farbe.
+
+Deshalb jetzt wahlweise eine **Geländekarte** darunter. Bewusst nur Relief:
+Auf einer Karte des Jahres 700 wäre eine Autobahn ein Fehler, ein Gebirge
+nicht. Beide Dienste (Esri World Shaded Relief und World Physical Map) liefern
+reines Gelände ohne Beschriftung und brauchen keinen Schlüssel.
+
+Der Rückfall ist der wichtigste Teil: Die Klasse `is-basemap` wird erst
+gesetzt, **wenn wirklich eine Kachel angekommen ist**. Bleibt der Dienst stumm
+– gesperrtes Netz, Ausfall, Offline-Betrieb –, sieht die Karte exakt so aus wie
+ohne Grundlage, statt in einen halb leeren Zustand zu kippen. Der Hinweis unter
+der Auswahl sagt dann auch, dass sie noch nicht geladen ist. `npm run test`
+prüft beides: dass die richtigen Kacheladressen angefordert werden (Esri
+erwartet `z/y/x`, nicht `z/x/y`) und dass die Karte ohne Antwort vollständig
+bleibt.
 
 ### Die Küste der Eiszeit
 

@@ -22,6 +22,7 @@ import {
 } from './palette.js';
 
 const PANES = {
+  basemap: 200,
   polityA: 220,
   polityB: 230,
   ocean: 240,
@@ -43,6 +44,33 @@ const PANES = {
 const PLACE_FROM_ZOOM = [3, 3.6, 4.4, 5.2, 6, 6.6, 7.4, 8.2];
 
 const HOME = { center: [26, 12], zoom: 2.4 };
+
+/**
+ * Kartengrundlagen.
+ *
+ * Bewusst nur Gelände, keine heutigen Straßen, Städte oder Staatsgrenzen: Auf
+ * einer Karte des Jahres 700 wäre eine Autobahn ein Fehler, ein Gebirge nicht.
+ * Beide Dienste liefern reines Relief und brauchen keinen Schlüssel.
+ *
+ * maxNativeZoom statt maxZoom: Über der letzten vorhandenen Kachelstufe wird
+ * hochskaliert, statt dass die Grundlage einfach verschwindet.
+ */
+export const BASEMAPS = {
+  relief: {
+    name: 'Relief',
+    beschreibung: 'Schummerung des Geländes, ohne Beschriftung',
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}',
+    maxNativeZoom: 13,
+    quelle: 'Esri, USGS, NOAA',
+  },
+  physisch: {
+    name: 'Physisch',
+    beschreibung: 'Gelände mit Bewuchs und Höhenfarben',
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}',
+    maxNativeZoom: 8,
+    quelle: 'Esri, US National Park Service',
+  },
+};
 
 /** Ab dieser Zoomstufe wird die hochaufgelöste Küstenlinie eingeblendet. */
 const COAST_HD_FROM_ZOOM = 4.2;
@@ -107,7 +135,10 @@ function graticule(step = 15) {
 
 export class AtlasMap {
   constructor(el, { theme = 'night' } = {}) {
+    this.el = el;
     this.theme = theme;
+    this.basemapId = null;
+    this.basemapLayer = null;
     this.colorMode = 'polity';
     this.showLabels = true;
     this.showBorders = true;
@@ -126,7 +157,7 @@ export class AtlasMap {
     this.colors = new Map();
     this.selected = null;
     this.hovered = null;
-    this._handlers = { select: [], hover: [], view: [] };
+    this._handlers = { select: [], hover: [], view: [], basemap: [] };
     this._boundsCache = new Map();
 
     this.map = L.map(el, {
@@ -219,6 +250,50 @@ export class AtlasMap {
       slot.el.style.opacity = '0';
     });
     this.activeSlot = 0;
+  }
+
+  /**
+   * Kartengrundlage setzen (Kachelebene unter allem anderen).
+   *
+   * Die Klasse is-basemap am Kartenelement wird erst gesetzt, wenn wirklich
+   * eine Kachel angekommen ist. Bleibt der Dienst stumm – gesperrtes Netz,
+   * Ausfall, Offline-Betrieb –, sieht die Karte exakt so aus wie ohne
+   * Grundlage, statt in einen halb leeren Zustand zu kippen.
+   */
+  setBasemap(id) {
+    this.basemapId = id;
+    if (this.basemapLayer) {
+      this.basemapLayer.remove();
+      this.basemapLayer = null;
+    }
+    this.el.classList.remove('is-basemap');
+    this._emit('basemap');
+
+    const spec = BASEMAPS[id];
+    if (!spec) { this._styleBase(); return; }
+
+    const layer = L.tileLayer(spec.url, {
+      pane: 'basemap',
+      maxNativeZoom: spec.maxNativeZoom,
+      maxZoom: 10,
+      minZoom: 0,
+      noWrap: true,
+      crossOrigin: true,
+      attribution: spec.quelle,
+    });
+    layer.once('load', () => {
+      if (this.basemapLayer !== layer) return;
+      this.el.classList.add('is-basemap');
+      this._styleBase();
+      this._restyleActive();
+      this._emit('basemap');
+    });
+    layer.addTo(this.map);
+    this.basemapLayer = layer;
+  }
+
+  get hasBasemap() {
+    return this.el.classList.contains('is-basemap');
   }
 
   setBaseData({ ocean }) {
@@ -326,7 +401,9 @@ export class AtlasMap {
 
     this.oceanLayer.setStyle({
       fillColor: ocean,
-      fillOpacity: 1,
+      // Mit Kartengrundlage bleibt das Meer eine Spur durchscheinend, sonst
+      // wirkt die Kueste wie ausgeschnitten statt wie gezeichnet.
+      fillOpacity: this.hasBasemap ? .88 : 1,
       fillRule: 'evenodd',
       stroke: true,
       color: edge,
@@ -400,10 +477,20 @@ export class AtlasMap {
     return this.colorOf(this._colorKey(props));
   }
 
+  /**
+   * Deckkraft der Grenzflächen. Liegt eine Kartengrundlage darunter, treten
+   * sie zurück: Das Gelände soll durchscheinen, sonst wäre die Grundlage
+   * geladen und doch nicht zu sehen.
+   */
+  _fillAlpha() {
+    const basis = Number(this._cssVar('--fill-alpha', '.58'));
+    return this.hasBasemap ? basis * .62 : basis;
+  }
+
   _styleFeature(feature) {
     const props = feature.properties;
     const color = this.colorOf(this._colorKey(props));
-    const alpha = Number(this._cssVar('--fill-alpha', '.58'));
+    const alpha = this._fillAlpha();
     const line = this._cssVar('--border-line-soft', 'rgba(255,255,255,.22)');
     const precision = props.b ?? 0;
 
@@ -448,7 +535,7 @@ export class AtlasMap {
   _restyleActive() {
     const slot = this.slots[this.activeSlot];
     if (!slot.layer) return;
-    const alpha = Number(this._cssVar('--fill-alpha', '.58'));
+    const alpha = this._fillAlpha();
     slot.halo?.setStyle((f) => {
       const color = this.colorOf(this._colorKey(f.properties));
       return { color, opacity: alpha };
@@ -509,7 +596,7 @@ export class AtlasMap {
           stroke: true,
           color,
           weight: 2.6,
-          opacity: Number(this._cssVar('--fill-alpha', '.58')),
+          opacity: this._fillAlpha(),
           lineJoin: 'round',
           lineCap: 'round',
         };

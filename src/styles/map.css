@@ -51,3 +51,28 @@
 
 /* Ortsebene: eigene Zeichenfläche, nie interaktiv. */
 .place-canvas { pointer-events: none; }
+
+/* ------------------------------------------------- Kartengrundlage */
+
+/* Erst wenn wirklich eine Kachel angekommen ist, tritt die eigene Landfarbe
+   zurueck. Bleibt der Dienst stumm - gesperrtes Netz, Ausfall, offline -,
+   sieht die Karte aus wie ohne Grundlage, statt halb leer zu wirken. */
+.map.leaflet-container.is-basemap { background: var(--ocean-2); }
+
+.leaflet-basemap-pane {
+  /* Die Schummerung ist fuer helles Papier gemacht. Im Nachtatlas wird sie
+     gedaempft und leicht abgekuehlt, damit sie unter den Flaechen liegt und
+     nicht darueber. */
+  filter: brightness(.52) saturate(.55) contrast(1.05);
+  transition: filter var(--dur) var(--ease);
+}
+[data-theme="parchment"] .leaflet-basemap-pane {
+  filter: sepia(.18) saturate(.85) brightness(1.02);
+}
+
+/* Ohne Grundlage bleibt unbeanspruchtes Land die Flaechenfarbe; mit Grundlage
+   soll dort das Gelaende zu sehen sein. */
+.map.is-basemap .leaflet-polityA-pane,
+.map.is-basemap .leaflet-polityB-pane { mix-blend-mode: multiply; }
+[data-theme="night"] .map.is-basemap .leaflet-polityA-pane,
+[data-theme="night"] .map.is-basemap .leaflet-polityB-pane { mix-blend-mode: screen; }

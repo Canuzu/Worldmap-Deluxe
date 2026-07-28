@@ -11,7 +11,7 @@ import './styles/panel.css';
 import './styles/map.css';
 
 import { atlasData } from './modules/data.js';
-import { AtlasMap } from './modules/atlas.js';
+import { AtlasMap, BASEMAPS } from './modules/atlas.js';
 import { Timeline } from './modules/timeline.js';
 import { DetailPanel } from './modules/panel.js';
 import { polityAt } from './modules/geo.js';
@@ -26,6 +26,7 @@ const STORE_KEY = 'worldmap-deluxe:prefs';
 
 const prefs = {
   theme: 'night',
+  basemap: 'relief',
   colorMode: 'polity',
   labels: true,
   rivers: false,
@@ -643,6 +644,41 @@ async function main() {
   $('battlesClose').addEventListener('click', closeBattles);
   $('btnBattles').addEventListener('click', toggleBattles);
 
+  /* ---------------------------------------------------- Kartengrundlage */
+
+  const basemapButtons = [...$('basemaps').querySelectorAll('[data-basemap]')];
+
+  function setBasemap(id) {
+    const gewaehlt = id in BASEMAPS ? id : '';
+    prefs.basemap = gewaehlt;
+    savePrefs();
+    basemapButtons.forEach((b) => b.setAttribute('aria-checked', String(b.dataset.basemap === gewaehlt)));
+    atlas.setBasemap(gewaehlt || null);
+    beschreibeGrundlage();
+  }
+
+  /**
+   * Der Hinweis unter der Auswahl sagt, was tatsächlich zu sehen ist – auch
+   * dann, wenn der Dienst nicht antwortet. Eine Grundlage anzubieten und beim
+   * Ausbleiben so zu tun, als wäre sie da, wäre das Schlechteste.
+   */
+  function beschreibeGrundlage() {
+    const el = $('basemapNote');
+    const spec = BASEMAPS[prefs.basemap];
+    if (!spec) {
+      el.textContent = 'Ohne Grundlage: Der Atlas zeichnet Küsten, Gewässer und Grenzen '
+        + 'vollständig selbst und läuft damit auch offline.';
+      return;
+    }
+    el.innerHTML = `${esc(spec.beschreibung)} – bewusst ohne heutige Straßen, Städte oder `
+      + `Staatsgrenzen. Quelle: ${esc(spec.quelle)}.`
+      + (atlas.hasBasemap ? '' : ' <b>Noch nicht geladen</b> – bis dahin zeichnet der Atlas wie bisher alles selbst.');
+  }
+
+  basemapButtons.forEach((b) => b.addEventListener('click', () => setBasemap(b.dataset.basemap)));
+  atlas.on('basemap', beschreibeGrundlage);
+  setBasemap(prefs.basemap);
+
   // Vollbild: Alles Bedienbare weicht, damit nur noch die Karte da ist.
   function setFocusMode(on) {
     const app = $('app');
@@ -901,6 +937,9 @@ function aboutHtml() {
 
 function creditsHtml() {
   const src = atlasData.index?.source ?? {};
+  const grundlagen = Object.values(BASEMAPS)
+    .map((b) => `<li><strong>${esc(b.name)}</strong> – ${esc(b.beschreibung)}. ${esc(b.quelle)}</li>`)
+    .join('');
   return `
     <h3>Historische Grenzen</h3>
     <p><strong>${esc(src.name ?? 'Historical Basemaps')}</strong> von ${esc(src.author ?? 'André Ourednik u. a.')} –
@@ -917,10 +956,20 @@ function creditsHtml() {
     <strong>Wikipedia</strong> (CC BY-SA 4.0) und werden erst beim Öffnen einer
     Tafel geladen. Diese Anreicherung lässt sich unter „Ebenen“ abschalten.</p>
 
+    <h3>Kartengrundlage</h3>
+    <p>Unter den historischen Grenzen liegt wahlweise eine Geländekarte –
+    bewusst nur Relief, ohne heutige Straßen, Städte oder Staatsgrenzen: Auf
+    einer Karte des Jahres 700 wäre eine Autobahn ein Fehler, ein Gebirge
+    nicht.</p>
+    <ul>${grundlagen}</ul>
+    <p>Über „Ebenen → Kartengrundlage → Ohne“ lässt sie sich abschalten. Dann
+    zeichnet der Atlas Küsten, Gewässer und Grenzen wieder vollständig selbst
+    und läuft auch ohne Netzverbindung.</p>
+
     <h3>Kartentechnik</h3>
-    <p>Leaflet zur Navigation, TopoJSON für die Geometrien, alles ohne
-    Kachel-Dienst: Küstenlinien und Grenzen werden direkt als Vektoren
-    gezeichnet.</p>
+    <p>Leaflet zur Navigation, TopoJSON für die Geometrien. Küstenlinien,
+    Grenzen und Beschriftungen zeichnet der Atlas selbst als Vektoren; nur die
+    Geländeschummerung kommt als Kacheln von außen.</p>
 
     <h3>Hinweis</h3>
     <p>Der Datensatz ist ausdrücklich als „work in progress“ gekennzeichnet.
