@@ -1,0 +1,418 @@
+{
+ "_hinweis": "Steckbriefe zu den Staaten, die erst in den Zeitschnitten 2015 und 2026 auf der Karte erscheinen – durch Staatsgründung (Südsudan, Kosovo) oder durch Umbenennung (Myanmar, Nordmazedonien, Eswatini, Türkiye, Tschechien). Dazu die Beteiligten der beiden Konflikte, die diese Zeitschnitte prägen: Ukraine, Armenien, Aserbaidschan und Serbien. Bei Staaten mit langer, unterbrochener Geschichte – Serbien, Armenien – ist bewusst kein Gründungsjahr angegeben: Die Karte zeigt sie über zwei Jahrtausende hinweg in ganz verschiedenen Gestalten.",
+
+ "South Sudan": {
+  "kind": "Republik",
+  "wiki": "Südsudan",
+  "founded": 2011,
+  "events": [
+   { "year": 2005, "text": "Umfassendes Friedensabkommen beendet den zweiten sudanesischen Bürgerkrieg." },
+   { "year": 2011, "text": "Nach einem Referendum mit 98 Prozent Zustimmung wird der Südsudan unabhängig." },
+   { "year": 2013, "text": "Der Machtkampf zwischen Salva Kiir und Riek Machar stürzt das Land in einen Bürgerkrieg." },
+   { "year": 2018, "text": "Erneutes Friedensabkommen; die Umsetzung zieht sich über Jahre." }
+  ],
+  "periods": [
+   {
+    "from": 2011,
+    "to": null,
+    "ruler": "Salva Kiir Mayardit",
+    "rulerTitle": "Präsident",
+    "capital": "Juba",
+    "government": "Präsidiale Republik mit Übergangsregierung",
+    "religion": "Christentum, traditionelle Religionen",
+    "languages": ["Englisch", "Juba-Arabisch", "Dinka", "Nuer"],
+    "population": "ca. 11 Mio.",
+    "economy": "Erdöl, Viehwirtschaft, Subsistenzlandwirtschaft",
+    "summary": [
+     "Der jüngste Staat der Erde entsteht 2011 aus dem Süden des Sudan – nach zwei Bürgerkriegen, die zusammen fast vier Jahrzehnte dauerten.",
+     "Fast die gesamten Staatseinnahmen stammen aus Erdöl. Die einzige Pipeline führt durch den Sudan; die Trennung hat die Abhängigkeit vom Nachbarn nicht beendet.",
+     "Die Grenze folgt der Verwaltungslinie von 1956. Die Region Abyei blieb ausgenommen und ist bis heute umstritten – diese Karte schlägt sie dem Süden zu."
+    ]
+   }
+  ]
+ },
+
+ "Kosovo": {
+  "kind": "Republik",
+  "wiki": "Kosovo",
+  "founded": 2008,
+  "events": [
+   { "year": 1999, "text": "Nach der NATO-Intervention stellen die Vereinten Nationen das Kosovo unter Verwaltung." },
+   { "year": 2008, "text": "Das Parlament in Priština erklärt die Unabhängigkeit." },
+   { "year": 2010, "text": "Der Internationale Gerichtshof erklärt die Unabhängigkeitserklärung für völkerrechtskonform." },
+   { "year": 2013, "text": "Das Brüsseler Abkommen regelt erstmals das Verhältnis zu Serbien." }
+  ],
+  "periods": [
+   {
+    "from": 2008,
+    "to": null,
+    "ruler": "Wechselnde Präsidentinnen und Präsidenten",
+    "rulerTitle": "Präsident der Republik Kosovo",
+    "capital": "Priština",
+    "government": "Parlamentarische Republik",
+    "religion": "Überwiegend Islam; serbisch-orthodoxe und katholische Minderheiten",
+    "languages": ["Albanisch", "Serbisch"],
+    "population": "ca. 1,6 Mio.",
+    "economy": "Überweisungen der Diaspora, Bergbau, Landwirtschaft, Bauwirtschaft",
+    "summary": [
+     "Rund hundert Staaten haben das Kosovo anerkannt, darunter Deutschland und die USA. Serbien, Russland und China nicht – ein Sitz in den Vereinten Nationen bleibt deshalb versperrt.",
+     "Der Norden um Mitrovica wird mehrheitlich von Serben bewohnt und entzieht sich der Kontrolle aus Priština immer wieder.",
+     "Der Ursprungsdatensatz dieser Karte führt das Kosovo 2010 noch nicht getrennt; hier ist es ab 2015 eingezeichnet."
+    ]
+   }
+  ]
+ },
+
+ "Ukraine": {
+  "kind": "Republik",
+  "wiki": "Ukraine",
+  "events": [
+   { "year": 1991, "text": "Die Unabhängigkeit von der Sowjetunion wird erklärt und im Dezember per Referendum bestätigt." },
+   { "year": 1994, "text": "Im Budapester Memorandum gibt die Ukraine die sowjetischen Atomwaffen ab und erhält Sicherheitszusagen." },
+   { "year": 2004, "text": "Die Orange Revolution kippt eine gefälschte Präsidentenwahl." },
+   { "year": 2014, "text": "Nach dem Maidan annektiert Russland die Krim; im Donbass beginnt der Krieg." },
+   { "year": 2022, "text": "Russland überfällt das ganze Land; der Vorstoß auf Kiew scheitert." }
+  ],
+  "periods": [
+   {
+    "from": 1991,
+    "to": null,
+    "ruler": "Wolodymyr Selenskyj (seit 2019)",
+    "rulerTitle": "Präsident der Ukraine",
+    "capital": "Kiew",
+    "government": "Semipräsidentielle Republik; Kriegsrecht seit Februar 2022",
+    "religion": "Orthodoxes Christentum; im Westen griechisch-katholisch",
+    "languages": ["Ukrainisch", "Russisch"],
+    "population": "vor 2022 ca. 41 Mio.; seither durch Flucht stark verringert",
+    "economy": "Getreide und Sonnenblumenöl, Stahl, Software",
+    "summary": [
+     "Der zweitgrößte Flächenstaat Europas nach Russland. Seine Grenzen wurden 1991 von allen Nachbarn anerkannt, auch von Russland.",
+     "Seit 2014 hält Russland die Krim, seit 2022 zusätzlich Teile von Luhansk, Donezk, Saporischschja und Cherson – auf dieser Karte als ukrainisches Gebiet unter russischer Besatzung gezeichnet, nicht als russisches Staatsgebiet.",
+     "Die Front bewegt sich weiter. Der Zeitschnitt 2026 ist eine Momentaufnahme, keine Grenze."
+    ]
+   }
+  ]
+ },
+
+ "Türkiye": {
+  "kind": "Republik",
+  "wiki": "Türkei",
+  "founded": 1923,
+  "events": [
+   { "year": 1923, "text": "Ausrufung der Republik durch Mustafa Kemal Atatürk." },
+   { "year": 1952, "text": "Beitritt zur NATO." },
+   { "year": 2018, "text": "Übergang zum Präsidialsystem." },
+   { "year": 2022, "text": "Die Vereinten Nationen führen das Land auf Wunsch Ankaras international als Türkiye." }
+  ],
+  "periods": [
+   {
+    "from": 1923,
+    "to": null,
+    "ruler": "Recep Tayyip Erdoğan (seit 2014 als Präsident)",
+    "rulerTitle": "Präsident der Republik",
+    "capital": "Ankara",
+    "government": "Präsidialrepublik",
+    "religion": "Mehrheitlich sunnitischer Islam; laizistische Verfassung",
+    "languages": ["Türkisch", "Kurdisch"],
+    "population": "ca. 85 Mio.",
+    "economy": "Industrie, Landwirtschaft, Tourismus, Bauwirtschaft",
+    "summary": [
+     "Derselbe Staat wie unter dem Namen Türkei – 2022 bat Ankara die Vereinten Nationen, ihn auch international Türkiye zu nennen.",
+     "Als einziges NATO-Mitglied unterhält die Türkei zugleich enge Beziehungen zu Russland und vermittelte 2022 das Getreideabkommen im Schwarzen Meer.",
+     "Die Erdbeben vom Februar 2023 kosteten über 50.000 Menschen das Leben und wurden zur schwersten Katastrophe der Republik."
+    ]
+   }
+  ]
+ },
+
+ "Czechia": {
+  "kind": "Republik",
+  "wiki": "Tschechien",
+  "founded": 1993,
+  "events": [
+   { "year": 1989, "text": "Die Samtene Revolution beendet die kommunistische Herrschaft." },
+   { "year": 1993, "text": "Die Tschechoslowakei teilt sich ohne Gewalt in zwei Staaten." },
+   { "year": 2004, "text": "Beitritt zur Europäischen Union." },
+   { "year": 2016, "text": "Der Kurzname Czechia wird bei den Vereinten Nationen eingetragen." }
+  ],
+  "periods": [
+   {
+    "from": 1993,
+    "to": null,
+    "ruler": "Wechselnde Präsidentinnen und Präsidenten",
+    "rulerTitle": "Präsident der Republik",
+    "capital": "Prag",
+    "government": "Parlamentarische Republik",
+    "religion": "Mehrheitlich konfessionslos; katholische Minderheit",
+    "languages": ["Tschechisch"],
+    "population": "ca. 10,9 Mio.",
+    "economy": "Fahrzeugbau, Maschinenbau, Elektrotechnik",
+    "summary": [
+     "Die Teilung der Tschechoslowakei zum 1. Januar 1993 verlief ohne einen einzigen Toten – die Samtene Scheidung.",
+     "Kein anderes Land der EU hat einen so hohen Industrieanteil an der Wirtschaftsleistung.",
+     "Der Staat heißt weiterhin Tschechische Republik; Czechia ist der 2016 eingetragene Kurzname."
+    ]
+   }
+  ]
+ },
+
+ "North Macedonia": {
+  "kind": "Republik",
+  "wiki": "Nordmazedonien",
+  "founded": 1991,
+  "events": [
+   { "year": 1991, "text": "Unabhängigkeit von Jugoslawien – als einzige Teilrepublik ohne Krieg." },
+   { "year": 2001, "text": "Das Abkommen von Ohrid beendet den Konflikt mit der albanischen Minderheit." },
+   { "year": 2019, "text": "Das Prespa-Abkommen mit Griechenland tritt in Kraft; der Staat heißt fortan Nordmazedonien." },
+   { "year": 2020, "text": "Beitritt zur NATO." }
+  ],
+  "periods": [
+   {
+    "from": 1991,
+    "to": null,
+    "ruler": "Wechselnde Präsidentinnen und Präsidenten",
+    "rulerTitle": "Präsident der Republik",
+    "capital": "Skopje",
+    "government": "Parlamentarische Republik",
+    "religion": "Orthodoxes Christentum, Islam",
+    "languages": ["Mazedonisch", "Albanisch"],
+    "population": "ca. 1,8 Mio.",
+    "economy": "Landwirtschaft, Textil, Zulieferindustrie",
+    "summary": [
+     "Fast drei Jahrzehnte blockierte Griechenland den Namen Mazedonien – ihn trägt auch eine griechische Provinz.",
+     "Das Prespa-Abkommen von 2018 löste den Streit: Athen gab den Weg in NATO und EU frei, Skopje setzte Nord vor den Namen.",
+     "Rund ein Viertel der Bevölkerung ist albanischsprachig; Albanisch ist seit 2019 zweite Amtssprache im ganzen Land."
+    ]
+   }
+  ]
+ },
+
+ "Eswatini": {
+  "kind": "Königreich",
+  "wiki": "Eswatini",
+  "founded": 1968,
+  "events": [
+   { "year": 1968, "text": "Unabhängigkeit von Großbritannien." },
+   { "year": 1973, "text": "König Sobhuza II. setzt die Verfassung außer Kraft und verbietet Parteien." },
+   { "year": 2018, "text": "Zum fünfzigsten Jahrestag der Unabhängigkeit wird das Land in Eswatini umbenannt." },
+   { "year": 2021, "text": "Proteste für eine Demokratisierung werden niedergeschlagen." }
+  ],
+  "periods": [
+   {
+    "from": 1968,
+    "to": null,
+    "ruler": "Mswati III. (seit 1986)",
+    "rulerTitle": "König (Ngwenyama)",
+    "capital": "Mbabane (Verwaltung), Lobamba (Königshof und Parlament)",
+    "government": "Absolute Monarchie",
+    "religion": "Christentum, traditionelle Religionen",
+    "languages": ["Siswati", "Englisch"],
+    "population": "ca. 1,2 Mio.",
+    "economy": "Zucker, Forstwirtschaft, Textilien; eng an Südafrika gebunden",
+    "summary": [
+     "Eine der letzten absoluten Monarchien der Welt. Parteien sind seit 1973 verboten; das Parlament berät, entscheidet aber nicht.",
+     "Der Name Swasiland war die englische Form; eSwatini heißt auf Siswati schlicht Land der Swasi.",
+     "Das Land ist von Südafrika fast vollständig umschlossen und über eine Zollunion und eine Währungsbindung mit ihm verflochten."
+    ]
+   }
+  ]
+ },
+
+ "Myanmar": {
+  "kind": "Republik",
+  "wiki": "Myanmar",
+  "founded": 1948,
+  "events": [
+   { "year": 1948, "text": "Unabhängigkeit von Großbritannien." },
+   { "year": 1962, "text": "Militärputsch unter Ne Win; Beginn der Militärherrschaft." },
+   { "year": 1989, "text": "Die Junta benennt Birma in Myanmar um." },
+   { "year": 2017, "text": "Die Vertreibung der Rohingya nach Bangladesch." },
+   { "year": 2021, "text": "Erneuter Militärputsch; das Land versinkt im Bürgerkrieg." }
+  ],
+  "periods": [
+   {
+    "from": 1948,
+    "to": null,
+    "ruler": "Militärführung unter Min Aung Hlaing (seit 2021)",
+    "rulerTitle": "Vorsitzender des Staatsverwaltungsrats",
+    "capital": "Naypyidaw (seit 2005; zuvor Rangun)",
+    "government": "Militärregime",
+    "religion": "Theravada-Buddhismus; muslimische und christliche Minderheiten",
+    "languages": ["Birmanisch", "Shan", "Karen"],
+    "population": "ca. 54 Mio.",
+    "economy": "Landwirtschaft, Erdgas, Jade und Edelsteine, Textilien",
+    "summary": [
+     "Birma und Myanmar bezeichnen dasselbe Land; die Junta setzte 1989 den zweiten Namen durch, weshalb ihn Teile der Opposition lange ablehnten.",
+     "2005 verlegte die Militärführung die Hauptstadt aus dem Millionenmoloch Rangun in die neu gebaute Planstadt Naypyidaw.",
+     "Seit dem Putsch von 2021 kontrolliert die Armee weite Teile des Landes nicht mehr – Grenzen auf einer Karte sagen hier wenig über tatsächliche Macht."
+    ]
+   }
+  ]
+ },
+
+ "Dutch Caribbean": {
+  "kind": "Landesteile im Königreich der Niederlande",
+  "wiki": "Karibische Niederlande",
+  "events": [
+   { "year": 1954, "text": "Die Niederländischen Antillen werden gleichberechtigter Landesteil des Königreichs." },
+   { "year": 1986, "text": "Aruba scheidet aus dem Verband der Antillen aus." },
+   { "year": 2010, "text": "Die Niederländischen Antillen werden aufgelöst." }
+  ],
+  "periods": [
+   {
+    "from": 2010,
+    "to": null,
+    "ruler": "Der niederländische König, vertreten durch Gouverneure",
+    "rulerTitle": "Staatsoberhaupt des Königreichs",
+    "capital": "Willemstad auf Curaçao",
+    "government": "Autonome Länder und besondere Gemeinden im Königreich der Niederlande",
+    "religion": "Christentum",
+    "languages": ["Niederländisch", "Papiamentu", "Englisch"],
+    "population": "ca. 0,4 Mio.",
+    "economy": "Tourismus, Hafen- und Finanzdienstleistungen, Erdölumschlag",
+    "summary": [
+     "Am 10. Oktober 2010 lösten sich die Niederländischen Antillen auf: Curaçao und Sint Maarten wurden eigenständige Länder im Königreich, Bonaire, Sint Eustatius und Saba besondere Gemeinden der Niederlande.",
+     "Aruba war schon 1986 diesen Weg gegangen. Alle Inseln bleiben Teil des Königreichs – unabhängig wurde keine.",
+     "Auf der Karte stehen sie zusammengefasst, weil die Inseln zu klein sind, um sie einzeln zu beschriften."
+    ]
+   }
+  ]
+ },
+
+ "Serbia": {
+  "kind": "Fürstentum, Königreich, Republik",
+  "wiki": "Serbien",
+  "events": [
+   { "year": 1217, "text": "Stefan der Erstgekrönte wird König; das Reich der Nemanjiden entsteht." },
+   { "year": 1389, "text": "Die Schlacht auf dem Amselfeld leitet die osmanische Herrschaft ein." },
+   { "year": 1878, "text": "Der Berliner Kongress erkennt Serbien als unabhängigen Staat an." },
+   { "year": 1918, "text": "Serbien geht im Königreich der Serben, Kroaten und Slowenen auf." },
+   { "year": 2006, "text": "Nach Montenegros Unabhängigkeit ist Serbien wieder ein eigener Staat." }
+  ],
+  "periods": [
+   {
+    "from": 1217,
+    "to": 1459,
+    "ruler": "Stefan Dušan und die Nemanjiden",
+    "rulerTitle": "König, ab 1346 Zar",
+    "capital": "Ras, später Skopje und Kruševac",
+    "government": "Erbmonarchie",
+    "religion": "Serbisch-orthodoxes Christentum",
+    "languages": ["Altserbisch", "Kirchenslawisch"],
+    "economy": "Bergbau auf Silber und Blei, Landwirtschaft, Fernhandel",
+    "summary": [
+     "Unter Stefan Dušan reicht das Reich in der Mitte des 14. Jahrhunderts von der Donau bis zum Golf von Korinth.",
+     "Nach seinem Tod zerfällt es rasch; 1459 fällt auch die letzte serbische Festung an die Osmanen."
+    ]
+   },
+   {
+    "from": 1878,
+    "to": 1918,
+    "ruler": "Die Häuser Obrenović und Karađorđević",
+    "rulerTitle": "Fürst, ab 1882 König",
+    "capital": "Belgrad",
+    "government": "Konstitutionelle Monarchie",
+    "religion": "Serbisch-orthodoxes Christentum",
+    "languages": ["Serbisch"],
+    "economy": "Landwirtschaft, Schweinehandel, beginnende Industrie",
+    "summary": [
+     "Das kleine Königreich wird zum Kristallisationspunkt des südslawischen Nationalismus – und 1914 zum Auslöser des Ersten Weltkriegs.",
+     "Von 1915 bis 1918 ist das Land von den Mittelmächten besetzt; ein Drittel der männlichen Bevölkerung kommt im Krieg um."
+    ]
+   },
+   {
+    "from": 2006,
+    "to": null,
+    "ruler": "Aleksandar Vučić (seit 2017 als Präsident)",
+    "rulerTitle": "Präsident der Republik Serbien",
+    "capital": "Belgrad",
+    "government": "Parlamentarische Republik",
+    "religion": "Serbisch-orthodoxes Christentum",
+    "languages": ["Serbisch"],
+    "population": "ca. 6,6 Mio.",
+    "economy": "Landwirtschaft, Fahrzeugzulieferung, Bergbau, Software",
+    "summary": [
+     "Mit Montenegros Unabhängigkeit 2006 endet der letzte Staatsverband, der den Namen Jugoslawien beerbt hatte.",
+     "Belgrad erkennt die Unabhängigkeit des Kosovo nicht an. Serbien ist seit 2012 EU-Beitrittskandidat und hält zugleich enge Beziehungen zu Russland."
+    ]
+   }
+  ]
+ },
+
+ "Azerbaijan": {
+  "kind": "Republik",
+  "wiki": "Aserbaidschan",
+  "events": [
+   { "year": 1918, "text": "Die Demokratische Republik Aserbaidschan entsteht – die erste parlamentarische Republik der islamischen Welt." },
+   { "year": 1920, "text": "Die Rote Armee macht ihr ein Ende; Aserbaidschan wird Sowjetrepublik." },
+   { "year": 1991, "text": "Erneute Unabhängigkeit beim Zerfall der Sowjetunion." },
+   { "year": 2020, "text": "Im Zweiten Karabachkrieg gewinnt Aserbaidschan große Teile des Gebiets zurück." },
+   { "year": 2023, "text": "Aserbaidschan stellt die Kontrolle über ganz Bergkarabach her." }
+  ],
+  "periods": [
+   {
+    "from": 1991,
+    "to": null,
+    "ruler": "Ilham Aliyev (seit 2003, Nachfolger seines Vaters Heydar)",
+    "rulerTitle": "Präsident der Republik",
+    "capital": "Baku",
+    "government": "Präsidialrepublik",
+    "religion": "Überwiegend schiitischer Islam",
+    "languages": ["Aserbaidschanisch", "Russisch"],
+    "population": "ca. 10 Mio.",
+    "economy": "Erdöl und Erdgas, Landwirtschaft",
+    "summary": [
+     "Die Pipelines von Baku nach Ceyhan und weiter nach Europa machen das Land zu einem Energielieferanten, der weder über Russland noch über den Iran führt.",
+     "Bergkarabach lag völkerrechtlich immer in Aserbaidschan, wurde aber von 1994 bis 2020 von armenischen Kräften gehalten – auf dieser Karte deshalb als besetztes aserbaidschanisches Gebiet gezeichnet.",
+     "Nach dem Krieg von 2020 und der Militäraktion von 2023 verließen fast alle Armenier die Region."
+    ]
+   }
+  ]
+ },
+
+ "Armenia": {
+  "kind": "Königreich, später Republik",
+  "wiki": "Armenien",
+  "events": [
+   { "year": 301, "text": "Armenien nimmt als erster Staat der Welt das Christentum als Staatsreligion an." },
+   { "year": 1915, "text": "Der Völkermord im Osmanischen Reich kostet über eine Million Armenier das Leben." },
+   { "year": 1991, "text": "Unabhängigkeit beim Zerfall der Sowjetunion." },
+   { "year": 2018, "text": "Die Samtene Revolution bringt Nikol Paschinjan an die Macht." },
+   { "year": 2020, "text": "Niederlage im Zweiten Karabachkrieg." }
+  ],
+  "periods": [
+   {
+    "from": -190,
+    "to": 428,
+    "ruler": "Tigranes der Große und die Arsakiden",
+    "rulerTitle": "König der Könige",
+    "capital": "Artaxata, später Tigranokerta",
+    "government": "Erbmonarchie zwischen Rom und Parthien",
+    "religion": "Ab 301 Christentum",
+    "languages": ["Armenisch", "Griechisch", "Aramäisch"],
+    "economy": "Fernhandel zwischen Mittelmeer und Iran, Viehzucht",
+    "summary": [
+     "Unter Tigranes dem Großen reicht Armenien um 80 v. Chr. kurzzeitig vom Kaspischen bis ans Mittelmeer.",
+     "Zwischen Rom und den iranischen Reichen bleibt es Jahrhunderte lang Pufferstaat – und wird 387 zwischen beiden geteilt."
+    ]
+   },
+   {
+    "from": 1991,
+    "to": null,
+    "ruler": "Nikol Paschinjan (seit 2018)",
+    "rulerTitle": "Ministerpräsident",
+    "capital": "Eriwan",
+    "government": "Parlamentarische Republik",
+    "religion": "Armenisch-Apostolische Kirche",
+    "languages": ["Armenisch"],
+    "population": "ca. 2,8 Mio.",
+    "economy": "Bergbau, Software, Überweisungen der Diaspora",
+    "summary": [
+     "Die Grenzen zur Türkei und zu Aserbaidschan sind seit den 1990er Jahren geschlossen; das Land ist wirtschaftlich weitgehend auf Georgien und den Iran angewiesen.",
+     "Von 1994 bis 2020 hielten armenische Kräfte Bergkarabach und die umliegenden aserbaidschanischen Bezirke. 2023 endete diese Kontrolle vollständig.",
+     "Mehr Armenier leben außerhalb des Landes als darin – eine Folge des Völkermords von 1915."
+    ]
+   }
+  ]
+ }
+}

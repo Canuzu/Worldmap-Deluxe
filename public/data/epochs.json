@@ -755,10 +755,15 @@
    "era": "worldwars",
    "polities": 142,
    "features": 147,
-   "bytes": 340705,
+   "bytes": 340657,
    "stand": "Dezember 1916",
    "ergaenzt": true,
-   "besatzung": true
+   "besatzung": true,
+   "korrigiert": {
+    "umbenannt": 1,
+    "ergaenzt": 0,
+    "begruendung": "Siehe 1914 – die Kriegsjahre erben den Namen aus dem Ursprungsdatensatz und brauchen dieselbe Richtigstellung."
+   }
   },
   {
    "year": 1918,
@@ -769,10 +774,15 @@
    "era": "worldwars",
    "polities": 142,
    "features": 148,
-   "bytes": 341838,
+   "bytes": 341794,
    "stand": "Juli 1918",
    "ergaenzt": true,
-   "besatzung": true
+   "besatzung": true,
+   "korrigiert": {
+    "umbenannt": 1,
+    "ergaenzt": 0,
+    "begruendung": "Siehe 1914 – die Kriegsjahre erben den Namen aus dem Ursprungsdatensatz und brauchen dieselbe Richtigstellung."
+   }
   },
   {
    "year": 1920,
@@ -936,11 +946,39 @@
    "key": "ad2010",
    "file": "data/epochs/ad2010.json",
    "label": "2010 n. Chr.",
-   "title": "Gegenwart",
+   "title": "Nach der Finanzkrise",
    "era": "present",
    "polities": 193,
    "features": 198,
    "bytes": 401526
+  },
+  {
+   "year": 2015,
+   "key": "ad2015",
+   "file": "data/epochs/ad2015.json",
+   "label": "2015 n. Chr.",
+   "title": "Südsudan, Krim und der Krieg im Donbass",
+   "era": "present",
+   "polities": 195,
+   "features": 202,
+   "bytes": 405406,
+   "stand": "Dezember 2015",
+   "ergaenzt": true,
+   "besatzung": true
+  },
+  {
+   "year": 2026,
+   "key": "ad2026",
+   "file": "data/epochs/ad2026.json",
+   "label": "2026 n. Chr.",
+   "title": "Die Welt heute",
+   "era": "present",
+   "polities": 195,
+   "features": 201,
+   "bytes": 404637,
+   "stand": "Anfang 2026",
+   "ergaenzt": true,
+   "besatzung": true
   }
  ]
 }

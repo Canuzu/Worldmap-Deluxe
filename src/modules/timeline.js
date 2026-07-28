@@ -1,8 +1,8 @@
 /**
  * Zeitleiste.
  *
- * Die 53 Zeitschnitte liegen extrem ungleich verteilt (123.000 v. Chr. bis
- * 2010). Eine lineare Jahresachse wäre unbedienbar – 99 % des Reglers
+ * Die Zeitschnitte liegen extrem ungleich verteilt (123.000 v. Chr. bis
+ * heute). Eine lineare Jahresachse wäre unbedienbar – 99 % des Reglers
  * entfielen auf die Steinzeit. Deshalb bekommt jeder Zeitschnitt dieselbe
  * Breite; das Epochenband darüber stellt den historischen Zusammenhang her,
  * die Jahreszahlen unter der Achse die tatsächliche Zeitspanne.

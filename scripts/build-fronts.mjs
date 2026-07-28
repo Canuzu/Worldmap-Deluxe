@@ -36,7 +36,7 @@ const ROOT = path.resolve(import.meta.dirname, '..');
 const HIST_DIR = path.join(ROOT, 'data-src/historical');
 const OUT_DIR = path.join(ROOT, 'data-src/derived');
 const MAPSHAPER = path.join(ROOT, 'node_modules/.bin/mapshaper');
-const SPECS = ['src/data/wwi.json', 'src/data/wwii.json'];
+const SPECS = ['src/data/wwi.json', 'src/data/wwii.json', 'src/data/gegenwart.json'];
 
 const TMP = fs.mkdtempSync(path.join(os.tmpdir(), 'wmd-krieg-'));
 let counter = 0;
@@ -154,7 +154,7 @@ function buildYear(spec, gebiete, basisDatei) {
 
   for (const rule of spec.teilungen ?? []) {
     const gebiet = gebiete[rule.gebiet];
-    if (!gebiet) throw new Error(`Gebiet "${rule.gebiet}" fehlt in wwii.json`);
+    if (!gebiet) throw new Error(`Gebiet "${rule.gebiet}" fehlt in der Beschreibungsdatei`);
     const regionFile = writeRegion(rule.gebiet, gebiet.ring);
     current = applySplit(current, rule, regionFile);
   }
@@ -220,7 +220,7 @@ function main() {
       process.exit(1);
     }
 
-    console.log(`› ${path.basename(specPath)} – Kriegsjahre aus ${basisDatei}`);
+    console.log(`› ${path.basename(specPath)} – abgeleitete Jahre aus ${basisDatei}`);
     for (const jahr of spec.jahre) {
       const file = buildYear(jahr, spec.gebiete, basisDatei);
       const besetzt = new Set();
@@ -243,7 +243,7 @@ function main() {
   index.sort((a, b) => a.year - b.year);
   fs.writeFileSync(path.join(OUT_DIR, 'index.json'), JSON.stringify({ years: index }, null, 1));
   fs.rmSync(TMP, { recursive: true, force: true });
-  console.log(`\nFertig: ${index.length} Kriegsjahre in data-src/derived.`);
+  console.log(`\nFertig: ${index.length} abgeleitete Jahre in data-src/derived.`);
 }
 
 main();

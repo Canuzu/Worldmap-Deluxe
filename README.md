@@ -2,7 +2,7 @@
 
 **→ [canuzu.github.io/Worldmap-Deluxe](https://canuzu.github.io/Worldmap-Deluxe/)**
 
-Ein interaktiver historischer Weltatlas: **60 Zeitschnitte von 123.000 v. Chr. bis 2010**.
+Ein interaktiver historischer Weltatlas: **62 Zeitschnitte von 123.000 v. Chr. bis 2026**.
 Der Regler unten schiebt die Weltkarte durch die Jahrtausende – Reiche wachsen,
 Grenzen verschieben sich, Kulturen verschwinden. Ein Klick auf ein Gebiet öffnet
 den Steckbrief für genau dieses Jahr: Herrscher, Hauptstadt, Regierungsform,
@@ -20,11 +20,11 @@ Religion, Bevölkerung, Wirtschaft, Wendepunkte und Nachbarn.
 
 | | |
 |---|---|
-| **Zeitregler** | jahresgenau wählbar; die Karte zeigt den nächstgelegenen der 60 Kartenstände und schreibt darunter, welcher das ist |
+| **Zeitregler** | jahresgenau wählbar; die Karte zeigt den nächstgelegenen der 62 Kartenstände und schreibt darunter, welcher das ist |
 | **Zeitreise** | Wiedergabetaste läuft alle Epochen durch, mit Überblendung zwischen den Zeitschnitten |
 | **Detailtafel** | Steckbrief je Gemeinwesen und Jahr – kuratierte Texte, Angaben aus dem Kartendatensatz, optional ein Wikipedia-Auszug |
 | **Nachbarn** | aus der Kartentopologie berechnet und anklickbar: eine Region lässt sich Nachbar für Nachbar erwandern |
-| **Besetzte Gebiete** | 1940–1944: besetztes Land behält seine Farbe und trägt darüber eine Schraffur in der Farbe der Besatzungsmacht |
+| **Besetzte Gebiete** | 1916/1918, 1940–1944 und 2015/2026: besetztes Land behält seine Farbe und trägt darüber eine Schraffur in der Farbe der Besatzungsmacht |
 | **Eiszeitliche Küstenlinie** | für die Zeitschnitte vor 10.000 v. Chr.: Doggerland, Beringia und Sundaland liegen trocken, so wie sie es waren |
 | **Landschaftsnamen** | Gebirge, Wüsten, Hochebenen – sie erklären, warum Grenzen verlaufen, wie sie verlaufen |
 | **Kartengrundlage** | wahlweise Relief- oder physische Geländekarte unter den historischen Grenzen – bewusst ohne heutige Straßen, Städte oder Staatsgrenzen. Abschaltbar; ohne sie zeichnet der Atlas wie zuvor alles selbst |
@@ -61,7 +61,7 @@ heutigen Weltkarte haben, geht der Atlas einen Umweg:
    wieder ab.
 
 Der Umweg über das Meer statt eines Zuschnitts jeder einzelnen Epoche ist der
-Grund, warum das Ganze schlank bleibt: Beim Zuschneiden trüge jede der 53
+Grund, warum das Ganze schlank bleibt: Beim Zuschneiden trüge jede der 62
 Dateien dieselben Küstenpunkte mit sich und wäre rund viermal so groß. So wird
 die Küstenlinie genau **einmal** geladen – und die Umrisse sind trotzdem exakt.
 
@@ -121,7 +121,7 @@ Neu erzeugen lassen sich die Web-Datensätze so:
 
 ```bash
 npm run fetch:data    # lädt historical-basemaps + Natural Earth nach data-src/
-npm run build:krieg   # erzeugt die Kriegsjahre 1940–1944 nach data-src/derived/
+npm run build:krieg   # erzeugt die abgeleiteten Jahre (Weltkriege, Gegenwart) nach data-src/derived/
 npm run build:data    # quantisiert, schreibt public/data/ (~20 s)
 npm run build:knowledge
 npm run check:data    # Abdeckung je Zeitschnitt
@@ -171,7 +171,7 @@ falsche Korrektur wäre schlimmer.
 
 Was nicht unverändert aus dem Ursprungsdatensatz stammt, trägt in der
 Zeitleiste ein anklickbares Zeichen: **ergänzt** für die selbst angelegten
-Kriegsjahre, **korrigiert** für Zeitschnitte mit Umbenennungen oder gefüllten
+Zeitschnitte, **korrigiert** für Zeitschnitte mit Umbenennungen oder gefüllten
 Lücken. Ein Klick nennt Stichtag, Anzahl und Begründung. Diese Angaben stehen
 in `public/data/epochs.json` und entstehen beim Bauen aus `corrections.json` –
 sie können also nicht auseinanderlaufen.
@@ -204,7 +204,7 @@ Stelle des Landes – dort ist genau das die Frage.
 
 Die Linien sind von Hand gezogen und auf kontinentalen Maßstab ausgelegt;
 einzelne Brückenköpfe und Kessel lösen sie nicht auf. Damit sie nicht
-unbemerkt verrutschen, prüft `npm run check:besatzung` 259 Stichproben gegen
+unbemerkt verrutschen, prüft `npm run check:besatzung` 313 Stichproben gegen
 bekannte Daten – darunter die Orte, die trotz Belagerung nie gefallen sind:
 
 ```
@@ -213,6 +213,34 @@ Stalingrad    frei  frei  Ger.  frei  frei   nur im Herbst 1942
 Sewastopol    frei  frei  Ger.  Ger.  frei   hielt bis Juli 1942
 Paris         Ger.  Ger.  Ger.  Ger.  frei   befreit August 1944
 ```
+
+### Von 2010 bis heute
+
+Der Ursprungsdatensatz endet 2010. Die vergangenen anderthalb Jahrzehnte
+enthalten aber Grenzänderungen, die auf einer Weltkarte nicht fehlen dürfen:
+die Unabhängigkeit des Südsudan, das Kosovo, die Annexion der Krim und den
+Krieg in der Ukraine.
+
+`src/data/gegenwart.json` führt den Datensatz nach demselben Verfahren fort wie
+die Kriegsjahre und ergänzt zwei Zeitschnitte: **2015** (Stand Dezember 2015)
+und **2026** (Stand Anfang 2026). Dazu kommen die Umbenennungen dieser Jahre –
+Birma → Myanmar, Mazedonien → Nordmazedonien, Swasiland → Eswatini,
+Türkei → Türkiye, Tschechische Republik → Tschechien.
+
+Zwei Grundsätze stehen in der Datei selbst:
+
+1. **Besetztes Gebiet behält den Namen des Landes, dem es völkerrechtlich
+   zugerechnet wird.** Die von Russland gehaltenen Teile der Ukraine sind auf
+   dieser Karte *Ukraine, besetzt durch Russland* – nicht Russland. Dasselbe
+   galt bis 2023 für Bergkarabach, das armenisch besetztes aserbaidschanisches
+   Gebiet war.
+2. **Frontverläufe sind Momentaufnahmen.** Der Stand steht bei jedem
+   Zeitschnitt in der Zeitleiste. An einer aktiven Front verschiebt er sich
+   weiter – die Linie von 2026 ist keine Grenze.
+
+Umstrittenes wird benannt, nicht verschwiegen: Das Kosovo ist eingezeichnet,
+obwohl Serbien es nicht anerkennt; die Region Abyei ist zwischen Sudan und
+Südsudan ungeklärt und hier dem Süden zugeschlagen. Beides steht im Steckbrief.
 
 ### Berühmte Schlachten
 

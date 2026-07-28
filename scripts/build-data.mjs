@@ -158,7 +158,9 @@ const EPOCH_TITLES = {
   '1960': 'Afrikanisches Jahr der Unabhängigkeit',
   '1994': 'Nach dem Ende der Sowjetunion',
   '2000': 'Jahrtausendwende',
-  '2010': 'Gegenwart',
+  '2010': 'Nach der Finanzkrise',
+  '2015': 'Südsudan, Krim und der Krieg im Donbass',
+  '2026': 'Die Welt heute',
 };
 
 function eraFor(year) {

@@ -1,13 +1,17 @@
 #!/usr/bin/env node
 /**
- * Prüft die selbst angelegten Kriegsjahre gegen bekannte Daten.
+ * Prüft die selbst abgeleiteten Zeitschnitte gegen bekannte Daten.
  *
- * Die Frontverläufe in src/data/wwi.json und src/data/wwii.json sind von Hand
- * gezogen. Damit sie
+ * Die Frontverläufe in src/data/wwi.json, src/data/wwii.json und
+ * src/data/gegenwart.json sind von Hand gezogen. Damit sie
  * nicht unbemerkt verrutschen, wird für eine Reihe von Orten festgehalten, wer
  * dort zum Stichtag des jeweiligen Zeitschnitts herrschte. Ausgewählt sind
  * Orte, an denen sich die Front entschieden hat – und solche, die trotz
  * Belagerung nie gefallen sind (Leningrad, Moskau, Murmansk).
+ *
+ * Für die Gegenwartsjahre wird zusätzlich der Name geprüft: Bei einer
+ * Staatsgründung wie dem Südsudan reicht die Besatzungsspalte nicht, weil dort
+ * gar keine Besatzung im Spiel ist, sondern eine neue Grenze.
  *
  * Aufruf: node scripts/check-besatzung.mjs
  */
@@ -59,6 +63,44 @@ const PROBEN = [
   ['Athen', [23.73, 37.98], [null, null, null, 'Germany', 'Germany', 'Germany', null], 'befreit Oktober 1944'],
 ];
 
+const GEGENWART = [2015, 2026];
+
+/**
+ * [Ort, [Länge, Breite], je Jahr "Name" oder "Name<Besatzer>", Beleg]
+ *
+ * Der spitze Klammerausdruck liest sich wie die Karte ihn zeigt: Sewastopol ist
+ * Ukraine<Russia> – ukrainisches Gebiet unter russischer Besatzung.
+ */
+const GEGENWARTSPROBEN = [
+  ['Juba', [31.58, 4.85], ['South Sudan', 'South Sudan'], 'Hauptstadt des 2011 unabhängig gewordenen Südsudan'],
+  ['Khartum', [32.53, 15.55], ['Sudan', 'Sudan'], 'blieb beim Nordsudan'],
+  ['Abyei', [28.44, 9.59], ['South Sudan', 'South Sudan'], 'umstritten – in dieser Karte dem Süden zugeschlagen'],
+  ['Priština', [21.16, 42.66], ['Kosovo', 'Kosovo'], '2008 für unabhängig erklärt'],
+  ['Belgrad', [20.46, 44.79], ['Serbia', 'Serbia'], 'blieb serbisch'],
+  ['Niš', [21.90, 43.32], ['Serbia', 'Serbia'], 'südserbisch, aber östlich des Kosovo'],
+  ['Sewastopol', [33.53, 44.62], ['Ukraine<Russia>', 'Ukraine<Russia>'], 'Krim, seit März 2014 von Russland gehalten'],
+  ['Simferopol', [34.10, 44.95], ['Ukraine<Russia>', 'Ukraine<Russia>'], 'Krim'],
+  ['Donezk', [37.80, 48.00], ['Ukraine<Russia>', 'Ukraine<Russia>'], 'seit 2014 nicht unter Kiewer Kontrolle'],
+  ['Luhansk', [39.31, 48.57], ['Ukraine<Russia>', 'Ukraine<Russia>'], 'seit 2014 nicht unter Kiewer Kontrolle'],
+  ['Mariupol', [37.55, 47.10], ['Ukraine', 'Ukraine<Russia>'], '2015 ukrainisch gehalten, im Mai 2022 gefallen'],
+  ['Melitopol', [35.37, 46.84], ['Ukraine', 'Ukraine<Russia>'], 'seit Februar 2022 besetzt'],
+  ['Cherson', [32.62, 46.64], ['Ukraine', 'Ukraine'], 'im November 2022 befreit – westlich des Dnipro'],
+  ['Saporischschja', [35.14, 47.84], ['Ukraine', 'Ukraine'], 'Stadt blieb ukrainisch, das Umland nicht'],
+  ['Charkiw', [36.23, 49.99], ['Ukraine', 'Ukraine'], 'nie eingenommen'],
+  ['Kiew', [30.52, 50.45], ['Ukraine', 'Ukraine'], 'nie eingenommen'],
+  ['Odessa', [30.73, 46.48], ['Ukraine', 'Ukraine'], 'nie eingenommen'],
+  ['Rostow am Don', [39.72, 47.24], ['Russia', 'Russia'], 'russisches Kernland östlich der Front'],
+  ['Stepanakert', [46.75, 39.82], ['Azerbaijan<Armenia>', 'Azerbaijan'], 'armenisch gehalten bis 2020; 2023 aserbaidschanisch'],
+  ['Baku', [49.87, 40.41], ['Azerbaijan', 'Azerbaijan'], 'nie umstritten'],
+  ['Eriwan', [44.51, 40.18], ['Armenia', 'Armenia'], 'Armenien selbst'],
+  ['Naypyidaw', [96.13, 19.75], ['Myanmar', 'Myanmar'], 'Birma heißt seit 1989 Myanmar'],
+  ['Skopje', [21.43, 41.99], ['Macedonia', 'North Macedonia'], 'seit dem Prespa-Abkommen 2019 Nordmazedonien'],
+  ['Mbabane', [31.13, -26.32], ['Swaziland', 'Eswatini'], '2018 in Eswatini umbenannt'],
+  ['Ankara', [32.85, 39.93], ['Turkey', 'Türkiye'], 'seit 2022 international Türkiye'],
+  ['Prag', [14.42, 50.09], ['Czech Republic', 'Czechia'], 'Kurzname Czechia seit 2016'],
+  ['Curaçao', [-68.93, 12.17], ['Dutch Caribbean', 'Dutch Caribbean'], 'Niederländische Antillen 2010 aufgelöst'],
+];
+
 function pointInRing([x, y], ring) {
   let inside = false;
   for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
@@ -77,18 +119,29 @@ function contains(point, geometry) {
     && !poly.slice(1).some((hole) => pointInRing(point, hole)));
 }
 
-function occupierAt(collection, point) {
+function featureAt(collection, point) {
   for (const f of collection.features) {
-    if (f.properties?.NAME && contains(point, f.geometry)) return f.properties.OCCUPIER ?? null;
+    if (f.properties?.NAME && contains(point, f.geometry)) return f.properties;
   }
   return null;
 }
 
+function occupierAt(collection, point) {
+  return featureAt(collection, point)?.OCCUPIER ?? null;
+}
+
+/** "Ukraine<Russia>" für besetztes, "Ukraine" für unbesetztes Gebiet. */
+function lageAt(collection, point) {
+  const p = featureAt(collection, point);
+  if (!p) return '–';
+  return p.OCCUPIER ? `${p.NAME}<${p.OCCUPIER}>` : p.NAME;
+}
+
 const daten = new Map();
-for (const jahr of JAHRE) {
+for (const jahr of [...JAHRE, ...GEGENWART]) {
   const file = path.join(DIR, `world_${jahr}.geojson`);
   if (!fs.existsSync(file)) {
-    console.error(`Kriegsjahre fehlen – bitte zuerst \`npm run build:krieg\` ausführen.`);
+    console.error(`Abgeleitete Jahre fehlen – bitte zuerst \`npm run build:krieg\` ausführen.`);
     process.exit(1);
   }
   daten.set(jahr, JSON.parse(fs.readFileSync(file, 'utf8')));
@@ -108,6 +161,18 @@ for (const [ort, punkt, erwartet, beleg] of PROBEN) {
   console.log(ort.padEnd(14) + zellen.join('') + '   ' + beleg);
 }
 
-const gesamt = PROBEN.length * JAHRE.length;
+console.log('\nGegenwart – geprüft wird Name und Besatzung:');
+console.log('Ort'.padEnd(16) + GEGENWART.map((j) => String(j).padStart(26)).join('') + '   Beleg');
+for (const [ort, punkt, erwartet, beleg] of GEGENWARTSPROBEN) {
+  const zellen = GEGENWART.map((jahr, i) => {
+    const ist = lageAt(daten.get(jahr), punkt);
+    const gut = ist === erwartet[i];
+    if (!gut) fehler++;
+    return `${gut ? '✓' : '✗'} ${ist}`.padStart(26);
+  });
+  console.log(ort.padEnd(16) + zellen.join('') + '   ' + beleg);
+}
+
+const gesamt = PROBEN.length * JAHRE.length + GEGENWARTSPROBEN.length * GEGENWART.length;
 console.log(`\n${gesamt - fehler}/${gesamt} Stichproben stimmen.`);
 process.exit(fehler ? 1 : 0);

@@ -1,0 +1,144 @@
+{
+  "_hinweis": [
+    "Der Ursprungsdatensatz endet 2010. Diese Datei führt ihn bis in die",
+    "Gegenwart fort – nach demselben Muster wie die Kriegsjahre: Umbenennungen,",
+    "Teilungen an einer Linie, und Besatzung als eigene Eigenschaft.",
+    "",
+    "Der Zuschnitt der Gegenwart ist heikler als der historischer Jahre, weil er",
+    "laufende Konflikte betrifft. Zwei Grundsätze:",
+    "",
+    "1. Besetztes Gebiet behält den Namen des Landes, dem es völkerrechtlich",
+    "   zugerechnet wird. Die von Russland gehaltenen Teile der Ukraine sind in",
+    "   dieser Karte Ukraine mit Russland als Besatzungsmacht – nicht Russland.",
+    "   Dasselbe galt für Bergkarabach, das bis 2023 armenisch besetzt war.",
+    "2. Frontverläufe sind Momentaufnahmen. Der Stand ist bei jedem Jahr genannt;",
+    "   an einer aktiven Front verschiebt er sich weiter."
+  ],
+
+  "basis": 2010,
+
+  "gebiete": {
+    "suedsudan": {
+      "_was": "Südsudan, am 9. Juli 2011 unabhängig geworden. Die Linie folgt der Grenze von 1956; das Gebiet Abyei ist bis heute umstritten und wird hier dem Süden zugeschlagen.",
+      "ring": [
+        [24.15, 8.68], [24.85, 9.80], [25.90, 10.30], [27.00, 9.50], [27.50, 9.55],
+        [27.50, 10.50], [29.00, 10.50], [29.00, 9.45], [29.50, 10.30], [30.80, 9.70],
+        [31.60, 9.80], [32.50, 11.00], [33.20, 10.40], [33.90, 10.00], [36.00, 4.00],
+        [33.00, 3.40], [28.00, 4.00], [24.00, 4.00], [24.15, 8.68]
+      ]
+    },
+    "kosovo": {
+      "_was": "Kosovo, 2008 für unabhängig erklärt. Rund hundert Staaten haben es anerkannt, Serbien nicht. Der Ursprungsdatensatz führt es 2010 noch nicht getrennt.",
+      "ring": [
+        [20.02, 42.55], [20.05, 42.85], [20.35, 43.10], [20.65, 43.28], [21.10, 43.25],
+        [21.45, 43.10], [21.80, 42.90], [21.75, 42.50], [21.55, 42.25], [21.10, 42.15],
+        [20.75, 42.05], [20.55, 41.85], [20.30, 42.10], [20.02, 42.55]
+      ]
+    },
+    "krim": {
+      "_was": "Halbinsel Krim, im März 2014 von Russland annektiert. Die Vereinten Nationen erkennen die Annexion nicht an; die Krim bleibt völkerrechtlich ukrainisch.",
+      "ring": [
+        [32.40, 46.20], [36.70, 46.20], [36.70, 44.30], [32.40, 44.30], [32.40, 46.20]
+      ]
+    },
+    "donbass-2015": {
+      "_was": "Von russisch geführten Kräften gehaltener Teil des Donbass nach dem Abkommen Minsk II vom Februar 2015 – die selbsternannten Republiken Donezk und Luhansk. Die Linie lässt Slowjansk, Kramatorsk, Bachmut, Sjewjerodonezk und Mariupol auf ukrainischer Seite und Donezk, Horliwka, Debalzewe und Luhansk auf der anderen.",
+      "ring": [
+        [40.20, 50.00], [39.80, 49.40], [39.20, 49.00], [38.60, 48.80], [38.45, 48.60],
+        [38.20, 48.35], [37.90, 48.20], [37.61, 48.10], [37.60, 47.95], [37.70, 47.60],
+        [37.85, 47.10], [38.20, 46.90], [40.20, 47.00], [40.20, 50.00]
+      ]
+    },
+    "ukraine-besetzt": {
+      "_was": "Von Russland gehaltenes Gebiet der Ukraine nach dem Überfall vom Februar 2022: Teile von Luhansk, Donezk, Saporischschja und Cherson, dazu die Krim. Westlich des Dnipro wurde Cherson im November 2022 befreit; die Linie folgt seither dem Fluss. Eine aktive Front – dieser Verlauf ist eine Momentaufnahme, keine Grenze.",
+      "ring": [
+        [40.20, 50.00], [38.20, 50.10], [37.60, 49.60], [37.50, 49.00], [38.00, 48.60],
+        [37.30, 48.30], [36.90, 47.90], [36.00, 47.60], [35.20, 47.50], [34.40, 47.30],
+        [33.90, 47.00], [33.40, 46.72], [32.90, 46.62], [32.40, 46.55], [31.90, 46.45],
+        [32.50, 45.20], [35.00, 45.00], [40.20, 45.50], [40.20, 50.00]
+      ]
+    },
+    "bergkarabach": {
+      "_was": "Bergkarabach und die umliegenden Bezirke, von 1994 bis 2020 unter armenischer Kontrolle. 2023 stellte Aserbaidschan die Kontrolle über das gesamte Gebiet her.",
+      "ring": [
+        [45.00, 40.60], [46.90, 40.30], [47.30, 39.60], [47.00, 38.90], [46.00, 38.90],
+        [45.00, 39.50], [45.00, 40.60]
+      ]
+    }
+  },
+
+  "jahre": [
+    {
+      "year": 2015,
+      "stand": "Dezember 2015",
+      "titel": "Südsudan, Krim und der Krieg im Donbass",
+      "umbenennen": {
+        "Netherlands Antilles": "Dutch Caribbean",
+        "Burma": "Myanmar"
+      },
+      "teilungen": [
+        {
+          "land": "Sudan",
+          "gebiet": "suedsudan",
+          "innen": { "name": "South Sudan" }
+        },
+        {
+          "land": "Serbia",
+          "gebiet": "kosovo",
+          "innen": { "name": "Kosovo" }
+        },
+        {
+          "land": "Ukraine",
+          "gebiet": "krim",
+          "innen": { "besetzer": "Russia" }
+        },
+        {
+          "land": "Ukraine",
+          "gebiet": "donbass-2015",
+          "innen": { "besetzer": "Russia" }
+        },
+        {
+          "land": "Azerbaijan",
+          "gebiet": "bergkarabach",
+          "innen": { "besetzer": "Armenia" }
+        }
+      ]
+    },
+
+    {
+      "year": 2026,
+      "stand": "Anfang 2026",
+      "titel": "Die Welt heute",
+      "umbenennen": {
+        "Netherlands Antilles": "Dutch Caribbean",
+        "Burma": "Myanmar",
+        "Macedonia": "North Macedonia",
+        "Swaziland": "Eswatini",
+        "Turkey": "Türkiye",
+        "Czech Republic": "Czechia"
+      },
+      "teilungen": [
+        {
+          "land": "Sudan",
+          "gebiet": "suedsudan",
+          "innen": { "name": "South Sudan" }
+        },
+        {
+          "land": "Serbia",
+          "gebiet": "kosovo",
+          "innen": { "name": "Kosovo" }
+        },
+        {
+          "land": "Ukraine",
+          "gebiet": "krim",
+          "innen": { "besetzer": "Russia" }
+        },
+        {
+          "land": "Ukraine",
+          "gebiet": "ukraine-besetzt",
+          "innen": { "besetzer": "Russia" }
+        }
+      ]
+    }
+  ]
+}

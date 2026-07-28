@@ -13,7 +13,7 @@
  * Der Kniff liegt in der Meeresebene: Sie ist nicht das Land, sondern dessen
  * Gegenstück – ein Polygon mit einem Loch je Landmasse. Weil sie ÜBER den
  * Grenzflächen liegt, enden diese exakt an der echten Küstenlinie, ohne dass
- * jeder der 53 Zeitschnitte die Küstenpunkte selbst mitschleppen müsste.
+ * jeder Zeitschnitt die Küstenpunkte selbst mitschleppen müsste.
  */
 import L from 'leaflet';
 import { createLabelLayer } from './labels.js';

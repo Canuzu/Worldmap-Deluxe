@@ -406,7 +406,48 @@ await check('Keine Anachronismen mehr im Datensatz', async () => {
     const r = await fetch('data/epochs.json');
     return (await r.json()).epochs.length;
   });
-  if (anzahl !== 60) throw new Error(`${anzahl} Zeitschnitte statt 60`);
+  if (anzahl !== 62) throw new Error(`${anzahl} Zeitschnitte statt 62`);
+});
+
+await check('Der Atlas reicht bis in die Gegenwart', async () => {
+  const schnitte = await page.evaluate(async () => {
+    const r = await fetch('data/epochs.json');
+    return (await r.json()).epochs.map((e) => e.year);
+  });
+  const letztes = schnitte[schnitte.length - 1];
+  if (letztes !== 2026) throw new Error(`letzter Zeitschnitt ${letztes} statt 2026`);
+  if (!schnitte.includes(2015)) throw new Error('Zeitschnitt 2015 fehlt');
+});
+
+await check('Südsudan und Kosovo erscheinen erst nach ihrer Gründung', async () => {
+  const neu = async (jahr) => page.evaluate(async (j) => {
+    const r = await fetch(`data/epochs/ad${j}.json`);
+    const topo = await r.json();
+    const namen = topo.objects[Object.keys(topo.objects)[0]].geometries
+      .map((g) => g.properties?.n);
+    return ['South Sudan', 'Kosovo'].filter((n) => namen.includes(n));
+  }, jahr);
+
+  if ((await neu(2010)).length) throw new Error('2010 kennt Südsudan oder Kosovo bereits');
+  const spaet = await neu(2026);
+  if (spaet.length !== 2) throw new Error(`2026 fehlt: ${spaet.join(', ') || 'beide'}`);
+});
+
+await check('Von Russland gehaltenes Gebiet bleibt ukrainisch benannt', async () => {
+  const flaechen = await page.evaluate(async () => {
+    const r = await fetch('data/epochs/ad2026.json');
+    const topo = await r.json();
+    return topo.objects[Object.keys(topo.objects)[0]].geometries
+      .map((g) => g.properties)
+      .filter((p) => p?.o)
+      .map((p) => `${p.n}<${p.o}>`);
+  });
+  if (!flaechen.includes('Ukraine<Russia>')) {
+    throw new Error(`keine besetzte Ukraine, sondern: ${flaechen.join(', ') || '–'}`);
+  }
+  // Kein Anspruch der Besatzungsmacht auf den Namen: Es darf 2026 keine Fläche
+  // geben, die russisches Staatsgebiet auf ukrainischem Boden behauptet.
+  if (flaechen.some((f) => f.startsWith('Russia<'))) throw new Error('Russland selbst als besetzt geführt');
 });
 
 await check('Eiszeitliche Küstenlinie greift bei den frühen Zeitschnitten', async () => {

@@ -896,7 +896,7 @@ function aboutHtml() {
     <li><span style="color:${ERA_COLORS[e.id]}">■</span> ${esc(e.name)}</li>`).join('');
   return `
     <p>Ein interaktiver historischer Weltatlas: ${num(atlasData.epochs.length)} Zeitschnitte
-    von 123.000 v. Chr. bis 2010. Ziehen Sie den Regler unten, um die politische
+    von 123.000 v. Chr. bis heute. Ziehen Sie den Regler unten, um die politische
     Landkarte durch die Jahrtausende wandern zu sehen. Ein Klick auf ein Gebiet
     öffnet den Steckbrief – mit Herrscher, Hauptstadt, Regierungsform und
     Einordnung für genau dieses Jahr.</p>
@@ -926,11 +926,19 @@ function aboutHtml() {
 
     <h3>Was hier über den Ursprungsdatensatz hinausgeht</h3>
     <p>Der zugrunde liegende Datensatz springt von 1938 auf 1945 und kennt keine
-    Besatzung, nur völkerrechtliche Zugehörigkeit. Die Kriegsjahre 1940 bis 1944
-    sind deshalb eigens angelegt: Besetztes Land behält die Farbe des Landes und
-    trägt darüber eine Schraffur in der Farbe der Besatzungsmacht. Ebenso ergänzt
-    sind belegbare Lücken – etwa die Arabische Halbinsel, die im Jahr 700
-    vollständig umayyadisch war, im Datensatz aber offen blieb.</p>
+    Besatzung, nur völkerrechtliche Zugehörigkeit. Die Kriegsjahre 1916/1918 und
+    1940 bis 1944 sind deshalb eigens angelegt: Besetztes Land behält die Farbe
+    des Landes und trägt darüber eine Schraffur in der Farbe der Besatzungsmacht.
+    Ebenso ergänzt sind belegbare Lücken – etwa die Arabische Halbinsel, die im
+    Jahr 700 vollständig umayyadisch war, im Datensatz aber offen blieb.</p>
+
+    <p>Derselbe Datensatz endet 2010. Die Zeitschnitte <strong>2015</strong> und
+    <strong>2026</strong> führen ihn bis heute fort: Südsudan, Kosovo, die Krim
+    und der Krieg in der Ukraine. Besetztes Gebiet behält dabei den Namen des
+    Landes, dem es völkerrechtlich zugerechnet wird – die von Russland
+    gehaltenen Teile der Ukraine sind hier <em>Ukraine, besetzt durch
+    Russland</em>. Frontverläufe sind Momentaufnahmen zum genannten Stichtag,
+    keine Grenzen.</p>
 
     <p style="margin-top:1rem"><kbd>?</kbd> zeigt alle Tastaturkürzel.</p>`;
 }
