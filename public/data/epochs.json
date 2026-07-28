@@ -1,5 +1,5 @@
 {
- "generated": "2026-07-27",
+ "generated": "2026-07-28",
  "source": {
   "name": "Historical Basemaps",
   "author": "André Ourednik u. a.",
@@ -123,7 +123,7 @@
    "era": "iceage",
    "polities": 3,
    "features": 4,
-   "bytes": 28308
+   "bytes": 28269
   },
   {
    "year": -10000,
@@ -134,7 +134,7 @@
    "era": "iceage",
    "polities": 14,
    "features": 16,
-   "bytes": 31175
+   "bytes": 31155
   },
   {
    "year": -8000,
@@ -145,7 +145,7 @@
    "era": "neolithic",
    "polities": 15,
    "features": 17,
-   "bytes": 34689
+   "bytes": 34650
   },
   {
    "year": -5000,
@@ -154,9 +154,9 @@
    "label": "5000 v. Chr.",
    "title": "Frühe Ackerbaukulturen",
    "era": "neolithic",
-   "polities": 29,
-   "features": 29,
-   "bytes": 242645
+   "polities": 28,
+   "features": 28,
+   "bytes": 226468
   },
   {
    "year": -4000,
@@ -167,7 +167,7 @@
    "era": "neolithic",
    "polities": 23,
    "features": 23,
-   "bytes": 43188
+   "bytes": 43147
   },
   {
    "year": -3000,
@@ -178,7 +178,7 @@
    "era": "bronze",
    "polities": 25,
    "features": 25,
-   "bytes": 45918
+   "bytes": 45877
   },
   {
    "year": -2000,
@@ -189,7 +189,7 @@
    "era": "bronze",
    "polities": 45,
    "features": 45,
-   "bytes": 168651
+   "bytes": 168476
   },
   {
    "year": -1500,
@@ -200,7 +200,7 @@
    "era": "bronze",
    "polities": 68,
    "features": 69,
-   "bytes": 201892
+   "bytes": 201905
   },
   {
    "year": -1000,
@@ -211,7 +211,7 @@
    "era": "iron",
    "polities": 69,
    "features": 70,
-   "bytes": 202221
+   "bytes": 202234
   },
   {
    "year": -700,
@@ -222,7 +222,7 @@
    "era": "iron",
    "polities": 73,
    "features": 80,
-   "bytes": 204585
+   "bytes": 204598
   },
   {
    "year": -500,
@@ -233,7 +233,7 @@
    "era": "antiquity",
    "polities": 74,
    "features": 77,
-   "bytes": 182940
+   "bytes": 182831
   },
   {
    "year": -400,
@@ -244,7 +244,7 @@
    "era": "antiquity",
    "polities": 76,
    "features": 81,
-   "bytes": 203206
+   "bytes": 203060
   },
   {
    "year": -323,
@@ -254,8 +254,8 @@
    "title": "Tod Alexanders des Großen",
    "era": "antiquity",
    "polities": 68,
-   "features": 75,
-   "bytes": 161477
+   "features": 74,
+   "bytes": 161350
   },
   {
    "year": -300,
@@ -265,8 +265,8 @@
    "title": "Diadochenreiche",
    "era": "antiquity",
    "polities": 73,
-   "features": 79,
-   "bytes": 164440
+   "features": 78,
+   "bytes": 164225
   },
   {
    "year": -200,
@@ -277,7 +277,7 @@
    "era": "antiquity",
    "polities": 86,
    "features": 86,
-   "bytes": 225318
+   "bytes": 225072
   },
   {
    "year": -100,
@@ -288,7 +288,7 @@
    "era": "antiquity",
    "polities": 84,
    "features": 85,
-   "bytes": 168127
+   "bytes": 167839
   },
   {
    "year": -1,
@@ -299,7 +299,7 @@
    "era": "antiquity",
    "polities": 79,
    "features": 80,
-   "bytes": 169649
+   "bytes": 169379
   },
   {
    "year": 100,
@@ -310,7 +310,7 @@
    "era": "antiquity",
    "polities": 83,
    "features": 85,
-   "bytes": 173056
+   "bytes": 173018
   },
   {
    "year": 200,
@@ -321,7 +321,7 @@
    "era": "antiquity",
    "polities": 69,
    "features": 70,
-   "bytes": 153166
+   "bytes": 153045
   },
   {
    "year": 300,
@@ -332,7 +332,7 @@
    "era": "antiquity",
    "polities": 71,
    "features": 71,
-   "bytes": 159097
+   "bytes": 158935
   },
   {
    "year": 400,
@@ -343,7 +343,7 @@
    "era": "antiquity",
    "polities": 79,
    "features": 80,
-   "bytes": 158143
+   "bytes": 157944
   },
   {
    "year": 500,
@@ -353,8 +353,8 @@
    "title": "Nach dem Fall Westroms",
    "era": "earlymiddle",
    "polities": 87,
-   "features": 92,
-   "bytes": 189730
+   "features": 89,
+   "bytes": 189260
   },
   {
    "year": 600,
@@ -365,7 +365,7 @@
    "era": "earlymiddle",
    "polities": 83,
    "features": 88,
-   "bytes": 197269
+   "bytes": 197018
   },
   {
    "year": 700,
@@ -374,9 +374,9 @@
    "label": "700 n. Chr.",
    "title": "Arabische Expansion",
    "era": "earlymiddle",
-   "polities": 125,
-   "features": 125,
-   "bytes": 208718
+   "polities": 123,
+   "features": 128,
+   "bytes": 294901
   },
   {
    "year": 800,
@@ -387,7 +387,7 @@
    "era": "earlymiddle",
    "polities": 117,
    "features": 122,
-   "bytes": 232076
+   "bytes": 301082
   },
   {
    "year": 900,
@@ -396,9 +396,9 @@
    "label": "900 n. Chr.",
    "title": "Zerfall der Großreiche",
    "era": "earlymiddle",
-   "polities": 135,
-   "features": 135,
-   "bytes": 262141
+   "polities": 134,
+   "features": 137,
+   "bytes": 264086
   },
   {
    "year": 1000,
@@ -408,8 +408,8 @@
    "title": "Europa um die Jahrtausendwende",
    "era": "earlymiddle",
    "polities": 129,
-   "features": 129,
-   "bytes": 268836
+   "features": 132,
+   "bytes": 256430
   },
   {
    "year": 1100,
@@ -419,8 +419,8 @@
    "title": "Zeit der Kreuzzüge",
    "era": "highmiddle",
    "polities": 139,
-   "features": 139,
-   "bytes": 241984
+   "features": 150,
+   "bytes": 245432
   },
   {
    "year": 1200,
@@ -430,8 +430,8 @@
    "title": "Aufstieg der Mongolen",
    "era": "highmiddle",
    "polities": 128,
-   "features": 128,
-   "bytes": 249356
+   "features": 134,
+   "bytes": 250929
   },
   {
    "year": 1279,
@@ -442,7 +442,7 @@
    "era": "highmiddle",
    "polities": 113,
    "features": 116,
-   "bytes": 234800
+   "bytes": 234466
   },
   {
    "year": 1300,
@@ -452,8 +452,8 @@
    "title": "Spätmittelalterliche Ordnung",
    "era": "highmiddle",
    "polities": 113,
-   "features": 113,
-   "bytes": 231170
+   "features": 115,
+   "bytes": 232065
   },
   {
    "year": 1400,
@@ -463,8 +463,8 @@
    "title": "Nach der Großen Pest",
    "era": "latemiddle",
    "polities": 115,
-   "features": 115,
-   "bytes": 259800
+   "features": 122,
+   "bytes": 261044
   },
   {
    "year": 1492,
@@ -474,8 +474,8 @@
    "title": "Beginn der europäischen Expansion",
    "era": "latemiddle",
    "polities": 1307,
-   "features": 1317,
-   "bytes": 1175062
+   "features": 1316,
+   "bytes": 1173878
   },
   {
    "year": 1500,
@@ -486,7 +486,7 @@
    "era": "earlymodern",
    "polities": 139,
    "features": 143,
-   "bytes": 266829
+   "bytes": 266039
   },
   {
    "year": 1530,
@@ -496,8 +496,8 @@
    "title": "Reformation und Konquista",
    "era": "earlymodern",
    "polities": 269,
-   "features": 278,
-   "bytes": 301731
+   "features": 277,
+   "bytes": 300838
   },
   {
    "year": 1600,
@@ -506,9 +506,9 @@
    "label": "1600 n. Chr.",
    "title": "Zeitalter der Handelskompanien",
    "era": "earlymodern",
-   "polities": 638,
-   "features": 638,
-   "bytes": 478502
+   "polities": 637,
+   "features": 659,
+   "bytes": 485259
   },
   {
    "year": 1650,
@@ -517,9 +517,9 @@
    "label": "1650 n. Chr.",
    "title": "Nach dem Dreißigjährigen Krieg",
    "era": "absolutism",
-   "polities": 593,
-   "features": 598,
-   "bytes": 488998
+   "polities": 592,
+   "features": 597,
+   "bytes": 488102
   },
   {
    "year": 1700,
@@ -529,8 +529,8 @@
    "title": "Barockes Mächtesystem",
    "era": "absolutism",
    "polities": 584,
-   "features": 584,
-   "bytes": 473719
+   "features": 590,
+   "bytes": 477247
   },
   {
    "year": 1715,
@@ -540,8 +540,8 @@
    "title": "Nach dem Spanischen Erbfolgekrieg",
    "era": "absolutism",
    "polities": 600,
-   "features": 600,
-   "bytes": 481669
+   "features": 606,
+   "bytes": 485921
   },
   {
    "year": 1783,
@@ -550,9 +550,9 @@
    "label": "1783 n. Chr.",
    "title": "Unabhängigkeit der USA",
    "era": "absolutism",
-   "polities": 549,
-   "features": 564,
-   "bytes": 520997
+   "polities": 548,
+   "features": 563,
+   "bytes": 520586
   },
   {
    "year": 1800,
@@ -563,7 +563,7 @@
    "era": "revolution",
    "polities": 546,
    "features": 558,
-   "bytes": 513964
+   "bytes": 513811
   },
   {
    "year": 1815,
@@ -572,9 +572,9 @@
    "label": "1815 n. Chr.",
    "title": "Wiener Kongress",
    "era": "revolution",
-   "polities": 313,
-   "features": 313,
-   "bytes": 488805
+   "polities": 312,
+   "features": 327,
+   "bytes": 489016
   },
   {
    "year": 1880,
@@ -585,7 +585,7 @@
    "era": "imperialism",
    "polities": 169,
    "features": 173,
-   "bytes": 344594
+   "bytes": 344443
   },
   {
    "year": 1900,
@@ -596,7 +596,7 @@
    "era": "imperialism",
    "polities": 165,
    "features": 222,
-   "bytes": 354997
+   "bytes": 354852
   },
   {
    "year": 1914,
@@ -606,8 +606,8 @@
    "title": "Vorabend des Ersten Weltkriegs",
    "era": "worldwars",
    "polities": 142,
-   "features": 142,
-   "bytes": 337843
+   "features": 144,
+   "bytes": 338503
   },
   {
    "year": 1920,
@@ -617,8 +617,8 @@
    "title": "Nach den Pariser Vorortverträgen",
    "era": "worldwars",
    "polities": 163,
-   "features": 163,
-   "bytes": 387540
+   "features": 165,
+   "bytes": 388583
   },
   {
    "year": 1930,
@@ -628,8 +628,8 @@
    "title": "Zwischenkriegszeit",
    "era": "worldwars",
    "polities": 161,
-   "features": 161,
-   "bytes": 336866
+   "features": 163,
+   "bytes": 337819
   },
   {
    "year": 1938,
@@ -640,7 +640,7 @@
    "era": "worldwars",
    "polities": 171,
    "features": 175,
-   "bytes": 374194
+   "bytes": 374197
   },
   {
    "year": 1940,
@@ -651,7 +651,7 @@
    "era": "worldwars",
    "polities": 172,
    "features": 179,
-   "bytes": 376401,
+   "bytes": 376404,
    "stand": "Juli 1940",
    "ergaenzt": true,
    "besatzung": true
@@ -665,7 +665,7 @@
    "era": "worldwars",
    "polities": 172,
    "features": 180,
-   "bytes": 377643,
+   "bytes": 377646,
    "stand": "Dezember 1941",
    "ergaenzt": true,
    "besatzung": true
@@ -679,7 +679,7 @@
    "era": "worldwars",
    "polities": 171,
    "features": 181,
-   "bytes": 377665,
+   "bytes": 377668,
    "stand": "November 1942",
    "ergaenzt": true,
    "besatzung": true
@@ -693,7 +693,7 @@
    "era": "worldwars",
    "polities": 171,
    "features": 180,
-   "bytes": 377443,
+   "bytes": 377446,
    "stand": "Dezember 1943",
    "ergaenzt": true,
    "besatzung": true
@@ -707,7 +707,7 @@
    "era": "worldwars",
    "polities": 171,
    "features": 182,
-   "bytes": 377897,
+   "bytes": 377900,
    "stand": "Dezember 1944",
    "ergaenzt": true,
    "besatzung": true
@@ -721,7 +721,7 @@
    "era": "worldwars",
    "polities": 183,
    "features": 185,
-   "bytes": 363307
+   "bytes": 363310
   },
   {
    "year": 1960,
@@ -732,7 +732,7 @@
    "era": "coldwar",
    "polities": 157,
    "features": 160,
-   "bytes": 343564
+   "bytes": 343567
   },
   {
    "year": 1994,
@@ -743,7 +743,7 @@
    "era": "present",
    "polities": 193,
    "features": 197,
-   "bytes": 399446
+   "bytes": 399405
   },
   {
    "year": 2000,
@@ -754,7 +754,7 @@
    "era": "present",
    "polities": 193,
    "features": 198,
-   "bytes": 401576
+   "bytes": 401535
   },
   {
    "year": 2010,
@@ -765,7 +765,7 @@
    "era": "present",
    "polities": 193,
    "features": 198,
-   "bytes": 401567
+   "bytes": 401526
   }
  ]
 }

@@ -2,15 +2,16 @@
    Grundgerüst: Bühne, Karte, Werkzeuge, Popover, Modal
    ============================================================ */
 
+/* Die Karte fuellt den ganzen Bildschirm. Zeitleiste, Leisten und Detailtafel
+   schweben darueber, statt ihr Flaeche wegzunehmen - frueher schnitt die
+   Zeitleiste als eigene Rasterzeile rund ein Achtel der Karte ab. */
 .app {
   position: fixed;
   inset: 0;
   display: grid;
   grid-template-columns: 1fr auto;
-  grid-template-rows: 1fr auto;
-  grid-template-areas:
-    "stage panel"
-    "time  time";
+  grid-template-rows: 1fr;
+  grid-template-areas: "stage panel";
 }
 .app[hidden] { display: none; }
 
@@ -20,6 +21,29 @@
   min-width: 0;
   overflow: hidden;
 }
+
+/* Vollbild: Nur die Karte. Alles Bedienbare weicht, bis auf den Knopf, mit
+   dem man wieder herauskommt. */
+.app.is-focus .dock,
+.app.is-focus .timeline,
+.app.is-focus .credits,
+.app.is-focus .popover,
+.app.is-focus .battles {
+  opacity: 0;
+  /* visibility statt nur opacity: Sonst bleiben die Elemente fuer Tastatur
+     und Vorlesesoftware erreichbar, obwohl nichts zu sehen ist. */
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(.4rem);
+}
+.app.is-focus .tools > *:not(#btnFocus) { display: none; }
+.dock, .timeline, .credits {
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease),
+              visibility 0s linear var(--dur);
+}
+.app.is-focus .dock,
+.app.is-focus .timeline,
+.app.is-focus .credits { transition-delay: 0s, 0s, var(--dur); }
 
 /* --------------------------------------------------------------- Karte */
 
@@ -72,95 +96,104 @@
 }
 .leaflet-control-container { display: none; }
 
-/* ------------------------------------------------------------- Marke */
+/* --------------------------------------------------------- Kopfleiste */
 
-.brand {
+/* Eine schmale Leiste statt einer Karte: Marke, Suche, Schlachten.
+   Die Suche liegt zugeklappt als Knopf und faehrt erst bei Bedarf aus. */
+.dock {
   position: absolute;
   z-index: 500;
   top: calc(.9rem + env(safe-area-inset-top, 0px));
   left: calc(.9rem + var(--safe-l));
-  width: min(23rem, calc(100vw - 6.5rem));
-  padding: .7rem .8rem;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: .55rem .7rem;
-  align-items: center;
+  display: flex;
+  align-items: flex-start;
+  gap: .4rem;
+  max-width: calc(100vw - 6.5rem);
 }
 
-.brand__mark {
-  width: 2.35rem; height: 2.35rem;
+.dock__mark,
+.dock__btn {
+  width: 2.5rem; height: 2.5rem;
+  flex: none;
   display: grid; place-items: center;
-  border-radius: 50%;
-  background: var(--surface-2);
+  border-radius: var(--r-md);
+  color: var(--ink-muted);
+  background: var(--surface);
   border: 1px solid var(--hairline);
-  transition: transform var(--dur) var(--ease), background var(--dur) var(--ease);
+  box-shadow: var(--shadow-1);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  transition: color var(--dur) var(--ease), background var(--dur) var(--ease),
+              transform var(--dur) var(--ease);
 }
-.brand__mark:hover { transform: rotate(-12deg); background: var(--surface-3); }
-.brand__disc { fill: var(--surface-3); }
-.brand__grid { fill: var(--gold); }
+.dock__mark { border-radius: 50%; }
+.dock__mark:hover { transform: rotate(-12deg); }
+.dock__btn:hover { color: var(--ink-strong); transform: translateY(-1px); }
+.dock__disc { fill: var(--surface-3); }
+.dock__grid { fill: var(--gold); }
 
-.brand__text { display: grid; line-height: 1.25; min-width: 0; }
-.brand__text strong {
-  font-family: var(--font-display);
-  font-size: 1.02rem;
-  font-weight: 500;
-  letter-spacing: .005em;
-  color: var(--ink-strong);
-}
-.brand__text span {
-  font-size: .68rem;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-}
-
-.brand__search {
-  grid-column: 1 / -1;
+/* Ausklappbare Suche */
+.dock__searchwrap {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: .5rem;
-  padding: .42rem .6rem;
-  border-radius: var(--r-md);
-  background: var(--surface-2);
-  border: 1px solid transparent;
-  color: var(--ink-faint);
-  transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease);
-}
-.brand__search:focus-within {
-  border-color: var(--hairline-strong);
-  background: var(--surface-3);
-}
-.brand__search input {
-  flex: 1;
   min-width: 0;
+}
+.dock__searchwrap input {
+  width: 0;
+  padding: 0;
   border: 0;
   background: none;
   outline: none;
   color: var(--ink);
   font-size: .88rem;
+  font-family: inherit;
+  opacity: 0;
+  pointer-events: none;
+  transition: width var(--dur) var(--ease), opacity var(--dur) var(--ease),
+              padding var(--dur) var(--ease);
 }
-.brand__search input::placeholder { color: var(--ink-faint); }
-.brand__search input::-webkit-search-cancel-button { display: none; }
-.brand__search kbd {
-  font-family: var(--font-mono);
-  font-size: .66rem;
-  padding: .1rem .34rem;
-  border-radius: 5px;
-  border: 1px solid var(--hairline);
-  background: var(--surface-2);
-  color: var(--ink-faint);
+.dock__searchwrap input::placeholder { color: var(--ink-faint); }
+.dock__searchwrap input::-webkit-search-cancel-button { display: none; }
+.dock__btn--clear { display: none; }
+
+.dock__searchwrap.is-open {
+  background: var(--surface);
+  border: 1px solid var(--hairline-strong);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-1);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
 }
-.brand__search:focus-within kbd { opacity: 0; }
+.dock__searchwrap.is-open .dock__btn {
+  background: none;
+  border: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+.dock__searchwrap.is-open input {
+  width: min(19rem, calc(100vw - 13rem));
+  padding: 0 .2rem;
+  opacity: 1;
+  pointer-events: auto;
+}
+.dock__searchwrap.is-open .dock__btn--clear { display: grid; }
 
 /* Suchvorschläge */
 .suggest {
-  grid-column: 1 / -1;
+  position: absolute;
+  top: calc(100% + .35rem);
+  left: 0;
+  width: min(24rem, calc(100vw - 8rem));
   list-style: none;
-  margin: -.15rem 0 0;
-  padding: .25rem 0 0;
+  margin: 0;
+  padding: .3rem;
   max-height: 17rem;
   overflow-y: auto;
-  border-top: 1px solid var(--hairline);
+  border-radius: var(--r-md);
+  background: var(--surface-solid);
+  border: 1px solid var(--hairline-strong);
+  box-shadow: var(--shadow-2, var(--shadow-1));
 }
 .suggest[hidden] { display: none; }
 .suggest li {
@@ -183,6 +216,33 @@
 .suggest .nm { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .suggest .sub { font-size: .72rem; color: var(--ink-faint); flex: none; }
 .suggest mark { background: none; color: var(--gold); font-weight: 600; }
+
+/* Beschriftung beim Zeigen – ersetzt den traegen title-Tooltip des Browsers */
+[data-label] { position: relative; }
+[data-label]::after {
+  content: attr(data-label);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: .2rem .5rem;
+  border-radius: var(--r-sm);
+  background: var(--surface-solid);
+  border: 1px solid var(--hairline-strong);
+  box-shadow: var(--shadow-1);
+  font-size: .72rem;
+  color: var(--ink);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms var(--ease);
+  z-index: 10;
+}
+.dock [data-label]::after { left: calc(100% + .45rem); }
+.tools [data-label]::after { right: calc(100% + .45rem); }
+.timeline [data-label]::after { right: calc(100% + .45rem); }
+[data-label]:hover::after,
+[data-label]:focus-visible::after { opacity: 1; }
+.dock__searchwrap.is-open [data-label]::after { display: none; }
 
 /* --------------------------------------------------------- Werkzeuge */
 
@@ -213,19 +273,12 @@
 .tool:active { transform: translateY(0); }
 .tool[aria-pressed="true"] { color: var(--gold); border-color: var(--hairline-strong); }
 
-.tools__zoom {
-  display: grid;
-  border-radius: var(--r-md);
-  overflow: hidden;
-  box-shadow: var(--shadow-1);
+.tools__sep {
+  width: 1.4rem;
+  height: 1px;
+  background: var(--hairline-strong);
+  margin: .15rem 0;
 }
-.tools__zoom .tool {
-  border-radius: 0;
-  box-shadow: none;
-  border-bottom-width: 0;
-}
-.tools__zoom .tool:first-child { border-radius: var(--r-md) var(--r-md) 0 0; }
-.tools__zoom .tool:last-child { border-radius: 0 0 var(--r-md) var(--r-md); border-bottom-width: 1px; }
 
 /* ----------------------------------------------------------- Popover */
 
@@ -515,3 +568,157 @@
   justify-self: start;
 }
 .keys span { color: var(--ink-muted); }
+
+/* ------------------------------------------------------- Schlachten */
+
+/* Eine Schlacht braucht Platz zum Mitlesen, aber die Karte muss frei
+   bleiben: Das Fenster sitzt links unten und lässt die Mitte offen. */
+.battles {
+  position: absolute;
+  z-index: 520;
+  left: calc(.9rem + var(--safe-l));
+  bottom: calc(9.5rem + var(--safe-b));
+  width: min(23rem, calc(100vw - 2rem));
+  max-height: min(62vh, 34rem);
+  display: flex;
+  flex-direction: column;
+  padding: .85rem;
+}
+.battles[hidden] { display: none; }
+
+.battles__head {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-bottom: .55rem;
+}
+.battles__head h3 {
+  flex: 1;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  font-weight: 500;
+  color: var(--ink-strong);
+}
+
+.battles__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  display: grid;
+  gap: .3rem;
+}
+.battles__list[hidden] { display: none; }
+.battles__list li {
+  display: grid;
+  gap: .15rem;
+  padding: .5rem .55rem;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  transition: background var(--dur) var(--ease);
+}
+.battles__list li:hover { background: var(--surface-2); }
+.battles__list b { font-size: .9rem; color: var(--ink-strong); font-weight: 600; }
+.battles__list span { font-size: .72rem; color: var(--gold); }
+.battles__list i {
+  font-style: normal;
+  font-size: .76rem;
+  line-height: 1.45;
+  color: var(--ink-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.battles__player { overflow-y: auto; }
+.battles__player[hidden] { display: none; }
+.battles__meta { margin: 0 0 .5rem; font-size: .74rem; color: var(--gold); }
+
+.battles__sides {
+  list-style: none;
+  margin: 0 0 .7rem;
+  padding: 0;
+  display: grid;
+  gap: .25rem;
+}
+.battles__sides li { display: flex; align-items: baseline; gap: .45rem; font-size: .76rem; }
+.battles__sides .sw {
+  width: .6rem; height: .6rem;
+  border-radius: 2px;
+  flex: none;
+  align-self: center;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .3);
+}
+.battles__sides b { color: var(--ink); font-weight: 600; }
+.battles__sides span { color: var(--ink-faint); font-size: .7rem; }
+
+.battles__stage {
+  padding: .6rem .65rem;
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+  border-left: 2px solid var(--gold);
+}
+.battles__zeit {
+  font-size: .68rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: .25rem;
+}
+.battles__text { margin: 0; font-size: .82rem; line-height: 1.55; color: var(--ink); }
+
+/* Stationsleiste: zeigt Länge und Stand des Verlaufs auf einen Blick */
+.battles__steps { display: flex; gap: .25rem; margin: .7rem 0 .5rem; }
+.battles__steps i {
+  flex: 1;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--hairline-strong);
+  cursor: pointer;
+  transition: background var(--dur) var(--ease);
+}
+.battles__steps i.is-on { background: var(--gold); }
+
+.battles__controls { display: flex; align-items: center; gap: .3rem; }
+.battles__zaehler {
+  font-size: .72rem;
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+  margin-left: .2rem;
+  flex: 1;
+}
+
+/* Stellungen auf der Karte */
+.battle-shape { animation: battleIn 320ms var(--ease); }
+.battle-arrow { animation: battleIn 420ms var(--ease); }
+@keyframes battleIn { from { opacity: 0; } }
+
+.battle-tag span {
+  position: absolute;
+  transform: translate(-50%, -160%);
+  white-space: nowrap;
+  padding: .1rem .4rem;
+  border-radius: 4px;
+  font-size: .68rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--c, #666);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, .45);
+}
+
+@media (max-width: 720px) {
+  .battles { bottom: calc(8rem + var(--safe-b)); max-height: 50vh; }
+}
+
+/* Waehrend einer Schlacht tritt die Staatenkarte zurueck. Bei diesem Massstab
+   ist sie nur noch eine grosse einfarbige Flaeche; gedaempft laesst sie den
+   Stellungen die Buehne, bleibt aber als Orientierung erhalten. */
+.app.is-battle .leaflet-polityA-pane,
+.app.is-battle .leaflet-polityB-pane { opacity: .38 !important; }
+.app.is-battle .leaflet-ocean-pane { opacity: .55; }
+.app.is-battle .leaflet-polityA-pane,
+.app.is-battle .leaflet-polityB-pane,
+.app.is-battle .leaflet-ocean-pane { transition: opacity 400ms var(--ease); }

@@ -27,49 +27,59 @@
     <div class="stage">
       <div id="map" class="map" role="application" aria-label="Historische Weltkarte"></div>
 
-      <!-- Kopfzeile links: Marke + Suche -->
-      <header class="brand card" id="brand">
-        <button class="brand__mark" id="btnAbout" type="button" title="Über dieses Kartenwerk">
-          <svg viewBox="0 0 32 32" aria-hidden="true" width="30" height="30">
-            <circle cx="16" cy="16" r="14.5" class="brand__disc" />
-            <path d="M16 1.5a14.5 14.5 0 100 29 14.5 14.5 0 000-29zm0 2.5c2 2 3.3 5.5 3.6 9.7h-7.2C12.7 9.5 14 6 16 4zM12.8 4.8c-1.2 2.3-2 5.4-2.3 8.9H4.7a12.1 12.1 0 018.1-8.9zm6.4 0a12.1 12.1 0 018.1 8.9h-5.8c-.3-3.5-1.1-6.6-2.3-8.9zM4.7 16.3h5.8c.3 3.5 1.1 6.6 2.3 8.9a12.1 12.1 0 01-8.1-8.9zm8.1 0h7.2c-.3 4.2-1.6 7.7-3.6 9.7-2-2-3.3-5.5-3.6-9.7zm9.7 0h5.8a12.1 12.1 0 01-8.1 8.9c1.2-2.3 2-5.4 2.3-8.9z" class="brand__grid" />
+      <!-- Kopfleiste links: Marke + ausklappbare Suche.
+           Bewusst schmal: Die Karte ist der Inhalt, nicht die Bedienung. -->
+      <header class="dock" id="brand">
+        <button class="dock__mark" id="btnAbout" type="button" data-label="Über dieses Kartenwerk">
+          <svg viewBox="0 0 32 32" aria-hidden="true" width="26" height="26">
+            <circle cx="16" cy="16" r="14.5" class="dock__disc" />
+            <path d="M16 1.5a14.5 14.5 0 100 29 14.5 14.5 0 000-29zm0 2.5c2 2 3.3 5.5 3.6 9.7h-7.2C12.7 9.5 14 6 16 4zM12.8 4.8c-1.2 2.3-2 5.4-2.3 8.9H4.7a12.1 12.1 0 018.1-8.9zm6.4 0a12.1 12.1 0 018.1 8.9h-5.8c-.3-3.5-1.1-6.6-2.3-8.9zM4.7 16.3h5.8c.3 3.5 1.1 6.6 2.3 8.9a12.1 12.1 0 01-8.1-8.9zm8.1 0h7.2c-.3 4.2-1.6 7.7-3.6 9.7-2-2-3.3-5.5-3.6-9.7zm9.7 0h5.8a12.1 12.1 0 01-8.1 8.9c1.2-2.3 2-5.4 2.3-8.9z" class="dock__grid" />
           </svg>
         </button>
-        <div class="brand__text">
-          <strong>Worldmap Deluxe</strong>
-          <span>Historischer Weltatlas</span>
-        </div>
-        <div class="brand__search">
-          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M10.5 3a7.5 7.5 0 015.9 12.1l4.3 4.3-1.4 1.4-4.3-4.3A7.5 7.5 0 1110.5 3zm0 2a5.5 5.5 0 100 11 5.5 5.5 0 000-11z" fill="currentColor"/></svg>
+
+        <div class="dock__searchwrap" id="searchWrap">
+          <button class="dock__btn" id="btnSearch" type="button" aria-expanded="false"
+                  aria-controls="search" data-label="Suchen (/)">
+            <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M10.5 3a7.5 7.5 0 015.9 12.1l4.3 4.3-1.4 1.4-4.3-4.3A7.5 7.5 0 1110.5 3zm0 2a5.5 5.5 0 100 11 5.5 5.5 0 000-11z" fill="currentColor"/></svg>
+          </button>
           <input id="search" type="search" autocomplete="off" spellcheck="false"
                  placeholder="Reich, Volk oder Land suchen …" aria-label="Suche im aktuellen Zeitschnitt" />
-          <kbd>/</kbd>
+          <button class="dock__btn dock__btn--clear" id="btnSearchClose" type="button" aria-label="Suche schließen">
+            <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M6.4 5l5.6 5.6L17.6 5 19 6.4 13.4 12 19 17.6 17.6 19 12 13.4 6.4 19 5 17.6 10.6 12 5 6.4 6.4 5z" fill="currentColor"/></svg>
+          </button>
+          <ul class="suggest" id="suggest" role="listbox" hidden></ul>
         </div>
-        <ul class="suggest" id="suggest" role="listbox" hidden></ul>
+
+        <button class="dock__btn" id="btnBattles" type="button" data-label="Berühmte Schlachten (S)">
+          <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M5 2h1.8v20H5V2zm3.4 1.2c3.4-1.4 6.4.9 9.4 0 .9-.3 1.7-.7 2.4-1.2v10.6c-3.4 2-6.6-.5-9.9.3-.7.2-1.3.4-1.9.7V3.2z" fill="currentColor"/></svg>
+        </button>
       </header>
 
-      <!-- Werkzeugleiste rechts -->
+      <!-- Werkzeugleiste rechts: gruppiert nach Sicht, Ausschnitt, Vollbild -->
       <div class="tools">
-        <button class="tool" id="btnTheme" type="button" title="Darstellung wechseln (T)" aria-label="Darstellung wechseln">
-          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 3a9 9 0 100 18 9 9 0 000-18zm0 2v14a7 7 0 010-14z" fill="currentColor"/></svg>
-        </button>
-        <button class="tool" id="btnLayers" type="button" title="Ebenen & Einfärbung (E)" aria-label="Ebenen und Einfärbung">
+        <button class="tool" id="btnLayers" type="button" data-label="Ebenen &amp; Einfärbung (E)" aria-label="Ebenen und Einfärbung">
           <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5zm0 7.7l6.6-3.7L21 12l-9 5-9-5 2.4-1.3L12 10.7zm0 4.6l6.6-3.7L21 16l-9 5-9-5 2.4-1.3L12 15.3z" fill="currentColor"/></svg>
         </button>
-        <button class="tool" id="btnLegend" type="button" title="Legende (L)" aria-label="Legende">
+        <button class="tool" id="btnLegend" type="button" data-label="Legende (L)" aria-label="Legende">
           <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 5h6v6H4V5zm10 1h6v2h-6V6zm0 4h6v2h-6v-2zM4 13h6v6H4v-6zm10 1h6v2h-6v-2zm0 4h6v2h-6v-2z" fill="currentColor"/></svg>
         </button>
-        <button class="tool" id="btnHome" type="button" title="Ansicht zurücksetzen (0)" aria-label="Ansicht zurücksetzen">
+        <button class="tool" id="btnTheme" type="button" data-label="Farbwelt wechseln (T)" aria-label="Darstellung wechseln">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 3a9 9 0 100 18 9 9 0 000-18zm0 2v14a7 7 0 010-14z" fill="currentColor"/></svg>
+        </button>
+        <div class="tools__sep"></div>
+        <button class="tool" id="btnHome" type="button" data-label="Ansicht zurücksetzen (0)" aria-label="Ansicht zurücksetzen">
           <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 3l9 8h-3v9h-4v-6h-4v6H6v-9H3l9-8z" fill="currentColor"/></svg>
         </button>
-        <div class="tools__zoom">
-          <button class="tool" id="btnZoomIn" type="button" title="Vergrößern" aria-label="Vergrößern">
-            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M11 5h2v6h6v2h-6v6h-2v-6H5v-2h6V5z" fill="currentColor"/></svg>
-          </button>
-          <button class="tool" id="btnZoomOut" type="button" title="Verkleinern" aria-label="Verkleinern">
-            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 11h14v2H5z" fill="currentColor"/></svg>
-          </button>
-        </div>
+        <button class="tool" id="btnZoomIn" type="button" data-label="Vergrößern" aria-label="Vergrößern">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M11 5h2v6h6v2h-6v6h-2v-6H5v-2h6V5z" fill="currentColor"/></svg>
+        </button>
+        <button class="tool" id="btnZoomOut" type="button" data-label="Verkleinern" aria-label="Verkleinern">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 11h14v2H5z" fill="currentColor"/></svg>
+        </button>
+        <div class="tools__sep"></div>
+        <button class="tool" id="btnFocus" type="button" data-label="Nur die Karte (F)" aria-label="Bedienelemente ausblenden" aria-pressed="false">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 9V4h5v2H6v3H4zm11-5h5v5h-2V6h-3V4zM4 15h2v3h3v2H4v-5zm14 0h2v5h-5v-2h3v-3z" fill="currentColor"/></svg>
+        </button>
       </div>
 
       <!-- Ebenen-Menü -->
@@ -97,6 +107,18 @@
       <div class="popover card popover--legend" id="legendBox" hidden>
         <h3 id="legendTitle">Legende</h3>
         <ul class="legend" id="legendList"></ul>
+      </div>
+
+      <!-- Schlachtenfenster: Verlauf einer Schlacht Zug um Zug -->
+      <div class="battles card" id="battlesBox" hidden>
+        <div class="battles__head">
+          <h3 id="battlesTitle">Berühmte Schlachten</h3>
+          <button class="dock__btn" id="battlesClose" type="button" aria-label="Schließen">
+            <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M6.4 5l5.6 5.6L17.6 5 19 6.4 13.4 12 19 17.6 17.6 19 12 13.4 6.4 19 5 17.6 10.6 12 5 6.4 6.4 5z" fill="currentColor"/></svg>
+          </button>
+        </div>
+        <ul class="battles__list" id="battlesList"></ul>
+        <div class="battles__player" id="battlesPlayer" hidden></div>
       </div>
 
       <!-- Hinweis-Tooltip an der Maus -->
@@ -142,6 +164,11 @@
         </div>
 
         <div class="timeline__stats" id="epochStats"></div>
+
+        <button class="tbtn tbtn--fold" id="btnFold" type="button"
+                data-label="Zeitleiste einklappen" aria-expanded="true" aria-controls="timeline">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M7.4 8.6L12 13.2l4.6-4.6L18 10l-6 6-6-6 1.4-1.4z" fill="currentColor"/></svg>
+        </button>
       </div>
 
       <div class="track" id="track" tabindex="0" role="slider"

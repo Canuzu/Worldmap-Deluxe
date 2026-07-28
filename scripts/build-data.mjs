@@ -217,12 +217,101 @@ function mapshaper(args) {
 const QUANT = '1e6';
 
 /**
+ * Landmaske aus Natural Earth, von buildBase gesetzt. Nur Land wird ergaenzt.
+ */
+let LAND_MASK = null;
+
+/**
+ * Ergaenzungen: unbeanspruchtes Land einem Gemeinwesen zuschlagen.
+ *
+ * Der Ursprungsdatensatz laesst Gebiete offen, die nachweislich beherrscht
+ * waren - im Jahr 700 etwa Nadschd, Ostarabien und Oman, obwohl die gesamte
+ * Arabische Halbinsel umayyadisch war.
+ *
+ * Zwei Regeln machen den Eingriff vertretbar:
+ *   1. Es wird ausschliesslich Land gefuellt, das niemandem zugeordnet ist.
+ *      Bestehende Gemeinwesen behalten jeden Quadratkilometer - dafuer sorgt
+ *      das -erase gegen die bereits vorhandenen Flaechen.
+ *   2. Jede Ergaenzung traegt in corrections.json ihre Begruendung.
+ */
+function applyFills(year, layerFile, key, nebenfelder) {
+  const fills = CORRECTIONS[year]?.ergaenzen;
+  if (!fills?.length) return layerFile;
+  if (!LAND_MASK) {
+    console.warn('  ! Landmaske fehlt – Ergänzungen übersprungen');
+    return layerFile;
+  }
+
+  const stuecke = [];
+  fills.forEach((fill, i) => {
+    const regionFile = path.join(TMP, `${key}-fill-${i}.json`);
+    fs.writeFileSync(regionFile, JSON.stringify({
+      type: 'FeatureCollection',
+      features: [{
+        type: 'Feature',
+        properties: {},
+        geometry: { type: 'Polygon', coordinates: [fill.ring] },
+      }],
+    }));
+
+    const stueck = path.join(TMP, `${key}-fill-${i}-fertig.json`);
+    mapshaper([
+      regionFile,
+      '-clip', `source=${LAND_MASK}`,
+      '-erase', `source=${layerFile}`,
+      '-each', `NAME = ${JSON.stringify(fill.name)}; `
+        + `SUBJECTO = ${JSON.stringify(fill.subjectTo ?? fill.name)}; `
+        + `PARTOF = ${JSON.stringify(fill.partOf ?? fill.name)}; `
+        + `BORDERPRECISION = ${Number(fill.precision ?? 1)};`,
+      '-o', 'format=geojson', stueck,
+    ]);
+    stuecke.push(stueck);
+  });
+
+  const roh = path.join(TMP, `${key}-ergaenzt-roh.json`);
+  mapshaper([
+    layerFile, ...stuecke, 'combine-files',
+    '-merge-layers', 'force',
+    '-o', 'format=geojson', roh,
+  ]);
+
+  // Das eingefuegte Stueck grenzt unmittelbar an das Reich, dem es zufaellt.
+  // Ohne Verschmelzen bliebe dazwischen eine Grenze stehen, die es nie gab.
+  return mergeNames([...new Set(fills.map((f) => f.name))], roh, `${key}-ergaenzt`, nebenfelder);
+}
+
+/**
+ * Flaechen mit gleichem Namen verschmelzen - beschraenkt auf die genannten.
+ * Ueber die ganze Ebene angewandt verliert -dissolve2 bei einzelnen
+ * entarteten Kleinstflaechen des Ursprungsdatensatzes die Geometrie; was
+ * nicht angefasst wurde, geht deshalb unveraendert durch.
+ */
+function mergeNames(namen, layerFile, tag, nebenfelder) {
+  if (!namen.length) return layerFile;
+  const betroffen = `[${namen.map((n) => JSON.stringify(n)).join(',')}].indexOf(NAME) > -1`;
+
+  const teil = path.join(TMP, `${tag}-teil.json`);
+  mapshaper([
+    layerFile, '-filter', betroffen,
+    '-dissolve2', 'NAME', `copy-fields=${nebenfelder}`,
+    '-o', 'format=geojson', teil,
+  ]);
+
+  const rest = path.join(TMP, `${tag}-rest.json`);
+  mapshaper([layerFile, '-filter', `!(${betroffen})`, '-o', 'format=geojson', rest]);
+
+  const out = path.join(TMP, `${tag}-fertig.json`);
+  mapshaper([teil, rest, 'combine-files', '-merge-layers', 'force', '-o', 'format=geojson', out]);
+  return out;
+}
+
+/**
  * Grenzverläufe werden bewusst NICHT vereinfacht. Die Rohdaten enthalten je
  * Zeitschnitt nur 30.000 bis 110.000 Stützpunkte; als quantisiertes TopoJSON
  * mit geteilten Bögen bleibt das je Datei im Bereich weniger Hundert Kilobyte.
  * Jede Ausdünnung wäre sichtbar, ohne nennenswert Ladezeit zu sparen.
  */
-function buildEpoch(entry) {
+function buildEpoch(entry, entfallen = []) {
   const src = path.join(entry.derived ? DERIVED_DIR : HIST_DIR, entry.filename);
   const key = keyFor(entry.year);
   const topoPath = path.join(TMP, `${key}.topo.json`);
@@ -237,14 +326,35 @@ function buildEpoch(entry) {
   const umbenennung = entry.derived
     ? 'n=NAME,s=SUBJECTO,p=PARTOF,b=BORDERPRECISION,o=OCCUPIER'
     : 'n=NAME,s=SUBJECTO,p=PARTOF,b=BORDERPRECISION';
+  const nebenfelder = entry.derived
+    ? 'SUBJECTO,PARTOF,BORDERPRECISION,OCCUPIER'
+    : 'SUBJECTO,PARTOF,BORDERPRECISION';
 
+  // Zwischenstufe als GeoJSON: Umbenennungen und Ergaenzungen wirken hier,
+  // und von hier stammen auch die Flaechenangaben - sonst zaehlte ein
+  // umbenanntes Reich nur seinen alten Teil.
+  const zwischen = path.join(TMP, `${key}.arbeit.json`);
   mapshaper([
     src,
-    '-filter', 'NAME != null && NAME !== ""',
+    '-filter', 'NAME != null && String(NAME).trim() !== ""',
     ...(fix ? ['-each', fix] : []),
-    // Nach dem Umbenennen zusammengehörige Flächen verschmelzen, damit keine
-    // Grenze mitten durch ein Reich läuft.
-    ...(fix ? ['-dissolve2', 'NAME', 'copy-fields=SUBJECTO,PARTOF,BORDERPRECISION'] : []),
+    // Nach dem Umbenennen zusammengehoerige Flaechen verschmelzen, damit keine
+    // Grenze mitten durch ein Reich laeuft.
+    '-o', 'format=geojson', zwischen,
+  ]);
+
+  // Nach dem Umbenennen zusammengehoerige Flaechen verschmelzen, damit keine
+  // Grenze mitten durch ein Reich laeuft - aber nur die betroffenen. Ein
+  // -dissolve2 ueber die ganze Ebene verliert bei einzelnen Kleinstflaechen
+  // des Ursprungsdatensatzes die Geometrie (etwa Jaburrara im Jahr 1815).
+  const verschmolzen = fix
+    ? mergeNames(Object.values(CORRECTIONS[entry.year].rename), zwischen, `${key}-umbenannt`, nebenfelder)
+    : zwischen;
+
+  const gefuellt = applyFills(entry.year, verschmolzen, key, nebenfelder);
+
+  mapshaper([
+    gefuellt,
     '-filter-fields', felder,
     '-rename-fields', umbenennung,
     '-o', 'format=topojson', `quantization=${QUANT}`, topoPath,
@@ -252,7 +362,16 @@ function buildEpoch(entry) {
 
   const topo = JSON.parse(fs.readFileSync(topoPath, 'utf8'));
   const objKey = Object.keys(topo.objects)[0];
-  const geometries = topo.objects[objKey].geometries;
+
+  // Der Ursprungsdatensatz enthaelt vereinzelt entartete Flaechen ohne
+  // messbare Ausdehnung. Sie kaemen als Geisterreiche in Suche und Legende an,
+  // ohne dass je etwas zu sehen waere - deshalb hier aussortieren.
+  const alle = topo.objects[objKey].geometries;
+  const geometries = alle.filter((g) => g.arcs?.length);
+  if (geometries.length !== alle.length) {
+    entfallen.push(...alle.filter((g) => !g.arcs?.length).map((g) => g.properties?.n ?? '?'));
+    topo.objects[objKey].geometries = geometries;
+  }
 
   // Beschriftungsanker aus der vereinfachten Geometrie – genau dort, wo das
   // Label später auch gezeichnet wird.
@@ -262,7 +381,7 @@ function buildEpoch(entry) {
   // Geschlüsselt wird nach Gemeinwesen UND Besatzungsmacht: Das besetzte und
   // das freie Frankreich von 1940 sind zwei Flächen, keine eine.
   const schluessel = (name, besetzer) => `${name}\u0000${besetzer ?? ''}`;
-  const raw = JSON.parse(fs.readFileSync(src, 'utf8'));
+  const raw = JSON.parse(fs.readFileSync(gefuellt, 'utf8'));
   const rawArea = new Map();       // Gemeinwesen + Besatzer → Fläche
   const rawAreaByName = new Map(); // nur Gemeinwesen → Fläche, für den Größenrang
   for (const f of raw.features) {
@@ -373,6 +492,11 @@ function buildBase() {
     mapshaper([merged, '-erase', `source=${bigLakes}`, '-o', 'format=geojson', landNet]);
   }
 
+  // Fuer die Ergaenzungen gebraucht (siehe applyFills): Nur echtes Land soll
+  // gefuellt werden, sonst reichen Reiche ins Meer und die Flaechenangaben
+  // stimmen nicht mehr.
+  LAND_MASK = landNet;
+
   const levels = [
     { out: 'ocean.json', interval: 4000, note: 'Übersicht' },
     { out: 'ocean-hd.json', interval: COAST_INTERVAL, note: 'Detail' },
@@ -458,12 +582,14 @@ function main() {
       console.warn(`  ! übersprungen (fehlt): ${entry.filename}`);
       continue;
     }
-    const meta = buildEpoch(entry);
+    const entfallen = [];
+    const meta = buildEpoch(entry, entfallen);
     total += meta.bytes;
     console.log(
       `  ${meta.label.padStart(14)}  ${String(meta.polities).padStart(4)} Gemeinwesen  ` +
       `${(meta.bytes / 1024).toFixed(0).padStart(4)} kB` +
-      (CORRECTIONS[entry.year] ? '  ← korrigiert' : ''),
+      (CORRECTIONS[entry.year] ? '  ← korrigiert' : '')
+      + (entfallen.length ? `  ← ${entfallen.length} leere Fläche(n) entfernt` : ''),
     );
     epochs.push(meta);
   }

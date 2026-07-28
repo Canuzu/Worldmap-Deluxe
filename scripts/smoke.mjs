@@ -44,19 +44,30 @@ await check('Karte zeichnet Gemeinwesen', async () => {
   if (n < 3) throw new Error(`nur ${n} Zeichenflächen`);
 });
 
-await check('Suche findet und öffnet ein Gemeinwesen', async () => {
+await check('Suche klappt auf und findet ein Gemeinwesen', async () => {
+  // Die Suche liegt zugeklappt als Knopf in der Leiste.
+  if (await page.locator('#search').isVisible()) throw new Error('Suchfeld steht offen');
+  await page.click('#btnSearch');
+  await page.waitForSelector('#searchWrap.is-open', { timeout: 3000 });
   await page.fill('#search', 'Preuß');
   await page.waitForSelector('#suggest li[data-name]', { timeout: 4000 });
   await page.keyboard.press('Enter');
   await page.waitForSelector('#panel:not([hidden])', { timeout: 4000 });
   await visible('.pnl__title');
+  // Nach dem Treffer klappt sie wieder zu und gibt die Karte frei.
+  await page.waitForTimeout(500);
+  if (await page.locator('#search').isVisible()) throw new Error('Suchfeld bleibt offen');
 });
 
 await check('Klick auf die Karte wählt ein Gemeinwesen', async () => {
   await page.keyboard.press('Escape');
-  // Mitteleuropa im Ausschnitt #position=3/40/20 – die Meeresebene darf den
-  // Klick nicht abfangen.
-  await page.mouse.click(720, 300);
+  // Punkt aus Koordinaten rechnen statt aus Pixeln raten – der Ausschnitt
+  // haengt an der Fenstergroesse. Warschau 1815: Kongresspolen.
+  const pt = await page.evaluate(() => {
+    const c = window.__atlasMap.latLngToContainerPoint([52.23, 21.01]);
+    return { x: Math.round(c.x), y: Math.round(c.y) };
+  });
+  await page.mouse.click(pt.x, pt.y);
   await page.waitForSelector('#panel:not([hidden])', { timeout: 4000 });
   const title = await page.textContent('.pnl__title');
   if (!title.trim()) throw new Error('kein Titel');
@@ -273,6 +284,65 @@ await check('Schraffur lässt sich abschalten', async () => {
   if (aus) throw new Error('Karte zeigt die Schraffur weiterhin');
   await page.locator('label.switch', { has: page.locator('#optOccupation') }).click();
   await page.keyboard.press('Escape');
+});
+
+await check('Vollbild blendet die Bedienelemente aus', async () => {
+  // Tastenkuerzel greifen nicht, solange der Fokus in einem Feld steht.
+  await page.evaluate(() => document.activeElement?.blur());
+  await page.keyboard.press('f');
+  await page.waitForTimeout(500);
+  if (!(await page.locator('#app.is-focus').count())) throw new Error('Vollbild nicht aktiv');
+  if (await page.locator('#timeline').isVisible()) throw new Error('Zeitleiste bleibt sichtbar');
+  await page.keyboard.press('Escape');
+  await page.waitForTimeout(500);
+  if (!(await page.locator('#timeline').isVisible())) throw new Error('Zeitleiste kehrt nicht zurück');
+});
+
+await check('Zeitleiste lässt sich einklappen', async () => {
+  const hoch = (await page.locator('#timeline').boundingBox()).height;
+  await page.click('#btnFold');
+  await page.waitForTimeout(500);
+  const flach = (await page.locator('#timeline').boundingBox()).height;
+  if (flach >= hoch) throw new Error(`${hoch} → ${flach} px`);
+  if (await page.locator('#trackScale i').first().isVisible()) throw new Error('Skala bleibt sichtbar');
+  await page.click('#btnFold');
+  await page.waitForTimeout(400);
+});
+
+await check('Schlachtenfenster listet Schlachten auf', async () => {
+  await page.click('#btnBattles');
+  await visible('#battlesBox');
+  const n = await page.locator('#battlesList li[data-battle]').count();
+  if (n < 3) throw new Error(`nur ${n} Schlachten`);
+});
+
+await check('Schlacht spielt Station für Station ab', async () => {
+  await page.click('[data-battle="waterloo"]');
+  await page.waitForSelector('#battlesPlayer:not([hidden])', { timeout: 8000 });
+  await page.waitForTimeout(2500);
+  const jahr = await page.textContent('#yearBig');
+  if (!jahr.includes('1815')) throw new Error(`Zeitschnitt: ${jahr}`);
+  const gezeichnet = await page.evaluate(() => document.querySelectorAll('.leaflet-battle-pane path').length);
+  if (gezeichnet < 2) throw new Error(`nur ${gezeichnet} Stellungen gezeichnet`);
+  const erste = await page.textContent('.battles__zeit');
+
+  // Halten, damit die Prüfung nicht gegen den Automatiklauf arbeitet.
+  await page.click('[data-act="play"]');
+  await page.waitForTimeout(300);
+  await page.click('[data-act="next"]');
+  await page.waitForTimeout(600);
+  const zweite = await page.textContent('.battles__zeit');
+  if (erste === zweite) throw new Error(`Station unverändert: ${erste}`);
+  const zaehler = await page.textContent('.battles__zaehler');
+  if (!/\d+ \/ \d+/.test(zaehler)) throw new Error(`Zähler: ${zaehler}`);
+});
+
+await check('Schlacht räumt ihre Ebene wieder ab', async () => {
+  await page.click('#battlesClose');
+  await page.waitForTimeout(500);
+  const rest = await page.evaluate(() => document.querySelectorAll('.leaflet-battle-pane path').length);
+  if (rest) throw new Error(`${rest} Stellungen bleiben stehen`);
+  if (await page.locator('#battlesBox').isVisible()) throw new Error('Fenster bleibt offen');
 });
 
 await check('Mobiles Format bleibt bedienbar', async () => {

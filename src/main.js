@@ -17,6 +17,7 @@ import { DetailPanel } from './modules/panel.js';
 import { polityAt } from './modules/geo.js';
 import { esc, fold, highlight, areaText, distanceText, num } from './modules/format.js';
 import { ERA_COLORS } from './modules/palette.js';
+import { BattlePlayer, BATTLES } from './modules/battles.js';
 
 const $ = (id) => document.getElementById(id);
 const STORE_KEY = 'worldmap-deluxe:prefs';
@@ -32,6 +33,8 @@ const prefs = {
   borders: true,
   occupation: true,
   wiki: true,
+  focus: false,
+  compactTimeline: false,
   ...readPrefs(),
 };
 
@@ -417,10 +420,29 @@ async function main() {
     suggest.children[cursor]?.scrollIntoView({ block: 'nearest' });
   }
 
-  function commitSearch(name) {
+  // Die Suche liegt zugeklappt als Knopf in der Leiste und faehrt erst auf
+  // Wunsch aus - sie soll nicht dauerhaft ein Stueck Karte verdecken.
+  const searchWrap = $('searchWrap');
+  function openSearch() {
+    searchWrap.classList.add('is-open');
+    $('btnSearch').setAttribute('aria-expanded', 'true');
+    searchInput.focus();
+  }
+  function closeSearch() {
+    searchWrap.classList.remove('is-open');
+    $('btnSearch').setAttribute('aria-expanded', 'false');
     suggest.hidden = true;
     searchInput.value = '';
     searchInput.blur();
+  }
+  $('btnSearch').addEventListener('click', () => {
+    if (searchWrap.classList.contains('is-open')) closeSearch();
+    else openSearch();
+  });
+  $('btnSearchClose').addEventListener('click', closeSearch);
+
+  function commitSearch(name) {
+    closeSearch();
     selectPolity(name, { zoom: true });
   }
 
@@ -430,7 +452,7 @@ async function main() {
     if (event.key === 'ArrowDown') { moveCursor(1); event.preventDefault(); }
     else if (event.key === 'ArrowUp') { moveCursor(-1); event.preventDefault(); }
     else if (event.key === 'Enter' && matches[cursor]) { commitSearch(matches[cursor].polity.name); event.preventDefault(); }
-    else if (event.key === 'Escape') { suggest.hidden = true; searchInput.blur(); }
+    else if (event.key === 'Escape') { closeSearch(); }
   });
   suggest.addEventListener('mousedown', (event) => {
     const li = event.target.closest('li[data-name]');
@@ -459,6 +481,143 @@ async function main() {
 
   $('btnLayers').addEventListener('click', () => togglePopover(layersMenu, $('btnLayers')));
   $('btnLegend').addEventListener('click', () => togglePopover(legendBox, $('btnLegend')));
+  /* ------------------------------------------------------- Schlachten */
+
+  const battlesBox = $('battlesBox');
+  const battles = new BattlePlayer(atlas, { onStation: renderBattleStation });
+
+  function renderBattleList() {
+    $('battlesTitle').textContent = 'Berühmte Schlachten';
+    $('battlesPlayer').hidden = true;
+    $('battlesList').hidden = false;
+    $('battlesList').innerHTML = BATTLES.map((b) => `
+      <li data-battle="${esc(b.id)}">
+        <b>${esc(b.name)}</b>
+        <span>${esc(b.datum)} · ${esc(b.ort)}</span>
+        <i>${esc(b.worum)}</i>
+      </li>`).join('');
+  }
+
+  function openBattles() {
+    legendBox.hidden = true;
+    layersMenu.hidden = true;
+    battlesBox.hidden = false;
+    renderBattleList();
+  }
+
+  function closeBattles() {
+    battles.close();
+    battlesBox.hidden = true;
+    $('app').classList.remove('is-battle');
+    atlas.setShowLabels(prefs.labels);
+    // Der Zeitschnitt bleibt, wo die Schlacht ihn hingestellt hat – wer den
+    // Verlauf gesehen hat, will meist die Lage danach weiter betrachten.
+  }
+
+  function toggleBattles() {
+    if (battlesBox.hidden) openBattles(); else closeBattles();
+  }
+
+  async function startBattle(id) {
+    const meta = BATTLES.find((b) => b.id === id);
+    if (!meta) return;
+    // Erst den passenden Zeitschnitt holen, damit das Umland zur Schlacht passt.
+    const index = atlasData.indexForYear(meta.jahr);
+    timeline.stop();
+    timeline.setYear(meta.jahr, { silent: true });
+    state.year = meta.jahr;
+    await goto(index);
+    timeline.render();
+    // Waehrend der Schlacht tritt die Staatenkarte zurueck: Bei diesem Massstab
+    // ist sie ohnehin nur eine einzige Flaeche und wuerde die Stellungen
+    // ueberstrahlen. Beschriftungen aus, damit keine Laendernamen dazwischenstehen.
+    $('app').classList.add('is-battle');
+    atlas.setShowLabels(false);
+    battles.start(id);
+    battles.play();
+  }
+
+  function renderBattleStation(player) {
+    const b = player.battle;
+    if (!b) return;
+    const st = player.station;
+    $('battlesList').hidden = true;
+    $('battlesTitle').textContent = b.name;
+    const box = $('battlesPlayer');
+    box.hidden = false;
+    box.innerHTML = `
+      <p class="battles__meta">${esc(b.datum)} · ${esc(b.ort)}</p>
+      <ul class="battles__sides">${b.parteien.map((p) => `
+        <li><span class="sw" style="background:${esc(p.farbe)}"></span>
+          <b>${esc(p.name)}</b><span>${esc(p.fuehrung)} · ${esc(p.staerke)}</span></li>`).join('')}</ul>
+      <div class="battles__stage">
+        <div class="battles__zeit">${esc(st.zeit)}</div>
+        <p class="battles__text">${esc(st.text)}</p>
+      </div>
+      <div class="battles__steps">${b.stationen.map((_, i) => `
+        <i class="${i === player.index ? 'is-on' : ''}" data-step="${i}"></i>`).join('')}</div>
+      <div class="battles__controls">
+        <button class="tbtn" data-act="prev" ${player.index === 0 ? 'disabled' : ''} aria-label="Zurück">
+          <svg viewBox="0 0 24 24" width="16" height="16"><path d="M15.4 5L8.4 12l7 7 1.4-1.4L11.2 12l5.6-5.6L15.4 5z" fill="currentColor"/></svg>
+        </button>
+        <button class="tbtn tbtn--play" data-act="play" aria-label="${player.playing ? 'Anhalten' : 'Abspielen'}">
+          ${player.playing
+            ? '<svg viewBox="0 0 24 24" width="18" height="18"><path d="M7 5h3.5v14H7V5zm6.5 0H17v14h-3.5V5z" fill="currentColor"/></svg>'
+            : '<svg viewBox="0 0 24 24" width="18" height="18"><path d="M8 5l11 7-11 7V5z" fill="currentColor"/></svg>'}
+        </button>
+        <button class="tbtn" data-act="next" ${player.index >= player.count - 1 ? 'disabled' : ''} aria-label="Weiter">
+          <svg viewBox="0 0 24 24" width="16" height="16"><path d="M8.6 5L7.2 6.4 12.8 12l-5.6 5.6L8.6 19l7-7-7-7z" fill="currentColor"/></svg>
+        </button>
+        <span class="battles__zaehler">${player.index + 1} / ${player.count}</span>
+        <button class="chip chip--action" data-act="back">Andere Schlacht</button>
+      </div>`;
+  }
+
+  battlesBox.addEventListener('click', (event) => {
+    const li = event.target.closest('li[data-battle]');
+    if (li) { startBattle(li.dataset.battle); return; }
+    const step = event.target.closest('[data-step]');
+    if (step) { battles.stop(); battles.goTo(Number(step.dataset.step)); return; }
+    const act = event.target.closest('[data-act]')?.dataset.act;
+    if (act === 'prev') { battles.stop(); battles.step(-1); }
+    else if (act === 'next') { battles.stop(); battles.step(1); }
+    else if (act === 'play') battles.toggle();
+    else if (act === 'back') {
+      battles.close();
+      $('app').classList.remove('is-battle');
+      atlas.setShowLabels(prefs.labels);
+      renderBattleList();
+    }
+  });
+  $('battlesClose').addEventListener('click', closeBattles);
+  $('btnBattles').addEventListener('click', toggleBattles);
+
+  // Vollbild: Alles Bedienbare weicht, damit nur noch die Karte da ist.
+  function setFocusMode(on) {
+    const app = $('app');
+    app.classList.toggle('is-focus', on);
+    const btn = $('btnFocus');
+    btn.setAttribute('aria-pressed', String(on));
+    btn.dataset.label = on ? 'Bedienelemente zeigen (F)' : 'Nur die Karte (F)';
+    if (on) { layersMenu.hidden = true; legendBox.hidden = true; closeSearch(); }
+    prefs.focus = on;
+    savePrefs();
+    window.setTimeout(() => atlas.map.invalidateSize(), 320);
+  }
+  $('btnFocus').addEventListener('click', () => setFocusMode(!$('app').classList.contains('is-focus')));
+
+  // Zeitleiste einklappen: Jahr und Regler bleiben, der Rest weicht.
+  function setTimelineCompact(on) {
+    $('timeline').classList.toggle('is-compact', on);
+    const btn = $('btnFold');
+    btn.setAttribute('aria-expanded', String(!on));
+    btn.dataset.label = on ? 'Zeitleiste ausklappen' : 'Zeitleiste einklappen';
+    prefs.compactTimeline = on;
+    savePrefs();
+    timeline.render();
+  }
+  $('btnFold').addEventListener('click', () => setTimelineCompact(!$('timeline').classList.contains('is-compact')));
+
   $('btnHome').addEventListener('click', () => atlas.home());
   $('btnZoomIn').addEventListener('click', () => atlas.zoomBy(.7));
   $('btnZoomOut').addEventListener('click', () => atlas.zoomBy(-.7));
@@ -538,6 +697,9 @@ async function main() {
     const onTrack = event.target === $('track');
     if (event.key === 'Escape') {
       if (!modal.hidden) { modal.hidden = true; return; }
+      if (searchWrap.classList.contains('is-open')) { closeSearch(); return; }
+      if (document.getElementById('app').classList.contains('is-focus')) { setFocusMode(false); return; }
+      if (!battlesBox.hidden) { closeBattles(); return; }
       if (!layersMenu.hidden || !legendBox.hidden) {
         layersMenu.hidden = legendBox.hidden = true;
         return;
@@ -549,10 +711,11 @@ async function main() {
 
     switch (event.key) {
       case '/':
-      case 's':
-        searchInput.focus();
+        openSearch();
         event.preventDefault();
         break;
+      case 's': toggleBattles(); event.preventDefault(); break;
+      case 'f': setFocusMode(!document.getElementById('app').classList.contains('is-focus')); break;
       case ' ':
         timeline.toggle();
         event.preventDefault();
@@ -616,6 +779,9 @@ function aboutHtml() {
       <li><strong>Gebiet anklicken:</strong> öffnet die Detailtafel.</li>
       <li><strong>Nachbarn:</strong> in der Tafel anklickbar – so lässt sich eine Region erwandern.</li>
       <li><strong>Einfärbung:</strong> nach Gemeinwesen, Oberhoheit, Kulturraum oder Grenzgüte.</li>
+      <li><strong>Berühmte Schlachten:</strong> das Fahnensymbol oben links spielt
+      den Verlauf Station für Station ab – die Stellungen verschieben sich mit.</li>
+      <li><strong>Nur die Karte:</strong> <kbd>F</kbd> blendet alle Bedienelemente aus.</li>
       <li><strong>Adresszeile:</strong> Ausschnitt, Jahr und Auswahl stehen im Link – teilbar.</li>
     </ul>
 
@@ -628,6 +794,14 @@ function aboutHtml() {
     Herrschaft war abgestuft, überlappend und an Orte statt an Flächen gebunden.
     Der Datensatz verzeichnet deshalb eine Grenzgüte – in der Einfärbung
     „Grenzgüte“ sichtbar, gestrichelte Linien markieren grobe Annäherungen.</p>
+
+    <h3>Was hier über den Ursprungsdatensatz hinausgeht</h3>
+    <p>Der zugrunde liegende Datensatz springt von 1938 auf 1945 und kennt keine
+    Besatzung, nur völkerrechtliche Zugehörigkeit. Die Kriegsjahre 1940 bis 1944
+    sind deshalb eigens angelegt: Besetztes Land behält die Farbe des Landes und
+    trägt darüber eine Schraffur in der Farbe der Besatzungsmacht. Ebenso ergänzt
+    sind belegbare Lücken – etwa die Arabische Halbinsel, die im Jahr 700
+    vollständig umayyadisch war, im Datensatz aber offen blieb.</p>
 
     <p style="margin-top:1rem"><kbd>?</kbd> zeigt alle Tastaturkürzel.</p>`;
 }
@@ -663,15 +837,18 @@ function creditsHtml() {
 
 function shortcutsHtml() {
   const rows = [
-    ['← →', 'Zeitschnitt zurück / vor'],
-    ['⇧ + ← →', 'fünf Zeitschnitte springen'],
+    ['← →', 'ein Jahr zurück / vor'],
+    ['⇧ + ← →', 'zum nächsten Kartenstand springen'],
+    ['Bild ↑ ↓', 'zehn Jahre'],
     ['Leertaste', 'Zeitreise starten und anhalten'],
     ['/', 'Suche öffnen'],
+    ['S', 'Berühmte Schlachten'],
+    ['F', 'Nur die Karte – alles andere ausblenden'],
     ['T', 'Nachtatlas ⇄ Pergament'],
     ['E', 'Ebenen und Einfärbung'],
     ['L', 'Legende'],
     ['0', 'Ansicht zurücksetzen'],
-    ['Esc', 'Tafel oder Fenster schließen'],
+    ['Esc', 'Tafel, Fenster oder Vollbild schließen'],
     ['?', 'diese Übersicht'],
   ];
   return `<div class="keys">${rows.map(([k, v]) => `<kbd>${esc(k)}</kbd><span>${esc(v)}</span>`).join('')}</div>`;

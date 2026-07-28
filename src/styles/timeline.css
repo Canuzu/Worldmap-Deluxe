@@ -2,27 +2,55 @@
    Zeitleiste – Epochenband, Zeitschnitt-Marken, Regler
    ============================================================ */
 
+/* Schwebt ueber der Karte, statt ihr eine Rasterzeile wegzunehmen. Die
+   Verlaufskante laesst die Karte nach oben hin durchscheinen. */
 .timeline {
-  grid-area: time;
-  position: relative;
+  position: absolute;
   z-index: 600;
-  padding: .55rem clamp(.9rem, 3vw, 2rem) calc(.7rem + var(--safe-b));
+  left: 0; right: 0; bottom: 0;
+  padding: .5rem clamp(.9rem, 3vw, 2rem) calc(.6rem + var(--safe-b));
   background: linear-gradient(180deg,
-              color-mix(in srgb, var(--surface-solid) 55%, transparent) 0%,
-              var(--surface-solid) 42%);
-  border-top: 1px solid var(--hairline);
+              transparent 0%,
+              color-mix(in srgb, var(--surface-solid) 78%, transparent) 26%,
+              var(--surface-solid) 62%);
   backdrop-filter: blur(22px) saturate(150%);
   -webkit-backdrop-filter: blur(22px) saturate(150%);
   user-select: none;
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
 }
+
+/* Eingeklappt bleibt nur, was man zum Navigieren wirklich braucht: Jahr,
+   Wiedergabe und der Regler. Epochenband, Marken und Skala weichen. */
+.timeline.is-compact { padding-bottom: calc(.45rem + var(--safe-b)); }
+.timeline.is-compact .timeline__stats,
+.timeline.is-compact .year__era,
+.timeline.is-compact .track__eras b,
+.timeline.is-compact .track__ticks,
+.timeline.is-compact .track__scale { display: none; }
+.timeline.is-compact .timeline__head { margin-bottom: .2rem; }
+.timeline.is-compact .track { height: 1.5rem; }
+.timeline.is-compact .track__eras { top: .2rem; height: .55rem; }
+.timeline.is-compact .track__fill { top: .2rem; height: .55rem; }
+.timeline.is-compact .track__handle { height: 1.15rem; }
+.timeline.is-compact .track__handle::before { height: .95rem; }
+.timeline.is-compact .track__handle b { top: .85rem; }
+.timeline.is-compact .year { font-size: clamp(1.15rem, 2.4vw, 1.5rem); }
+.timeline.is-compact .btnFold svg,
+.timeline.is-compact .tbtn--fold svg { transform: rotate(180deg); }
 
 .timeline__head {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr auto auto;
   align-items: center;
   gap: 1.2rem;
   margin-bottom: .45rem;
 }
+
+.tbtn--fold {
+  width: 1.9rem; height: 1.9rem;
+  margin-left: -.6rem;
+}
+.tbtn--fold svg { transition: transform var(--dur) var(--ease); }
 
 .timeline__controls { display: flex; align-items: center; gap: .3rem; }
 

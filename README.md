@@ -25,6 +25,8 @@ Religion, Bevölkerung, Wirtschaft, Wendepunkte und Nachbarn.
 | **Detailtafel** | Steckbrief je Gemeinwesen und Jahr – kuratierte Texte, Angaben aus dem Kartendatensatz, optional ein Wikipedia-Auszug |
 | **Nachbarn** | aus der Kartentopologie berechnet und anklickbar: eine Region lässt sich Nachbar für Nachbar erwandern |
 | **Besetzte Gebiete** | 1940–1944: besetztes Land behält seine Farbe und trägt darüber eine Schraffur in der Farbe der Besatzungsmacht |
+| **Berühmte Schlachten** | Gaugamela, Hastings, Waterloo, Stalingrad – der Verlauf läuft Station für Station ab, die Stellungen verschieben sich mit |
+| **Nur die Karte** | <kbd>F</kbd> blendet alle Bedienelemente aus; Suche und Zeitleiste lassen sich einzeln zuklappen |
 | **Vier Einfärbungen** | nach Gemeinwesen, Oberhoheit, Kulturraum oder Genauigkeit des Grenzverlaufs |
 | **Suche** | über alle Gemeinwesen des aktuellen Zeitschnitts, deutsch und in der Schreibweise des Datensatzes |
 | **Zwei Farbwelten** | „Nachtatlas“ und „Pergament“ |
@@ -187,6 +189,40 @@ Stalingrad    frei  frei  Ger.  frei  frei   nur im Herbst 1942
 Sewastopol    frei  frei  Ger.  Ger.  frei   hielt bis Juli 1942
 Paris         Ger.  Ger.  Ger.  Ger.  frei   befreit August 1944
 ```
+
+### Berühmte Schlachten
+
+Der Atlas zeigt sonst Zustände: So sah die Welt im Jahr X aus. Eine Schlacht
+ist aber kein Zustand, sondern eine Abfolge – und die fällt aus einer Karte
+heraus, die nur Jahresschnitte kennt.
+
+`src/data/battles.json` beschreibt jede Schlacht als Kette von Stationen mit
+eigener Uhrzeit oder eigenem Tag. Zu jeder Station liegen die Stellungen der
+Beteiligten vor, als Fläche oder als Stoßpfeil. Beim Start springt die Karte
+auf den passenden Zeitschnitt und den passenden Ausschnitt, dann läuft der
+Verlauf ab; einzelne Stationen lassen sich anspringen.
+
+Truppenstellungen sind **keine** Staatsgrenzen. Sie liegen deshalb in einer
+eigenen Kartenebene, in eigenen Farben, und verschwinden restlos beim
+Schließen. Während einer Schlacht tritt die Staatenkarte gedämpft zurück – bei
+diesem Maßstab ist sie ohnehin nur eine einfarbige Fläche und würde die
+Stellungen überstrahlen.
+
+### Ergänzungen am Ursprungsdatensatz
+
+Neben Umbenennungen (siehe oben) kann `corrections.json` auch **unbeanspruchtes
+Land** einem Gemeinwesen zuschlagen. Anlass war das Umayyaden-Kalifat: Im
+Zeitschnitt 700 fehlten Nadschd, Ostarabien, Oman und Aden vollständig, der
+Hedschas mit Mekka und Medina stand als eigener Staat daneben, und in
+Tripolitanien klaffte ein Loch.
+
+Zwei Regeln halten den Eingriff vertretbar:
+
+1. Gefüllt wird **ausschließlich Land, das niemandem zugeordnet ist**. Ein
+   `-erase` gegen die vorhandenen Flächen sorgt dafür, dass kein bestehendes
+   Gemeinwesen auch nur einen Quadratkilometer verliert – die Berberreiche im
+   Landesinneren des Maghreb bleiben genau so stehen, wie sie sind.
+2. Jede Ergänzung trägt ihre Begründung in derselben Datei.
 
 ### Wissensbasis
 

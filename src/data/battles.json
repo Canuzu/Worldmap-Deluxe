@@ -1,0 +1,292 @@
+{
+  "_hinweis": [
+    "Berühmte Schlachten als abspielbarer Verlauf.",
+    "",
+    "Der Atlas zeigt sonst Zustände: So sah die Welt im Jahr X aus. Eine Schlacht",
+    "ist aber kein Zustand, sondern eine Abfolge – und genau die fehlt einer",
+    "Karte, die nur Jahresschnitte kennt. Jede Schlacht hier besteht deshalb aus",
+    "Stationen mit eigener Uhrzeit oder eigenem Tag; die Karte zeichnet zu jeder",
+    "Station die Stellungen der Beteiligten und blendet zwischen ihnen über.",
+    "",
+    "Was hier steht, sind Truppenstellungen, keine Staatsgrenzen. Sie sind aus",
+    "der Fachliteratur abgeleitet und auf den Maßstab des Schlachtfelds gezogen;",
+    "einzelne Regimenter lösen sie nicht auf. Die Karte springt beim Start auf",
+    "den passenden Zeitschnitt, damit das Umland stimmt.",
+    "",
+    "Aufbau je Station:",
+    "  zeit       Beschriftung des Zeitpunkts (Uhrzeit, Tag oder Phase)",
+    "  text       was in diesem Moment geschieht",
+    "  stellungen Liste aus Partei, Form und Umriss bzw. Pfeil"
+  ],
+
+  "schlachten": [
+    {
+      "id": "gaugamela",
+      "name": "Schlacht von Gaugamela",
+      "ort": "Nordirak, östlich von Ninive",
+      "datum": "1. Oktober 331 v. Chr.",
+      "jahr": -323,
+      "mitte": [43.6, 36.4],
+      "zoom": 10.5,
+      "worum": "Alexander gegen Dareios III. Die letzte Feldschlacht des Perserreichs: Ein zahlenmäßig weit unterlegenes makedonisches Heer sprengt die persische Mitte und beendet damit zweihundert Jahre achaimenidischer Herrschaft.",
+      "parteien": [
+        { "id": "mak", "name": "Makedonen und Griechen", "farbe": "#6f9fe0", "fuehrung": "Alexander der Große", "staerke": "ca. 47.000" },
+        { "id": "per", "name": "Perser und Verbündete", "farbe": "#d4737c", "fuehrung": "Dareios III.", "staerke": "ca. 100.000" }
+      ],
+      "stationen": [
+        {
+          "zeit": "Morgen",
+          "text": "Dareios hat die Ebene einebnen lassen, damit seine Sichelwagen freie Bahn haben. Seine Linie ist doppelt so breit wie die makedonische und droht, sie an beiden Flügeln zu umfassen.",
+          "stellungen": [
+            { "partei": "per", "form": "flaeche", "punkte": [[43.48, 36.46], [43.74, 36.46], [43.74, 36.41], [43.48, 36.41]] },
+            { "partei": "mak", "form": "flaeche", "punkte": [[43.55, 36.36], [43.70, 36.36], [43.70, 36.32], [43.55, 36.32]] }
+          ]
+        },
+        {
+          "zeit": "Erste Phase",
+          "text": "Alexander lässt sein Heer schräg nach rechts marschieren. Dareios muss folgen, sonst verliert er den eingeebneten Boden – und beim Nachziehen reißt seine Linie auf.",
+          "stellungen": [
+            { "partei": "per", "form": "flaeche", "punkte": [[43.52, 36.46], [43.78, 36.46], [43.78, 36.41], [43.52, 36.41]] },
+            { "partei": "mak", "form": "flaeche", "punkte": [[43.60, 36.37], [43.76, 36.37], [43.76, 36.33], [43.60, 36.33]] },
+            { "partei": "mak", "form": "pfeil", "punkte": [[43.62, 36.35], [43.78, 36.38]], "text": "Rechtsschub" }
+          ]
+        },
+        {
+          "zeit": "Zweite Phase",
+          "text": "Die Sichelwagen rollen an. Die Makedonen öffnen Gassen, lassen sie durchfahren und fangen sie im Rücken ab. Zugleich reitet die persische Kavallerie an beiden Flügeln zum Angriff.",
+          "stellungen": [
+            { "partei": "per", "form": "flaeche", "punkte": [[43.52, 36.46], [43.78, 36.46], [43.78, 36.40], [43.52, 36.40]] },
+            { "partei": "mak", "form": "flaeche", "punkte": [[43.60, 36.37], [43.76, 36.37], [43.76, 36.33], [43.60, 36.33]] },
+            { "partei": "per", "form": "pfeil", "punkte": [[43.55, 36.44], [43.60, 36.37]], "text": "Bessos" },
+            { "partei": "per", "form": "pfeil", "punkte": [[43.76, 36.44], [43.78, 36.36]], "text": "Mazaios" }
+          ]
+        },
+        {
+          "zeit": "Entscheidung",
+          "text": "Im Nachziehen klafft links der persischen Mitte eine Lücke. Alexander führt die Hetairenreiterei im Keil hinein – geradewegs auf Dareios zu.",
+          "stellungen": [
+            { "partei": "per", "form": "flaeche", "punkte": [[43.52, 36.46], [43.62, 36.46], [43.62, 36.40], [43.52, 36.40]] },
+            { "partei": "per", "form": "flaeche", "punkte": [[43.68, 36.46], [43.78, 36.46], [43.78, 36.40], [43.68, 36.40]] },
+            { "partei": "mak", "form": "flaeche", "punkte": [[43.58, 36.37], [43.74, 36.37], [43.74, 36.33], [43.58, 36.33]] },
+            { "partei": "mak", "form": "pfeil", "punkte": [[43.70, 36.36], [43.64, 36.45]], "text": "Hetairen" }
+          ]
+        },
+        {
+          "zeit": "Ausgang",
+          "text": "Dareios flieht, sein Heer zerfällt. Der linke makedonische Flügel unter Parmenion war da noch schwer bedrängt – Alexander bricht die Verfolgung ab und wendet, um ihn zu entsetzen.",
+          "stellungen": [
+            { "partei": "mak", "form": "flaeche", "punkte": [[43.50, 36.47], [43.80, 36.47], [43.80, 36.32], [43.50, 36.32]] },
+            { "partei": "per", "form": "pfeil", "punkte": [[43.62, 36.45], [43.48, 36.50]], "text": "Flucht des Dareios" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "hastings",
+      "name": "Schlacht bei Hastings",
+      "ort": "Senlac Hill, Sussex",
+      "datum": "14. Oktober 1066",
+      "jahr": 1100,
+      "mitte": [0.487, 50.913],
+      "zoom": 13.5,
+      "worum": "Wilhelm von der Normandie gegen Harold Godwinson. Ein Tag entscheidet, wer England regiert – und beendet die angelsächsische Herrschaft endgültig.",
+      "parteien": [
+        { "id": "eng", "name": "Angelsachsen", "farbe": "#c9a227", "fuehrung": "Harold Godwinson", "staerke": "ca. 7.000" },
+        { "id": "nor", "name": "Normannen", "farbe": "#6f9fe0", "fuehrung": "Wilhelm der Eroberer", "staerke": "ca. 8.000" }
+      ],
+      "stationen": [
+        {
+          "zeit": "9 Uhr",
+          "text": "Harold stellt seinen Schildwall auf dem Höhenrücken von Senlac auf. Der Hang zwingt die Normannen, jeden Angriff bergauf zu führen.",
+          "stellungen": [
+            { "partei": "eng", "form": "flaeche", "punkte": [[0.480, 50.9165], [0.494, 50.9165], [0.494, 50.9145], [0.480, 50.9145]] },
+            { "partei": "nor", "form": "flaeche", "punkte": [[0.478, 50.9105], [0.496, 50.9105], [0.496, 50.9085], [0.478, 50.9085]] }
+          ]
+        },
+        {
+          "zeit": "Vormittag",
+          "text": "Normannische Bogenschützen und Fußvolk laufen den Hang hinauf. Der Schildwall hält; die Angreifer weichen zurück.",
+          "stellungen": [
+            { "partei": "eng", "form": "flaeche", "punkte": [[0.480, 50.9165], [0.494, 50.9165], [0.494, 50.9145], [0.480, 50.9145]] },
+            { "partei": "nor", "form": "flaeche", "punkte": [[0.478, 50.9115], [0.496, 50.9115], [0.496, 50.9090], [0.478, 50.9090]] },
+            { "partei": "nor", "form": "pfeil", "punkte": [[0.487, 50.9110], [0.487, 50.9142]], "text": "Sturm bergauf" }
+          ]
+        },
+        {
+          "zeit": "Mittag",
+          "text": "Auf dem linken Flügel gerät das bretonische Kontingent ins Weichen. Ein Teil der Angelsachsen bricht aus dem Schildwall aus, um nachzusetzen – und steht plötzlich ohne Deckung im offenen Feld.",
+          "stellungen": [
+            { "partei": "eng", "form": "flaeche", "punkte": [[0.482, 50.9165], [0.494, 50.9165], [0.494, 50.9145], [0.482, 50.9145]] },
+            { "partei": "eng", "form": "pfeil", "punkte": [[0.483, 50.9146], [0.478, 50.9118]], "text": "Ausbruch" },
+            { "partei": "nor", "form": "flaeche", "punkte": [[0.484, 50.9118], [0.496, 50.9118], [0.496, 50.9092], [0.484, 50.9092]] }
+          ]
+        },
+        {
+          "zeit": "Nachmittag",
+          "text": "Wilhelm lässt die Bewegung wiederholen – nun planmäßig. Zweimal weicht die Reiterei zurück, zweimal folgen Angelsachsen, zweimal wenden die Normannen und reiben die Verfolger auf. Der Schildwall dünnt aus.",
+          "stellungen": [
+            { "partei": "eng", "form": "flaeche", "punkte": [[0.483, 50.9163], [0.492, 50.9163], [0.492, 50.9147], [0.483, 50.9147]] },
+            { "partei": "nor", "form": "flaeche", "punkte": [[0.478, 50.9140], [0.498, 50.9140], [0.498, 50.9100], [0.478, 50.9100]] },
+            { "partei": "nor", "form": "pfeil", "punkte": [[0.480, 50.9112], [0.484, 50.9145]], "text": "Scheinflucht und Kehre" },
+            { "partei": "nor", "form": "pfeil", "punkte": [[0.495, 50.9112], [0.491, 50.9145]] }
+          ]
+        },
+        {
+          "zeit": "Abend",
+          "text": "Harold fällt. Ohne König löst sich der Schildwall auf; die Normannen nehmen den Höhenrücken. England hat einen neuen Herrscher.",
+          "stellungen": [
+            { "partei": "nor", "form": "flaeche", "punkte": [[0.477, 50.9170], [0.499, 50.9170], [0.499, 50.9085], [0.477, 50.9085]] },
+            { "partei": "eng", "form": "pfeil", "punkte": [[0.489, 50.9158], [0.496, 50.9178]], "text": "Rest flieht" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "waterloo",
+      "name": "Schlacht bei Waterloo",
+      "ort": "Südlich von Brüssel",
+      "datum": "18. Juni 1815",
+      "jahr": 1815,
+      "mitte": [4.407, 50.680],
+      "zoom": 12.5,
+      "worum": "Napoleons letzte Schlacht. Er muss Wellington schlagen, bevor Blüchers Preußen eintreffen – und verliert das Rennen um wenige Stunden.",
+      "parteien": [
+        { "id": "fra", "name": "Frankreich", "farbe": "#4f7fc4", "fuehrung": "Napoleon Bonaparte", "staerke": "ca. 73.000" },
+        { "id": "koa", "name": "Briten und Verbündete", "farbe": "#c0574f", "fuehrung": "Herzog von Wellington", "staerke": "ca. 68.000" },
+        { "id": "pru", "name": "Preußen", "farbe": "#3f4b63", "fuehrung": "Gebhard von Blücher", "staerke": "ca. 50.000" }
+      ],
+      "stationen": [
+        {
+          "zeit": "11:30 Uhr",
+          "text": "Wellington steht auf dem Höhenzug von Mont-Saint-Jean, die Masse seiner Truppen hinter dem Kamm verborgen. Napoleon eröffnet mit einem Ablenkungsangriff auf das Gehöft Hougoumont.",
+          "stellungen": [
+            { "partei": "koa", "form": "flaeche", "punkte": [[4.36, 50.690], [4.46, 50.690], [4.46, 50.680], [4.36, 50.680]] },
+            { "partei": "fra", "form": "flaeche", "punkte": [[4.35, 50.670], [4.47, 50.670], [4.47, 50.655], [4.35, 50.655]] },
+            { "partei": "fra", "form": "pfeil", "punkte": [[4.375, 50.668], [4.393, 50.679]], "text": "Hougoumont" }
+          ]
+        },
+        {
+          "zeit": "13:30 Uhr",
+          "text": "Das I. Korps d’Erlon greift in dichten Kolonnen die linke Mitte an. Britische schwere Reiterei wirft es zurück – reitet dann aber zu weit und wird selbst zerschlagen.",
+          "stellungen": [
+            { "partei": "koa", "form": "flaeche", "punkte": [[4.36, 50.690], [4.46, 50.690], [4.46, 50.680], [4.36, 50.680]] },
+            { "partei": "fra", "form": "flaeche", "punkte": [[4.35, 50.672], [4.47, 50.672], [4.47, 50.655], [4.35, 50.655]] },
+            { "partei": "fra", "form": "pfeil", "punkte": [[4.425, 50.670], [4.430, 50.681]], "text": "d’Erlon" },
+            { "partei": "koa", "form": "pfeil", "punkte": [[4.432, 50.683], [4.428, 50.668]], "text": "Gegenstoß" }
+          ]
+        },
+        {
+          "zeit": "16:00 Uhr",
+          "text": "Ney hält den Rückzug hinter dem Kamm für eine Flucht und führt die französische Reiterei ohne Fußvolk vor. Wellingtons Bataillone bilden Karrees; die Attacken laufen sich tot. Im Osten erscheinen die ersten Preußen bei Plancenoit.",
+          "stellungen": [
+            { "partei": "koa", "form": "flaeche", "punkte": [[4.36, 50.690], [4.46, 50.690], [4.46, 50.680], [4.36, 50.680]] },
+            { "partei": "fra", "form": "flaeche", "punkte": [[4.35, 50.674], [4.47, 50.674], [4.47, 50.655], [4.35, 50.655]] },
+            { "partei": "fra", "form": "pfeil", "punkte": [[4.405, 50.672], [4.408, 50.682]], "text": "Neys Reiterei" },
+            { "partei": "pru", "form": "pfeil", "punkte": [[4.520, 50.660], [4.462, 50.664]], "text": "Blücher rückt an" }
+          ]
+        },
+        {
+          "zeit": "18:30 Uhr",
+          "text": "La Haye Sainte fällt endlich, Wellingtons Mitte steht offen. Doch Napoleon hat keine Reserve mehr frei: Ein Teil der Garde bindet die Preußen in Plancenoit.",
+          "stellungen": [
+            { "partei": "koa", "form": "flaeche", "punkte": [[4.36, 50.690], [4.46, 50.690], [4.46, 50.682], [4.36, 50.682]] },
+            { "partei": "fra", "form": "flaeche", "punkte": [[4.35, 50.680], [4.47, 50.680], [4.47, 50.655], [4.35, 50.655]] },
+            { "partei": "pru", "form": "flaeche", "punkte": [[4.462, 50.668], [4.510, 50.668], [4.510, 50.652], [4.462, 50.652]] }
+          ]
+        },
+        {
+          "zeit": "19:30 Uhr",
+          "text": "Napoleon setzt die Kaisergarde an – zum ersten Mal wird sie geworfen. Der Ruf „La Garde recule“ bricht die französische Front.",
+          "stellungen": [
+            { "partei": "koa", "form": "flaeche", "punkte": [[4.36, 50.690], [4.46, 50.690], [4.46, 50.681], [4.36, 50.681]] },
+            { "partei": "fra", "form": "flaeche", "punkte": [[4.36, 50.679], [4.46, 50.679], [4.46, 50.658], [4.36, 50.658]] },
+            { "partei": "fra", "form": "pfeil", "punkte": [[4.405, 50.673], [4.412, 50.683]], "text": "Kaisergarde" },
+            { "partei": "pru", "form": "flaeche", "punkte": [[4.455, 50.672], [4.510, 50.672], [4.510, 50.650], [4.455, 50.650]] }
+          ]
+        },
+        {
+          "zeit": "21:00 Uhr",
+          "text": "Wellington lässt die ganze Linie vorgehen, Blücher stößt in die Flanke. Das französische Heer löst sich auf. Vier Tage später dankt Napoleon zum zweiten Mal ab.",
+          "stellungen": [
+            { "partei": "koa", "form": "flaeche", "punkte": [[4.35, 50.692], [4.47, 50.692], [4.47, 50.662], [4.35, 50.662]] },
+            { "partei": "pru", "form": "flaeche", "punkte": [[4.430, 50.672], [4.515, 50.672], [4.515, 50.648], [4.430, 50.648]] },
+            { "partei": "fra", "form": "pfeil", "punkte": [[4.410, 50.660], [4.380, 50.640]], "text": "Auflösung" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "stalingrad",
+      "name": "Schlacht von Stalingrad",
+      "ort": "Wolgabogen",
+      "datum": "August 1942 bis Februar 1943",
+      "jahr": 1942,
+      "mitte": [43.9, 48.6],
+      "zoom": 7.2,
+      "worum": "Die Wende des Zweiten Weltkriegs. Die 6. Armee kämpft sich Haus um Haus zur Wolga vor – und wird dann von einer Zangenoperation eingeschlossen, die weit außerhalb der Stadt ansetzt.",
+      "parteien": [
+        { "id": "de", "name": "Deutsches Reich und Verbündete", "farbe": "#6f8fc0", "fuehrung": "Friedrich Paulus", "staerke": "ca. 270.000 im Kessel" },
+        { "id": "su", "name": "Sowjetunion", "farbe": "#5aa88f", "fuehrung": "Georgi Schukow, Wassili Tschuikow", "staerke": "über 1 Mio. in der Offensive" }
+      ],
+      "stationen": [
+        {
+          "zeit": "23. August 1942",
+          "text": "Das XIV. Panzerkorps erreicht nördlich der Stadt die Wolga. Am selben Tag legt die Luftwaffe Stalingrad in Trümmer – die Ruinen werden für den Verteidiger zum Vorteil.",
+          "stellungen": [
+            { "partei": "de", "form": "flaeche", "punkte": [[42.0, 49.6], [44.5, 49.0], [44.6, 48.4], [43.8, 48.0], [42.0, 48.2]] },
+            { "partei": "su", "form": "flaeche", "punkte": [[44.55, 48.85], [44.85, 48.85], [44.85, 48.45], [44.55, 48.45]] },
+            { "partei": "de", "form": "pfeil", "punkte": [[43.4, 48.9], [44.5, 48.78]], "text": "Vorstoß zur Wolga" }
+          ]
+        },
+        {
+          "zeit": "Oktober 1942",
+          "text": "Der Kampf verdichtet sich auf Fabrikhallen und Treppenhäuser. Tschuikow hält die Frontlinie bewusst wenige Dutzend Meter vom Gegner entfernt, damit die deutsche Artillerie nicht schießen kann. Den Sowjets bleibt nur ein schmaler Uferstreifen.",
+          "stellungen": [
+            { "partei": "de", "form": "flaeche", "punkte": [[42.0, 49.6], [44.7, 49.0], [44.75, 48.4], [43.8, 48.0], [42.0, 48.2]] },
+            { "partei": "su", "form": "flaeche", "punkte": [[44.72, 48.80], [44.90, 48.80], [44.90, 48.55], [44.72, 48.55]] },
+            { "partei": "su", "form": "pfeil", "punkte": [[45.10, 48.70], [44.85, 48.70]], "text": "Nachschub über die Wolga" }
+          ]
+        },
+        {
+          "zeit": "19. November 1942",
+          "text": "Operation Uranus. Die Rote Armee greift nicht die Stadt an, sondern die schwach besetzten rumänischen Flanken weit nördlich und südlich davon.",
+          "stellungen": [
+            { "partei": "de", "form": "flaeche", "punkte": [[42.0, 49.6], [44.7, 49.0], [44.75, 48.4], [43.8, 48.0], [42.0, 48.2]] },
+            { "partei": "su", "form": "pfeil", "punkte": [[43.0, 49.6], [43.6, 48.7]], "text": "Nordzange" },
+            { "partei": "su", "form": "pfeil", "punkte": [[44.4, 47.9], [43.8, 48.6]], "text": "Südzange" }
+          ]
+        },
+        {
+          "zeit": "23. November 1942",
+          "text": "Die Zangen schließen sich bei Kalatsch. Rund 270.000 Mann sind eingeschlossen. Hitler verbietet den Ausbruch; Göring verspricht Versorgung aus der Luft, die nie annähernd ausreicht.",
+          "stellungen": [
+            { "partei": "de", "form": "flaeche", "punkte": [[43.6, 48.95], [44.75, 48.90], [44.80, 48.50], [43.9, 48.45], [43.6, 48.65]] },
+            { "partei": "su", "form": "flaeche", "punkte": [[41.8, 49.9], [43.5, 49.6], [43.4, 48.2], [41.8, 47.9]] },
+            { "partei": "su", "form": "pfeil", "punkte": [[43.5, 49.2], [43.55, 48.75]] },
+            { "partei": "su", "form": "pfeil", "punkte": [[43.4, 48.3], [43.85, 48.5]] }
+          ]
+        },
+        {
+          "zeit": "Dezember 1942",
+          "text": "Der Entsatzangriff „Wintergewitter“ kommt auf 48 Kilometer heran und bleibt liegen. Der Kessel schrumpft, die Eingeschlossenen hungern und frieren.",
+          "stellungen": [
+            { "partei": "de", "form": "flaeche", "punkte": [[43.75, 48.90], [44.72, 48.86], [44.76, 48.55], [44.0, 48.52], [43.75, 48.70]] },
+            { "partei": "de", "form": "pfeil", "punkte": [[43.2, 47.9], [43.9, 48.45]], "text": "Wintergewitter" },
+            { "partei": "su", "form": "flaeche", "punkte": [[41.8, 49.9], [43.6, 49.6], [43.5, 48.1], [41.8, 47.9]] }
+          ]
+        },
+        {
+          "zeit": "2. Februar 1943",
+          "text": "Die letzten Verbände kapitulieren. Von rund 110.000 Gefangenen kehren etwa 6.000 zurück. Von Stalingrad an führt die Ostfront nur noch in eine Richtung.",
+          "stellungen": [
+            { "partei": "su", "form": "flaeche", "punkte": [[41.5, 50.1], [45.1, 49.6], [45.1, 47.8], [41.5, 47.6]] },
+            { "partei": "su", "form": "pfeil", "punkte": [[44.2, 48.7], [42.5, 49.0]], "text": "Vorstoß nach Westen" }
+          ]
+        }
+      ]
+    }
+  ]
+}

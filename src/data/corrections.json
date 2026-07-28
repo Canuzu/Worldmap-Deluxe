@@ -13,17 +13,39 @@
     "ist, bleibt der Fehler lieber stehen und wird von check:zeit weiter gemeldet –",
     "eine selbstbewusste falsche Korrektur wäre schlimmer als ein offener Befund."
   ],
-
   "700": {
-    "_begruendung": "Das Sasanidenreich endete 651 mit dem Tod Yazdegerds III.; Persien und der Jemen gehörten 700 zum Umayyaden-Kalifat. Die Sui-Dynastie endete 618. Das Westtürkische Khaganat wurde 657–659 von den Tang zerschlagen; im Siebenstromland folgten die Türgesch (699–766).",
+    "_begruendung": "Das Sasanidenreich endete 651 mit dem Tod Yazdegerds III.; Persien und Mesopotamien gehörten 700 zum Umayyaden-Kalifat. Der Hedschas mit Mekka und Medina war das religiöse Kernland des Kalifats und kein eigener Staat. Ergänzt werden außerdem Nadschd, Ostarabien, Oman und Hadramaut sowie die Lücken an der nordafrikanischen Küste – der Ursprungsdatensatz lässt sie unbeansprucht, obwohl die gesamte Halbinsel und der Maghreb bis Tanger umayyadisch beherrscht waren.",
     "rename": {
       "Sasanian Empire": "Umayyad Caliphate",
       "Sasanian dependencies": "Umayyad Caliphate",
       "Sui Empire": "Tang Empire",
-      "Western Gokturk Khaganate": "Türgesh Khaganate"
-    }
+      "Western Gokturk Khaganate": "Türgesh Khaganate",
+      "Hejaz": "Umayyad Caliphate"
+    },
+    "ergaenzen": [
+      {
+        "_was": "Arabische Halbinsel: Nadschd, Ostarabien (Bahrain), Oman, Hadramaut und Aden. Die Halbinsel war seit den Ridda-Kriegen (633) geeint und 700 ungeteilt umayyadisch.",
+        "name": "Umayyad Caliphate",
+        "precision": 1,
+        "ring": [
+          [34.0, 32.0], [38.5, 31.5], [42.0, 31.2], [45.0, 30.2], [48.5, 30.3],
+          [51.0, 28.5], [56.5, 26.5], [59.9, 25.2], [59.9, 21.5], [57.8, 18.5],
+          [53.5, 16.0], [47.5, 13.0], [43.0, 11.5], [41.5, 15.0], [38.5, 20.0],
+          [36.0, 25.0], [34.5, 28.5], [34.0, 32.0]
+        ]
+      },
+      {
+        "_was": "Küstenstreifen des Maghreb: Tripolitanien (seit 643), die Küste Ifriqiyas und Numidiens sowie der Norden Mauretaniens bis Tanger (708). Berberreiche im Landesinneren – Barghawata, Mauri, Sahara-Nomaden – bleiben unberührt.",
+        "name": "Umayyad Caliphate",
+        "precision": 1,
+        "ring": [
+          [-6.6, 36.3], [-1.0, 36.6], [5.0, 37.6], [11.6, 37.6], [15.5, 33.2],
+          [19.5, 31.5], [19.5, 28.5], [10.0, 29.5], [2.0, 32.0], [-3.0, 33.2],
+          [-6.6, 34.4], [-6.6, 36.3]
+        ]
+      }
+    ]
   },
-
   "900": {
     "_begruendung": "Das Tibetische Reich zerfiel 842 nach der Ermordung Langdarmas; es folgte die Zeit der Zersplitterung. Das Uigurische Khaganat wurde 840 von den Jenissei-Kirgisen zerschlagen, die bis 924 die Mongolei beherrschten.",
     "rename": {
@@ -31,17 +53,18 @@
       "Ouighurs": "Yenisei Kyrgyz"
     }
   },
-
   "1000": {
     "_begruendung": "Die dänisch-norwegische Union entstand erst 1380. Um 1000 herrschte Sven Gabelbart über ein dänisches Reich, das zeitweise Norwegen und England einschloss – als Personalunion, nicht als Staat 'Dänemark-Norwegen'.",
-    "rename": { "Denmark-Norway": "Denmark" }
+    "rename": {
+      "Denmark-Norway": "Denmark"
+    }
   },
-
   "1100": {
     "_begruendung": "Das Mongolische Weltreich entstand erst 1206 mit der Erhebung Temüdschins zum Dschingis Khan. Um 1100 lebten die mongolischen Stämme unabhängig voneinander in der östlichen Steppe.",
-    "rename": { "Mongols": "Mongol tribes" }
+    "rename": {
+      "Mongols": "Mongol tribes"
+    }
   },
-
   "1200": {
     "_begruendung": "Das Fatimiden-Kalifat wurde 1171 von Saladin beendet; Ägypten und Syrien gehörten 1200 zum Ayyubiden-Sultanat. Huari und Tiahuanaco zerfielen um 1000; es folgte die Zeit der andinen Regionalreiche.",
     "rename": {
@@ -50,49 +73,74 @@
       "Tiahuanaco Empire": "Andean states and chiefdoms"
     }
   },
-
   "1300": {
     "_begruendung": "Das Großseldschukische Reich endete 1194. In Anatolien bestand bis 1308 das Sultanat der Rum-Seldschuken – ein eigener Staat, kein Kalifat.",
-    "rename": { "Seljuk Caliphate": "Sultanate of Rum" }
+    "rename": {
+      "Seljuk Caliphate": "Sultanate of Rum"
+    }
   },
-
   "1400": {
     "_begruendung": "Die Yuan-Dynastie wurde 1368 aus China vertrieben. In der Steppe bestand die Nördliche Yuan-Dynastie fort, nicht mehr das Mongolische Weltreich.",
-    "rename": { "Great Khanate": "Northern Yuan" }
+    "rename": {
+      "Great Khanate": "Northern Yuan"
+    }
   },
-
   "1600": {
     "_begruendung": "Das Inkareich endete 1533 mit der Hinrichtung Atahualpas, der Rückzugsstaat von Vilcabamba 1572. Um 1600 gehörte das Gebiet zum Vizekönigreich Peru.",
-    "rename": { "Inca Empire": "Vice-Royalty of Peru" }
+    "rename": {
+      "Inca Empire": "Vice-Royalty of Peru"
+    }
   },
-
   "1700": {
     "_begruendung": "Das Kaisertum Österreich wurde erst 1804 ausgerufen. Zuvor regierten die Habsburger einen Länderverband ohne gemeinsamen Staatsnamen.",
-    "rename": { "Austrian Empire": "Habsburg Monarchy" }
+    "rename": {
+      "Austrian Empire": "Habsburg Monarchy"
+    }
   },
-
   "1715": {
     "_begruendung": "Siehe 1700 – das Kaisertum Österreich entstand erst 1804.",
-    "rename": { "Austrian Empire": "Habsburg Monarchy" }
+    "rename": {
+      "Austrian Empire": "Habsburg Monarchy"
+    }
   },
-
   "1815": {
     "_begruendung": "Kanada entstand als Dominion erst 1867. 1815 bestanden dort britische Kolonien, zusammengefasst als Britisch-Nordamerika.",
-    "rename": { "Canada": "British North America" }
+    "rename": {
+      "Canada": "British North America"
+    }
   },
-
   "1914": {
     "_begruendung": "Die Republik Südafrika entstand 1961. 1914 bestand die Südafrikanische Union, ein Dominion des Britischen Empire.",
-    "rename": { "South Africa": "Union of South Africa" }
+    "rename": {
+      "South Africa": "Union of South Africa"
+    }
   },
-
   "1920": {
     "_begruendung": "Der unabhängige Sudan entstand 1956. 1920 war das Gebiet das gemeinsam von Großbritannien und Ägypten verwaltete Kondominium.",
-    "rename": { "Sudan": "Anglo-Egyption Sudan" }
+    "rename": {
+      "Sudan": "Anglo-Egyption Sudan"
+    }
   },
-
   "1930": {
     "_begruendung": "Siehe 1920 – der unabhängige Sudan entstand erst 1956.",
-    "rename": { "Sudan": "Anglo-Egyption Sudan" }
+    "rename": {
+      "Sudan": "Anglo-Egyption Sudan"
+    }
+  },
+  "800": {
+    "_begruendung": "Oman und Aden fehlen im Ursprungsdatensatz, obwohl die Abbasiden 800 die gesamte Arabische Halbinsel beherrschten. Ergänzt wird nur unbeanspruchtes Land; die ibaditischen Imame Omans erscheinen im Datensatz nicht gesondert.",
+    "ergaenzen": [
+      {
+        "_was": "Oman, Hadramaut und Aden – im Ursprungsdatensatz offen gelassen.",
+        "name": "Abbasid Caliphate",
+        "precision": 1,
+        "ring": [
+          [34.0, 32.0], [38.5, 31.5], [42.0, 31.2], [45.0, 30.2], [48.5, 30.3],
+          [51.0, 28.5], [56.5, 26.5], [59.9, 25.2], [59.9, 21.5], [57.8, 18.5],
+          [53.5, 16.0], [47.5, 13.0], [43.0, 11.5], [41.5, 15.0], [38.5, 20.0],
+          [36.0, 25.0], [34.5, 28.5], [34.0, 32.0]
+        ]
+      }
+    ]
   }
 }
