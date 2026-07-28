@@ -20,6 +20,10 @@ const HIST_BASE = 'https://raw.githubusercontent.com/aourednik/historical-basema
 const NE_BASE = 'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson';
 
 const NE_FILES = [
+  // Orte zur Orientierung. Es sind heutige Städte – sie stehen in der Karte
+  // ausdrücklich als Bezugspunkte, nicht als historische Siedlungen.
+  // Die volle Fassung, weil nur sie deutsche Namen (NAME_DE) mitbringt.
+  'ne_10m_populated_places',
   'ne_50m_land',
   'ne_110m_land',
   'ne_50m_lakes',

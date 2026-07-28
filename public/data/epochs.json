@@ -167,7 +167,12 @@
    "era": "neolithic",
    "polities": 23,
    "features": 23,
-   "bytes": 43147
+   "bytes": 43246,
+   "korrigiert": {
+    "umbenannt": 2,
+    "ergaenzt": 0,
+    "begruendung": "Ägypten war um 4000 v. Chr. noch nicht geeint – die Reichseinigung fällt um 3100 v. Chr. Im Industal liegt die Zeit vor der Hochkultur."
+   }
   },
   {
    "year": -3000,
@@ -189,7 +194,12 @@
    "era": "bronze",
    "polities": 45,
    "features": 45,
-   "bytes": 168476
+   "bytes": 168514,
+   "korrigiert": {
+    "umbenannt": 1,
+    "ergaenzt": 0,
+    "begruendung": "Das hethitische Großreich entstand erst um 1650 v. Chr. Um 2000 v. Chr. saßen in Zentralanatolien die Hattier."
+   }
   },
   {
    "year": -1500,
@@ -200,7 +210,12 @@
    "era": "bronze",
    "polities": 68,
    "features": 69,
-   "bytes": 201905
+   "bytes": 201801,
+   "korrigiert": {
+    "umbenannt": 1,
+    "ergaenzt": 0,
+    "begruendung": "Um 1500 v. Chr. herrschte in China die Shang-Dynastie; die Zhou lösten sie erst 1046 v. Chr. ab."
+   }
   },
   {
    "year": -1000,
@@ -233,7 +248,12 @@
    "era": "antiquity",
    "polities": 74,
    "features": 77,
-   "bytes": 182831
+   "bytes": 182862,
+   "korrigiert": {
+    "umbenannt": 1,
+    "ergaenzt": 0,
+    "begruendung": "Meroe wurde erst um 300 v. Chr. Hauptstadt. Um 500 v. Chr. lag der Reichssitz in Napata – das Reich heißt Kusch."
+   }
   },
   {
    "year": -400,
@@ -244,7 +264,12 @@
    "era": "antiquity",
    "polities": 76,
    "features": 81,
-   "bytes": 203060
+   "bytes": 203117,
+   "korrigiert": {
+    "umbenannt": 1,
+    "ergaenzt": 0,
+    "begruendung": "Die Xiongnu-Konföderation entstand erst um 209 v. Chr. unter Touman. Um 400 v. Chr. lebten dort einzelne Steppenverbände."
+   }
   },
   {
    "year": -323,
@@ -288,7 +313,12 @@
    "era": "antiquity",
    "polities": 84,
    "features": 85,
-   "bytes": 167839
+   "bytes": 167932,
+   "korrigiert": {
+    "umbenannt": 2,
+    "ergaenzt": 0,
+    "begruendung": "Das Maurya-Reich endete 185 v. Chr., ihm folgten die Shunga. Die Kuschan entstanden erst um 30 n. Chr. – zuvor herrschten dort die Yuezhi."
+   }
   },
   {
    "year": -1,
@@ -332,7 +362,12 @@
    "era": "antiquity",
    "polities": 71,
    "features": 71,
-   "bytes": 158935
+   "bytes": 158985,
+   "korrigiert": {
+    "umbenannt": 1,
+    "ergaenzt": 0,
+    "begruendung": "Das Partherreich endete 224 mit Ardaschir I.; ab 300 herrschten die Sasaniden."
+   }
   },
   {
    "year": 400,
@@ -343,7 +378,12 @@
    "era": "antiquity",
    "polities": 79,
    "features": 80,
-   "bytes": 157944
+   "bytes": 157981,
+   "korrigiert": {
+    "umbenannt": 1,
+    "ergaenzt": 0,
+    "begruendung": "Meroe fiel um 350. Danach traten die postmeroitischen Reiche Nobatia, Makuria und Alwa an seine Stelle."
+   }
   },
   {
    "year": 500,
@@ -376,7 +416,12 @@
    "era": "earlymiddle",
    "polities": 123,
    "features": 128,
-   "bytes": 294901
+   "bytes": 294901,
+   "korrigiert": {
+    "umbenannt": 5,
+    "ergaenzt": 2,
+    "begruendung": "Das Sasanidenreich endete 651 mit dem Tod Yazdegerds III.; Persien und Mesopotamien gehörten 700 zum Umayyaden-Kalifat. Der Hedschas mit Mekka und Medina war das religiöse Kernland des Kalifats und kein eigener Staat. Ergänzt werden außerdem Nadschd, Ostarabien, Oman und Hadramaut sowie die Lücken an der nordafrikanischen Küste – der Ursprungsdatensatz lässt sie unbeansprucht, obwohl die gesamte Halbinsel und der Maghreb bis Tanger umayyadisch beherrscht waren."
+   }
   },
   {
    "year": 800,
@@ -385,9 +430,14 @@
    "label": "800 n. Chr.",
    "title": "Karl der Große wird Kaiser",
    "era": "earlymiddle",
-   "polities": 117,
-   "features": 122,
-   "bytes": 301082
+   "polities": 116,
+   "features": 121,
+   "bytes": 301026,
+   "korrigiert": {
+    "umbenannt": 1,
+    "ergaenzt": 1,
+    "begruendung": "Oman und Aden fehlen im Ursprungsdatensatz, obwohl die Abbasiden 800 die gesamte Arabische Halbinsel beherrschten. Ergänzt wird nur unbeanspruchtes Land; die ibaditischen Imame Omans erscheinen im Datensatz nicht gesondert. Die Thule-Kultur breitete sich erst ab etwa 900 nach Osten aus. Um 800 war die Arktis Dorset-Gebiet."
+   }
   },
   {
    "year": 900,
@@ -398,7 +448,12 @@
    "era": "earlymiddle",
    "polities": 134,
    "features": 137,
-   "bytes": 264086
+   "bytes": 264086,
+   "korrigiert": {
+    "umbenannt": 2,
+    "ergaenzt": 0,
+    "begruendung": "Das Tibetische Reich zerfiel 842 nach der Ermordung Langdarmas; es folgte die Zeit der Zersplitterung. Das Uigurische Khaganat wurde 840 von den Jenissei-Kirgisen zerschlagen, die bis 924 die Mongolei beherrschten."
+   }
   },
   {
    "year": 1000,
@@ -409,7 +464,12 @@
    "era": "earlymiddle",
    "polities": 129,
    "features": 132,
-   "bytes": 256430
+   "bytes": 256430,
+   "korrigiert": {
+    "umbenannt": 1,
+    "ergaenzt": 0,
+    "begruendung": "Die dänisch-norwegische Union entstand erst 1380. Um 1000 herrschte Sven Gabelbart über ein dänisches Reich, das zeitweise Norwegen und England einschloss – als Personalunion, nicht als Staat 'Dänemark-Norwegen'."
+   }
   },
   {
    "year": 1100,
@@ -418,9 +478,14 @@
    "label": "1100 n. Chr.",
    "title": "Zeit der Kreuzzüge",
    "era": "highmiddle",
-   "polities": 139,
-   "features": 150,
-   "bytes": 245432
+   "polities": 138,
+   "features": 149,
+   "bytes": 245097,
+   "korrigiert": {
+    "umbenannt": 3,
+    "ergaenzt": 0,
+    "begruendung": "Das Mongolische Weltreich entstand erst 1206 mit der Erhebung Temüdschins zum Dschingis Khan. Um 1100 lebten die mongolischen Stämme unabhängig voneinander in der östlichen Steppe. Huari und Tiahuanaco waren um 1000 zerfallen. Was folgte, waren regionale Herrschaften ohne Reichsbildung."
+   }
   },
   {
    "year": 1200,
@@ -429,9 +494,14 @@
    "label": "1200 n. Chr.",
    "title": "Aufstieg der Mongolen",
    "era": "highmiddle",
-   "polities": 128,
-   "features": 134,
-   "bytes": 250929
+   "polities": 126,
+   "features": 132,
+   "bytes": 250524,
+   "korrigiert": {
+    "umbenannt": 5,
+    "ergaenzt": 0,
+    "begruendung": "Das Fatimiden-Kalifat wurde 1171 von Saladin beendet; Ägypten und Syrien gehörten 1200 zum Ayyubiden-Sultanat. Huari und Tiahuanaco zerfielen um 1000; es folgte die Zeit der andinen Regionalreiche. Die Buyiden endeten 1062. Persien und Chorasan standen 1200 unter den Choresm-Schahs."
+   }
   },
   {
    "year": 1279,
@@ -442,7 +512,12 @@
    "era": "highmiddle",
    "polities": 113,
    "features": 116,
-   "bytes": 234466
+   "bytes": 234476,
+   "korrigiert": {
+    "umbenannt": 1,
+    "ergaenzt": 0,
+    "begruendung": "Das Großseldschukenreich zerfiel 1194. In Anatolien bestand bis 1308 das Sultanat der Rum-Seldschuken."
+   }
   },
   {
    "year": 1300,
@@ -453,7 +528,12 @@
    "era": "highmiddle",
    "polities": 113,
    "features": 115,
-   "bytes": 232065
+   "bytes": 232065,
+   "korrigiert": {
+    "umbenannt": 1,
+    "ergaenzt": 0,
+    "begruendung": "Das Großseldschukische Reich endete 1194. In Anatolien bestand bis 1308 das Sultanat der Rum-Seldschuken – ein eigener Staat, kein Kalifat."
+   }
   },
   {
    "year": 1400,
@@ -464,7 +544,12 @@
    "era": "latemiddle",
    "polities": 115,
    "features": 122,
-   "bytes": 261044
+   "bytes": 261122,
+   "korrigiert": {
+    "umbenannt": 3,
+    "ergaenzt": 0,
+    "begruendung": "Die Yuan-Dynastie wurde 1368 aus China vertrieben. In der Steppe bestand die Nördliche Yuan-Dynastie fort, nicht mehr das Mongolische Weltreich. Das Sultanat der Rum-Seldschuken endete 1308; Anatolien zerfiel danach in die Beyliks. Srivijaya ging 1288 unter, die Vorherrschaft im Archipel lag bei Majapahit."
+   }
   },
   {
    "year": 1492,
@@ -497,7 +582,12 @@
    "era": "earlymodern",
    "polities": 269,
    "features": 277,
-   "bytes": 300838
+   "bytes": 300883,
+   "korrigiert": {
+    "umbenannt": 1,
+    "ergaenzt": 0,
+    "begruendung": "Preußen war 1525 zum Herzogtum geworden; das Königreich entstand erst 1701."
+   }
   },
   {
    "year": 1600,
@@ -508,7 +598,12 @@
    "era": "earlymodern",
    "polities": 637,
    "features": 659,
-   "bytes": 485259
+   "bytes": 485296,
+   "korrigiert": {
+    "umbenannt": 2,
+    "ergaenzt": 0,
+    "begruendung": "Das Inkareich endete 1533 mit der Hinrichtung Atahualpas, der Rückzugsstaat von Vilcabamba 1572. Um 1600 gehörte das Gebiet zum Vizekönigreich Peru. Preußen war 1525 zum Herzogtum geworden; das Königreich entstand erst 1701."
+   }
   },
   {
    "year": 1650,
@@ -519,7 +614,12 @@
    "era": "absolutism",
    "polities": 592,
    "features": 597,
-   "bytes": 488102
+   "bytes": 488220,
+   "korrigiert": {
+    "umbenannt": 3,
+    "ergaenzt": 0,
+    "begruendung": "Preußen war noch Herzogtum. Das Kaisertum Österreich wurde erst 1804 ausgerufen – zuvor war es die Habsburgermonarchie. Songhai fiel 1591 an Marokko; der Nachfolgestaat war Dendi."
+   }
   },
   {
    "year": 1700,
@@ -530,7 +630,12 @@
    "era": "absolutism",
    "polities": 584,
    "features": 590,
-   "bytes": 477247
+   "bytes": 477274,
+   "korrigiert": {
+    "umbenannt": 2,
+    "ergaenzt": 0,
+    "begruendung": "Das Kaisertum Österreich wurde erst 1804 ausgerufen. Zuvor regierten die Habsburger einen Länderverband ohne gemeinsamen Staatsnamen. Songhai fiel 1591 an Marokko; im Nigerbogen bestand der Nachfolgestaat Dendi bis 1901."
+   }
   },
   {
    "year": 1715,
@@ -541,7 +646,12 @@
    "era": "absolutism",
    "polities": 600,
    "features": 606,
-   "bytes": 485921
+   "bytes": 485949,
+   "korrigiert": {
+    "umbenannt": 2,
+    "ergaenzt": 0,
+    "begruendung": "Siehe 1700 – das Kaisertum Österreich entstand erst 1804. Songhai fiel 1591 an Marokko; im Nigerbogen bestand der Nachfolgestaat Dendi bis 1901."
+   }
   },
   {
    "year": 1783,
@@ -552,7 +662,12 @@
    "era": "absolutism",
    "polities": 548,
    "features": 563,
-   "bytes": 520586
+   "bytes": 520635,
+   "korrigiert": {
+    "umbenannt": 2,
+    "ergaenzt": 0,
+    "begruendung": "Songhai fiel 1591 an Marokko; Nachfolgestaat war Dendi. „Indien\" als Staat entstand erst 1947 – gemeint sind die indischen Fürstenstaaten."
+   }
   },
   {
    "year": 1800,
@@ -563,7 +678,12 @@
    "era": "revolution",
    "polities": 546,
    "features": 558,
-   "bytes": 513811
+   "bytes": 513848,
+   "korrigiert": {
+    "umbenannt": 1,
+    "ergaenzt": 0,
+    "begruendung": "Songhai fiel 1591 an Marokko; im Nigerbogen bestand der Nachfolgestaat Dendi bis 1901."
+   }
   },
   {
    "year": 1815,
@@ -574,7 +694,12 @@
    "era": "revolution",
    "polities": 312,
    "features": 327,
-   "bytes": 489016
+   "bytes": 489016,
+   "korrigiert": {
+    "umbenannt": 1,
+    "ergaenzt": 0,
+    "begruendung": "Kanada entstand als Dominion erst 1867. 1815 bestanden dort britische Kolonien, zusammengefasst als Britisch-Nordamerika."
+   }
   },
   {
    "year": 1880,
@@ -596,7 +721,12 @@
    "era": "imperialism",
    "polities": 165,
    "features": 222,
-   "bytes": 354852
+   "bytes": 354892,
+   "korrigiert": {
+    "umbenannt": 1,
+    "ergaenzt": 0,
+    "begruendung": "„Indien\" als Staat entstand erst 1947 – gemeint sind die indischen Fürstenstaaten."
+   }
   },
   {
    "year": 1914,
@@ -607,7 +737,40 @@
    "era": "worldwars",
    "polities": 142,
    "features": 144,
-   "bytes": 338503
+   "bytes": 338503,
+   "korrigiert": {
+    "umbenannt": 1,
+    "ergaenzt": 0,
+    "begruendung": "Die Republik Südafrika entstand 1961. 1914 bestand die Südafrikanische Union, ein Dominion des Britischen Empire."
+   }
+  },
+  {
+   "year": 1916,
+   "key": "ad1916",
+   "file": "data/epochs/ad1916.json",
+   "label": "1916 n. Chr.",
+   "title": "Stellungskrieg: Verdun, Somme, Brussilow",
+   "era": "worldwars",
+   "polities": 142,
+   "features": 147,
+   "bytes": 340705,
+   "stand": "Dezember 1916",
+   "ergaenzt": true,
+   "besatzung": true
+  },
+  {
+   "year": 1918,
+   "key": "ad1918",
+   "file": "data/epochs/ad1918.json",
+   "label": "1918 n. Chr.",
+   "title": "Brest-Litowsk und der Marnebogen",
+   "era": "worldwars",
+   "polities": 142,
+   "features": 148,
+   "bytes": 341838,
+   "stand": "Juli 1918",
+   "ergaenzt": true,
+   "besatzung": true
   },
   {
    "year": 1920,
@@ -618,7 +781,12 @@
    "era": "worldwars",
    "polities": 163,
    "features": 165,
-   "bytes": 388583
+   "bytes": 388583,
+   "korrigiert": {
+    "umbenannt": 1,
+    "ergaenzt": 0,
+    "begruendung": "Der unabhängige Sudan entstand 1956. 1920 war das Gebiet das gemeinsam von Großbritannien und Ägypten verwaltete Kondominium."
+   }
   },
   {
    "year": 1930,
@@ -629,7 +797,12 @@
    "era": "worldwars",
    "polities": 161,
    "features": 163,
-   "bytes": 337819
+   "bytes": 337819,
+   "korrigiert": {
+    "umbenannt": 1,
+    "ergaenzt": 0,
+    "begruendung": "Siehe 1920 – der unabhängige Sudan entstand erst 1956."
+   }
   },
   {
    "year": 1938,
@@ -651,7 +824,7 @@
    "era": "worldwars",
    "polities": 172,
    "features": 179,
-   "bytes": 376404,
+   "bytes": 376394,
    "stand": "Juli 1940",
    "ergaenzt": true,
    "besatzung": true

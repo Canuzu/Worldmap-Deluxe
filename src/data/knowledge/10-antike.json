@@ -1,911 +1,914 @@
 {
-  "_hinweis": "Steckbriefe zur Antike. Die Zeitabschnitte sind auf die Zeitschnitte des Kartendatensatzes abgestimmt: -500, -400, -323, -300, -200, -100, -1, 100, 200, 300, 400, 500.",
-  "Egypt": {
-    "kind": "Reich am Nil",
-    "wiki": "Altes Ägypten",
-    "founded": -3100,
-    "events": [
-      {
-        "year": -3100,
-        "text": "Reichseinigung von Ober- und Unterägypten unter Narmer."
-      },
-      {
-        "year": -2560,
-        "text": "Bau der Cheops-Pyramide in Gizeh."
-      },
-      {
-        "year": -1279,
-        "text": "Ramses II. besteigt den Thron; Höhepunkt des Neuen Reiches."
-      },
-      {
-        "year": -30,
-        "text": "Tod Kleopatras VII., Ägypten wird römische Provinz."
-      },
-      {
-        "year": 1869,
-        "text": "Eröffnung des Suezkanals."
-      },
-      {
-        "year": 1922,
-        "text": "Formale Unabhängigkeit vom Vereinigten Königreich."
-      }
+ "_hinweis": "Steckbriefe zur Antike. Die Zeitabschnitte sind auf die Zeitschnitte des Kartendatensatzes abgestimmt: -500, -400, -323, -300, -200, -100, -1, 100, 200, 300, 400, 500.",
+ "Egypt": {
+  "kind": "Reich am Nil",
+  "wiki": "Altes Ägypten",
+  "founded": -3100,
+  "events": [
+   {
+    "year": -3100,
+    "text": "Reichseinigung von Ober- und Unterägypten unter Narmer."
+   },
+   {
+    "year": -2560,
+    "text": "Bau der Cheops-Pyramide in Gizeh."
+   },
+   {
+    "year": -1279,
+    "text": "Ramses II. besteigt den Thron; Höhepunkt des Neuen Reiches."
+   },
+   {
+    "year": -30,
+    "text": "Tod Kleopatras VII., Ägypten wird römische Provinz."
+   },
+   {
+    "year": 1869,
+    "text": "Eröffnung des Suezkanals."
+   },
+   {
+    "year": 1922,
+    "text": "Formale Unabhängigkeit vom Vereinigten Königreich."
+   }
+  ],
+  "periods": [
+   {
+    "from": -4000,
+    "to": -3101,
+    "kind": "Vordynastische Kulturen",
+    "ruler": "Lokale Gaufürsten",
+    "rulerTitle": "Häuptlinge der Naqada-Kultur",
+    "capital": "Naqada, Hierakonpolis",
+    "government": "Konkurrierende Kleinfürstentümer",
+    "religion": "Frühe Lokalkulte, Tierdarstellungen",
+    "languages": [
+     "Frühägyptisch"
     ],
-    "periods": [
-      {
-        "from": -4000,
-        "to": -3101,
-        "kind": "Vordynastische Kulturen",
-        "ruler": "Lokale Gaufürsten",
-        "rulerTitle": "Häuptlinge der Naqada-Kultur",
-        "capital": "Naqada, Hierakonpolis",
-        "government": "Konkurrierende Kleinfürstentümer",
-        "religion": "Frühe Lokalkulte, Tierdarstellungen",
-        "languages": [
-          "Frühägyptisch"
-        ],
-        "population": "wenige Hunderttausend",
-        "economy": "Bewässerungsfeldbau, Fernhandel bis Nubien und Levante",
-        "summary": [
-          "Entlang des Nils verdichten sich Dörfer zu Gauen, die um Ackerland und Handelswege konkurrieren. Aus diesem Wettbewerb geht die erste Territorialmonarchie der Geschichte hervor.",
-          "Die Hieroglyphenschrift entsteht in dieser Phase – zunächst als Verwaltungswerkzeug für Abgaben und Vorratshaltung."
-        ]
-      },
-      {
-        "from": -3100,
-        "to": -2181,
-        "kind": "Altes Reich",
-        "ruler": "Cheops (Chufu)",
-        "rulerTitle": "Pharao der 4. Dynastie",
-        "dynasty": "4. Dynastie",
-        "capital": "Memphis",
-        "government": "Göttliches Königtum mit zentraler Beamtenschaft",
-        "religion": "Sonnenkult (Re), Königskult",
-        "languages": [
-          "Altägyptisch"
-        ],
-        "population": "ca. 1,5 Mio.",
-        "economy": "Staatlich organisierter Getreideanbau, Steinbruchwirtschaft",
-        "summary": [
-          "Das Alte Reich ist die Zeit der großen Pyramiden. Ein zentral gelenkter Staat kann Zehntausende Arbeitskräfte über Jahrzehnte binden – eine Verwaltungsleistung, die vor Ägypten niemand erbracht hat.",
-          "Der Pharao gilt nicht als Vertreter eines Gottes, sondern als Gott in Menschengestalt. Das begründet einen Herrschaftsanspruch, der drei Jahrtausende überdauert."
-        ],
-        "quote": "Der Nil schuf Ägypten – und Ägypten den Staat."
-      },
-      {
-        "from": -2180,
-        "to": -1551,
-        "kind": "Mittleres Reich",
-        "ruler": "Sesostris III.",
-        "rulerTitle": "Pharao",
-        "dynasty": "12. Dynastie",
-        "capital": "Itj-taui, später Theben",
-        "government": "Zentralmonarchie nach Überwindung der Gaufürsten",
-        "religion": "Aufstieg des Amun-Kults, Osiris-Glaube",
-        "languages": [
-          "Mittelägyptisch"
-        ],
-        "population": "ca. 2 Mio.",
-        "economy": "Fayum-Bewässerung, Goldbergbau in Nubien",
-        "summary": [
-          "Nach einer Zerfallsphase eint das Mittlere Reich das Land erneut und dehnt die Grenze weit nach Nubien aus. Das Mittelägyptische dieser Zeit gilt später als klassische Literatursprache.",
-          "Am Ende dringen die Hyksos aus der Levante ins Delta vor – der erste erfolgreiche Fremdherrschaftsversuch in Ägypten."
-        ]
-      },
-      {
-        "from": -1550,
-        "to": -1070,
-        "kind": "Neues Reich",
-        "ruler": "Ramses II.",
-        "rulerTitle": "Pharao",
-        "dynasty": "19. Dynastie",
-        "reign": "1279–1213 v. Chr.",
-        "capital": "Theben, Residenz Pi-Ramesse",
-        "government": "Militärmonarchie mit mächtiger Amun-Priesterschaft",
-        "religion": "Amun-Re als Reichsgott",
-        "languages": [
-          "Neuägyptisch"
-        ],
-        "population": "ca. 3 bis 4 Mio.",
-        "economy": "Tributwirtschaft, Handel mit Punt und der Ägäis",
-        "summary": [
-          "Ägypten ist Großmacht: Der Machtbereich reicht von Nordsyrien bis zum vierten Nilkatarakt. Die Schlacht bei Kadesch gegen die Hethiter endet 1274 v. Chr. unentschieden und führt zum ersten schriftlich überlieferten Friedensvertrag der Geschichte.",
-          "Der Reichtum aus Tributen finanziert die Tempelanlagen von Karnak, Luxor und Abu Simbel."
-        ]
-      },
-      {
-        "from": -1069,
-        "to": -333,
-        "kind": "Spätzeit",
-        "ruler": "Wechselnde Dynastien, zeitweise Fremdherrscher",
-        "rulerTitle": "Pharao",
-        "capital": "Tanis, Sais, Memphis",
-        "government": "Zersplitterte Königtümer, Perserherrschaft ab 525 v. Chr.",
-        "religion": "Tierkulte, Isis-Verehrung",
-        "languages": [
-          "Demotisch",
-          "Aramäisch"
-        ],
-        "population": "ca. 3 Mio.",
-        "economy": "Getreideexport in den Mittelmeerraum",
-        "summary": [
-          "Libysche, kuschitische, assyrische und persische Herrscher lösen einander ab. Ägypten bleibt kulturell prägend, verliert aber die politische Eigenständigkeit.",
-          "Griechische Söldner und Händler siedeln sich an – die Vorgeschichte der ptolemäischen Epoche."
-        ]
-      },
-      {
-        "from": 1805,
-        "to": 1952,
-        "ruler": "Muhammad Ali Pascha",
-        "rulerTitle": "Wali, später Khedive von Ägypten",
-        "dynasty": "Muhammad-Ali-Dynastie",
-        "reign": "1805–1848",
-        "capital": "Kairo",
-        "government": "Formal osmanische Provinz, faktisch selbständig; ab 1882 britisch besetzt",
-        "religion": "Sunnitischer Islam, koptisches Christentum",
-        "languages": [
-          "Arabisch"
-        ],
-        "population": "ca. 10 Mio.",
-        "economy": "Baumwollexport, Suezkanal ab 1869",
-        "summary": [
-          "Muhammad Ali baut in wenigen Jahrzehnten eine Armee, eine Flotte und Fabriken auf – der erste ernsthafte Modernisierungsversuch im Nahen Osten.",
-          "Der Suezkanal von 1869 verkürzt den Seeweg nach Indien um Wochen. Die Baukosten treiben Ägypten in die Verschuldung und 1882 unter britische Kontrolle."
-        ]
-      },
-      {
-        "from": 1953,
-        "to": null,
-        "kind": "Republik",
-        "ruler": "Gamal Abdel Nasser, später wechselnde Präsidenten",
-        "rulerTitle": "Präsident der Arabischen Republik Ägypten",
-        "capital": "Kairo",
-        "government": "Präsidiale Republik",
-        "religion": "Sunnitischer Islam; koptisch-orthodoxe Minderheit",
-        "languages": [
-          "Arabisch"
-        ],
-        "population": "ca. 108 Mio.",
-        "economy": "Suezkanal, Tourismus, Landwirtschaft, Erdgas",
-        "summary": [
-          "1952 stürzen die Freien Offiziere die Monarchie. Nasser verstaatlicht 1956 den Suezkanal und wird zur Leitfigur des arabischen Nationalismus.",
-          "Der Assuan-Hochdamm sichert ab 1970 Bewässerung und Strom – und beendet zugleich die jährliche Nilschwemme, die Ägypten fünf Jahrtausende lang geprägt hatte."
-        ]
-      }
+    "population": "wenige Hunderttausend",
+    "economy": "Bewässerungsfeldbau, Fernhandel bis Nubien und Levante",
+    "summary": [
+     "Entlang des Nils verdichten sich Dörfer zu Gauen, die um Ackerland und Handelswege konkurrieren. Aus diesem Wettbewerb geht die erste Territorialmonarchie der Geschichte hervor.",
+     "Die Hieroglyphenschrift entsteht in dieser Phase – zunächst als Verwaltungswerkzeug für Abgaben und Vorratshaltung."
     ]
-  },
-  "Hittites": {
-    "kind": "Großreich Anatoliens",
-    "wiki": "Hethiter",
-    "founded": -1650,
-    "dissolved": -1178,
-    "periods": [
-      {
-        "from": -1650,
-        "to": -1178,
-        "ruler": "Šuppiluliuma I.",
-        "rulerTitle": "Großkönig von Ḫatti",
-        "capital": "Ḫattuša (bei Boğazkale)",
-        "government": "Lehnsartiges Großkönigtum über Vasallenstaaten",
-        "religion": "Vielgötterei, „Land der tausend Götter“",
-        "languages": [
-          "Hethitisch",
-          "Luwisch",
-          "Akkadisch (Diplomatie)"
-        ],
-        "population": "ca. 1 Mio.",
-        "economy": "Getreide, Pferdezucht, früher Eisenverhüttung",
-        "summary": [
-          "Die Hethiter sind die dritte Großmacht der späten Bronzezeit neben Ägypten und Babylonien. Ihr Recht gilt als vergleichsweise milde: Körperstrafen sind selten, Schadensersatz die Regel.",
-          "Um 1178 v. Chr. bricht das Reich im Zuge des Bronzezeitkollapses zusammen – Hungersnöte, Wanderungsbewegungen und der Zusammenbruch der Handelsnetze treffen zusammen."
-        ]
-      }
-    ]
-  },
-  "Achaemenid Empire": {
-    "kind": "Weltreich",
-    "wiki": "Achämenidenreich",
-    "founded": -550,
-    "dissolved": -330,
-    "events": [
-      {
-        "year": -539,
-        "text": "Kyros II. erobert Babylon und erlaubt den Judäern die Rückkehr."
-      },
-      {
-        "year": -490,
-        "text": "Niederlage bei Marathon gegen die Athener."
-      },
-      {
-        "year": -480,
-        "text": "Seeschlacht von Salamis beendet den Zug gegen Griechenland."
-      },
-      {
-        "year": -330,
-        "text": "Alexander besiegt Dareios III.; das Reich geht unter."
-      }
+   },
+   {
+    "from": -3100,
+    "to": -2181,
+    "kind": "Altes Reich",
+    "ruler": "Cheops (Chufu)",
+    "rulerTitle": "Pharao der 4. Dynastie",
+    "dynasty": "4. Dynastie",
+    "capital": "Memphis",
+    "government": "Göttliches Königtum mit zentraler Beamtenschaft",
+    "religion": "Sonnenkult (Re), Königskult",
+    "languages": [
+     "Altägyptisch"
     ],
-    "periods": [
-      {
-        "from": -550,
-        "to": -486,
-        "ruler": "Dareios I.",
-        "rulerTitle": "Großkönig, König der Könige",
-        "dynasty": "Achämeniden",
-        "reign": "522–486 v. Chr.",
-        "capital": "Persepolis, Susa, Ekbatana (Wanderhof)",
-        "government": "Satrapienverwaltung mit königlichen Kontrolleuren",
-        "religion": "Mazdaismus; Duldung aller Landeskulte",
-        "languages": [
-          "Altpersisch",
-          "Aramäisch (Reichssprache)",
-          "Elamisch"
-        ],
-        "population": "ca. 25 bis 35 Mio. – etwa ein Sechstel der Menschheit",
-        "economy": "Tributsystem, Königsstraße, geprägte Dareiken",
-        "summary": [
-          "Das erste Reich, das drei Kontinente verbindet: vom Indus bis an die Ägäis, von Ägypten bis nach Zentralasien. Rund 20 Satrapien liefern Tribute, behalten aber Sprache, Religion und Rechtsbrauch.",
-          "Die Königsstraße von Sardes nach Susa ist 2.700 km lang; berittene Kuriere bewältigen sie in einer Woche. Diese Nachrichtengeschwindigkeit bleibt bis in die Neuzeit unerreicht."
-        ],
-        "quote": "Vielfalt als Verwaltungsprinzip – erzwungene Einheit war nicht vorgesehen."
-      },
-      {
-        "from": -485,
-        "to": -330,
-        "ruler": "Artaxerxes II.",
-        "rulerTitle": "Großkönig",
-        "dynasty": "Achämeniden",
-        "reign": "404–358 v. Chr.",
-        "capital": "Susa, Persepolis",
-        "government": "Satrapien mit wachsender Eigenmacht",
-        "religion": "Mazdaismus, Anahita-Kult",
-        "languages": [
-          "Altpersisch",
-          "Aramäisch"
-        ],
-        "population": "ca. 25 Mio.",
-        "economy": "Tribute, Handel zwischen Mittelmeer und Indien",
-        "summary": [
-          "Nach dem Scheitern der Griechenlandzüge verlagert sich die persische Strategie auf Diplomatie und Geld: Der Königsfrieden von 387 v. Chr. macht Persien zum Schiedsrichter über die griechischen Poleis.",
-          "Satrapenaufstände schwächen die Zentralgewalt – als Alexander 334 v. Chr. übersetzt, trifft er auf ein reiches, aber innerlich lockeres Reich."
-        ]
-      }
-    ]
-  },
-  "Greek city-states": {
-    "kind": "Bund unabhängiger Poleis",
-    "wiki": "Polis",
-    "periods": [
-      {
-        "from": -800,
-        "to": -323,
-        "ruler": "Kein gemeinsames Oberhaupt",
-        "rulerTitle": "Volksversammlungen, Archonten, Tyrannen und Könige",
-        "capital": "Athen, Sparta, Korinth, Theben u. a.",
-        "government": "Demokratie, Oligarchie und Königtum nebeneinander",
-        "religion": "Olympische Götterwelt, panhellenische Heiligtümer",
-        "languages": [
-          "Altgriechisch (Dialekte)"
-        ],
-        "population": "ca. 3 Mio. im Kernland",
-        "economy": "Wein, Öl, Töpferwaren, Seehandel, Sklavenarbeit",
-        "summary": [
-          "Griechenland ist in dieser Zeit kein Staat, sondern ein Netz aus mehreren Hundert Poleis, die nur Sprache, Kult und Spiele teilen. Politisch bekämpfen sie einander oft erbittert.",
-          "Athen entwickelt ab 508 v. Chr. die erste Bürgerdemokratie – begrenzt auf freie Männer, aber mit Losverfahren, Rechenschaftspflicht und Volksgericht als bis heute wirksamen Ideen."
-        ]
-      }
-    ]
-  },
-  "Empire of Alexander": {
-    "kind": "Eroberungsreich",
-    "wiki": "Alexanderreich",
-    "founded": -336,
-    "dissolved": -323,
-    "periods": [
-      {
-        "from": -336,
-        "to": -323,
-        "ruler": "Alexander III. von Makedonien",
-        "rulerTitle": "König von Makedonien, Hegemon des Korinthischen Bundes, Großkönig von Asien",
-        "dynasty": "Argeaden",
-        "reign": "336–323 v. Chr.",
-        "capital": "Babylon (geplante Residenz), Pella",
-        "government": "Persönliche Militärmonarchie über persische Satrapien",
-        "religion": "Griechische Götter, Übernahme lokaler Kulte, Herrscherkult",
-        "languages": [
-          "Griechisch (Koine)",
-          "Aramäisch",
-          "Altpersisch"
-        ],
-        "population": "ca. 30 Mio.",
-        "economy": "Erbeutete persische Schatzhäuser, Städtegründungen als Handelsknoten",
-        "summary": [
-          "In elf Jahren erobert Alexander das gesamte Achämenidenreich und stößt bis an den Hyphasis in Indien vor. Sein Reich ist beim Tod 323 v. Chr. das größte, das die Alte Welt bis dahin gesehen hat – und ohne funktionierende Verwaltung.",
-          "Die Nachwirkung übertrifft die Herrschaft bei Weitem: Griechisch wird für Jahrhunderte Verkehrssprache von Ägypten bis Baktrien, die Städtegründungen bleiben Kulturzentren."
-        ],
-        "quote": "Ein Reich, das seinen Gründer nur um Tage überlebte – und dessen Kultur Jahrhunderte."
-      }
-    ]
-  },
-  "Seleucid Kingdom": {
-    "kind": "Diadochenreich",
-    "wiki": "Seleukidenreich",
-    "founded": -312,
-    "dissolved": -63,
-    "periods": [
-      {
-        "from": -312,
-        "to": -223,
-        "ruler": "Seleukos I. Nikator",
-        "rulerTitle": "König",
-        "dynasty": "Seleukiden",
-        "reign": "305–281 v. Chr.",
-        "capital": "Seleukeia am Tigris, später Antiochia",
-        "government": "Hellenistische Monarchie über Satrapien",
-        "religion": "Griechische Kulte neben babylonischen und iranischen",
-        "languages": [
-          "Griechisch",
-          "Aramäisch",
-          "Akkadisch"
-        ],
-        "population": "ca. 20 Mio.",
-        "economy": "Karawanenhandel, Städtegründungen, Münzwirtschaft",
-        "summary": [
-          "Das größte der Diadochenreiche erbt den asiatischen Teil von Alexanders Eroberungen. Seine Schwäche ist die Ausdehnung: Von der Ägäis bis nach Baktrien lässt sich mit antiken Mitteln kaum regieren.",
-          "Seleukos tauscht die indischen Provinzen bei Chandragupta Maurya gegen 500 Kriegselefanten – ein Geschäft, das die Machtverhältnisse im Westen entscheidet."
-        ]
-      },
-      {
-        "from": -222,
-        "to": -63,
-        "ruler": "Antiochos III. der Große",
-        "rulerTitle": "König",
-        "dynasty": "Seleukiden",
-        "reign": "223–187 v. Chr.",
-        "capital": "Antiochia am Orontes",
-        "government": "Monarchie mit zunehmend selbständigen Provinzen",
-        "religion": "Hellenistische Kulte, Konflikt mit dem Judentum",
-        "languages": [
-          "Griechisch",
-          "Aramäisch"
-        ],
-        "population": "ca. 15 Mio.",
-        "economy": "Zölle, Tempelschätze, Fernhandel",
-        "summary": [
-          "Antiochos III. stellt das Reich noch einmal her, unterliegt aber 190 v. Chr. bei Magnesia den Römern. Der Frieden von Apameia beendet die seleukidische Großmachtstellung.",
-          "Der Versuch, den Jerusalemer Tempelkult zu hellenisieren, löst 167 v. Chr. den Makkabäeraufstand aus. 63 v. Chr. macht Pompeius Syrien zur römischen Provinz."
-        ]
-      }
-    ]
-  },
-  "Ptolemaic Kingdom": {
-    "kind": "Diadochenreich",
-    "wiki": "Ptolemäer",
-    "founded": -305,
-    "dissolved": -30,
-    "periods": [
-      {
-        "from": -305,
-        "to": -30,
-        "ruler": "Ptolemaios II. Philadelphos",
-        "rulerTitle": "König von Ägypten, Pharao",
-        "dynasty": "Ptolemäer",
-        "reign": "283–246 v. Chr.",
-        "capital": "Alexandria",
-        "government": "Griechische Monarchie über pharaonischen Verwaltungsapparat",
-        "religion": "Griechisch-ägyptische Mischkulte (Serapis)",
-        "languages": [
-          "Griechisch",
-          "Demotisch"
-        ],
-        "population": "ca. 7 Mio.",
-        "economy": "Staatsmonopole auf Getreide, Öl und Papyrus",
-        "summary": [
-          "Die Ptolemäer regieren Ägypten als griechische Oberschicht und übernehmen zugleich die pharaonische Rolle. Alexandria mit Museion und Bibliothek wird zum Forschungszentrum der antiken Welt.",
-          "Das Reich finanziert sich über eine der am straffsten organisierten Planwirtschaften der Antike – Getreide, Salz und Papyrus sind Staatsmonopole."
-        ]
-      }
-    ]
-  },
-  "Carthaginian Empire": {
-    "kind": "Handelsrepublik mit Kolonialreich",
-    "wiki": "Karthago",
-    "founded": -814,
-    "dissolved": -146,
-    "events": [
-      {
-        "year": -264,
-        "text": "Erster Punischer Krieg gegen Rom beginnt."
-      },
-      {
-        "year": -218,
-        "text": "Hannibal überquert mit Kriegselefanten die Alpen."
-      },
-      {
-        "year": -146,
-        "text": "Rom zerstört Karthago; das Gebiet wird Provinz Africa."
-      }
+    "population": "ca. 1,5 Mio.",
+    "economy": "Staatlich organisierter Getreideanbau, Steinbruchwirtschaft",
+    "summary": [
+     "Das Alte Reich ist die Zeit der großen Pyramiden. Ein zentral gelenkter Staat kann Zehntausende Arbeitskräfte über Jahrzehnte binden – eine Verwaltungsleistung, die vor Ägypten niemand erbracht hat.",
+     "Der Pharao gilt nicht als Vertreter eines Gottes, sondern als Gott in Menschengestalt. Das begründet einen Herrschaftsanspruch, der drei Jahrtausende überdauert."
     ],
-    "periods": [
-      {
-        "from": -814,
-        "to": -146,
-        "ruler": "Jährlich gewählte Sufeten",
-        "rulerTitle": "Sufeten, kontrolliert vom Rat der Hundertvier",
-        "capital": "Karthago (bei Tunis)",
-        "government": "Oligarchische Republik der Handelsfamilien",
-        "religion": "Phönizische Götter, Baal Hammon und Tanit",
-        "languages": [
-          "Punisch",
-          "Berbersprachen",
-          "Griechisch"
-        ],
-        "population": "ca. 3 Mio. im Machtbereich",
-        "economy": "Seehandel, Silberbergbau in Iberien, Landwirtschaft im Hinterland",
-        "summary": [
-          "Karthago beherrscht das westliche Mittelmeer mit Flotte und Handelsverträgen, nicht mit Flächenherrschaft. Aristoteles zählt seine Verfassung zu den vorbildlichen der bekannten Welt.",
-          "Drei Kriege gegen Rom entscheiden, wer das Mittelmeer ordnet. Nach 146 v. Chr. existiert Karthago als Macht nicht mehr – die Quellen zu seiner Geschichte stammen fast ausschließlich von den Siegern."
-        ]
-      }
+    "quote": "Der Nil schuf Ägypten – und Ägypten den Staat."
+   },
+   {
+    "from": -2180,
+    "to": -1551,
+    "kind": "Mittleres Reich",
+    "ruler": "Sesostris III.",
+    "rulerTitle": "Pharao",
+    "dynasty": "12. Dynastie",
+    "capital": "Itj-taui, später Theben",
+    "government": "Zentralmonarchie nach Überwindung der Gaufürsten",
+    "religion": "Aufstieg des Amun-Kults, Osiris-Glaube",
+    "languages": [
+     "Mittelägyptisch"
+    ],
+    "population": "ca. 2 Mio.",
+    "economy": "Fayum-Bewässerung, Goldbergbau in Nubien",
+    "summary": [
+     "Nach einer Zerfallsphase eint das Mittlere Reich das Land erneut und dehnt die Grenze weit nach Nubien aus. Das Mittelägyptische dieser Zeit gilt später als klassische Literatursprache.",
+     "Am Ende dringen die Hyksos aus der Levante ins Delta vor – der erste erfolgreiche Fremdherrschaftsversuch in Ägypten."
     ]
-  },
-  "Roman Republic": {
+   },
+   {
+    "from": -1550,
+    "to": -1070,
+    "kind": "Neues Reich",
+    "ruler": "Ramses II.",
+    "rulerTitle": "Pharao",
+    "dynasty": "19. Dynastie",
+    "reign": "1279–1213 v. Chr.",
+    "capital": "Theben, Residenz Pi-Ramesse",
+    "government": "Militärmonarchie mit mächtiger Amun-Priesterschaft",
+    "religion": "Amun-Re als Reichsgott",
+    "languages": [
+     "Neuägyptisch"
+    ],
+    "population": "ca. 3 bis 4 Mio.",
+    "economy": "Tributwirtschaft, Handel mit Punt und der Ägäis",
+    "summary": [
+     "Ägypten ist Großmacht: Der Machtbereich reicht von Nordsyrien bis zum vierten Nilkatarakt. Die Schlacht bei Kadesch gegen die Hethiter endet 1274 v. Chr. unentschieden und führt zum ersten schriftlich überlieferten Friedensvertrag der Geschichte.",
+     "Der Reichtum aus Tributen finanziert die Tempelanlagen von Karnak, Luxor und Abu Simbel."
+    ]
+   },
+   {
+    "from": -1069,
+    "to": -333,
+    "kind": "Spätzeit",
+    "ruler": "Wechselnde Dynastien, zeitweise Fremdherrscher",
+    "rulerTitle": "Pharao",
+    "capital": "Tanis, Sais, Memphis",
+    "government": "Zersplitterte Königtümer, Perserherrschaft ab 525 v. Chr.",
+    "religion": "Tierkulte, Isis-Verehrung",
+    "languages": [
+     "Demotisch",
+     "Aramäisch"
+    ],
+    "population": "ca. 3 Mio.",
+    "economy": "Getreideexport in den Mittelmeerraum",
+    "summary": [
+     "Libysche, kuschitische, assyrische und persische Herrscher lösen einander ab. Ägypten bleibt kulturell prägend, verliert aber die politische Eigenständigkeit.",
+     "Griechische Söldner und Händler siedeln sich an – die Vorgeschichte der ptolemäischen Epoche."
+    ]
+   },
+   {
+    "from": 1805,
+    "to": 1952,
+    "ruler": "Muhammad Ali Pascha",
+    "rulerTitle": "Wali, später Khedive von Ägypten",
+    "dynasty": "Muhammad-Ali-Dynastie",
+    "reign": "1805–1848",
+    "capital": "Kairo",
+    "government": "Formal osmanische Provinz, faktisch selbständig; ab 1882 britisch besetzt",
+    "religion": "Sunnitischer Islam, koptisches Christentum",
+    "languages": [
+     "Arabisch"
+    ],
+    "population": "ca. 10 Mio.",
+    "economy": "Baumwollexport, Suezkanal ab 1869",
+    "summary": [
+     "Muhammad Ali baut in wenigen Jahrzehnten eine Armee, eine Flotte und Fabriken auf – der erste ernsthafte Modernisierungsversuch im Nahen Osten.",
+     "Der Suezkanal von 1869 verkürzt den Seeweg nach Indien um Wochen. Die Baukosten treiben Ägypten in die Verschuldung und 1882 unter britische Kontrolle."
+    ]
+   },
+   {
+    "from": 1953,
+    "to": null,
     "kind": "Republik",
-    "wiki": "Römische Republik",
-    "founded": -509,
-    "dissolved": -27,
-    "events": [
-      {
-        "year": -509,
-        "text": "Vertreibung des letzten Königs, Beginn der Republik."
-      },
-      {
-        "year": -287,
-        "text": "Lex Hortensia: Beschlüsse der Plebs binden das ganze Volk."
-      },
-      {
-        "year": -146,
-        "text": "Zerstörung Karthagos und Korinths im selben Jahr."
-      },
-      {
-        "year": -44,
-        "text": "Ermordung Caesars an den Iden des März."
-      }
+    "ruler": "Gamal Abdel Nasser, später wechselnde Präsidenten",
+    "rulerTitle": "Präsident der Arabischen Republik Ägypten",
+    "capital": "Kairo",
+    "government": "Präsidiale Republik",
+    "religion": "Sunnitischer Islam; koptisch-orthodoxe Minderheit",
+    "languages": [
+     "Arabisch"
     ],
-    "periods": [
-      {
-        "from": -509,
-        "to": -28,
-        "ruler": "Zwei jährlich gewählte Konsuln",
-        "rulerTitle": "Consules, kontrolliert vom Senat",
-        "capital": "Rom",
-        "government": "Mischverfassung aus Ämteradel, Senat und Volksversammlungen",
-        "religion": "Römische Staatskulte, Auguren und Pontifices",
-        "languages": [
-          "Latein",
-          "Griechisch"
-        ],
-        "population": "ca. 30 Mio. um 100 v. Chr.",
-        "economy": "Ackerbau, Kriegsbeute, Provinzsteuern, Sklavenwirtschaft",
-        "summary": [
-          "Die Republik kennt kein Staatsoberhaupt: Macht wird geteilt, befristet und gegenseitig blockierbar vergeben. Genau dieses System sprengt der Erfolg – ein Weltreich lässt sich mit Jahresämtern nicht verwalten.",
-          "Ab 133 v. Chr. eskalieren die inneren Konflikte: Heeresreform, Bürgerkriege und außerordentliche Kommanden führen zur Alleinherrschaft."
-        ],
-        "quote": "Senatus Populusque Romanus – Senat und Volk von Rom."
-      }
+    "population": "ca. 108 Mio.",
+    "economy": "Suezkanal, Tourismus, Landwirtschaft, Erdgas",
+    "summary": [
+     "1952 stürzen die Freien Offiziere die Monarchie. Nasser verstaatlicht 1956 den Suezkanal und wird zur Leitfigur des arabischen Nationalismus.",
+     "Der Assuan-Hochdamm sichert ab 1970 Bewässerung und Strom – und beendet zugleich die jährliche Nilschwemme, die Ägypten fünf Jahrtausende lang geprägt hatte."
     ]
-  },
-  "Roman Empire": {
-    "kind": "Kaiserreich",
-    "wiki": "Römisches Reich",
-    "founded": -27,
-    "dissolved": 476,
-    "events": [
-      {
-        "year": -27,
-        "text": "Octavian erhält den Ehrennamen Augustus; Beginn des Prinzipats."
-      },
-      {
-        "year": 117,
-        "text": "Größte Ausdehnung unter Trajan."
-      },
-      {
-        "year": 212,
-        "text": "Constitutio Antoniniana: Bürgerrecht für fast alle Reichsbewohner."
-      },
-      {
-        "year": 313,
-        "text": "Mailänder Vereinbarung: Religionsfreiheit für Christen."
-      },
-      {
-        "year": 395,
-        "text": "Endgültige Teilung in West- und Ostreich."
-      }
+   }
+  ]
+ },
+ "Hittites": {
+  "kind": "Großreich Anatoliens",
+  "wiki": "Hethiter",
+  "founded": -1650,
+  "dissolved": -700,
+  "periods": [
+   {
+    "from": -1650,
+    "to": -1178,
+    "ruler": "Šuppiluliuma I.",
+    "rulerTitle": "Großkönig von Ḫatti",
+    "capital": "Ḫattuša (bei Boğazkale)",
+    "government": "Lehnsartiges Großkönigtum über Vasallenstaaten",
+    "religion": "Vielgötterei, „Land der tausend Götter“",
+    "languages": [
+     "Hethitisch",
+     "Luwisch",
+     "Akkadisch (Diplomatie)"
     ],
-    "periods": [
-      {
-        "from": -27,
-        "to": 68,
-        "ruler": "Augustus",
-        "rulerTitle": "Princeps, Imperator Caesar Augustus",
-        "dynasty": "Julisch-claudische Dynastie",
-        "reign": "27 v. Chr. – 14 n. Chr.",
-        "capital": "Rom",
-        "government": "Prinzipat – Monarchie in republikanischer Verkleidung",
-        "religion": "Staatskult, beginnender Kaiserkult",
-        "languages": [
-          "Latein",
-          "Griechisch"
-        ],
-        "population": "ca. 45 bis 60 Mio.",
-        "economy": "Getreide aus Ägypten und Africa, Straßennetz, einheitliche Silberwährung",
-        "summary": [
-          "Augustus beendet ein Jahrhundert Bürgerkrieg, ohne die Republik formal abzuschaffen. Er hält keine Königswürde, sondern häuft republikanische Amtsbefugnisse an – und wird dadurch unangreifbar.",
-          "Die folgende Pax Romana bringt zwei Jahrhunderte weitgehend ungestörten Handels im gesamten Mittelmeerraum."
-        ]
-      },
-      {
-        "from": 69,
-        "to": 192,
-        "ruler": "Trajan",
-        "rulerTitle": "Imperator Caesar Augustus",
-        "dynasty": "Adoptivkaiser",
-        "reign": "98–117",
-        "capital": "Rom",
-        "government": "Prinzipat mit Adoptionsnachfolge",
-        "religion": "Staatskult; Christen als kleine, geduldete bis verfolgte Minderheit",
-        "languages": [
-          "Latein",
-          "Griechisch"
-        ],
-        "population": "ca. 60 bis 70 Mio.",
-        "economy": "Reichsweiter Binnenhandel, 80.000 km Straßennetz, Bergbau in Dakien und Iberien",
-        "summary": [
-          "Unter Trajan erreicht das Reich seine größte Ausdehnung: von Schottland bis an den Persischen Golf. Über 60 Millionen Menschen leben unter einer Verwaltung, einer Währung und einem Rechtssystem.",
-          "Sein Nachfolger Hadrian gibt die östlichen Neuerwerbungen wieder auf und sichert stattdessen die Grenzen – eine bewusste Entscheidung gegen weitere Expansion."
-        ],
-        "quote": "Alle Wege führen nach Rom – und alle Steuern ebenfalls."
-      },
-      {
-        "from": 193,
-        "to": 284,
-        "ruler": "Septimius Severus",
-        "rulerTitle": "Imperator Caesar Augustus",
-        "dynasty": "Severer",
-        "reign": "193–211",
-        "capital": "Rom",
-        "government": "Militärmonarchie; die Legionen bestimmen die Nachfolge",
-        "religion": "Synkretistische Kulte, Sol Invictus, wachsende Christengemeinden",
-        "languages": [
-          "Latein",
-          "Griechisch",
-          "Punisch",
-          "Aramäisch"
-        ],
-        "population": "ca. 60 Mio., danach durch Seuchen sinkend",
-        "economy": "Münzverschlechterung, steigende Militärausgaben",
-        "summary": [
-          "Der aus Nordafrika stammende Septimius Severus stützt sich offen auf das Heer. Sein Rat an die Söhne – die Soldaten zu bereichern und alle anderen zu ignorieren – beschreibt das Jahrhundert treffend.",
-          "212 erhalten fast alle freien Reichsbewohner das Bürgerrecht. Es folgt die Reichskrise des 3. Jahrhunderts mit Usurpatoren, Pest und Grenzeinbrüchen."
-        ]
-      },
-      {
-        "from": 285,
-        "to": 394,
-        "ruler": "Diokletian",
-        "rulerTitle": "Augustus",
-        "dynasty": "Tetrarchie",
-        "reign": "284–305",
-        "capital": "Nikomedia, Mailand, Trier, Sirmium",
-        "government": "Tetrarchie – zwei Augusti und zwei Caesares",
-        "religion": "Staatskult, letzte große Christenverfolgung, ab 313 Duldung",
-        "languages": [
-          "Latein",
-          "Griechisch"
-        ],
-        "population": "ca. 50 Mio.",
-        "economy": "Höchstpreisedikt, Naturalsteuern, Zwangsberufe",
-        "summary": [
-          "Diokletian teilt die Last der Herrschaft auf vier Schultern und trennt zivile von militärischer Gewalt. Rom hört auf, Residenz zu sein – die Kaiser regieren dort, wo die Grenzen bedroht sind.",
-          "Konstantin vereint das Reich noch einmal, verlegt 330 die Hauptstadt nach Konstantinopel und öffnet dem Christentum den Weg zur Staatsreligion."
-        ]
-      }
+    "population": "ca. 1 Mio.",
+    "economy": "Getreide, Pferdezucht, früher Eisenverhüttung",
+    "summary": [
+     "Die Hethiter sind die dritte Großmacht der späten Bronzezeit neben Ägypten und Babylonien. Ihr Recht gilt als vergleichsweise milde: Körperstrafen sind selten, Schadensersatz die Regel.",
+     "Um 1178 v. Chr. bricht das Reich im Zuge des Bronzezeitkollapses zusammen – Hungersnöte, Wanderungsbewegungen und der Zusammenbruch der Handelsnetze treffen zusammen."
     ]
-  },
-  "Rome (Diocletianus)": {
-    "kind": "Tetrarchisches Teilreich",
-    "wiki": "Diokletian",
-    "periods": [
-      {
-        "from": 284,
-        "to": 305,
-        "ruler": "Diokletian",
-        "rulerTitle": "Augustus des Ostens",
-        "capital": "Nikomedia",
-        "government": "Tetrarchie",
-        "religion": "Staatskult, Christenverfolgung ab 303",
-        "languages": [
-          "Griechisch",
-          "Latein"
-        ],
-        "summary": "Der östliche Reichsteil unter dem Senior-Augustus Diokletian: Ägypten, Syrien, Kleinasien und der Balkanraum – wirtschaftlich der stärkere Teil des Reiches."
-      }
-    ]
-  },
-  "Rome (Maximian)": {
-    "kind": "Tetrarchisches Teilreich",
-    "wiki": "Maximian",
-    "periods": [
-      {
-        "from": 286,
-        "to": 305,
-        "ruler": "Maximian",
-        "rulerTitle": "Augustus des Westens",
-        "capital": "Mailand",
-        "government": "Tetrarchie",
-        "religion": "Staatskult",
-        "languages": [
-          "Latein"
-        ],
-        "summary": "Italien, Africa und Hispanien unter dem westlichen Augustus. Die Aufgabenteilung sollte die Grenzverteidigung an Rhein und Donau von der am Euphrat entlasten."
-      }
-    ]
-  },
-  "Western Roman Empire": {
-    "kind": "Teilreich",
-    "wiki": "Weströmisches Reich",
-    "founded": 395,
-    "dissolved": 476,
-    "periods": [
-      {
-        "from": 395,
-        "to": 476,
-        "ruler": "Honorius",
-        "rulerTitle": "Weströmischer Kaiser",
-        "dynasty": "Theodosianische Dynastie",
-        "reign": "395–423",
-        "capital": "Ravenna (ab 402), zuvor Mailand",
-        "government": "Kaisertum unter Kontrolle germanischer Heermeister",
-        "religion": "Nicaenisches Christentum als Staatsreligion",
-        "languages": [
-          "Latein",
-          "Gotisch"
-        ],
-        "population": "ca. 20 Mio., stark rückläufig",
-        "economy": "Zusammenbrechende Steuerbasis, Verlust Nordafrikas an die Vandalen",
-        "summary": [
-          "Der Westen verliert Provinz um Provinz, weniger durch Eroberung als durch Ansiedlungsverträge mit germanischen Verbänden, die sich verselbständigen. 410 plündern Westgoten Rom – ein Schock ohne militärische Bedeutung.",
-          "476 setzt Odoaker den letzten Kaiser ab und schickt die Insignien nach Konstantinopel. Zeitgenossen empfanden das kaum als Epochenbruch: Verwaltung, Recht und Kirche liefen weiter."
-        ]
-      }
-    ]
-  },
-  "Eastern Roman Empire": {
-    "kind": "Teilreich",
-    "wiki": "Byzantinisches Reich",
-    "founded": 395,
-    "periods": [
-      {
-        "from": 395,
-        "to": 491,
-        "ruler": "Arcadius",
-        "rulerTitle": "Oströmischer Kaiser",
-        "dynasty": "Theodosianische Dynastie",
-        "reign": "395–408",
-        "capital": "Konstantinopel",
-        "government": "Kaisertum mit ausgebautem Beamtenapparat",
-        "religion": "Christentum, Streit um die Natur Christi",
-        "languages": [
-          "Griechisch",
-          "Latein"
-        ],
-        "population": "ca. 20 Mio.",
-        "economy": "Ägyptisches Getreide, Seidenhandel, stabile Goldwährung",
-        "summary": [
-          "Der Osten übersteht die Völkerwanderung: Er ist wohlhabender, städtischer und besitzt in Konstantinopel eine praktisch uneinnehmbare Hauptstadt.",
-          "Die theodosianische Landmauer von 413 hält über tausend Jahre – bis 1453."
-        ]
-      },
-      {
-        "from": 492,
-        "to": 640,
-        "ruler": "Justinian I.",
-        "rulerTitle": "Kaiser (Basileus)",
-        "dynasty": "Justinianische Dynastie",
-        "reign": "527–565",
-        "capital": "Konstantinopel",
-        "government": "Kaisertum mit kodifiziertem Recht",
-        "religion": "Orthodoxes Christentum als Staatsreligion",
-        "languages": [
-          "Griechisch",
-          "Latein"
-        ],
-        "population": "ca. 26 Mio., nach der Pest von 541 stark sinkend",
-        "economy": "Seidenproduktion nach Schmuggel der Seidenraupe, Fernhandel",
-        "summary": [
-          "Justinian erobert Nordafrika, Italien und Südspanien zurück und lässt das römische Recht im Corpus Iuris Civilis ordnen – die Grundlage der europäischen Rechtsgeschichte.",
-          "Die Kosten sind erdrückend: Die justinianische Pest ab 541 kostet Millionen Menschenleben und macht die Eroberungen unhaltbar."
-        ],
-        "quote": "Die Hagia Sophia von 537 blieb tausend Jahre lang der größte Kuppelbau der Welt."
-      },
-      {
-        "from": 641,
-        "to": 800,
-        "ruler": "Leon III.",
-        "rulerTitle": "Kaiser",
-        "dynasty": "Syrische Dynastie",
-        "reign": "717–741",
-        "capital": "Konstantinopel",
-        "government": "Themenverfassung – Militärbezirke mit Wehrbauern",
-        "religion": "Orthodoxie, Bilderstreit ab 726",
-        "languages": [
-          "Griechisch"
-        ],
-        "population": "ca. 8 bis 10 Mio.",
-        "economy": "Schrumpfende Städte, Naturalwirtschaft, Seidenmonopol",
-        "summary": [
-          "Nach dem Verlust Syriens, Ägyptens und Nordafrikas an die Araber überlebt das Reich als griechisch geprägter Militärstaat. Die Belagerung Konstantinopels 717/18 scheitert am Griechischen Feuer.",
-          "Der Bilderstreit spaltet das Reich über ein Jahrhundert und entfremdet es dem lateinischen Westen."
-        ]
-      }
-    ]
-  },
-  "Parthian Empire": {
-    "kind": "Großreich",
-    "wiki": "Partherreich",
-    "founded": -247,
-    "dissolved": 224,
-    "periods": [
-      {
-        "from": -247,
-        "to": 224,
-        "ruler": "Mithridates II.",
-        "rulerTitle": "König der Könige",
-        "dynasty": "Arsakiden",
-        "reign": "124–88 v. Chr.",
-        "capital": "Ktesiphon",
-        "government": "Lockerer Verband adliger Großfamilien unter einem Großkönig",
-        "religion": "Iranische Kulte, hellenistische Einflüsse",
-        "languages": [
-          "Parthisch",
-          "Griechisch",
-          "Aramäisch"
-        ],
-        "population": "ca. 15 Mio.",
-        "economy": "Zölle auf der Seidenstraße, Pferdezucht",
-        "summary": [
-          "Die Parther beherrschen den Landweg zwischen Rom und China und leben von den Zöllen. Ihre berittenen Bogenschützen mit dem berühmten „Parthenschuss“ vernichten 53 v. Chr. bei Carrhae ein römisches Heer.",
-          "Die Adelsfamilien besitzen eigene Truppen und wählen den König mit – das macht das Reich beweglich, aber innenpolitisch instabil."
-        ]
-      }
-    ]
-  },
-  "Sasanian Empire": {
-    "kind": "Großreich",
-    "wiki": "Sasanidenreich",
-    "founded": 224,
-    "dissolved": 651,
-    "events": [
-      {
-        "year": 260,
-        "text": "Schapur I. nimmt Kaiser Valerian gefangen."
-      },
-      {
-        "year": 531,
-        "text": "Chosrau I. beginnt eine tiefgreifende Steuer- und Heeresreform."
-      },
-      {
-        "year": 636,
-        "text": "Niederlage bei Kadesia gegen die arabischen Heere."
-      }
+   }
+  ],
+  "_datierung": "Nach dem Großreich (bis 1178 v. Chr.) bestanden die späthethitischen Fürstentümer bis um 700 v. Chr."
+ },
+ "Achaemenid Empire": {
+  "kind": "Weltreich",
+  "wiki": "Achämenidenreich",
+  "founded": -550,
+  "dissolved": -330,
+  "events": [
+   {
+    "year": -539,
+    "text": "Kyros II. erobert Babylon und erlaubt den Judäern die Rückkehr."
+   },
+   {
+    "year": -490,
+    "text": "Niederlage bei Marathon gegen die Athener."
+   },
+   {
+    "year": -480,
+    "text": "Seeschlacht von Salamis beendet den Zug gegen Griechenland."
+   },
+   {
+    "year": -330,
+    "text": "Alexander besiegt Dareios III.; das Reich geht unter."
+   }
+  ],
+  "periods": [
+   {
+    "from": -550,
+    "to": -486,
+    "ruler": "Dareios I.",
+    "rulerTitle": "Großkönig, König der Könige",
+    "dynasty": "Achämeniden",
+    "reign": "522–486 v. Chr.",
+    "capital": "Persepolis, Susa, Ekbatana (Wanderhof)",
+    "government": "Satrapienverwaltung mit königlichen Kontrolleuren",
+    "religion": "Mazdaismus; Duldung aller Landeskulte",
+    "languages": [
+     "Altpersisch",
+     "Aramäisch (Reichssprache)",
+     "Elamisch"
     ],
-    "periods": [
-      {
-        "from": 224,
-        "to": 651,
-        "ruler": "Chosrau I. Anuschirwan",
-        "rulerTitle": "Šāhān Šāh – König der Könige von Iran und Nicht-Iran",
-        "dynasty": "Sasaniden",
-        "reign": "531–579",
-        "capital": "Ktesiphon",
-        "government": "Zentralisierte Monarchie mit Staatskirche",
-        "religion": "Zoroastrismus als Staatsreligion; Christen und Juden geduldet",
-        "languages": [
-          "Mittelpersisch",
-          "Aramäisch",
-          "Syrisch"
-        ],
-        "population": "ca. 20 Mio.",
-        "economy": "Bewässerungslandwirtschaft in Mesopotamien, Seidenhandel, Silberprägung",
-        "summary": [
-          "Die Sasaniden verstehen sich als Erben der Achämeniden und sind über vier Jahrhunderte Roms ebenbürtiger Gegner. Chosrau I. reformiert Steuer- und Heerwesen und macht Ktesiphon zum Zentrum der Gelehrsamkeit.",
-          "Der Dauerkrieg mit Byzanz erschöpft beide Reiche. Als 636 die arabischen Heere anrücken, bricht der Staat binnen weniger Jahre zusammen."
-        ],
-        "quote": "Zwei Großmächte kämpften sich gegenseitig so schwach, dass eine dritte beide überholte."
-      }
+    "population": "ca. 25 bis 35 Mio. – etwa ein Sechstel der Menschheit",
+    "economy": "Tributsystem, Königsstraße, geprägte Dareiken",
+    "summary": [
+     "Das erste Reich, das drei Kontinente verbindet: vom Indus bis an die Ägäis, von Ägypten bis nach Zentralasien. Rund 20 Satrapien liefern Tribute, behalten aber Sprache, Religion und Rechtsbrauch.",
+     "Die Königsstraße von Sardes nach Susa ist 2.700 km lang; berittene Kuriere bewältigen sie in einer Woche. Diese Nachrichtengeschwindigkeit bleibt bis in die Neuzeit unerreicht."
+    ],
+    "quote": "Vielfalt als Verwaltungsprinzip – erzwungene Einheit war nicht vorgesehen."
+   },
+   {
+    "from": -485,
+    "to": -330,
+    "ruler": "Artaxerxes II.",
+    "rulerTitle": "Großkönig",
+    "dynasty": "Achämeniden",
+    "reign": "404–358 v. Chr.",
+    "capital": "Susa, Persepolis",
+    "government": "Satrapien mit wachsender Eigenmacht",
+    "religion": "Mazdaismus, Anahita-Kult",
+    "languages": [
+     "Altpersisch",
+     "Aramäisch"
+    ],
+    "population": "ca. 25 Mio.",
+    "economy": "Tribute, Handel zwischen Mittelmeer und Indien",
+    "summary": [
+     "Nach dem Scheitern der Griechenlandzüge verlagert sich die persische Strategie auf Diplomatie und Geld: Der Königsfrieden von 387 v. Chr. macht Persien zum Schiedsrichter über die griechischen Poleis.",
+     "Satrapenaufstände schwächen die Zentralgewalt – als Alexander 334 v. Chr. übersetzt, trifft er auf ein reiches, aber innerlich lockeres Reich."
     ]
-  },
-  "Meroe": {
-    "kind": "Königreich",
-    "wiki": "Reich von Meroe",
-    "founded": -300,
-    "dissolved": 350,
-    "periods": [
-      {
-        "from": -300,
-        "to": 350,
-        "ruler": "Amanirenas",
-        "rulerTitle": "Kandake – regierende Königin",
-        "capital": "Meroe am Nil",
-        "government": "Königtum mit starker Stellung der Königinmutter",
-        "religion": "Amun und Apedemak, eigener Löwengott",
-        "languages": [
-          "Meroitisch",
-          "Ägyptisch"
-        ],
-        "population": "einige Hunderttausend",
-        "economy": "Eisenverhüttung, Gold, Elfenbein, Karawanenhandel",
-        "summary": [
-          "Meroe ist eines der bedeutendsten Eisenzentren Afrikas und betreibt eigene Schriftlichkeit – das Meroitische ist bis heute nur teilweise entziffert.",
-          "Um 24 v. Chr. führt die Kandake Amanirenas Krieg gegen Rom und erreicht einen für Meroe günstigen Frieden mit Steuerbefreiung."
-        ]
-      }
+   }
+  ]
+ },
+ "Greek city-states": {
+  "kind": "Bund unabhängiger Poleis",
+  "wiki": "Polis",
+  "periods": [
+   {
+    "from": -800,
+    "to": -323,
+    "ruler": "Kein gemeinsames Oberhaupt",
+    "rulerTitle": "Volksversammlungen, Archonten, Tyrannen und Könige",
+    "capital": "Athen, Sparta, Korinth, Theben u. a.",
+    "government": "Demokratie, Oligarchie und Königtum nebeneinander",
+    "religion": "Olympische Götterwelt, panhellenische Heiligtümer",
+    "languages": [
+     "Altgriechisch (Dialekte)"
+    ],
+    "population": "ca. 3 Mio. im Kernland",
+    "economy": "Wein, Öl, Töpferwaren, Seehandel, Sklavenarbeit",
+    "summary": [
+     "Griechenland ist in dieser Zeit kein Staat, sondern ein Netz aus mehreren Hundert Poleis, die nur Sprache, Kult und Spiele teilen. Politisch bekämpfen sie einander oft erbittert.",
+     "Athen entwickelt ab 508 v. Chr. die erste Bürgerdemokratie – begrenzt auf freie Männer, aber mit Losverfahren, Rechenschaftspflicht und Volksgericht als bis heute wirksamen Ideen."
     ]
-  },
-  "Axum": {
-    "kind": "Handelsreich",
-    "wiki": "Aksumitisches Reich",
-    "founded": 100,
-    "dissolved": 940,
-    "periods": [
-      {
-        "from": 100,
-        "to": 940,
-        "ruler": "Ezana",
-        "rulerTitle": "Negus – König von Aksum",
-        "reign": "ca. 320–360",
-        "capital": "Aksum",
-        "government": "Königtum über tributpflichtige Fürstentümer",
-        "religion": "Ab ca. 340 Christentum als Staatsreligion",
-        "languages": [
-          "Ge'ez",
-          "Griechisch"
-        ],
-        "population": "ca. 1 Mio.",
-        "economy": "Rotmeerhandel mit Rom und Indien, Elfenbein, Weihrauch, Gold",
-        "summary": [
-          "Ein persischer Autor des 3. Jahrhunderts zählt Aksum zu den vier Großreichen der Welt – neben Rom, Persien und China. Es prägt als erster afrikanischer Staat südlich der Sahara eigene Münzen.",
-          "König Ezana lässt sich um 340 taufen; die äthiopisch-orthodoxe Kirche geht ununterbrochen auf diese Zeit zurück."
-        ]
-      }
+   }
+  ]
+ },
+ "Empire of Alexander": {
+  "kind": "Eroberungsreich",
+  "wiki": "Alexanderreich",
+  "founded": -336,
+  "dissolved": -323,
+  "periods": [
+   {
+    "from": -336,
+    "to": -323,
+    "ruler": "Alexander III. von Makedonien",
+    "rulerTitle": "König von Makedonien, Hegemon des Korinthischen Bundes, Großkönig von Asien",
+    "dynasty": "Argeaden",
+    "reign": "336–323 v. Chr.",
+    "capital": "Babylon (geplante Residenz), Pella",
+    "government": "Persönliche Militärmonarchie über persische Satrapien",
+    "religion": "Griechische Götter, Übernahme lokaler Kulte, Herrscherkult",
+    "languages": [
+     "Griechisch (Koine)",
+     "Aramäisch",
+     "Altpersisch"
+    ],
+    "population": "ca. 30 Mio.",
+    "economy": "Erbeutete persische Schatzhäuser, Städtegründungen als Handelsknoten",
+    "summary": [
+     "In elf Jahren erobert Alexander das gesamte Achämenidenreich und stößt bis an den Hyphasis in Indien vor. Sein Reich ist beim Tod 323 v. Chr. das größte, das die Alte Welt bis dahin gesehen hat – und ohne funktionierende Verwaltung.",
+     "Die Nachwirkung übertrifft die Herrschaft bei Weitem: Griechisch wird für Jahrhunderte Verkehrssprache von Ägypten bis Baktrien, die Städtegründungen bleiben Kulturzentren."
+    ],
+    "quote": "Ein Reich, das seinen Gründer nur um Tage überlebte – und dessen Kultur Jahrhunderte."
+   }
+  ]
+ },
+ "Seleucid Kingdom": {
+  "kind": "Diadochenreich",
+  "wiki": "Seleukidenreich",
+  "founded": -312,
+  "dissolved": -63,
+  "periods": [
+   {
+    "from": -312,
+    "to": -223,
+    "ruler": "Seleukos I. Nikator",
+    "rulerTitle": "König",
+    "dynasty": "Seleukiden",
+    "reign": "305–281 v. Chr.",
+    "capital": "Seleukeia am Tigris, später Antiochia",
+    "government": "Hellenistische Monarchie über Satrapien",
+    "religion": "Griechische Kulte neben babylonischen und iranischen",
+    "languages": [
+     "Griechisch",
+     "Aramäisch",
+     "Akkadisch"
+    ],
+    "population": "ca. 20 Mio.",
+    "economy": "Karawanenhandel, Städtegründungen, Münzwirtschaft",
+    "summary": [
+     "Das größte der Diadochenreiche erbt den asiatischen Teil von Alexanders Eroberungen. Seine Schwäche ist die Ausdehnung: Von der Ägäis bis nach Baktrien lässt sich mit antiken Mitteln kaum regieren.",
+     "Seleukos tauscht die indischen Provinzen bei Chandragupta Maurya gegen 500 Kriegselefanten – ein Geschäft, das die Machtverhältnisse im Westen entscheidet."
     ]
-  },
-  "Hunnic Empire": {
-    "kind": "Steppenreich",
-    "wiki": "Hunnen",
-    "founded": 370,
-    "dissolved": 469,
-    "periods": [
-      {
-        "from": 370,
-        "to": 469,
-        "ruler": "Attila",
-        "rulerTitle": "König der Hunnen",
-        "reign": "434–453",
-        "capital": "Wanderhof in der ungarischen Tiefebene",
-        "government": "Persönliche Gefolgschaftsherrschaft über unterworfene Völker",
-        "religion": "Steppenreligiöse Vorstellungen",
-        "languages": [
-          "Hunnisch",
-          "Gotisch",
-          "Latein"
-        ],
-        "population": "schwer schätzbar, wenige Hunderttausend Krieger und Angehörige",
-        "economy": "Tribute aus Ostrom, Beute, Viehwirtschaft",
-        "summary": [
-          "Die Hunnen stoßen ab 375 in den Donauraum vor und setzen die germanischen Wanderungen in Bewegung – ihre größte Wirkung ist indirekt.",
-          "Attila presst Ostrom jährliche Goldtribute ab. Nach seinem Tod 453 zerfällt der Verband binnen weniger Jahre, weil er allein auf seiner Person beruhte."
-        ]
-      }
+   },
+   {
+    "from": -222,
+    "to": -63,
+    "ruler": "Antiochos III. der Große",
+    "rulerTitle": "König",
+    "dynasty": "Seleukiden",
+    "reign": "223–187 v. Chr.",
+    "capital": "Antiochia am Orontes",
+    "government": "Monarchie mit zunehmend selbständigen Provinzen",
+    "religion": "Hellenistische Kulte, Konflikt mit dem Judentum",
+    "languages": [
+     "Griechisch",
+     "Aramäisch"
+    ],
+    "population": "ca. 15 Mio.",
+    "economy": "Zölle, Tempelschätze, Fernhandel",
+    "summary": [
+     "Antiochos III. stellt das Reich noch einmal her, unterliegt aber 190 v. Chr. bei Magnesia den Römern. Der Frieden von Apameia beendet die seleukidische Großmachtstellung.",
+     "Der Versuch, den Jerusalemer Tempelkult zu hellenisieren, löst 167 v. Chr. den Makkabäeraufstand aus. 63 v. Chr. macht Pompeius Syrien zur römischen Provinz."
     ]
-  }
+   }
+  ]
+ },
+ "Ptolemaic Kingdom": {
+  "kind": "Diadochenreich",
+  "wiki": "Ptolemäer",
+  "founded": -305,
+  "dissolved": -30,
+  "periods": [
+   {
+    "from": -305,
+    "to": -30,
+    "ruler": "Ptolemaios II. Philadelphos",
+    "rulerTitle": "König von Ägypten, Pharao",
+    "dynasty": "Ptolemäer",
+    "reign": "283–246 v. Chr.",
+    "capital": "Alexandria",
+    "government": "Griechische Monarchie über pharaonischen Verwaltungsapparat",
+    "religion": "Griechisch-ägyptische Mischkulte (Serapis)",
+    "languages": [
+     "Griechisch",
+     "Demotisch"
+    ],
+    "population": "ca. 7 Mio.",
+    "economy": "Staatsmonopole auf Getreide, Öl und Papyrus",
+    "summary": [
+     "Die Ptolemäer regieren Ägypten als griechische Oberschicht und übernehmen zugleich die pharaonische Rolle. Alexandria mit Museion und Bibliothek wird zum Forschungszentrum der antiken Welt.",
+     "Das Reich finanziert sich über eine der am straffsten organisierten Planwirtschaften der Antike – Getreide, Salz und Papyrus sind Staatsmonopole."
+    ]
+   }
+  ]
+ },
+ "Carthaginian Empire": {
+  "kind": "Handelsrepublik mit Kolonialreich",
+  "wiki": "Karthago",
+  "founded": -814,
+  "dissolved": -146,
+  "events": [
+   {
+    "year": -264,
+    "text": "Erster Punischer Krieg gegen Rom beginnt."
+   },
+   {
+    "year": -218,
+    "text": "Hannibal überquert mit Kriegselefanten die Alpen."
+   },
+   {
+    "year": -146,
+    "text": "Rom zerstört Karthago; das Gebiet wird Provinz Africa."
+   }
+  ],
+  "periods": [
+   {
+    "from": -814,
+    "to": -146,
+    "ruler": "Jährlich gewählte Sufeten",
+    "rulerTitle": "Sufeten, kontrolliert vom Rat der Hundertvier",
+    "capital": "Karthago (bei Tunis)",
+    "government": "Oligarchische Republik der Handelsfamilien",
+    "religion": "Phönizische Götter, Baal Hammon und Tanit",
+    "languages": [
+     "Punisch",
+     "Berbersprachen",
+     "Griechisch"
+    ],
+    "population": "ca. 3 Mio. im Machtbereich",
+    "economy": "Seehandel, Silberbergbau in Iberien, Landwirtschaft im Hinterland",
+    "summary": [
+     "Karthago beherrscht das westliche Mittelmeer mit Flotte und Handelsverträgen, nicht mit Flächenherrschaft. Aristoteles zählt seine Verfassung zu den vorbildlichen der bekannten Welt.",
+     "Drei Kriege gegen Rom entscheiden, wer das Mittelmeer ordnet. Nach 146 v. Chr. existiert Karthago als Macht nicht mehr – die Quellen zu seiner Geschichte stammen fast ausschließlich von den Siegern."
+    ]
+   }
+  ]
+ },
+ "Roman Republic": {
+  "kind": "Republik",
+  "wiki": "Römische Republik",
+  "founded": -509,
+  "dissolved": -27,
+  "events": [
+   {
+    "year": -509,
+    "text": "Vertreibung des letzten Königs, Beginn der Republik."
+   },
+   {
+    "year": -287,
+    "text": "Lex Hortensia: Beschlüsse der Plebs binden das ganze Volk."
+   },
+   {
+    "year": -146,
+    "text": "Zerstörung Karthagos und Korinths im selben Jahr."
+   },
+   {
+    "year": -44,
+    "text": "Ermordung Caesars an den Iden des März."
+   }
+  ],
+  "periods": [
+   {
+    "from": -509,
+    "to": -28,
+    "ruler": "Zwei jährlich gewählte Konsuln",
+    "rulerTitle": "Consules, kontrolliert vom Senat",
+    "capital": "Rom",
+    "government": "Mischverfassung aus Ämteradel, Senat und Volksversammlungen",
+    "religion": "Römische Staatskulte, Auguren und Pontifices",
+    "languages": [
+     "Latein",
+     "Griechisch"
+    ],
+    "population": "ca. 30 Mio. um 100 v. Chr.",
+    "economy": "Ackerbau, Kriegsbeute, Provinzsteuern, Sklavenwirtschaft",
+    "summary": [
+     "Die Republik kennt kein Staatsoberhaupt: Macht wird geteilt, befristet und gegenseitig blockierbar vergeben. Genau dieses System sprengt der Erfolg – ein Weltreich lässt sich mit Jahresämtern nicht verwalten.",
+     "Ab 133 v. Chr. eskalieren die inneren Konflikte: Heeresreform, Bürgerkriege und außerordentliche Kommanden führen zur Alleinherrschaft."
+    ],
+    "quote": "Senatus Populusque Romanus – Senat und Volk von Rom."
+   }
+  ]
+ },
+ "Roman Empire": {
+  "kind": "Kaiserreich",
+  "wiki": "Römisches Reich",
+  "founded": -509,
+  "dissolved": 476,
+  "events": [
+   {
+    "year": -27,
+    "text": "Octavian erhält den Ehrennamen Augustus; Beginn des Prinzipats."
+   },
+   {
+    "year": 117,
+    "text": "Größte Ausdehnung unter Trajan."
+   },
+   {
+    "year": 212,
+    "text": "Constitutio Antoniniana: Bürgerrecht für fast alle Reichsbewohner."
+   },
+   {
+    "year": 313,
+    "text": "Mailänder Vereinbarung: Religionsfreiheit für Christen."
+   },
+   {
+    "year": 395,
+    "text": "Endgültige Teilung in West- und Ostreich."
+   }
+  ],
+  "periods": [
+   {
+    "from": -27,
+    "to": 68,
+    "ruler": "Augustus",
+    "rulerTitle": "Princeps, Imperator Caesar Augustus",
+    "dynasty": "Julisch-claudische Dynastie",
+    "reign": "27 v. Chr. – 14 n. Chr.",
+    "capital": "Rom",
+    "government": "Prinzipat – Monarchie in republikanischer Verkleidung",
+    "religion": "Staatskult, beginnender Kaiserkult",
+    "languages": [
+     "Latein",
+     "Griechisch"
+    ],
+    "population": "ca. 45 bis 60 Mio.",
+    "economy": "Getreide aus Ägypten und Africa, Straßennetz, einheitliche Silberwährung",
+    "summary": [
+     "Augustus beendet ein Jahrhundert Bürgerkrieg, ohne die Republik formal abzuschaffen. Er hält keine Königswürde, sondern häuft republikanische Amtsbefugnisse an – und wird dadurch unangreifbar.",
+     "Die folgende Pax Romana bringt zwei Jahrhunderte weitgehend ungestörten Handels im gesamten Mittelmeerraum."
+    ]
+   },
+   {
+    "from": 69,
+    "to": 192,
+    "ruler": "Trajan",
+    "rulerTitle": "Imperator Caesar Augustus",
+    "dynasty": "Adoptivkaiser",
+    "reign": "98–117",
+    "capital": "Rom",
+    "government": "Prinzipat mit Adoptionsnachfolge",
+    "religion": "Staatskult; Christen als kleine, geduldete bis verfolgte Minderheit",
+    "languages": [
+     "Latein",
+     "Griechisch"
+    ],
+    "population": "ca. 60 bis 70 Mio.",
+    "economy": "Reichsweiter Binnenhandel, 80.000 km Straßennetz, Bergbau in Dakien und Iberien",
+    "summary": [
+     "Unter Trajan erreicht das Reich seine größte Ausdehnung: von Schottland bis an den Persischen Golf. Über 60 Millionen Menschen leben unter einer Verwaltung, einer Währung und einem Rechtssystem.",
+     "Sein Nachfolger Hadrian gibt die östlichen Neuerwerbungen wieder auf und sichert stattdessen die Grenzen – eine bewusste Entscheidung gegen weitere Expansion."
+    ],
+    "quote": "Alle Wege führen nach Rom – und alle Steuern ebenfalls."
+   },
+   {
+    "from": 193,
+    "to": 284,
+    "ruler": "Septimius Severus",
+    "rulerTitle": "Imperator Caesar Augustus",
+    "dynasty": "Severer",
+    "reign": "193–211",
+    "capital": "Rom",
+    "government": "Militärmonarchie; die Legionen bestimmen die Nachfolge",
+    "religion": "Synkretistische Kulte, Sol Invictus, wachsende Christengemeinden",
+    "languages": [
+     "Latein",
+     "Griechisch",
+     "Punisch",
+     "Aramäisch"
+    ],
+    "population": "ca. 60 Mio., danach durch Seuchen sinkend",
+    "economy": "Münzverschlechterung, steigende Militärausgaben",
+    "summary": [
+     "Der aus Nordafrika stammende Septimius Severus stützt sich offen auf das Heer. Sein Rat an die Söhne – die Soldaten zu bereichern und alle anderen zu ignorieren – beschreibt das Jahrhundert treffend.",
+     "212 erhalten fast alle freien Reichsbewohner das Bürgerrecht. Es folgt die Reichskrise des 3. Jahrhunderts mit Usurpatoren, Pest und Grenzeinbrüchen."
+    ]
+   },
+   {
+    "from": 285,
+    "to": 394,
+    "ruler": "Diokletian",
+    "rulerTitle": "Augustus",
+    "dynasty": "Tetrarchie",
+    "reign": "284–305",
+    "capital": "Nikomedia, Mailand, Trier, Sirmium",
+    "government": "Tetrarchie – zwei Augusti und zwei Caesares",
+    "religion": "Staatskult, letzte große Christenverfolgung, ab 313 Duldung",
+    "languages": [
+     "Latein",
+     "Griechisch"
+    ],
+    "population": "ca. 50 Mio.",
+    "economy": "Höchstpreisedikt, Naturalsteuern, Zwangsberufe",
+    "summary": [
+     "Diokletian teilt die Last der Herrschaft auf vier Schultern und trennt zivile von militärischer Gewalt. Rom hört auf, Residenz zu sein – die Kaiser regieren dort, wo die Grenzen bedroht sind.",
+     "Konstantin vereint das Reich noch einmal, verlegt 330 die Hauptstadt nach Konstantinopel und öffnet dem Christentum den Weg zur Staatsreligion."
+    ]
+   }
+  ],
+  "_datierung": "Rom als Gemeinwesen ab 509 v. Chr. (Republik); -27 galt nur dem Prinzipat."
+ },
+ "Rome (Diocletianus)": {
+  "kind": "Tetrarchisches Teilreich",
+  "wiki": "Diokletian",
+  "periods": [
+   {
+    "from": 284,
+    "to": 305,
+    "ruler": "Diokletian",
+    "rulerTitle": "Augustus des Ostens",
+    "capital": "Nikomedia",
+    "government": "Tetrarchie",
+    "religion": "Staatskult, Christenverfolgung ab 303",
+    "languages": [
+     "Griechisch",
+     "Latein"
+    ],
+    "summary": "Der östliche Reichsteil unter dem Senior-Augustus Diokletian: Ägypten, Syrien, Kleinasien und der Balkanraum – wirtschaftlich der stärkere Teil des Reiches."
+   }
+  ]
+ },
+ "Rome (Maximian)": {
+  "kind": "Tetrarchisches Teilreich",
+  "wiki": "Maximian",
+  "periods": [
+   {
+    "from": 286,
+    "to": 305,
+    "ruler": "Maximian",
+    "rulerTitle": "Augustus des Westens",
+    "capital": "Mailand",
+    "government": "Tetrarchie",
+    "religion": "Staatskult",
+    "languages": [
+     "Latein"
+    ],
+    "summary": "Italien, Africa und Hispanien unter dem westlichen Augustus. Die Aufgabenteilung sollte die Grenzverteidigung an Rhein und Donau von der am Euphrat entlasten."
+   }
+  ]
+ },
+ "Western Roman Empire": {
+  "kind": "Teilreich",
+  "wiki": "Weströmisches Reich",
+  "founded": 395,
+  "dissolved": 476,
+  "periods": [
+   {
+    "from": 395,
+    "to": 476,
+    "ruler": "Honorius",
+    "rulerTitle": "Weströmischer Kaiser",
+    "dynasty": "Theodosianische Dynastie",
+    "reign": "395–423",
+    "capital": "Ravenna (ab 402), zuvor Mailand",
+    "government": "Kaisertum unter Kontrolle germanischer Heermeister",
+    "religion": "Nicaenisches Christentum als Staatsreligion",
+    "languages": [
+     "Latein",
+     "Gotisch"
+    ],
+    "population": "ca. 20 Mio., stark rückläufig",
+    "economy": "Zusammenbrechende Steuerbasis, Verlust Nordafrikas an die Vandalen",
+    "summary": [
+     "Der Westen verliert Provinz um Provinz, weniger durch Eroberung als durch Ansiedlungsverträge mit germanischen Verbänden, die sich verselbständigen. 410 plündern Westgoten Rom – ein Schock ohne militärische Bedeutung.",
+     "476 setzt Odoaker den letzten Kaiser ab und schickt die Insignien nach Konstantinopel. Zeitgenossen empfanden das kaum als Epochenbruch: Verwaltung, Recht und Kirche liefen weiter."
+    ]
+   }
+  ]
+ },
+ "Eastern Roman Empire": {
+  "kind": "Teilreich",
+  "wiki": "Byzantinisches Reich",
+  "founded": 395,
+  "periods": [
+   {
+    "from": 395,
+    "to": 491,
+    "ruler": "Arcadius",
+    "rulerTitle": "Oströmischer Kaiser",
+    "dynasty": "Theodosianische Dynastie",
+    "reign": "395–408",
+    "capital": "Konstantinopel",
+    "government": "Kaisertum mit ausgebautem Beamtenapparat",
+    "religion": "Christentum, Streit um die Natur Christi",
+    "languages": [
+     "Griechisch",
+     "Latein"
+    ],
+    "population": "ca. 20 Mio.",
+    "economy": "Ägyptisches Getreide, Seidenhandel, stabile Goldwährung",
+    "summary": [
+     "Der Osten übersteht die Völkerwanderung: Er ist wohlhabender, städtischer und besitzt in Konstantinopel eine praktisch uneinnehmbare Hauptstadt.",
+     "Die theodosianische Landmauer von 413 hält über tausend Jahre – bis 1453."
+    ]
+   },
+   {
+    "from": 492,
+    "to": 640,
+    "ruler": "Justinian I.",
+    "rulerTitle": "Kaiser (Basileus)",
+    "dynasty": "Justinianische Dynastie",
+    "reign": "527–565",
+    "capital": "Konstantinopel",
+    "government": "Kaisertum mit kodifiziertem Recht",
+    "religion": "Orthodoxes Christentum als Staatsreligion",
+    "languages": [
+     "Griechisch",
+     "Latein"
+    ],
+    "population": "ca. 26 Mio., nach der Pest von 541 stark sinkend",
+    "economy": "Seidenproduktion nach Schmuggel der Seidenraupe, Fernhandel",
+    "summary": [
+     "Justinian erobert Nordafrika, Italien und Südspanien zurück und lässt das römische Recht im Corpus Iuris Civilis ordnen – die Grundlage der europäischen Rechtsgeschichte.",
+     "Die Kosten sind erdrückend: Die justinianische Pest ab 541 kostet Millionen Menschenleben und macht die Eroberungen unhaltbar."
+    ],
+    "quote": "Die Hagia Sophia von 537 blieb tausend Jahre lang der größte Kuppelbau der Welt."
+   },
+   {
+    "from": 641,
+    "to": 800,
+    "ruler": "Leon III.",
+    "rulerTitle": "Kaiser",
+    "dynasty": "Syrische Dynastie",
+    "reign": "717–741",
+    "capital": "Konstantinopel",
+    "government": "Themenverfassung – Militärbezirke mit Wehrbauern",
+    "religion": "Orthodoxie, Bilderstreit ab 726",
+    "languages": [
+     "Griechisch"
+    ],
+    "population": "ca. 8 bis 10 Mio.",
+    "economy": "Schrumpfende Städte, Naturalwirtschaft, Seidenmonopol",
+    "summary": [
+     "Nach dem Verlust Syriens, Ägyptens und Nordafrikas an die Araber überlebt das Reich als griechisch geprägter Militärstaat. Die Belagerung Konstantinopels 717/18 scheitert am Griechischen Feuer.",
+     "Der Bilderstreit spaltet das Reich über ein Jahrhundert und entfremdet es dem lateinischen Westen."
+    ]
+   }
+  ]
+ },
+ "Parthian Empire": {
+  "kind": "Großreich",
+  "wiki": "Partherreich",
+  "founded": -247,
+  "dissolved": 224,
+  "periods": [
+   {
+    "from": -247,
+    "to": 224,
+    "ruler": "Mithridates II.",
+    "rulerTitle": "König der Könige",
+    "dynasty": "Arsakiden",
+    "reign": "124–88 v. Chr.",
+    "capital": "Ktesiphon",
+    "government": "Lockerer Verband adliger Großfamilien unter einem Großkönig",
+    "religion": "Iranische Kulte, hellenistische Einflüsse",
+    "languages": [
+     "Parthisch",
+     "Griechisch",
+     "Aramäisch"
+    ],
+    "population": "ca. 15 Mio.",
+    "economy": "Zölle auf der Seidenstraße, Pferdezucht",
+    "summary": [
+     "Die Parther beherrschen den Landweg zwischen Rom und China und leben von den Zöllen. Ihre berittenen Bogenschützen mit dem berühmten „Parthenschuss“ vernichten 53 v. Chr. bei Carrhae ein römisches Heer.",
+     "Die Adelsfamilien besitzen eigene Truppen und wählen den König mit – das macht das Reich beweglich, aber innenpolitisch instabil."
+    ]
+   }
+  ]
+ },
+ "Sasanian Empire": {
+  "kind": "Großreich",
+  "wiki": "Sasanidenreich",
+  "founded": 224,
+  "dissolved": 651,
+  "events": [
+   {
+    "year": 260,
+    "text": "Schapur I. nimmt Kaiser Valerian gefangen."
+   },
+   {
+    "year": 531,
+    "text": "Chosrau I. beginnt eine tiefgreifende Steuer- und Heeresreform."
+   },
+   {
+    "year": 636,
+    "text": "Niederlage bei Kadesia gegen die arabischen Heere."
+   }
+  ],
+  "periods": [
+   {
+    "from": 224,
+    "to": 651,
+    "ruler": "Chosrau I. Anuschirwan",
+    "rulerTitle": "Šāhān Šāh – König der Könige von Iran und Nicht-Iran",
+    "dynasty": "Sasaniden",
+    "reign": "531–579",
+    "capital": "Ktesiphon",
+    "government": "Zentralisierte Monarchie mit Staatskirche",
+    "religion": "Zoroastrismus als Staatsreligion; Christen und Juden geduldet",
+    "languages": [
+     "Mittelpersisch",
+     "Aramäisch",
+     "Syrisch"
+    ],
+    "population": "ca. 20 Mio.",
+    "economy": "Bewässerungslandwirtschaft in Mesopotamien, Seidenhandel, Silberprägung",
+    "summary": [
+     "Die Sasaniden verstehen sich als Erben der Achämeniden und sind über vier Jahrhunderte Roms ebenbürtiger Gegner. Chosrau I. reformiert Steuer- und Heerwesen und macht Ktesiphon zum Zentrum der Gelehrsamkeit.",
+     "Der Dauerkrieg mit Byzanz erschöpft beide Reiche. Als 636 die arabischen Heere anrücken, bricht der Staat binnen weniger Jahre zusammen."
+    ],
+    "quote": "Zwei Großmächte kämpften sich gegenseitig so schwach, dass eine dritte beide überholte."
+   }
+  ]
+ },
+ "Meroe": {
+  "kind": "Königreich",
+  "wiki": "Reich von Meroe",
+  "founded": -300,
+  "dissolved": 350,
+  "periods": [
+   {
+    "from": -300,
+    "to": 350,
+    "ruler": "Amanirenas",
+    "rulerTitle": "Kandake – regierende Königin",
+    "capital": "Meroe am Nil",
+    "government": "Königtum mit starker Stellung der Königinmutter",
+    "religion": "Amun und Apedemak, eigener Löwengott",
+    "languages": [
+     "Meroitisch",
+     "Ägyptisch"
+    ],
+    "population": "einige Hunderttausend",
+    "economy": "Eisenverhüttung, Gold, Elfenbein, Karawanenhandel",
+    "summary": [
+     "Meroe ist eines der bedeutendsten Eisenzentren Afrikas und betreibt eigene Schriftlichkeit – das Meroitische ist bis heute nur teilweise entziffert.",
+     "Um 24 v. Chr. führt die Kandake Amanirenas Krieg gegen Rom und erreicht einen für Meroe günstigen Frieden mit Steuerbefreiung."
+    ]
+   }
+  ]
+ },
+ "Axum": {
+  "kind": "Handelsreich",
+  "wiki": "Aksumitisches Reich",
+  "founded": -100,
+  "dissolved": 940,
+  "periods": [
+   {
+    "from": 100,
+    "to": 940,
+    "ruler": "Ezana",
+    "rulerTitle": "Negus – König von Aksum",
+    "reign": "ca. 320–360",
+    "capital": "Aksum",
+    "government": "Königtum über tributpflichtige Fürstentümer",
+    "religion": "Ab ca. 340 Christentum als Staatsreligion",
+    "languages": [
+     "Ge'ez",
+     "Griechisch"
+    ],
+    "population": "ca. 1 Mio.",
+    "economy": "Rotmeerhandel mit Rom und Indien, Elfenbein, Weihrauch, Gold",
+    "summary": [
+     "Ein persischer Autor des 3. Jahrhunderts zählt Aksum zu den vier Großreichen der Welt – neben Rom, Persien und China. Es prägt als erster afrikanischer Staat südlich der Sahara eigene Münzen.",
+     "König Ezana lässt sich um 340 taufen; die äthiopisch-orthodoxe Kirche geht ununterbrochen auf diese Zeit zurück."
+    ]
+   }
+  ],
+  "_datierung": "Vorbereich (proto-aksumitisch) ab dem 1. Jahrhundert v. Chr."
+ },
+ "Hunnic Empire": {
+  "kind": "Steppenreich",
+  "wiki": "Hunnen",
+  "founded": 370,
+  "dissolved": 469,
+  "periods": [
+   {
+    "from": 370,
+    "to": 469,
+    "ruler": "Attila",
+    "rulerTitle": "König der Hunnen",
+    "reign": "434–453",
+    "capital": "Wanderhof in der ungarischen Tiefebene",
+    "government": "Persönliche Gefolgschaftsherrschaft über unterworfene Völker",
+    "religion": "Steppenreligiöse Vorstellungen",
+    "languages": [
+     "Hunnisch",
+     "Gotisch",
+     "Latein"
+    ],
+    "population": "schwer schätzbar, wenige Hunderttausend Krieger und Angehörige",
+    "economy": "Tribute aus Ostrom, Beute, Viehwirtschaft",
+    "summary": [
+     "Die Hunnen stoßen ab 375 in den Donauraum vor und setzen die germanischen Wanderungen in Bewegung – ihre größte Wirkung ist indirekt.",
+     "Attila presst Ostrom jährliche Goldtribute ab. Nach seinem Tod 453 zerfällt der Verband binnen weniger Jahre, weil er allein auf seiner Person beruhte."
+    ]
+   }
+  ]
+ }
 }

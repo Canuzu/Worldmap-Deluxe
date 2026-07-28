@@ -20,6 +20,7 @@
     "Wo Besatzungszonen zwischen mehreren Achsenmächten geteilt waren",
     "(Jugoslawien, Griechenland), nennt die Karte die führende Macht."
   ],
+  "basis": 1938,
   "_gebiete_hinweis": "Grenzlinien der Besatzungsgebiete als [Länge, Breite]. Sie werden gegen das jeweilige Land verschnitten; außerhalb des Landes liegende Teile der Fläche sind ohne Wirkung.",
   "gebiete": {
     "polen-molotow-ribbentrop": {
@@ -102,10 +103,10 @@
       ]
     },
     "bessarabien": {
-      "_was": "Bessarabien und die Nordbukowina, im Juni 1940 von der Sowjetunion von Rumänien gefordert und besetzt.",
+      "_was": "Bessarabien östlich des Pruth und die Nordbukowina, im Juni 1940 von der Sowjetunion von Rumänien gefordert und besetzt.",
       "ring": [
-        [26.6, 48.4], [30.2, 48.4], [30.2, 45.2], [28.5, 45.2], [26.6, 47.0],
-        [26.6, 48.4]
+        [27.9, 48.4], [30.2, 48.4], [30.2, 45.2], [28.6, 45.2], [27.9, 47.0],
+        [27.9, 48.4]
       ]
     },
     "daenemark-kernland": {

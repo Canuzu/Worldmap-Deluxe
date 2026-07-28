@@ -60,17 +60,21 @@
     }
   },
   "1100": {
-    "_begruendung": "Das Mongolische Weltreich entstand erst 1206 mit der Erhebung Temüdschins zum Dschingis Khan. Um 1100 lebten die mongolischen Stämme unabhängig voneinander in der östlichen Steppe.",
+    "_begruendung": "Das Mongolische Weltreich entstand erst 1206 mit der Erhebung Temüdschins zum Dschingis Khan. Um 1100 lebten die mongolischen Stämme unabhängig voneinander in der östlichen Steppe. Huari und Tiahuanaco waren um 1000 zerfallen. Was folgte, waren regionale Herrschaften ohne Reichsbildung.",
     "rename": {
-      "Mongols": "Mongol tribes"
+      "Mongols": "Mongol tribes",
+      "Huari Empire": "Andean states and chiefdoms",
+      "Tiahuanaco Empire": "Andean states and chiefdoms"
     }
   },
   "1200": {
-    "_begruendung": "Das Fatimiden-Kalifat wurde 1171 von Saladin beendet; Ägypten und Syrien gehörten 1200 zum Ayyubiden-Sultanat. Huari und Tiahuanaco zerfielen um 1000; es folgte die Zeit der andinen Regionalreiche.",
+    "_begruendung": "Das Fatimiden-Kalifat wurde 1171 von Saladin beendet; Ägypten und Syrien gehörten 1200 zum Ayyubiden-Sultanat. Huari und Tiahuanaco zerfielen um 1000; es folgte die Zeit der andinen Regionalreiche. Die Buyiden endeten 1062. Persien und Chorasan standen 1200 unter den Choresm-Schahs.",
     "rename": {
       "Fatimid Caliphate": "Ayyubid Sultanate",
       "Huari Empire": "Andean states and chiefdoms",
-      "Tiahuanaco Empire": "Andean states and chiefdoms"
+      "Tiahuanaco Empire": "Andean states and chiefdoms",
+      "Buwayhid Emirates": "Kwarizm-Shah",
+      "Buyiids": "Kwarizm-Shah"
     }
   },
   "1300": {
@@ -80,27 +84,32 @@
     }
   },
   "1400": {
-    "_begruendung": "Die Yuan-Dynastie wurde 1368 aus China vertrieben. In der Steppe bestand die Nördliche Yuan-Dynastie fort, nicht mehr das Mongolische Weltreich.",
+    "_begruendung": "Die Yuan-Dynastie wurde 1368 aus China vertrieben. In der Steppe bestand die Nördliche Yuan-Dynastie fort, nicht mehr das Mongolische Weltreich. Das Sultanat der Rum-Seldschuken endete 1308; Anatolien zerfiel danach in die Beyliks. Srivijaya ging 1288 unter, die Vorherrschaft im Archipel lag bei Majapahit.",
     "rename": {
-      "Great Khanate": "Northern Yuan"
+      "Great Khanate": "Northern Yuan",
+      "Seljuk Caliphate": "Anatolian beyliks",
+      "Srivijaya Empire": "Majapahit"
     }
   },
   "1600": {
-    "_begruendung": "Das Inkareich endete 1533 mit der Hinrichtung Atahualpas, der Rückzugsstaat von Vilcabamba 1572. Um 1600 gehörte das Gebiet zum Vizekönigreich Peru.",
+    "_begruendung": "Das Inkareich endete 1533 mit der Hinrichtung Atahualpas, der Rückzugsstaat von Vilcabamba 1572. Um 1600 gehörte das Gebiet zum Vizekönigreich Peru. Preußen war 1525 zum Herzogtum geworden; das Königreich entstand erst 1701.",
     "rename": {
-      "Inca Empire": "Vice-Royalty of Peru"
+      "Inca Empire": "Vice-Royalty of Peru",
+      "Prussia": "Duchy of Prussia"
     }
   },
   "1700": {
-    "_begruendung": "Das Kaisertum Österreich wurde erst 1804 ausgerufen. Zuvor regierten die Habsburger einen Länderverband ohne gemeinsamen Staatsnamen.",
+    "_begruendung": "Das Kaisertum Österreich wurde erst 1804 ausgerufen. Zuvor regierten die Habsburger einen Länderverband ohne gemeinsamen Staatsnamen. Songhai fiel 1591 an Marokko; im Nigerbogen bestand der Nachfolgestaat Dendi bis 1901.",
     "rename": {
-      "Austrian Empire": "Habsburg Monarchy"
+      "Austrian Empire": "Habsburg Monarchy",
+      "Songhai": "Dendi"
     }
   },
   "1715": {
-    "_begruendung": "Siehe 1700 – das Kaisertum Österreich entstand erst 1804.",
+    "_begruendung": "Siehe 1700 – das Kaisertum Österreich entstand erst 1804. Songhai fiel 1591 an Marokko; im Nigerbogen bestand der Nachfolgestaat Dendi bis 1901.",
     "rename": {
-      "Austrian Empire": "Habsburg Monarchy"
+      "Austrian Empire": "Habsburg Monarchy",
+      "Songhai": "Dendi"
     }
   },
   "1815": {
@@ -128,7 +137,10 @@
     }
   },
   "800": {
-    "_begruendung": "Oman und Aden fehlen im Ursprungsdatensatz, obwohl die Abbasiden 800 die gesamte Arabische Halbinsel beherrschten. Ergänzt wird nur unbeanspruchtes Land; die ibaditischen Imame Omans erscheinen im Datensatz nicht gesondert.",
+    "_begruendung": "Oman und Aden fehlen im Ursprungsdatensatz, obwohl die Abbasiden 800 die gesamte Arabische Halbinsel beherrschten. Ergänzt wird nur unbeanspruchtes Land; die ibaditischen Imame Omans erscheinen im Datensatz nicht gesondert. Die Thule-Kultur breitete sich erst ab etwa 900 nach Osten aus. Um 800 war die Arktis Dorset-Gebiet.",
+    "rename": {
+      "Thule": "Dorset"
+    },
     "ergaenzen": [
       {
         "_was": "Oman, Hadramaut und Aden – im Ursprungsdatensatz offen gelassen.",
@@ -142,5 +154,94 @@
         ]
       }
     ]
+  },
+  "-4000": {
+    "_begruendung": "Ägypten war um 4000 v. Chr. noch nicht geeint – die Reichseinigung fällt um 3100 v. Chr. Im Industal liegt die Zeit vor der Hochkultur.",
+    "rename": {
+      "Egypt": "Predynastic Egypt",
+      "Indus valley civilization": "Mehrgarh culture"
+    }
+  },
+  "-2000": {
+    "_begruendung": "Das hethitische Großreich entstand erst um 1650 v. Chr. Um 2000 v. Chr. saßen in Zentralanatolien die Hattier.",
+    "rename": {
+      "Hittites": "Hattians"
+    }
+  },
+  "-1500": {
+    "_begruendung": "Um 1500 v. Chr. herrschte in China die Shang-Dynastie; die Zhou lösten sie erst 1046 v. Chr. ab.",
+    "rename": {
+      "Zhoa": "Shang"
+    }
+  },
+  "-500": {
+    "_begruendung": "Meroe wurde erst um 300 v. Chr. Hauptstadt. Um 500 v. Chr. lag der Reichssitz in Napata – das Reich heißt Kusch.",
+    "rename": {
+      "Meroe": "Kush"
+    }
+  },
+  "-400": {
+    "_begruendung": "Die Xiongnu-Konföderation entstand erst um 209 v. Chr. unter Touman. Um 400 v. Chr. lebten dort einzelne Steppenverbände.",
+    "rename": {
+      "Xiongnu": "Eastern steppe pastoral nomads"
+    }
+  },
+  "-100": {
+    "_begruendung": "Das Maurya-Reich endete 185 v. Chr., ihm folgten die Shunga. Die Kuschan entstanden erst um 30 n. Chr. – zuvor herrschten dort die Yuezhi.",
+    "rename": {
+      "Mauryan Empire": "Shunga Empire",
+      "Kushan Empire": "Yuezhi"
+    }
+  },
+  "300": {
+    "_begruendung": "Das Partherreich endete 224 mit Ardaschir I.; ab 300 herrschten die Sasaniden.",
+    "rename": {
+      "Parthian Empire": "Sasanian Empire"
+    }
+  },
+  "400": {
+    "_begruendung": "Meroe fiel um 350. Danach traten die postmeroitischen Reiche Nobatia, Makuria und Alwa an seine Stelle.",
+    "rename": {
+      "Meroe": "Nobatia"
+    }
+  },
+  "1279": {
+    "_begruendung": "Das Großseldschukenreich zerfiel 1194. In Anatolien bestand bis 1308 das Sultanat der Rum-Seldschuken.",
+    "rename": {
+      "Seljuk Caliphate": "Sultanate of Rum"
+    }
+  },
+  "1530": {
+    "_begruendung": "Preußen war 1525 zum Herzogtum geworden; das Königreich entstand erst 1701.",
+    "rename": {
+      "Prussia": "Duchy of Prussia"
+    }
+  },
+  "1650": {
+    "_begruendung": "Preußen war noch Herzogtum. Das Kaisertum Österreich wurde erst 1804 ausgerufen – zuvor war es die Habsburgermonarchie. Songhai fiel 1591 an Marokko; der Nachfolgestaat war Dendi.",
+    "rename": {
+      "Prussia": "Duchy of Prussia",
+      "Austrian Empire": "Habsburg Monarchy",
+      "Songhai": "Dendi"
+    }
+  },
+  "1800": {
+    "_begruendung": "Songhai fiel 1591 an Marokko; im Nigerbogen bestand der Nachfolgestaat Dendi bis 1901.",
+    "rename": {
+      "Songhai": "Dendi"
+    }
+  },
+  "1783": {
+    "_begruendung": "Songhai fiel 1591 an Marokko; Nachfolgestaat war Dendi. „Indien\" als Staat entstand erst 1947 – gemeint sind die indischen Fürstenstaaten.",
+    "rename": {
+      "Songhai": "Dendi",
+      "India": "Indian princely states"
+    }
+  },
+  "1900": {
+    "_begruendung": "„Indien\" als Staat entstand erst 1947 – gemeint sind die indischen Fürstenstaaten.",
+    "rename": {
+      "India": "Indian princely states"
+    }
   }
 }

@@ -1,0 +1,139 @@
+{
+  "_hinweis": [
+    "Der Ursprungsdatensatz springt von 1914 auf 1920 – der Erste Weltkrieg fehlt",
+    "genauso vollständig wie der Zweite. Diese Datei ergänzt zwei Zwischenstände",
+    "nach demselben Muster wie wwii.json: Ein besetztes Land behält seinen Namen",
+    "und bekommt zusätzlich eine Besatzungsmacht.",
+    "",
+    "Grundlage ist der Stand von 1914. Die Frontverläufe sind auf Stichtage",
+    "bezogen und auf kontinentalen Maßstab ausgelegt; einzelne Frontbögen und",
+    "Brückenköpfe lösen sie nicht auf. Wo mehrere Mittelmächte eine",
+    "Besatzungszone teilten (Serbien, Rumänien), nennt die Karte die führende",
+    "Macht."
+  ],
+
+  "basis": 1914,
+
+  "gebiete": {
+    "westfront-1916": {
+      "_was": "Deutsch besetztes Gebiet in Belgien und Nordfrankreich, Dezember 1916. Die Linie folgt der Westfront von Nieuwpoort über Ypern, die Somme und Verdun bis zur Schweizer Grenze. Der belgische Reststreifen hinter der Yser und der Ypernbogen blieben alliiert.",
+      "ring": [
+        [2.78, 51.15], [3.05, 50.86], [2.83, 50.44], [2.66, 50.02], [3.00, 49.58],
+        [3.32, 49.38], [4.10, 49.25], [5.40, 49.20], [5.55, 48.90], [6.10, 48.72],
+        [7.05, 47.52], [8.60, 47.60], [8.60, 51.60], [2.20, 51.40], [2.78, 51.15]
+      ]
+    },
+    "westfront-1918": {
+      "_was": "Tiefster Einbruch der deutschen Frühjahrsoffensiven, Juli 1918: Der Marnebogen reichte bis Château-Thierry, rund 90 km vor Paris.",
+      "ring": [
+        [2.78, 51.15], [3.05, 50.86], [2.60, 50.30], [2.45, 49.92], [2.57, 49.65],
+        [3.40, 49.05], [4.10, 49.20], [5.40, 49.20], [5.55, 48.90], [6.10, 48.72],
+        [7.05, 47.52], [8.60, 47.60], [8.60, 51.60], [2.20, 51.40], [2.78, 51.15]
+      ]
+    },
+    "ostfront-1916": {
+      "_was": "Von den Mittelmächten besetztes Gebiet des Russischen Reiches, Dezember 1916 – nach dem Großen Rückzug 1915 und der Brussilow-Offensive. Riga blieb bis September 1917 russisch.",
+      "ring": [
+        [23.40, 57.10], [25.20, 56.40], [26.60, 55.90], [26.20, 54.60], [26.00, 53.10],
+        [26.10, 52.10], [25.30, 50.70], [25.90, 48.30], [22.00, 47.60], [18.00, 48.60],
+        [17.50, 54.00], [19.00, 55.30], [21.00, 56.50], [23.40, 57.10]
+      ]
+    },
+    "ostfront-1918": {
+      "_was": "Größte Ausdehnung der deutschen Besatzung im Osten nach dem Frieden von Brest-Litowsk, Juli 1918: das Baltikum, Weißrussland, die Ukraine bis zum Don und die Krim.",
+      "ring": [
+        [28.20, 59.50], [28.40, 57.80], [30.40, 54.60], [31.00, 52.40], [35.00, 51.00],
+        [38.00, 49.50], [39.80, 47.60], [38.60, 46.80], [36.00, 45.00], [33.00, 44.20],
+        [28.50, 45.20], [22.00, 47.60], [18.00, 48.60], [17.50, 54.00], [19.00, 55.30],
+        [22.00, 57.50], [24.50, 59.20], [28.20, 59.50]
+      ]
+    },
+    "rumaenien-1916": {
+      "_was": "Nach dem Fall Bukarests am 6. Dezember 1916 hielten die Mittelmächte die Walachei und die Dobrudscha; die Regierung wich nach Iaşi in die Moldau aus, die frei blieb.",
+      "ring": [
+        [20.00, 48.40], [26.70, 48.40], [27.20, 46.60], [28.20, 45.20], [29.80, 44.80],
+        [29.80, 43.40], [20.00, 43.40], [20.00, 48.40]
+      ]
+    },
+    "osmanisch-arabien": {
+      "_was": "Von Großbritannien besetzte osmanische Provinzen: Mesopotamien nach dem Fall Bagdads im März 1917, Palästina und Syrien nach Jerusalem (Dezember 1917) und Damaskus (Oktober 1918).",
+      "ring": [
+        [33.50, 37.20], [42.00, 37.50], [48.50, 33.00], [48.50, 29.00], [43.00, 29.00],
+        [38.00, 27.50], [34.00, 29.00], [33.50, 33.00], [33.50, 37.20]
+      ]
+    }
+  },
+
+  "jahre": [
+    {
+      "year": 1916,
+      "stand": "Dezember 1916",
+      "titel": "Stellungskrieg: Verdun, Somme, Brussilow",
+      "besetzt": {
+        "Serbia": "Austro-Hungarian Empire",
+        "Montenegro": "Austro-Hungarian Empire",
+        "Albania": "Austro-Hungarian Empire"
+      },
+      "teilungen": [
+        {
+          "land": "Belgium",
+          "gebiet": "westfront-1916",
+          "innen": { "besetzer": "German Empire" }
+        },
+        {
+          "land": "France",
+          "gebiet": "westfront-1916",
+          "innen": { "besetzer": "German Empire" }
+        },
+        {
+          "land": "Russian Empire",
+          "gebiet": "ostfront-1916",
+          "innen": { "besetzer": "German Empire" }
+        },
+        {
+          "land": "Romania",
+          "gebiet": "rumaenien-1916",
+          "innen": { "besetzer": "German Empire" }
+        }
+      ]
+    },
+
+    {
+      "year": 1918,
+      "stand": "Juli 1918",
+      "titel": "Brest-Litowsk und der Marnebogen",
+      "besetzt": {
+        "Serbia": "Austro-Hungarian Empire",
+        "Montenegro": "Austro-Hungarian Empire",
+        "Albania": "Austro-Hungarian Empire"
+      },
+      "teilungen": [
+        {
+          "land": "Belgium",
+          "gebiet": "westfront-1918",
+          "innen": { "besetzer": "German Empire" }
+        },
+        {
+          "land": "France",
+          "gebiet": "westfront-1918",
+          "innen": { "besetzer": "German Empire" }
+        },
+        {
+          "land": "Russian Empire",
+          "gebiet": "ostfront-1918",
+          "innen": { "besetzer": "German Empire" }
+        },
+        {
+          "land": "Romania",
+          "gebiet": "rumaenien-1916",
+          "innen": { "besetzer": "German Empire" }
+        },
+        {
+          "land": "Ottoman Empire",
+          "gebiet": "osmanisch-arabien",
+          "innen": { "besetzer": "United Kingdom of Great Britain and Ireland" }
+        }
+      ]
+    }
+  ]
+}

@@ -48,3 +48,6 @@
 .leaflet-polityB-pane {
   will-change: opacity;
 }
+
+/* Ortsebene: eigene Zeichenfläche, nie interaktiv. */
+.place-canvas { pointer-events: none; }

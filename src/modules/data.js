@@ -205,6 +205,18 @@ export class AtlasData {
     return this._water;
   }
 
+  /**
+   * Orte zur Orientierung – heutige Städte als Bezugspunkte im Gelände.
+   * Wird erst geholt, wenn die Ebene zugeschaltet oder weit genug
+   * hineingezoomt wird.
+   */
+  loadPlaces() {
+    this._places ??= getJSON('data/base/places.json')
+      .then((d) => d.orte.map(([name, lon, lat, rang]) => ({ name, lon, lat, rang })))
+      .catch(() => []);
+    return this._places;
+  }
+
   epochAt(index) {
     return this.epochs[Math.max(0, Math.min(this.epochs.length - 1, index))];
   }

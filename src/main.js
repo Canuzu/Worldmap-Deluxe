@@ -32,6 +32,7 @@ const prefs = {
   graticule: false,
   borders: true,
   occupation: true,
+  places: true,
   wiki: true,
   focus: false,
   compactTimeline: false,
@@ -351,6 +352,12 @@ async function main() {
 
   /* ----------------------------------------------------------- Maßstab */
 
+  /** Orte erst holen, wenn die Ebene eingeschaltet wird. */
+  async function enablePlaces(on) {
+    if (on && !atlas.places?.length) atlas.setPlaces(await atlasData.loadPlaces());
+    atlas.setShowPlaces(on);
+  }
+
   /** Gewässer erst holen, wenn sie gebraucht werden. */
   async function enableWater(on) {
     if (on && !atlas.hasWaterData) {
@@ -660,6 +667,7 @@ async function main() {
     ['optGraticule', 'graticule', (v) => atlas.setShowGraticule(v)],
     ['optBorders', 'borders', (v) => atlas.setShowBorders(v)],
     ['optOccupation', 'occupation', (v) => atlas.setOccupationVisible(v)],
+    ['optPlaces', 'places', (v) => enablePlaces(v)],
     ['optWiki', 'wiki', () => {}],
   ];
   for (const [id, key, apply] of toggles) {
@@ -686,6 +694,34 @@ async function main() {
   });
 
   $('btnAbout').addEventListener('click', () => openModal('Über diesen Atlas', aboutHtml()));
+
+  // Herkunftszeichen in der Zeitleiste: erklärt, was an diesem Zeitschnitt
+  // nicht aus dem Ursprungsdatensatz stammt.
+  $('yearTitle').addEventListener('click', (event) => {
+    const btn = event.target.closest('[data-herkunft]');
+    if (!btn) return;
+    const e = state.epoch?.meta;
+    if (!e) return;
+    const k = e.korrigiert;
+    openModal(`Herkunft · ${e.label}`, `
+      ${e.ergaenzt ? `<p><strong>Dieser Zeitschnitt steht nicht im Ursprungsdatensatz.</strong>
+        Er ist eigens angelegt, weil der Datensatz beide Weltkriege überspringt –
+        von 1914 auf 1920 und von 1938 auf 1945. Grundlage ist der jeweils
+        vorangehende Kartenstand; Stichtag ist <strong>${esc(e.stand ?? '–')}</strong>.</p>
+        <p>Die Frontverläufe sind von Hand gezogen, auf kontinentalen Maßstab
+        ausgelegt und in <code>src/data/wwi.json</code> bzw.
+        <code>src/data/wwii.json</code> einzeln begründet. Einzelne Brückenköpfe
+        und Kessel lösen sie nicht auf.</p>` : ''}
+      ${k ? `<p><strong>An diesem Zeitschnitt wurde korrigiert:</strong>
+        ${k.umbenannt ? `${num(k.umbenannt)} Gemeinwesen umbenannt` : ''}${k.umbenannt && k.ergaenzt ? ', ' : ''}${k.ergaenzt ? `${num(k.ergaenzt)} unbeanspruchtes Gebiet zugeschlagen` : ''}.</p>
+        <p>${esc(k.begruendung)}</p>
+        <p class="note">Ergänzt wird ausschließlich Land, das niemandem zugeordnet ist –
+        kein bestehendes Gemeinwesen verliert dabei Fläche.</p>` : ''}
+      <p style="margin-top:1rem">Der Ursprungsdatensatz bezeichnet sich selbst als
+      „work in progress“. <code>npm run check:zeit</code> prüft alle Zeitschnitte
+      gegen die Gründungs- und Auflösungsjahre der Wissensbasis; aufgenommen wird
+      nur, was fachlich unstrittig ist.</p>`);
+  });
   $('btnCredits').addEventListener('click', () => openModal('Datenquellen & Lizenzen', creditsHtml()));
 
   /* ------------------------------------------------------------ Tastatur */
@@ -756,6 +792,7 @@ async function main() {
   // falls voreingestellt, die Gewässer.
   window.setTimeout(() => {
     atlasData.loadDetailedCoastline().then((ocean) => atlas.setDetailedCoastline(ocean));
+    if (prefs.places) enablePlaces(true);
     if (prefs.rivers) enableWater(true);
   }, 600);
 }

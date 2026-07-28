@@ -1,879 +1,881 @@
 {
-  "_hinweis": "Steckbriefe zur islamischen Welt, zu Iran und zu Afrika südlich der Sahara.",
-  "Umayyad Caliphate": {
-    "kind": "Kalifat",
-    "wiki": "Umayyaden",
-    "founded": 661,
-    "dissolved": 750,
-    "events": [
-      {
-        "year": 711,
-        "text": "Übersetzen nach Iberien; Beginn von al-Andalus."
-      },
-      {
-        "year": 732,
-        "text": "Vorstoß nach Gallien wird bei Tours und Poitiers gestoppt."
-      },
-      {
-        "year": 750,
-        "text": "Die Abbasiden stürzen die Dynastie."
-      }
+ "_hinweis": "Steckbriefe zur islamischen Welt, zu Iran und zu Afrika südlich der Sahara.",
+ "Umayyad Caliphate": {
+  "kind": "Kalifat",
+  "wiki": "Umayyaden",
+  "founded": 661,
+  "dissolved": 750,
+  "events": [
+   {
+    "year": 711,
+    "text": "Übersetzen nach Iberien; Beginn von al-Andalus."
+   },
+   {
+    "year": 732,
+    "text": "Vorstoß nach Gallien wird bei Tours und Poitiers gestoppt."
+   },
+   {
+    "year": 750,
+    "text": "Die Abbasiden stürzen die Dynastie."
+   }
+  ],
+  "periods": [
+   {
+    "from": 661,
+    "to": 750,
+    "ruler": "Abd al-Malik",
+    "rulerTitle": "Kalif – Nachfolger des Gesandten Gottes",
+    "dynasty": "Umayyaden",
+    "reign": "685–705",
+    "capital": "Damaskus",
+    "government": "Kalifat mit Statthaltern über Provinzen",
+    "religion": "Islam; Christen, Juden und Zoroastrier als Schutzbefohlene",
+    "languages": [
+     "Arabisch",
+     "Griechisch",
+     "Persisch",
+     "Aramäisch"
     ],
-    "periods": [
-      {
-        "from": 661,
-        "to": 750,
-        "ruler": "Abd al-Malik",
-        "rulerTitle": "Kalif – Nachfolger des Gesandten Gottes",
-        "dynasty": "Umayyaden",
-        "reign": "685–705",
-        "capital": "Damaskus",
-        "government": "Kalifat mit Statthaltern über Provinzen",
-        "religion": "Islam; Christen, Juden und Zoroastrier als Schutzbefohlene",
-        "languages": [
-          "Arabisch",
-          "Griechisch",
-          "Persisch",
-          "Aramäisch"
-        ],
-        "population": "ca. 34 Mio.",
-        "economy": "Landsteuer, Fernhandel, einheitliche Golddinar-Währung",
-        "summary": [
-          "In hundert Jahren entsteht ein Reich vom Atlantik bis zum Indus – die schnellste Expansion der Weltgeschichte. Sie trifft auf zwei durch Dauerkrieg erschöpfte Großmächte, Byzanz und die Sasaniden.",
-          "Abd al-Malik macht Arabisch zur Verwaltungssprache und prägt eine eigene Währung. Der Felsendom in Jerusalem entsteht 691 als erstes große Baudenkmal des Islam."
-        ]
-      }
+    "population": "ca. 34 Mio.",
+    "economy": "Landsteuer, Fernhandel, einheitliche Golddinar-Währung",
+    "summary": [
+     "In hundert Jahren entsteht ein Reich vom Atlantik bis zum Indus – die schnellste Expansion der Weltgeschichte. Sie trifft auf zwei durch Dauerkrieg erschöpfte Großmächte, Byzanz und die Sasaniden.",
+     "Abd al-Malik macht Arabisch zur Verwaltungssprache und prägt eine eigene Währung. Der Felsendom in Jerusalem entsteht 691 als erstes große Baudenkmal des Islam."
     ]
-  },
-  "Abbasid Caliphate": {
-    "kind": "Kalifat",
-    "wiki": "Abbasiden",
-    "founded": 750,
-    "dissolved": 1258,
-    "periods": [
-      {
-        "from": 750,
-        "to": 945,
-        "ruler": "Harun ar-Raschid",
-        "rulerTitle": "Kalif",
-        "dynasty": "Abbasiden",
-        "reign": "786–809",
-        "capital": "Bagdad (gegründet 762)",
-        "government": "Kalifat mit persisch geprägter Bürokratie und Wesirat",
-        "religion": "Sunnitischer Islam",
-        "languages": [
-          "Arabisch",
-          "Persisch",
-          "Syrisch"
-        ],
-        "population": "ca. 40 Mio.",
-        "economy": "Fernhandel von China bis Skandinavien, Papierherstellung, Bankwesen",
-        "summary": [
-          "Bagdad ist um 800 mit vielleicht einer Million Einwohnern die größte Stadt der Welt. Im „Haus der Weisheit“ werden griechische, persische und indische Werke ins Arabische übersetzt.",
-          "Ohne diese Übersetzungsbewegung wäre ein Großteil der antiken Wissenschaft verloren – Europa erhielt Aristoteles, Ptolemäus und Galen später aus arabischer Überlieferung zurück.",
-          "Al-Chwarizmi entwickelt hier die Algebra; sein latinisierter Name steckt im Wort „Algorithmus“."
-        ],
-        "quote": "Papier kam über Samarkand aus China – und machte Bagdad zur Bücherstadt."
-      },
-      {
-        "from": 946,
-        "to": 1258,
-        "ruler": "Kalifen unter der Vormundschaft der Buyiden und Seldschuken",
-        "rulerTitle": "Kalif – zunehmend nur noch religiöse Autorität",
-        "dynasty": "Abbasiden",
-        "capital": "Bagdad",
-        "government": "Formales Kalifat; die tatsächliche Macht liegt bei Militärdynastien",
-        "religion": "Sunnitischer Islam",
-        "languages": [
-          "Arabisch",
-          "Persisch",
-          "Türkisch"
-        ],
-        "population": "ca. 30 Mio.",
-        "economy": "Handel, Handwerk, Landwirtschaft",
-        "summary": [
-          "Ab dem 10. Jahrhundert ist der Kalif geistliches Oberhaupt ohne eigene Macht; Buyiden, dann Seldschuken regieren tatsächlich.",
-          "1258 nehmen die Mongolen Bagdad ein und töten den letzten Kalifen. Die Bibliotheken der Stadt gehen unter."
-        ]
-      }
+   }
+  ]
+ },
+ "Abbasid Caliphate": {
+  "kind": "Kalifat",
+  "wiki": "Abbasiden",
+  "founded": 750,
+  "dissolved": 1258,
+  "periods": [
+   {
+    "from": 750,
+    "to": 945,
+    "ruler": "Harun ar-Raschid",
+    "rulerTitle": "Kalif",
+    "dynasty": "Abbasiden",
+    "reign": "786–809",
+    "capital": "Bagdad (gegründet 762)",
+    "government": "Kalifat mit persisch geprägter Bürokratie und Wesirat",
+    "religion": "Sunnitischer Islam",
+    "languages": [
+     "Arabisch",
+     "Persisch",
+     "Syrisch"
+    ],
+    "population": "ca. 40 Mio.",
+    "economy": "Fernhandel von China bis Skandinavien, Papierherstellung, Bankwesen",
+    "summary": [
+     "Bagdad ist um 800 mit vielleicht einer Million Einwohnern die größte Stadt der Welt. Im „Haus der Weisheit“ werden griechische, persische und indische Werke ins Arabische übersetzt.",
+     "Ohne diese Übersetzungsbewegung wäre ein Großteil der antiken Wissenschaft verloren – Europa erhielt Aristoteles, Ptolemäus und Galen später aus arabischer Überlieferung zurück.",
+     "Al-Chwarizmi entwickelt hier die Algebra; sein latinisierter Name steckt im Wort „Algorithmus“."
+    ],
+    "quote": "Papier kam über Samarkand aus China – und machte Bagdad zur Bücherstadt."
+   },
+   {
+    "from": 946,
+    "to": 1258,
+    "ruler": "Kalifen unter der Vormundschaft der Buyiden und Seldschuken",
+    "rulerTitle": "Kalif – zunehmend nur noch religiöse Autorität",
+    "dynasty": "Abbasiden",
+    "capital": "Bagdad",
+    "government": "Formales Kalifat; die tatsächliche Macht liegt bei Militärdynastien",
+    "religion": "Sunnitischer Islam",
+    "languages": [
+     "Arabisch",
+     "Persisch",
+     "Türkisch"
+    ],
+    "population": "ca. 30 Mio.",
+    "economy": "Handel, Handwerk, Landwirtschaft",
+    "summary": [
+     "Ab dem 10. Jahrhundert ist der Kalif geistliches Oberhaupt ohne eigene Macht; Buyiden, dann Seldschuken regieren tatsächlich.",
+     "1258 nehmen die Mongolen Bagdad ein und töten den letzten Kalifen. Die Bibliotheken der Stadt gehen unter."
     ]
-  },
-  "Fatimid Caliphate": {
-    "kind": "Schiitisches Kalifat",
-    "wiki": "Fatimiden",
-    "founded": 909,
-    "dissolved": 1171,
-    "periods": [
-      {
-        "from": 909,
-        "to": 1171,
-        "ruler": "al-Muizz",
-        "rulerTitle": "Kalif und Imam",
-        "dynasty": "Fatimiden",
-        "reign": "953–975",
-        "capital": "Mahdia, ab 973 Kairo",
-        "government": "Kalifat mit ismailitischer Missionsorganisation",
-        "religion": "Ismailitische Schia; sunnitische und koptische Mehrheit geduldet",
-        "languages": [
-          "Arabisch",
-          "Berbersprachen",
-          "Koptisch"
-        ],
-        "population": "ca. 8 Mio.",
-        "economy": "Rotmeerhandel, Textil, Nilbewässerung",
-        "summary": [
-          "Die Fatimiden gründen 969 Kairo als neue Hauptstadt. Die dortige al-Azhar geht auf 972 zurück und gilt als eine der ältesten durchgehend betriebenen Universitäten der Welt.",
-          "Als schiitische Dynastie stehen sie in offener Konkurrenz zum sunnitischen Kalifat in Bagdad – die islamische Welt hat in dieser Zeit drei Kalifen zugleich."
-        ]
-      }
+   }
+  ]
+ },
+ "Fatimid Caliphate": {
+  "kind": "Schiitisches Kalifat",
+  "wiki": "Fatimiden",
+  "founded": 909,
+  "dissolved": 1171,
+  "periods": [
+   {
+    "from": 909,
+    "to": 1171,
+    "ruler": "al-Muizz",
+    "rulerTitle": "Kalif und Imam",
+    "dynasty": "Fatimiden",
+    "reign": "953–975",
+    "capital": "Mahdia, ab 973 Kairo",
+    "government": "Kalifat mit ismailitischer Missionsorganisation",
+    "religion": "Ismailitische Schia; sunnitische und koptische Mehrheit geduldet",
+    "languages": [
+     "Arabisch",
+     "Berbersprachen",
+     "Koptisch"
+    ],
+    "population": "ca. 8 Mio.",
+    "economy": "Rotmeerhandel, Textil, Nilbewässerung",
+    "summary": [
+     "Die Fatimiden gründen 969 Kairo als neue Hauptstadt. Die dortige al-Azhar geht auf 972 zurück und gilt als eine der ältesten durchgehend betriebenen Universitäten der Welt.",
+     "Als schiitische Dynastie stehen sie in offener Konkurrenz zum sunnitischen Kalifat in Bagdad – die islamische Welt hat in dieser Zeit drei Kalifen zugleich."
     ]
-  },
-  "Caliphate of Córdoba": {
-    "kind": "Kalifat",
-    "wiki": "Kalifat von Córdoba",
-    "founded": 929,
-    "dissolved": 1031,
-    "periods": [
-      {
-        "from": 756,
-        "to": 1031,
-        "ruler": "Abd ar-Rahman III.",
-        "rulerTitle": "Kalif von Córdoba",
-        "dynasty": "Umayyaden von al-Andalus",
-        "reign": "912–961",
-        "capital": "Córdoba",
-        "government": "Emirat, ab 929 Kalifat",
-        "religion": "Islam; große christliche und jüdische Gemeinden",
-        "languages": [
-          "Arabisch",
-          "Romanisch (Mozarabisch)",
-          "Hebräisch",
-          "Berbersprachen"
-        ],
-        "population": "ca. 7 Mio.",
-        "economy": "Bewässerungslandwirtschaft, Seide, Leder, Fernhandel",
-        "summary": [
-          "Córdoba ist im 10. Jahrhundert die größte Stadt Westeuropas – mit Straßenbeleuchtung, Kanalisation und einer Bibliothek von angeblich 400.000 Bänden.",
-          "Muslime, Christen und Juden leben unter ungleichen, aber geregelten Bedingungen zusammen. Jüdische Gelehrte wie Hasdai ibn Schaprut wirken am Hof.",
-          "1031 zerfällt das Kalifat in die Taifa-Kleinkönigreiche – der Anfang vom Ende der muslimischen Herrschaft in Iberien."
-        ]
-      }
+   }
+  ]
+ },
+ "Caliphate of Córdoba": {
+  "kind": "Kalifat",
+  "wiki": "Kalifat von Córdoba",
+  "founded": 929,
+  "dissolved": 1031,
+  "periods": [
+   {
+    "from": 756,
+    "to": 1031,
+    "ruler": "Abd ar-Rahman III.",
+    "rulerTitle": "Kalif von Córdoba",
+    "dynasty": "Umayyaden von al-Andalus",
+    "reign": "912–961",
+    "capital": "Córdoba",
+    "government": "Emirat, ab 929 Kalifat",
+    "religion": "Islam; große christliche und jüdische Gemeinden",
+    "languages": [
+     "Arabisch",
+     "Romanisch (Mozarabisch)",
+     "Hebräisch",
+     "Berbersprachen"
+    ],
+    "population": "ca. 7 Mio.",
+    "economy": "Bewässerungslandwirtschaft, Seide, Leder, Fernhandel",
+    "summary": [
+     "Córdoba ist im 10. Jahrhundert die größte Stadt Westeuropas – mit Straßenbeleuchtung, Kanalisation und einer Bibliothek von angeblich 400.000 Bänden.",
+     "Muslime, Christen und Juden leben unter ungleichen, aber geregelten Bedingungen zusammen. Jüdische Gelehrte wie Hasdai ibn Schaprut wirken am Hof.",
+     "1031 zerfällt das Kalifat in die Taifa-Kleinkönigreiche – der Anfang vom Ende der muslimischen Herrschaft in Iberien."
     ]
-  },
-  "Seljuk Empire": {
-    "kind": "Sultanat",
-    "wiki": "Seldschuken",
-    "founded": 1037,
-    "dissolved": 1194,
-    "periods": [
-      {
-        "from": 1037,
-        "to": 1194,
-        "ruler": "Malik Schah I.",
-        "rulerTitle": "Sultan",
-        "dynasty": "Seldschuken",
-        "reign": "1072–1092",
-        "capital": "Isfahan, Merw",
-        "government": "Sultanat mit persischer Verwaltung unter dem Wesir Nizam al-Mulk",
-        "religion": "Sunnitischer Islam",
-        "languages": [
-          "Persisch",
-          "Arabisch",
-          "Oghusisch"
-        ],
-        "population": "ca. 15 Mio.",
-        "economy": "Karawanenhandel, Iqta-Lehen für Militärs",
-        "summary": [
-          "Der Sieg bei Manzikert 1071 über Byzanz öffnet Anatolien für die türkische Einwanderung – die Vorgeschichte der heutigen Türkei.",
-          "Der Wesir Nizam al-Mulk gründet ein Netz von Hochschulen (Madrasas) und verfasst mit dem „Buch der Staatskunst“ einen der bedeutendsten Regierungsratgeber des Mittelalters.",
-          "Der Astronom und Dichter Omar Chayyam reformiert in seinem Auftrag den Kalender."
-        ]
-      }
+   }
+  ]
+ },
+ "Seljuk Empire": {
+  "kind": "Sultanat",
+  "wiki": "Seldschuken",
+  "founded": 1037,
+  "dissolved": 1194,
+  "periods": [
+   {
+    "from": 1037,
+    "to": 1194,
+    "ruler": "Malik Schah I.",
+    "rulerTitle": "Sultan",
+    "dynasty": "Seldschuken",
+    "reign": "1072–1092",
+    "capital": "Isfahan, Merw",
+    "government": "Sultanat mit persischer Verwaltung unter dem Wesir Nizam al-Mulk",
+    "religion": "Sunnitischer Islam",
+    "languages": [
+     "Persisch",
+     "Arabisch",
+     "Oghusisch"
+    ],
+    "population": "ca. 15 Mio.",
+    "economy": "Karawanenhandel, Iqta-Lehen für Militärs",
+    "summary": [
+     "Der Sieg bei Manzikert 1071 über Byzanz öffnet Anatolien für die türkische Einwanderung – die Vorgeschichte der heutigen Türkei.",
+     "Der Wesir Nizam al-Mulk gründet ein Netz von Hochschulen (Madrasas) und verfasst mit dem „Buch der Staatskunst“ einen der bedeutendsten Regierungsratgeber des Mittelalters.",
+     "Der Astronom und Dichter Omar Chayyam reformiert in seinem Auftrag den Kalender."
     ]
-  },
-  "Mamluk Sultanate": {
-    "kind": "Sultanat",
-    "wiki": "Mamluken",
-    "founded": 1250,
-    "dissolved": 1517,
-    "periods": [
-      {
-        "from": 1250,
-        "to": 1517,
-        "ruler": "Baibars",
-        "rulerTitle": "Sultan von Ägypten und Syrien",
-        "dynasty": "Bahri-Mamluken",
-        "reign": "1260–1277",
-        "capital": "Kairo",
-        "government": "Militäroligarchie ehemaliger Militärsklaven; Herrschaft nicht erblich",
-        "religion": "Sunnitischer Islam",
-        "languages": [
-          "Arabisch",
-          "Kiptschakisch",
-          "Tscherkessisch"
-        ],
-        "population": "ca. 4 Mio.",
-        "economy": "Gewürzhandel zwischen Indien und Venedig, Zuckerrohr, Textil",
-        "summary": [
-          "Ein Staat, in dem als Sklaven gekaufte und militärisch ausgebildete Männer die Herrschenden stellen – die Söhne der Sultane sind meist nicht nachfolgeberechtigt.",
-          "1260 besiegen die Mamluken bei Ain Dschalut die Mongolen und setzen deren Vormarsch nach Westen ein Ende. 1291 vertreiben sie die letzten Kreuzfahrer aus dem Heiligen Land.",
-          "1517 unterliegen sie den Osmanen, bleiben in Ägypten aber bis 1811 einflussreich."
-        ]
-      }
+   }
+  ]
+ },
+ "Mamluk Sultanate": {
+  "kind": "Sultanat",
+  "wiki": "Mamluken",
+  "founded": 1250,
+  "dissolved": 1517,
+  "periods": [
+   {
+    "from": 1250,
+    "to": 1517,
+    "ruler": "Baibars",
+    "rulerTitle": "Sultan von Ägypten und Syrien",
+    "dynasty": "Bahri-Mamluken",
+    "reign": "1260–1277",
+    "capital": "Kairo",
+    "government": "Militäroligarchie ehemaliger Militärsklaven; Herrschaft nicht erblich",
+    "religion": "Sunnitischer Islam",
+    "languages": [
+     "Arabisch",
+     "Kiptschakisch",
+     "Tscherkessisch"
+    ],
+    "population": "ca. 4 Mio.",
+    "economy": "Gewürzhandel zwischen Indien und Venedig, Zuckerrohr, Textil",
+    "summary": [
+     "Ein Staat, in dem als Sklaven gekaufte und militärisch ausgebildete Männer die Herrschenden stellen – die Söhne der Sultane sind meist nicht nachfolgeberechtigt.",
+     "1260 besiegen die Mamluken bei Ain Dschalut die Mongolen und setzen deren Vormarsch nach Westen ein Ende. 1291 vertreiben sie die letzten Kreuzfahrer aus dem Heiligen Land.",
+     "1517 unterliegen sie den Osmanen, bleiben in Ägypten aber bis 1811 einflussreich."
     ]
-  },
-  "Safavid Empire": {
-    "kind": "Schiitisches Reich",
-    "wiki": "Safawiden",
-    "founded": 1501,
-    "dissolved": 1736,
-    "periods": [
-      {
-        "from": 1501,
-        "to": 1736,
-        "ruler": "Abbas I. der Große",
-        "rulerTitle": "Schah von Iran",
-        "dynasty": "Safawiden",
-        "reign": "1588–1629",
-        "capital": "Täbris, Ghazvin, ab 1598 Isfahan",
-        "government": "Monarchie mit stehendem Heer und Kronprovinzen",
-        "religion": "Zwölferschia als Staatsreligion",
-        "languages": [
-          "Persisch",
-          "Aserbaidschanisch",
-          "Arabisch"
-        ],
-        "population": "ca. 8 Mio.",
-        "economy": "Seidenmonopol, Teppichmanufakturen, Handel mit Europa und Indien",
-        "summary": [
-          "Die Safawiden machen die Zwölferschia zur Staatsreligion – der Grund, warum Iran bis heute schiitisch ist und sich von seinen sunnitischen Nachbarn abhebt.",
-          "Isfahan unter Abbas I. gilt als eine der schönsten Städte der Welt; der Königsplatz ist mit rund neun Hektar einer der größten Stadtplätze überhaupt.",
-          "Ein persisches Sprichwort der Zeit lautet: „Isfahan ist die halbe Welt.“"
-        ]
-      }
+   }
+  ]
+ },
+ "Safavid Empire": {
+  "kind": "Schiitisches Reich",
+  "wiki": "Safawiden",
+  "founded": 1501,
+  "dissolved": 1736,
+  "periods": [
+   {
+    "from": 1501,
+    "to": 1736,
+    "ruler": "Abbas I. der Große",
+    "rulerTitle": "Schah von Iran",
+    "dynasty": "Safawiden",
+    "reign": "1588–1629",
+    "capital": "Täbris, Ghazvin, ab 1598 Isfahan",
+    "government": "Monarchie mit stehendem Heer und Kronprovinzen",
+    "religion": "Zwölferschia als Staatsreligion",
+    "languages": [
+     "Persisch",
+     "Aserbaidschanisch",
+     "Arabisch"
+    ],
+    "population": "ca. 8 Mio.",
+    "economy": "Seidenmonopol, Teppichmanufakturen, Handel mit Europa und Indien",
+    "summary": [
+     "Die Safawiden machen die Zwölferschia zur Staatsreligion – der Grund, warum Iran bis heute schiitisch ist und sich von seinen sunnitischen Nachbarn abhebt.",
+     "Isfahan unter Abbas I. gilt als eine der schönsten Städte der Welt; der Königsplatz ist mit rund neun Hektar einer der größten Stadtplätze überhaupt.",
+     "Ein persisches Sprichwort der Zeit lautet: „Isfahan ist die halbe Welt.“"
     ]
-  },
-  "Persia": {
-    "kind": "Königreich",
-    "wiki": "Kadscharen",
-    "periods": [
-      {
-        "from": 1789,
-        "to": 1925,
-        "ruler": "Nasir ad-Din Schah",
-        "rulerTitle": "Schah von Persien",
-        "dynasty": "Kadscharen",
-        "reign": "1848–1896",
-        "capital": "Teheran",
-        "government": "Monarchie; ab 1906 konstitutionell",
-        "religion": "Zwölferschia",
-        "languages": [
-          "Persisch",
-          "Aserbaidschanisch",
-          "Kurdisch"
-        ],
-        "population": "ca. 10 Mio.",
-        "economy": "Landwirtschaft, Teppiche, ab 1908 Erdöl",
-        "summary": [
-          "Persien behauptet formal seine Unabhängigkeit, gerät aber zwischen Russland und Großbritannien; 1907 teilen beide das Land in Einflusszonen auf.",
-          "Die Konstitutionelle Revolution von 1906 erzwingt das erste Parlament des Nahen Ostens. 1908 wird im Südwesten Erdöl gefunden – mit Folgen bis heute."
-        ]
-      }
+   }
+  ]
+ },
+ "Persia": {
+  "kind": "Königreich",
+  "wiki": "Kadscharen",
+  "periods": [
+   {
+    "from": 1789,
+    "to": 1925,
+    "ruler": "Nasir ad-Din Schah",
+    "rulerTitle": "Schah von Persien",
+    "dynasty": "Kadscharen",
+    "reign": "1848–1896",
+    "capital": "Teheran",
+    "government": "Monarchie; ab 1906 konstitutionell",
+    "religion": "Zwölferschia",
+    "languages": [
+     "Persisch",
+     "Aserbaidschanisch",
+     "Kurdisch"
+    ],
+    "population": "ca. 10 Mio.",
+    "economy": "Landwirtschaft, Teppiche, ab 1908 Erdöl",
+    "summary": [
+     "Persien behauptet formal seine Unabhängigkeit, gerät aber zwischen Russland und Großbritannien; 1907 teilen beide das Land in Einflusszonen auf.",
+     "Die Konstitutionelle Revolution von 1906 erzwingt das erste Parlament des Nahen Ostens. 1908 wird im Südwesten Erdöl gefunden – mit Folgen bis heute."
     ]
-  },
-  "Iran": {
-    "kind": "Republik",
-    "wiki": "Iran",
-    "periods": [
-      {
-        "from": 1925,
-        "to": 1978,
-        "kind": "Kaiserreich",
-        "ruler": "Mohammad Reza Pahlavi",
-        "rulerTitle": "Schahanschah – König der Könige",
-        "dynasty": "Pahlavi",
-        "reign": "1941–1979",
-        "capital": "Teheran",
-        "government": "Monarchie mit autoritärer Modernisierungspolitik",
-        "religion": "Zwölferschia",
-        "languages": [
-          "Persisch"
-        ],
-        "population": "ca. 37 Mio. (1979)",
-        "economy": "Erdöl, staatliche Industrialisierung, Landreform",
-        "summary": [
-          "Die Pahlavi-Schahs modernisieren Verwaltung, Bildung und Wirtschaft; 1963 erhalten Frauen das Wahlrecht.",
-          "Die Verstaatlichung des Erdöls 1951 endet 1953 mit einem von Großbritannien und den USA unterstützten Sturz der Regierung Mossadegh – ein bis heute prägendes Ereignis."
-        ]
-      },
-      {
-        "from": 1979,
-        "to": null,
-        "kind": "Islamische Republik",
-        "ruler": "Ajatollah Chomeini, später Ali Chamenei",
-        "rulerTitle": "Oberster Rechtsgelehrter (Rahbar)",
-        "capital": "Teheran",
-        "government": "Islamische Republik mit gewähltem Präsidenten und geistlicher Oberaufsicht",
-        "religion": "Zwölferschia als Staatsreligion",
-        "languages": [
-          "Persisch",
-          "Aserbaidschanisch",
-          "Kurdisch",
-          "Arabisch"
-        ],
-        "population": "ca. 89 Mio.",
-        "economy": "Erdöl und Erdgas, Petrochemie, Landwirtschaft",
-        "summary": [
-          "Die Revolution von 1979 stürzt die Monarchie und errichtet eine Staatsform, die gewählte Organe mit der Letztentscheidung des Obersten Rechtsgelehrten verbindet.",
-          "Der Krieg gegen den Irak 1980–1988 kostet Hunderttausende Menschenleben."
-        ]
-      }
+   }
+  ]
+ },
+ "Iran": {
+  "kind": "Republik",
+  "wiki": "Iran",
+  "periods": [
+   {
+    "from": 1925,
+    "to": 1978,
+    "kind": "Kaiserreich",
+    "ruler": "Mohammad Reza Pahlavi",
+    "rulerTitle": "Schahanschah – König der Könige",
+    "dynasty": "Pahlavi",
+    "reign": "1941–1979",
+    "capital": "Teheran",
+    "government": "Monarchie mit autoritärer Modernisierungspolitik",
+    "religion": "Zwölferschia",
+    "languages": [
+     "Persisch"
+    ],
+    "population": "ca. 37 Mio. (1979)",
+    "economy": "Erdöl, staatliche Industrialisierung, Landreform",
+    "summary": [
+     "Die Pahlavi-Schahs modernisieren Verwaltung, Bildung und Wirtschaft; 1963 erhalten Frauen das Wahlrecht.",
+     "Die Verstaatlichung des Erdöls 1951 endet 1953 mit einem von Großbritannien und den USA unterstützten Sturz der Regierung Mossadegh – ein bis heute prägendes Ereignis."
     ]
-  },
-  "Ghana Empire": {
-    "kind": "Königreich",
-    "wiki": "Reich von Ghana",
-    "founded": 700,
-    "dissolved": 1240,
-    "periods": [
-      {
-        "from": 700,
-        "to": 1240,
-        "ruler": "Der Ghana – Titel des Herrschers, der dem Reich den Namen gab",
-        "rulerTitle": "Ghana (Kriegsherr)",
-        "capital": "Koumbi Saleh",
-        "government": "Königtum über tributpflichtige Provinzen",
-        "religion": "Traditionelle Religionen; muslimische Händlergemeinden",
-        "languages": [
-          "Soninke",
-          "Arabisch (Handel)"
-        ],
-        "population": "einige Millionen",
-        "economy": "Zölle auf den Gold-Salz-Handel durch die Sahara",
-        "summary": [
-          "Das Reich lebt vom Tauschhandel zwischen westafrikanischem Gold und saharischem Salz – beides wurde zeitweise gewichtsgleich getauscht.",
-          "Arabische Reisende beschreiben eine zweigeteilte Hauptstadt mit muslimischem Händlerviertel und königlicher Residenz."
-        ]
-      }
+   },
+   {
+    "from": 1979,
+    "to": null,
+    "kind": "Islamische Republik",
+    "ruler": "Ajatollah Chomeini, später Ali Chamenei",
+    "rulerTitle": "Oberster Rechtsgelehrter (Rahbar)",
+    "capital": "Teheran",
+    "government": "Islamische Republik mit gewähltem Präsidenten und geistlicher Oberaufsicht",
+    "religion": "Zwölferschia als Staatsreligion",
+    "languages": [
+     "Persisch",
+     "Aserbaidschanisch",
+     "Kurdisch",
+     "Arabisch"
+    ],
+    "population": "ca. 89 Mio.",
+    "economy": "Erdöl und Erdgas, Petrochemie, Landwirtschaft",
+    "summary": [
+     "Die Revolution von 1979 stürzt die Monarchie und errichtet eine Staatsform, die gewählte Organe mit der Letztentscheidung des Obersten Rechtsgelehrten verbindet.",
+     "Der Krieg gegen den Irak 1980–1988 kostet Hunderttausende Menschenleben."
     ]
-  },
-  "Mali": {
-    "kind": "Königreich, später Republik",
-    "wiki": "Malireich",
-    "periods": [
-      {
-        "from": 1235,
-        "to": 1670,
-        "kind": "Großreich",
-        "ruler": "Mansa Musa",
-        "rulerTitle": "Mansa – König der Könige",
-        "dynasty": "Keita",
-        "reign": "1312–1337",
-        "capital": "Niani, später Timbuktu als Kulturzentrum",
-        "government": "Königtum über Provinzen und Vasallenkönige",
-        "religion": "Islam; daneben traditionelle Religionen",
-        "languages": [
-          "Malinke",
-          "Arabisch"
-        ],
-        "population": "ca. 20 Mio.",
-        "economy": "Gold aus Bambuk und Bure, Salz, Sklavenhandel, Transsaharahandel",
-        "summary": [
-          "Mali kontrolliert im 14. Jahrhundert einen großen Teil der damaligen Weltgoldproduktion. Mansa Musa gilt vielen Schätzungen zufolge als der reichste Mensch, der je gelebt hat.",
-          "Auf seiner Pilgerfahrt nach Mekka 1324 gibt er in Kairo so viel Gold aus, dass dessen Wert dort für Jahre einbricht.",
-          "Timbuktu wird unter ihm zum Zentrum islamischer Gelehrsamkeit; die Sankoré-Moschee beherbergt Tausende Handschriften."
-        ],
-        "quote": "Der Katalanische Weltatlas von 1375 zeigt Mansa Musa mit einem Goldklumpen in der Hand."
-      },
-      {
-        "from": 1960,
-        "to": null,
-        "kind": "Republik",
-        "ruler": "Wechselnde Staatsoberhäupter",
-        "rulerTitle": "Präsident der Republik Mali",
-        "capital": "Bamako",
-        "government": "Republik",
-        "religion": "Islam",
-        "languages": [
-          "Französisch",
-          "Bambara"
-        ],
-        "population": "ca. 23 Mio.",
-        "economy": "Gold, Baumwolle, Viehzucht",
-        "summary": "1960 aus Französisch-Sudan hervorgegangen; der Staat trägt bewusst den Namen des mittelalterlichen Großreichs."
-      }
+   }
+  ]
+ },
+ "Ghana Empire": {
+  "kind": "Königreich",
+  "wiki": "Reich von Ghana",
+  "founded": 300,
+  "dissolved": 1240,
+  "periods": [
+   {
+    "from": 700,
+    "to": 1240,
+    "ruler": "Der Ghana – Titel des Herrschers, der dem Reich den Namen gab",
+    "rulerTitle": "Ghana (Kriegsherr)",
+    "capital": "Koumbi Saleh",
+    "government": "Königtum über tributpflichtige Provinzen",
+    "religion": "Traditionelle Religionen; muslimische Händlergemeinden",
+    "languages": [
+     "Soninke",
+     "Arabisch (Handel)"
+    ],
+    "population": "einige Millionen",
+    "economy": "Zölle auf den Gold-Salz-Handel durch die Sahara",
+    "summary": [
+     "Das Reich lebt vom Tauschhandel zwischen westafrikanischem Gold und saharischem Salz – beides wurde zeitweise gewichtsgleich getauscht.",
+     "Arabische Reisende beschreiben eine zweigeteilte Hauptstadt mit muslimischem Händlerviertel und königlicher Residenz."
     ]
-  },
-  "Songhai": {
+   }
+  ],
+  "_datierung": "Die Anfänge des Reiches werden meist ins 4. Jahrhundert datiert; 700 markiert die belegte Blüte."
+ },
+ "Mali": {
+  "kind": "Königreich, später Republik",
+  "wiki": "Malireich",
+  "periods": [
+   {
+    "from": 1235,
+    "to": 1670,
     "kind": "Großreich",
-    "wiki": "Songhaireich",
-    "founded": 1464,
-    "dissolved": 1591,
-    "periods": [
-      {
-        "from": 1464,
-        "to": 1591,
-        "ruler": "Askia Muhammad I.",
-        "rulerTitle": "Askia – Herrscher von Songhai",
-        "reign": "1493–1528",
-        "capital": "Gao",
-        "government": "Zentralisiertes Königtum mit Provinzgouverneuren und Berufsheer",
-        "religion": "Islam als Staatsreligion",
-        "languages": [
-          "Songhai",
-          "Arabisch"
-        ],
-        "population": "ca. 10 Mio.",
-        "economy": "Gold, Salz, Sklavenhandel, Nigerschifffahrt",
-        "summary": [
-          "Songhai ist das größte Reich, das Westafrika hervorgebracht hat. Askia Muhammad baut ein einheitliches Steuer-, Maß- und Rechtssystem auf.",
-          "Timbuktu und Djenné erleben ihre gelehrte Blütezeit. 1591 unterliegt das Heer bei Tondibi einer marokkanischen Truppe mit Feuerwaffen – der Musketen wegen, nicht der Zahl."
-        ]
-      }
-    ]
-  },
-  "Bornu-Kanem": {
-    "kind": "Sultanat",
-    "wiki": "Kanem-Bornu",
-    "founded": 700,
-    "dissolved": 1893,
-    "periods": [
-      {
-        "from": 700,
-        "to": 1893,
-        "ruler": "Idris Alauma",
-        "rulerTitle": "Mai – König von Bornu",
-        "dynasty": "Sayfawa",
-        "reign": "1564–1596",
-        "capital": "Ndjimi, später Ngazargamu",
-        "government": "Königtum mit Hofämtern und Reiterheer",
-        "religion": "Islam seit dem 11. Jahrhundert",
-        "languages": [
-          "Kanuri",
-          "Arabisch"
-        ],
-        "population": "einige Millionen",
-        "economy": "Transsaharahandel, Salz, Pferde, Sklavenhandel",
-        "summary": [
-          "Die Sayfawa-Dynastie regiert rund tausend Jahre – eine der langlebigsten Herrscherfamilien der Weltgeschichte.",
-          "Idris Alauma führt Feuerwaffen und türkische Militärberater ein und ordnet die Rechtsprechung nach islamischem Recht."
-        ]
-      }
-    ]
-  },
-  "Sokoto Caliphate": {
-    "kind": "Kalifat",
-    "wiki": "Sokoto-Kalifat",
-    "founded": 1804,
-    "dissolved": 1903,
-    "periods": [
-      {
-        "from": 1804,
-        "to": 1903,
-        "ruler": "Usman dan Fodio",
-        "rulerTitle": "Amir al-Muminin – Führer der Gläubigen",
-        "reign": "1804–1817",
-        "capital": "Sokoto",
-        "government": "Kalifat über rund 30 Emirate",
-        "religion": "Sunnitischer Islam (Maliki-Rechtsschule)",
-        "languages": [
-          "Fulfulde",
-          "Hausa",
-          "Arabisch"
-        ],
-        "population": "ca. 10 bis 20 Mio.",
-        "economy": "Landwirtschaft, Textilhandwerk, Handel, Sklavenarbeit auf Plantagen",
-        "summary": [
-          "Aus einer religiösen Reformbewegung entsteht der größte afrikanische Staat des 19. Jahrhunderts. Usman dan Fodio ist Gelehrter und Dichter, kein Berufskrieger.",
-          "Bemerkenswert ist die Betonung der Mädchenbildung; seine Tochter Nana Asma'u verfasst Lehrgedichte und organisiert ein Netz von Lehrerinnen.",
-          "1903 wird das Kalifat von britischen Truppen erobert und in Nordnigeria eingegliedert."
-        ]
-      }
-    ]
-  },
-  "Ethiopia": {
-    "kind": "Kaiserreich, später Bundesrepublik",
-    "wiki": "Äthiopien",
-    "events": [
-      {
-        "year": 1896,
-        "text": "Sieg bei Adua über Italien sichert die Unabhängigkeit."
-      },
-      {
-        "year": 1936,
-        "text": "Italienische Besetzung; 1941 Befreiung."
-      },
-      {
-        "year": 1974,
-        "text": "Sturz Haile Selassies durch den Derg."
-      }
+    "ruler": "Mansa Musa",
+    "rulerTitle": "Mansa – König der Könige",
+    "dynasty": "Keita",
+    "reign": "1312–1337",
+    "capital": "Niani, später Timbuktu als Kulturzentrum",
+    "government": "Königtum über Provinzen und Vasallenkönige",
+    "religion": "Islam; daneben traditionelle Religionen",
+    "languages": [
+     "Malinke",
+     "Arabisch"
     ],
-    "periods": [
-      {
-        "from": 1270,
-        "to": 1855,
-        "ruler": "Zar'a Ya'qob",
-        "rulerTitle": "Negus Negest – König der Könige",
-        "dynasty": "Salomonische Dynastie",
-        "reign": "1434–1468",
-        "capital": "Wanderhof, später Gonder",
-        "government": "Kaisertum über Provinzfürsten",
-        "religion": "Äthiopisch-orthodoxes Christentum",
-        "languages": [
-          "Ge'ez",
-          "Amharisch",
-          "Oromo"
-        ],
-        "population": "ca. 5 Mio.",
-        "economy": "Hochlandackerbau, Kaffee, Karawanenhandel",
-        "summary": [
-          "Die salomonische Dynastie führt ihre Herkunft auf König Salomo und die Königin von Saba zurück – ein Anspruch, der bis 1974 in der Verfassung stand.",
-          "Die Felsenkirchen von Lalibela, aus dem Fels herausgearbeitet statt gemauert, stammen aus dem 12./13. Jahrhundert."
-        ]
-      },
-      {
-        "from": 1856,
-        "to": 1974,
-        "ruler": "Haile Selassie I.",
-        "rulerTitle": "Kaiser von Äthiopien",
-        "dynasty": "Salomonische Dynastie",
-        "reign": "1930–1974",
-        "capital": "Addis Abeba",
-        "government": "Kaisertum, ab 1931 mit Verfassung",
-        "religion": "Äthiopisch-orthodoxes Christentum, Islam",
-        "languages": [
-          "Amharisch",
-          "Oromo",
-          "Tigrinya"
-        ],
-        "population": "ca. 28 Mio.",
-        "economy": "Kaffee, Getreide, Viehzucht",
-        "summary": [
-          "1896 schlägt Äthiopien bei Adua ein italienisches Invasionsheer – der einzige Sieg eines afrikanischen Staates über eine europäische Kolonialarmee mit dauerhafter Wirkung.",
-          "Äthiopien bleibt damit neben Liberia der einzige nie dauerhaft kolonisierte Staat Afrikas. Haile Selassies Rede vor dem Völkerbund 1936 gegen die italienische Aggression ist bis heute berühmt."
-        ]
-      },
-      {
-        "from": 1975,
-        "to": null,
-        "ruler": "Wechselnde Regierungen",
-        "rulerTitle": "Ministerpräsident; Staatsoberhaupt ist der Präsident",
-        "capital": "Addis Abeba",
-        "government": "Bundesrepublik",
-        "religion": "Orthodoxes Christentum, Islam, Protestantismus",
-        "languages": [
-          "Amharisch",
-          "Oromo",
-          "Somali",
-          "Tigrinya"
-        ],
-        "population": "ca. 128 Mio.",
-        "economy": "Kaffee, Landwirtschaft, Textil, Wasserkraft",
-        "summary": "Nach der Militärherrschaft des Derg und dem Bürgerkrieg entsteht 1995 eine ethnisch gegliederte Bundesrepublik. 1993 wird Eritrea unabhängig."
-      }
-    ]
-  },
-  "Great Zimbabwe": {
-    "kind": "Königreich",
-    "wiki": "Simbabwe (Ruinenstadt)",
-    "founded": 1100,
-    "dissolved": 1450,
-    "periods": [
-      {
-        "from": 1100,
-        "to": 1450,
-        "ruler": "Könige der Shona",
-        "rulerTitle": "Mambo",
-        "capital": "Great Zimbabwe",
-        "government": "Königtum über Viehzüchter- und Handelsgemeinschaften",
-        "religion": "Ahnenverehrung, Mwari-Kult",
-        "languages": [
-          "Shona"
-        ],
-        "population": "ca. 18.000 in der Stadt",
-        "economy": "Rinderhaltung, Goldhandel zur Swahili-Küste",
-        "summary": [
-          "Die Mauern von Great Zimbabwe sind bis elf Meter hoch und ohne Mörtel gefügt – das größte vorkoloniale Steinbauwerk südlich der Sahara.",
-          "Funde chinesischen Porzellans und persischer Keramik belegen die Einbindung in den Handel des Indischen Ozeans.",
-          "Koloniale Autoren schrieben die Anlage jahrzehntelang Fremden zu; die Archäologie hat ihre Shona-Herkunft längst zweifelsfrei belegt. Der Staat Simbabwe trägt seit 1980 ihren Namen."
-        ]
-      }
-    ]
-  },
-  "Morocco": {
-    "kind": "Sultanat, später Königreich",
-    "wiki": "Marokko",
-    "periods": [
-      {
-        "from": 1200,
-        "to": 1900,
-        "ruler": "Ahmad al-Mansur",
-        "rulerTitle": "Sultan von Marokko",
-        "dynasty": "Saadier, später Alawiden",
-        "reign": "1578–1603",
-        "capital": "Marrakesch, Fès, später Meknès",
-        "government": "Sultanat mit Stammesbündnissen",
-        "religion": "Sunnitischer Islam",
-        "languages": [
-          "Arabisch",
-          "Berbersprachen"
-        ],
-        "population": "ca. 5 Mio.",
-        "economy": "Zucker, Gold aus Songhai, Transsaharahandel",
-        "summary": [
-          "Marokko wehrt 1578 bei Ksar el-Kebir eine portugiesische Invasion ab und erobert 1591 das Songhaireich – finanziert durch dessen eigenes Gold.",
-          "Als einziger Staat Nordafrikas gerät es nie unter osmanische Herrschaft."
-        ]
-      },
-      {
-        "from": 1901,
-        "to": null,
-        "ruler": "Mohammed V., später Hassan II. und Mohammed VI.",
-        "rulerTitle": "König von Marokko",
-        "dynasty": "Alawiden",
-        "capital": "Rabat",
-        "government": "Konstitutionelle Monarchie",
-        "religion": "Sunnitischer Islam",
-        "languages": [
-          "Arabisch",
-          "Tamazight",
-          "Französisch"
-        ],
-        "population": "ca. 38 Mio.",
-        "economy": "Phosphat, Landwirtschaft, Tourismus, Industrie",
-        "summary": "1912 französisches und spanisches Protektorat, 1956 Unabhängigkeit. Die alawitische Dynastie regiert seit dem 17. Jahrhundert."
-      }
-    ]
-  },
-  "Saudi Arabia": {
-    "kind": "Königreich",
-    "wiki": "Saudi-Arabien",
-    "founded": 1932,
-    "periods": [
-      {
-        "from": 1932,
-        "to": null,
-        "ruler": "Abd al-Aziz ibn Saud und Nachfolger",
-        "rulerTitle": "König, Hüter der beiden Heiligen Stätten",
-        "dynasty": "Saud",
-        "capital": "Riad",
-        "government": "Absolute Monarchie",
-        "religion": "Sunnitischer Islam wahhabitischer Prägung",
-        "languages": [
-          "Arabisch"
-        ],
-        "population": "ca. 33 Mio.",
-        "economy": "Erdöl – rund ein Sechstel der weltweit bekannten Reserven",
-        "summary": [
-          "1932 vereint Ibn Saud die eroberten Gebiete zum Königreich. Sechs Jahre später wird Erdöl gefunden und verändert Staat und Gesellschaft grundlegend.",
-          "Mekka und Medina machen das Land zum religiösen Zentrum der islamischen Welt; jährlich kommen Millionen Pilger."
-        ]
-      }
-    ]
-  },
-  "Nejd": {
-    "kind": "Emirat",
-    "wiki": "Nadschd",
-    "periods": [
-      {
-        "from": 1744,
-        "to": 1932,
-        "ruler": "Die Familie Saud",
-        "rulerTitle": "Emir von Nadschd",
-        "capital": "Diriyya, später Riad",
-        "government": "Emirat auf Stammesgrundlage",
-        "religion": "Sunnitischer Islam wahhabitischer Prägung",
-        "languages": [
-          "Arabisch"
-        ],
-        "population": "wenige Hunderttausend",
-        "economy": "Kamelzucht, Oasenlandwirtschaft, Karawanenhandel",
-        "summary": "Das Bündnis zwischen dem Fürstenhaus Saud und dem Gelehrten Muhammad ibn Abd al-Wahhab von 1744 ist die Grundlage aller drei saudischen Staaten – bis zum heutigen Königreich."
-      }
-    ]
-  },
-  "Belgian Congo": {
-    "kind": "Kolonie",
-    "wiki": "Belgisch-Kongo",
-    "founded": 1908,
-    "dissolved": 1960,
-    "periods": [
-      {
-        "from": 1885,
-        "to": 1908,
-        "kind": "Privatbesitz des Königs",
-        "ruler": "Leopold II.",
-        "rulerTitle": "Souverän des Kongo-Freistaats",
-        "capital": "Boma",
-        "government": "Persönlicher Besitz des belgischen Königs",
-        "religion": "Traditionelle Religionen, christliche Mission",
-        "languages": [
-          "Französisch",
-          "Lingala",
-          "Kikongo",
-          "Suaheli"
-        ],
-        "population": "Schätzungen um 20 Mio. zu Beginn",
-        "economy": "Kautschuk und Elfenbein durch Zwangsarbeit",
-        "summary": [
-          "Die Berliner Konferenz spricht das Kongobecken 1885 Leopold II. persönlich zu. Das Zwangsarbeitssystem für Kautschuk fordert Millionen Todesopfer.",
-          "Berichte von Roger Casement und E. D. Morel lösen die erste große internationale Menschenrechtskampagne aus. 1908 muss Leopold die Kolonie an den belgischen Staat abtreten."
-        ]
-      },
-      {
-        "from": 1909,
-        "to": 1960,
-        "ruler": "Belgischer Generalgouverneur",
-        "rulerTitle": "Generalgouverneur",
-        "capital": "Léopoldville (Kinshasa)",
-        "government": "Kolonialverwaltung",
-        "religion": "Katholizismus, traditionelle Religionen",
-        "languages": [
-          "Französisch",
-          "Lingala",
-          "Suaheli",
-          "Kikongo",
-          "Tshiluba"
-        ],
-        "population": "ca. 14 Mio. (1960)",
-        "economy": "Kupfer, Kobalt, Diamanten, Uran aus Shinkolobwe",
-        "summary": [
-          "Belgien baut Bergbau und Verkehrswege aus, hält die afrikanische Bevölkerung aber weitgehend von höherer Bildung fern.",
-          "Bei der überstürzten Unabhängigkeit 1960 gibt es im Land nur eine Handvoll afrikanischer Hochschulabsolventen – eine Ursache der folgenden Krise."
-        ]
-      }
-    ]
-  },
-  "Zaire": {
-    "kind": "Republik",
-    "wiki": "Demokratische Republik Kongo",
-    "founded": 1960,
-    "periods": [
-      {
-        "from": 1960,
-        "to": null,
-        "ruler": "Mobutu Sese Seko, später wechselnde Präsidenten",
-        "rulerTitle": "Präsident",
-        "capital": "Kinshasa",
-        "government": "Republik; 1965–1997 Einparteienherrschaft",
-        "religion": "Christentum, traditionelle Religionen",
-        "languages": [
-          "Französisch",
-          "Lingala",
-          "Suaheli",
-          "Kikongo",
-          "Tshiluba"
-        ],
-        "population": "ca. 105 Mio.",
-        "economy": "Kupfer, Kobalt, Coltan, Diamanten",
-        "summary": [
-          "Der Staat trug von 1971 bis 1997 den Namen Zaire. Der Datensatz verwendet ihn auch für spätere Zeitschnitte.",
-          "Mit rund 2,3 Millionen Quadratkilometern ist die DR Kongo der zweitgrößte Staat Afrikas. Sie fördert einen Großteil des weltweiten Kobalts – Schlüsselrohstoff für Akkus."
-        ]
-      }
-    ]
-  },
-  "French West Africa": {
-    "kind": "Kolonialverband",
-    "wiki": "Französisch-Westafrika",
-    "founded": 1895,
-    "dissolved": 1958,
-    "periods": [
-      {
-        "from": 1895,
-        "to": 1958,
-        "ruler": "Der französische Generalgouverneur",
-        "rulerTitle": "Generalgouverneur",
-        "capital": "Dakar",
-        "government": "Verband von acht Kolonien unter gemeinsamer Verwaltung",
-        "religion": "Islam, traditionelle Religionen, Christentum",
-        "languages": [
-          "Französisch",
-          "Wolof",
-          "Bambara",
-          "Fulfulde",
-          "Hausa"
-        ],
-        "population": "ca. 25 Mio.",
-        "economy": "Erdnüsse, Baumwolle, Kakao; Zwangsarbeit bis 1946",
-        "summary": [
-          "Acht Kolonien – vom heutigen Senegal bis Niger – werden von Dakar aus verwaltet. Über 200.000 westafrikanische Soldaten kämpfen in den Weltkriegen für Frankreich.",
-          "1958/60 werden die Gebiete unabhängig; die Grenzen von damals sind bis heute die Staatsgrenzen."
-        ]
-      }
-    ]
-  },
-  "Union of South Africa": {
-    "kind": "Dominion",
-    "wiki": "Südafrikanische Union",
-    "founded": 1910,
-    "dissolved": 1961,
-    "periods": [
-      {
-        "from": 1910,
-        "to": 1961,
-        "ruler": "Wechselnde Premierminister",
-        "rulerTitle": "Premierminister; Staatsoberhaupt ist der britische Monarch",
-        "capital": "Pretoria, Kapstadt, Bloemfontein",
-        "government": "Dominion des Britischen Empire; Wahlrecht faktisch nur für Weiße",
-        "religion": "Christentum, traditionelle Religionen",
-        "languages": [
-          "Englisch",
-          "Afrikaans",
-          "Zulu",
-          "Xhosa",
-          "Sotho"
-        ],
-        "population": "ca. 16 Mio.",
-        "economy": "Gold vom Witwatersrand, Diamanten, Kohle, Landwirtschaft",
-        "summary": [
-          "Die Union entsteht 1910 aus britischen Kolonien und den besiegten Burenrepubliken. Der Natives Land Act von 1913 weist der schwarzen Mehrheit sieben Prozent der Landfläche zu.",
-          "1948 wird die Rassentrennung als Apartheid zum umfassenden Rechtssystem ausgebaut."
-        ]
-      }
-    ]
-  },
-  "South Africa": {
-    "kind": "Republik",
-    "wiki": "Südafrika",
-    "founded": 1961,
-    "events": [
-      {
-        "year": 1948,
-        "text": "Beginn der Apartheid als Staatsdoktrin."
-      },
-      {
-        "year": 1990,
-        "text": "Freilassung Nelson Mandelas."
-      },
-      {
-        "year": 1994,
-        "text": "Erste allgemeine freie Wahlen."
-      }
+    "population": "ca. 20 Mio.",
+    "economy": "Gold aus Bambuk und Bure, Salz, Sklavenhandel, Transsaharahandel",
+    "summary": [
+     "Mali kontrolliert im 14. Jahrhundert einen großen Teil der damaligen Weltgoldproduktion. Mansa Musa gilt vielen Schätzungen zufolge als der reichste Mensch, der je gelebt hat.",
+     "Auf seiner Pilgerfahrt nach Mekka 1324 gibt er in Kairo so viel Gold aus, dass dessen Wert dort für Jahre einbricht.",
+     "Timbuktu wird unter ihm zum Zentrum islamischer Gelehrsamkeit; die Sankoré-Moschee beherbergt Tausende Handschriften."
     ],
-    "periods": [
-      {
-        "from": 1961,
-        "to": null,
-        "ruler": "Nelson Mandela und Nachfolger",
-        "rulerTitle": "Präsident der Republik Südafrika",
-        "capital": "Pretoria (Regierung), Kapstadt (Parlament), Bloemfontein (Justiz)",
-        "government": "Parlamentarische Republik",
-        "religion": "Christentum, traditionelle Religionen, Islam, Hinduismus",
-        "languages": [
-          "Zulu",
-          "Xhosa",
-          "Afrikaans",
-          "Englisch und acht weitere Amtssprachen"
-        ],
-        "population": "ca. 63 Mio.",
-        "economy": "Bergbau, Industrie, Landwirtschaft, Finanzsektor",
-        "summary": [
-          "1994 endet die Apartheid mit den ersten Wahlen, an denen alle Bürgerinnen und Bürger teilnehmen dürfen. Nelson Mandela wird Präsident.",
-          "Die Wahrheits- und Versöhnungskommission unter Desmond Tutu wird zum viel beachteten Modell für den Umgang mit Staatsunrecht.",
-          "Die Verfassung von 1996 zählt zu den fortschrittlichsten der Welt und kennt elf Amtssprachen."
-        ]
-      }
+    "quote": "Der Katalanische Weltatlas von 1375 zeigt Mansa Musa mit einem Goldklumpen in der Hand."
+   },
+   {
+    "from": 1960,
+    "to": null,
+    "kind": "Republik",
+    "ruler": "Wechselnde Staatsoberhäupter",
+    "rulerTitle": "Präsident der Republik Mali",
+    "capital": "Bamako",
+    "government": "Republik",
+    "religion": "Islam",
+    "languages": [
+     "Französisch",
+     "Bambara"
+    ],
+    "population": "ca. 23 Mio.",
+    "economy": "Gold, Baumwolle, Viehzucht",
+    "summary": "1960 aus Französisch-Sudan hervorgegangen; der Staat trägt bewusst den Namen des mittelalterlichen Großreichs."
+   }
+  ]
+ },
+ "Songhai": {
+  "kind": "Großreich",
+  "wiki": "Songhaireich",
+  "founded": 1464,
+  "dissolved": 1591,
+  "periods": [
+   {
+    "from": 1464,
+    "to": 1591,
+    "ruler": "Askia Muhammad I.",
+    "rulerTitle": "Askia – Herrscher von Songhai",
+    "reign": "1493–1528",
+    "capital": "Gao",
+    "government": "Zentralisiertes Königtum mit Provinzgouverneuren und Berufsheer",
+    "religion": "Islam als Staatsreligion",
+    "languages": [
+     "Songhai",
+     "Arabisch"
+    ],
+    "population": "ca. 10 Mio.",
+    "economy": "Gold, Salz, Sklavenhandel, Nigerschifffahrt",
+    "summary": [
+     "Songhai ist das größte Reich, das Westafrika hervorgebracht hat. Askia Muhammad baut ein einheitliches Steuer-, Maß- und Rechtssystem auf.",
+     "Timbuktu und Djenné erleben ihre gelehrte Blütezeit. 1591 unterliegt das Heer bei Tondibi einer marokkanischen Truppe mit Feuerwaffen – der Musketen wegen, nicht der Zahl."
     ]
-  }
+   }
+  ]
+ },
+ "Bornu-Kanem": {
+  "kind": "Sultanat",
+  "wiki": "Kanem-Bornu",
+  "founded": 700,
+  "dissolved": 1893,
+  "periods": [
+   {
+    "from": 700,
+    "to": 1893,
+    "ruler": "Idris Alauma",
+    "rulerTitle": "Mai – König von Bornu",
+    "dynasty": "Sayfawa",
+    "reign": "1564–1596",
+    "capital": "Ndjimi, später Ngazargamu",
+    "government": "Königtum mit Hofämtern und Reiterheer",
+    "religion": "Islam seit dem 11. Jahrhundert",
+    "languages": [
+     "Kanuri",
+     "Arabisch"
+    ],
+    "population": "einige Millionen",
+    "economy": "Transsaharahandel, Salz, Pferde, Sklavenhandel",
+    "summary": [
+     "Die Sayfawa-Dynastie regiert rund tausend Jahre – eine der langlebigsten Herrscherfamilien der Weltgeschichte.",
+     "Idris Alauma führt Feuerwaffen und türkische Militärberater ein und ordnet die Rechtsprechung nach islamischem Recht."
+    ]
+   }
+  ]
+ },
+ "Sokoto Caliphate": {
+  "kind": "Kalifat",
+  "wiki": "Sokoto-Kalifat",
+  "founded": 1804,
+  "dissolved": 1903,
+  "periods": [
+   {
+    "from": 1804,
+    "to": 1903,
+    "ruler": "Usman dan Fodio",
+    "rulerTitle": "Amir al-Muminin – Führer der Gläubigen",
+    "reign": "1804–1817",
+    "capital": "Sokoto",
+    "government": "Kalifat über rund 30 Emirate",
+    "religion": "Sunnitischer Islam (Maliki-Rechtsschule)",
+    "languages": [
+     "Fulfulde",
+     "Hausa",
+     "Arabisch"
+    ],
+    "population": "ca. 10 bis 20 Mio.",
+    "economy": "Landwirtschaft, Textilhandwerk, Handel, Sklavenarbeit auf Plantagen",
+    "summary": [
+     "Aus einer religiösen Reformbewegung entsteht der größte afrikanische Staat des 19. Jahrhunderts. Usman dan Fodio ist Gelehrter und Dichter, kein Berufskrieger.",
+     "Bemerkenswert ist die Betonung der Mädchenbildung; seine Tochter Nana Asma'u verfasst Lehrgedichte und organisiert ein Netz von Lehrerinnen.",
+     "1903 wird das Kalifat von britischen Truppen erobert und in Nordnigeria eingegliedert."
+    ]
+   }
+  ]
+ },
+ "Ethiopia": {
+  "kind": "Kaiserreich, später Bundesrepublik",
+  "wiki": "Äthiopien",
+  "events": [
+   {
+    "year": 1896,
+    "text": "Sieg bei Adua über Italien sichert die Unabhängigkeit."
+   },
+   {
+    "year": 1936,
+    "text": "Italienische Besetzung; 1941 Befreiung."
+   },
+   {
+    "year": 1974,
+    "text": "Sturz Haile Selassies durch den Derg."
+   }
+  ],
+  "periods": [
+   {
+    "from": 1270,
+    "to": 1855,
+    "ruler": "Zar'a Ya'qob",
+    "rulerTitle": "Negus Negest – König der Könige",
+    "dynasty": "Salomonische Dynastie",
+    "reign": "1434–1468",
+    "capital": "Wanderhof, später Gonder",
+    "government": "Kaisertum über Provinzfürsten",
+    "religion": "Äthiopisch-orthodoxes Christentum",
+    "languages": [
+     "Ge'ez",
+     "Amharisch",
+     "Oromo"
+    ],
+    "population": "ca. 5 Mio.",
+    "economy": "Hochlandackerbau, Kaffee, Karawanenhandel",
+    "summary": [
+     "Die salomonische Dynastie führt ihre Herkunft auf König Salomo und die Königin von Saba zurück – ein Anspruch, der bis 1974 in der Verfassung stand.",
+     "Die Felsenkirchen von Lalibela, aus dem Fels herausgearbeitet statt gemauert, stammen aus dem 12./13. Jahrhundert."
+    ]
+   },
+   {
+    "from": 1856,
+    "to": 1974,
+    "ruler": "Haile Selassie I.",
+    "rulerTitle": "Kaiser von Äthiopien",
+    "dynasty": "Salomonische Dynastie",
+    "reign": "1930–1974",
+    "capital": "Addis Abeba",
+    "government": "Kaisertum, ab 1931 mit Verfassung",
+    "religion": "Äthiopisch-orthodoxes Christentum, Islam",
+    "languages": [
+     "Amharisch",
+     "Oromo",
+     "Tigrinya"
+    ],
+    "population": "ca. 28 Mio.",
+    "economy": "Kaffee, Getreide, Viehzucht",
+    "summary": [
+     "1896 schlägt Äthiopien bei Adua ein italienisches Invasionsheer – der einzige Sieg eines afrikanischen Staates über eine europäische Kolonialarmee mit dauerhafter Wirkung.",
+     "Äthiopien bleibt damit neben Liberia der einzige nie dauerhaft kolonisierte Staat Afrikas. Haile Selassies Rede vor dem Völkerbund 1936 gegen die italienische Aggression ist bis heute berühmt."
+    ]
+   },
+   {
+    "from": 1975,
+    "to": null,
+    "ruler": "Wechselnde Regierungen",
+    "rulerTitle": "Ministerpräsident; Staatsoberhaupt ist der Präsident",
+    "capital": "Addis Abeba",
+    "government": "Bundesrepublik",
+    "religion": "Orthodoxes Christentum, Islam, Protestantismus",
+    "languages": [
+     "Amharisch",
+     "Oromo",
+     "Somali",
+     "Tigrinya"
+    ],
+    "population": "ca. 128 Mio.",
+    "economy": "Kaffee, Landwirtschaft, Textil, Wasserkraft",
+    "summary": "Nach der Militärherrschaft des Derg und dem Bürgerkrieg entsteht 1995 eine ethnisch gegliederte Bundesrepublik. 1993 wird Eritrea unabhängig."
+   }
+  ]
+ },
+ "Great Zimbabwe": {
+  "kind": "Königreich",
+  "wiki": "Simbabwe (Ruinenstadt)",
+  "founded": 1000,
+  "dissolved": 1450,
+  "periods": [
+   {
+    "from": 1100,
+    "to": 1450,
+    "ruler": "Könige der Shona",
+    "rulerTitle": "Mambo",
+    "capital": "Great Zimbabwe",
+    "government": "Königtum über Viehzüchter- und Handelsgemeinschaften",
+    "religion": "Ahnenverehrung, Mwari-Kult",
+    "languages": [
+     "Shona"
+    ],
+    "population": "ca. 18.000 in der Stadt",
+    "economy": "Rinderhaltung, Goldhandel zur Swahili-Küste",
+    "summary": [
+     "Die Mauern von Great Zimbabwe sind bis elf Meter hoch und ohne Mörtel gefügt – das größte vorkoloniale Steinbauwerk südlich der Sahara.",
+     "Funde chinesischen Porzellans und persischer Keramik belegen die Einbindung in den Handel des Indischen Ozeans.",
+     "Koloniale Autoren schrieben die Anlage jahrzehntelang Fremden zu; die Archäologie hat ihre Shona-Herkunft längst zweifelsfrei belegt. Der Staat Simbabwe trägt seit 1980 ihren Namen."
+    ]
+   }
+  ],
+  "_datierung": "Die Steinbauten beginnen um 1000; 1100 markiert die Ausbauphase."
+ },
+ "Morocco": {
+  "kind": "Sultanat, später Königreich",
+  "wiki": "Marokko",
+  "periods": [
+   {
+    "from": 1200,
+    "to": 1900,
+    "ruler": "Ahmad al-Mansur",
+    "rulerTitle": "Sultan von Marokko",
+    "dynasty": "Saadier, später Alawiden",
+    "reign": "1578–1603",
+    "capital": "Marrakesch, Fès, später Meknès",
+    "government": "Sultanat mit Stammesbündnissen",
+    "religion": "Sunnitischer Islam",
+    "languages": [
+     "Arabisch",
+     "Berbersprachen"
+    ],
+    "population": "ca. 5 Mio.",
+    "economy": "Zucker, Gold aus Songhai, Transsaharahandel",
+    "summary": [
+     "Marokko wehrt 1578 bei Ksar el-Kebir eine portugiesische Invasion ab und erobert 1591 das Songhaireich – finanziert durch dessen eigenes Gold.",
+     "Als einziger Staat Nordafrikas gerät es nie unter osmanische Herrschaft."
+    ]
+   },
+   {
+    "from": 1901,
+    "to": null,
+    "ruler": "Mohammed V., später Hassan II. und Mohammed VI.",
+    "rulerTitle": "König von Marokko",
+    "dynasty": "Alawiden",
+    "capital": "Rabat",
+    "government": "Konstitutionelle Monarchie",
+    "religion": "Sunnitischer Islam",
+    "languages": [
+     "Arabisch",
+     "Tamazight",
+     "Französisch"
+    ],
+    "population": "ca. 38 Mio.",
+    "economy": "Phosphat, Landwirtschaft, Tourismus, Industrie",
+    "summary": "1912 französisches und spanisches Protektorat, 1956 Unabhängigkeit. Die alawitische Dynastie regiert seit dem 17. Jahrhundert."
+   }
+  ]
+ },
+ "Saudi Arabia": {
+  "kind": "Königreich",
+  "wiki": "Saudi-Arabien",
+  "founded": 1932,
+  "periods": [
+   {
+    "from": 1932,
+    "to": null,
+    "ruler": "Abd al-Aziz ibn Saud und Nachfolger",
+    "rulerTitle": "König, Hüter der beiden Heiligen Stätten",
+    "dynasty": "Saud",
+    "capital": "Riad",
+    "government": "Absolute Monarchie",
+    "religion": "Sunnitischer Islam wahhabitischer Prägung",
+    "languages": [
+     "Arabisch"
+    ],
+    "population": "ca. 33 Mio.",
+    "economy": "Erdöl – rund ein Sechstel der weltweit bekannten Reserven",
+    "summary": [
+     "1932 vereint Ibn Saud die eroberten Gebiete zum Königreich. Sechs Jahre später wird Erdöl gefunden und verändert Staat und Gesellschaft grundlegend.",
+     "Mekka und Medina machen das Land zum religiösen Zentrum der islamischen Welt; jährlich kommen Millionen Pilger."
+    ]
+   }
+  ]
+ },
+ "Nejd": {
+  "kind": "Emirat",
+  "wiki": "Nadschd",
+  "periods": [
+   {
+    "from": 1744,
+    "to": 1932,
+    "ruler": "Die Familie Saud",
+    "rulerTitle": "Emir von Nadschd",
+    "capital": "Diriyya, später Riad",
+    "government": "Emirat auf Stammesgrundlage",
+    "religion": "Sunnitischer Islam wahhabitischer Prägung",
+    "languages": [
+     "Arabisch"
+    ],
+    "population": "wenige Hunderttausend",
+    "economy": "Kamelzucht, Oasenlandwirtschaft, Karawanenhandel",
+    "summary": "Das Bündnis zwischen dem Fürstenhaus Saud und dem Gelehrten Muhammad ibn Abd al-Wahhab von 1744 ist die Grundlage aller drei saudischen Staaten – bis zum heutigen Königreich."
+   }
+  ]
+ },
+ "Belgian Congo": {
+  "kind": "Kolonie",
+  "wiki": "Belgisch-Kongo",
+  "founded": 1908,
+  "dissolved": 1960,
+  "periods": [
+   {
+    "from": 1885,
+    "to": 1908,
+    "kind": "Privatbesitz des Königs",
+    "ruler": "Leopold II.",
+    "rulerTitle": "Souverän des Kongo-Freistaats",
+    "capital": "Boma",
+    "government": "Persönlicher Besitz des belgischen Königs",
+    "religion": "Traditionelle Religionen, christliche Mission",
+    "languages": [
+     "Französisch",
+     "Lingala",
+     "Kikongo",
+     "Suaheli"
+    ],
+    "population": "Schätzungen um 20 Mio. zu Beginn",
+    "economy": "Kautschuk und Elfenbein durch Zwangsarbeit",
+    "summary": [
+     "Die Berliner Konferenz spricht das Kongobecken 1885 Leopold II. persönlich zu. Das Zwangsarbeitssystem für Kautschuk fordert Millionen Todesopfer.",
+     "Berichte von Roger Casement und E. D. Morel lösen die erste große internationale Menschenrechtskampagne aus. 1908 muss Leopold die Kolonie an den belgischen Staat abtreten."
+    ]
+   },
+   {
+    "from": 1909,
+    "to": 1960,
+    "ruler": "Belgischer Generalgouverneur",
+    "rulerTitle": "Generalgouverneur",
+    "capital": "Léopoldville (Kinshasa)",
+    "government": "Kolonialverwaltung",
+    "religion": "Katholizismus, traditionelle Religionen",
+    "languages": [
+     "Französisch",
+     "Lingala",
+     "Suaheli",
+     "Kikongo",
+     "Tshiluba"
+    ],
+    "population": "ca. 14 Mio. (1960)",
+    "economy": "Kupfer, Kobalt, Diamanten, Uran aus Shinkolobwe",
+    "summary": [
+     "Belgien baut Bergbau und Verkehrswege aus, hält die afrikanische Bevölkerung aber weitgehend von höherer Bildung fern.",
+     "Bei der überstürzten Unabhängigkeit 1960 gibt es im Land nur eine Handvoll afrikanischer Hochschulabsolventen – eine Ursache der folgenden Krise."
+    ]
+   }
+  ]
+ },
+ "Zaire": {
+  "kind": "Republik",
+  "wiki": "Demokratische Republik Kongo",
+  "founded": 1960,
+  "periods": [
+   {
+    "from": 1960,
+    "to": null,
+    "ruler": "Mobutu Sese Seko, später wechselnde Präsidenten",
+    "rulerTitle": "Präsident",
+    "capital": "Kinshasa",
+    "government": "Republik; 1965–1997 Einparteienherrschaft",
+    "religion": "Christentum, traditionelle Religionen",
+    "languages": [
+     "Französisch",
+     "Lingala",
+     "Suaheli",
+     "Kikongo",
+     "Tshiluba"
+    ],
+    "population": "ca. 105 Mio.",
+    "economy": "Kupfer, Kobalt, Coltan, Diamanten",
+    "summary": [
+     "Der Staat trug von 1971 bis 1997 den Namen Zaire. Der Datensatz verwendet ihn auch für spätere Zeitschnitte.",
+     "Mit rund 2,3 Millionen Quadratkilometern ist die DR Kongo der zweitgrößte Staat Afrikas. Sie fördert einen Großteil des weltweiten Kobalts – Schlüsselrohstoff für Akkus."
+    ]
+   }
+  ]
+ },
+ "French West Africa": {
+  "kind": "Kolonialverband",
+  "wiki": "Französisch-Westafrika",
+  "founded": 1895,
+  "dissolved": 1958,
+  "periods": [
+   {
+    "from": 1895,
+    "to": 1958,
+    "ruler": "Der französische Generalgouverneur",
+    "rulerTitle": "Generalgouverneur",
+    "capital": "Dakar",
+    "government": "Verband von acht Kolonien unter gemeinsamer Verwaltung",
+    "religion": "Islam, traditionelle Religionen, Christentum",
+    "languages": [
+     "Französisch",
+     "Wolof",
+     "Bambara",
+     "Fulfulde",
+     "Hausa"
+    ],
+    "population": "ca. 25 Mio.",
+    "economy": "Erdnüsse, Baumwolle, Kakao; Zwangsarbeit bis 1946",
+    "summary": [
+     "Acht Kolonien – vom heutigen Senegal bis Niger – werden von Dakar aus verwaltet. Über 200.000 westafrikanische Soldaten kämpfen in den Weltkriegen für Frankreich.",
+     "1958/60 werden die Gebiete unabhängig; die Grenzen von damals sind bis heute die Staatsgrenzen."
+    ]
+   }
+  ]
+ },
+ "Union of South Africa": {
+  "kind": "Dominion",
+  "wiki": "Südafrikanische Union",
+  "founded": 1910,
+  "dissolved": 1961,
+  "periods": [
+   {
+    "from": 1910,
+    "to": 1961,
+    "ruler": "Wechselnde Premierminister",
+    "rulerTitle": "Premierminister; Staatsoberhaupt ist der britische Monarch",
+    "capital": "Pretoria, Kapstadt, Bloemfontein",
+    "government": "Dominion des Britischen Empire; Wahlrecht faktisch nur für Weiße",
+    "religion": "Christentum, traditionelle Religionen",
+    "languages": [
+     "Englisch",
+     "Afrikaans",
+     "Zulu",
+     "Xhosa",
+     "Sotho"
+    ],
+    "population": "ca. 16 Mio.",
+    "economy": "Gold vom Witwatersrand, Diamanten, Kohle, Landwirtschaft",
+    "summary": [
+     "Die Union entsteht 1910 aus britischen Kolonien und den besiegten Burenrepubliken. Der Natives Land Act von 1913 weist der schwarzen Mehrheit sieben Prozent der Landfläche zu.",
+     "1948 wird die Rassentrennung als Apartheid zum umfassenden Rechtssystem ausgebaut."
+    ]
+   }
+  ]
+ },
+ "South Africa": {
+  "kind": "Republik",
+  "wiki": "Südafrika",
+  "founded": 1961,
+  "events": [
+   {
+    "year": 1948,
+    "text": "Beginn der Apartheid als Staatsdoktrin."
+   },
+   {
+    "year": 1990,
+    "text": "Freilassung Nelson Mandelas."
+   },
+   {
+    "year": 1994,
+    "text": "Erste allgemeine freie Wahlen."
+   }
+  ],
+  "periods": [
+   {
+    "from": 1961,
+    "to": null,
+    "ruler": "Nelson Mandela und Nachfolger",
+    "rulerTitle": "Präsident der Republik Südafrika",
+    "capital": "Pretoria (Regierung), Kapstadt (Parlament), Bloemfontein (Justiz)",
+    "government": "Parlamentarische Republik",
+    "religion": "Christentum, traditionelle Religionen, Islam, Hinduismus",
+    "languages": [
+     "Zulu",
+     "Xhosa",
+     "Afrikaans",
+     "Englisch und acht weitere Amtssprachen"
+    ],
+    "population": "ca. 63 Mio.",
+    "economy": "Bergbau, Industrie, Landwirtschaft, Finanzsektor",
+    "summary": [
+     "1994 endet die Apartheid mit den ersten Wahlen, an denen alle Bürgerinnen und Bürger teilnehmen dürfen. Nelson Mandela wird Präsident.",
+     "Die Wahrheits- und Versöhnungskommission unter Desmond Tutu wird zum viel beachteten Modell für den Umgang mit Staatsunrecht.",
+     "Die Verfassung von 1996 zählt zu den fortschrittlichsten der Welt und kennt elf Amtssprachen."
+    ]
+   }
+  ]
+ }
 }

@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 /**
- * Erzeugt die fehlenden Kriegsjahre 1940–1944.
+ * Erzeugt die fehlenden Kriegsjahre beider Weltkriege: 1916, 1918 und
+ * 1940 bis 1944.
  *
- * Der Ursprungsdatensatz (Historical Basemaps) springt von 1938 auf 1945. Er
+ * Der Ursprungsdatensatz (Historical Basemaps) springt von 1914 auf 1920 und
+ * von 1938 auf 1945 – beide Weltkriege fallen also heraus. Er
  * kennt außerdem keine Besatzung, sondern nur völkerrechtliche Zugehörigkeit –
  * der ganze Zweite Weltkrieg fällt damit aus der Karte heraus.
  *
@@ -13,6 +15,9 @@
  *   besetzt      NAME bleibt, OCCUPIER kommt hinzu (ganzes Land)
  *   teilungen    Das Land wird an einer Frontlinie zerschnitten; jede Hälfte
  *                bekommt eigenen Namen oder eigene Besatzungsmacht
+ *
+ * Beschrieben sind sie in src/data/wwi.json und src/data/wwii.json; jede Datei
+ * nennt mit "basis" den Zeitschnitt, aus dem sie hervorgeht.
  *
  * Ergebnis: data-src/derived/world_<jahr>.geojson mit demselben Feldsatz wie
  * die Ursprungsdateien, ergänzt um OCCUPIER. Die Zeitschnitte gehen danach
@@ -31,7 +36,7 @@ const ROOT = path.resolve(import.meta.dirname, '..');
 const HIST_DIR = path.join(ROOT, 'data-src/historical');
 const OUT_DIR = path.join(ROOT, 'data-src/derived');
 const MAPSHAPER = path.join(ROOT, 'node_modules/.bin/mapshaper');
-const BASE_YEAR = 'world_1938.geojson';
+const SPECS = ['src/data/wwi.json', 'src/data/wwii.json'];
 
 const TMP = fs.mkdtempSync(path.join(os.tmpdir(), 'wmd-krieg-'));
 let counter = 0;
@@ -129,8 +134,8 @@ function featureCount(file) {
   return g.features?.length ?? 0;
 }
 
-function buildYear(spec, gebiete) {
-  const src = path.join(HIST_DIR, BASE_YEAR);
+function buildYear(spec, gebiete, basisDatei) {
+  const src = path.join(HIST_DIR, basisDatei);
   let current = tmpFile(`${spec.year}-start`);
 
   // OCCUPIER auf allen Flächen anlegen, damit das Feld in jeder Zwischenstufe
@@ -203,36 +208,39 @@ function main() {
     console.error('mapshaper fehlt – bitte zuerst `npm install` ausführen.');
     process.exit(1);
   }
-  const base = path.join(HIST_DIR, BASE_YEAR);
-  if (!fs.existsSync(base)) {
-    console.error(`Grundlage fehlt: ${base} – bitte zuerst \`npm run fetch:data\` ausführen.`);
-    process.exit(1);
-  }
-
-  const spec = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/wwii.json'), 'utf8'));
   fs.mkdirSync(OUT_DIR, { recursive: true });
 
-  console.log(`› Kriegsjahre aus ${BASE_YEAR}`);
   const index = [];
-  for (const jahr of spec.jahre) {
-    const file = buildYear(jahr, spec.gebiete);
-    const besetzt = new Set();
-    for (const f of JSON.parse(fs.readFileSync(file, 'utf8')).features) {
-      if (f.properties?.OCCUPIER) besetzt.add(f.properties.OCCUPIER);
+  for (const specPath of SPECS) {
+    const spec = JSON.parse(fs.readFileSync(path.join(ROOT, specPath), 'utf8'));
+    const basisDatei = `world_${spec.basis}.geojson`;
+    const basis = path.join(HIST_DIR, basisDatei);
+    if (!fs.existsSync(basis)) {
+      console.error(`Grundlage fehlt: ${basis} – bitte zuerst \`npm run fetch:data\` ausführen.`);
+      process.exit(1);
     }
-    console.log(
-      `  ${String(jahr.year).padStart(6)}  ${String(featureCount(file)).padStart(4)} Flächen  ` +
-      `${(fs.statSync(file).size / 1024 / 1024).toFixed(1)} MB  ` +
-      `Besatzungsmächte: ${[...besetzt].sort().join(', ') || '–'}`,
-    );
-    index.push({
-      year: jahr.year,
-      filename: `world_${jahr.year}.geojson`,
-      stand: jahr.stand,
-      titel: jahr.titel,
-    });
+
+    console.log(`› ${path.basename(specPath)} – Kriegsjahre aus ${basisDatei}`);
+    for (const jahr of spec.jahre) {
+      const file = buildYear(jahr, spec.gebiete, basisDatei);
+      const besetzt = new Set();
+      for (const f of JSON.parse(fs.readFileSync(file, 'utf8')).features) {
+        if (f.properties?.OCCUPIER) besetzt.add(f.properties.OCCUPIER);
+      }
+      console.log(
+        `  ${String(jahr.year).padStart(6)}  ${String(featureCount(file)).padStart(4)} Flächen  ` +
+        `Besatzungsmächte: ${[...besetzt].sort().join(', ') || '–'}`,
+      );
+      index.push({
+        year: jahr.year,
+        filename: `world_${jahr.year}.geojson`,
+        stand: jahr.stand,
+        titel: jahr.titel,
+      });
+    }
   }
 
+  index.sort((a, b) => a.year - b.year);
   fs.writeFileSync(path.join(OUT_DIR, 'index.json'), JSON.stringify({ years: index }, null, 1));
   fs.rmSync(TMP, { recursive: true, force: true });
   console.log(`\nFertig: ${index.length} Kriegsjahre in data-src/derived.`);

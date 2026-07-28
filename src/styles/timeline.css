@@ -309,3 +309,19 @@
   .timeline__stats { display: none; }
   .track__eras i b { font-size: .55rem; }
 }
+
+/* Herkunftszeichen: markiert Zeitschnitte, die nicht unverändert aus dem
+   Ursprungsdatensatz stammen. Anklickbar, weil die Begründung dazugehört. */
+.herkunft {
+  font: inherit;
+  font-size: .68rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  border: 1px solid var(--hairline-strong);
+  border-radius: 3px;
+  padding: 0 .28rem;
+  cursor: pointer;
+  transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.herkunft:hover { color: var(--gold); border-color: var(--gold); }

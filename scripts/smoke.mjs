@@ -345,6 +345,70 @@ await check('Schlacht räumt ihre Ebene wieder ab', async () => {
   if (await page.locator('#battlesBox').isVisible()) throw new Error('Fenster bleibt offen');
 });
 
+await check('Orte erscheinen gestaffelt und auf Deutsch', async () => {
+  await page.evaluate(() => { location.hash = 'position=6/48.8/9.5&year=1815'; });
+  await page.waitForTimeout(2600);
+  const nah = await page.evaluate(() => window.__atlas.places.length);
+  if (nah < 1000) throw new Error(`nur ${nah} Orte geladen`);
+  const deutsch = await page.evaluate(() => {
+    const n = window.__atlas.places.map((o) => o.name);
+    return { wien: n.includes('Wien'), muenchen: n.includes('München'), warschau: n.includes('Warschau') };
+  });
+  if (!deutsch.wien || !deutsch.muenchen || !deutsch.warschau) {
+    throw new Error(`deutsche Namen fehlen: ${JSON.stringify(deutsch)}`);
+  }
+  // In der Weltansicht darf die Karte nicht zugetextet werden.
+  await page.evaluate(() => { location.hash = 'position=2/20/10&year=1815'; });
+  await page.waitForTimeout(1800);
+  const weit = await page.evaluate(() => {
+    const c = document.querySelector('.place-canvas');
+    const ctx = c.getContext('2d');
+    const d = ctx.getImageData(0, 0, c.width, c.height).data;
+    let n = 0;
+    for (let i = 3; i < d.length; i += 4) if (d[i] > 40) n++;
+    return n;
+  });
+  if (weit > 0) throw new Error('Orte werden im Weltmaßstab gezeichnet');
+});
+
+await check('Erster Weltkrieg ist abgebildet', async () => {
+  await page.evaluate(() => { location.hash = 'position=5/49.5/6&year=1916'; });
+  await page.waitForTimeout(2600);
+  const note = await page.textContent('#yearTitle');
+  if (!/Dezember 1916/.test(note)) throw new Error(`Stichtag fehlt: ${note}`);
+  const besetzt = await page.evaluate(() => {
+    const f = window.__atlas.epoch.geojson.features.filter((x) => x.properties.o);
+    return [...new Set(f.map((x) => x.properties.o))];
+  });
+  if (!besetzt.includes('German Empire')) throw new Error(`Besatzer: ${besetzt.join(', ')}`);
+});
+
+await check('Herkunft der Zeitschnitte ist offengelegt', async () => {
+  const marke = page.locator('#yearTitle [data-herkunft]');
+  if (!(await marke.count())) throw new Error('kein Herkunftszeichen bei 1916');
+  await marke.click();
+  await page.waitForSelector('#modal .modal__card', { timeout: 4000 });
+  const text = await page.textContent('#modalBody');
+  if (!/Ursprungsdatensatz/.test(text)) throw new Error('keine Erklärung');
+  await page.keyboard.press('Escape');
+
+  // Ein korrigierter, aber nicht ergänzter Zeitschnitt trägt ein eigenes Zeichen.
+  await page.evaluate(() => { location.hash = 'position=3/30/25&year=700'; });
+  await page.waitForTimeout(2400);
+  const art = await page.getAttribute('#yearTitle [data-herkunft]', 'data-herkunft');
+  if (art !== 'korrigiert') throw new Error(`Zeichen bei 700: ${art}`);
+});
+
+await check('Keine Anachronismen mehr im Datensatz', async () => {
+  const jahre = await page.evaluate(() => window.__atlas ? true : false);
+  if (!jahre) throw new Error('Karte nicht bereit');
+  const anzahl = await page.evaluate(async () => {
+    const r = await fetch('data/epochs.json');
+    return (await r.json()).epochs.length;
+  });
+  if (anzahl !== 60) throw new Error(`${anzahl} Zeitschnitte statt 60`);
+});
+
 await check('Mobiles Format bleibt bedienbar', async () => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.waitForTimeout(800);

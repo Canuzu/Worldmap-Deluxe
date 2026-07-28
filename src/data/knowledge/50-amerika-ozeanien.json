@@ -1,784 +1,899 @@
 {
-  "_hinweis": "Steckbriefe zu Amerika und Ozeanien – von den vorkolumbischen Reichen bis zu den heutigen Staaten.",
-
-  "Inca Empire": {
-    "kind": "Großreich",
-    "wiki": "Inkareich",
-    "founded": 1438,
-    "dissolved": 1533,
-    "events": [
-      { "year": 1438, "text": "Pachacútec beginnt die Expansion." },
-      { "year": 1532, "text": "Pizarro nimmt Atahualpa in Cajamarca gefangen." }
+ "_hinweis": "Steckbriefe zu Amerika und Ozeanien – von den vorkolumbischen Reichen bis zu den heutigen Staaten.",
+ "Inca Empire": {
+  "kind": "Großreich",
+  "wiki": "Inkareich",
+  "founded": 1438,
+  "dissolved": 1533,
+  "events": [
+   {
+    "year": 1438,
+    "text": "Pachacútec beginnt die Expansion."
+   },
+   {
+    "year": 1532,
+    "text": "Pizarro nimmt Atahualpa in Cajamarca gefangen."
+   }
+  ],
+  "periods": [
+   {
+    "from": 1438,
+    "to": 1533,
+    "ruler": "Huayna Cápac",
+    "rulerTitle": "Sapa Inca – der einzige Inka",
+    "reign": "1493–1524",
+    "capital": "Cusco",
+    "government": "Zentralstaat mit Provinzen (Suyu) und Umsiedlungspolitik",
+    "religion": "Sonnenkult (Inti), Ahnenverehrung mit Mumien",
+    "languages": [
+     "Quechua",
+     "Aymara"
     ],
-    "periods": [
-      {
-        "from": 1438, "to": 1533,
-        "ruler": "Huayna Cápac",
-        "rulerTitle": "Sapa Inca – der einzige Inka",
-        "reign": "1493–1524",
-        "capital": "Cusco",
-        "government": "Zentralstaat mit Provinzen (Suyu) und Umsiedlungspolitik",
-        "religion": "Sonnenkult (Inti), Ahnenverehrung mit Mumien",
-        "languages": ["Quechua", "Aymara"],
-        "population": "ca. 10 bis 12 Mio.",
-        "economy": "Terrassenanbau, staatliche Vorratshäuser, Arbeitsabgabe (Mita) statt Steuern",
-        "summary": [
-          "Tawantinsuyu, das „Reich der vier Teile“, erstreckt sich über 4.000 Kilometer von Ecuador bis Chile – ohne Rad, ohne Zugtiere und ohne Schrift.",
-          "Verwaltet wird es über ein 40.000 Kilometer langes Straßennetz und Knotenschnüre (Quipu), mit denen Zahlen und wohl auch Sachverhalte festgehalten wurden.",
-          "1533 bricht das Reich zusammen: 168 Spanier treffen auf ein durch Erbfolgekrieg und eingeschleppte Pocken geschwächtes Staatswesen."
-        ],
-        "quote": "Machu Picchu war kein Bollwerk, sondern vermutlich der Landsitz eines Herrschers."
-      }
-    ]
-  },
-
-  "Aztec Empire": {
-    "kind": "Dreibund",
-    "wiki": "Azteken",
-    "founded": 1428,
-    "dissolved": 1521,
-    "periods": [
-      {
-        "from": 1428, "to": 1521,
-        "ruler": "Moctezuma II.",
-        "rulerTitle": "Huey Tlatoani – Großer Sprecher",
-        "reign": "1502–1520",
-        "capital": "Tenochtitlán",
-        "government": "Bund dreier Stadtstaaten über tributpflichtige Gebiete",
-        "religion": "Vielgötterei mit Huitzilopochtli und Tlaloc; rituelle Menschenopfer",
-        "languages": ["Nahuatl"],
-        "population": "ca. 5 bis 6 Mio. im Tributgebiet",
-        "economy": "Chinampas – schwimmende Gärten, Tribute, Fernhändler (Pochteca)",
-        "summary": [
-          "Tenochtitlán liegt auf einer Insel im Texcoco-See und zählt rund 200.000 Einwohner – größer als jede europäische Stadt der Zeit außer vielleicht Konstantinopel.",
-          "Die spanischen Eroberer beschreiben Aquädukte, Dämme, Märkte und einen Zoo. Cortés siegt 1521 vor allem mithilfe verbündeter Städte und der Pocken.",
-          "Das Bildungswesen war für vorkoloniale Verhältnisse außergewöhnlich: Auch Kinder einfacher Familien besuchten Schulen."
-        ]
-      }
-    ]
-  },
-
-  "Maya chiefdoms and states": {
-    "kind": "Stadtstaatenwelt",
-    "wiki": "Maya",
-    "periods": [
-      {
-        "from": -1000, "to": 1697,
-        "ruler": "Könige einzelner Stadtstaaten",
-        "rulerTitle": "K'uhul Ajaw – heiliger Herr",
-        "capital": "Tikal, Calakmul, Palenque, Copán, später Chichén Itzá",
-        "government": "Konkurrierende Stadtstaaten mit wechselnden Bündnissen",
-        "religion": "Vielgötterei, Kalenderkult, Blutopfer",
-        "languages": ["Maya-Sprachen"],
-        "population": "auf dem Höhepunkt ca. 10 Mio.",
-        "economy": "Maisanbau, Kakao als Zahlungsmittel, Obsidian- und Jadehandel",
-        "summary": [
-          "Die Maya entwickeln als einzige Kultur Amerikas eine vollständige Schrift, die Sprache abbildet – über 800 Zeichen, seit den 1980er Jahren weitgehend entziffert.",
-          "Ihre Astronomie ist außergewöhnlich genau: Die Länge des Sonnenjahres wird auf wenige Minuten bestimmt, der Venuszyklus auf Stunden.",
-          "Im 9. Jahrhundert werden die Tieflandstädte weitgehend aufgegeben – Dürre, Übernutzung und Krieg wirken zusammen. Die Maya selbst verschwinden nicht: Heute sprechen mehrere Millionen Menschen Maya-Sprachen."
-        ]
-      }
-    ]
-  },
-
-  "Tiahuanaco Empire": {
-    "kind": "Reich",
-    "wiki": "Tiwanaku",
-    "founded": 300,
-    "dissolved": 1000,
-    "periods": [
-      {
-        "from": 300, "to": 1000,
-        "ruler": "Priesterliche Elite",
-        "rulerTitle": "unbekannt – keine Schriftquellen",
-        "capital": "Tiwanaku am Titicacasee",
-        "government": "Kultzentrum mit Einflussgebiet über Kolonien",
-        "religion": "Kult um den Stabgott",
-        "languages": ["vermutlich Puquina, Aymara"],
-        "population": "ca. 20.000 in der Stadt",
-        "economy": "Hochbeet-Landwirtschaft (Suka Kollus), Lamakarawanen",
-        "summary": [
-          "Auf 3.850 Metern Höhe entsteht eines der höchstgelegenen Zentren der Alten Welt. Die Steinblöcke des Sonnentors wiegen bis zu zehn Tonnen und sind fugenlos gearbeitet.",
-          "Die Hochbeetfelder rings um den Titicacasee erzielten Erträge, die moderne Versuche erst wieder erreichen mussten."
-        ]
-      }
-    ]
-  },
-
-  "Huari Empire": {
-    "kind": "Reich",
-    "wiki": "Huari",
-    "founded": 600,
-    "dissolved": 1000,
-    "periods": [
-      {
-        "from": 600, "to": 1000,
-        "ruler": "Unbekannte Herrscherschicht",
-        "rulerTitle": "keine Überlieferung",
-        "capital": "Huari bei Ayacucho",
-        "government": "Verwaltungszentren entlang eines Straßennetzes",
-        "religion": "Verwandt mit dem Tiwanaku-Kult",
-        "languages": ["vermutlich frühes Quechua"],
-        "population": "ca. 40.000 in der Hauptstadt",
-        "economy": "Terrassenbau, Textilproduktion, Fernhandel",
-        "summary": "Huari gilt als Vorläufer der Inka-Verwaltung: Provinzzentren, Straßen und Umsiedlungen finden sich hier bereits. Die Ausbreitung des Quechua geht wohl auf diese Zeit zurück."
-      }
-    ]
-  },
-
-  "Vice-Royalty of New Spain": {
-    "kind": "Vizekönigreich",
-    "wiki": "Vizekönigreich Neuspanien",
-    "founded": 1535,
-    "dissolved": 1821,
-    "periods": [
-      {
-        "from": 1535, "to": 1821,
-        "ruler": "Der Vizekönig im Namen der spanischen Krone",
-        "rulerTitle": "Vizekönig von Neuspanien",
-        "capital": "Mexiko-Stadt",
-        "government": "Vizekönigreich mit Audiencias als Gerichts- und Verwaltungsorganen",
-        "religion": "Katholizismus; Mission und Inquisition",
-        "languages": ["Spanisch", "Nahuatl", "Maya", "Tagalog"],
-        "population": "ca. 6 Mio.",
-        "economy": "Silber aus Zacatecas und Guanajuato, Hacienda-Landwirtschaft, Manila-Galeone",
-        "summary": [
-          "Neuspanien umfasst Mexiko, Mittelamerika, die Karibik, den Süden der heutigen USA und die Philippinen – das größte Verwaltungsgebiet des spanischen Weltreichs.",
-          "Die indigene Bevölkerung Mexikos sinkt im 16. Jahrhundert um schätzungsweise 80 bis 90 Prozent, vor allem durch eingeschleppte Krankheiten.",
-          "Die Manila-Galeone verbindet ab 1565 Acapulco mit Asien – die erste dauerhafte transpazifische Handelsroute der Geschichte."
-        ]
-      }
-    ]
-  },
-
-  "Vice-Royalty of Peru": {
-    "kind": "Vizekönigreich",
-    "wiki": "Vizekönigreich Peru",
-    "founded": 1542,
-    "dissolved": 1824,
-    "periods": [
-      {
-        "from": 1542, "to": 1824,
-        "ruler": "Der Vizekönig im Namen der spanischen Krone",
-        "rulerTitle": "Vizekönig von Peru",
-        "capital": "Lima",
-        "government": "Vizekönigreich mit Audiencias",
-        "religion": "Katholizismus",
-        "languages": ["Spanisch", "Quechua", "Aymara"],
-        "population": "ca. 2 Mio.",
-        "economy": "Silber aus Potosí, Quecksilber aus Huancavelica, Zwangsarbeit (Mita)",
-        "summary": [
-          "Der Cerro Rico von Potosí liefert über zwei Jahrhunderte den Großteil des Weltsilbers. Die Stadt zählt um 1600 rund 160.000 Einwohner – so viele wie London.",
-          "Die Arbeitspflicht in den Minen fordert unzählige Todesopfer. Der Aufstand des Túpac Amaru II. 1780 wird blutig niedergeschlagen."
-        ]
-      }
-    ]
-  },
-
-  "Vice-Royalty of Brazil": {
-    "kind": "Vizekönigreich",
-    "wiki": "Kolonialbrasilien",
-    "founded": 1720,
-    "dissolved": 1815,
-    "periods": [
-      {
-        "from": 1500, "to": 1822,
-        "ruler": "Der portugiesische Vizekönig, ab 1808 der König selbst",
-        "rulerTitle": "Vizekönig von Brasilien",
-        "capital": "Salvador da Bahia, ab 1763 Rio de Janeiro",
-        "government": "Kolonialverwaltung, ab 1815 gleichberechtigtes Königreich",
-        "religion": "Katholizismus",
-        "languages": ["Portugiesisch", "Tupi", "westafrikanische Sprachen"],
-        "population": "ca. 3,5 Mio.",
-        "economy": "Zuckerrohr, ab 1690 Gold aus Minas Gerais, Sklavenarbeit",
-        "summary": [
-          "Brasilien empfängt zwischen 1500 und 1850 etwa 4,9 Millionen verschleppte Afrikaner – rund 40 Prozent aller Menschen des atlantischen Sklavenhandels.",
-          "1808 flieht der portugiesische Hof vor Napoleon nach Rio – der einzige Fall, in dem eine europäische Monarchie ihre Hauptstadt in eine Kolonie verlegt. 1822 wird Brasilien unabhängig."
-        ]
-      }
-    ]
-  },
-
-  "Brazil": {
-    "kind": "Kaiserreich, später Republik",
-    "wiki": "Brasilien",
-    "founded": 1822,
-    "periods": [
-      {
-        "from": 1822, "to": 1888,
-        "kind": "Kaiserreich",
-        "ruler": "Pedro II.",
-        "rulerTitle": "Kaiser von Brasilien",
-        "dynasty": "Braganza",
-        "reign": "1831–1889",
-        "capital": "Rio de Janeiro",
-        "government": "Konstitutionelle Monarchie",
-        "religion": "Katholizismus als Staatsreligion",
-        "languages": ["Portugiesisch"],
-        "population": "ca. 14 Mio.",
-        "economy": "Kaffee, Zucker, Kautschuk; Sklaverei bis 1888",
-        "summary": [
-          "Brasilien ist im 19. Jahrhundert die einzige dauerhafte Monarchie Amerikas. Pedro II. regiert 58 Jahre und gilt als aufgeklärter, wissenschaftsbegeisterter Herrscher.",
-          "1888 schafft das „Goldene Gesetz“ als letztes Land der westlichen Welt die Sklaverei ab; ein Jahr später wird die Monarchie gestürzt."
-        ]
-      },
-      {
-        "from": 1889, "to": null,
-        "kind": "Republik",
-        "ruler": "Wechselnde Präsidenten",
-        "rulerTitle": "Präsident der Föderativen Republik Brasilien",
-        "capital": "Rio de Janeiro, seit 1960 Brasília",
-        "government": "Präsidiale Bundesrepublik; 1964–1985 Militärdiktatur",
-        "religion": "Katholizismus, wachsende evangelikale Kirchen",
-        "languages": ["Portugiesisch"],
-        "population": "ca. 213 Mio.",
-        "economy": "Landwirtschaft, Bergbau, Industrie, Luftfahrt",
-        "summary": [
-          "Der größte Staat Südamerikas beherbergt rund 60 Prozent des Amazonas-Regenwaldes.",
-          "Brasília, ab 1956 auf dem leeren Hochland errichtet, gilt als das bedeutendste Ensemble moderner Stadtplanung des 20. Jahrhunderts."
-        ]
-      }
-    ]
-  },
-
-  "United States": {
-    "kind": "Bundesrepublik",
-    "wiki": "Vereinigte Staaten",
-    "founded": 1776,
-    "events": [
-      { "year": 1776, "text": "Unabhängigkeitserklärung der dreizehn Kolonien." },
-      { "year": 1803, "text": "Louisiana Purchase verdoppelt das Staatsgebiet." },
-      { "year": 1861, "text": "Beginn des Bürgerkriegs um Sklaverei und Union." },
-      { "year": 1865, "text": "13. Verfassungszusatz schafft die Sklaverei ab." },
-      { "year": 1969, "text": "Erste bemannte Mondlandung." }
+    "population": "ca. 10 bis 12 Mio.",
+    "economy": "Terrassenanbau, staatliche Vorratshäuser, Arbeitsabgabe (Mita) statt Steuern",
+    "summary": [
+     "Tawantinsuyu, das „Reich der vier Teile“, erstreckt sich über 4.000 Kilometer von Ecuador bis Chile – ohne Rad, ohne Zugtiere und ohne Schrift.",
+     "Verwaltet wird es über ein 40.000 Kilometer langes Straßennetz und Knotenschnüre (Quipu), mit denen Zahlen und wohl auch Sachverhalte festgehalten wurden.",
+     "1533 bricht das Reich zusammen: 168 Spanier treffen auf ein durch Erbfolgekrieg und eingeschleppte Pocken geschwächtes Staatswesen."
     ],
-    "periods": [
-      {
-        "from": 1776, "to": 1864,
-        "ruler": "Abraham Lincoln",
-        "rulerTitle": "Präsident der Vereinigten Staaten",
-        "reign": "1861–1865",
-        "capital": "Washington, D. C.",
-        "government": "Präsidiale Bundesrepublik",
-        "religion": "Protestantisch geprägt; keine Staatskirche",
-        "languages": ["Englisch", "Spanisch", "Deutsch", "indigene Sprachen"],
-        "population": "ca. 31 Mio. (1860)",
-        "economy": "Baumwolle im Süden, Industrie im Nordosten, Westexpansion",
-        "summary": [
-          "Die Verfassung von 1787 ist die älteste noch geltende geschriebene Staatsverfassung der Welt. Sie schweigt lange zur Sklaverei, die den Süden wirtschaftlich trägt.",
-          "Die Westexpansion geht mit Vertreibung und Vernichtung der indigenen Bevölkerung einher – der Trail of Tears 1838 ist nur ein Beispiel.",
-          "Der Bürgerkrieg 1861–1865 kostet rund 620.000 Menschenleben und entscheidet die Frage von Union und Sklaverei."
-        ]
-      },
-      {
-        "from": 1865, "to": 1944,
-        "ruler": "Franklin D. Roosevelt",
-        "rulerTitle": "Präsident der Vereinigten Staaten",
-        "reign": "1933–1945",
-        "capital": "Washington, D. C.",
-        "government": "Präsidiale Bundesrepublik",
-        "religion": "Religiös vielfältig, ohne Staatskirche",
-        "languages": ["Englisch"],
-        "population": "ca. 132 Mio. (1940)",
-        "economy": "Massenproduktion, Automobil, Stahl; Weltwirtschaftskrise ab 1929",
-        "summary": [
-          "Zwischen 1880 und 1920 wandern über 20 Millionen Menschen ein. Die USA werden um 1900 zur größten Industriemacht der Welt.",
-          "Der New Deal antwortet auf die Weltwirtschaftskrise mit Sozialversicherung, Arbeitsbeschaffung und Bankenregulierung."
-        ]
-      },
-      {
-        "from": 1945, "to": null,
-        "ruler": "Wechselnde Präsidenten",
-        "rulerTitle": "Präsident der Vereinigten Staaten",
-        "capital": "Washington, D. C.",
-        "government": "Präsidiale Bundesrepublik aus 50 Bundesstaaten",
-        "religion": "Religiös vielfältig",
-        "languages": ["Englisch", "Spanisch"],
-        "population": "ca. 335 Mio.",
-        "economy": "Größte Volkswirtschaft der Welt: Technologie, Finanzen, Dienstleistungen",
-        "summary": [
-          "Nach 1945 eine der beiden Supermächte, seit 1991 zeitweise die einzige. Der Dollar ist Leitwährung des Welthandels.",
-          "Die Bürgerrechtsbewegung erkämpft in den 1950er und 60er Jahren das Ende der gesetzlichen Rassentrennung."
-        ]
-      }
+    "quote": "Machu Picchu war kein Bollwerk, sondern vermutlich der Landsitz eines Herrschers."
+   }
+  ]
+ },
+ "Aztec Empire": {
+  "kind": "Dreibund",
+  "wiki": "Azteken",
+  "founded": 1428,
+  "dissolved": 1521,
+  "periods": [
+   {
+    "from": 1428,
+    "to": 1521,
+    "ruler": "Moctezuma II.",
+    "rulerTitle": "Huey Tlatoani – Großer Sprecher",
+    "reign": "1502–1520",
+    "capital": "Tenochtitlán",
+    "government": "Bund dreier Stadtstaaten über tributpflichtige Gebiete",
+    "religion": "Vielgötterei mit Huitzilopochtli und Tlaloc; rituelle Menschenopfer",
+    "languages": [
+     "Nahuatl"
+    ],
+    "population": "ca. 5 bis 6 Mio. im Tributgebiet",
+    "economy": "Chinampas – schwimmende Gärten, Tribute, Fernhändler (Pochteca)",
+    "summary": [
+     "Tenochtitlán liegt auf einer Insel im Texcoco-See und zählt rund 200.000 Einwohner – größer als jede europäische Stadt der Zeit außer vielleicht Konstantinopel.",
+     "Die spanischen Eroberer beschreiben Aquädukte, Dämme, Märkte und einen Zoo. Cortés siegt 1521 vor allem mithilfe verbündeter Städte und der Pocken.",
+     "Das Bildungswesen war für vorkoloniale Verhältnisse außergewöhnlich: Auch Kinder einfacher Familien besuchten Schulen."
     ]
-  },
-
-  "Canada": {
-    "kind": "Bundesstaat",
-    "wiki": "Kanada",
-    "founded": 1867,
-    "periods": [
-      {
-        "from": 1763, "to": 1866,
-        "kind": "Britische Kolonien",
-        "ruler": "Britischer Generalgouverneur",
-        "rulerTitle": "Generalgouverneur von Britisch-Nordamerika",
-        "capital": "Québec, Kingston, Ottawa",
-        "government": "Kolonien mit wachsender Selbstverwaltung",
-        "religion": "Katholizismus in Québec, Protestantismus in Ontario",
-        "languages": ["Englisch", "Französisch", "indigene Sprachen"],
-        "population": "ca. 3 Mio.",
-        "economy": "Pelzhandel, Holz, Fischerei, Landwirtschaft",
-        "summary": "Nach dem Siebenjährigen Krieg fällt Neufrankreich an Großbritannien. Der Quebec Act von 1774 sichert der französischsprachigen Bevölkerung Sprache, Religion und Zivilrecht."
-      },
-      {
-        "from": 1867, "to": null,
-        "ruler": "Wechselnde Premierminister",
-        "rulerTitle": "Premierminister; Staatsoberhaupt ist der britische Monarch",
-        "capital": "Ottawa",
-        "government": "Parlamentarische Bundesmonarchie",
-        "religion": "Christentum, wachsende Vielfalt",
-        "languages": ["Englisch", "Französisch"],
-        "population": "ca. 41 Mio.",
-        "economy": "Rohstoffe, Energie, Landwirtschaft, Dienstleistungen",
-        "summary": [
-          "1867 schließen sich vier Provinzen zum Dominion Canada zusammen; die transkontinentale Eisenbahn bindet ab 1885 den Westen an.",
-          "Kanada ist flächenmäßig der zweitgrößte Staat der Erde. Die Aufarbeitung des Unrechts an den First Nations – etwa der Residential Schools – prägt die Gegenwart."
-        ]
-      }
+   }
+  ]
+ },
+ "Maya chiefdoms and states": {
+  "kind": "Stadtstaatenwelt",
+  "wiki": "Maya",
+  "periods": [
+   {
+    "from": -1000,
+    "to": 1697,
+    "ruler": "Könige einzelner Stadtstaaten",
+    "rulerTitle": "K'uhul Ajaw – heiliger Herr",
+    "capital": "Tikal, Calakmul, Palenque, Copán, später Chichén Itzá",
+    "government": "Konkurrierende Stadtstaaten mit wechselnden Bündnissen",
+    "religion": "Vielgötterei, Kalenderkult, Blutopfer",
+    "languages": [
+     "Maya-Sprachen"
+    ],
+    "population": "auf dem Höhepunkt ca. 10 Mio.",
+    "economy": "Maisanbau, Kakao als Zahlungsmittel, Obsidian- und Jadehandel",
+    "summary": [
+     "Die Maya entwickeln als einzige Kultur Amerikas eine vollständige Schrift, die Sprache abbildet – über 800 Zeichen, seit den 1980er Jahren weitgehend entziffert.",
+     "Ihre Astronomie ist außergewöhnlich genau: Die Länge des Sonnenjahres wird auf wenige Minuten bestimmt, der Venuszyklus auf Stunden.",
+     "Im 9. Jahrhundert werden die Tieflandstädte weitgehend aufgegeben – Dürre, Übernutzung und Krieg wirken zusammen. Die Maya selbst verschwinden nicht: Heute sprechen mehrere Millionen Menschen Maya-Sprachen."
     ]
-  },
-
-  "Mexico": {
-    "kind": "Bundesrepublik",
-    "wiki": "Mexiko",
-    "founded": 1821,
-    "periods": [
-      {
-        "from": 1821, "to": null,
-        "ruler": "Wechselnde Präsidenten",
-        "rulerTitle": "Präsident der Vereinigten Mexikanischen Staaten",
-        "capital": "Mexiko-Stadt",
-        "government": "Präsidiale Bundesrepublik",
-        "religion": "Katholizismus",
-        "languages": ["Spanisch und 68 anerkannte indigene Sprachen"],
-        "population": "ca. 130 Mio.",
-        "economy": "Industrie, Erdöl, Landwirtschaft, Tourismus",
-        "summary": [
-          "1848 verliert Mexiko im Krieg gegen die USA rund die Hälfte seines Staatsgebiets – von Kalifornien bis Texas.",
-          "Die Revolution von 1910–1920 kostet etwa eine Million Menschenleben und bringt eine für ihre Zeit sehr weitgehende Sozialverfassung hervor."
-        ]
-      }
+   }
+  ]
+ },
+ "Tiahuanaco Empire": {
+  "kind": "Reich",
+  "wiki": "Tiwanaku",
+  "founded": 300,
+  "dissolved": 1000,
+  "periods": [
+   {
+    "from": 300,
+    "to": 1000,
+    "ruler": "Priesterliche Elite",
+    "rulerTitle": "unbekannt – keine Schriftquellen",
+    "capital": "Tiwanaku am Titicacasee",
+    "government": "Kultzentrum mit Einflussgebiet über Kolonien",
+    "religion": "Kult um den Stabgott",
+    "languages": [
+     "vermutlich Puquina, Aymara"
+    ],
+    "population": "ca. 20.000 in der Stadt",
+    "economy": "Hochbeet-Landwirtschaft (Suka Kollus), Lamakarawanen",
+    "summary": [
+     "Auf 3.850 Metern Höhe entsteht eines der höchstgelegenen Zentren der Alten Welt. Die Steinblöcke des Sonnentors wiegen bis zu zehn Tonnen und sind fugenlos gearbeitet.",
+     "Die Hochbeetfelder rings um den Titicacasee erzielten Erträge, die moderne Versuche erst wieder erreichen mussten."
     ]
-  },
-
-  "Argentina": {
-    "kind": "Bundesrepublik",
-    "wiki": "Argentinien",
-    "founded": 1816,
-    "periods": [
-      {
-        "from": 1816, "to": null,
-        "ruler": "Wechselnde Präsidenten",
-        "rulerTitle": "Präsident der Argentinischen Republik",
-        "capital": "Buenos Aires",
-        "government": "Präsidiale Bundesrepublik",
-        "religion": "Katholizismus",
-        "languages": ["Spanisch"],
-        "population": "ca. 46 Mio.",
-        "economy": "Rindfleisch, Getreide, Sojabohnen, Industrie",
-        "summary": [
-          "Um 1900 gehört Argentinien zu den zehn reichsten Ländern der Welt; Millionen Einwanderer aus Italien und Spanien prägen das Land.",
-          "Die Militärdiktatur 1976–1983 lässt Zehntausende Menschen verschwinden. Seit 1983 ist Argentinien durchgehend demokratisch."
-        ]
-      }
+   }
+  ]
+ },
+ "Huari Empire": {
+  "kind": "Reich",
+  "wiki": "Huari",
+  "founded": 600,
+  "dissolved": 1000,
+  "periods": [
+   {
+    "from": 600,
+    "to": 1000,
+    "ruler": "Unbekannte Herrscherschicht",
+    "rulerTitle": "keine Überlieferung",
+    "capital": "Huari bei Ayacucho",
+    "government": "Verwaltungszentren entlang eines Straßennetzes",
+    "religion": "Verwandt mit dem Tiwanaku-Kult",
+    "languages": [
+     "vermutlich frühes Quechua"
+    ],
+    "population": "ca. 40.000 in der Hauptstadt",
+    "economy": "Terrassenbau, Textilproduktion, Fernhandel",
+    "summary": "Huari gilt als Vorläufer der Inka-Verwaltung: Provinzzentren, Straßen und Umsiedlungen finden sich hier bereits. Die Ausbreitung des Quechua geht wohl auf diese Zeit zurück."
+   }
+  ]
+ },
+ "Vice-Royalty of New Spain": {
+  "kind": "Vizekönigreich",
+  "wiki": "Vizekönigreich Neuspanien",
+  "founded": 1535,
+  "dissolved": 1821,
+  "periods": [
+   {
+    "from": 1535,
+    "to": 1821,
+    "ruler": "Der Vizekönig im Namen der spanischen Krone",
+    "rulerTitle": "Vizekönig von Neuspanien",
+    "capital": "Mexiko-Stadt",
+    "government": "Vizekönigreich mit Audiencias als Gerichts- und Verwaltungsorganen",
+    "religion": "Katholizismus; Mission und Inquisition",
+    "languages": [
+     "Spanisch",
+     "Nahuatl",
+     "Maya",
+     "Tagalog"
+    ],
+    "population": "ca. 6 Mio.",
+    "economy": "Silber aus Zacatecas und Guanajuato, Hacienda-Landwirtschaft, Manila-Galeone",
+    "summary": [
+     "Neuspanien umfasst Mexiko, Mittelamerika, die Karibik, den Süden der heutigen USA und die Philippinen – das größte Verwaltungsgebiet des spanischen Weltreichs.",
+     "Die indigene Bevölkerung Mexikos sinkt im 16. Jahrhundert um schätzungsweise 80 bis 90 Prozent, vor allem durch eingeschleppte Krankheiten.",
+     "Die Manila-Galeone verbindet ab 1565 Acapulco mit Asien – die erste dauerhafte transpazifische Handelsroute der Geschichte."
     ]
-  },
-
-  "Rupert's Land": {
-    "kind": "Kompaniegebiet",
-    "wiki": "Ruperts Land",
-    "founded": 1670,
-    "dissolved": 1870,
-    "periods": [
-      {
-        "from": 1670, "to": 1870,
-        "ruler": "Der Gouverneur der Hudson's Bay Company",
-        "rulerTitle": "Gouverneur der Hudson's Bay Company",
-        "capital": "York Factory, später Fort Garry (Winnipeg)",
-        "government": "Handelsgesellschaft mit Hoheitsrechten über das Einzugsgebiet der Hudsonbai",
-        "religion": "Christliche Mission; indigene Religionen",
-        "languages": ["Englisch", "Cree", "Michif", "Französisch"],
-        "population": "einige Zehntausend",
-        "economy": "Pelzhandel, vor allem Biberfelle",
-        "summary": [
-          "Ein einziger Königsbrief von 1670 überträgt einer Handelsgesellschaft ein Gebiet von rund 3,9 Millionen Quadratkilometern – ein Drittel des heutigen Kanada.",
-          "Aus Verbindungen europäischer Pelzhändler und indigener Frauen geht die eigenständige Nation der Métis hervor. 1870 verkauft die Kompanie das Gebiet an Kanada."
-        ]
-      }
+   }
+  ]
+ },
+ "Vice-Royalty of Peru": {
+  "kind": "Vizekönigreich",
+  "wiki": "Vizekönigreich Peru",
+  "founded": 1542,
+  "dissolved": 1824,
+  "periods": [
+   {
+    "from": 1542,
+    "to": 1824,
+    "ruler": "Der Vizekönig im Namen der spanischen Krone",
+    "rulerTitle": "Vizekönig von Peru",
+    "capital": "Lima",
+    "government": "Vizekönigreich mit Audiencias",
+    "religion": "Katholizismus",
+    "languages": [
+     "Spanisch",
+     "Quechua",
+     "Aymara"
+    ],
+    "population": "ca. 2 Mio.",
+    "economy": "Silber aus Potosí, Quecksilber aus Huancavelica, Zwangsarbeit (Mita)",
+    "summary": [
+     "Der Cerro Rico von Potosí liefert über zwei Jahrhunderte den Großteil des Weltsilbers. Die Stadt zählt um 1600 rund 160.000 Einwohner – so viele wie London.",
+     "Die Arbeitspflicht in den Minen fordert unzählige Todesopfer. Der Aufstand des Túpac Amaru II. 1780 wird blutig niedergeschlagen."
     ]
-  },
-
-  "Očhéthi Šakówiŋ": {
-    "kind": "Bund von sieben Ratsfeuern",
-    "wiki": "Sioux",
-    "periods": [
-      {
-        "from": 1500, "to": null,
-        "ruler": "Ratsversammlungen und angesehene Anführer",
-        "rulerTitle": "Häuptlinge, bestätigt durch Ansehen statt durch Erbrecht",
-        "capital": "kein fester Ort – saisonale Lager",
-        "government": "Bund von sieben Untergruppen (Lakota, Dakota, Nakota)",
-        "religion": "Wakan Tanka, Sonnentanz, Visionssuche",
-        "languages": ["Lakota", "Dakota", "Nakota"],
-        "population": "einige Zehntausend",
-        "economy": "Bisonjagd, Handel, ab dem 18. Jahrhundert berittene Prärie-Kultur",
-        "summary": [
-          "Der Bund der „Sieben Ratsfeuer“ beherrscht im 18. und 19. Jahrhundert weite Teile der nördlichen Prärie. Das Pferd, aus spanischen Beständen übernommen, verändert die Lebensweise grundlegend.",
-          "1876 besiegen Lakota und Cheyenne am Little Bighorn ein US-Kavallerieregiment. Die planmäßige Ausrottung der Bisonherden entzieht der Prärie-Kultur binnen weniger Jahre ihre Grundlage.",
-          "Die Verträge von Fort Laramie sind bis heute Gegenstand von Rechtsstreitigkeiten um die Black Hills."
-        ]
-      }
+   }
+  ]
+ },
+ "Vice-Royalty of Brazil": {
+  "kind": "Vizekönigreich",
+  "wiki": "Kolonialbrasilien",
+  "founded": 1720,
+  "dissolved": 1815,
+  "periods": [
+   {
+    "from": 1500,
+    "to": 1822,
+    "ruler": "Der portugiesische Vizekönig, ab 1808 der König selbst",
+    "rulerTitle": "Vizekönig von Brasilien",
+    "capital": "Salvador da Bahia, ab 1763 Rio de Janeiro",
+    "government": "Kolonialverwaltung, ab 1815 gleichberechtigtes Königreich",
+    "religion": "Katholizismus",
+    "languages": [
+     "Portugiesisch",
+     "Tupi",
+     "westafrikanische Sprachen"
+    ],
+    "population": "ca. 3,5 Mio.",
+    "economy": "Zuckerrohr, ab 1690 Gold aus Minas Gerais, Sklavenarbeit",
+    "summary": [
+     "Brasilien empfängt zwischen 1500 und 1850 etwa 4,9 Millionen verschleppte Afrikaner – rund 40 Prozent aller Menschen des atlantischen Sklavenhandels.",
+     "1808 flieht der portugiesische Hof vor Napoleon nach Rio – der einzige Fall, in dem eine europäische Monarchie ihre Hauptstadt in eine Kolonie verlegt. 1822 wird Brasilien unabhängig."
     ]
-  },
-
-  "Wallmapu (Mapuche)": {
-    "kind": "Verband autonomer Gemeinschaften",
-    "wiki": "Mapuche",
-    "periods": [
-      {
-        "from": 1400, "to": null,
-        "ruler": "Lonkos – Anführer der einzelnen Verbände",
-        "rulerTitle": "Lonko; im Krieg gewählte Toqui",
-        "capital": "kein Zentrum – dezentrale Siedlungsgemeinschaften",
-        "government": "Verband weitgehend selbständiger Gruppen (Lof)",
-        "religion": "Ngen-Glaube, Machi als Heilerinnen und Heiler",
-        "languages": ["Mapudungun"],
-        "population": "ca. 1 Mio. um 1550",
-        "economy": "Ackerbau, Viehzucht, ab dem 17. Jahrhundert Pferdezucht",
-        "summary": [
-          "Die Mapuche halten südlich des Bío Bío über drei Jahrhunderte spanischen und chilenischen Vorstößen stand – der längste indigene Widerstand Amerikas.",
-          "Der Vertrag von Quillín 1641 erkennt ihre Unabhängigkeit an; erst 1883 wird das Gebiet militärisch dem chilenischen Staat einverleibt.",
-          "Heute leben rund zwei Millionen Menschen mit Mapuche-Identität in Chile und Argentinien."
-        ]
-      }
+   }
+  ]
+ },
+ "Brazil": {
+  "kind": "Kaiserreich, später Republik",
+  "wiki": "Brasilien",
+  "founded": 1822,
+  "periods": [
+   {
+    "from": 1822,
+    "to": 1888,
+    "kind": "Kaiserreich",
+    "ruler": "Pedro II.",
+    "rulerTitle": "Kaiser von Brasilien",
+    "dynasty": "Braganza",
+    "reign": "1831–1889",
+    "capital": "Rio de Janeiro",
+    "government": "Konstitutionelle Monarchie",
+    "religion": "Katholizismus als Staatsreligion",
+    "languages": [
+     "Portugiesisch"
+    ],
+    "population": "ca. 14 Mio.",
+    "economy": "Kaffee, Zucker, Kautschuk; Sklaverei bis 1888",
+    "summary": [
+     "Brasilien ist im 19. Jahrhundert die einzige dauerhafte Monarchie Amerikas. Pedro II. regiert 58 Jahre und gilt als aufgeklärter, wissenschaftsbegeisterter Herrscher.",
+     "1888 schafft das „Goldene Gesetz“ als letztes Land der westlichen Welt die Sklaverei ab; ein Jahr später wird die Monarchie gestürzt."
     ]
-  },
-
-  "Thule": {
-    "kind": "Kultur der Arktis",
-    "wiki": "Thule-Kultur",
-    "founded": 900,
-    "dissolved": 1600,
-    "periods": [
-      {
-        "from": 900, "to": 1600,
-        "ruler": "Keine übergreifende Herrschaft",
-        "rulerTitle": "Familienverbände und Lagergemeinschaften",
-        "capital": "Winterlager entlang der arktischen Küsten",
-        "government": "Egalitäre Gemeinschaften ohne dauerhafte Hierarchie",
-        "religion": "Schamanismus, Seelenvorstellungen der Tiere",
-        "languages": ["Inuit-Sprachen"],
-        "population": "einige Zehntausend",
-        "economy": "Waljagd, Robbenfang, Fischerei",
-        "summary": [
-          "Aus Alaska breitet sich die Thule-Kultur binnen weniger Jahrhunderte über die gesamte amerikanische Arktis bis Grönland aus – getragen von Umiak, Kajak und Hundeschlitten.",
-          "Ihre Träger sind die Vorfahren der heutigen Inuit. In Grönland treffen sie auf die Siedlungen der Wikinger."
-        ]
-      }
+   },
+   {
+    "from": 1889,
+    "to": null,
+    "kind": "Republik",
+    "ruler": "Wechselnde Präsidenten",
+    "rulerTitle": "Präsident der Föderativen Republik Brasilien",
+    "capital": "Rio de Janeiro, seit 1960 Brasília",
+    "government": "Präsidiale Bundesrepublik; 1964–1985 Militärdiktatur",
+    "religion": "Katholizismus, wachsende evangelikale Kirchen",
+    "languages": [
+     "Portugiesisch"
+    ],
+    "population": "ca. 213 Mio.",
+    "economy": "Landwirtschaft, Bergbau, Industrie, Luftfahrt",
+    "summary": [
+     "Der größte Staat Südamerikas beherbergt rund 60 Prozent des Amazonas-Regenwaldes.",
+     "Brasília, ab 1956 auf dem leeren Hochland errichtet, gilt als das bedeutendste Ensemble moderner Stadtplanung des 20. Jahrhunderts."
     ]
-  },
-
-  "Maori": {
-    "kind": "Iwi – Stammesgesellschaft",
-    "wiki": "Māori",
-    "periods": [
-      {
-        "from": 1300, "to": null,
-        "ruler": "Ariki – erbliche Anführer der Iwi",
-        "rulerTitle": "Ariki und Rangatira",
-        "capital": "Befestigte Siedlungen (Pā)",
-        "government": "Selbständige Stämme (Iwi) und Untergruppen (Hapū)",
-        "religion": "Atua-Glaube, Konzepte von Mana und Tapu",
-        "languages": ["Te Reo Māori"],
-        "population": "ca. 100.000 um 1769",
-        "economy": "Süßkartoffelanbau, Fischerei, Vogeljagd, Jadehandel",
-        "summary": [
-          "Um 1300 erreichen polynesische Seefahrer Aotearoa – die letzte große von Menschen besiedelte Landmasse der Erde. Die Navigation erfolgt nach Sternen, Dünung und Vogelflug.",
-          "Der Vertrag von Waitangi 1840 zwischen der britischen Krone und Māori-Häuptlingen gilt als Gründungsdokument Neuseelands; seine englische und seine Māori-Fassung weichen entscheidend voneinander ab.",
-          "Te Reo Māori ist seit 1987 Amtssprache."
-        ]
-      }
+   }
+  ]
+ },
+ "United States": {
+  "kind": "Bundesrepublik",
+  "wiki": "Vereinigte Staaten",
+  "founded": 1776,
+  "events": [
+   {
+    "year": 1776,
+    "text": "Unabhängigkeitserklärung der dreizehn Kolonien."
+   },
+   {
+    "year": 1803,
+    "text": "Louisiana Purchase verdoppelt das Staatsgebiet."
+   },
+   {
+    "year": 1861,
+    "text": "Beginn des Bürgerkriegs um Sklaverei und Union."
+   },
+   {
+    "year": 1865,
+    "text": "13. Verfassungszusatz schafft die Sklaverei ab."
+   },
+   {
+    "year": 1969,
+    "text": "Erste bemannte Mondlandung."
+   }
+  ],
+  "periods": [
+   {
+    "from": 1776,
+    "to": 1864,
+    "ruler": "Abraham Lincoln",
+    "rulerTitle": "Präsident der Vereinigten Staaten",
+    "reign": "1861–1865",
+    "capital": "Washington, D. C.",
+    "government": "Präsidiale Bundesrepublik",
+    "religion": "Protestantisch geprägt; keine Staatskirche",
+    "languages": [
+     "Englisch",
+     "Spanisch",
+     "Deutsch",
+     "indigene Sprachen"
+    ],
+    "population": "ca. 31 Mio. (1860)",
+    "economy": "Baumwolle im Süden, Industrie im Nordosten, Westexpansion",
+    "summary": [
+     "Die Verfassung von 1787 ist die älteste noch geltende geschriebene Staatsverfassung der Welt. Sie schweigt lange zur Sklaverei, die den Süden wirtschaftlich trägt.",
+     "Die Westexpansion geht mit Vertreibung und Vernichtung der indigenen Bevölkerung einher – der Trail of Tears 1838 ist nur ein Beispiel.",
+     "Der Bürgerkrieg 1861–1865 kostet rund 620.000 Menschenleben und entscheidet die Frage von Union und Sklaverei."
     ]
-  },
-
-  "Australia": {
-    "kind": "Bundesstaat",
-    "wiki": "Australien",
-    "founded": 1901,
-    "periods": [
-      {
-        "from": 1901, "to": null,
-        "ruler": "Wechselnde Premierminister",
-        "rulerTitle": "Premierminister; Staatsoberhaupt ist der britische Monarch",
-        "capital": "Canberra",
-        "government": "Parlamentarische Bundesmonarchie",
-        "religion": "Christentum, wachsende Konfessionslosigkeit",
-        "languages": ["Englisch", "über 100 Aboriginal-Sprachen"],
-        "population": "ca. 27 Mio.",
-        "economy": "Bergbau, Landwirtschaft, Dienstleistungen",
-        "summary": [
-          "1901 schließen sich sechs britische Kolonien zum Commonwealth of Australia zusammen. Australien führt 1902 als eines der ersten Länder das Frauenwahlrecht auf Bundesebene ein – allerdings unter Ausschluss der Aboriginal-Bevölkerung.",
-          "Erst 1967 werden Aboriginal People in der Volkszählung mitgezählt; 2008 folgt die offizielle Entschuldigung für die „Gestohlenen Generationen“."
-        ]
-      }
+   },
+   {
+    "from": 1865,
+    "to": 1944,
+    "ruler": "Franklin D. Roosevelt",
+    "rulerTitle": "Präsident der Vereinigten Staaten",
+    "reign": "1933–1945",
+    "capital": "Washington, D. C.",
+    "government": "Präsidiale Bundesrepublik",
+    "religion": "Religiös vielfältig, ohne Staatskirche",
+    "languages": [
+     "Englisch"
+    ],
+    "population": "ca. 132 Mio. (1940)",
+    "economy": "Massenproduktion, Automobil, Stahl; Weltwirtschaftskrise ab 1929",
+    "summary": [
+     "Zwischen 1880 und 1920 wandern über 20 Millionen Menschen ein. Die USA werden um 1900 zur größten Industriemacht der Welt.",
+     "Der New Deal antwortet auf die Weltwirtschaftskrise mit Sozialversicherung, Arbeitsbeschaffung und Bankenregulierung."
     ]
-  },
-
-  "Australian aboriginal hunter-gatherers": {
-    "kind": "Älteste durchgehende Kulturen der Welt",
-    "wiki": "Aborigines",
-    "periods": [
-      {
-        "from": -65000, "to": null,
-        "ruler": "Älteste und Gesetzeshüter",
-        "rulerTitle": "Elders – Hüter des Gesetzes und der Traumzeit",
-        "capital": "kein Zentrum – Land selbst ist Bezugspunkt",
-        "government": "Rund 250 Sprachgruppen mit eigenen Gesetzen und Gebieten",
-        "religion": "Traumzeit (Dreaming) – Gesetz, Geschichte und Landkarte zugleich",
-        "languages": ["über 250 Sprachen in etwa 28 Familien"],
-        "population": "ca. 750.000 bis 1 Mio. um 1788",
-        "economy": "Jagen, Sammeln, Feuerstockwirtschaft, Aalfallen und Fischzucht",
-        "summary": [
-          "Die Besiedlung Australiens vor mindestens 65.000 Jahren macht die Aboriginal-Kulturen zu den ältesten durchgehend bestehenden der Menschheit.",
-          "Die Aalfanganlagen von Budj Bim in Victoria sind rund 6.600 Jahre alt und damit älter als die ägyptischen Pyramiden – heute UNESCO-Welterbe.",
-          "Songlines verbinden Gesang, Recht und Wegbeschreibung: Wer das Lied kennt, findet über Hunderte Kilometer die Wasserstellen."
-        ],
-        "quote": "Nicht das Land gehört den Menschen, sondern die Menschen gehören zum Land."
-      }
+   },
+   {
+    "from": 1945,
+    "to": null,
+    "ruler": "Wechselnde Präsidenten",
+    "rulerTitle": "Präsident der Vereinigten Staaten",
+    "capital": "Washington, D. C.",
+    "government": "Präsidiale Bundesrepublik aus 50 Bundesstaaten",
+    "religion": "Religiös vielfältig",
+    "languages": [
+     "Englisch",
+     "Spanisch"
+    ],
+    "population": "ca. 335 Mio.",
+    "economy": "Größte Volkswirtschaft der Welt: Technologie, Finanzen, Dienstleistungen",
+    "summary": [
+     "Nach 1945 eine der beiden Supermächte, seit 1991 zeitweise die einzige. Der Dollar ist Leitwährung des Welthandels.",
+     "Die Bürgerrechtsbewegung erkämpft in den 1950er und 60er Jahren das Ende der gesetzlichen Rassentrennung."
     ]
-  },
-
-  "Khoisan": {
-    "kind": "Kulturkreis",
-    "wiki": "Khoisan",
-    "periods": [
-      {
-        "from": -50000, "to": null,
-        "ruler": "Keine dauerhafte Herrschaft",
-        "rulerTitle": "Gruppen ohne feste Anführer; Entscheidungen im Konsens",
-        "capital": "kein Zentrum – bewegliche Lagergemeinschaften",
-        "government": "Egalitäre Bandgesellschaften",
-        "religion": "Trancetanz, Verehrung von /Kaggen (Gottesanbeterin)",
-        "languages": ["Khoe-, Tuu- und Kx'a-Sprachen mit Klicklauten"],
-        "population": "einige Hunderttausend",
-        "economy": "Sammeln, Jagen, bei den Khoikhoi auch Viehzucht",
-        "summary": [
-          "Genetische Untersuchungen zeigen bei den San die größte Vielfalt aller heutigen Bevölkerungen – ein Hinweis auf ihre außergewöhnlich lange Kontinuität im südlichen Afrika.",
-          "Die Felsbilder der Drakensberge und Namibias gehören zu den ältesten und umfangreichsten Kunstbeständen der Welt.",
-          "Ab dem 17. Jahrhundert verdrängen europäische Siedler und expandierende Bantu-Gruppen die Khoisan in die Trockengebiete."
-        ]
-      }
+   }
+  ]
+ },
+ "Canada": {
+  "kind": "Bundesstaat",
+  "wiki": "Kanada",
+  "founded": 1867,
+  "periods": [
+   {
+    "from": 1763,
+    "to": 1866,
+    "kind": "Britische Kolonien",
+    "ruler": "Britischer Generalgouverneur",
+    "rulerTitle": "Generalgouverneur von Britisch-Nordamerika",
+    "capital": "Québec, Kingston, Ottawa",
+    "government": "Kolonien mit wachsender Selbstverwaltung",
+    "religion": "Katholizismus in Québec, Protestantismus in Ontario",
+    "languages": [
+     "Englisch",
+     "Französisch",
+     "indigene Sprachen"
+    ],
+    "population": "ca. 3 Mio.",
+    "economy": "Pelzhandel, Holz, Fischerei, Landwirtschaft",
+    "summary": "Nach dem Siebenjährigen Krieg fällt Neufrankreich an Großbritannien. Der Quebec Act von 1774 sichert der französischsprachigen Bevölkerung Sprache, Religion und Zivilrecht."
+   },
+   {
+    "from": 1867,
+    "to": null,
+    "ruler": "Wechselnde Premierminister",
+    "rulerTitle": "Premierminister; Staatsoberhaupt ist der britische Monarch",
+    "capital": "Ottawa",
+    "government": "Parlamentarische Bundesmonarchie",
+    "religion": "Christentum, wachsende Vielfalt",
+    "languages": [
+     "Englisch",
+     "Französisch"
+    ],
+    "population": "ca. 41 Mio.",
+    "economy": "Rohstoffe, Energie, Landwirtschaft, Dienstleistungen",
+    "summary": [
+     "1867 schließen sich vier Provinzen zum Dominion Canada zusammen; die transkontinentale Eisenbahn bindet ab 1885 den Westen an.",
+     "Kanada ist flächenmäßig der zweitgrößte Staat der Erde. Die Aufarbeitung des Unrechts an den First Nations – etwa der Residential Schools – prägt die Gegenwart."
     ]
-  },
-
-  "Bantu": {
-    "kind": "Sprach- und Kulturfamilie",
-    "wiki": "Bantu",
-    "periods": [
-      {
-        "from": -3000, "to": null,
-        "ruler": "Zahlreiche eigenständige Gemeinwesen",
-        "rulerTitle": "Häuptlinge und Könige der Einzelvölker",
-        "capital": "kein Zentrum",
-        "government": "Von dörflichen Gemeinschaften bis zu Königreichen",
-        "religion": "Ahnenverehrung, Schöpfergott, später Islam und Christentum",
-        "languages": ["über 500 Bantusprachen, darunter Suaheli, Zulu, Shona, Lingala"],
-        "population": "heute über 350 Mio. Sprecherinnen und Sprecher",
-        "economy": "Hackbau, Viehzucht, Eisenverhüttung",
-        "summary": [
-          "Die Bantu-Expansion ab etwa 3000 v. Chr. aus dem Grenzgebiet von Kamerun und Nigeria ist eine der größten Wanderungsbewegungen der Menschheit – über 3.000 Jahre und einen halben Kontinent.",
-          "Getragen wird sie von Eisenverarbeitung und Ackerbau. Am Ende sprechen von Kamerun bis Südafrika Hunderte Millionen Menschen verwandte Sprachen.",
-          "Der Kartendatensatz fasst diesen Sprachraum zu einer Fläche zusammen; tatsächlich bestanden dort Hunderte eigenständige Gemeinwesen."
-        ]
-      }
+   }
+  ]
+ },
+ "Mexico": {
+  "kind": "Bundesrepublik",
+  "wiki": "Mexiko",
+  "founded": 1821,
+  "periods": [
+   {
+    "from": 1821,
+    "to": null,
+    "ruler": "Wechselnde Präsidenten",
+    "rulerTitle": "Präsident der Vereinigten Mexikanischen Staaten",
+    "capital": "Mexiko-Stadt",
+    "government": "Präsidiale Bundesrepublik",
+    "religion": "Katholizismus",
+    "languages": [
+     "Spanisch und 68 anerkannte indigene Sprachen"
+    ],
+    "population": "ca. 130 Mio.",
+    "economy": "Industrie, Erdöl, Landwirtschaft, Tourismus",
+    "summary": [
+     "1848 verliert Mexiko im Krieg gegen die USA rund die Hälfte seines Staatsgebiets – von Kalifornien bis Texas.",
+     "Die Revolution von 1910–1920 kostet etwa eine Million Menschenleben und bringt eine für ihre Zeit sehr weitgehende Sozialverfassung hervor."
     ]
-  },
-
-  "Sámi": {
-    "kind": "Indigenes Volk Nordeuropas",
-    "wiki": "Samen",
-    "periods": [
-      {
-        "from": -2000, "to": null,
-        "ruler": "Siida – Gemeinschaften mit gemeinsamer Weidenutzung",
-        "rulerTitle": "Ratsversammlung der Siida",
-        "capital": "kein Zentrum; heute Sámi-Parlamente in Norwegen, Schweden und Finnland",
-        "government": "Traditionell Siida-Verbände; heute Selbstverwaltungsorgane",
-        "religion": "Traditionell Schamanismus; später lutherisch",
-        "languages": ["Neun samische Sprachen"],
-        "population": "ca. 80.000",
-        "economy": "Rentierhaltung, Fischerei, Jagd, Handwerk",
-        "summary": [
-          "Die Samen leben in Sápmi – einem Gebiet über vier Staaten hinweg, das nie einen eigenen Staat bildete.",
-          "Vom 17. bis ins 20. Jahrhundert werden sie einer harten Assimilationspolitik unterworfen; Trommeln werden verbrannt, die Sprache aus den Schulen verdrängt.",
-          "Seit 1989 gibt es gewählte Sámi-Parlamente; die Rechte an Weideland sind weiterhin Gegenstand von Verfahren."
-        ]
-      }
+   }
+  ]
+ },
+ "Argentina": {
+  "kind": "Bundesrepublik",
+  "wiki": "Argentinien",
+  "founded": 1816,
+  "periods": [
+   {
+    "from": 1816,
+    "to": null,
+    "ruler": "Wechselnde Präsidenten",
+    "rulerTitle": "Präsident der Argentinischen Republik",
+    "capital": "Buenos Aires",
+    "government": "Präsidiale Bundesrepublik",
+    "religion": "Katholizismus",
+    "languages": [
+     "Spanisch"
+    ],
+    "population": "ca. 46 Mio.",
+    "economy": "Rindfleisch, Getreide, Sojabohnen, Industrie",
+    "summary": [
+     "Um 1900 gehört Argentinien zu den zehn reichsten Ländern der Welt; Millionen Einwanderer aus Italien und Spanien prägen das Land.",
+     "Die Militärdiktatur 1976–1983 lässt Zehntausende Menschen verschwinden. Seit 1983 ist Argentinien durchgehend demokratisch."
     ]
-  },
-
-  "Tuareg": {
-    "kind": "Konföderation von Nomadenverbänden",
-    "wiki": "Tuareg",
-    "periods": [
-      {
-        "from": 500, "to": null,
-        "ruler": "Amenokal – gewählter Oberhäuptling einer Konföderation",
-        "rulerTitle": "Amenokal",
-        "capital": "kein fester Ort; Bezugspunkte Agadez, Timbuktu, Ghat",
-        "government": "Ständisch gegliederte Konföderationen",
-        "religion": "Islam, verbunden mit älteren Vorstellungen",
-        "languages": ["Tamascheq (Tifinagh-Schrift)"],
-        "population": "ca. 2 Mio.",
-        "economy": "Kamelkarawanen, Salzhandel, Viehzucht",
-        "summary": [
-          "Die Tuareg beherrschen jahrhundertelang die Karawanenwege durch die Sahara. Die Azalai-Salzkarawane von Timbuktu nach Taoudenni wird bis heute geführt.",
-          "Bei ihnen tragen die Männer den Gesichtsschleier, nicht die Frauen; die Abstammung wird traditionell mütterlicherseits gerechnet.",
-          "Die Kolonialgrenzen teilen ihr Siedlungsgebiet auf fünf Staaten auf – Ursache wiederkehrender Konflikte."
-        ]
-      }
+   }
+  ]
+ },
+ "Rupert's Land": {
+  "kind": "Kompaniegebiet",
+  "wiki": "Ruperts Land",
+  "founded": 1670,
+  "dissolved": 1870,
+  "periods": [
+   {
+    "from": 1670,
+    "to": 1870,
+    "ruler": "Der Gouverneur der Hudson's Bay Company",
+    "rulerTitle": "Gouverneur der Hudson's Bay Company",
+    "capital": "York Factory, später Fort Garry (Winnipeg)",
+    "government": "Handelsgesellschaft mit Hoheitsrechten über das Einzugsgebiet der Hudsonbai",
+    "religion": "Christliche Mission; indigene Religionen",
+    "languages": [
+     "Englisch",
+     "Cree",
+     "Michif",
+     "Französisch"
+    ],
+    "population": "einige Zehntausend",
+    "economy": "Pelzhandel, vor allem Biberfelle",
+    "summary": [
+     "Ein einziger Königsbrief von 1670 überträgt einer Handelsgesellschaft ein Gebiet von rund 3,9 Millionen Quadratkilometern – ein Drittel des heutigen Kanada.",
+     "Aus Verbindungen europäischer Pelzhändler und indigener Frauen geht die eigenständige Nation der Métis hervor. 1870 verkauft die Kompanie das Gebiet an Kanada."
     ]
-  },
-
-  "Austronesians": {
-    "kind": "Sprach- und Seefahrerfamilie",
-    "wiki": "Austronesische Sprachen",
-    "periods": [
-      {
-        "from": -3000, "to": 1300,
-        "ruler": "Zahlreiche eigenständige Gemeinschaften",
-        "rulerTitle": "Häuptlinge und Seefahreranführer",
-        "capital": "kein Zentrum",
-        "government": "Dorfgemeinschaften, Häuptlingstümer, später Seereiche",
-        "religion": "Ahnenverehrung, Naturgeister",
-        "languages": ["über 1.200 Sprachen von Madagaskar bis zur Osterinsel"],
-        "population": "heute über 380 Mio. Sprecherinnen und Sprecher",
-        "economy": "Reis- und Knollenanbau, Fischerei, Fernhandel",
-        "summary": [
-          "Von Taiwan aus besiedeln austronesische Seefahrer in Jahrtausenden die halbe Erdkugel – von Madagaskar bis Hawaii und zur Osterinsel.",
-          "Ihre Auslegerboote und die Navigation nach Sternen, Wellenmustern und Vogelzug ermöglichen Fahrten über Tausende Kilometer offenen Ozean.",
-          "Madagaskar wird um 500 n. Chr. von Seefahrern aus Borneo besiedelt – über 6.000 Kilometer entfernt. Das Malagasy ist bis heute eine austronesische Sprache."
-        ]
-      }
+   }
+  ]
+ },
+ "Očhéthi Šakówiŋ": {
+  "kind": "Bund von sieben Ratsfeuern",
+  "wiki": "Sioux",
+  "periods": [
+   {
+    "from": 1500,
+    "to": null,
+    "ruler": "Ratsversammlungen und angesehene Anführer",
+    "rulerTitle": "Häuptlinge, bestätigt durch Ansehen statt durch Erbrecht",
+    "capital": "kein fester Ort – saisonale Lager",
+    "government": "Bund von sieben Untergruppen (Lakota, Dakota, Nakota)",
+    "religion": "Wakan Tanka, Sonnentanz, Visionssuche",
+    "languages": [
+     "Lakota",
+     "Dakota",
+     "Nakota"
+    ],
+    "population": "einige Zehntausend",
+    "economy": "Bisonjagd, Handel, ab dem 18. Jahrhundert berittene Prärie-Kultur",
+    "summary": [
+     "Der Bund der „Sieben Ratsfeuer“ beherrscht im 18. und 19. Jahrhundert weite Teile der nördlichen Prärie. Das Pferd, aus spanischen Beständen übernommen, verändert die Lebensweise grundlegend.",
+     "1876 besiegen Lakota und Cheyenne am Little Bighorn ein US-Kavallerieregiment. Die planmäßige Ausrottung der Bisonherden entzieht der Prärie-Kultur binnen weniger Jahre ihre Grundlage.",
+     "Die Verträge von Fort Laramie sind bis heute Gegenstand von Rechtsstreitigkeiten um die Black Hills."
     ]
-  },
-
-  "Scythians": {
-    "kind": "Reiternomadenverband",
-    "wiki": "Skythen",
-    "founded": -900,
-    "dissolved": -200,
-    "periods": [
-      {
-        "from": -900, "to": -200,
-        "ruler": "Könige einzelner Stammesverbände",
-        "rulerTitle": "König der Skythen",
-        "capital": "kein fester Ort; Kammergräber (Kurgane) als Zentren",
-        "government": "Stammesverbände unter Kriegeradel",
-        "religion": "Naturgottheiten, Pferdeopfer",
-        "languages": ["Ostiranische Sprachen"],
-        "population": "wenige Millionen",
-        "economy": "Viehzucht, Getreidehandel mit den griechischen Küstenstädten",
-        "summary": [
-          "Die Skythen beherrschen die Steppe zwischen Donau und Altai. 513 v. Chr. entziehen sie sich einem persischen Feldzug durch Ausweichen – die erste überlieferte Anwendung dieser Strategie.",
-          "Ihre Goldschmiedekunst gehört zum Feinsten der antiken Welt; die Funde aus den Kurganen zeigen Tierdarstellungen von großer Beweglichkeit."
-        ]
-      }
+   }
+  ]
+ },
+ "Wallmapu (Mapuche)": {
+  "kind": "Verband autonomer Gemeinschaften",
+  "wiki": "Mapuche",
+  "periods": [
+   {
+    "from": 1400,
+    "to": null,
+    "ruler": "Lonkos – Anführer der einzelnen Verbände",
+    "rulerTitle": "Lonko; im Krieg gewählte Toqui",
+    "capital": "kein Zentrum – dezentrale Siedlungsgemeinschaften",
+    "government": "Verband weitgehend selbständiger Gruppen (Lof)",
+    "religion": "Ngen-Glaube, Machi als Heilerinnen und Heiler",
+    "languages": [
+     "Mapudungun"
+    ],
+    "population": "ca. 1 Mio. um 1550",
+    "economy": "Ackerbau, Viehzucht, ab dem 17. Jahrhundert Pferdezucht",
+    "summary": [
+     "Die Mapuche halten südlich des Bío Bío über drei Jahrhunderte spanischen und chilenischen Vorstößen stand – der längste indigene Widerstand Amerikas.",
+     "Der Vertrag von Quillín 1641 erkennt ihre Unabhängigkeit an; erst 1883 wird das Gebiet militärisch dem chilenischen Staat einverleibt.",
+     "Heute leben rund zwei Millionen Menschen mit Mapuche-Identität in Chile und Argentinien."
     ]
-  },
-
-  "Celts": {
-    "kind": "Kulturkreis",
-    "wiki": "Kelten",
-    "periods": [
-      {
-        "from": -800, "to": 100,
-        "ruler": "Fürsten und Stammeskönige",
-        "rulerTitle": "Fürst; daneben Druiden als Rechts- und Kultwahrer",
-        "capital": "Befestigte Höhensiedlungen (Oppida) wie Manching und Bibracte",
-        "government": "Stammesverbände, teils mit gewählten Amtsträgern",
-        "religion": "Vielgötterei mit Druiden als Priesterschicht",
-        "languages": ["Keltische Sprachen"],
-        "population": "einige Millionen",
-        "economy": "Eisenverarbeitung, Salzbergbau, Fernhandel, eigene Münzprägung",
-        "summary": [
-          "Von Irland bis Anatolien reicht der keltische Kulturraum. Die Oppida des 2. Jahrhunderts v. Chr. sind die ersten städtischen Siedlungen nördlich der Alpen.",
-          "Kelten erfinden Kettenhemd, Eisenreifen für Wagenräder und das Fassdaubenfass. Das Salzbergwerk von Hallstatt ist seit über 3.000 Jahren in Betrieb.",
-          "Was wir über sie wissen, stammt großenteils von Caesar – dem Gegner im Gallischen Krieg."
-        ]
-      }
+   }
+  ]
+ },
+ "Thule": {
+  "kind": "Kultur der Arktis",
+  "wiki": "Thule-Kultur",
+  "founded": 900,
+  "dissolved": 1600,
+  "periods": [
+   {
+    "from": 900,
+    "to": 1600,
+    "ruler": "Keine übergreifende Herrschaft",
+    "rulerTitle": "Familienverbände und Lagergemeinschaften",
+    "capital": "Winterlager entlang der arktischen Küsten",
+    "government": "Egalitäre Gemeinschaften ohne dauerhafte Hierarchie",
+    "religion": "Schamanismus, Seelenvorstellungen der Tiere",
+    "languages": [
+     "Inuit-Sprachen"
+    ],
+    "population": "einige Zehntausend",
+    "economy": "Waljagd, Robbenfang, Fischerei",
+    "summary": [
+     "Aus Alaska breitet sich die Thule-Kultur binnen weniger Jahrhunderte über die gesamte amerikanische Arktis bis Grönland aus – getragen von Umiak, Kajak und Hundeschlitten.",
+     "Ihre Träger sind die Vorfahren der heutigen Inuit. In Grönland treffen sie auf die Siedlungen der Wikinger."
     ]
-  },
-
-  "Indus valley civilization": {
-    "kind": "Hochkultur",
-    "wiki": "Indus-Kultur",
-    "founded": -3300,
-    "dissolved": -1300,
-    "periods": [
-      {
-        "from": -3300, "to": -1300,
-        "ruler": "Nicht bekannt – keine Paläste, keine Herrscherbilder",
-        "rulerTitle": "unbekannt",
-        "capital": "Mohenjo-Daro, Harappa",
-        "government": "Ungeklärt; auffällig einheitliche Standards ohne erkennbare Zentralmacht",
-        "religion": "Nicht sicher bestimmbar; Bade- und Fruchtbarkeitskulte vermutet",
-        "languages": ["Indus-Schrift, unentziffert"],
-        "population": "ca. 5 Mio.",
-        "economy": "Bewässerungslandwirtschaft, Baumwolle, Seehandel mit Mesopotamien",
-        "summary": [
-          "Die größte Hochkultur der Bronzezeit erstreckt sich über rund eine Million Quadratkilometer – größer als Ägypten und Mesopotamien zusammen.",
-          "Mohenjo-Daro hat Straßen im Raster, Abwasserkanäle und Hausbrunnen. Die Ziegelmaße sind über Hunderte Kilometer hinweg identisch.",
-          "Weder Paläste noch Massengräber noch eindeutige Waffenfunde: Die Gesellschaftsform bleibt eines der großen Rätsel der Archäologie. Die Schrift ist bis heute unentziffert."
-        ]
-      }
+   }
+  ]
+ },
+ "Maori": {
+  "kind": "Iwi – Stammesgesellschaft",
+  "wiki": "Māori",
+  "periods": [
+   {
+    "from": 1300,
+    "to": null,
+    "ruler": "Ariki – erbliche Anführer der Iwi",
+    "rulerTitle": "Ariki und Rangatira",
+    "capital": "Befestigte Siedlungen (Pā)",
+    "government": "Selbständige Stämme (Iwi) und Untergruppen (Hapū)",
+    "religion": "Atua-Glaube, Konzepte von Mana und Tapu",
+    "languages": [
+     "Te Reo Māori"
+    ],
+    "population": "ca. 100.000 um 1769",
+    "economy": "Süßkartoffelanbau, Fischerei, Vogeljagd, Jadehandel",
+    "summary": [
+     "Um 1300 erreichen polynesische Seefahrer Aotearoa – die letzte große von Menschen besiedelte Landmasse der Erde. Die Navigation erfolgt nach Sternen, Dünung und Vogelflug.",
+     "Der Vertrag von Waitangi 1840 zwischen der britischen Krone und Māori-Häuptlingen gilt als Gründungsdokument Neuseelands; seine englische und seine Māori-Fassung weichen entscheidend voneinander ab.",
+     "Te Reo Māori ist seit 1987 Amtssprache."
     ]
-  },
-
-  "Homo erectus": {
-    "kind": "Menschenform",
-    "wiki": "Homo erectus",
-    "periods": [
-      {
-        "from": -1900000, "to": -110000,
-        "ruler": "keine",
-        "rulerTitle": "—",
-        "capital": "—",
-        "government": "Kleingruppen",
-        "religion": "keine Belege",
-        "languages": ["unbekannt"],
-        "population": "unbekannt",
-        "economy": "Jagen und Sammeln",
-        "summary": [
-          "Homo erectus ist die erste Menschenform, die Afrika verlässt und bis nach Java und China gelangt – eine Verbreitung über fast zwei Millionen Jahre.",
-          "Ihm werden der Faustkeil und der kontrollierte Umgang mit Feuer zugeschrieben."
-        ]
-      }
+   }
+  ]
+ },
+ "Australia": {
+  "kind": "Bundesstaat",
+  "wiki": "Australien",
+  "founded": 1901,
+  "periods": [
+   {
+    "from": 1901,
+    "to": null,
+    "ruler": "Wechselnde Premierminister",
+    "rulerTitle": "Premierminister; Staatsoberhaupt ist der britische Monarch",
+    "capital": "Canberra",
+    "government": "Parlamentarische Bundesmonarchie",
+    "religion": "Christentum, wachsende Konfessionslosigkeit",
+    "languages": [
+     "Englisch",
+     "über 100 Aboriginal-Sprachen"
+    ],
+    "population": "ca. 27 Mio.",
+    "economy": "Bergbau, Landwirtschaft, Dienstleistungen",
+    "summary": [
+     "1901 schließen sich sechs britische Kolonien zum Commonwealth of Australia zusammen. Australien führt 1902 als eines der ersten Länder das Frauenwahlrecht auf Bundesebene ein – allerdings unter Ausschluss der Aboriginal-Bevölkerung.",
+     "Erst 1967 werden Aboriginal People in der Volkszählung mitgezählt; 2008 folgt die offizielle Entschuldigung für die „Gestohlenen Generationen“."
     ]
-  },
-
-  "Neanderthal": {
-    "kind": "Menschenform",
-    "wiki": "Neandertaler",
-    "periods": [
-      {
-        "from": -400000, "to": -40000,
-        "ruler": "keine",
-        "rulerTitle": "—",
-        "capital": "—",
-        "government": "Kleingruppen von 10 bis 30 Personen",
-        "religion": "Bestattungen mit Beigaben belegt",
-        "languages": ["Sprachfähigkeit wahrscheinlich"],
-        "population": "vermutlich nie über 100.000 gleichzeitig",
-        "economy": "Großwildjagd, Werkzeugherstellung, Kleidung aus Fellen",
-        "summary": [
-          "Der Neandertaler ist an das eiszeitliche Europa hervorragend angepasst: kräftiger Körperbau, großes Gehirn, ausgefeilte Steinwerkzeuge.",
-          "Er bestattet seine Toten, versorgt Verletzte und stellt Schmuck her. Vor rund 40.000 Jahren verschwindet er – die Gründe sind bis heute umstritten.",
-          "Menschen außerhalb Afrikas tragen etwa ein bis zwei Prozent Neandertaler-DNA in sich."
-        ]
-      }
+   }
+  ]
+ },
+ "Australian aboriginal hunter-gatherers": {
+  "kind": "Älteste durchgehende Kulturen der Welt",
+  "wiki": "Aborigines",
+  "periods": [
+   {
+    "from": -65000,
+    "to": null,
+    "ruler": "Älteste und Gesetzeshüter",
+    "rulerTitle": "Elders – Hüter des Gesetzes und der Traumzeit",
+    "capital": "kein Zentrum – Land selbst ist Bezugspunkt",
+    "government": "Rund 250 Sprachgruppen mit eigenen Gesetzen und Gebieten",
+    "religion": "Traumzeit (Dreaming) – Gesetz, Geschichte und Landkarte zugleich",
+    "languages": [
+     "über 250 Sprachen in etwa 28 Familien"
+    ],
+    "population": "ca. 750.000 bis 1 Mio. um 1788",
+    "economy": "Jagen, Sammeln, Feuerstockwirtschaft, Aalfallen und Fischzucht",
+    "summary": [
+     "Die Besiedlung Australiens vor mindestens 65.000 Jahren macht die Aboriginal-Kulturen zu den ältesten durchgehend bestehenden der Menschheit.",
+     "Die Aalfanganlagen von Budj Bim in Victoria sind rund 6.600 Jahre alt und damit älter als die ägyptischen Pyramiden – heute UNESCO-Welterbe.",
+     "Songlines verbinden Gesang, Recht und Wegbeschreibung: Wer das Lied kennt, findet über Hunderte Kilometer die Wasserstellen."
+    ],
+    "quote": "Nicht das Land gehört den Menschen, sondern die Menschen gehören zum Land."
+   }
+  ]
+ },
+ "Khoisan": {
+  "kind": "Kulturkreis",
+  "wiki": "Khoisan",
+  "periods": [
+   {
+    "from": -50000,
+    "to": null,
+    "ruler": "Keine dauerhafte Herrschaft",
+    "rulerTitle": "Gruppen ohne feste Anführer; Entscheidungen im Konsens",
+    "capital": "kein Zentrum – bewegliche Lagergemeinschaften",
+    "government": "Egalitäre Bandgesellschaften",
+    "religion": "Trancetanz, Verehrung von /Kaggen (Gottesanbeterin)",
+    "languages": [
+     "Khoe-, Tuu- und Kx'a-Sprachen mit Klicklauten"
+    ],
+    "population": "einige Hunderttausend",
+    "economy": "Sammeln, Jagen, bei den Khoikhoi auch Viehzucht",
+    "summary": [
+     "Genetische Untersuchungen zeigen bei den San die größte Vielfalt aller heutigen Bevölkerungen – ein Hinweis auf ihre außergewöhnlich lange Kontinuität im südlichen Afrika.",
+     "Die Felsbilder der Drakensberge und Namibias gehören zu den ältesten und umfangreichsten Kunstbeständen der Welt.",
+     "Ab dem 17. Jahrhundert verdrängen europäische Siedler und expandierende Bantu-Gruppen die Khoisan in die Trockengebiete."
     ]
-  }
+   }
+  ]
+ },
+ "Bantu": {
+  "kind": "Sprach- und Kulturfamilie",
+  "wiki": "Bantu",
+  "periods": [
+   {
+    "from": -3000,
+    "to": null,
+    "ruler": "Zahlreiche eigenständige Gemeinwesen",
+    "rulerTitle": "Häuptlinge und Könige der Einzelvölker",
+    "capital": "kein Zentrum",
+    "government": "Von dörflichen Gemeinschaften bis zu Königreichen",
+    "religion": "Ahnenverehrung, Schöpfergott, später Islam und Christentum",
+    "languages": [
+     "über 500 Bantusprachen, darunter Suaheli, Zulu, Shona, Lingala"
+    ],
+    "population": "heute über 350 Mio. Sprecherinnen und Sprecher",
+    "economy": "Hackbau, Viehzucht, Eisenverhüttung",
+    "summary": [
+     "Die Bantu-Expansion ab etwa 3000 v. Chr. aus dem Grenzgebiet von Kamerun und Nigeria ist eine der größten Wanderungsbewegungen der Menschheit – über 3.000 Jahre und einen halben Kontinent.",
+     "Getragen wird sie von Eisenverarbeitung und Ackerbau. Am Ende sprechen von Kamerun bis Südafrika Hunderte Millionen Menschen verwandte Sprachen.",
+     "Der Kartendatensatz fasst diesen Sprachraum zu einer Fläche zusammen; tatsächlich bestanden dort Hunderte eigenständige Gemeinwesen."
+    ]
+   }
+  ]
+ },
+ "Sámi": {
+  "kind": "Indigenes Volk Nordeuropas",
+  "wiki": "Samen",
+  "periods": [
+   {
+    "from": -2000,
+    "to": null,
+    "ruler": "Siida – Gemeinschaften mit gemeinsamer Weidenutzung",
+    "rulerTitle": "Ratsversammlung der Siida",
+    "capital": "kein Zentrum; heute Sámi-Parlamente in Norwegen, Schweden und Finnland",
+    "government": "Traditionell Siida-Verbände; heute Selbstverwaltungsorgane",
+    "religion": "Traditionell Schamanismus; später lutherisch",
+    "languages": [
+     "Neun samische Sprachen"
+    ],
+    "population": "ca. 80.000",
+    "economy": "Rentierhaltung, Fischerei, Jagd, Handwerk",
+    "summary": [
+     "Die Samen leben in Sápmi – einem Gebiet über vier Staaten hinweg, das nie einen eigenen Staat bildete.",
+     "Vom 17. bis ins 20. Jahrhundert werden sie einer harten Assimilationspolitik unterworfen; Trommeln werden verbrannt, die Sprache aus den Schulen verdrängt.",
+     "Seit 1989 gibt es gewählte Sámi-Parlamente; die Rechte an Weideland sind weiterhin Gegenstand von Verfahren."
+    ]
+   }
+  ]
+ },
+ "Tuareg": {
+  "kind": "Konföderation von Nomadenverbänden",
+  "wiki": "Tuareg",
+  "periods": [
+   {
+    "from": 500,
+    "to": null,
+    "ruler": "Amenokal – gewählter Oberhäuptling einer Konföderation",
+    "rulerTitle": "Amenokal",
+    "capital": "kein fester Ort; Bezugspunkte Agadez, Timbuktu, Ghat",
+    "government": "Ständisch gegliederte Konföderationen",
+    "religion": "Islam, verbunden mit älteren Vorstellungen",
+    "languages": [
+     "Tamascheq (Tifinagh-Schrift)"
+    ],
+    "population": "ca. 2 Mio.",
+    "economy": "Kamelkarawanen, Salzhandel, Viehzucht",
+    "summary": [
+     "Die Tuareg beherrschen jahrhundertelang die Karawanenwege durch die Sahara. Die Azalai-Salzkarawane von Timbuktu nach Taoudenni wird bis heute geführt.",
+     "Bei ihnen tragen die Männer den Gesichtsschleier, nicht die Frauen; die Abstammung wird traditionell mütterlicherseits gerechnet.",
+     "Die Kolonialgrenzen teilen ihr Siedlungsgebiet auf fünf Staaten auf – Ursache wiederkehrender Konflikte."
+    ]
+   }
+  ]
+ },
+ "Austronesians": {
+  "kind": "Sprach- und Seefahrerfamilie",
+  "wiki": "Austronesische Sprachen",
+  "periods": [
+   {
+    "from": -3000,
+    "to": 1300,
+    "ruler": "Zahlreiche eigenständige Gemeinschaften",
+    "rulerTitle": "Häuptlinge und Seefahreranführer",
+    "capital": "kein Zentrum",
+    "government": "Dorfgemeinschaften, Häuptlingstümer, später Seereiche",
+    "religion": "Ahnenverehrung, Naturgeister",
+    "languages": [
+     "über 1.200 Sprachen von Madagaskar bis zur Osterinsel"
+    ],
+    "population": "heute über 380 Mio. Sprecherinnen und Sprecher",
+    "economy": "Reis- und Knollenanbau, Fischerei, Fernhandel",
+    "summary": [
+     "Von Taiwan aus besiedeln austronesische Seefahrer in Jahrtausenden die halbe Erdkugel – von Madagaskar bis Hawaii und zur Osterinsel.",
+     "Ihre Auslegerboote und die Navigation nach Sternen, Wellenmustern und Vogelzug ermöglichen Fahrten über Tausende Kilometer offenen Ozean.",
+     "Madagaskar wird um 500 n. Chr. von Seefahrern aus Borneo besiedelt – über 6.000 Kilometer entfernt. Das Malagasy ist bis heute eine austronesische Sprache."
+    ]
+   }
+  ]
+ },
+ "Scythians": {
+  "kind": "Reiternomadenverband",
+  "wiki": "Skythen",
+  "founded": -900,
+  "dissolved": 300,
+  "periods": [
+   {
+    "from": -900,
+    "to": -200,
+    "ruler": "Könige einzelner Stammesverbände",
+    "rulerTitle": "König der Skythen",
+    "capital": "kein fester Ort; Kammergräber (Kurgane) als Zentren",
+    "government": "Stammesverbände unter Kriegeradel",
+    "religion": "Naturgottheiten, Pferdeopfer",
+    "languages": [
+     "Ostiranische Sprachen"
+    ],
+    "population": "wenige Millionen",
+    "economy": "Viehzucht, Getreidehandel mit den griechischen Küstenstädten",
+    "summary": [
+     "Die Skythen beherrschen die Steppe zwischen Donau und Altai. 513 v. Chr. entziehen sie sich einem persischen Feldzug durch Ausweichen – die erste überlieferte Anwendung dieser Strategie.",
+     "Ihre Goldschmiedekunst gehört zum Feinsten der antiken Welt; die Funde aus den Kurganen zeigen Tierdarstellungen von großer Beweglichkeit."
+    ]
+   }
+  ],
+  "_datierung": "Skythische Herrschaft hielt sich auf der Krim bis ins 3. Jahrhundert n. Chr."
+ },
+ "Celts": {
+  "kind": "Kulturkreis",
+  "wiki": "Kelten",
+  "periods": [
+   {
+    "from": -800,
+    "to": 100,
+    "ruler": "Fürsten und Stammeskönige",
+    "rulerTitle": "Fürst; daneben Druiden als Rechts- und Kultwahrer",
+    "capital": "Befestigte Höhensiedlungen (Oppida) wie Manching und Bibracte",
+    "government": "Stammesverbände, teils mit gewählten Amtsträgern",
+    "religion": "Vielgötterei mit Druiden als Priesterschicht",
+    "languages": [
+     "Keltische Sprachen"
+    ],
+    "population": "einige Millionen",
+    "economy": "Eisenverarbeitung, Salzbergbau, Fernhandel, eigene Münzprägung",
+    "summary": [
+     "Von Irland bis Anatolien reicht der keltische Kulturraum. Die Oppida des 2. Jahrhunderts v. Chr. sind die ersten städtischen Siedlungen nördlich der Alpen.",
+     "Kelten erfinden Kettenhemd, Eisenreifen für Wagenräder und das Fassdaubenfass. Das Salzbergwerk von Hallstatt ist seit über 3.000 Jahren in Betrieb.",
+     "Was wir über sie wissen, stammt großenteils von Caesar – dem Gegner im Gallischen Krieg."
+    ]
+   }
+  ]
+ },
+ "Indus valley civilization": {
+  "kind": "Hochkultur",
+  "wiki": "Indus-Kultur",
+  "founded": -3300,
+  "dissolved": -1300,
+  "periods": [
+   {
+    "from": -3300,
+    "to": -1300,
+    "ruler": "Nicht bekannt – keine Paläste, keine Herrscherbilder",
+    "rulerTitle": "unbekannt",
+    "capital": "Mohenjo-Daro, Harappa",
+    "government": "Ungeklärt; auffällig einheitliche Standards ohne erkennbare Zentralmacht",
+    "religion": "Nicht sicher bestimmbar; Bade- und Fruchtbarkeitskulte vermutet",
+    "languages": [
+     "Indus-Schrift, unentziffert"
+    ],
+    "population": "ca. 5 Mio.",
+    "economy": "Bewässerungslandwirtschaft, Baumwolle, Seehandel mit Mesopotamien",
+    "summary": [
+     "Die größte Hochkultur der Bronzezeit erstreckt sich über rund eine Million Quadratkilometer – größer als Ägypten und Mesopotamien zusammen.",
+     "Mohenjo-Daro hat Straßen im Raster, Abwasserkanäle und Hausbrunnen. Die Ziegelmaße sind über Hunderte Kilometer hinweg identisch.",
+     "Weder Paläste noch Massengräber noch eindeutige Waffenfunde: Die Gesellschaftsform bleibt eines der großen Rätsel der Archäologie. Die Schrift ist bis heute unentziffert."
+    ]
+   }
+  ]
+ },
+ "Homo erectus": {
+  "kind": "Menschenform",
+  "wiki": "Homo erectus",
+  "periods": [
+   {
+    "from": -1900000,
+    "to": -110000,
+    "ruler": "keine",
+    "rulerTitle": "—",
+    "capital": "—",
+    "government": "Kleingruppen",
+    "religion": "keine Belege",
+    "languages": [
+     "unbekannt"
+    ],
+    "population": "unbekannt",
+    "economy": "Jagen und Sammeln",
+    "summary": [
+     "Homo erectus ist die erste Menschenform, die Afrika verlässt und bis nach Java und China gelangt – eine Verbreitung über fast zwei Millionen Jahre.",
+     "Ihm werden der Faustkeil und der kontrollierte Umgang mit Feuer zugeschrieben."
+    ]
+   }
+  ]
+ },
+ "Neanderthal": {
+  "kind": "Menschenform",
+  "wiki": "Neandertaler",
+  "periods": [
+   {
+    "from": -400000,
+    "to": -40000,
+    "ruler": "keine",
+    "rulerTitle": "—",
+    "capital": "—",
+    "government": "Kleingruppen von 10 bis 30 Personen",
+    "religion": "Bestattungen mit Beigaben belegt",
+    "languages": [
+     "Sprachfähigkeit wahrscheinlich"
+    ],
+    "population": "vermutlich nie über 100.000 gleichzeitig",
+    "economy": "Großwildjagd, Werkzeugherstellung, Kleidung aus Fellen",
+    "summary": [
+     "Der Neandertaler ist an das eiszeitliche Europa hervorragend angepasst: kräftiger Körperbau, großes Gehirn, ausgefeilte Steinwerkzeuge.",
+     "Er bestattet seine Toten, versorgt Verletzte und stellt Schmuck her. Vor rund 40.000 Jahren verschwindet er – die Gründe sind bis heute umstritten.",
+     "Menschen außerhalb Afrikas tragen etwa ein bis zwei Prozent Neandertaler-DNA in sich."
+    ]
+   }
+  ]
+ }
 }

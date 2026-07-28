@@ -346,6 +346,19 @@ export class Timeline {
     if (!exact) teile.push(`Kartenstand <b>${esc(yearText(epoch.year))}</b>`);
     if (epoch.stand) teile.push(`Stand <b>${esc(epoch.stand)}</b>`);
     if (epoch.title) teile.push(esc(epoch.title));
+    // Herkunft offenlegen: Zeitschnitte, die es im Ursprungsdatensatz nicht
+    // gibt, und solche mit Korrekturen tragen ein anklickbares Zeichen.
+    if (epoch.ergaenzt) {
+      teile.push('<button class="herkunft" data-herkunft="ergaenzt" '
+        + 'title="Dieser Zeitschnitt fehlt im Ursprungsdatensatz und ist eigens angelegt.">ergänzt</button>');
+    } else if (epoch.korrigiert) {
+      const k = epoch.korrigiert;
+      const was = [
+        k.umbenannt ? `${k.umbenannt} umbenannt` : null,
+        k.ergaenzt ? `${k.ergaenzt} Gebiet${k.ergaenzt > 1 ? 'e' : ''} ergänzt` : null,
+      ].filter(Boolean).join(', ');
+      teile.push(`<button class="herkunft" data-herkunft="korrigiert" title="${esc(was)} – zum Nachlesen anklicken">korrigiert</button>`);
+    }
     this.dom.yearTitle.innerHTML = teile.length ? `· ${teile.join(' · ')}` : '';
     this.dom.yearTitle.classList.toggle('is-approx', !exact);
     this.dom.timeline.style.setProperty('--era-color', ERA_COLORS[epoch.era] ?? 'var(--gold)');

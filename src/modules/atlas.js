@@ -28,8 +28,19 @@ const PANES = {
   water: 246,
   graticule: 250,
   highlight: 256,
+  places: 262,
   label: 270,
 };
+
+/**
+ * Ab welcher Zoomstufe ein Ort welchen Ranges erscheint.
+ *
+ * Ohne Ortspunkte ist die Karte bei jedem Zoom über Stufe 6 orientierungslos –
+ * eine einfarbige Fläche ohne Anhalt. Mit allen 5527 Orten wäre sie zugetextet.
+ * Die Staffelung nach Rang (Natural Earth scalerank) löst beides: Weltstädte
+ * ab Stufe 3, Kleinstädte erst ab Stufe 8.
+ */
+const PLACE_FROM_ZOOM = [3, 3.6, 4.4, 5.2, 6, 6.6, 7.4, 8.2];
 
 const HOME = { center: [26, 12], zoom: 2.4 };
 
@@ -103,6 +114,8 @@ export class AtlasMap {
     this.showWater = false;
     this.showGraticule = false;
     this.showOccupation = true;
+    this.showPlaces = false;
+    this.places = [];
 
     this.epoch = null;
     this.coast = { lo: null, hi: null, level: 'lo' };
@@ -176,6 +189,9 @@ export class AtlasMap {
       renderer: L.canvas({ pane: 'graticule', padding: .3 }),
       interactive: false,
     });
+
+    this.placeLayer = L.layerGroup([], { pane: 'places' });
+    this.placeCanvas = null;
 
     this.highlightLayer = L.geoJSON(null, {
       pane: 'highlight',
@@ -252,6 +268,7 @@ export class AtlasMap {
 
   applyTheme(theme) {
     this.theme = theme;
+    if (this.placeCanvas) requestAnimationFrame(() => this._drawPlaces());
     this.palette = paletteFor(theme);
     this._styleBase();
     if (this.epoch) {
@@ -613,6 +630,107 @@ export class AtlasMap {
     this.showGraticule = on;
     if (on) this.graticuleLayer.addTo(this.map);
     else this.graticuleLayer.remove();
+  }
+
+  /* -------------------------------------------------------------- Orte */
+
+  /**
+   * Orte zur Orientierung setzen. Gezeichnet wird auf eine eigene
+   * Zeichenfläche statt über Leaflet-Marker: 5527 DOM-Knoten würden das
+   * Schwenken spürbar bremsen, ein Canvas kostet nichts.
+   */
+  setPlaces(orte) {
+    this.places = orte ?? [];
+    this._buildPlaceCanvas();
+    this._drawPlaces();
+  }
+
+  setShowPlaces(on) {
+    this.showPlaces = !!on;
+    if (on && this.places?.length) this.placeLayer.addTo(this.map);
+    else this.placeLayer.remove();
+    this._drawPlaces();
+  }
+
+  _buildPlaceCanvas() {
+    if (this.placeCanvas) return;
+    const pane = this.map.getPane('places');
+    const canvas = document.createElement('canvas');
+    canvas.className = 'place-canvas';
+    canvas.style.position = 'absolute';
+    canvas.style.pointerEvents = 'none';
+    pane.appendChild(canvas);
+    this.placeCanvas = canvas;
+    this.map.on('move zoom viewreset resize zoomend moveend', () => this._drawPlaces());
+  }
+
+  _drawPlaces() {
+    const canvas = this.placeCanvas;
+    if (!canvas) return;
+    const map = this.map;
+    const size = map.getSize();
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    if (canvas.width !== Math.round(size.x * dpr) || canvas.height !== Math.round(size.y * dpr)) {
+      canvas.width = Math.round(size.x * dpr);
+      canvas.height = Math.round(size.y * dpr);
+      canvas.style.width = `${size.x}px`;
+      canvas.style.height = `${size.y}px`;
+    }
+    // Die Zeichenfläche bleibt am Bildschirm stehen; die Verschiebung der
+    // Kartenebene wird gegengerechnet.
+    const pos = map.containerPointToLayerPoint([0, 0]);
+    L.DomUtil.setPosition(canvas, pos);
+
+    const ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, size.x, size.y);
+    if (!this.showPlaces || !this.places?.length) return;
+
+    const zoom = map.getZoom();
+    const ink = this._cssVar('--label-ink', '#fff');
+    const halo = this._cssVar('--label-halo', 'rgba(0,0,0,.9)');
+    const font = this._cssVar('--font-ui', 'sans-serif');
+    ctx.textBaseline = 'middle';
+    ctx.lineJoin = 'round';
+
+    const belegt = [];
+    const frei = (x, y, w, h) => {
+      for (const b of belegt) {
+        if (x < b[2] && x + w > b[0] && y < b[3] && y + h > b[1]) return false;
+      }
+      return true;
+    };
+
+    let gezeichnet = 0;
+    for (const ort of this.places) {
+      if (gezeichnet > 220) break;
+      if (zoom < (PLACE_FROM_ZOOM[ort.rang] ?? 9)) continue;
+      const pt = map.latLngToContainerPoint([ort.lat, ort.lon]);
+      if (pt.x < -40 || pt.y < -20 || pt.x > size.x + 40 || pt.y > size.y + 20) continue;
+
+      const grad = ort.rang <= 1 ? 12.5 : ort.rang <= 3 ? 11.5 : 10.5;
+      ctx.font = `500 ${grad}px ${font}`;
+      const breite = ctx.measureText(ort.name).width;
+      const x = pt.x + 6;
+      const y = pt.y;
+      if (!frei(pt.x - 4, y - grad, breite + 14, grad * 2)) continue;
+      belegt.push([pt.x - 4, y - grad, x + breite + 3, y + grad]);
+
+      ctx.beginPath();
+      ctx.arc(pt.x, pt.y, ort.rang <= 1 ? 3 : 2.2, 0, Math.PI * 2);
+      ctx.fillStyle = ink;
+      ctx.strokeStyle = halo;
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      ctx.fill();
+
+      ctx.strokeStyle = halo;
+      ctx.lineWidth = 3;
+      ctx.strokeText(ort.name, x, y);
+      ctx.fillStyle = ink;
+      ctx.fillText(ort.name, x, y);
+      gezeichnet++;
+    }
   }
 
   /* ---------------------------------------------------------- Auswahl */

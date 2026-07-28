@@ -15,7 +15,7 @@
  *   s  SUBJECTO        übergeordnete Macht (Kolonialmacht o. Ä.)
  *   p  PARTOF          übergeordneter Kulturraum
  *   b  BORDERPRECISION 1 = grob, 2 = mittel, 3 = völkerrechtlich fixiert
- *   o  OCCUPIER        Besatzungsmacht (nur in den Kriegsjahren 1940–1944)
+ *   o  OCCUPIER        Besatzungsmacht (nur in den Kriegsjahren 1916–1918, 1940–1944)
  *   c  [lon, lat]      Ankerpunkt für die Beschriftung (Pol der Unzugänglichkeit)
  *   a  Fläche in km²
  */
@@ -146,6 +146,8 @@ const EPOCH_TITLES = {
   '1914': 'Vorabend des Ersten Weltkriegs',
   '1920': 'Nach den Pariser Vorortverträgen',
   '1930': 'Zwischenkriegszeit',
+  '1916': 'Stellungskrieg: Verdun, Somme, Brussilow',
+  '1918': 'Brest-Litowsk und der Marnebogen',
   '1938': 'Vorabend des Zweiten Weltkriegs',
   '1940': 'Westfeldzug und Teilung Polens',
   '1941': 'Unternehmen Barbarossa vor Moskau',
@@ -440,6 +442,15 @@ function buildEpoch(entry, entfallen = []) {
     // Ursprungsdatensatz stammt.
     ...(entry.derived ? { stand: entry.stand, ergaenzt: true } : {}),
     ...(geometries.some((g) => g.properties.o) ? { besatzung: true } : {}),
+    // Herkunft offenlegen: Was nicht aus dem Ursprungsdatensatz stammt, muss
+    // in der Karte kenntlich sein – nicht nur in der README.
+    ...(CORRECTIONS[entry.year] ? {
+      korrigiert: {
+        umbenannt: Object.keys(CORRECTIONS[entry.year].rename ?? {}).length,
+        ergaenzt: (CORRECTIONS[entry.year].ergaenzen ?? []).length,
+        begruendung: CORRECTIONS[entry.year]._begruendung ?? '',
+      },
+    } : {}),
   };
 }
 
@@ -521,6 +532,8 @@ function buildBase() {
     );
   }
 
+  buildPlaces();
+
   const water = [
     { src: 'ne_10m_lakes.geojson', out: 'lakes.json', interval: 400 },
     { src: 'ne_10m_rivers_lake_centerlines.geojson', out: 'rivers.json', interval: 400 },
@@ -540,6 +553,51 @@ function buildBase() {
     ]);
     console.log(`  ${job.out.padEnd(14)} ${(fs.statSync(out).size / 1024).toFixed(0).padStart(5)} kB`);
   }
+}
+
+/**
+ * Orte zur Orientierung.
+ *
+ * Ohne Ortspunkte ist die Karte bei jedem Zoom ueber Stufe 6 orientierungslos:
+ * eine einfarbige Flaeche ohne Anhalt. Deshalb eine schlanke Ortsebene aus
+ * Natural Earth.
+ *
+ * Wichtig und in der Oberflaeche auch so benannt: Das sind **heutige** Orte.
+ * Sie stehen als Bezugspunkte im Gelaende, nicht als historische Siedlungen -
+ * Berlin gab es im Jahr 700 nicht. Der Rang (scalerank) steuert, ab welcher
+ * Zoomstufe ein Ort erscheint, damit die Karte nicht zutextet.
+ */
+function buildPlaces() {
+  // Die volle Fassung, nicht die "simple": nur sie führt NAME_DE. Ein
+  // deutscher Atlas darf nicht "Warsaw" und "Vienna" beschriften.
+  const src = path.join(NE_DIR, 'ne_10m_populated_places.geojson');
+  if (!fs.existsSync(src)) {
+    console.warn('  ! ne_10m_populated_places fehlt – Ortsebene übersprungen');
+    return;
+  }
+  const raw = JSON.parse(fs.readFileSync(src, 'utf8'));
+  const orte = [];
+  for (const f of raw.features) {
+    const p = f.properties ?? {};
+    // Rang 8 und darueber sind Kleinstorte; sie wuerden die Karte fluten.
+    if ((p.SCALERANK ?? 99) > 7) continue;
+    const c = f.geometry?.coordinates;
+    if (!c) continue;
+    orte.push([
+      p.NAME_DE || p.NAME || p.NAMEASCII || '',
+      Math.round(c[0] * 1000) / 1000,
+      Math.round(c[1] * 1000) / 1000,
+      p.SCALERANK ?? 7,
+    ]);
+  }
+  orte.sort((a, b) => a[3] - b[3] || b[0].localeCompare(a[0]));
+  const out = path.join(OUT_DIR, 'base', 'places.json');
+  fs.writeFileSync(out, JSON.stringify({
+    _hinweis: 'Heutige Orte als Bezugspunkte im Gelände, nicht als historische Siedlungen.',
+    felder: ['name', 'lon', 'lat', 'rang'],
+    orte,
+  }));
+  console.log(`  ${'places.json'.padEnd(14)} ${(fs.statSync(out).size / 1024).toFixed(0).padStart(5)} kB  (${orte.length} Orte)`);
 }
 
 /* ------------------------------------------------------------------ main */

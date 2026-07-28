@@ -2,7 +2,7 @@
 
 **→ [canuzu.github.io/Worldmap-Deluxe](https://canuzu.github.io/Worldmap-Deluxe/)**
 
-Ein interaktiver historischer Weltatlas: **58 Zeitschnitte von 123.000 v. Chr. bis 2010**.
+Ein interaktiver historischer Weltatlas: **60 Zeitschnitte von 123.000 v. Chr. bis 2010**.
 Der Regler unten schiebt die Weltkarte durch die Jahrtausende – Reiche wachsen,
 Grenzen verschieben sich, Kulturen verschwinden. Ein Klick auf ein Gebiet öffnet
 den Steckbrief für genau dieses Jahr: Herrscher, Hauptstadt, Regierungsform,
@@ -20,11 +20,12 @@ Religion, Bevölkerung, Wirtschaft, Wendepunkte und Nachbarn.
 
 | | |
 |---|---|
-| **Zeitregler** | jahresgenau wählbar; die Karte zeigt den nächstgelegenen der 58 Kartenstände und schreibt darunter, welcher das ist |
+| **Zeitregler** | jahresgenau wählbar; die Karte zeigt den nächstgelegenen der 60 Kartenstände und schreibt darunter, welcher das ist |
 | **Zeitreise** | Wiedergabetaste läuft alle Epochen durch, mit Überblendung zwischen den Zeitschnitten |
 | **Detailtafel** | Steckbrief je Gemeinwesen und Jahr – kuratierte Texte, Angaben aus dem Kartendatensatz, optional ein Wikipedia-Auszug |
 | **Nachbarn** | aus der Kartentopologie berechnet und anklickbar: eine Region lässt sich Nachbar für Nachbar erwandern |
 | **Besetzte Gebiete** | 1940–1944: besetztes Land behält seine Farbe und trägt darüber eine Schraffur in der Farbe der Besatzungsmacht |
+| **Orte zur Orientierung** | heutige Städte mit deutschen Namen, gestaffelt nach Rang eingeblendet – ohne sie ist die Karte ab Zoomstufe 6 anhaltslos |
 | **Berühmte Schlachten** | Gaugamela, Hastings, Waterloo, Stalingrad – der Verlauf läuft Station für Station ab, die Stellungen verschieben sich mit |
 | **Nur die Karte** | <kbd>F</kbd> blendet alle Bedienelemente aus; Suche und Zeitleiste lassen sich einzeln zuklappen |
 | **Vier Einfärbungen** | nach Gemeinwesen, Oberhoheit, Kulturraum oder Genauigkeit des Grenzverlaufs |
@@ -148,19 +149,39 @@ Zeitschnitt. `src/data/corrections.json` korrigiert die eindeutigen Fälle;
 `build-data.mjs` wendet sie an und verschmilzt dabei gleichnamig gewordene
 Nachbarflächen, sodass keine Grenze mitten durch ein Reich läuft.
 
+Der Befund lag anfangs bei **46 Anachronismen**; heute sind es **0**. Dabei
+zeigte sich, dass beide Seiten Fehler hatten:
+
+- **Kartenfehler** – das Partherreich stand noch 300 n. Chr. auf der Karte,
+  obwohl es 224 endete; Preußen erschien 1530 als Königreich, das es erst 1701
+  wurde. Solche Fälle werden umbenannt.
+- **Zu enge Datierungen in der eigenen Wissensbasis** – „Rom" war mit
+  `founded: -27` erfasst, das gilt aber nur dem Prinzipat; die Hethiter mit
+  `dissolved: -1178`, während die späthethitischen Fürstentümer bis 700 v. Chr.
+  bestanden. Hier lag die Karte richtig und das Prüfmaß falsch.
+
 Aufgenommen wird nur, was fachlich unstrittig ist. Wo die richtige Zuordnung
 unklar ist, bleibt der Befund lieber offen stehen – eine selbstbewusste
 falsche Korrektur wäre schlimmer.
 
+### Herkunft ist sichtbar, nicht nur dokumentiert
+
+Was nicht unverändert aus dem Ursprungsdatensatz stammt, trägt in der
+Zeitleiste ein anklickbares Zeichen: **ergänzt** für die selbst angelegten
+Kriegsjahre, **korrigiert** für Zeitschnitte mit Umbenennungen oder gefüllten
+Lücken. Ein Klick nennt Stichtag, Anzahl und Begründung. Diese Angaben stehen
+in `public/data/epochs.json` und entstehen beim Bauen aus `corrections.json` –
+sie können also nicht auseinanderlaufen.
+
 ### Die fehlenden Kriegsjahre
 
-Der Ursprungsdatensatz springt von **1938 auf 1945** – der gesamte Zweite
-Weltkrieg fehlt. Er kennt außerdem gar keine Besatzung, sondern nur, wem ein
+Der Ursprungsdatensatz springt von **1914 auf 1920** und von **1938 auf 1945** –
+beide Weltkriege fehlen vollständig. Er kennt außerdem gar keine Besatzung, sondern nur, wem ein
 Gebiet völkerrechtlich zugerechnet wird. Beides zusammen bedeutet: Der
 Vorstoß der Wehrmacht bis Stalingrad taucht auf der Karte nirgends auf.
 
-`src/data/wwii.json` beschreibt deshalb fünf Zwischenstände (1940, 1941, 1942,
-1943, 1944), jeweils auf einen Stichtag bezogen. Drei Arten von Änderung:
+`src/data/wwi.json` und `src/data/wwii.json` beschreiben deshalb sieben
+Zwischenstände (1916, 1918, 1940 bis 1944), jeweils auf einen Stichtag bezogen. Drei Arten von Änderung:
 
 | | |
 |---|---|
@@ -170,7 +191,7 @@ Vorstoß der Wehrmacht bis Stalingrad taucht auf der Karte nirgends auf.
 
 Die Frontlinien liegen als Polygonzüge in derselben Datei, jeder mit
 Begründung. `npm run build:krieg` verschneidet sie über mapshaper mit dem
-Stand von 1938.
+jeweils vorangehenden Kartenstand.
 
 **Besatzung ist kein Eigentum.** Norwegen war 1942 nicht Deutschland, sondern
 von Deutschland besetztes Norwegen. Die Karte zeigt deshalb beides: Die Fläche
@@ -180,7 +201,7 @@ Stelle des Landes – dort ist genau das die Frage.
 
 Die Linien sind von Hand gezogen und auf kontinentalen Maßstab ausgelegt;
 einzelne Brückenköpfe und Kessel lösen sie nicht auf. Damit sie nicht
-unbemerkt verrutschen, prüft `npm run check:besatzung` 140 Stichproben gegen
+unbemerkt verrutschen, prüft `npm run check:besatzung` 259 Stichproben gegen
 bekannte Daten – darunter die Orte, die trotz Belagerung nie gefallen sind:
 
 ```
