@@ -25,6 +25,8 @@ Religion, Bevölkerung, Wirtschaft, Wendepunkte und Nachbarn.
 | **Detailtafel** | Steckbrief je Gemeinwesen und Jahr – kuratierte Texte, Angaben aus dem Kartendatensatz, optional ein Wikipedia-Auszug |
 | **Nachbarn** | aus der Kartentopologie berechnet und anklickbar: eine Region lässt sich Nachbar für Nachbar erwandern |
 | **Besetzte Gebiete** | 1940–1944: besetztes Land behält seine Farbe und trägt darüber eine Schraffur in der Farbe der Besatzungsmacht |
+| **Eiszeitliche Küstenlinie** | für die Zeitschnitte vor 10.000 v. Chr.: Doggerland, Beringia und Sundaland liegen trocken, so wie sie es waren |
+| **Landschaftsnamen** | Gebirge, Wüsten, Hochebenen – sie erklären, warum Grenzen verlaufen, wie sie verlaufen |
 | **Orte zur Orientierung** | heutige Städte mit deutschen Namen, gestaffelt nach Rang eingeblendet – ohne sie ist die Karte ab Zoomstufe 6 anhaltslos |
 | **Berühmte Schlachten** | Gaugamela, Hastings, Waterloo, Stalingrad – der Verlauf läuft Station für Station ab, die Stellungen verschieben sich mit |
 | **Nur die Karte** | <kbd>F</kbd> blendet alle Bedienelemente aus; Suche und Zeitleiste lassen sich einzeln zuklappen |
@@ -244,6 +246,40 @@ Zwei Regeln halten den Eingriff vertretbar:
    Gemeinwesen auch nur einen Quadratkilometer verliert – die Berberreiche im
    Landesinneren des Maghreb bleiben genau so stehen, wie sie sind.
 2. Jede Ergänzung trägt ihre Begründung in derselben Datei.
+
+### Die Küste der Eiszeit
+
+Die heutige Küstenlinie ist für die frühen Zeitschnitte schlicht falsch. Beim
+letzten glazialen Maximum lag der Meeresspiegel rund 120 bis 130 m tiefer:
+**Doggerland** verband England mit dem Festland, **Beringia** Sibirien mit
+Alaska, **Sundaland** reichte von Hinterindien bis Borneo. Das sind genau die
+Landbrücken, über die der Mensch die Erde besiedelt hat – ohne sie erzählt eine
+Karte, die bis 123.000 v. Chr. zurückreicht, über den größten Teil ihres
+Zeitraums Unsinn.
+
+Als Näherung dient die **200-m-Tiefenlinie** aus Natural Earth: Alles, was
+flacher liegt, war trocken. Das greift etwas zu weit (200 statt 130 m) und
+mittelt über einen Zeitraum, in dem der Meeresspiegel erheblich schwankte. In
+der Karte steht das auch so: Die betroffenen Zeitschnitte tragen das Zeichen
+**Eiszeitküste**, ein Klick nennt die Einschränkung.
+
+`npm run test` prüft es an Doggerland: In der Eiszeit muss die Nordsee bei
+54,5° N / 3° O Land sein, 1815 Meer.
+
+### Barrierefreiheit
+
+Die Karte ist eine Zeichenfläche – für Vorlesesoftware existiert sie nicht.
+Ersatzweise beschreibt eine `aria-live`-Zeile, was sie gerade zeigt: Jahr,
+Kartenstand, Zahl der Gemeinwesen und, sobald eines gewählt ist, dessen Name,
+Fläche und etwaige Besatzungsmacht. Jede Änderung wird angesagt.
+
+Die Legende besteht aus echten Schaltflächen statt aus Listeneinträgen mit
+Klickzuhörer – nur so sind die 16 größten Gemeinwesen eines Zeitschnitts mit
+der Tastatur erreichbar und werden als bedienbar angesagt. Suche, Zeitregler
+und alle Menüs waren es bereits.
+
+Das ist ein Anfang, keine vollständige Lösung: Ein blinder Nutzer kann die
+Karte bedienen und sich ansagen lassen, aber nicht durch die Fläche navigieren.
 
 ### Wissensbasis
 

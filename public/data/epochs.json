@@ -123,7 +123,8 @@
    "era": "iceage",
    "polities": 3,
    "features": 4,
-   "bytes": 28269
+   "bytes": 28269,
+   "eiszeitKueste": true
   },
   {
    "year": -10000,
@@ -134,7 +135,8 @@
    "era": "iceage",
    "polities": 14,
    "features": 16,
-   "bytes": 31155
+   "bytes": 31155,
+   "eiszeitKueste": true
   },
   {
    "year": -8000,

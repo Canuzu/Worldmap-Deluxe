@@ -348,6 +348,10 @@ export class Timeline {
     if (epoch.title) teile.push(esc(epoch.title));
     // Herkunft offenlegen: Zeitschnitte, die es im Ursprungsdatensatz nicht
     // gibt, und solche mit Korrekturen tragen ein anklickbares Zeichen.
+    if (epoch.eiszeitKueste) {
+      teile.push('<button class="herkunft" data-herkunft="eiszeit" '
+        + 'title="Für diesen Zeitschnitt gilt die eiszeitliche Küstenlinie.">Eiszeitküste</button>');
+    }
     if (epoch.ergaenzt) {
       teile.push('<button class="herkunft" data-herkunft="ergaenzt" '
         + 'title="Dieser Zeitschnitt fehlt im Ursprungsdatensatz und ist eigens angelegt.">ergänzt</button>');

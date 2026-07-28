@@ -373,16 +373,27 @@
 
 .popover--legend { width: 17.5rem; max-height: min(60vh, 30rem); overflow-y: auto; }
 .legend { list-style: none; margin: 0; padding: 0; display: grid; gap: .1rem; }
-.legend li {
+.legend li { display: block; }
+/* Als Schaltfläche, nicht als Listeneintrag mit Klickzuhörer: nur so ist der
+   Eintrag mit der Tastatur erreichbar und wird als bedienbar angesagt. */
+.legend li > button {
   display: flex;
   align-items: center;
   gap: .55rem;
+  width: 100%;
+  font: inherit;
   font-size: .82rem;
+  color: inherit;
+  text-align: left;
   padding: .22rem .3rem;
   border-radius: 6px;
   cursor: pointer;
 }
-.legend li:hover { background: var(--surface-2); }
+.legend li > button:hover { background: var(--surface-2); }
+.legend li > button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: -2px;
+}
 .legend .sw {
   width: .95rem; height: .95rem;
   border-radius: 4px;

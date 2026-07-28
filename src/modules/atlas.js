@@ -116,9 +116,13 @@ export class AtlasMap {
     this.showOccupation = true;
     this.showPlaces = false;
     this.places = [];
+    this.showPhysical = false;
+    this.physical = [];
 
     this.epoch = null;
-    this.coast = { lo: null, hi: null, level: 'lo' };
+    this.coast = { lo: null, hi: null, eis: null, level: 'lo' };
+    // Zeitschnitte, fuer die die eiszeitliche Kuestenlinie gilt.
+    this.iceAge = false;
     this.colors = new Map();
     this.selected = null;
     this.hovered = null;
@@ -234,6 +238,29 @@ export class AtlasMap {
     this._syncCoastLevel();
   }
 
+  /**
+   * Eiszeitliche Küstenlinie bereitstellen. Sie ersetzt die heutige in den
+   * frühen Zeitschnitten – ohne sie fehlten genau die Landbrücken, über die
+   * der Mensch die Erde besiedelt hat.
+   */
+  setIceAgeCoastline(ocean) {
+    if (!ocean) return;
+    this.coast.eis = ocean;
+    if (this.iceAge) this._applyCoast('eis');
+  }
+
+  /** Umschalten zwischen heutiger und eiszeitlicher Küste. */
+  setIceAge(on) {
+    const neu = !!on;
+    if (neu === this.iceAge) return;
+    this.iceAge = neu;
+    if (neu && this.coast.eis) this._applyCoast('eis');
+    else if (!neu) {
+      this.coast.level = 'eis';
+      this._syncCoastLevel(true);
+    }
+  }
+
   _applyCoast(level) {
     const data = this.coast[level];
     if (!data) return;
@@ -247,9 +274,16 @@ export class AtlasMap {
    * Auflösungsstufe der Küstenlinie an die Zoomstufe koppeln. Der Wechsel
    * wird kurz verzögert, damit er nicht in die laufende Zoom-Animation fällt.
    */
-  _syncCoastLevel() {
+  _syncCoastLevel(sofort = false) {
+    // In der Eiszeit gilt eine eigene Küstenlinie; die Auflösungsstufen der
+    // heutigen sind dann ohne Bedeutung.
+    if (this.iceAge && this.coast.eis) {
+      if (this.coast.level !== 'eis') this._applyCoast('eis');
+      return;
+    }
     const wanted = this.map.getZoom() >= COAST_HD_FROM_ZOOM && this.coast.hi ? 'hi' : 'lo';
     if (wanted === this.coast.level) return;
+    if (sofort) { this._applyCoast(wanted); return; }
     clearTimeout(this._coastTimer);
     this._coastTimer = window.setTimeout(() => {
       const now = this.map.getZoom() >= COAST_HD_FROM_ZOOM && this.coast.hi ? 'hi' : 'lo';
@@ -645,6 +679,19 @@ export class AtlasMap {
     this._drawPlaces();
   }
 
+  /** Landschaftsnamen: Gebirge, Wüsten, Hochebenen. */
+  setPhysical(stellen) {
+    this.physical = stellen ?? [];
+    this._buildPlaceCanvas();
+    this._drawPlaces();
+  }
+
+  setShowPhysical(on) {
+    this.showPhysical = !!on;
+    this._buildPlaceCanvas();
+    this._drawPlaces();
+  }
+
   setShowPlaces(on) {
     this.showPlaces = !!on;
     if (on && this.places?.length) this.placeLayer.addTo(this.map);
@@ -684,7 +731,7 @@ export class AtlasMap {
     const ctx = canvas.getContext('2d');
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, size.x, size.y);
-    if (!this.showPlaces || !this.places?.length) return;
+    if (!(this.showPlaces && this.places?.length) && !(this.showPhysical && this.physical?.length)) return;
 
     const zoom = map.getZoom();
     const ink = this._cssVar('--label-ink', '#fff');
@@ -701,7 +748,31 @@ export class AtlasMap {
       return true;
     };
 
+    // Landschaftsnamen zuerst: Sie sind großräumig und sollen den Vorrang
+    // haben, wenn sich Beschriftungen ins Gehege kommen.
+    if (this.showPhysical) {
+      const faint = this._cssVar('--ink-faint', 'rgba(255,255,255,.5)');
+      for (const s of this.physical) {
+        if (zoom < 3 + s.rang * .55) continue;
+        const pt = map.latLngToContainerPoint([s.lat, s.lon]);
+        if (pt.x < 0 || pt.y < 0 || pt.x > size.x || pt.y > size.y) continue;
+        const grad = s.rang <= 2 ? 12 : 11;
+        ctx.font = `italic 500 ${grad}px ${font}`;
+        const breite = ctx.measureText(s.name).width;
+        if (!frei(pt.x - breite / 2 - 4, pt.y - grad, breite + 8, grad * 2)) continue;
+        belegt.push([pt.x - breite / 2 - 4, pt.y - grad, pt.x + breite / 2 + 4, pt.y + grad]);
+        ctx.textAlign = 'center';
+        ctx.strokeStyle = halo;
+        ctx.lineWidth = 3;
+        ctx.strokeText(s.name, pt.x, pt.y);
+        ctx.fillStyle = faint;
+        ctx.fillText(s.name, pt.x, pt.y);
+      }
+      ctx.textAlign = 'left';
+    }
+
     let gezeichnet = 0;
+    if (!this.showPlaces) return;
     for (const ort of this.places) {
       if (gezeichnet > 220) break;
       if (zoom < (PLACE_FROM_ZOOM[ort.rang] ?? 9)) continue;

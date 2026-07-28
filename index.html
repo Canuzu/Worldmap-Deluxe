@@ -25,7 +25,12 @@
   <div class="app" id="app" hidden>
     <!-- Karte ------------------------------------------------------------ -->
     <div class="stage">
-      <div id="map" class="map" role="application" aria-label="Historische Weltkarte"></div>
+      <div id="map" class="map" role="application"
+           aria-label="Historische Weltkarte" aria-describedby="mapState"></div>
+
+      <!-- Die Karte ist reines Canvas und für Vorlesesoftware nicht vorhanden.
+           Diese Zeile spricht aus, was sie zeigt, und meldet jede Änderung. -->
+      <p class="sr-only" id="mapState" aria-live="polite" aria-atomic="true"></p>
 
       <!-- Kopfleiste links: Marke + ausklappbare Suche.
            Bewusst schmal: Die Karte ist der Inhalt, nicht die Bedienung. -->
@@ -96,6 +101,8 @@
         <label class="switch"><input type="checkbox" id="optRivers"><span></span>Flüsse &amp; Seen</label>
         <label class="switch"><input type="checkbox" id="optGraticule"><span></span>Gradnetz</label>
         <label class="switch"><input type="checkbox" id="optBorders" checked><span></span>Grenzlinien</label>
+        <label class="switch"><input type="checkbox" id="optPhysical"><span></span>Landschaftsnamen</label>
+        <p class="popover__note">Gebirge, Wüsten, Hochebenen – sie erklären, warum Grenzen verlaufen, wie sie verlaufen.</p>
         <label class="switch"><input type="checkbox" id="optPlaces" checked><span></span>Orte zur Orientierung</label>
         <p class="popover__note">Heutige Städte als Bezugspunkte im Gelände – keine historischen Siedlungen. Erscheinen gestaffelt ab Zoomstufe 3.</p>
         <label class="switch"><input type="checkbox" id="optOccupation" checked><span></span>Besetzte Gebiete</label>

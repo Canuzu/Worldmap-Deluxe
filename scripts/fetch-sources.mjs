@@ -24,6 +24,9 @@ const NE_FILES = [
   // ausdrücklich als Bezugspunkte, nicht als historische Siedlungen.
   // Die volle Fassung, weil nur sie deutsche Namen (NAME_DE) mitbringt.
   'ne_10m_populated_places',
+  // Eiszeitliche Kuestenlinie (Naeherung) und Landschaftsnamen.
+  'ne_10m_bathymetry_K_200',
+  'ne_10m_geography_regions_polys',
   'ne_50m_land',
   'ne_110m_land',
   'ne_50m_lakes',

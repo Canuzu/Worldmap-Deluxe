@@ -442,6 +442,9 @@ function buildEpoch(entry, entfallen = []) {
     // Ursprungsdatensatz stammt.
     ...(entry.derived ? { stand: entry.stand, ergaenzt: true } : {}),
     ...(geometries.some((g) => g.properties.o) ? { besatzung: true } : {}),
+    // Für die Eiszeit gilt eine eigene Küstenlinie; das muss in der Karte
+    // stehen, nicht nur im Quelltext.
+    ...(entry.year <= -10000 ? { eiszeitKueste: true } : {}),
     // Herkunft offenlegen: Was nicht aus dem Ursprungsdatensatz stammt, muss
     // in der Karte kenntlich sein – nicht nur in der README.
     ...(CORRECTIONS[entry.year] ? {
@@ -532,7 +535,9 @@ function buildBase() {
     );
   }
 
+  buildIceAgeCoast(landNet);
   buildPlaces();
+  buildPhysical();
 
   const water = [
     { src: 'ne_10m_lakes.geojson', out: 'lakes.json', interval: 400 },
@@ -553,6 +558,99 @@ function buildBase() {
     ]);
     console.log(`  ${job.out.padEnd(14)} ${(fs.statSync(out).size / 1024).toFixed(0).padStart(5)} kB`);
   }
+}
+
+/**
+ * Küstenlinie der letzten Eiszeit.
+ *
+ * Die heutige Küste ist für die Eiszeit-Zeitschnitte schlicht falsch: Beim
+ * letzten glazialen Maximum lag der Meeresspiegel rund 120 bis 130 m tiefer.
+ * Doggerland verband England mit dem Festland, Beringia Sibirien mit Alaska,
+ * Sundaland reichte von Hinterindien bis Borneo – genau die Landbrücken, über
+ * die der Mensch die Erde besiedelt hat. Ohne sie erzählt die Karte für 90 %
+ * ihres Zeitraums Unsinn.
+ *
+ * Als Näherung dient die 200-m-Tiefenlinie aus Natural Earth: Alles, was
+ * flacher liegt, war trocken. Das greift etwas zu weit (200 statt 130 m),
+ * ist aber die beste verfügbare Annäherung und in der Oberfläche als solche
+ * benannt.
+ */
+function buildIceAgeCoast(landNet) {
+  const bath = path.join(NE_DIR, 'ne_10m_bathymetry_K_200.geojson');
+  if (!fs.existsSync(bath)) {
+    console.warn('  ! ne_10m_bathymetry_K_200 fehlt – Eiszeitküste übersprungen');
+    return;
+  }
+  // Das Meer der Eiszeit ist die Tiefsee selbst: Der Schelf lag trocken.
+  const tief = path.join(TMP, 'tiefsee.json');
+  mapshaper([
+    bath,
+    '-filter-fields',
+    '-simplify', 'interval=4000', 'keep-shapes',
+    '-o', 'format=geojson', tief,
+  ]);
+
+  // Heutiges Land dazu, damit Inseln oberhalb der Schelfkante erhalten
+  // bleiben, und das Ganze vom Weltrechteck abziehen.
+  const trocken = path.join(TMP, 'eiszeit-land.json');
+  mapshaper([
+    '-rectangle', 'bbox=-360,-90,360,90',
+    '-erase', `source=${tief}`,
+    '-o', 'format=geojson', trocken,
+  ]);
+
+  const out = path.join(OUT_DIR, 'base', 'ocean-eiszeit.json');
+  mapshaper([
+    tief,
+    '-erase', `source=${landNet}`,
+    '-o', 'format=topojson', `quantization=${QUANT}`, out,
+  ]);
+  console.log(`  ${'ocean-eiszeit'.padEnd(14)} ${(fs.statSync(out).size / 1024).toFixed(0).padStart(5)} kB  (200-m-Tiefenlinie als Näherung)`);
+}
+
+/**
+ * Namen der Landschaft: Gebirge, Wüsten, Hochebenen, Tiefländer.
+ *
+ * Gelände erklärt Grenzverläufe. Ohne Pyrenäen, Alpen, Karpaten und Sahara
+ * wirken die Linien willkürlich; mit ihnen wird sichtbar, dass sie meist
+ * genau dort liegen, wo das Gelände sie hinzwingt.
+ */
+function buildPhysical() {
+  const src = path.join(NE_DIR, 'ne_10m_geography_regions_polys.geojson');
+  if (!fs.existsSync(src)) {
+    console.warn('  ! ne_10m_geography_regions_polys fehlt – Landschaftsnamen übersprungen');
+    return;
+  }
+  // Inseln und Inselgruppen bleiben draußen: Ihre Umrisse zeichnet die
+  // Küstenlinie schon, ihre Namen stünden nur doppelt.
+  const ARTEN = new Set(['Range/mtn', 'Desert', 'Plateau', 'Plain', 'Geoarea',
+    'Peninsula', 'Pen/cape', 'Basin', 'Lowland', 'Tundra', 'Valley', 'Isthmus']);
+
+  const raw = JSON.parse(fs.readFileSync(src, 'utf8'));
+  const stellen = [];
+  for (const f of raw.features) {
+    const p = f.properties ?? {};
+    if (!ARTEN.has(p.FEATURECLA)) continue;
+    const name = p.NAME_DE || p.NAME || '';
+    if (!name) continue;
+    const anchor = anchorPoint(f.geometry);
+    if (!anchor) continue;
+    stellen.push([
+      name,
+      Math.round(anchor.point[0] * 1000) / 1000,
+      Math.round(anchor.point[1] * 1000) / 1000,
+      Math.min(9, p.SCALERANK ?? 6),
+      p.FEATURECLA === 'Range/mtn' ? 'berg' : p.FEATURECLA === 'Desert' ? 'wueste' : 'land',
+    ]);
+  }
+  stellen.sort((a, b) => a[3] - b[3]);
+  const out = path.join(OUT_DIR, 'base', 'physical.json');
+  fs.writeFileSync(out, JSON.stringify({
+    _hinweis: 'Landschaftsnamen: Gebirge, Wüsten, Hochebenen, Tiefländer. Sie erklären, warum Grenzen verlaufen, wie sie verlaufen.',
+    felder: ['name', 'lon', 'lat', 'rang', 'art'],
+    stellen,
+  }));
+  console.log(`  ${'physical.json'.padEnd(14)} ${(fs.statSync(out).size / 1024).toFixed(0).padStart(5)} kB  (${stellen.length} Landschaften)`);
 }
 
 /**

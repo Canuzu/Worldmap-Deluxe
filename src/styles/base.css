@@ -190,6 +190,8 @@ a {
 }
 .u-scroll::-webkit-scrollbar-track { background: transparent; }
 
+/* Nur für Vorlesesoftware: für sie vorhanden, am Bildschirm unsichtbar.
+   clip-path statt display:none – Verstecktes wird sonst nicht vorgelesen. */
 .sr-only {
   position: absolute;
   width: 1px; height: 1px;

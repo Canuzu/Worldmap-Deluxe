@@ -409,6 +409,84 @@ await check('Keine Anachronismen mehr im Datensatz', async () => {
   if (anzahl !== 60) throw new Error(`${anzahl} Zeitschnitte statt 60`);
 });
 
+await check('Eiszeitliche Küstenlinie greift bei den frühen Zeitschnitten', async () => {
+  await page.evaluate(() => { location.hash = 'position=4.6/55/2&year=-10000'; });
+  await page.waitForTimeout(3200);
+  if (!(await page.evaluate(() => window.__atlas.iceAge))) throw new Error('Eiszeitküste nicht aktiv');
+  // Doggerland: die Nordsee zwischen England und Jütland lag trocken.
+  // Gemessen wird über das Rechteck der Zeichenfläche – sie ist gegen den
+  // Kartencontainer verschoben, Containerkoordinaten passen nicht.
+  const deckung = async (lat, lng) => page.evaluate(([la, ln]) => {
+    const c = document.querySelector('.leaflet-ocean-pane canvas');
+    const r = c.getBoundingClientRect();
+    const p = window.__atlasMap.latLngToContainerPoint([la, ln]);
+    const m = document.getElementById('map').getBoundingClientRect();
+    const x = Math.round((m.left + p.x - r.left) * (c.width / r.width));
+    const y = Math.round((m.top + p.y - r.top) * (c.height / r.height));
+    if (x < 0 || y < 0 || x >= c.width || y >= c.height) return -1;
+    return c.getContext('2d').getImageData(x, y, 1, 1).data[3];
+  }, [lat, lng]);
+
+  const nordsee = await deckung(54.5, 3.0);
+  if (nordsee < 0) throw new Error('Messpunkt liegt außerhalb der Zeichenfläche');
+  if (nordsee > 40) throw new Error(`Nordsee in der Eiszeit als Meer gezeichnet (Deckung ${nordsee})`);
+
+  // Zurück in die Neuzeit: dort muss dieselbe Stelle Meer sein.
+  await page.evaluate(() => { location.hash = 'position=4.6/55/2&year=1815'; });
+  await page.waitForTimeout(3000);
+  if (await page.evaluate(() => window.__atlas.iceAge)) throw new Error('Eiszeitküste bleibt aktiv');
+  const heute = await deckung(54.5, 3.0);
+  if (heute < 40) throw new Error(`Nordsee heute nicht als Meer gezeichnet (Deckung ${heute})`);
+});
+
+await check('Landschaftsnamen lassen sich zuschalten', async () => {
+  await page.evaluate(() => { location.hash = 'position=4/44/12&year=1815'; });
+  await page.waitForTimeout(2400);
+  await page.click('#btnLayers');
+  await page.locator('label.switch', { has: page.locator('#optPhysical') }).click();
+  await page.waitForTimeout(1600);
+  const n = await page.evaluate(() => window.__atlas.physical.length);
+  if (n < 200) throw new Error(`nur ${n} Landschaften`);
+  const namen = await page.evaluate(() => window.__atlas.physical.map((s) => s.name));
+  if (!namen.includes('Alpen')) throw new Error('Alpen fehlen – deutsche Namen nicht übernommen');
+  await page.locator('label.switch', { has: page.locator('#optPhysical') }).click();
+  await page.keyboard.press('Escape');
+});
+
+await check('Karte meldet ihren Zustand an Vorlesesoftware', async () => {
+  await page.evaluate(() => { location.hash = 'position=3/50/20&year=1942'; });
+  await page.waitForTimeout(2600);
+  const text = await page.textContent('#mapState');
+  if (!/1942/.test(text)) throw new Error(`Jahr fehlt: ${text}`);
+  if (!/Gemeinwesen/.test(text)) throw new Error(`Kennzahl fehlt: ${text}`);
+
+  const pt = await page.evaluate(() => {
+    const c = window.__atlasMap.latLngToContainerPoint([53.90, 27.57]);
+    return { x: Math.round(c.x), y: Math.round(c.y) };
+  });
+  await page.mouse.click(pt.x, pt.y);
+  await page.waitForTimeout(900);
+  const nach = await page.textContent('#mapState');
+  if (!/Gewählt:/.test(nach)) throw new Error(`Auswahl nicht gemeldet: ${nach}`);
+  if (!/besetzt durch/.test(nach)) throw new Error(`Besatzung nicht gemeldet: ${nach}`);
+  await page.keyboard.press('Escape');
+});
+
+await check('Legende ist mit der Tastatur bedienbar', async () => {
+  await page.click('#btnLegend');
+  await visible('#legendBox');
+  const knopf = page.locator('#legendList button[data-name]').first();
+  if (!(await knopf.count())) throw new Error('Legendeneinträge sind keine Schaltflächen');
+  await knopf.focus();
+  const fokussiert = await page.evaluate(() => document.activeElement?.dataset?.name ?? null);
+  if (!fokussiert) throw new Error('Eintrag nimmt keinen Fokus');
+  await page.keyboard.press('Enter');
+  await page.waitForTimeout(900);
+  const gewaehlt = await page.textContent('#mapState');
+  if (!/Gewählt:/.test(gewaehlt)) throw new Error('Tastaturauswahl wirkt nicht');
+  await page.keyboard.press('Escape');
+});
+
 await check('Mobiles Format bleibt bedienbar', async () => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.waitForTimeout(800);

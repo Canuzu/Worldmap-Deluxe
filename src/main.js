@@ -33,6 +33,7 @@ const prefs = {
   borders: true,
   occupation: true,
   places: true,
+  physical: false,
   wiki: true,
   focus: false,
   compactTimeline: false,
@@ -184,6 +185,14 @@ async function main() {
     if (token !== loadToken) return; // ein neuerer Sprung hat überholt
 
     state.epoch = epoch;
+    // Vor rund 10.000 Jahren lag der Meeresspiegel etwa 120 m tiefer. Für die
+    // Eiszeit-Zeitschnitte gilt deshalb eine eigene Küstenlinie – sonst fehlten
+    // genau die Landbrücken, über die der Mensch die Erde besiedelt hat.
+    const eiszeit = epoch.meta.year <= -10000;
+    if (eiszeit && !atlas.coast.eis) {
+      atlasData.loadIceAgeCoast().then((o) => atlas.setIceAgeCoastline(o));
+    }
+    atlas.setIceAge(eiszeit);
     atlas.setEpoch(epoch, { animate });
     atlasData.prefetch(index);
 
@@ -195,6 +204,7 @@ async function main() {
     renderLegend();
     reconcileSelection();
     updateHash();
+    announce();
   }
 
   /** Auswahl über den Zeitsprung retten: gleicher Name, sonst gleicher Ort. */
@@ -229,6 +239,34 @@ async function main() {
     if (name && open) panel.show(name, state.epoch);
     if (!name) panel.dom.root.hidden = true;
     updateHash();
+    announce();
+  }
+
+  /**
+   * Die Karte ist eine Zeichenfläche – für Vorlesesoftware existiert sie
+   * nicht. Diese Meldung ersetzt sie: Sie nennt Jahr, Kartenstand, die Zahl
+   * der Gemeinwesen und, falls eines gewählt ist, dessen Kernangaben.
+   */
+  function announce() {
+    const el = $('mapState');
+    if (!el || !state.epoch) return;
+    const m = state.epoch.meta;
+    const teile = [`Jahr ${state.year}`];
+    if (m.year !== state.year) teile.push(`gezeigt wird der Kartenstand ${m.label}`);
+    if (m.stand) teile.push(`Stand ${m.stand}`);
+    if (m.title) teile.push(m.title);
+    teile.push(`${state.epoch.polities.length} Gemeinwesen`);
+    if (state.selected) {
+      const e = state.epoch.byName.get(state.selected);
+      const name = atlasData.germanName(state.selected);
+      const zusatz = [];
+      if (e?.occupiers?.length) {
+        zusatz.push(`besetzt durch ${e.occupiers.map((b) => atlasData.germanName(b.name)).join(' und ')}`);
+      }
+      if (e?.area) zusatz.push(areaText(e.area));
+      teile.push(`Gewählt: ${name}${zusatz.length ? `, ${zusatz.join(', ')}` : ''}`);
+    }
+    el.textContent = `${teile.join('. ')}.`;
   }
 
   function updateHash() {
@@ -319,13 +357,13 @@ async function main() {
 
     $('legendTitle').textContent = `Größte Gemeinwesen · ${epoch.meta.label}`;
     list.innerHTML = epoch.polities.slice(0, 16).map((p) => `
-      <li data-name="${esc(p.name)}">
+      <li><button type="button" data-name="${esc(p.name)}">
         <span class="sw" style="background:${esc(atlas.colorOfPolity(p.name))}"></span>
         <span class="nm">${esc(atlasData.germanName(p.name))}${p.occupiers?.length
           ? ` <i class="occ" title="besetzt durch ${esc(p.occupiers.map((b) => atlasData.germanName(b.name)).join(', '))}">besetzt</i>`
           : ''}</span>
         <span class="va">${esc(areaText(p.area))}</span>
-      </li>`).join('');
+      </button></li>`).join('');
 
     // In den Kriegsjahren erklärt eine Zeile, was die Schraffur bedeutet –
     // sonst bliebe die zweite Farbe auf einer Fläche unerklärt.
@@ -337,17 +375,17 @@ async function main() {
       list.insertAdjacentHTML('beforeend', `
         <li class="legend__note">Schraffiert = besetztes Gebiet, in der Farbe der Besatzungsmacht.</li>
         ${[...besetzer.entries()].sort((a, b) => b[1] - a[1]).map(([name, count]) => `
-          <li data-name="${esc(name)}">
+          <li><button type="button" data-name="${esc(name)}">
             <span class="sw sw--hatch" style="--occ:${esc(atlas.colorOfPolity(name))}"></span>
             <span class="nm">${esc(atlasData.germanName(name))} als Besatzungsmacht</span>
             <span class="va">${num(count)} Gebiete</span>
-          </li>`).join('')}`);
+          </button></li>`).join('')}`);
     }
   }
 
   $('legendList').addEventListener('click', (event) => {
-    const li = event.target.closest('li[data-name]');
-    if (li) selectPolity(li.dataset.name, { zoom: true });
+    const btn = event.target.closest('[data-name]');
+    if (btn) selectPolity(btn.dataset.name, { zoom: true });
   });
 
   /* ----------------------------------------------------------- Maßstab */
@@ -356,6 +394,12 @@ async function main() {
   async function enablePlaces(on) {
     if (on && !atlas.places?.length) atlas.setPlaces(await atlasData.loadPlaces());
     atlas.setShowPlaces(on);
+  }
+
+  /** Landschaftsnamen erst holen, wenn die Ebene eingeschaltet wird. */
+  async function enablePhysical(on) {
+    if (on && !atlas.physical?.length) atlas.setPhysical(await atlasData.loadPhysical());
+    atlas.setShowPhysical(on);
   }
 
   /** Gewässer erst holen, wenn sie gebraucht werden. */
@@ -668,6 +712,7 @@ async function main() {
     ['optBorders', 'borders', (v) => atlas.setShowBorders(v)],
     ['optOccupation', 'occupation', (v) => atlas.setOccupationVisible(v)],
     ['optPlaces', 'places', (v) => enablePlaces(v)],
+    ['optPhysical', 'physical', (v) => enablePhysical(v)],
     ['optWiki', 'wiki', () => {}],
   ];
   for (const [id, key, apply] of toggles) {
@@ -704,6 +749,16 @@ async function main() {
     if (!e) return;
     const k = e.korrigiert;
     openModal(`Herkunft · ${e.label}`, `
+      ${e.eiszeitKueste ? `<p><strong>Für diesen Zeitschnitt gilt eine eigene Küstenlinie.</strong>
+        Beim letzten glazialen Maximum lag der Meeresspiegel rund 120 bis 130 m
+        tiefer: Doggerland verband England mit dem Festland, Beringia Sibirien
+        mit Alaska, Sundaland reichte von Hinterindien bis Borneo – genau die
+        Landbrücken, über die der Mensch die Erde besiedelt hat.</p>
+        <p class="note">Als Näherung dient die 200-m-Tiefenlinie aus Natural Earth:
+        Alles, was flacher liegt, war trocken. Das greift etwas zu weit
+        (200 statt 130 m) und mittelt über einen Zeitraum, in dem der
+        Meeresspiegel erheblich schwankte – es ist die beste verfügbare
+        Annäherung, keine Messung.</p>` : ''}
       ${e.ergaenzt ? `<p><strong>Dieser Zeitschnitt steht nicht im Ursprungsdatensatz.</strong>
         Er ist eigens angelegt, weil der Datensatz beide Weltkriege überspringt –
         von 1914 auf 1920 und von 1938 auf 1945. Grundlage ist der jeweils
@@ -793,6 +848,7 @@ async function main() {
   window.setTimeout(() => {
     atlasData.loadDetailedCoastline().then((ocean) => atlas.setDetailedCoastline(ocean));
     if (prefs.places) enablePlaces(true);
+    if (prefs.physical) enablePhysical(true);
     if (prefs.rivers) enableWater(true);
   }, 600);
 }

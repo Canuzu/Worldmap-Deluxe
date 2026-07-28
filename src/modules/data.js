@@ -217,6 +217,25 @@ export class AtlasData {
     return this._places;
   }
 
+  /**
+   * Küstenlinie der letzten Eiszeit (Näherung über die 200-m-Tiefenlinie).
+   * Wird nur für die Eiszeit-Zeitschnitte gebraucht und erst dann geholt.
+   */
+  loadIceAgeCoast() {
+    this._iceAge ??= getJSON('data/base/ocean-eiszeit.json')
+      .then(toFeatures)
+      .catch(() => null);
+    return this._iceAge;
+  }
+
+  /** Landschaftsnamen: Gebirge, Wüsten, Hochebenen, Tiefländer. */
+  loadPhysical() {
+    this._physical ??= getJSON('data/base/physical.json')
+      .then((d) => d.stellen.map(([name, lon, lat, rang, art]) => ({ name, lon, lat, rang, art })))
+      .catch(() => []);
+    return this._physical;
+  }
+
   epochAt(index) {
     return this.epochs[Math.max(0, Math.min(this.epochs.length - 1, index))];
   }
