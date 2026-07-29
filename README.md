@@ -124,7 +124,8 @@ npm run fetch:data    # lädt historical-basemaps + Natural Earth nach data-src/
 npm run build:krieg   # erzeugt die abgeleiteten Jahre (Weltkriege, Gegenwart) nach data-src/derived/
 npm run build:data    # quantisiert, schreibt public/data/ (~20 s)
 npm run build:knowledge
-npm run check:data    # Abdeckung je Zeitschnitt
+npm run check:data    # Abdeckung der Wissensbasis je Zeitschnitt
+npm run check:staaten # zählt alle 195 Staaten in den Gegenwartsjahren nach
 ```
 
 `build-data.mjs` erzeugt die Meeresebene aus Natural Earth, berechnet für jedes
@@ -241,6 +242,61 @@ Zwei Grundsätze stehen in der Datei selbst:
 Umstrittenes wird benannt, nicht verschwiegen: Das Kosovo ist eingezeichnet,
 obwohl Serbien es nicht anerkennt; die Region Abyei ist zwischen Sudan und
 Südsudan ungeklärt und hier dem Süden zugeschlagen. Beides steht im Steckbrief.
+
+### Fehlende Staaten – die Schweiz als Loch in Europa
+
+Der Ursprungsdatensatz führt für 2010 nur **193 Namen**. Verglichen mit den
+193 Mitgliedstaaten der Vereinten Nationen und den beiden Beobachterstaaten
+fehlten **20 davon ganz** – überwiegend Klein- und Inselstaaten: San Marino,
+Vatikanstadt, Monaco, Singapur, Bahrain, Malediven, Osttimor, Mauritius,
+Seychellen, Komoren, Kap Verde, São Tomé und Príncipe, Kiribati, Nauru,
+Tuvalu, Palau, Vanuatu, Salomonen, Marshallinseln, Mikronesien.
+
+Schwerer wog die **Schweiz**: Sie steht in den Jahren 1994, 2000 und 2010 nur
+noch als entartetes Polygon mit vier Stützpunkten und 0 km² bei 7,3° O. Das
+ganze Land war unbeanspruchtes Land – ein Loch von 41.000 km² mitten in
+Europa. In allen Zeitschnitten von 1880 bis 1960 ist der Umriss vorhanden.
+
+Solche Lücken fallen beim Betrachten **nicht** auf: Unbeanspruchtes Land
+erscheint in der Landfarbe und sieht aus wie ein Staat, dessen Beschriftung
+gerade nicht hineinpasst. Deshalb gibt es jetzt `npm run check:staaten`, das
+alle 195 Staaten in jedem Gegenwartszeitschnitt nachzählt und zusätzlich
+Flächen unter 0,4 km² meldet.
+
+Behoben mit zwei Verfahren:
+
+**Ausstanzen des Negativraums.** Die Ergänzungen in `corrections.json` werden
+auf die Landmaske beschnitten und gegen die vorhandenen Gemeinwesen
+ausgestanzt. Für die Schweiz heißt das: ein großzügiges Rechteck über den
+Alpenraum, abzüglich Frankreich, Deutschland, Österreich, Italien und
+Liechtenstein. Übrig bleibt exakt die Schweiz – die Grenze ist so genau wie
+die ihrer Nachbarn, statt von Hand nachgezeichnet. Dieselbe Mechanik holt die
+Inselstaaten aus der Küstenlinie. Ein Schlüssel darf dabei mehrere Jahre
+nennen (`"1994,2000,2010,2015,2026"`), sonst stünde derselbe Eintrag fünfmal.
+
+**Ausschneiden aus dem Nachbarn.** San Marino und die Vatikanstadt liegen
+vollständig in Italien, Osttimor teilweise in Indonesien – die lassen sich
+nicht aus unbeanspruchtem Land holen, sondern werden wie eine Frontlinie
+zugeschnitten.
+
+Was dabei an Genauigkeit erreichbar war:
+
+| | Karte | tatsächlich |
+|---|---:|---:|
+| Schweiz | 41.662 km² | 41.285 km² |
+| San Marino | 59 km² | 61 km² |
+| Salomonen | 27.114 km² | 28.896 km² |
+| Vanuatu | 12.339 km² | 12.189 km² |
+| Singapur | 574 km² | 734 km² |
+| Malediven | 109 km² | 298 km² |
+| Vatikanstadt | 1 km² | 0,49 km² |
+
+Die Abweichungen nach unten sind kein Zeichenfehler, sondern die Auflösung
+der Küstenlinie: Natural Earth 1:10 Mio. kennt die aufgeschütteten Flächen
+Singapurs nicht und lässt die kleinsten Atolle der Malediven weg. Die
+Vatikanstadt liegt mit 0,49 km² unter dieser Auflösung und ist als Rechteck
+um den Petersdom eingetragen – auf der Weltkarte über die Suche zu finden,
+sichtbar erst bei höchster Vergrößerung.
 
 ### Palästina, das im Ursprungsdatensatz fehlt
 

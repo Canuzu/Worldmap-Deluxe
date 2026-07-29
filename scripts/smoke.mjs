@@ -433,6 +433,34 @@ await check('Südsudan und Kosovo erscheinen erst nach ihrer Gründung', async (
   if (spaet.length !== 2) throw new Error(`2026 fehlt: ${spaet.join(', ') || 'beide'}`);
 });
 
+await check('Alle Staaten der Welt sind in den Gegenwartsjahren vorhanden', async () => {
+  // Der Ursprungsdatensatz führt nur 193 Namen und lässt 20 UN-Mitglieder
+  // aus; die Schweiz stand dort nur noch als Fläche von 0 km². Diese Prüfung
+  // hält stellvertretend die Fälle fest, die aufgefallen sind – die
+  // vollständige Liste prüft `npm run check:staaten`.
+  const pflicht = ['Switzerland', 'San Marino', 'Vatican City', 'Monaco',
+    'Singapore', 'Maldives', 'Nauru', 'Tuvalu', 'Palau', 'Timor-Leste'];
+  const lage = await page.evaluate(async () => {
+    const r = await fetch('data/epochs/ad2026.json');
+    const topo = await r.json();
+    return topo.objects[Object.keys(topo.objects)[0]].geometries
+      .map((g) => g.properties)
+      .filter((p) => p?.n)
+      .map((p) => [p.n, p.a ?? 0]);
+  });
+  const flaeche = new Map(lage);
+  for (const n of pflicht) {
+    if (!flaeche.has(n)) throw new Error(`${n} fehlt`);
+  }
+  // Eine Fläche von 0 km² ist keine Kleinstaatlichkeit, sondern eine
+  // entartete Geometrie – so stand die Schweiz im Ursprungsdatensatz.
+  const entartet = [...flaeche].filter(([, a]) => a < 0.4).map(([n]) => n);
+  if (entartet.length) throw new Error(`entartete Flächen: ${entartet.join(', ')}`);
+  if (flaeche.get('Switzerland') < 35000) {
+    throw new Error(`Schweiz nur ${flaeche.get('Switzerland')} km²`);
+  }
+});
+
 await check('Palästina steht auf der Karte, nicht nur Israel', async () => {
   // Der Ursprungsdatensatz kennt kein Palästina: Dieselbe Israel-Fläche steht
   // dort von 1938 bis 2010 unverändert und schließt Westjordanland,

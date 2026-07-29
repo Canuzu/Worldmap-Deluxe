@@ -91,6 +91,34 @@
         [35.57, 32.85]
       ]
     },
+    "osttimor": {
+      "_was": "Osttimor. Der Ursprungsdatensatz kennt das Land nicht und ist zudem uneinheitlich: Dili, Baucau und Atauro liegen dort auf unbeanspruchtem Land, Suai und Lospalos dagegen innerhalb Indonesiens. Der Ring folgt der Grenze zwischen Ost- und Westtimor von der Nordküste bei Batugade zur Südküste bei Motamasin.",
+      "ring": [
+        [124.90, -8.00], [127.50, -8.00], [127.50, -9.80], [125.20, -9.80],
+        [124.95, -9.10], [124.90, -8.00]
+      ]
+    },
+    "osttimor-oecusse": {
+      "_was": "Oecusse, die osttimoresische Exklave in Westtimor.",
+      "ring": [
+        [124.02, -9.50], [124.47, -9.50], [124.47, -9.10], [124.02, -9.10],
+        [124.02, -9.50]
+      ]
+    },
+    "san-marino": {
+      "_was": "San Marino, seit dem Frühmittelalter eigenständig und damit die älteste bestehende Republik der Welt. Sie liegt vollständig in Italien und muss deshalb ausgeschnitten werden – der Ursprungsdatensatz kennt sie nicht. Der Ring ist eine Annäherung an die 61 km² um den Monte Titano.",
+      "ring": [
+        [12.40, 43.900], [12.51, 43.940], [12.49, 43.990], [12.400, 43.970],
+        [12.39, 43.930], [12.40, 43.900]
+      ]
+    },
+    "vatikan": {
+      "_was": "Vatikanstadt, seit den Lateranverträgen von 1929 eigener Staat und Beobachter bei den Vereinten Nationen. Mit 0,49 km² liegt er unter der Auflösung der Küstenliniendaten dieser Karte; gezeichnet ist ein Rechteck um den Petersdom und die vatikanischen Gärten. Auf der Weltkarte ist er nur über die Suche zu finden – sichtbar wird er erst bei höchster Vergrößerung.",
+      "ring": [
+        [12.4457, 41.9002], [12.4583, 41.9002], [12.4583, 41.9075],
+        [12.4457, 41.9075], [12.4457, 41.9002]
+      ]
+    },
     "bergkarabach": {
       "_was": "Bergkarabach und die umliegenden Bezirke, von 1994 bis 2020 unter armenischer Kontrolle. 2023 stellte Aserbaidschan die Kontrolle über das gesamte Gebiet her.",
       "ring": [
@@ -123,7 +151,9 @@
         { "land": "Israel", "gebiet": "westjordanland", "innen": { "name": "Palestine", "besetzer": "Israel" } },
         { "land": "Israel", "gebiet": "gaza", "innen": { "name": "Palestine", "besetzer": "Israel" } },
         { "land": "Syria", "gebiet": "golan", "innen": { "besetzer": "Israel" } },
-        { "land": "Azerbaijan", "gebiet": "bergkarabach", "innen": { "besetzer": "Armenia" } }
+        { "land": "Azerbaijan", "gebiet": "bergkarabach", "innen": { "besetzer": "Armenia" } },
+        { "land": "Italy", "gebiet": "san-marino", "innen": { "name": "San Marino" } },
+        { "land": "Italy", "gebiet": "vatikan", "innen": { "name": "Vatican City" } }
       ]
     },
 
@@ -137,7 +167,11 @@
         { "land": "Israel", "gebiet": "westjordanland", "innen": { "name": "Palestine", "besetzer": "Israel" } },
         { "land": "Israel", "gebiet": "gaza", "innen": { "name": "Palestine", "besetzer": "Israel" } },
         { "land": "Syria", "gebiet": "golan", "innen": { "besetzer": "Israel" } },
-        { "land": "Azerbaijan", "gebiet": "bergkarabach", "innen": { "besetzer": "Armenia" } }
+        { "land": "Azerbaijan", "gebiet": "bergkarabach", "innen": { "besetzer": "Armenia" } },
+        { "land": "Italy", "gebiet": "san-marino", "innen": { "name": "San Marino" } },
+        { "land": "Italy", "gebiet": "vatikan", "innen": { "name": "Vatican City" } },
+        { "land": "Indonesia", "gebiet": "osttimor", "innen": { "name": "Timor-Leste" } },
+        { "land": "Indonesia", "gebiet": "osttimor-oecusse", "innen": { "name": "Timor-Leste" } }
       ]
     },
 
@@ -151,7 +185,11 @@
         { "land": "Israel", "gebiet": "westjordanland", "innen": { "name": "Palestine", "besetzer": "Israel" } },
         { "land": "Israel", "gebiet": "gaza", "innen": { "name": "Palestine", "besetzer": "Israel" } },
         { "land": "Syria", "gebiet": "golan", "innen": { "besetzer": "Israel" } },
-        { "land": "Azerbaijan", "gebiet": "bergkarabach", "innen": { "besetzer": "Armenia" } }
+        { "land": "Azerbaijan", "gebiet": "bergkarabach", "innen": { "besetzer": "Armenia" } },
+        { "land": "Italy", "gebiet": "san-marino", "innen": { "name": "San Marino" } },
+        { "land": "Italy", "gebiet": "vatikan", "innen": { "name": "Vatican City" } },
+        { "land": "Indonesia", "gebiet": "osttimor", "innen": { "name": "Timor-Leste" } },
+        { "land": "Indonesia", "gebiet": "osttimor-oecusse", "innen": { "name": "Timor-Leste" } }
       ]
     },
 
@@ -203,6 +241,26 @@
           "land": "Syria",
           "gebiet": "golan",
           "innen": { "besetzer": "Israel" }
+        },
+        {
+          "land": "Italy",
+          "gebiet": "san-marino",
+          "innen": { "name": "San Marino" }
+        },
+        {
+          "land": "Italy",
+          "gebiet": "vatikan",
+          "innen": { "name": "Vatican City" }
+        },
+        {
+          "land": "Indonesia",
+          "gebiet": "osttimor",
+          "innen": { "name": "Timor-Leste" }
+        },
+        {
+          "land": "Indonesia",
+          "gebiet": "osttimor-oecusse",
+          "innen": { "name": "Timor-Leste" }
         }
       ]
     },
@@ -254,6 +312,26 @@
           "land": "Syria",
           "gebiet": "golan",
           "innen": { "besetzer": "Israel" }
+        },
+        {
+          "land": "Italy",
+          "gebiet": "san-marino",
+          "innen": { "name": "San Marino" }
+        },
+        {
+          "land": "Italy",
+          "gebiet": "vatikan",
+          "innen": { "name": "Vatican City" }
+        },
+        {
+          "land": "Indonesia",
+          "gebiet": "osttimor",
+          "innen": { "name": "Timor-Leste" }
+        },
+        {
+          "land": "Indonesia",
+          "gebiet": "osttimor-oecusse",
+          "innen": { "name": "Timor-Leste" }
         }
       ]
     }

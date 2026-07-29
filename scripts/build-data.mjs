@@ -50,9 +50,21 @@ const CORRECTIONS = (() => {
   if (!fs.existsSync(file)) return {};
   const raw = JSON.parse(fs.readFileSync(file, 'utf8'));
   const out = {};
-  for (const [year, entry] of Object.entries(raw)) {
-    if (year.startsWith('_')) continue;
-    out[Number(year)] = entry;
+  // Ein Schlüssel darf mehrere Jahre nennen ("1994,2000,2010"). Fehler, die
+  // der Ursprungsdatensatz über Jahrzehnte unverändert mitschleppt – die
+  // entartete Schweiz etwa –, stünden sonst fünfmal wortgleich in der Datei.
+  for (const [schluessel, entry] of Object.entries(raw)) {
+    if (schluessel.startsWith('_')) continue;
+    for (const teil of schluessel.split(',')) {
+      const jahr = Number(teil.trim());
+      if (!Number.isFinite(jahr)) throw new Error(`corrections.json: "${schluessel}" ist kein Jahr`);
+      const vorhanden = out[jahr];
+      out[jahr] = vorhanden ? {
+        _begruendung: [vorhanden._begruendung, entry._begruendung].filter(Boolean).join(' '),
+        rename: { ...vorhanden.rename, ...entry.rename },
+        ergaenzen: [...(vorhanden.ergaenzen ?? []), ...(entry.ergaenzen ?? [])],
+      } : entry;
+    }
   }
   return out;
 })();

@@ -13,7 +13,8 @@
     "check:data": "node scripts/check-knowledge.mjs",
     "test": "node scripts/smoke.mjs",
     "check:zeit": "node scripts/check-anachronisms.mjs",
-    "check:besatzung": "node scripts/check-besatzung.mjs"
+    "check:besatzung": "node scripts/check-besatzung.mjs",
+    "check:staaten": "node scripts/check-staaten.mjs"
   },
   "repository": {
     "type": "git",
