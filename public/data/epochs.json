@@ -1,5 +1,5 @@
 {
- "generated": "2026-07-28",
+ "generated": "2026-07-29",
  "source": {
   "name": "Historical Basemaps",
   "author": "André Ourednik u. a.",
@@ -823,9 +823,14 @@
    "label": "1938 n. Chr.",
    "title": "Vorabend des Zweiten Weltkriegs",
    "era": "worldwars",
-   "polities": 171,
-   "features": 175,
-   "bytes": 374197
+   "polities": 170,
+   "features": 174,
+   "bytes": 374005,
+   "korrigiert": {
+    "umbenannt": 1,
+    "ergaenzt": 0,
+    "begruendung": "Israel entstand 1948. Der Ursprungsdatensatz führt 1938 zwei deckungsgleiche Flächen – „Mandatory Palestine (GB)\" und „Israel\" –, also dasselbe Gebiet doppelt und eine davon unter dem Namen eines Staates, den es noch nicht gab. Beide werden hier zum britischen Mandatsgebiet zusammengefasst."
+   }
   },
   {
    "year": 1940,
@@ -906,7 +911,12 @@
    "era": "worldwars",
    "polities": 183,
    "features": 185,
-   "bytes": 363310
+   "bytes": 363380,
+   "korrigiert": {
+    "umbenannt": 2,
+    "ergaenzt": 0,
+    "begruendung": "Auch 1945 bestand Israel noch nicht; das Gebiet war bis Mai 1948 britisches Mandatsgebiet. Jordanien hieß bis 1949 Transjordanien und wurde erst 1946 unabhängig."
+   }
   },
   {
    "year": 1960,
@@ -915,9 +925,16 @@
    "label": "1960 n. Chr.",
    "title": "Afrikanisches Jahr der Unabhängigkeit",
    "era": "coldwar",
-   "polities": 157,
-   "features": 160,
-   "bytes": 343567
+   "polities": 158,
+   "features": 161,
+   "bytes": 344115,
+   "stand": "1960",
+   "besatzung": true,
+   "korrigiert": {
+    "umbenannt": 0,
+    "ergaenzt": 0,
+    "begruendung": "Der Ursprungsdatensatz zeichnet hier dieselbe Israel-Fläche wie 2010 – einschließlich Westjordanland und Gazastreifen. 1960 gehörte beides nicht zu Israel: Jordanien hatte das Westjordanland 1950 annektiert, der Gazastreifen stand unter ägyptischer Verwaltung."
+   }
   },
   {
    "year": 1994,
@@ -926,9 +943,16 @@
    "label": "1994 n. Chr.",
    "title": "Nach dem Ende der Sowjetunion",
    "era": "present",
-   "polities": 193,
-   "features": 197,
-   "bytes": 399405
+   "polities": 194,
+   "features": 200,
+   "bytes": 401225,
+   "stand": "1994",
+   "besatzung": true,
+   "korrigiert": {
+    "umbenannt": 0,
+    "ergaenzt": 0,
+    "begruendung": "Siehe 1960 – dieselbe unveränderte Israel-Fläche. Seit 1967 sind Westjordanland, Ost-Jerusalem und Gazastreifen von Israel besetzt; die Osloer Verträge von 1993/94 richteten dort die Palästinensische Autonomiebehörde ein, ohne die Besatzung zu beenden."
+   }
   },
   {
    "year": 2000,
@@ -937,9 +961,16 @@
    "label": "2000 n. Chr.",
    "title": "Jahrtausendwende",
    "era": "present",
-   "polities": 193,
-   "features": 198,
-   "bytes": 401535
+   "polities": 194,
+   "features": 201,
+   "bytes": 403355,
+   "stand": "2000",
+   "besatzung": true,
+   "korrigiert": {
+    "umbenannt": 0,
+    "ergaenzt": 0,
+    "begruendung": "Siehe 1994."
+   }
   },
   {
    "year": 2010,
@@ -948,9 +979,16 @@
    "label": "2010 n. Chr.",
    "title": "Nach der Finanzkrise",
    "era": "present",
-   "polities": 193,
-   "features": 198,
-   "bytes": 401526
+   "polities": 194,
+   "features": 201,
+   "bytes": 403346,
+   "stand": "2010",
+   "besatzung": true,
+   "korrigiert": {
+    "umbenannt": 0,
+    "ergaenzt": 0,
+    "begruendung": "Siehe 1994. 2005 hatte Israel Siedlungen und Bodentruppen aus dem Gazastreifen abgezogen, die Kontrolle über Grenzen, Luftraum und Küste aber behalten."
+   }
   },
   {
    "year": 2015,
@@ -959,9 +997,9 @@
    "label": "2015 n. Chr.",
    "title": "Südsudan, Krim und der Krieg im Donbass",
    "era": "present",
-   "polities": 195,
-   "features": 202,
-   "bytes": 405406,
+   "polities": 196,
+   "features": 204,
+   "bytes": 406515,
    "stand": "Dezember 2015",
    "ergaenzt": true,
    "besatzung": true
@@ -973,9 +1011,9 @@
    "label": "2026 n. Chr.",
    "title": "Die Welt heute",
    "era": "present",
-   "polities": 195,
-   "features": 201,
-   "bytes": 404637,
+   "polities": 196,
+   "features": 203,
+   "bytes": 405748,
    "stand": "Anfang 2026",
    "ergaenzt": true,
    "besatzung": true

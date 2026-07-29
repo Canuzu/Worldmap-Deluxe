@@ -24,7 +24,7 @@ Religion, Bevölkerung, Wirtschaft, Wendepunkte und Nachbarn.
 | **Zeitreise** | Wiedergabetaste läuft alle Epochen durch, mit Überblendung zwischen den Zeitschnitten |
 | **Detailtafel** | Steckbrief je Gemeinwesen und Jahr – kuratierte Texte, Angaben aus dem Kartendatensatz, optional ein Wikipedia-Auszug |
 | **Nachbarn** | aus der Kartentopologie berechnet und anklickbar: eine Region lässt sich Nachbar für Nachbar erwandern |
-| **Besetzte Gebiete** | 1916/1918, 1940–1944 und 2015/2026: besetztes Land behält seine Farbe und trägt darüber eine Schraffur in der Farbe der Besatzungsmacht |
+| **Besetzte Gebiete** | 1916/1918, 1940–1944 und 1960–2026: besetztes Land behält seine Farbe und trägt darüber eine Schraffur in der Farbe der Besatzungsmacht |
 | **Eiszeitliche Küstenlinie** | für die Zeitschnitte vor 10.000 v. Chr.: Doggerland, Beringia und Sundaland liegen trocken, so wie sie es waren |
 | **Landschaftsnamen** | Gebirge, Wüsten, Hochebenen – sie erklären, warum Grenzen verlaufen, wie sie verlaufen |
 | **Kartengrundlage** | wahlweise Relief- oder physische Geländekarte unter den historischen Grenzen – bewusst ohne heutige Straßen, Städte oder Staatsgrenzen. Abschaltbar; ohne sie zeichnet der Atlas wie zuvor alles selbst |
@@ -204,7 +204,7 @@ Stelle des Landes – dort ist genau das die Frage.
 
 Die Linien sind von Hand gezogen und auf kontinentalen Maßstab ausgelegt;
 einzelne Brückenköpfe und Kessel lösen sie nicht auf. Damit sie nicht
-unbemerkt verrutschen, prüft `npm run check:besatzung` 313 Stichproben gegen
+unbemerkt verrutschen, prüft `npm run check:besatzung` 448 Stichproben gegen
 bekannte Daten – darunter die Orte, die trotz Belagerung nie gefallen sind:
 
 ```
@@ -241,6 +241,37 @@ Zwei Grundsätze stehen in der Datei selbst:
 Umstrittenes wird benannt, nicht verschwiegen: Das Kosovo ist eingezeichnet,
 obwohl Serbien es nicht anerkennt; die Region Abyei ist zwischen Sudan und
 Südsudan ungeklärt und hier dem Süden zugeschlagen. Beides steht im Steckbrief.
+
+### Palästina, das im Ursprungsdatensatz fehlt
+
+Der Ursprungsdatensatz kennt **kein Palästina**. Dieselbe Israel-Fläche steht
+dort von 1938 bis 2010 unverändert und schließt Westjordanland, Ost-Jerusalem
+und den Gazastreifen ein. Israel erscheint außerdem schon 1938 und 1945 – zehn
+beziehungsweise drei Jahre vor der Staatsgründung, 1938 sogar deckungsgleich
+mit dem britischen Mandatsgebiet, also dieselbe Fläche zweimal.
+
+Das ist derselbe Fehlertyp wie die fehlenden Kriegsjahre, und er wird mit
+demselben Werkzeug behoben. Ein Jahr in `src/data/gegenwart.json` darf eine
+eigene `basis` nennen; stimmt sie mit dem Jahr überein, **ersetzt** der
+Zeitschnitt den gleichnamigen des Ursprungsdatensatzes, statt einen neuen
+hinzuzufügen. Betroffen sind 1960, 1994, 2000 und 2010.
+
+| Zeitschnitt | Westjordanland | Gazastreifen | Golanhöhen |
+|---|---|---|---|
+| 1938, 1945 | britisches Mandatsgebiet | britisches Mandatsgebiet | Syrien |
+| 1960 | Jordanien (1950 annektiert) | Palästina, ägyptisch verwaltet | Syrien |
+| 1994–2026 | Palästina, besetzt durch Israel | Palästina, besetzt durch Israel | Syrien, besetzt durch Israel |
+
+Der Grundsatz ist derselbe wie bei der Ukraine: **Besetztes Gebiet behält den
+Namen des Landes, dem es völkerrechtlich zugerechnet wird.** Westjordanland,
+Ost-Jerusalem und Gazastreifen gelten den Vereinten Nationen und dem
+Internationalen Gerichtshof als besetztes palästinensisches Gebiet; die
+Annexionen Ost-Jerusalems (1980) und des Golan (1981) sind nicht anerkannt.
+
+**Grenze des Maßstabs:** Jerusalem lässt sich hier nicht teilen. Die Grüne
+Linie von 1949 lief mitten durch die Stadt; auf wenige Kilometer genau ist
+dieser Zug nicht, und die gezeichnete Linie sagt über den Status der Stadt
+nichts aus. Das steht so auch im Steckbrief, nicht nur hier.
 
 ### Berühmte Schlachten
 

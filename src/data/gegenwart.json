@@ -12,7 +12,16 @@
     "   dieser Karte Ukraine mit Russland als Besatzungsmacht – nicht Russland.",
     "   Dasselbe galt für Bergkarabach, das bis 2023 armenisch besetzt war.",
     "2. Frontverläufe sind Momentaufnahmen. Der Stand ist bei jedem Jahr genannt;",
-    "   an einer aktiven Front verschiebt er sich weiter."
+    "   an einer aktiven Front verschiebt er sich weiter.",
+    "",
+    "Derselbe Grundsatz zwingt zu einer Korrektur, die weiter zurückreicht als",
+    "2010: Der Ursprungsdatensatz kennt überhaupt kein Palästina. Dieselbe",
+    "Israel-Fläche steht dort unverändert von 1938 bis 2010 und schließt",
+    "Westjordanland, Ost-Jerusalem und den Gazastreifen ein. Die Jahre ab 1960",
+    "korrigieren das an derselben Stelle, an der auch die Frontlinien liegen.",
+    "",
+    "Ein Jahr mit eigenem \"basis\"-Eintrag ersetzt den gleichnamigen Zeitschnitt",
+    "des Ursprungsdatensatzes, statt einen neuen hinzuzufügen."
   ],
 
   "basis": 2010,
@@ -58,6 +67,30 @@
         [32.50, 45.20], [35.00, 45.00], [40.20, 45.50], [40.20, 50.00]
       ]
     },
+    "westjordanland": {
+      "_was": "Westjordanland einschließlich Ost-Jerusalem. Die Linie folgt der Waffenstillstandslinie von 1949 (der Grünen Linie) im Westen und dem Jordan im Osten. Seit 1967 von Israel besetzt; die Vereinten Nationen führen das Gebiet als besetztes palästinensisches Gebiet. Grenze des Maßstabs: Jerusalem lässt sich hier nicht teilen – die Grüne Linie lief mitten durch die Stadt, und auf wenige Kilometer genau ist dieser Zug nicht.",
+      "ring": [
+        [35.02, 32.47], [35.25, 32.53], [35.57, 32.40], [35.55, 31.87],
+        [35.47, 31.72], [35.43, 31.48], [35.33, 31.35], [35.13, 31.36],
+        [34.98, 31.55], [35.00, 31.72], [35.21, 31.79], [35.10, 31.93],
+        [34.88, 31.95], [34.96, 32.15], [34.95, 32.30], [35.02, 32.47]
+      ]
+    },
+    "gaza": {
+      "_was": "Gazastreifen. 1948 bis 1967 unter ägyptischer Verwaltung, danach von Israel besetzt. 2005 zog Israel Siedlungen und Bodentruppen ab, behielt aber die Kontrolle über Grenzen, Luftraum und Küste; die Vereinten Nationen führen das Gebiet weiterhin als besetzt. Seit Oktober 2023 stehen israelische Truppen wieder im Streifen.",
+      "ring": [
+        [34.10, 31.10], [34.35, 31.20], [34.57, 31.58], [34.50, 31.68],
+        [34.10, 31.42], [34.10, 31.10]
+      ]
+    },
+    "golan": {
+      "_was": "Golanhöhen, syrisches Gebiet, seit 1967 von Israel besetzt und 1981 annektiert. Die Annexion ist völkerrechtlich nicht anerkannt. Die Linie folgt der Waffenstillstandslinie von 1974; Quneitra kam damals an Syrien zurück und liegt außerhalb.",
+      "ring": [
+        [35.57, 32.85], [35.68, 32.72], [35.83, 32.90], [35.80, 33.10],
+        [35.78, 33.15], [35.86, 33.25], [35.92, 33.32], [35.60, 33.25],
+        [35.57, 32.85]
+      ]
+    },
     "bergkarabach": {
       "_was": "Bergkarabach und die umliegenden Bezirke, von 1994 bis 2020 unter armenischer Kontrolle. 2023 stellte Aserbaidschan die Kontrolle über das gesamte Gebiet her.",
       "ring": [
@@ -68,6 +101,60 @@
   },
 
   "jahre": [
+    {
+      "year": 1960,
+      "basis": 1960,
+      "stand": "1960",
+      "titel": "Afrikanisches Jahr der Unabhängigkeit",
+      "_warum": "Der Ursprungsdatensatz zeichnet hier dieselbe Israel-Fläche wie 2010 – einschließlich Westjordanland und Gazastreifen. 1960 gehörte beides nicht zu Israel: Jordanien hatte das Westjordanland 1950 annektiert, der Gazastreifen stand unter ägyptischer Verwaltung.",
+      "teilungen": [
+        { "land": "Israel", "gebiet": "westjordanland", "innen": { "name": "Jordan" } },
+        { "land": "Israel", "gebiet": "gaza", "innen": { "name": "Palestine", "besetzer": "Egypt" } }
+      ]
+    },
+
+    {
+      "year": 1994,
+      "basis": 1994,
+      "stand": "1994",
+      "titel": "Nach dem Ende der Sowjetunion",
+      "_warum": "Siehe 1960 – dieselbe unveränderte Israel-Fläche. Seit 1967 sind Westjordanland, Ost-Jerusalem und Gazastreifen von Israel besetzt; die Osloer Verträge von 1993/94 richteten dort die Palästinensische Autonomiebehörde ein, ohne die Besatzung zu beenden.",
+      "teilungen": [
+        { "land": "Israel", "gebiet": "westjordanland", "innen": { "name": "Palestine", "besetzer": "Israel" } },
+        { "land": "Israel", "gebiet": "gaza", "innen": { "name": "Palestine", "besetzer": "Israel" } },
+        { "land": "Syria", "gebiet": "golan", "innen": { "besetzer": "Israel" } },
+        { "land": "Azerbaijan", "gebiet": "bergkarabach", "innen": { "besetzer": "Armenia" } }
+      ]
+    },
+
+    {
+      "year": 2000,
+      "basis": 2000,
+      "stand": "2000",
+      "titel": "Jahrtausendwende",
+      "_warum": "Siehe 1994.",
+      "teilungen": [
+        { "land": "Israel", "gebiet": "westjordanland", "innen": { "name": "Palestine", "besetzer": "Israel" } },
+        { "land": "Israel", "gebiet": "gaza", "innen": { "name": "Palestine", "besetzer": "Israel" } },
+        { "land": "Syria", "gebiet": "golan", "innen": { "besetzer": "Israel" } },
+        { "land": "Azerbaijan", "gebiet": "bergkarabach", "innen": { "besetzer": "Armenia" } }
+      ]
+    },
+
+    {
+      "year": 2010,
+      "basis": 2010,
+      "stand": "2010",
+      "titel": "Nach der Finanzkrise",
+      "_warum": "Siehe 1994. 2005 hatte Israel Siedlungen und Bodentruppen aus dem Gazastreifen abgezogen, die Kontrolle über Grenzen, Luftraum und Küste aber behalten.",
+      "teilungen": [
+        { "land": "Israel", "gebiet": "westjordanland", "innen": { "name": "Palestine", "besetzer": "Israel" } },
+        { "land": "Israel", "gebiet": "gaza", "innen": { "name": "Palestine", "besetzer": "Israel" } },
+        { "land": "Syria", "gebiet": "golan", "innen": { "besetzer": "Israel" } },
+        { "land": "Azerbaijan", "gebiet": "bergkarabach", "innen": { "besetzer": "Armenia" } }
+      ]
+    },
+
     {
       "year": 2015,
       "stand": "Dezember 2015",
@@ -101,6 +188,21 @@
           "land": "Azerbaijan",
           "gebiet": "bergkarabach",
           "innen": { "besetzer": "Armenia" }
+        },
+        {
+          "land": "Israel",
+          "gebiet": "westjordanland",
+          "innen": { "name": "Palestine", "besetzer": "Israel" }
+        },
+        {
+          "land": "Israel",
+          "gebiet": "gaza",
+          "innen": { "name": "Palestine", "besetzer": "Israel" }
+        },
+        {
+          "land": "Syria",
+          "gebiet": "golan",
+          "innen": { "besetzer": "Israel" }
         }
       ]
     },
@@ -137,6 +239,21 @@
           "land": "Ukraine",
           "gebiet": "ukraine-besetzt",
           "innen": { "besetzer": "Russia" }
+        },
+        {
+          "land": "Israel",
+          "gebiet": "westjordanland",
+          "innen": { "name": "Palestine", "besetzer": "Israel" }
+        },
+        {
+          "land": "Israel",
+          "gebiet": "gaza",
+          "innen": { "name": "Palestine", "besetzer": "Israel" }
+        },
+        {
+          "land": "Syria",
+          "gebiet": "golan",
+          "innen": { "besetzer": "Israel" }
         }
       ]
     }

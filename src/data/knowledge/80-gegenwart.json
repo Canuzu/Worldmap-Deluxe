@@ -1,5 +1,117 @@
 {
- "_hinweis": "Steckbriefe zu den Staaten, die erst in den Zeitschnitten 2015 und 2026 auf der Karte erscheinen – durch Staatsgründung (Südsudan, Kosovo) oder durch Umbenennung (Myanmar, Nordmazedonien, Eswatini, Türkiye, Tschechien). Dazu die Beteiligten der beiden Konflikte, die diese Zeitschnitte prägen: Ukraine, Armenien, Aserbaidschan und Serbien. Bei Staaten mit langer, unterbrochener Geschichte – Serbien, Armenien – ist bewusst kein Gründungsjahr angegeben: Die Karte zeigt sie über zwei Jahrtausende hinweg in ganz verschiedenen Gestalten.",
+ "_hinweis": "Steckbriefe zu Palästina, Israel und dem britischen Mandatsgebiet sowie zu den Staaten, die erst in den Zeitschnitten 2015 und 2026 auf der Karte erscheinen – durch Staatsgründung (Südsudan, Kosovo) oder durch Umbenennung (Myanmar, Nordmazedonien, Eswatini, Türkiye, Tschechien). Dazu die Beteiligten der beiden Konflikte, die diese Zeitschnitte prägen: Ukraine, Armenien, Aserbaidschan und Serbien. Bei Staaten mit langer, unterbrochener Geschichte – Serbien, Armenien – ist bewusst kein Gründungsjahr angegeben: Die Karte zeigt sie über zwei Jahrtausende hinweg in ganz verschiedenen Gestalten.",
+
+ "Palestine": {
+  "kind": "Staat, teils besetzt",
+  "wiki": "Staat Palästina",
+  "events": [
+   { "year": 1947, "text": "Der UN-Teilungsplan sieht einen jüdischen und einen arabischen Staat vor; die arabische Seite lehnt ihn ab." },
+   { "year": 1948, "text": "Im Krieg um die israelische Staatsgründung werden rund 700.000 Palästinenser vertrieben oder fliehen – die Nakba." },
+   { "year": 1967, "text": "Israel besetzt im Sechstagekrieg Westjordanland, Ost-Jerusalem und den Gazastreifen." },
+   { "year": 1988, "text": "Die PLO ruft den Staat Palästina aus." },
+   { "year": 1993, "text": "Die Osloer Verträge richten die Palästinensische Autonomiebehörde ein." },
+   { "year": 2007, "text": "Die Hamas übernimmt den Gazastreifen; die Gebiete sind seither getrennt regiert." },
+   { "year": 2012, "text": "Die UN-Vollversammlung erkennt Palästina als Beobachterstaat ohne Mitgliedschaft an." },
+   { "year": 2023, "text": "Nach dem Hamas-Überfall vom 7. Oktober beginnt der Krieg im Gazastreifen." }
+  ],
+  "periods": [
+   {
+    "from": 1948,
+    "to": 1967,
+    "ruler": "Jordanische Krone im Westjordanland, ägyptische Militärverwaltung in Gaza",
+    "rulerTitle": "fremde Verwaltung",
+    "capital": "keine",
+    "government": "Geteilte Fremdverwaltung",
+    "religion": "Islam, christliche Minderheit",
+    "languages": ["Arabisch"],
+    "economy": "Landwirtschaft, Flüchtlingslager unter UNRWA-Versorgung",
+    "summary": [
+     "Der im UN-Teilungsplan vorgesehene arabische Staat entsteht nicht. Jordanien annektiert 1950 das Westjordanland samt Ost-Jerusalem, Ägypten verwaltet den Gazastreifen.",
+     "Auf dieser Karte trägt der Gazastreifen deshalb für 1960 Ägypten als verwaltende Macht, das Westjordanland den Namen Jordaniens."
+    ]
+   },
+   {
+    "from": 1967,
+    "to": null,
+    "ruler": "Mahmud Abbas (Autonomiebehörde, Westjordanland); Hamas im Gazastreifen",
+    "rulerTitle": "Präsident der Palästinensischen Autonomiebehörde",
+    "capital": "Ramallah als Regierungssitz; Ost-Jerusalem beansprucht",
+    "government": "Teilautonomie unter israelischer Besatzung; seit 2007 zwei getrennte Verwaltungen",
+    "religion": "Islam, christliche Minderheit",
+    "languages": ["Arabisch"],
+    "population": "ca. 5,5 Mio. in den Gebieten, dazu eine große Diaspora",
+    "economy": "Dienstleistungen, Landwirtschaft, Bauwirtschaft, internationale Hilfe",
+    "summary": [
+     "Rund 150 Staaten haben Palästina anerkannt; seit 2012 ist es Beobachterstaat der Vereinten Nationen. Die USA, Deutschland und weitere westliche Staaten haben es nicht anerkannt.",
+     "Westjordanland, Ost-Jerusalem und Gazastreifen gelten den Vereinten Nationen und dem Internationalen Gerichtshof als von Israel besetztes Gebiet. Diese Karte zeichnet sie deshalb als Palästina mit Israel als Besatzungsmacht – nicht als Israel.",
+     "Der Ursprungsdatensatz dieser Karte kennt kein Palästina: Dieselbe Israel-Fläche steht dort von 1938 bis 2010 unverändert. Die Zeitschnitte ab 1960 stellen das richtig."
+    ]
+   }
+  ]
+ },
+
+ "Israel": {
+  "kind": "Republik",
+  "wiki": "Israel",
+  "founded": 1948,
+  "events": [
+   { "year": 1948, "text": "Ausrufung des Staates Israel; im folgenden Krieg gewinnt er mehr Gebiet als im Teilungsplan vorgesehen." },
+   { "year": 1967, "text": "Im Sechstagekrieg besetzt Israel Sinai, Gazastreifen, Westjordanland, Ost-Jerusalem und die Golanhöhen." },
+   { "year": 1979, "text": "Friedensvertrag mit Ägypten; der Sinai wird zurückgegeben." },
+   { "year": 1994, "text": "Friedensvertrag mit Jordanien." },
+   { "year": 2005, "text": "Abzug der Siedlungen und Bodentruppen aus dem Gazastreifen." },
+   { "year": 2023, "text": "Der Hamas-Überfall vom 7. Oktober tötet rund 1.200 Menschen und löst den Krieg in Gaza aus." }
+  ],
+  "periods": [
+   {
+    "from": 1948,
+    "to": null,
+    "ruler": "Wechselnde Regierungschefs, zuletzt Benjamin Netanjahu",
+    "rulerTitle": "Ministerpräsident",
+    "capital": "Jerusalem (beansprucht); die meisten Botschaften liegen in Tel Aviv",
+    "government": "Parlamentarische Republik",
+    "religion": "Judentum; muslimische, christliche und drusische Minderheiten",
+    "languages": ["Hebräisch", "Arabisch"],
+    "population": "ca. 10 Mio.",
+    "economy": "Hochtechnologie, Rüstung, Landwirtschaft, Diamantenhandel",
+    "summary": [
+     "Israel entsteht 1948 als Staat für die jüdische Bevölkerung, drei Jahre nach dem Ende der Schoah. Der Krieg um seine Gründung endet mit Waffenstillstandslinien statt anerkannter Grenzen – der Grünen Linie von 1949.",
+     "Die 1967 besetzten Gebiete zeichnet diese Karte nicht als israelisches Staatsgebiet: Westjordanland, Ost-Jerusalem und Gazastreifen erscheinen als Palästina, die Golanhöhen als Syrien – jeweils mit Israel als Besatzungsmacht. Die Annexionen Ost-Jerusalems (1980) und des Golan (1981) sind völkerrechtlich nicht anerkannt.",
+     "Der Status Jerusalems ist ungeklärt. In diesem Maßstab lässt sich die Stadt nicht teilen; die gezeichnete Linie sagt über ihren Status nichts aus."
+    ]
+   }
+  ]
+ },
+
+ "Mandatory Palestine (GB)": {
+  "kind": "Völkerbundsmandat",
+  "wiki": "Völkerbundsmandat für Palästina",
+  "founded": 1920,
+  "dissolved": 1948,
+  "events": [
+   { "year": 1917, "text": "Die Balfour-Erklärung stellt eine „nationale Heimstätte des jüdischen Volkes\" in Aussicht." },
+   { "year": 1920, "text": "Großbritannien erhält das Völkerbundsmandat für Palästina." },
+   { "year": 1936, "text": "Der arabische Aufstand gegen Einwanderung und Mandatsmacht beginnt." },
+   { "year": 1947, "text": "Großbritannien gibt das Mandat an die Vereinten Nationen zurück." }
+  ],
+  "periods": [
+   {
+    "from": 1920,
+    "to": 1948,
+    "ruler": "Britische Hochkommissare",
+    "rulerTitle": "Hochkommissar für Palästina",
+    "capital": "Jerusalem",
+    "government": "Völkerbundsmandat unter britischer Verwaltung",
+    "religion": "Islam, Judentum, Christentum",
+    "languages": ["Arabisch", "Hebräisch", "Englisch"],
+    "economy": "Landwirtschaft, Zitrusausfuhr, Hafen Haifa",
+    "summary": [
+     "Zwischen 1920 und 1948 verwaltet Großbritannien das Gebiet zwischen Mittelmeer und Jordan. Die widersprüchlichen Zusagen an die jüdische und die arabische Seite bleiben bis heute Kern des Konflikts.",
+     "Der Ursprungsdatensatz nannte diese Fläche für 1938 und 1945 zusätzlich „Israel“ – zehn beziehungsweise drei Jahre vor der Staatsgründung. Diese Karte stellt das richtig."
+    ]
+   }
+  ]
+ },
 
  "South Sudan": {
   "kind": "Republik",

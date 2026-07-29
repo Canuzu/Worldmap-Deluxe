@@ -439,21 +439,26 @@ function buildEpoch(entry, entfallen = []) {
     polities: byArea.length,
     features: geometries.length,
     bytes: fs.statSync(outFile).size,
-    // Nur bei den selbst ergänzten Kriegsjahren gesetzt: Stichtag des
-    // Frontverlaufs und der Hinweis, dass dieser Zeitschnitt nicht aus dem
-    // Ursprungsdatensatz stammt.
-    ...(entry.derived ? { stand: entry.stand, ergaenzt: true } : {}),
+    // Nur bei den selbst erzeugten Zeitschnitten gesetzt: Stichtag des
+    // Frontverlaufs und der Hinweis, dass dieser Zeitschnitt nicht
+    // unverändert aus dem Ursprungsdatensatz stammt. "ersetzt" heißt: Das Jahr
+    // gibt es dort, aber mit einem Zuschnitt, der richtigzustellen war –
+    // das ist eine Korrektur, keine Ergänzung.
+    ...(entry.derived
+      ? { stand: entry.stand, ...(entry.ersetzt ? {} : { ergaenzt: true }) }
+      : {}),
     ...(geometries.some((g) => g.properties.o) ? { besatzung: true } : {}),
     // Für die Eiszeit gilt eine eigene Küstenlinie; das muss in der Karte
     // stehen, nicht nur im Quelltext.
     ...(entry.year <= -10000 ? { eiszeitKueste: true } : {}),
     // Herkunft offenlegen: Was nicht aus dem Ursprungsdatensatz stammt, muss
     // in der Karte kenntlich sein – nicht nur in der README.
-    ...(CORRECTIONS[entry.year] ? {
+    ...(CORRECTIONS[entry.year] || entry.ersetzt ? {
       korrigiert: {
-        umbenannt: Object.keys(CORRECTIONS[entry.year].rename ?? {}).length,
-        ergaenzt: (CORRECTIONS[entry.year].ergaenzen ?? []).length,
-        begruendung: CORRECTIONS[entry.year]._begruendung ?? '',
+        umbenannt: Object.keys(CORRECTIONS[entry.year]?.rename ?? {}).length,
+        ergaenzt: (CORRECTIONS[entry.year]?.ergaenzen ?? []).length,
+        begruendung: [CORRECTIONS[entry.year]?._begruendung, entry.begruendung]
+          .filter(Boolean).join(' '),
       },
     } : {}),
   };
@@ -725,6 +730,11 @@ function main() {
   const derivedIndex = path.join(DERIVED_DIR, 'index.json');
   if (fs.existsSync(derivedIndex)) {
     for (const e of JSON.parse(fs.readFileSync(derivedIndex, 'utf8')).years) {
+      // Ein abgeleitetes Jahr, das ein Jahr des Ursprungsdatensatzes
+      // richtigstellt, tritt an dessen Stelle – sonst stünde der Zeitschnitt
+      // zweimal in der Zeitleiste.
+      const vorhanden = index.findIndex((x) => x.year === e.year);
+      if (vorhanden > -1) index.splice(vorhanden, 1);
       index.push({ ...e, derived: true });
     }
     index.sort((a, b) => a.year - b.year);

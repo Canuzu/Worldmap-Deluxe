@@ -222,7 +222,16 @@ function main() {
 
     console.log(`› ${path.basename(specPath)} – abgeleitete Jahre aus ${basisDatei}`);
     for (const jahr of spec.jahre) {
-      const file = buildYear(jahr, spec.gebiete, basisDatei);
+      // Ein Jahr darf eine eigene Grundlage nennen. Stimmt sie mit dem Jahr
+      // selbst überein, ersetzt der Zeitschnitt den gleichnamigen des
+      // Ursprungsdatensatzes, statt einen neuen hinzuzufügen – so lassen sich
+      // auch vorhandene Jahre an einer Linie richtigstellen.
+      const eigeneBasis = jahr.basis ? `world_${jahr.basis}.geojson` : basisDatei;
+      if (!fs.existsSync(path.join(HIST_DIR, eigeneBasis))) {
+        console.error(`Grundlage fehlt: ${eigeneBasis}`);
+        process.exit(1);
+      }
+      const file = buildYear(jahr, spec.gebiete, eigeneBasis);
       const besetzt = new Set();
       for (const f of JSON.parse(fs.readFileSync(file, 'utf8')).features) {
         if (f.properties?.OCCUPIER) besetzt.add(f.properties.OCCUPIER);
@@ -236,6 +245,7 @@ function main() {
         filename: `world_${jahr.year}.geojson`,
         stand: jahr.stand,
         titel: jahr.titel,
+        ...(jahr.basis === jahr.year ? { ersetzt: true, begruendung: jahr._warum } : {}),
       });
     }
   }

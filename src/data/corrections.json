@@ -124,6 +124,19 @@
       "South Africa": "Union of South Africa"
     }
   },
+  "1938": {
+    "_begruendung": "Israel entstand 1948. Der Ursprungsdatensatz führt 1938 zwei deckungsgleiche Flächen – „Mandatory Palestine (GB)\" und „Israel\" –, also dasselbe Gebiet doppelt und eine davon unter dem Namen eines Staates, den es noch nicht gab. Beide werden hier zum britischen Mandatsgebiet zusammengefasst.",
+    "rename": {
+      "Israel": "Mandatory Palestine (GB)"
+    }
+  },
+  "1945": {
+    "_begruendung": "Auch 1945 bestand Israel noch nicht; das Gebiet war bis Mai 1948 britisches Mandatsgebiet. Jordanien hieß bis 1949 Transjordanien und wurde erst 1946 unabhängig.",
+    "rename": {
+      "Israel": "Mandatory Palestine (GB)",
+      "Jordan": "Transjordan"
+    }
+  },
   "1916": {
     "_begruendung": "Siehe 1914 – die Kriegsjahre erben den Namen aus dem Ursprungsdatensatz und brauchen dieselbe Richtigstellung.",
     "rename": {

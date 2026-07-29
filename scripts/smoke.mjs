@@ -433,6 +433,47 @@ await check('Südsudan und Kosovo erscheinen erst nach ihrer Gründung', async (
   if (spaet.length !== 2) throw new Error(`2026 fehlt: ${spaet.join(', ') || 'beide'}`);
 });
 
+await check('Palästina steht auf der Karte, nicht nur Israel', async () => {
+  // Der Ursprungsdatensatz kennt kein Palästina: Dieselbe Israel-Fläche steht
+  // dort von 1938 bis 2010 unverändert und schließt Westjordanland,
+  // Ost-Jerusalem und Gazastreifen ein. Diese Prüfung hält die
+  // Richtigstellung fest – in jedem Jahr, in dem sie gilt.
+  const lage = async (jahr) => page.evaluate(async (j) => {
+    const r = await fetch(`data/epochs/ad${j}.json`);
+    const topo = await r.json();
+    return topo.objects[Object.keys(topo.objects)[0]].geometries
+      .map((g) => g.properties)
+      .filter((p) => p?.n === 'Palestine' || p?.n === 'Israel')
+      .map((p) => (p.o ? `${p.n}<${p.o}>` : p.n))
+      .sort();
+  }, jahr);
+
+  for (const jahr of [1994, 2000, 2010, 2015, 2026]) {
+    const ist = await lage(jahr);
+    if (!ist.includes('Palestine<Israel>')) {
+      throw new Error(`${jahr}: kein besetztes Palästina, sondern ${ist.join(', ') || '–'}`);
+    }
+    if (!ist.includes('Israel')) throw new Error(`${jahr}: Israel fehlt`);
+  }
+
+  // Und vor 1948 darf Israel nirgends stehen.
+  const vorher = await lage(1938);
+  if (vorher.includes('Israel')) throw new Error('1938 steht Israel auf der Karte');
+});
+
+await check('Der Golan bleibt syrisch, mit Israel als Besatzungsmacht', async () => {
+  const golan = await page.evaluate(async () => {
+    const r = await fetch('data/epochs/ad2026.json');
+    const topo = await r.json();
+    return topo.objects[Object.keys(topo.objects)[0]].geometries
+      .map((g) => g.properties)
+      .filter((p) => p?.n === 'Syria')
+      .map((p) => (p.o ? `${p.n}<${p.o}>` : p.n));
+  });
+  if (!golan.includes('Syria<Israel>')) throw new Error(`Golan fehlt: ${golan.join(', ')}`);
+  if (!golan.includes('Syria')) throw new Error('unbesetztes Syrien fehlt');
+});
+
 await check('Von Russland gehaltenes Gebiet bleibt ukrainisch benannt', async () => {
   const flaechen = await page.evaluate(async () => {
     const r = await fetch('data/epochs/ad2026.json');
