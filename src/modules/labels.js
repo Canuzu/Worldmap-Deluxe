@@ -132,8 +132,7 @@ export const LabelLayer = L.Layer.extend({
       else if (text.length > 18) fontSize *= .82;
       fontSize = Math.max(8.5, fontSize);
 
-      const weight = fontSize >= 15 ? 600 : 500;
-      ctx.font = `${weight} ${fontSize.toFixed(1)}px ${this._style.font}`;
+      setFont(ctx, fontSize, this._style);
 
       const maxWidth = Math.max(84, w * 1.35);
       let metrics = ctx.measureText(text);
@@ -165,6 +164,26 @@ export const LabelLayer = L.Layer.extend({
   },
 });
 
+/**
+ * Schriftschnitt einer Beschriftung setzen.
+ *
+ * Gedruckte Atlanten setzen Länder in einer Antiqua und sperren die großen
+ * Namen – ein Reich, das einen Kontinent füllt, bekommt seinen Namen nicht
+ * fett, sondern weit. Genau das macht den Unterschied zwischen einer Karte,
+ * die nach Bildschirm aussieht, und einer, die nach Tafel aussieht.
+ *
+ * ctx.letterSpacing kennen nicht alle Browser; ohne die Eigenschaft fällt nur
+ * die Sperrung weg, alles andere bleibt.
+ */
+function setFont(ctx, fontSize, style) {
+  const gross = fontSize >= 14;
+  const weight = gross ? 500 : 600;
+  ctx.font = `${weight} ${fontSize.toFixed(1)}px ${style.font}`;
+  if ('letterSpacing' in ctx) {
+    ctx.letterSpacing = gross ? `${(fontSize * 0.075).toFixed(2)}px` : '0px';
+  }
+}
+
 function wrap(ctx, text, maxWidth) {
   const words = text.split(' ');
   const lines = [];
@@ -183,6 +202,7 @@ function wrap(ctx, text, maxWidth) {
 }
 
 function drawMultiline(ctx, lines, pt, fontSize, style, isFocus, item, placed) {
+  setFont(ctx, fontSize, style);
   const lineHeight = fontSize * 1.18;
   const widths = lines.map((l) => ctx.measureText(l).width);
   const width = Math.max(...widths);
@@ -209,9 +229,18 @@ function paint(ctx, text, x, y, style, isFocus, color) {
   ctx.lineJoin = 'round';
   ctx.miterLimit = 2;
 
+  // Zwei Lagen Rückhalt statt einer dicken: außen ein weicher Schatten, der
+  // die Schrift von unruhigem Untergrund abhebt, innen eine schmale Kontur.
+  // Eine einzelne dicke Kontur lässt Serifen zulaufen – bei einer Antiqua
+  // fällt genau das auf.
+  ctx.save();
+  ctx.shadowColor = style.halo;
+  ctx.shadowBlur = isFocus ? 7 : 5;
   ctx.strokeStyle = style.halo;
-  ctx.lineWidth = isFocus ? 4.2 : 3.2;
+  ctx.lineWidth = isFocus ? 3 : 2.4;
   ctx.strokeText(text, x, y);
+  ctx.strokeText(text, x, y);
+  ctx.restore();
 
   ctx.fillStyle = isFocus ? style.accent : style.ink;
   ctx.fillText(text, x, y);

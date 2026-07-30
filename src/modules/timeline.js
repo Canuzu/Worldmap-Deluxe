@@ -34,7 +34,13 @@ export class Timeline {
     this._bubble.className = 'track__bubble';
     this.dom.track.appendChild(this._bubble);
 
-    window.addEventListener('resize', () => { this._buildScale(); this._fitEraLabels(); this.render(); });
+    const neuVermessen = () => { this._buildScale(); this._fitEraLabels(); this.render(); };
+    window.addEventListener('resize', neuVermessen);
+    // Nicht nur das Fenster ändert die Breite der Leiste: Beim Öffnen der
+    // Detailtafel wird die Bühne schmaler, ohne dass ein resize-Ereignis
+    // fällt. Ohne das hier blieben abgeschnittene Epochennamen stehen
+    // („GEGENWA“) und die Jahreszahlen der Skala liefen über den Rand.
+    if ('ResizeObserver' in window) new ResizeObserver(neuVermessen).observe(this.dom.track);
   }
 
   get count() { return this.epochs.length; }
@@ -336,6 +342,13 @@ export class Timeline {
 
     const eraDef = this.eras.find((e) => e.id === epoch.era);
     this.dom.yearEra.textContent = eraDef?.name ?? '';
+
+    // Nur die Epoche, in der man gerade steht, wird voll gesättigt gezeigt.
+    // Fünfzehn gleich laute Farbblöcke haben vorher mit der Karte um
+    // Aufmerksamkeit gestritten.
+    for (const segment of this.dom.eras.children) {
+      segment.classList.toggle('is-now', segment.dataset.era === epoch.era);
+    }
 
     // Ehrlich bleiben: Der Datensatz kennt nur eine begrenzte Zahl von
     // Kartenständen. Wird ein Jahr dazwischen gewählt, muss sichtbar sein,

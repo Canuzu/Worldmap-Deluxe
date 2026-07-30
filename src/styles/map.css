@@ -52,6 +52,37 @@
 /* Ortsebene: eigene Zeichenfläche, nie interaktiv. */
 .place-canvas { pointer-events: none; }
 
+/* ------------------------------------------------- Küstensaum
+
+   Der einzige Ort, an dem ein CSS-Filter hier erlaubt ist. Das Pane enthält
+   ausschließlich die Küstenlinie – es gibt nichts darin, was scharf bleiben
+   müsste, und die Weichzeichnung ist der ganze Zweck. Das frühere Problem lag
+   an einem Filter über den Flächen; der ist entfernt und bleibt es. */
+.leaflet-coastglow-pane,
+.leaflet-coastrim-pane { pointer-events: none; }
+
+/* Das breite Band: Tiefe. Stark weichgezeichnet, zurückhaltend in der Deckung. */
+.leaflet-coastglow-pane {
+  filter: blur(var(--coast-glow-blur));
+  opacity: calc(var(--coast-glow-alpha) * var(--coast-zoom-fade, 1));
+  /* Über dem dunklen Meer soll der Saum leuchten, auf Papier eher färben. */
+  mix-blend-mode: screen;
+}
+
+/* Die enge Parallele: Kante. Kaum weichgezeichnet, dafür deutlich. */
+.leaflet-coastrim-pane {
+  filter: blur(1.2px);
+  opacity: calc(var(--coast-rim-alpha) * var(--coast-zoom-fade, 1));
+  mix-blend-mode: screen;
+}
+
+[data-theme="parchment"] .leaflet-coastglow-pane,
+[data-theme="parchment"] .leaflet-coastrim-pane { mix-blend-mode: multiply; }
+
+/* Mit Kartengrundlage tritt der Saum zurück – dort trägt das Gelände. */
+.map.is-basemap .leaflet-coastglow-pane { opacity: calc(var(--coast-glow-alpha) * var(--coast-zoom-fade, 1) * .5); }
+.map.is-basemap .leaflet-coastrim-pane { opacity: calc(var(--coast-rim-alpha) * var(--coast-zoom-fade, 1) * .5); }
+
 /* ------------------------------------------------- Kartengrundlage */
 
 /* Erst wenn wirklich eine Kachel angekommen ist, tritt die eigene Landfarbe

@@ -418,6 +418,46 @@ async function main() {
     bar.querySelector('b').textContent = distanceText(info.km);
   }
 
+  /**
+   * Höhe der schwebenden Konsole messen und als CSS-Größe hinterlegen.
+   *
+   * Maßstab und Windrose stehen über der Konsole. Deren Höhe hängt davon ab,
+   * ob die Zeitleiste eingeklappt ist, wie breit das Fenster ist und wie viele
+   * Zeilen die Jahresangabe braucht – ein fester Abstand wäre in der Hälfte
+   * der Fälle falsch. Gemessen ist er immer richtig.
+   */
+  function watchConsoleHeight() {
+    const konsole = $('timeline');
+    const setzen = () => {
+      const hoehe = konsole.getBoundingClientRect().height;
+      document.documentElement.style.setProperty('--console-h', `${Math.round(hoehe)}px`);
+    };
+    setzen();
+    if ('ResizeObserver' in window) new ResizeObserver(setzen).observe(konsole);
+    window.addEventListener('resize', setzen);
+  }
+
+  /**
+   * Gradteilung der Windrose – 72 Striche, alle 5 Grad, jeder dritte länger.
+   * Von Hand im Markup wären das 72 Zeilen Rauschen; erzeugt ist es eine.
+   */
+  function drawRoseTicks() {
+    const g = document.getElementById('roseTicks');
+    if (!g) return;
+    const teile = [];
+    for (let i = 0; i < 72; i++) {
+      const lang = i % 3 === 0;
+      const rad = (i * 5 * Math.PI) / 180;
+      const r1 = 44;
+      const r2 = lang ? 49.5 : 47;
+      teile.push('<line'
+        + ` x1="${(60 + Math.sin(rad) * r1).toFixed(2)}" y1="${(60 - Math.cos(rad) * r1).toFixed(2)}"`
+        + ` x2="${(60 + Math.sin(rad) * r2).toFixed(2)}" y2="${(60 - Math.cos(rad) * r2).toFixed(2)}"`
+        + ` opacity="${lang ? .9 : .45}" />`);
+    }
+    g.innerHTML = teile.join('');
+  }
+
   /* -------------------------------------------------------------- Suche */
 
   const searchInput = $('search');
@@ -871,13 +911,24 @@ async function main() {
   timeline.render();
   await goto(startIndex, { animate: false });
   updateScale();
+  drawRoseTicks();
+  watchConsoleHeight();
 
   if (hash.selected && state.epoch?.byName.has(hash.selected)) {
     selectPolity(hash.selected);
   }
 
   progress(1, 'Fertig');
-  window.setTimeout(() => { $('boot').hidden = true; }, 320);
+  window.setTimeout(() => {
+    $('boot').hidden = true;
+    // Der Auftritt: Karte und Bedienelemente kommen nicht gleichzeitig, sondern
+    // in der Reihenfolge, in der man sie liest – erst die Karte, dann der
+    // Titel, dann die Konsole. Ein einziges Aufblenden wirkt wie ein Sprung;
+    // die Staffelung liest sich wie ein aufgeschlagenes Buch. Die Klasse fällt
+    // nach dem Lauf wieder weg, damit sie nichts dauerhaft festhält.
+    $('app').classList.add('is-entering');
+    window.setTimeout(() => $('app').classList.remove('is-entering'), 2200);
+  }, 320);
 
   // Erst nach dem ersten Bild: die hochaufgelöste Küstenlinie nachziehen und,
   // falls voreingestellt, die Gewässer.

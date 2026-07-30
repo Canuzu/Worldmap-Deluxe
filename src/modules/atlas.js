@@ -26,6 +26,17 @@ const PANES = {
   polityA: 220,
   polityB: 230,
   ocean: 240,
+  // Der Küstensaum liegt ÜBER dem Meer, nicht darunter: Das Meer ist eine
+  // deckende Fläche mit einem Loch je Landmasse und würde alles Tiefere
+  // überdecken. Von oben legt sich der Saum als Lichtkante über beide Seiten
+  // der Küste – seewärts als Untiefenband, landwärts als Kantenlicht.
+  //
+  // Zwei Bänder, weil eines flach aussieht: ein breites, stark
+  // weichgezeichnetes für die Tiefe und ein schmales, fast scharfes für die
+  // Kante. Genau so haben Kupferstecher Untiefen angelegt – erst der weite
+  // Ton, dann die enge Parallele.
+  coastglow: 241,
+  coastrim: 243,
   water: 246,
   graticule: 250,
   highlight: 256,
@@ -189,7 +200,7 @@ export class AtlasMap {
     this.labelLayer = createLabelLayer({ pane: 'label' });
     this.labelLayer.addTo(this.map);
 
-    this.map.on('zoomend', () => this._syncCoastLevel());
+    this.map.on('zoomend', () => { this._syncCoastLevel(); this._styleBase(); });
     this.map.on('zoomend moveend', () => this._emit('view'));
     this.map.on('mousedown', () => el.classList.add('is-grabbing'));
     this.map.on('mouseup', () => el.classList.remove('is-grabbing'));
@@ -210,6 +221,25 @@ export class AtlasMap {
       // Vorgabe von 1 px kappt sichtbar Buchten und Landzungen; 0.5 px
       // behält sie und bleibt beim Zoomen flüssig.
       smoothFactor: .5,
+    }).addTo(this.map);
+
+    // Küstensaum: dieselbe Geometrie, aber nur als Linie. Die Weichzeichnung
+    // besorgt CSS auf dem Pane – ein Filter auf einer reinen Linienebene
+    // kostet einen Kompositionsschritt und kann nichts unscharf machen, was
+    // scharf sein müsste. Zwei Ebenen übereinander ergeben den Verlauf, den
+    // Kupferstecher mit immer feineren Parallellinien erzeugt haben.
+    this.coastGlowLayer = L.geoJSON(null, {
+      pane: 'coastglow',
+      renderer: L.canvas({ pane: 'coastglow', padding: .3 }),
+      interactive: false,
+      smoothFactor: 1.4,
+    }).addTo(this.map);
+
+    this.coastRimLayer = L.geoJSON(null, {
+      pane: 'coastrim',
+      renderer: L.canvas({ pane: 'coastrim', padding: .3 }),
+      interactive: false,
+      smoothFactor: 1,
     }).addTo(this.map);
 
     this.waterLayer = L.geoJSON(null, {
@@ -342,6 +372,10 @@ export class AtlasMap {
     this.coast.level = level;
     this.oceanLayer.clearLayers();
     this.oceanLayer.addData(data);
+    this.coastGlowLayer.clearLayers();
+    this.coastGlowLayer.addData(data);
+    this.coastRimLayer.clearLayers();
+    this.coastRimLayer.addData(data);
     this._styleBase();
   }
 
@@ -411,6 +445,36 @@ export class AtlasMap {
       opacity: .95,
       lineJoin: 'round',
     });
+
+    // Der Saum wird schmaler, je näher man herangeht.
+    //
+    // Er ist eine Linie AUF der Küste, liegt also zur Hälfte auf dem Land. Im
+    // Weltmaßstab stört das nicht – dort umreißt er die Kontinente und gibt
+    // dem Bild seine Tiefe. In der Nahsicht überschwemmte er die Küstenländer:
+    // Irland und Dänemark verschwanden im blauen Dunst. Breite und Deckung
+    // laufen deshalb mit der Zoomstufe zurück, bis nur die Kante bleibt.
+    const z = this.map.getZoom();
+    const glow = this._cssVar('--coast-glow', '#6fb2e0');
+    const nah = Math.min(1, Math.max(0, (z - 3) / 3));
+    this.el.style.setProperty('--coast-zoom-fade', (1 - nah * 0.62).toFixed(3));
+    this.coastGlowLayer.setStyle({
+      fill: false,
+      stroke: true,
+      color: glow,
+      weight: Math.max(2.5, 11 - z * 1.9),
+      opacity: 1,
+      lineJoin: 'round',
+      lineCap: 'round',
+    });
+    this.coastRimLayer.setStyle({
+      fill: false,
+      stroke: true,
+      color: this._cssVar('--coast-rim', glow),
+      weight: Math.max(1, 2.6 - z * .12),
+      opacity: 1,
+      lineJoin: 'round',
+      lineCap: 'round',
+    });
     this.waterLayer.setStyle((f) => (
       f.geometry.type.includes('Line')
         ? { stroke: true, color: river, weight: .7, opacity: .75, fill: false }
@@ -424,7 +488,10 @@ export class AtlasMap {
       ink: this._cssVar('--label-ink', '#fff'),
       halo: this._cssVar('--label-halo', 'rgba(0,0,0,.9)'),
       accent: this._cssVar('--gold', '#e6bc79'),
-      font: this._cssVar('--font-ui', 'sans-serif'),
+      // Antiqua statt Grotesk: Länder tragen im gedruckten Atlas seit
+      // Jahrhunderten eine Serifenschrift. Nichts sonst verändert den
+      // Gesamteindruck der Karte so stark bei so wenig Aufwand.
+      font: this._cssVar('--font-display', 'Georgia, serif'),
     });
   }
 

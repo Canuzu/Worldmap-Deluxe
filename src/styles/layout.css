@@ -28,6 +28,7 @@
 .app.is-focus .timeline,
 .app.is-focus .credits,
 .app.is-focus .popover,
+.app.is-focus .rose,
 .app.is-focus .battles {
   opacity: 0;
   /* visibility statt nur opacity: Sonst bleiben die Elemente fuer Tastatur
@@ -44,6 +45,46 @@
 .app.is-focus .dock,
 .app.is-focus .timeline,
 .app.is-focus .credits { transition-delay: 0s, 0s, var(--dur); }
+
+/* ------------------------------------------------------------ Auftritt
+
+   Gestaffelt statt gleichzeitig: erst die Karte, dann der Titel, dann die
+   Konsole. Läuft genau einmal nach dem Laden; die Klasse wird danach
+   entfernt. Wer Bewegung reduziert hat, sieht nichts davon – die Regel
+   ganz unten in base.css setzt alle Dauern auf null. */
+.app.is-entering .stage { animation: enterMap 1100ms var(--ease) both; }
+.app.is-entering .dock { animation: enterDown 620ms var(--ease) 260ms both; }
+.app.is-entering .tools { animation: enterRight 620ms var(--ease) 380ms both; }
+.app.is-entering .timeline { animation: enterUp 720ms var(--ease) 460ms both; }
+.app.is-entering .credits,
+.app.is-entering .rose { animation: enterFade 900ms var(--ease) 720ms both; }
+
+/* Bewusst nur Deckkraft, kein transform.
+   Ein scale() auf der Bühne verschiebt den Bezugsrahmen der Karte: Leaflet
+   rechnet Koordinaten gegen den unverschobenen Container, der Zeiger trifft
+   aber die verschobene Fläche. Ein Klick landete dann mehrere hundert
+   Kilometer daneben, solange die Animation lief. Die Staffelung der
+   Bedienelemente trägt den Auftritt ohnehin – dort sind transforms harmlos,
+   weil sie nichts Anklickbares auf der Karte verrücken. */
+@keyframes enterMap {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes enterDown {
+  from { opacity: 0; transform: translateY(-.8rem); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes enterRight {
+  from { opacity: 0; transform: translateX(.9rem); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes enterUp {
+  from { opacity: 0; transform: translateY(1.1rem); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes enterFade {
+  from { opacity: 0; }
+}
 
 /* --------------------------------------------------------------- Karte */
 
@@ -126,11 +167,55 @@
   transition: color var(--dur) var(--ease), background var(--dur) var(--ease),
               transform var(--dur) var(--ease);
 }
-.dock__mark { border-radius: 50%; }
-.dock__mark:hover { transform: rotate(-12deg); }
+/* Titelmarke statt anonymem Knopf.
+   Vorher stand oben links ein Globussymbol ohne Namen – die Seite sagte
+   nirgends, was sie ist. Jetzt trägt sie ihren Titel, in gesperrten
+   Versalien wie auf der Kartusche eines Kupferstichs. Die Marke hüpft beim
+   Zeigen nicht, sie hellt nur auf: Ein Titel, der springt, wirkt billig. */
+.dock__mark {
+  width: auto;
+  border-radius: var(--r-lg);
+  padding: 0 .95rem 0 .6rem;
+  gap: .62rem;
+  grid-auto-flow: column;
+  align-items: center;
+  justify-content: start;
+}
+.dock__mark svg { flex: none; }
+.dock__wordmark {
+  display: grid;
+  gap: .08rem;
+  text-align: left;
+  line-height: 1.05;
+  white-space: nowrap;
+}
+.dock__wordmark b {
+  font-family: var(--font-display);
+  font-size: .93rem;
+  font-weight: 500;
+  letter-spacing: .105em;
+  text-transform: uppercase;
+  color: var(--ink-strong);
+  transition: color var(--dur) var(--ease);
+}
+.dock__wordmark i {
+  font-style: normal;
+  font-size: .58rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.dock__mark:hover .dock__wordmark b { color: var(--gold); }
+.dock__mark:hover .dock__grid { fill: var(--gold-soft); }
 .dock__btn:hover { color: var(--ink-strong); transform: translateY(-1px); }
 .dock__disc { fill: var(--surface-3); }
-.dock__grid { fill: var(--gold); }
+.dock__grid { fill: var(--gold); transition: fill var(--dur) var(--ease); }
+
+/* Auf schmalen Geräten hat der Titel keinen Platz – dort bleibt das Zeichen. */
+@media (max-width: 680px) {
+  .dock__mark { width: 2.5rem; padding: 0; border-radius: 50%; }
+  .dock__wordmark { display: none; }
+}
 
 /* Ausklappbare Suche */
 .dock__searchwrap {
@@ -246,38 +331,49 @@
 
 /* --------------------------------------------------------- Werkzeuge */
 
+/* Eine Säule statt sieben schwebender Kacheln.
+   Vorher stand rechts eine Kette einzelner Knöpfe, jeder mit eigenem Rahmen,
+   eigenem Schatten und eigener Glasfläche – sieben Objekte für eine Aufgabe.
+   Jetzt ist es ein Gehäuse mit Trennstrichen darin, in derselben Sprache wie
+   Konsole und Detailtafel. */
 .tools {
   position: absolute;
   z-index: 500;
   top: calc(.9rem + env(safe-area-inset-top, 0px));
   right: calc(.9rem + var(--safe-r));
   display: grid;
-  gap: .4rem;
+  gap: .1rem;
   justify-items: center;
+  padding: .3rem;
+  border-radius: var(--r-lg);
+  background: color-mix(in srgb, var(--surface-solid) 82%, transparent);
+  border: 1px solid var(--hairline);
+  box-shadow:
+    var(--shadow-1),
+    inset 0 1px 0 color-mix(in srgb, var(--gold) 16%, transparent);
+  backdrop-filter: blur(22px) saturate(150%);
+  -webkit-backdrop-filter: blur(22px) saturate(150%);
 }
 
 .tool {
-  width: 2.5rem; height: 2.5rem;
+  width: 2.3rem; height: 2.3rem;
   display: grid; place-items: center;
-  border-radius: var(--r-md);
+  border-radius: var(--r-sm);
   color: var(--ink-muted);
-  background: var(--surface);
-  border: 1px solid var(--hairline);
-  box-shadow: var(--shadow-1);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-  transition: color var(--dur) var(--ease), background var(--dur) var(--ease),
-              transform var(--dur) var(--ease);
+  background: none;
+  border: 0;
+  box-shadow: none;
+  transition: color var(--dur) var(--ease), background var(--dur) var(--ease);
 }
-.tool:hover { color: var(--ink-strong); transform: translateY(-1px); }
-.tool:active { transform: translateY(0); }
-.tool[aria-pressed="true"] { color: var(--gold); border-color: var(--hairline-strong); }
+.tool:hover { color: var(--ink-strong); background: var(--surface-3); }
+.tool:active { background: var(--surface-2); }
+.tool[aria-pressed="true"] { color: var(--gold); background: var(--surface-2); }
 
 .tools__sep {
-  width: 1.4rem;
+  width: 1.5rem;
   height: 1px;
-  background: var(--hairline-strong);
-  margin: .15rem 0;
+  background: var(--hairline);
+  margin: .22rem 0;
 }
 
 /* ----------------------------------------------------------- Popover */
@@ -461,16 +557,52 @@
 
 /* --------------------------------------------------- Maßstab/Quellen */
 
+/* Maßstab und Quellen standen unten links – genau dort, wo jetzt die
+   schwebende Konsole liegt. Sie ziehen deshalb über die Konsole hinauf. */
 .credits {
   position: absolute;
   z-index: 500;
-  left: calc(1rem + var(--safe-l));
-  bottom: .8rem;
+  left: calc(1.35rem + var(--safe-l));
+  bottom: calc(var(--console-h, 9rem) + 1.6rem + var(--safe-b));
   display: flex;
   align-items: center;
   gap: .9rem;
   font-size: .7rem;
   color: var(--ink-faint);
+  text-shadow: 0 1px 3px var(--label-halo);
+  transition: bottom var(--dur) var(--ease);
+}
+
+/* ------------------------------------------------------------ Windrose */
+
+.rose {
+  position: absolute;
+  z-index: 480;
+  right: calc(1.4rem + var(--safe-r));
+  bottom: calc(var(--console-h, 9rem) + 1.5rem + var(--safe-b));
+  width: clamp(58px, 6vw, 82px);
+  height: auto;
+  pointer-events: none;
+  opacity: .5;
+  transition: opacity var(--dur) var(--ease), bottom var(--dur) var(--ease);
+  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, .55));
+}
+[data-theme="parchment"] .rose { opacity: .58; filter: none; }
+@media (max-width: 900px) { .rose { display: none; } }
+
+.rose__ring circle { fill: none; stroke: var(--hairline-strong); stroke-width: 1; }
+.rose__ticks line { stroke: var(--ink-faint); stroke-width: 1; }
+.rose__minor { fill: none; stroke: var(--hairline-strong); stroke-width: 1; }
+.rose__dark { fill: var(--ink-faint); opacity: .85; }
+.rose__light { fill: var(--gold); opacity: .9; }
+.rose__hub { fill: none; stroke: var(--gold); stroke-width: 1.2; }
+.rose__n {
+  fill: var(--gold);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-anchor: middle;
 }
 .credits__link {
   color: inherit;

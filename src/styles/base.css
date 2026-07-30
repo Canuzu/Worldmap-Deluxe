@@ -45,11 +45,21 @@ html, body {
 [data-theme="night"] {
   color-scheme: dark;
 
-  --ocean-1: #060b12;
-  --ocean-2: #0b1622;
-  --ocean-3: #102437;
-  --land: #2e3c4a;
-  --land-edge: #4a6076;
+  /* Das Meer ist nicht schwarz, sondern sehr dunkles Tiefblau mit einem Stich
+     ins Grüne – dieselbe Entscheidung, die jeder gedruckte Atlas trifft. Auf
+     reinem Schwarz wirkt jede Landfarbe grell; auf Tiefblau trägt sie. */
+  --ocean-1: #050a11;
+  --ocean-2: #08131f;
+  --ocean-3: #0f2438;
+  --land: #35404c;
+  --land-edge: #56718c;
+  /* Lichtkante entlang der Küste – der Ersatz für die immer feineren
+     Parallellinien, mit denen Kupferstecher Untiefen angedeutet haben. */
+  --coast-glow: #4f9fd8;
+  --coast-glow-alpha: .85;
+  --coast-glow-blur: 9px;
+  --coast-rim: #a8d8f7;
+  --coast-rim-alpha: .5;
 
   --ink: #e9eff5;
   --ink-strong: #ffffff;
@@ -75,7 +85,7 @@ html, body {
   --border-line-soft: rgba(228, 240, 252, .22);
   --label-ink: #f2f7fb;
   --label-halo: rgba(4, 9, 16, .92);
-  --fill-alpha: .58;
+  --fill-alpha: .74;
   --grat: rgba(140, 180, 220, .1);
   --river: rgba(96, 160, 205, .5);
 }
@@ -85,11 +95,18 @@ html, body {
 [data-theme="parchment"] {
   color-scheme: light;
 
-  --ocean-1: #cadde5;
-  --ocean-2: #b6cfda;
-  --ocean-3: #a3c2d1;
-  --land: #eadfc6;
-  --land-edge: #9c8560;
+  --ocean-1: #cfe0e7;
+  --ocean-2: #bcd4de;
+  --ocean-3: #a8c6d4;
+  --land: #ece2ca;
+  --land-edge: #8d7550;
+  /* Auf Papier ist der Saum kein Licht, sondern Tinte: ein aufgetragener
+     Wasserton, der zur offenen See hin verläuft. */
+  --coast-glow: #5f92b4;
+  --coast-glow-alpha: .95;
+  --coast-glow-blur: 8px;
+  --coast-rim: #40728f;
+  --coast-rim-alpha: .6;
 
   --ink: #2f2618;
   --ink-strong: #17120a;
@@ -115,7 +132,7 @@ html, body {
   --border-line-soft: rgba(70, 52, 26, .26);
   --label-ink: #241c0e;
   --label-halo: rgba(252, 248, 238, .94);
-  --fill-alpha: .52;
+  --fill-alpha: .62;
   --grat: rgba(90, 70, 40, .12);
   --river: rgba(60, 120, 160, .55);
 }
@@ -203,6 +220,9 @@ a {
 
 /* -------------------------------------------------------- Ladeschirm */
 
+/* Der Ladeschirm ist das Titelblatt. Er zeigt nicht, dass etwas lädt – das
+   sieht man am Balken –, sondern wovon dieses Kartenwerk handelt. Darum das
+   feine Gradnetz im Hintergrund: der Karton, bevor die Karte darauf kommt. */
 .boot {
   position: fixed;
   inset: 0;
@@ -210,13 +230,35 @@ a {
   display: grid;
   place-items: center;
   background:
-    radial-gradient(120% 90% at 50% 0%, var(--ocean-3), transparent 60%),
+    /* Gradnetz, 44 px – dieselbe Teilung, die die Karte später zeigt */
+    repeating-linear-gradient(0deg, var(--grat) 0 1px, transparent 1px 44px),
+    repeating-linear-gradient(90deg, var(--grat) 0 1px, transparent 1px 44px),
+    radial-gradient(120% 90% at 50% -10%, var(--ocean-3), transparent 62%),
     var(--ocean-1);
-  transition: opacity 500ms var(--ease), visibility 500ms;
+  transition: opacity 620ms var(--ease), visibility 620ms;
 }
 .boot[hidden] { display: grid; opacity: 0; visibility: hidden; pointer-events: none; }
 
-.boot__inner { text-align: center; width: min(88vw, 24rem); }
+/* Eine Vignette legt sich über das Gradnetz, damit es zum Rand hin verschwindet
+   und nicht wie ein Raster über der Schrift steht. */
+.boot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(75% 60% at 50% 46%, transparent 20%, var(--ocean-1) 100%);
+  pointer-events: none;
+}
+
+.boot__inner { text-align: center; width: min(88vw, 26rem); position: relative; z-index: 1; }
+
+.boot__eyebrow {
+  margin: 0 0 .55rem;
+  font-size: .62rem;
+  letter-spacing: .34em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: .85;
+}
 
 .boot__globe {
   width: 74px; height: 74px;
@@ -245,30 +287,46 @@ a {
 
 .boot__title {
   font-family: var(--font-display);
-  font-size: 1.9rem;
+  /* Gesperrte Versalien: die Schriftbehandlung des Titelblatts, nicht die
+     einer Kopfzeile. Auf Kupferstichen steht der Werktitel immer so. */
+  font-size: clamp(1.6rem, 4.6vw, 2.5rem);
   font-weight: 500;
-  letter-spacing: .01em;
+  letter-spacing: .13em;
+  text-transform: uppercase;
   color: var(--ink-strong);
+  text-shadow: 0 2px 30px color-mix(in srgb, var(--gold) 26%, transparent);
 }
 .boot__sub {
-  margin: .25rem 0 1.9rem;
-  font-size: .82rem;
-  letter-spacing: .22em;
+  margin: .5rem 0 2.1rem;
+  font-size: .74rem;
+  letter-spacing: .3em;
   text-transform: uppercase;
   color: var(--ink-faint);
 }
+/* Eine Haarlinie mit einem laufenden Strich darauf – kein Fortschrittsbalken
+   mit Rundungen. Das Bild ist der Kartenrand, nicht die Ladeanzeige. */
 .boot__bar {
-  height: 3px;
-  border-radius: 99px;
-  background: var(--surface-3);
-  overflow: hidden;
+  height: 1px;
+  background: var(--hairline);
+  position: relative;
 }
+.boot__bar::before,
+.boot__bar::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  width: 1px;
+  height: 7px;
+  background: var(--hairline-strong);
+}
+.boot__bar::before { left: 0; }
+.boot__bar::after { right: 0; }
 .boot__bar i {
   display: block;
   height: 100%;
   width: 4%;
-  border-radius: 99px;
-  background: linear-gradient(90deg, var(--gold), var(--gold-soft));
+  background: linear-gradient(90deg, transparent, var(--gold) 40%, var(--gold-soft));
+  box-shadow: 0 0 10px color-mix(in srgb, var(--gold) 60%, transparent);
   transition: width 320ms var(--ease);
 }
 .boot__status {

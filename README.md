@@ -14,7 +14,7 @@ Religion, Bevölkerung, Wirtschaft, Wendepunkte und Nachbarn.
 
 ![Pergament: die Welt 1279](docs/screenshot-pergament.png)
 
-<sup>Pergament – Nordwesteuropa 1600; die Küstenlinien folgen Natural Earth 1:10 Mio.</sup>
+<sup>Pergament – Europa 1600; die Küstenlinien folgen Natural Earth 1:10 Mio.</sup>
 
 ## Was der Atlas kann
 
@@ -40,6 +40,39 @@ Die Karte kommt **ohne Kacheldienst** aus: Küstenlinien, Seen, Flüsse und
 historische Grenzen werden als Vektoren gezeichnet. Der Atlas läuft damit
 vollständig eigenständig und ohne Verbindung zu Drittanbietern – die einzige
 optionale Ausnahme sind die abschaltbaren Wikipedia-Auszüge.
+
+## Wie die Karte aussieht, und warum
+
+Der Atlas soll wie eine gestochene Tafel wirken, nicht wie ein Kartendienst.
+Fünf Entscheidungen tragen das:
+
+**Der Küstensaum.** Zwei Linienebenen liegen über dem Meer, beide
+weichgezeichnet: eine breite für die Tiefe, eine schmale für die Kante.
+Zusammen ergeben sie den Verlauf, den Kupferstecher mit immer feineren
+Parallellinien um jede Küste gelegt haben. Nichts sonst verändert das
+Kartenbild so stark. Der Saum liegt zur Hälfte auf dem Land, deshalb laufen
+Breite und Deckung mit der Zoomstufe zurück – im Weltmaßstab umreißt er die
+Kontinente, in der Nahsicht bleibt nur die Kante.
+
+**Antiqua auf der Karte.** Länder tragen im gedruckten Atlas seit
+Jahrhunderten eine Serifenschrift, und große Namen werden nicht fett gesetzt,
+sondern gesperrt. Beides macht der Atlas jetzt auch.
+
+**Ein Rückhalt statt einer Kontur.** Beschriftungen bekommen einen weichen
+Schatten und eine schmale Kontur statt einer einzigen dicken – bei einer
+Antiqua liefen die Serifen sonst zu.
+
+**Schwebende Instrumente.** Zeitleiste, Detailtafel und Werkzeugsäule sind
+gerundete Tafeln mit haarfeiner Kante und einem Lichtstrich oben, mit Abstand
+zum Bildrand. Vorher war die Zeitleiste ein durchgehendes Band, das die Karte
+unten abschnitt wie eine Fußzeile.
+
+**Ein gedämpftes Epochenband.** Fünfzehn vollgesättigte Farbblöcke stritten
+mit der Karte um Aufmerksamkeit. Jetzt ist nur die Epoche hell, in der man
+gerade steht.
+
+Dazu Titelmarke und Windrose: Die Seite sagt, was sie ist, und dass hier ein
+Kartenwerk liegt.
 
 ## Wie die Umrisse zustande kommen
 
