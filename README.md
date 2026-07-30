@@ -74,6 +74,15 @@ gerade steht.
 Dazu Titelmarke und Windrose: Die Seite sagt, was sie ist, und dass hier ein
 Kartenwerk liegt.
 
+**Und ein Prüfwerkzeug dafür.** „Teils verschoben“ ist von Hand kaum zu
+finden: Es sind fünf Fenstergrößen mal sechs Zustände, und die Fehler zeigen
+sich nur in bestimmten Kombinationen. `npm run check:layout` fährt alle
+dreißig ab und meldet Überschneidungen und Überläufe. Gefunden wurden damit
+ein Ebenenmenü, das bei **jeder** üblichen Fenstergröße unten aus dem Bild
+lief, ein Schlachtenfenster auf der Quellenzeile und eine Detailtafel, die
+auf dem Telefon die Werkzeugsäule halb abdeckte. Gemeldet wird nur, was
+stört – eine höher liegende, deckende Fläche darf verdecken.
+
 ## Wie die Umrisse zustande kommen
 
 Historische Grenzdatensätze bringen ihre eigenen, meist groben Küstenlinien
@@ -159,6 +168,7 @@ npm run build:data    # quantisiert, schreibt public/data/ (~20 s)
 npm run build:knowledge
 npm run check:data    # Abdeckung der Wissensbasis je Zeitschnitt
 npm run check:staaten # zählt alle 195 Staaten in den Gegenwartsjahren nach
+npm run check:layout  # Oberfläche in 5 Fenstergrößen × 6 Zuständen (braucht `npm run dev`)
 ```
 
 `build-data.mjs` erzeugt die Meeresebene aus Natural Earth, berechnet für jedes

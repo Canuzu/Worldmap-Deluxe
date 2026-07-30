@@ -48,7 +48,7 @@
 
 .timeline__head {
   display: grid;
-  grid-template-columns: auto 1fr auto auto;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
   align-items: center;
   gap: 1.2rem;
   margin-bottom: .45rem;
@@ -125,6 +125,10 @@
   color: var(--era-color, var(--gold));
   font-weight: 600;
   white-space: nowrap;
+  /* Ohne das lief „REVOLUTIONEN & NATIONALSTAATEN“ auf schmalen Geräten
+     über den Rand der Konsole hinaus. */
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .year__title {
   font-size: .84rem;
@@ -326,10 +330,42 @@
 
 /* --------------------------------------------------------- Kompakt */
 
+/* Auf schmalen Geräten hatte die Kopfzeile vier Spalten für eine Breite von
+   drei Fingern: Jahreszahl und Epochenname liefen über den Rand, die Zahlen
+   zur Zeitschicht drängten sich daneben, und der Faltknopf rutschte allein in
+   eine zweite Zeile. Jetzt bleiben Wiedergabe und Jahr; alles Weitere weicht,
+   und der Faltknopf sitzt fest in der Ecke. */
 @media (max-width: 720px) {
-  .timeline__head { grid-template-columns: auto 1fr; gap: .7rem; }
+  .timeline { padding: .6rem .8rem .45rem; border-radius: var(--r-lg); }
+  .timeline__head {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: .6rem;
+    padding-right: 1.9rem;
+  }
   .timeline__stats { display: none; }
-  .track__eras i b { font-size: .55rem; }
+  .timeline__controls { gap: .1rem; }
+  .tbtn { width: 1.9rem; height: 1.9rem; }
+  .tbtn--play { width: 2.25rem; height: 2.25rem; }
+  .tbtn--fold {
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+    margin: 0;
+    width: 1.7rem;
+    height: 1.7rem;
+  }
+  .year { font-size: 1.3rem; }
+  .year__era { font-size: .58rem; letter-spacing: .12em; }
+  .year__title { font-size: .74rem; }
+  .track__eras i b { font-size: .52rem; letter-spacing: .08em; }
+  .track__scale i { font-size: .58rem; }
+}
+
+/* Ganz schmal reicht der Platz nicht mehr für Jahr und Titel nebeneinander –
+   der Titel rutscht unter die Jahreszahl. */
+@media (max-width: 480px) {
+  .timeline__readout { display: grid; gap: .1rem; align-items: start; }
+  .year { font-size: 1.45rem; }
 }
 
 /* Herkunftszeichen: markiert Zeitschnitte, die nicht unverändert aus dem

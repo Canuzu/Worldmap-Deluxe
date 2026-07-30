@@ -28,11 +28,7 @@
   from { transform: translateX(calc(100% + 1rem)); opacity: 0; }
 }
 
-/* Auf schmalen Geräten braucht die Tafel die ganze Breite – dort ist der
-   Rahmen Verschwendung. */
-@media (max-width: 760px) {
-  .panel { margin: 0; border-radius: 0; border: 0; border-left: 1px solid var(--hairline); }
-}
+
 
 .panel__close {
   position: absolute;
@@ -384,28 +380,37 @@
 
 /* ---------------------------------------------------------- Kompakt */
 
+/* Ab hier bekommt die Tafel keine eigene Spalte mehr, sondern legt sich über
+   die Karte. Der schwebende Rahmen entfällt: Auf einem schmalen Gerät ist
+   Rand verschenkte Fläche, und eine halb aufliegende Tafel schneidet die
+   Werkzeugsäule an. Sie deckt deshalb vollständig ab, was sie überlagert. */
 @media (max-width: 900px) {
-  .app { grid-template-columns: 1fr; grid-template-areas: "stage" "time"; }
+  .app { grid-template-columns: 1fr; grid-template-areas: "stage"; }
   .panel {
     position: absolute;
     z-index: 700;
-    top: 0; right: 0; bottom: 0;
+    inset: 0 0 0 auto;
     width: min(24rem, 100%);
+    margin: 0;
+    border: 0;
+    border-left: 1px solid var(--hairline);
+    border-radius: 0;
+    box-shadow: -14px 0 44px rgba(0, 0, 0, .34);
     animation: slideIn 260ms var(--ease);
   }
 }
 
 @media (max-width: 560px) {
+  /* Ganzflächig statt als Bodenblatt: Ein Blatt über 68 % der Höhe verdeckte
+     Zeitleiste und Maßstab, ließ aber die Werkzeugsäule halb sichtbar
+     darüberstehen – das sah nach Fehler aus, nicht nach Absicht. */
   .panel {
-    top: auto;
-    height: 68vh;
+    inset: 0;
     width: 100%;
     border-left: 0;
-    border-top: 1px solid var(--hairline);
-    border-radius: var(--r-xl) var(--r-xl) 0 0;
     animation: slideUp 260ms var(--ease);
   }
-  @keyframes slideUp { from { transform: translateY(100%); } }
+  @keyframes slideUp { from { transform: translateY(2rem); opacity: 0; } }
   .brand { width: calc(100vw - 5rem); }
   .brand__text span { display: none; }
 }

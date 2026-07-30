@@ -14,7 +14,8 @@
     "test": "node scripts/smoke.mjs",
     "check:zeit": "node scripts/check-anachronisms.mjs",
     "check:besatzung": "node scripts/check-besatzung.mjs",
-    "check:staaten": "node scripts/check-staaten.mjs"
+    "check:staaten": "node scripts/check-staaten.mjs",
+    "check:layout": "node scripts/check-layout.mjs"
   },
   "repository": {
     "type": "git",

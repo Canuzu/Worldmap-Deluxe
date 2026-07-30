@@ -426,6 +426,41 @@ async function main() {
    * Zeilen die Jahresangabe braucht – ein fester Abstand wäre in der Hälfte
    * der Fälle falsch. Gemessen ist er immer richtig.
    */
+  /**
+   * Die Karte über jede Größenänderung ihrer Bühne unterrichten.
+   *
+   * Leaflet merkt nur Fenstergrößen. Öffnet oder schließt sich die
+   * Detailtafel, wird die Bühne schmaler oder breiter, ohne dass ein
+   * resize-Ereignis fällt – die Karte rechnet dann weiter mit der alten
+   * Breite. Sichtbar wurde das beim Klicken: Nach dem Schließen der Tafel
+   * landete ein Klick um die halbe Tafelbreite daneben, weil Bildpunkt und
+   * Koordinate nicht mehr zusammenpassten.
+   *
+   * pan: false, damit der Ausschnitt beim Anpassen stehen bleibt statt
+   * nachzurutschen.
+   */
+  function watchStageSize() {
+    if (!('ResizeObserver' in window)) return;
+    const buehne = document.querySelector('.stage');
+    let angefordert = false;
+    let zuletzt = '';
+    new ResizeObserver((eintraege) => {
+      // Nur bei echter Änderung: Ein ResizeObserver meldet auch, wenn sich nur
+      // die Nachkommastelle bewegt, und invalidateSize zeichnet die ganze
+      // Karte neu.
+      const r = eintraege[0].contentRect;
+      const jetzt = `${Math.round(r.width)}x${Math.round(r.height)}`;
+      if (jetzt === zuletzt) return;
+      zuletzt = jetzt;
+      if (angefordert) return;
+      angefordert = true;
+      requestAnimationFrame(() => {
+        angefordert = false;
+        atlas.map.invalidateSize({ pan: false, animate: false });
+      });
+    }).observe(buehne);
+  }
+
   function watchConsoleHeight() {
     const konsole = $('timeline');
     const setzen = () => {
@@ -535,7 +570,20 @@ async function main() {
 
   function commitSearch(name) {
     closeSearch();
-    selectPolity(name, { zoom: true });
+    // Erst zeichnen lassen, dann rechnen.
+    //
+    // selectPolity fliegt die Karte an und baut die Detailtafel auf – das ist
+    // ein Arbeitsblock von rund einer Viertelsekunde. Lief er direkt hinter
+    // closeSearch, kam der Browser vorher nicht zum Zeichnen: Das Suchfeld
+    // blieb sichtbar stehen und klappte erst nach dem Flug zu, so als hinge
+    // die Bedienung.
+    //
+    // Zwei Bildschritte, nicht einer: Der erste läuft noch VOR dem Zeichnen
+    // des nächsten Bildes. Erst der zweite liegt sicher dahinter – dann ist
+    // das Zuklappen angelaufen und überdauert den Arbeitsblock.
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => selectPolity(name, { zoom: true }));
+    });
   }
 
   searchInput.addEventListener('input', () => runSearch(searchInput.value));
@@ -913,6 +961,7 @@ async function main() {
   updateScale();
   drawRoseTicks();
   watchConsoleHeight();
+  watchStageSize();
 
   if (hash.selected && state.epoch?.byName.has(hash.selected)) {
     selectPolity(hash.selected);

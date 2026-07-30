@@ -235,8 +235,13 @@
   font-family: inherit;
   opacity: 0;
   pointer-events: none;
-  transition: width var(--dur) var(--ease), opacity var(--dur) var(--ease),
-              padding var(--dur) var(--ease);
+  /* Kein Übergang im geschlossenen Zustand – und das ist die Absicht.
+     Eine Überblendung wird von der Zielregel gesteuert: Beim Aufklappen gilt
+     die Regel unten, das Feld gleitet auf. Beim Zuklappen gilt diese hier,
+     das Feld ist sofort weg. Genau so soll es sich anfühlen; vorher stand ein
+     unsichtbares, aber 300 px breites Feld noch eine Fünftelsekunde lang über
+     der Karte und fing Zeigerereignisse ab. */
+  transition: none;
 }
 .dock__searchwrap input::placeholder { color: var(--ink-faint); }
 .dock__searchwrap input::-webkit-search-cancel-button { display: none; }
@@ -261,6 +266,8 @@
   padding: 0 .2rem;
   opacity: 1;
   pointer-events: auto;
+  transition: width var(--dur) var(--ease), opacity var(--dur) var(--ease),
+              padding var(--dur) var(--ease);
 }
 .dock__searchwrap.is-open .dock__btn--clear { display: grid; }
 
@@ -378,15 +385,40 @@
 
 /* ----------------------------------------------------------- Popover */
 
+/* Aufklappmenüs hängen an der Werkzeugsäule.
+   Das Ebenenmenü war rund 890 px hoch und lief damit bei JEDER üblichen
+   Fenstergröße unten aus dem Bild – über die Zeitleiste, über die Windrose,
+   über den Bildrand hinaus. Es bekommt jetzt eine Höhe, die sich aus dem
+   Fenster ergibt, und scrollt darin. Die Konsole zieht dabei ihre gemessene
+   Höhe ab, damit nichts unter ihr verschwindet. */
 .popover {
   position: absolute;
   z-index: 520;
   top: calc(1rem + env(safe-area-inset-top, 0px));
-  right: calc(3.9rem + var(--safe-r));
+  right: calc(4.6rem + var(--safe-r));
   width: 16.5rem;
+  max-height: calc(100vh - var(--console-h, 9rem) - 3.6rem - env(safe-area-inset-top, 0px));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--hairline-strong) transparent;
   padding: .85rem .95rem 1rem;
   transform-origin: top right;
   animation: pop var(--dur) var(--ease);
+}
+.popover::-webkit-scrollbar { width: 8px; }
+.popover::-webkit-scrollbar-thumb {
+  background: var(--hairline-strong);
+  border-radius: 99px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+/* Ein an der Kante abgeschnittener Satz sieht nach Fehler aus. Der Verlauf
+   sagt: Hier geht es weiter. Das zusätzliche Polster darunter sorgt dafür,
+   dass am Ende der Liste nichts im Verlauf verschwindet. */
+.popover {
+  mask-image: linear-gradient(180deg, #000 calc(100% - 1.4rem), transparent 100%);
+  padding-bottom: 2.2rem;
 }
 .popover[hidden] { display: none; }
 @keyframes pop {
@@ -413,6 +445,12 @@
   grid-template-columns: 1fr 1fr;
   gap: .3rem;
 }
+/* Die Spaltenzahl folgt der Zahl der Knöpfe, nicht einer festen Vorgabe:
+   Die Kartengrundlage hat drei und stand sonst als 2 + 1 mit halb leerer
+   Zeile da; die Einfärbung hat vier und braucht die Breite für „Gemeinwesen“.
+   Eine automatische Aufteilung schnitt dieses Wort ab. */
+#basemaps { grid-template-columns: repeat(3, 1fr); }
+#basemaps button { padding-inline: .2rem; font-size: .74rem; }
 .segmented button {
   padding: .42rem .3rem;
   font-size: .78rem;
@@ -568,9 +606,13 @@
   align-items: center;
   gap: .9rem;
   font-size: .7rem;
-  color: var(--ink-faint);
-  text-shadow: 0 1px 3px var(--label-halo);
-  transition: bottom var(--dur) var(--ease);
+  color: var(--ink-muted);
+  padding: .3rem .7rem;
+  border-radius: 99px;
+  background: color-mix(in srgb, var(--surface-solid) 62%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: bottom var(--dur) var(--ease), opacity var(--dur) var(--ease);
 }
 
 /* ------------------------------------------------------------ Windrose */
@@ -588,6 +630,10 @@
   filter: drop-shadow(0 1px 4px rgba(0, 0, 0, .55));
 }
 [data-theme="parchment"] .rose { opacity: .58; filter: none; }
+/* Ein aufgeklapptes Menü reicht bis in die Ecke, in der die Windrose steht.
+   Sie ist Zierrat und weicht – umgekehrt wäre es falsch. */
+.stage:has(.popover:not([hidden])) .rose,
+.stage:has(.battles:not([hidden])) .rose { opacity: 0; }
 @media (max-width: 900px) { .rose { display: none; } }
 
 .rose__ring circle { fill: none; stroke: var(--hairline-strong); stroke-width: 1; }
@@ -716,13 +762,17 @@
 
 /* Eine Schlacht braucht Platz zum Mitlesen, aber die Karte muss frei
    bleiben: Das Fenster sitzt links unten und lässt die Mitte offen. */
+/* Das Schlachtenfenster gehört unter seinen Knopf, nicht in die andere Ecke.
+   Vorher stand es unten links – dort, wo Maßstab und Quellenzeile liegen, mit
+   denen es sich bei jeder Fenstergröße überschnitt. Ein Fenster erscheint da,
+   wo man es geöffnet hat: unter der Kopfleiste. */
 .battles {
   position: absolute;
   z-index: 520;
   left: calc(.9rem + var(--safe-l));
-  bottom: calc(9.5rem + var(--safe-b));
+  top: calc(4.1rem + env(safe-area-inset-top, 0px));
   width: min(23rem, calc(100vw - 2rem));
-  max-height: min(62vh, 34rem);
+  max-height: calc(100vh - var(--console-h, 9rem) - 7.8rem - env(safe-area-inset-top, 0px));
   display: flex;
   flex-direction: column;
   padding: .85rem;
@@ -852,8 +902,41 @@
   box-shadow: 0 1px 6px rgba(0, 0, 0, .45);
 }
 
+/* Auf schmalen Geräten spannen Aufklappmenüs und Schlachtenfenster über die
+   ganze Breite unter der Kopfleiste. Rechts angeschlagen ragten sie über den
+   Rand hinaus oder deckten die Kopfleiste zu. */
+/* Auf schmalen Geräten sind Aufklappmenüs Blätter über der Konsole, keine
+   Fahnen an der Werkzeugsäule. Rechts angeschlagen ragten sie über den Rand,
+   unter der Kopfleiste deckten sie die halbe Karte samt Werkzeugen zu. Von
+   unten kommend liegen sie da, wo der Daumen ist, und lassen den oberen Teil
+   der Karte frei. */
 @media (max-width: 720px) {
-  .battles { bottom: calc(8rem + var(--safe-b)); max-height: 50vh; }
+  .popover,
+  .battles {
+    left: calc(.7rem + var(--safe-l));
+    right: calc(.7rem + var(--safe-r));
+    width: auto;
+    top: auto;
+    bottom: calc(var(--console-h, 9rem) + 1rem + var(--safe-b));
+    max-height: min(58vh, calc(100vh - var(--console-h, 9rem) - 6rem));
+    border-radius: var(--r-xl);
+    transform-origin: bottom center;
+    animation: sheetUp var(--dur) var(--ease);
+  }
+  @keyframes sheetUp {
+    from { opacity: 0; transform: translateY(.75rem); }
+  }
+
+  /* Die Säule bleibt einspaltig: Zwei Spalten ergaben bei ungerader Zahl von
+     Knöpfen eine ausgefranste Kante mit halb leeren Zeilen. Die Blätter
+     kommen jetzt von unten und liegen ihr ohnehin nicht mehr im Weg. */
+  .tools { padding: .25rem; }
+  .tool { width: 2.1rem; height: 2.1rem; }
+
+  /* Maßstab und Quellenzeile liegen dort, wo das Blatt aufliegt. Sie sind
+     Beiwerk und treten zurück, solange etwas geöffnet ist. */
+  .stage:has(.popover:not([hidden])) .credits,
+  .stage:has(.battles:not([hidden])) .credits { opacity: 0; }
 }
 
 /* Waehrend einer Schlacht tritt die Staatenkarte zurueck. Bei diesem Massstab

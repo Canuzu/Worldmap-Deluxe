@@ -185,13 +185,19 @@ a {
 
 /* --------------------------------------------------------- Bausteine */
 
+/* Alle aufliegenden Flächen sprechen dieselbe Sprache: Konsole, Detailtafel,
+   Werkzeugsäule und Menüs. Vorher waren die Menüs mit 82 % Deckung so
+   durchsichtig, dass Kartenbeschriftungen hindurchschienen – sie wirkten wie
+   ein Loch in der Karte statt wie ein Blatt darauf. */
 .card {
-  background: var(--surface);
+  background: color-mix(in srgb, var(--surface-solid) 90%, transparent);
   border: 1px solid var(--hairline);
   border-radius: var(--r-lg);
-  box-shadow: var(--shadow-1);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  box-shadow:
+    var(--shadow-2),
+    inset 0 1px 0 color-mix(in srgb, var(--gold) 18%, transparent);
+  backdrop-filter: blur(26px) saturate(150%);
+  -webkit-backdrop-filter: blur(26px) saturate(150%);
 }
 
 .u-scroll {
