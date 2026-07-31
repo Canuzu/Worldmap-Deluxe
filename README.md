@@ -44,7 +44,7 @@ optionale Ausnahme sind die abschaltbaren Wikipedia-Auszüge.
 ## Wie die Karte aussieht, und warum
 
 Der Atlas soll wie eine gestochene Tafel wirken, nicht wie ein Kartendienst.
-Fünf Entscheidungen tragen das:
+Sechs Entscheidungen tragen das:
 
 **Der Küstensaum.** Zwei Linienebenen liegen über dem Meer, beide
 weichgezeichnet: eine breite für die Tiefe, eine schmale für die Kante.
@@ -53,6 +53,21 @@ Parallellinien um jede Küste gelegt haben. Nichts sonst verändert das
 Kartenbild so stark. Der Saum liegt zur Hälfte auf dem Land, deshalb laufen
 Breite und Deckung mit der Zoomstufe zurück – im Weltmaßstab umreißt er die
 Kontinente, in der Nahsicht bleibt nur die Kante.
+
+**Gerundete Ecken.** Der Ursprungsdatensatz zeichnet viele Gemeinwesen mit
+sehr wenigen Stützpunkten – Bayern 1815 besteht aus knapp fünfzig, jeder Zug
+ist eine gerade Strecke mit einer spitzen Ecke am Ende. Das liest sich wie ein
+Polygonzug, nicht wie eine Grenze. Ein eigenes Zeichenwerk schneidet deshalb
+jede Ecke ab: Die Linie geht ein Stück vor dem Stützpunkt weg, kommt ein Stück
+danach wieder an, dazwischen liegt eine Kurve mit dem Stützpunkt als Griff.
+
+Der Radius wächst mit der Länge der angrenzenden Strecken und ist auf deren
+Hälfte begrenzt. Dadurch bleibt die Geometrie unangetastet: Dicht gezeichnete
+Küsten und lange gerade Grenzen ändern sich nicht, weil dort die Begrenzung
+greift – nur grobe, spitze Ecken werden weich. Fläche, Randlinie, Schraffur
+und Auswahl entstehen aus demselben Pfad und können nicht auseinanderlaufen;
+für die SVG-Ebene der Auswahl gibt es dieselbe Rundung ein zweites Mal, aber
+denselben Code nur einmal.
 
 **Antiqua auf der Karte.** Länder tragen im gedruckten Atlas seit
 Jahrhunderten eine Serifenschrift, und große Namen werden nicht fett gesetzt,

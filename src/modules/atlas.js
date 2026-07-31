@@ -54,6 +54,163 @@ const PANES = {
  */
 const PLACE_FROM_ZOOM = [3, 3.6, 4.4, 5.2, 6, 6.6, 7.4, 8.2];
 
+/**
+ * Eckenradius der Grenzflächen in Bildpunkten.
+ *
+ * Der Ursprungsdatensatz zeichnet viele Gemeinwesen mit sehr wenigen
+ * Stützpunkten – Bayern 1815 besteht aus knapp fünfzig, jeder Zug ist eine
+ * gerade Strecke mit einer spitzen Ecke am Ende. Das liest sich wie ein
+ * Polygonzug, nicht wie eine Grenze.
+ *
+ * Der Radius ist nicht fest, sondern wächst mit der Länge der angrenzenden
+ * Strecken: Eine Ecke zwischen zwei zweihundert Bildpunkte langen Zügen
+ * verträgt eine weite Rundung, eine zwischen zwei kurzen nicht. Nach oben
+ * begrenzt ihn die halbe Streckenlänge – dadurch kann keine Ecke über die
+ * Nachbarecke hinaus abgeschnitten werden und keine Landzunge verschwinden.
+ */
+const ECKENRADIUS = 9;
+const ECKENANTEIL = 0.22;
+
+/**
+ * Zeichenwerk mit gerundeten Ecken.
+ *
+ * Leaflet verbindet Stützpunkte mit `lineTo` – jede Ecke bleibt spitz, egal
+ * wie die Linienenden gesetzt sind, weil `lineJoin` nur die Außenkante der
+ * Strichbreite betrifft und nichts an der Fläche darunter ändert.
+ *
+ * Hier wird stattdessen jede Ecke abgeschnitten: An jedem Stützpunkt geht die
+ * Linie ein Stück vorher weg und kommt ein Stück später wieder an, dazwischen
+ * liegt eine quadratische Kurve mit dem Stützpunkt als Griff. Der Radius ist
+ * auf die halbe Länge der beiden angrenzenden Strecken begrenzt – dadurch
+ * bleiben dicht gezeichnete Küsten und lange gerade Grenzen (der 49. Breiten-
+ * grad etwa) unverändert, und nur die groben, spitzen Ecken werden weich.
+ *
+ * Fläche und Randlinie entstehen aus demselben Pfad, können also nicht
+ * auseinanderlaufen.
+ */
+const SmoothCanvas = L.Canvas.extend({
+  _updatePoly(layer, closed) {
+    if (!this._drawing) return;
+    const parts = layer._parts;
+    if (!parts.length) return;
+
+    const ctx = this._ctx;
+    const r = this.options.eckenradius ?? ECKENRADIUS;
+    ctx.beginPath();
+    for (const punkte of parts) {
+      zeichnePfad(ctx, punkte, closed, r);
+      if (closed) ctx.closePath();
+    }
+    this._fillStroke(ctx, layer);
+  },
+});
+
+/** Einen Linienzug mit gerundeten Ecken in den Zeichenweg legen. */
+function zeichnePfad(ctx, p, closed, radius) {
+  const n = p.length;
+  if (n < 3 || radius <= 0) {
+    // Zu wenige Punkte zum Runden – gerade Verbindung, wie gehabt.
+    for (let i = 0; i < n; i++) ctx[i === 0 ? 'moveTo' : 'lineTo'](p[i].x, p[i].y);
+    return;
+  }
+
+  // Bei offenen Linien bleiben Anfang und Ende scharf, sonst wanderten die
+  // Endpunkte einer Grenze oder eines Flusses vom Ort weg.
+  const von = closed ? 0 : 1;
+  const bis = closed ? n : n - 1;
+  let begonnen = false;
+
+  // Bewusst ohne Zwischenobjekte und ohne Math.hypot: Diese Schleife läuft im
+  // schwersten Zeitschnitt über hunderttausend Punkte, mehrmals je Bild.
+  // Math.sqrt auf der Quadratsumme ist dort messbar schneller, und jede
+  // eingesparte Objektanlage entlastet die Speicherbereinigung.
+  for (let i = von; i < bis; i++) {
+    const cur = p[i];
+    const vor = p[(i - 1 + n) % n];
+    const nach = p[(i + 1) % n];
+    const cx = cur.x;
+    const cy = cur.y;
+
+    const ax = vor.x - cx;
+    const ay = vor.y - cy;
+    const bx = nach.x - cx;
+    const by = nach.y - cy;
+    const la = Math.sqrt(ax * ax + ay * ay);
+    const lb = Math.sqrt(bx * bx + by * by);
+
+    // Doppelte Punkte kommen im Ursprungsdatensatz vor; sie hätten keine
+    // Richtung und ergäben NaN.
+    if (la < 1e-6 || lb < 1e-6) {
+      if (begonnen) ctx.lineTo(cx, cy);
+      else { ctx.moveTo(cx, cy); begonnen = true; }
+      continue;
+    }
+
+    const kurz = la < lb ? la : lb;
+    let s = radius > kurz * ECKENANTEIL ? radius : kurz * ECKENANTEIL;
+    if (s > kurz / 2) s = kurz / 2;
+
+    const fa = s / la;
+    const fb = s / lb;
+    const ax1 = cx + ax * fa;
+    const ay1 = cy + ay * fa;
+
+    if (!begonnen) {
+      if (closed) ctx.moveTo(ax1, ay1);
+      else { ctx.moveTo(p[0].x, p[0].y); ctx.lineTo(ax1, ay1); }
+      begonnen = true;
+    } else {
+      ctx.lineTo(ax1, ay1);
+    }
+    ctx.quadraticCurveTo(cx, cy, cx + bx * fb, cy + by * fb);
+  }
+
+  if (!closed) ctx.lineTo(p[n - 1].x, p[n - 1].y);
+}
+
+/** Zeichenwerk mit gerundeten Ecken erzeugen. */
+function smoothCanvas(options) {
+  return new SmoothCanvas(options);
+}
+
+/**
+ * Dasselbe für SVG.
+ *
+ * Die Auswahl-Hervorhebung liegt in einer eigenen SVG-Ebene, weil dort ein
+ * weicher Schein möglich ist. Ohne dieselbe Rundung stünde ihr Umriss an jeder
+ * spitzen Ecke ein Stück über der Fläche hervor, die er hervorheben soll.
+ *
+ * `zeichnePfad` schreibt in ein Ziel mit moveTo/lineTo/quadraticCurveTo – eine
+ * Zeichenfläche erfüllt das, und diese Ablage tut es auch. So gibt es die
+ * Eckenrundung genau einmal im Quelltext, nicht zweimal.
+ */
+const pfadAblage = {
+  teile: [],
+  moveTo(x, y) { this.teile.push(`M${round(x)} ${round(y)}`); },
+  lineTo(x, y) { this.teile.push(`L${round(x)} ${round(y)}`); },
+  quadraticCurveTo(cx, cy, x, y) {
+    this.teile.push(`Q${round(cx)} ${round(cy)} ${round(x)} ${round(y)}`);
+  },
+};
+const round = (v) => Math.round(v * 10) / 10;
+
+const SmoothSvg = L.SVG.extend({
+  _updatePoly(layer, closed) {
+    const r = this.options.eckenradius ?? ECKENRADIUS;
+    pfadAblage.teile = [];
+    for (const punkte of layer._parts) {
+      if (punkte.length < 2) continue;
+      zeichnePfad(pfadAblage, punkte, closed, r);
+      if (closed) pfadAblage.teile.push('z');
+    }
+    this._setPath(layer, pfadAblage.teile.join('') || 'M0 0');
+  },
+});
+
+function smoothSvg(options) {
+  return new SmoothSvg(options);
+}
+
 const HOME = { center: [26, 12], zoom: 2.4 };
 
 /**
@@ -260,7 +417,7 @@ export class AtlasMap {
 
     this.highlightLayer = L.geoJSON(null, {
       pane: 'highlight',
-      renderer: L.svg({ pane: 'highlight', padding: .4 }),
+      renderer: smoothSvg({ pane: 'highlight', padding: .4 }),
       interactive: false,
       className: 'sel-shape',
     }).addTo(this.map);
@@ -270,7 +427,7 @@ export class AtlasMap {
     this.slots = ['polityA', 'polityB'].map((pane) => ({
       pane,
       el: this.map.getPane(pane),
-      renderer: L.canvas({ pane, padding: .35 }),
+      renderer: smoothCanvas({ pane, padding: .35 }),
       layer: null,
       halo: null,
       occupation: null,
