@@ -11,16 +11,45 @@ import { esc, areaText, rangeText, yearShort, initials, num } from './format.js'
 import { PRECISION_LABELS } from './palette.js';
 import { lookupArticle } from './wikipedia.js';
 
+/**
+ * Kurzform eines Herrschernamens für die Regierungsfolge.
+ *
+ * „Friedrich Wilhelm III.“ passt nicht in eine Schaltfläche von vier Zeichen
+ * Breite. Ordnungszahl und Rufname reichen zum Wiedererkennen; der volle Name
+ * steht im Hinweistext.
+ */
+function kurzName(name) {
+  const teile = name.split(' ');
+  if (teile.length === 1) return name;
+  // Die Ordnungszahl ist das Unterscheidende: „Ludwig XIV.“ und „Ludwig XVI.“
+  // trennt sonst nichts mehr.
+  const ordnung = teile.find((t) => /^[IVXLC]+\.?$/.test(t));
+  if (ordnung) return `${teile[0]} ${ordnung}`;
+  // Bindewörter am Ende abschneiden: „Philipp von“ liest sich wie ein Fehler,
+  // „Philipp“ nicht.
+  const zwei = teile.slice(0, 2);
+  if (/^(von|van|de|del|der|und|of|the|ibn|bin)$/i.test(zwei[1])) return zwei[0];
+  const kurz = zwei.join(' ');
+  return kurz.length <= 16 ? kurz : zwei[0];
+}
+
+/** Jahreszahl ohne „n. Chr.“, mit „v.“ für die Zeit davor. */
+function jahrKurz(jahr) {
+  if (jahr == null) return '';
+  return jahr < 0 ? `${-jahr} v.` : String(jahr);
+}
+
 const ICON_INFO = '<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" fill="currentColor"/></svg>';
 const ICON_LINK = '<svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M14 3h7v7h-2V6.4l-8.3 8.3-1.4-1.4L17.6 5H14V3zM5 5h5v2H7v10h10v-3h2v5H5V5z" fill="currentColor"/></svg>';
 
 export class DetailPanel {
-  constructor(dom, { data, atlas, onSelect, onFocus, isWikiEnabled }) {
+  constructor(dom, { data, atlas, onSelect, onFocus, onYear, isWikiEnabled }) {
     this.dom = dom;
     this.data = data;
     this.atlas = atlas;
     this.onSelect = onSelect;
     this.onFocus = onFocus;
+    this.onYear = onYear ?? (() => {});
     this.isWikiEnabled = isWikiEnabled;
     this.current = null;
     this._abort = null;
@@ -34,7 +63,12 @@ export class DetailPanel {
         return;
       }
       const focus = event.target.closest('[data-focus]');
-      if (focus) this.onFocus(focus.dataset.focus);
+      if (focus) { this.onFocus(focus.dataset.focus); return; }
+      // Ein Klick auf einen Herrscher springt in seine Regierungszeit. Die
+      // Karte wandert mit – so lässt sich eine Dynastie durchblättern und
+      // zusehen, wie sich die Grenzen unter ihr verschieben.
+      const jahr = event.target.closest('[data-jahr]');
+      if (jahr) this.onYear(Number(jahr.dataset.jahr));
     });
   }
 
@@ -51,15 +85,28 @@ export class DetailPanel {
    * @param {string} name    Name aus dem Kartendatensatz
    * @param {object} epoch   vorbereiteter Zeitschnitt
    */
-  show(name, epoch) {
+  /**
+   * @param {string} name    Gemeinwesen
+   * @param {object} epoch   geladener Zeitschnitt
+   * @param {number} [jahr]  am Regler gewähltes Jahr
+   *
+   * Das gewählte Jahr ist nicht dasselbe wie das des Kartenstands: Der Regler
+   * läuft jahresgenau, die Karte kennt nur 62 Stände. Für die Grenzen zählt
+   * der Kartenstand, für den Herrscher das gewählte Jahr – sonst bliebe
+   * zwischen 1815 und 1913 derselbe Name stehen, obwohl der Regler ein
+   * Jahrhundert weitergelaufen ist. Wo beides auseinanderfällt, sagt die
+   * Kopfzeile es bereits.
+   */
+  show(name, epoch, jahr) {
     const entry = epoch.byName.get(name);
     if (!entry) return;
 
     this._abort?.abort();
     this._abort = new AbortController();
     this.current = name;
+    this.currentYear = jahr ?? epoch.meta.year;
 
-    const year = epoch.meta.year;
+    const year = this.currentYear;
     const info = this.data.lookup(name, year);
     const german = this.data.germanName(name);
     const color = this.atlas.colorOfPolity(name);
@@ -80,7 +127,7 @@ export class DetailPanel {
     return `
       <article class="pnl" style="--accent:${esc(color)}">
         ${this._hero({ name, german, entry, epoch, year, base, period, color })}
-        ${this._ruler(period, year)}
+        ${this._ruler(period, year, info?.ruler)}
         ${this._facts({ entry, period, base, epoch })}
         ${this._prose(period, base)}
         ${this._events(period, base, year)}
@@ -137,30 +184,86 @@ export class DetailPanel {
     return 'Gemeinwesen';
   }
 
-  _ruler(period, year) {
-    if (!period?.ruler) return '';
-    const seal = period.rulerImage
-      ? `<img src="${esc(period.rulerImage)}" alt="" loading="lazy">`
-      : esc(initials(period.ruler));
+  /**
+   * Herrschaft zum gewählten Jahr.
+   *
+   * Führt der Zeitabschnitt eine Herrscherliste, steht hier der zum Jahr
+   * passende Name – und darunter die Regierungsfolge zum Durchblättern. Ohne
+   * Liste bleibt es beim einzelnen Namen des Abschnitts.
+   */
+  _ruler(period, year, ruler) {
+    if (!ruler?.name) return '';
+
+    const seal = ruler.image
+      ? `<img src="${esc(ruler.image)}" alt="" loading="lazy">`
+      : esc(initials(ruler.name));
 
     const bits = [];
-    if (period.rulerTitle) bits.push(esc(period.rulerTitle));
-    if (period.dynasty) bits.push(esc(period.dynasty));
+    if (ruler.title) bits.push(esc(ruler.title));
+    if (ruler.house ?? period?.dynastie ?? period?.dynasty) {
+      bits.push(esc(ruler.house ?? period.dynastie ?? period.dynasty));
+    }
 
-    const reign = period.reign ?? rangeText(period.from, period.to);
+    const reign = ruler.reign ?? rangeText(ruler.from, ruler.to);
+    const liste = period?.rulers ?? [];
 
     return `
       <section class="sec">
-        <h3 class="sec__h">Herrschaft um ${esc(yearShort(year))}</h3>
-        <div class="ruler">
+        <h3 class="sec__h">Herrschaft ${esc(yearShort(year))}</h3>
+        <div class="ruler${ruler.nachwirkend || ruler.vorzeitig ? ' ruler--luecke' : ''}">
           <div class="ruler__seal">${seal}</div>
           <div>
-            <div class="ruler__name">${esc(period.ruler)}</div>
+            ${ruler.nachwirkend ? '<div class="ruler__gap">Für dieses Jahr ist niemand verzeichnet – zuletzt regierte</div>' : ''}
+            ${ruler.vorzeitig ? '<div class="ruler__gap">Die Liste beginnt später – der erste verzeichnete Name lautet</div>' : ''}
+            <div class="ruler__name">${esc(ruler.name)}</div>
             ${bits.length ? `<div class="ruler__role">${bits.join(' · ')}</div>` : ''}
             ${reign ? `<div class="ruler__reign">Regierungszeit ${esc(reign)}</div>` : ''}
+            ${ruler.note ? `<div class="ruler__note">${esc(ruler.note)}</div>` : ''}
           </div>
         </div>
+        ${this._rulerLine(liste, ruler, year)}
       </section>
+    `;
+  }
+
+  /**
+   * Die Regierungsfolge als anklickbare Reihe.
+   *
+   * Bewusst nicht die ganze Liste: Bei den Osmanen wären das 36 Namen. Gezeigt
+   * werden der aktuelle und je zwei davor und danach – wer weiter will, klickt
+   * sich Schritt für Schritt durch, und die Karte geht jedes Mal mit.
+   */
+  _rulerLine(liste, aktuell, year) {
+    if (liste.length < 2) return '';
+    const i = liste.findIndex((r) => r === aktuell || (r.name === aktuell.name && r.from === aktuell.from));
+    const von = Math.max(0, Math.min(i - 2, liste.length - 5));
+    const bis = Math.min(liste.length, von + 5);
+    const teil = liste.slice(von, bis);
+
+    const knoepfe = teil.map((r) => {
+      const ist = r.name === aktuell.name && r.from === aktuell.from;
+      // In die Mitte der Regierungszeit springen, nicht auf das erste Jahr:
+      // Ein Herrschaftsantritt fällt oft mit einem Krieg zusammen, und die
+      // Karte des Antrittsjahres zeigt dann den Zustand davor.
+      const ziel = r.to != null && r.from != null
+        ? Math.round((r.from + r.to) / 2)
+        : (r.from ?? year);
+      return `<button class="reign${ist ? ' is-now' : ''}" type="button" data-jahr="${ziel}"
+        title="${esc(r.name)} · ${esc(rangeText(r.from, r.to))}">
+        <b>${esc(r.short ?? kurzName(r.name))}</b>
+        <i>${esc(jahrKurz(r.from))}</i>
+      </button>`;
+    }).join('');
+
+    const mehrDavor = von > 0;
+    const mehrDanach = bis < liste.length;
+    return `
+      <div class="reigns" role="group" aria-label="Regierungsfolge">
+        ${mehrDavor ? '<span class="reigns__more" aria-hidden="true">…</span>' : ''}
+        ${knoepfe}
+        ${mehrDanach ? '<span class="reigns__more" aria-hidden="true">…</span>' : ''}
+      </div>
+      <p class="reigns__hint">${liste.length} Herrschende hinterlegt – ein Klick springt in ihre Zeit.</p>
     `;
   }
 

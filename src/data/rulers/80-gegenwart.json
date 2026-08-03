@@ -1,0 +1,136 @@
+{
+  "_hinweis": "Regierungsfolgen von Staaten, die erst in der jüngeren Zeitgeschichte entstanden oder ihren Namen gewechselt haben.",
+
+  "Israel": [
+    { "from": 1948, "to": 1954, "name": "David Ben-Gurion", "short": "Ben-Gurion", "title": "Ministerpräsident", "note": "Ruft am 14. Mai 1948 den Staat aus." },
+    { "from": 1954, "to": 1955, "name": "Mosche Scharet", "short": "Scharet", "title": "Ministerpräsident" },
+    { "from": 1955, "to": 1963, "name": "David Ben-Gurion", "short": "Ben-Gurion", "title": "Ministerpräsident", "note": "1956 Sueskrieg." },
+    { "from": 1963, "to": 1969, "name": "Levi Eschkol", "short": "Eschkol", "title": "Ministerpräsident", "note": "1967 Sechstagekrieg; Besetzung von Westjordanland, Gaza, Sinai und Golan." },
+    { "from": 1969, "to": 1974, "name": "Golda Meir", "short": "Meir", "title": "Ministerpräsidentin", "note": "1973 Jom-Kippur-Krieg." },
+    { "from": 1974, "to": 1977, "name": "Jitzchak Rabin", "short": "Rabin", "title": "Ministerpräsident" },
+    { "from": 1977, "to": 1983, "name": "Menachem Begin", "short": "Begin", "title": "Ministerpräsident", "note": "1979 Friedensvertrag mit Ägypten." },
+    { "from": 1983, "to": 1984, "name": "Jitzchak Schamir", "short": "Schamir", "title": "Ministerpräsident" },
+    { "from": 1984, "to": 1986, "name": "Schimon Peres", "short": "Peres", "title": "Ministerpräsident" },
+    { "from": 1986, "to": 1992, "name": "Jitzchak Schamir", "short": "Schamir", "title": "Ministerpräsident", "note": "1987 beginnt die Erste Intifada." },
+    { "from": 1992, "to": 1995, "name": "Jitzchak Rabin", "short": "Rabin", "title": "Ministerpräsident", "note": "Oslo-Abkommen; 1995 von einem israelischen Extremisten ermordet." },
+    { "from": 1995, "to": 1996, "name": "Schimon Peres", "short": "Peres", "title": "Ministerpräsident" },
+    { "from": 1996, "to": 1999, "name": "Benjamin Netanjahu", "short": "Netanjahu", "title": "Ministerpräsident" },
+    { "from": 1999, "to": 2001, "name": "Ehud Barak", "short": "Barak", "title": "Ministerpräsident" },
+    { "from": 2001, "to": 2006, "name": "Ariel Scharon", "short": "Scharon", "title": "Ministerpräsident", "note": "2005 Räumung der Siedlungen im Gazastreifen." },
+    { "from": 2006, "to": 2009, "name": "Ehud Olmert", "short": "Olmert", "title": "Ministerpräsident" },
+    { "from": 2009, "to": 2021, "name": "Benjamin Netanjahu", "short": "Netanjahu", "title": "Ministerpräsident" },
+    { "from": 2021, "to": 2022, "name": "Naftali Bennett und Jair Lapid", "short": "Bennett/Lapid", "title": "Ministerpräsidenten" },
+    { "from": 2022, "name": "Benjamin Netanjahu", "short": "Netanjahu", "title": "Ministerpräsident", "note": "Nach dem Überfall der Hamas vom 7. Oktober 2023 Krieg im Gazastreifen." }
+  ],
+
+  "Palestine": [
+    { "from": 1948, "to": 1967, "name": "Jordanische und ägyptische Verwaltung", "short": "Jordanien/Ägypten", "title": "Fremdverwaltung", "note": "Jordanien annektiert das Westjordanland, Ägypten verwaltet den Gazastreifen." },
+    { "from": 1967, "to": 1993, "name": "Israelische Militärverwaltung", "short": "Militärverw.", "title": "Fremdverwaltung", "note": "Die PLO unter Jassir Arafat vertritt die Palästinenser aus dem Exil." },
+    { "from": 1994, "to": 2004, "name": "Jassir Arafat", "short": "Arafat", "title": "Präsident der Autonomiebehörde", "note": "Die Osloer Abkommen schaffen eine Selbstverwaltung ohne Staat." },
+    { "from": 2005, "name": "Mahmud Abbas", "short": "Abbas", "title": "Präsident der Autonomiebehörde", "note": "Seit 2007 ist die Herrschaft geteilt: Fatah im Westjordanland, Hamas in Gaza." }
+  ],
+
+  "Ukraine": [
+    { "from": 1991, "to": 1994, "name": "Leonid Krawtschuk", "short": "Krawtschuk", "title": "Staatspräsident", "note": "Führt die Ukraine in die Unabhängigkeit." },
+    { "from": 1994, "to": 2005, "name": "Leonid Kutschma", "short": "Kutschma", "title": "Staatspräsident" },
+    { "from": 2005, "to": 2010, "name": "Wiktor Juschtschenko", "short": "Juschtschenko", "title": "Staatspräsident", "note": "Nach der Orangen Revolution ins Amt gekommen." },
+    { "from": 2010, "to": 2014, "name": "Wiktor Janukowytsch", "short": "Janukowytsch", "title": "Staatspräsident", "note": "Wird nach den Maidan-Protesten abgesetzt; Russland annektiert die Krim." },
+    { "from": 2014, "to": 2019, "name": "Petro Poroschenko", "short": "Poroschenko", "title": "Staatspräsident" },
+    { "from": 2019, "name": "Wolodymyr Selenskyj", "short": "Selenskyj", "title": "Staatspräsident", "note": "Seit dem russischen Überfall 2022 Kriegspräsident." }
+  ],
+
+  "Türkiye": [
+    { "from": 1923, "to": 1938, "name": "Mustafa Kemal Atatürk", "short": "Atatürk", "title": "Staatspräsident" },
+    { "from": 1938, "to": 1950, "name": "İsmet İnönü", "short": "İnönü", "title": "Staatspräsident" },
+    { "from": 1950, "to": 1960, "name": "Celâl Bayar", "short": "Bayar", "title": "Staatspräsident" },
+    { "from": 1960, "to": 1966, "name": "Cemal Gürsel", "short": "Gürsel", "title": "Staatspräsident" },
+    { "from": 1966, "to": 1973, "name": "Cevdet Sunay", "short": "Sunay", "title": "Staatspräsident" },
+    { "from": 1973, "to": 1980, "name": "Fahri Korutürk", "short": "Korutürk", "title": "Staatspräsident" },
+    { "from": 1980, "to": 1989, "name": "Kenan Evren", "short": "Evren", "title": "Staatspräsident" },
+    { "from": 1989, "to": 1993, "name": "Turgut Özal", "short": "Özal", "title": "Staatspräsident" },
+    { "from": 1993, "to": 2000, "name": "Süleyman Demirel", "short": "Demirel", "title": "Staatspräsident" },
+    { "from": 2000, "to": 2007, "name": "Ahmet Necdet Sezer", "short": "Sezer", "title": "Staatspräsident" },
+    { "from": 2007, "to": 2014, "name": "Abdullah Gül", "short": "Gül", "title": "Staatspräsident" },
+    { "from": 2014, "name": "Recep Tayyip Erdoğan", "short": "Erdoğan", "title": "Staatspräsident", "note": "2017 wird das Land per Referendum zum Präsidialsystem." }
+  ],
+
+  "Serbia": [
+    { "from": 1217, "to": 1228, "name": "Stefan der Erstgekrönte", "short": "Stefan I.", "house": "Nemanjiden" },
+    { "from": 1243, "to": 1276, "name": "Stefan Uroš I.", "short": "Uroš I.", "house": "Nemanjiden" },
+    { "from": 1276, "to": 1282, "name": "Stefan Dragutin", "short": "Dragutin", "house": "Nemanjiden" },
+    { "from": 1282, "to": 1321, "name": "Stefan Uroš II. Milutin", "short": "Milutin", "house": "Nemanjiden", "note": "Silberbergbau macht Serbien reich." },
+    { "from": 1321, "to": 1331, "name": "Stefan Uroš III. Dečanski", "short": "Dečanski", "house": "Nemanjiden" },
+    { "from": 1331, "to": 1355, "name": "Stefan Dušan", "short": "Dušan", "house": "Nemanjiden", "note": "Lässt sich zum Zaren der Serben und Griechen krönen." },
+    { "from": 1355, "to": 1371, "name": "Stefan Uroš V.", "short": "Uroš V.", "house": "Nemanjiden", "note": "Nach Dušans Tod zerfällt das Zarenreich in Teilherrschaften." },
+    { "from": 1371, "to": 1389, "name": "Fürst Lazar", "short": "Lazar", "house": "Lazarević", "note": "Fällt 1389 auf dem Amselfeld." },
+    { "from": 1389, "to": 1427, "name": "Stefan Lazarević", "short": "Lazarević", "house": "Lazarević" },
+    { "from": 1427, "to": 1456, "name": "Đurađ Branković", "short": "Branković", "house": "Branković", "note": "1459 fällt Serbien endgültig an die Osmanen." },
+    { "from": 1878, "to": 1889, "name": "Milan I.", "house": "Obrenović", "note": "1878 wird Serbien international als unabhängig anerkannt." },
+    { "from": 1889, "to": 1903, "name": "Alexander I.", "house": "Obrenović", "note": "Mit seiner Frau im Königsmord von 1903 getötet." },
+    { "from": 1903, "to": 1921, "name": "Peter I.", "house": "Karađorđević" },
+    { "from": 1918, "to": 1941, "name": "Königreich Jugoslawien", "short": "Jugoslawien", "note": "Serbien geht im Königreich der Serben, Kroaten und Slowenen auf." },
+    { "from": 1945, "to": 1980, "name": "Josip Broz Tito", "short": "Tito", "title": "Staatspräsident Jugoslawiens" },
+    { "from": 1989, "to": 2000, "name": "Slobodan Milošević", "short": "Milošević", "title": "Präsident Serbiens, ab 1997 Jugoslawiens", "note": "Die Jugoslawienkriege und der Kosovokrieg fallen in seine Zeit." },
+    { "from": 2000, "to": 2006, "name": "Vojislav Koštunica und Boris Tadić", "short": "Koštunica", "note": "2006 löst sich die Union mit Montenegro auf." },
+    { "from": 2006, "to": 2012, "name": "Boris Tadić", "short": "Tadić", "title": "Staatspräsident", "note": "2008 erklärt sich das Kosovo für unabhängig." },
+    { "from": 2012, "to": 2017, "name": "Tomislav Nikolić", "short": "Nikolić", "title": "Staatspräsident" },
+    { "from": 2017, "name": "Aleksandar Vučić", "short": "Vučić", "title": "Staatspräsident" }
+  ],
+
+  "South Sudan": [
+    { "from": 2011, "name": "Salva Kiir Mayardit", "short": "Salva Kiir", "title": "Staatspräsident", "note": "Von 2013 bis 2020 Bürgerkrieg gegen die Anhänger seines Vizepräsidenten." }
+  ],
+
+  "Kosovo": [
+    { "from": 2008, "to": 2010, "name": "Fatmir Sejdiu", "short": "Sejdiu", "title": "Staatspräsident" },
+    { "from": 2011, "to": 2016, "name": "Atifete Jahjaga", "short": "Jahjaga", "title": "Staatspräsidentin" },
+    { "from": 2016, "to": 2020, "name": "Hashim Thaçi", "short": "Thaçi", "title": "Staatspräsident" },
+    { "from": 2021, "name": "Vjosa Osmani", "short": "Osmani", "title": "Staatspräsidentin" }
+  ],
+
+  "Czechia": [
+    { "from": 1993, "to": 2003, "name": "Václav Havel", "short": "Havel", "title": "Staatspräsident", "note": "Führte schon die Tschechoslowakei aus dem Kommunismus." },
+    { "from": 2003, "to": 2013, "name": "Václav Klaus", "short": "Klaus", "title": "Staatspräsident" },
+    { "from": 2013, "to": 2023, "name": "Miloš Zeman", "short": "Zeman", "title": "Staatspräsident" },
+    { "from": 2023, "name": "Petr Pavel", "short": "Pavel", "title": "Staatspräsident" }
+  ],
+
+  "Azerbaijan": [
+    { "from": 1991, "to": 1992, "name": "Ayaz Mütallibov", "short": "Mütallibov", "title": "Staatspräsident" },
+    { "from": 1992, "to": 1993, "name": "Əbülfəz Elçibəy", "short": "Elçibəy", "title": "Staatspräsident" },
+    { "from": 1993, "to": 2003, "name": "Heydər Əliyev", "short": "H. Əliyev", "title": "Staatspräsident" },
+    { "from": 2003, "name": "İlham Əliyev", "short": "İ. Əliyev", "title": "Staatspräsident", "note": "2023 bringt Aserbaidschan Bergkarabach vollständig unter seine Kontrolle." }
+  ],
+
+  "Armenia": [
+    { "from": -95, "to": -55, "name": "Tigranes der Große", "short": "Tigranes", "house": "Artaxiden", "note": "Armenien reicht kurzzeitig vom Kaspischen bis ans Mittelmeer." },
+    { "from": 287, "to": 330, "name": "Trdat III.", "house": "Arsakiden", "note": "Armenien nimmt als erstes Reich das Christentum als Staatsreligion an." },
+    { "from": 1991, "to": 1998, "name": "Lewon Ter-Petrosjan", "short": "Ter-Petrosjan", "title": "Staatspräsident" },
+    { "from": 1998, "to": 2008, "name": "Robert Kotscharjan", "short": "Kotscharjan", "title": "Staatspräsident" },
+    { "from": 2008, "to": 2018, "name": "Sersch Sargsjan", "short": "Sargsjan", "title": "Staatspräsident" },
+    { "from": 2018, "name": "Nikol Paschinjan", "short": "Paschinjan", "title": "Ministerpräsident", "note": "Nach der Samtenen Revolution; verliert 2020 den Krieg um Bergkarabach." }
+  ],
+
+  "Myanmar": [
+    { "from": 1948, "to": 1962, "name": "U Nu", "title": "Ministerpräsident" },
+    { "from": 1962, "to": 1988, "name": "Ne Win", "short": "Ne Win", "title": "Militärherrscher", "note": "„Burmesischer Weg zum Sozialismus“." },
+    { "from": 1988, "to": 2011, "name": "Militärjunta", "short": "Junta", "title": "SLORC, später SPDC", "note": "Der Wahlsieg der Opposition 1990 wird annulliert; Aung San Suu Kyi steht unter Hausarrest." },
+    { "from": 2011, "to": 2016, "name": "Thein Sein", "short": "Thein Sein", "title": "Staatspräsident", "note": "Vorsichtige Öffnung." },
+    { "from": 2016, "to": 2021, "name": "Aung San Suu Kyi", "short": "Suu Kyi", "title": "Staatsrätin", "note": "2017 vertreibt das Militär Hunderttausende Rohingya." },
+    { "from": 2021, "name": "Min Aung Hlaing", "short": "Min Aung H.", "title": "Oberbefehlshaber", "note": "Putscht gegen die gewählte Regierung; seither Bürgerkrieg." }
+  ],
+
+  "Eswatini": [
+    { "from": 1968, "to": 1982, "name": "Sobhuza II.", "short": "Sobhuza II.", "house": "Dlamini", "note": "Führt das Land in die Unabhängigkeit; über 60 Jahre auf dem Thron." },
+    { "from": 1986, "name": "Mswati III.", "short": "Mswati III.", "house": "Dlamini", "note": "Benennt das Land 2018 von Swasiland in Eswatini um." }
+  ],
+
+  "North Macedonia": [
+    { "from": 1991, "to": 1999, "name": "Kiro Gligorov", "short": "Gligorov", "title": "Staatspräsident" },
+    { "from": 1999, "to": 2004, "name": "Boris Trajkovski", "short": "Trajkovski", "title": "Staatspräsident" },
+    { "from": 2004, "to": 2009, "name": "Branko Crvenkovski", "short": "Crvenkovski", "title": "Staatspräsident" },
+    { "from": 2009, "to": 2019, "name": "Gjorge Ivanov", "short": "Ivanov", "title": "Staatspräsident", "note": "2018 einigt sich das Land mit Griechenland auf den Namen Nordmazedonien." },
+    { "from": 2019, "to": 2024, "name": "Stevo Pendarovski", "short": "Pendarovski", "title": "Staatspräsident" },
+    { "from": 2024, "name": "Gordana Siljanovska-Davkova", "short": "Siljanovska", "title": "Staatspräsidentin" }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "_hinweis": "Regierungsfolgen islamisch geprägter Reiche und afrikanischer Gemeinwesen. Wo eine Liste nur eine Auswahl führt, weist die Tafel für die Zwischenjahre darauf hin.",
+
+  "Umayyad Caliphate": [
+    { "from": 661, "to": 680, "name": "Muawiya I.", "house": "Umayyaden", "note": "Verlegt den Sitz des Kalifats nach Damaskus." },
+    { "from": 680, "to": 683, "name": "Yazid I.", "house": "Umayyaden", "note": "680 fällt Husain bei Kerbela – der Bruch zwischen Sunniten und Schiiten vertieft sich." },
+    { "from": 685, "to": 705, "name": "Abd al-Malik", "house": "Umayyaden", "note": "Arabisch wird Verwaltungssprache; der Felsendom entsteht." },
+    { "from": 705, "to": 715, "name": "al-Walid I.", "house": "Umayyaden", "note": "711 setzen die Heere nach Spanien über." },
+    { "from": 717, "to": 720, "name": "Umar II.", "house": "Umayyaden" },
+    { "from": 724, "to": 743, "name": "Hischam", "house": "Umayyaden", "note": "732 wird der Vorstoß nach Gallien bei Tours und Poitiers gestoppt." },
+    { "from": 744, "to": 750, "name": "Marwan II.", "house": "Umayyaden", "note": "Unterliegt den Abbasiden am Großen Zab." }
+  ],
+
+  "Abbasid Caliphate": [
+    { "from": 750, "to": 754, "name": "as-Saffah", "house": "Abbasiden" },
+    { "from": 754, "to": 775, "name": "al-Mansur", "house": "Abbasiden", "note": "Gründet 762 Bagdad als runde Residenzstadt." },
+    { "from": 786, "to": 809, "name": "Harun ar-Raschid", "house": "Abbasiden", "note": "Tauscht Gesandte mit Karl dem Großen; Vorbild für die Erzählungen aus 1001 Nacht." },
+    { "from": 813, "to": 833, "name": "al-Ma'mun", "house": "Abbasiden", "note": "Fördert die Übersetzung griechischer Wissenschaft ins Arabische." },
+    { "from": 847, "to": 861, "name": "al-Mutawakkil", "house": "Abbasiden" },
+    { "from": 870, "to": 892, "name": "al-Mu’tamid", "short": "al-Mu’tamid", "house": "Abbasiden" },
+    { "from": 892, "to": 902, "name": "al-Mu’tadid", "short": "al-Mu’tadid", "house": "Abbasiden", "note": "Gewinnt noch einmal Boden zurück." },
+    { "from": 908, "to": 932, "name": "al-Muqtadir", "house": "Abbasiden", "note": "Die Provinzen lösen sich faktisch vom Kalifat." },
+    { "from": 946, "to": 1055, "name": "Kalifen unter buyidischer Vormundschaft", "short": "Buyiden", "house": "Abbasiden", "note": "Der Kalif bleibt geistliches Oberhaupt ohne weltliche Macht." },
+    { "from": 1055, "to": 1194, "name": "Kalifen unter seldschukischer Vormundschaft", "short": "Seldschuken", "house": "Abbasiden" },
+    { "from": 1180, "to": 1225, "name": "an-Nasir", "house": "Abbasiden", "note": "Gewinnt noch einmal eigenständigen Handlungsspielraum." },
+    { "from": 1242, "to": 1258, "name": "al-Musta'sim", "house": "Abbasiden", "note": "Letzter Kalif in Bagdad; die Mongolen zerstören die Stadt." }
+  ],
+
+  "Fatimid Caliphate": [
+    { "from": 909, "to": 934, "name": "al-Mahdi", "house": "Fatimiden", "note": "Begründet das schiitische Gegenkalifat in Nordafrika." },
+    { "from": 953, "to": 975, "name": "al-Muizz", "house": "Fatimiden", "note": "Erobert Ägypten und gründet Kairo." },
+    { "from": 996, "to": 1021, "name": "al-Hakim", "house": "Fatimiden" },
+    { "from": 1036, "to": 1094, "name": "al-Mustansir", "house": "Fatimiden", "note": "Sechzig Jahre auf dem Thron; Hungersnöte und Bürgerkriege schwächen das Reich." },
+    { "from": 1094, "to": 1101, "name": "al-Mustali", "short": "al-Mustali", "house": "Fatimiden", "note": "Der Streit um seine Nachfolge spaltet die Ismailiten." },
+    { "from": 1101, "to": 1130, "name": "al-Amir", "short": "al-Amir", "house": "Fatimiden" },
+    { "from": 1130, "to": 1149, "name": "al-Hafiz", "short": "al-Hafiz", "house": "Fatimiden" },
+    { "from": 1149, "to": 1160, "name": "az-Zafir und al-Faiz", "short": "az-Zafir", "house": "Fatimiden" },
+    { "from": 1160, "to": 1171, "name": "al-Adid", "house": "Fatimiden", "note": "Letzter Kalif; Saladin beendet die Dynastie." }
+  ],
+
+  "Caliphate of Córdoba": [
+    { "from": 756, "to": 788, "name": "Abd ar-Rahman I.", "short": "Abd ar-R. I.", "house": "Umayyaden", "note": "Überlebender der Umayyaden gründet in al-Andalus ein eigenes Emirat." },
+    { "from": 822, "to": 852, "name": "Abd ar-Rahman II.", "short": "Abd ar-R. II.", "house": "Umayyaden" },
+    { "from": 912, "to": 961, "name": "Abd ar-Rahman III.", "short": "Abd ar-R. III.", "house": "Umayyaden", "note": "Nimmt 929 den Kalifentitel an; Córdoba wird eine der größten Städte Europas." },
+    { "from": 961, "to": 976, "name": "al-Hakam II.", "house": "Umayyaden", "note": "Seine Bibliothek soll Hunderttausende Bände umfasst haben." },
+    { "from": 976, "to": 1002, "name": "Almansor", "title": "Hadschib – Reichsverweser", "note": "Regiert an Stelle des Kalifen und führt über fünfzig Feldzüge." },
+    { "from": 1009, "to": 1031, "name": "Zerfall in Taifa-Königreiche", "short": "Taifas", "note": "Das Kalifat zerbricht in Dutzende kleiner Fürstentümer." }
+  ],
+
+  "Seljuk Empire": [
+    { "from": 1037, "to": 1063, "name": "Tughrul Beg", "house": "Seldschuken", "note": "Zieht 1055 in Bagdad ein und wird Schutzherr des Kalifen." },
+    { "from": 1063, "to": 1072, "name": "Alp Arslan", "house": "Seldschuken", "note": "Besiegt 1071 bei Manzikert das byzantinische Heer." },
+    { "from": 1072, "to": 1092, "name": "Malik Schah I.", "short": "Malik Schah", "house": "Seldschuken", "note": "Größte Ausdehnung; sein Wesir Nizam al-Mulk baut die Madrasen aus." },
+    { "from": 1094, "to": 1105, "name": "Barkiyaruq", "short": "Barkiyaruq", "house": "Seldschuken", "note": "Bruderkrieg um das Erbe Malik Schahs." },
+    { "from": 1105, "to": 1118, "name": "Muhammad I. Tapar", "short": "Muhammad I.", "house": "Seldschuken" },
+    { "from": 1118, "to": 1157, "name": "Ahmad Sandschar", "short": "Sandschar", "house": "Seldschuken", "note": "Letzter Großsultan; danach nur noch Teilreiche." }
+  ],
+
+  "Mamluk Sultanate": [
+    { "from": 1260, "to": 1277, "name": "Baibars", "house": "Bahri-Mamluken", "note": "Stoppt 1260 bei Ain Dschalut die Mongolen." },
+    { "from": 1279, "to": 1290, "name": "Qalawun", "house": "Bahri-Mamluken" },
+    { "from": 1293, "to": 1341, "name": "an-Nasir Muhammad", "short": "an-Nasir", "house": "Bahri-Mamluken", "note": "In drei Regierungszeiten fast fünfzig Jahre an der Macht." },
+    { "from": 1382, "to": 1399, "name": "Barquq", "house": "Burdschi-Mamluken" },
+    { "from": 1399, "to": 1412, "name": "Faradsch", "short": "Faradsch", "house": "Burdschi-Mamluken", "note": "Timur verwüstet Syrien." },
+    { "from": 1422, "to": 1438, "name": "Barsbay", "short": "Barsbay", "house": "Burdschi-Mamluken", "note": "Erobert Zypern und monopolisiert den Gewürzhandel." },
+    { "from": 1438, "to": 1461, "name": "Jaqmaq und Inal", "short": "Jaqmaq", "house": "Burdschi-Mamluken" },
+    { "from": 1461, "to": 1468, "name": "Khushqadam", "short": "Khushqadam", "house": "Burdschi-Mamluken" },
+    { "from": 1468, "to": 1496, "name": "Qaitbay", "house": "Burdschi-Mamluken", "note": "Baut Kairo und die Festung von Alexandria aus." },
+    { "from": 1496, "to": 1501, "name": "Rasche Thronwechsel", "short": "Thronwechsel", "house": "Burdschi-Mamluken" },
+    { "from": 1501, "to": 1516, "name": "Qansuh al-Ghuri", "short": "al-Ghuri", "house": "Burdschi-Mamluken", "note": "Fällt gegen Selim I.; 1517 wird Ägypten osmanisch." }
+  ],
+
+  "Safavid Empire": [
+    { "from": 1501, "to": 1524, "name": "Ismail I.", "house": "Safawiden", "note": "Macht die Zwölferschia zur Staatsreligion Persiens." },
+    { "from": 1524, "to": 1576, "name": "Tahmasp I.", "house": "Safawiden" },
+    { "from": 1588, "to": 1629, "name": "Abbas I. der Große", "short": "Abbas I.", "house": "Safawiden", "note": "Macht Isfahan zur Hauptstadt – „die Hälfte der Welt“." },
+    { "from": 1642, "to": 1666, "name": "Abbas II.", "house": "Safawiden" },
+    { "from": 1694, "to": 1722, "name": "Sultan Husain", "short": "Husain", "house": "Safawiden", "note": "Afghanische Truppen erobern Isfahan." },
+    { "from": 1736, "to": 1747, "name": "Nadir Schah", "short": "Nadir", "house": "Afschariden", "note": "Beendet die Dynastie und plündert 1739 Delhi." }
+  ],
+
+  "Persia": [
+    { "from": 1789, "to": 1797, "name": "Agha Mohammed Khan", "short": "Agha M.", "house": "Kadscharen", "note": "Begründet die Kadscharen-Dynastie." },
+    { "from": 1797, "to": 1834, "name": "Fath Ali Schah", "short": "Fath Ali", "house": "Kadscharen", "note": "Verliert den Kaukasus an Russland." },
+    { "from": 1848, "to": 1896, "name": "Nasir ad-Din Schah", "short": "Nasir ad-Din", "house": "Kadscharen", "note": "Fast fünfzig Jahre auf dem Thron; erste Eisenbahnen und Telegrafen." },
+    { "from": 1896, "to": 1907, "name": "Mozaffar ad-Din Schah", "short": "Mozaffar", "house": "Kadscharen", "note": "Muss 1906 eine Verfassung zugestehen." },
+    { "from": 1909, "to": 1925, "name": "Ahmad Schah", "short": "Ahmad", "house": "Kadscharen", "note": "Letzter Kadschare; 1925 übernimmt Reza Khan." }
+  ],
+
+  "Iran": [
+    { "from": 1925, "to": 1941, "name": "Reza Schah Pahlavi", "short": "Reza Schah", "house": "Pahlavi", "note": "Modernisierung von oben; 1941 von den Alliierten zum Rücktritt gezwungen." },
+    { "from": 1941, "to": 1979, "name": "Mohammad Reza Pahlavi", "short": "M. R. Pahlavi", "house": "Pahlavi", "note": "1953 stürzt ein Putsch Premier Mossadegh; 1979 vertreibt ihn die Revolution." },
+    { "from": 1979, "to": 1989, "name": "Ajatollah Chomeini", "short": "Chomeini", "title": "Oberster Rechtsgelehrter", "note": "Islamische Republik; achtjähriger Krieg gegen den Irak." },
+    { "from": 1989, "name": "Ali Chamenei", "short": "Chamenei", "title": "Oberster Rechtsgelehrter" }
+  ],
+
+  "Ethiopia": [
+    { "from": 1270, "to": 1285, "name": "Yekuno Amlak", "short": "Yekuno", "house": "Salomonische Dynastie", "note": "Beruft sich auf die Abstammung von Salomo und der Königin von Saba." },
+    { "from": 1299, "to": 1314, "name": "Wedem Arad", "short": "Wedem Arad", "house": "Salomonische Dynastie" },
+    { "from": 1314, "to": 1344, "name": "Amda Seyon I.", "short": "Amda Seyon", "house": "Salomonische Dynastie", "note": "Dehnt das Reich weit nach Süden aus." },
+    { "from": 1382, "to": 1413, "name": "Dawit I.", "short": "Dawit I.", "house": "Salomonische Dynastie" },
+    { "from": 1434, "to": 1468, "name": "Zar'a Ya'qob", "house": "Salomonische Dynastie" },
+    { "from": 1468, "to": 1478, "name": "Baeda Maryam", "short": "Baeda M.", "house": "Salomonische Dynastie" },
+    { "from": 1478, "to": 1494, "name": "Eskender", "short": "Eskender", "house": "Salomonische Dynastie" },
+    { "from": 1494, "to": 1508, "name": "Naod", "short": "Naod", "house": "Salomonische Dynastie" },
+    { "from": 1508, "to": 1540, "name": "Lebna Dengel", "short": "Lebna D.", "house": "Salomonische Dynastie", "note": "Der Einfall Ahmad Grāns bringt das Reich an den Rand des Untergangs." },
+    { "from": 1540, "to": 1559, "name": "Gelawdewos", "house": "Salomonische Dynastie", "note": "Verteidigt das Reich mit portugiesischer Hilfe." },
+    { "from": 1563, "to": 1597, "name": "Sarsa Dengel", "short": "Sarsa D.", "house": "Salomonische Dynastie" },
+    { "from": 1597, "to": 1607, "name": "Yaqob und Za Dengel", "short": "Yaqob", "house": "Salomonische Dynastie" },
+    { "from": 1607, "to": 1632, "name": "Susenyos", "short": "Susenyos", "house": "Salomonische Dynastie", "note": "Sein Übertritt zum Katholizismus löst einen Aufstand aus." },
+    { "from": 1632, "to": 1667, "name": "Fasilides", "house": "Salomonische Dynastie", "note": "Gründet Gonder als Residenz." },
+    { "from": 1682, "to": 1706, "name": "Iyasu I.", "short": "Iyasu I.", "house": "Salomonische Dynastie" },
+    { "from": 1706, "to": 1721, "name": "Tewoflos, Yostos und Dawit III.", "short": "Tewoflos", "house": "Salomonische Dynastie", "note": "Rasche Thronwechsel; die Fürsten gewinnen an Gewicht." },
+    { "from": 1721, "to": 1730, "name": "Bakaffa", "short": "Bakaffa", "house": "Salomonische Dynastie" },
+    { "from": 1769, "to": 1855, "name": "Zeit der Fürsten", "short": "Fürsten", "note": "Der Kaiser ist Symbol, regionale Fürsten regieren." },
+    { "from": 1855, "to": 1868, "name": "Tewodros II.", "house": "Salomonische Dynastie" },
+    { "from": 1872, "to": 1889, "name": "Yohannes IV.", "short": "Yohannes IV.", "house": "Salomonische Dynastie" },
+    { "from": 1889, "to": 1913, "name": "Menelik II.", "short": "Menelik II.", "house": "Salomonische Dynastie", "note": "Besiegt 1896 bei Adua ein italienisches Heer und wahrt die Unabhängigkeit." },
+    { "from": 1913, "to": 1916, "name": "Iyasu V.", "short": "Iyasu V.", "house": "Salomonische Dynastie" },
+    { "from": 1916, "to": 1930, "name": "Zauditu", "short": "Zauditu", "title": "Kaiserin", "house": "Salomonische Dynastie", "note": "Ras Tafari – der spätere Haile Selassie – führt die Regierung." },
+    { "from": 1930, "to": 1974, "name": "Haile Selassie I.", "short": "Haile Selassie", "house": "Salomonische Dynastie", "note": "1936–1941 im Exil, während Italien das Land besetzt hält." },
+    { "from": 1977, "to": 1991, "name": "Mengistu Haile Mariam", "short": "Mengistu", "title": "Vorsitzender des Derg", "note": "Militärregime; Bürgerkrieg und Hungersnöte." },
+    { "from": 1991, "to": 1995, "name": "Übergangsregierung", "short": "Übergang", "note": "Nach dem Sturz des Derg; 1993 wird Eritrea unabhängig." },
+    { "from": 1995, "to": 2012, "name": "Meles Zenawi", "short": "Meles", "title": "Ministerpräsident" },
+    { "from": 2012, "to": 2018, "name": "Hailemariam Desalegn", "short": "Hailemariam", "title": "Ministerpräsident" },
+    { "from": 2018, "name": "Abiy Ahmed", "short": "Abiy", "title": "Ministerpräsident" }
+  ],
+
+  "Morocco": [
+    { "from": 1244, "to": 1465, "name": "Die Meriniden", "short": "Meriniden", "note": "Nach dem Zerfall des Almohadenreichs die beherrschende Dynastie." },
+    { "from": 1472, "to": 1554, "name": "Die Wattasiden", "short": "Wattasiden", "note": "Portugal und Spanien setzen sich an den Küsten fest." },
+    { "from": 1578, "to": 1603, "name": "Ahmad al-Mansur", "short": "al-Mansur", "house": "Saadier", "note": "Erobert Songhai und lässt sich das Gold Westafrikas bringen." },
+    { "from": 1603, "to": 1659, "name": "Zerfall des Saadierreichs", "short": "Zerfall", "note": "Konkurrierende Fürsten in Marrakesch und Fès." },
+    { "from": 1666, "to": 1672, "name": "Mulay Raschid", "short": "M. Raschid", "house": "Alawiden", "note": "Begründet die bis heute regierende Dynastie." },
+    { "from": 1672, "to": 1727, "name": "Mulay Ismail", "short": "Mulay Ismail", "house": "Alawiden", "note": "Baut Meknès aus und hält das Land mit einer schwarzen Garde zusammen." },
+    { "from": 1757, "to": 1790, "name": "Mohammed III.", "short": "Mohammed III.", "house": "Alawiden", "note": "Erkennt 1777 als erster Herrscher die USA an." },
+    { "from": 1792, "to": 1822, "name": "Mulay Sulaiman", "short": "Sulaiman", "house": "Alawiden" },
+    { "from": 1822, "to": 1859, "name": "Abd ar-Rahman", "short": "Abd ar-R.", "house": "Alawiden" },
+    { "from": 1873, "to": 1894, "name": "Hassan I.", "house": "Alawiden" },
+    { "from": 1894, "to": 1908, "name": "Abd al-Aziz", "short": "Abd al-Aziz", "house": "Alawiden" },
+    { "from": 1908, "to": 1912, "name": "Abd al-Hafid", "short": "Abd al-Hafid", "house": "Alawiden", "note": "Muss den Vertrag von Fès unterzeichnen." },
+    { "from": 1912, "to": 1927, "name": "Yusuf", "house": "Alawiden", "note": "1912 wird Marokko französisches Protektorat." },
+    { "from": 1927, "to": 1961, "name": "Mohammed V.", "house": "Alawiden", "note": "Führt das Land 1956 in die Unabhängigkeit." },
+    { "from": 1961, "to": 1999, "name": "Hassan II.", "house": "Alawiden", "note": "1975 marschiert der „Grüne Marsch“ in die Westsahara." },
+    { "from": 1999, "name": "Mohammed VI.", "house": "Alawiden" }
+  ],
+
+  "Saudi Arabia": [
+    { "from": 1932, "to": 1953, "name": "Abd al-Aziz ibn Saud", "short": "Ibn Saud", "house": "Saud", "note": "Vereinigt das Land; 1938 wird Erdöl gefunden." },
+    { "from": 1953, "to": 1964, "name": "Saud", "house": "Saud" },
+    { "from": 1964, "to": 1975, "name": "Faisal", "house": "Saud", "note": "1973 Ölembargo gegen den Westen." },
+    { "from": 1975, "to": 1982, "name": "Chalid", "house": "Saud" },
+    { "from": 1982, "to": 2005, "name": "Fahd", "house": "Saud" },
+    { "from": 2005, "to": 2015, "name": "Abdullah", "house": "Saud" },
+    { "from": 2015, "name": "Salman", "house": "Saud", "note": "Die Regierungsgeschäfte führt Kronprinz Mohammed bin Salman." }
+  ],
+
+  "South Africa": [
+    { "from": 1961, "to": 1966, "name": "Hendrik Verwoerd", "short": "Verwoerd", "title": "Premierminister", "note": "Gilt als Architekt der Apartheid; 1966 ermordet." },
+    { "from": 1966, "to": 1978, "name": "B. J. Vorster", "short": "Vorster", "title": "Premierminister", "note": "1976 wird der Aufstand in Soweto niedergeschlagen." },
+    { "from": 1978, "to": 1989, "name": "P. W. Botha", "short": "Botha", "title": "Premierminister, ab 1984 Staatspräsident" },
+    { "from": 1989, "to": 1994, "name": "F. W. de Klerk", "short": "de Klerk", "title": "Staatspräsident", "note": "Lässt Mandela frei und beendet die Apartheid." },
+    { "from": 1994, "to": 1999, "name": "Nelson Mandela", "short": "Mandela", "title": "Staatspräsident", "note": "Erster in freien Wahlen gewählter Präsident." },
+    { "from": 1999, "to": 2008, "name": "Thabo Mbeki", "short": "Mbeki", "title": "Staatspräsident" },
+    { "from": 2009, "to": 2018, "name": "Jacob Zuma", "short": "Zuma", "title": "Staatspräsident" },
+    { "from": 2018, "name": "Cyril Ramaphosa", "short": "Ramaphosa", "title": "Staatspräsident" }
+  ],
+
+  "Mali": [
+    { "from": 1235, "to": 1255, "name": "Sundiata Keita", "short": "Sundiata", "house": "Keita", "note": "Gründer des Reiches; sein Epos wird bis heute erzählt." },
+    { "from": 1255, "to": 1270, "name": "Mansa Uli", "short": "Mansa Uli", "house": "Keita" },
+    { "from": 1285, "to": 1300, "name": "Sakura", "short": "Sakura", "note": "Ein früherer Sklave besteigt den Thron." },
+    { "from": 1312, "to": 1337, "name": "Mansa Musa", "short": "Mansa Musa", "house": "Keita", "note": "Seine Pilgerfahrt nach Mekka 1324 drückt den Goldpreis in Kairo für Jahre." },
+    { "from": 1341, "to": 1360, "name": "Mansa Suleyman", "short": "Suleyman", "house": "Keita", "note": "Ibn Battuta besucht den Hof und beschreibt ihn." },
+    { "from": 1374, "to": 1387, "name": "Mansa Musa II.", "short": "Musa II.", "house": "Keita" },
+    { "from": 1400, "to": 1670, "name": "Zerfall unter Songhai-Druck", "short": "Zerfall", "note": "Mali schrumpft auf ein Restreich am oberen Niger." },
+    { "from": 1960, "to": 1968, "name": "Modibo Keïta", "short": "Keïta", "title": "Staatspräsident" },
+    { "from": 1968, "to": 1991, "name": "Moussa Traoré", "short": "Traoré", "title": "Staatspräsident" },
+    { "from": 1992, "to": 2002, "name": "Alpha Oumar Konaré", "short": "Konaré", "title": "Staatspräsident" },
+    { "from": 2002, "to": 2012, "name": "Amadou Toumani Touré", "short": "Touré", "title": "Staatspräsident" },
+    { "from": 2013, "to": 2020, "name": "Ibrahim Boubacar Keïta", "short": "IBK", "title": "Staatspräsident" },
+    { "from": 2021, "name": "Assimi Goïta", "short": "Goïta", "title": "Übergangspräsident nach dem Putsch" }
+  ],
+
+  "Songhai": [
+    { "from": 1464, "to": 1492, "name": "Sonni Ali Ber", "short": "Sonni Ali", "house": "Sonni", "note": "Nimmt Timbuktu und Djenné und begründet die Vormacht am Niger." },
+    { "from": 1493, "to": 1528, "name": "Askia Muhammad I.", "short": "Askia M. I.", "house": "Askia", "note": "Ordnet Verwaltung und Rechtswesen; Timbuktu wird Gelehrtenstadt." },
+    { "from": 1528, "to": 1549, "name": "Askia Musa und Askia Ismail", "short": "Askia Musa", "house": "Askia", "note": "Söhne, die einander vom Thron stoßen." },
+    { "from": 1549, "to": 1582, "name": "Askia Dawud", "short": "Askia Dawud", "house": "Askia" },
+    { "from": 1588, "to": 1591, "name": "Askia Ishaq II.", "short": "Askia Ishaq", "house": "Askia", "note": "Unterliegt 1591 bei Tondibi den marokkanischen Musketen." },
+    { "from": 1591, "to": 1620, "name": "Marokkanische Statthalter", "short": "Marokkaner", "note": "Der Rest des Reiches steht unter der Verwaltung der Paschas von Timbuktu." }
+  ]
+}

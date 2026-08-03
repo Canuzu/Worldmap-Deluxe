@@ -37,13 +37,36 @@ function main() {
     `${Object.keys(names.aliases).length} Schreibvarianten`,
   );
 
+  /* --------------------------------------------------- Herrscherlisten */
+  // Die Listen liegen getrennt von den Steckbriefen: Sie sind lang, sie ändern
+  // sich anders (eine Liste wächst am Ende, ein Steckbrief wird umgeschrieben),
+  // und sie gehören zum Gemeinwesen als ganzem, nicht zu einem Zeitabschnitt.
+  // Der Build schneidet sie hier auf die Abschnitte zu.
+  const rulerDir = path.join(SRC, 'rulers');
+  const rulerLists = {};
+  const rulerFiles = fs.existsSync(rulerDir)
+    ? fs.readdirSync(rulerDir).filter((f) => f.endsWith('.json')).sort()
+    : [];
+  for (const file of rulerFiles) {
+    const chunk = readJSON(path.join(rulerDir, file));
+    for (const [key, liste] of Object.entries(chunk)) {
+      if (key.startsWith('_')) continue;
+      rulerLists[key] = (rulerLists[key] ?? []).concat(liste);
+    }
+  }
+  for (const liste of Object.values(rulerLists)) {
+    liste.sort((a, b) => (a.from ?? 0) - (b.from ?? 0) || (a.to ?? 0) - (b.to ?? 0));
+  }
+
   /* ----------------------------------------------------- Steckbriefe */
   const dir = path.join(SRC, 'knowledge');
   const files = fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => f.endsWith('.json')).sort() : [];
 
   const entries = {};
   const problems = [];
+  const benutzteListen = new Set();
   let periods = 0;
+  let rulers = 0;
 
   for (const file of files) {
     const chunk = readJSON(path.join(dir, file));
@@ -57,9 +80,46 @@ function main() {
         }
       }
       (entry.periods ?? []).sort((a, b) => (a.from ?? 0) - (b.from ?? 0));
+
+      // Jeder Zeitabschnitt bekommt die Herrschenden, deren Regierungszeit ihn
+      // berührt. Wer über eine Abschnittsgrenze hinweg regiert – Karl V. sitzt
+      // 1518 wie 1550 auf dem Thron –, steht in beiden Listen.
+      const liste = rulerLists[key];
+      if (liste) {
+        benutzteListen.add(key);
+        for (const period of entry.periods ?? []) {
+          const von = period.from ?? -Infinity;
+          const bis = period.to ?? Infinity;
+          const treffer = liste.filter((r) => (r.from ?? -Infinity) <= bis && von <= (r.to ?? Infinity));
+          if (treffer.length) {
+            period.rulers = treffer;
+            rulers += treffer.length;
+          }
+        }
+        if (!(entry.periods ?? []).some((p) => p.rulers)) {
+          problems.push(`Herrscherliste "${key}" passt in keinen Zeitabschnitt`);
+        }
+      }
+
       entries[key] = { ...entry, source: file.replace('.json', '') };
     }
     console.log(`  ${file.padEnd(24)} ${Object.keys(chunk).filter((k) => !k.startsWith('_')).length} Einträge`);
+  }
+
+  // Eine Liste ohne Steckbrief läuft ins Leere und fällt sonst nicht auf.
+  for (const key of Object.keys(rulerLists)) {
+    if (!benutzteListen.has(key)) problems.push(`Herrscherliste "${key}" hat keinen Steckbrief`);
+  }
+  // Eine Regierungszeit, die vor der vorigen beginnt und endet, deutet auf
+  // vertauschte Jahreszahlen hin.
+  for (const [key, liste] of Object.entries(rulerLists)) {
+    for (const r of liste) {
+      if (!r.name) problems.push(`${key}: Regierungszeit ohne Namen`);
+      if (r.from == null) problems.push(`${key}: "${r.name}" ohne Anfangsjahr`);
+      if (r.to != null && r.from != null && r.to < r.from) {
+        problems.push(`${key}: "${r.name}" endet (${r.to}) vor dem Anfang (${r.from})`);
+      }
+    }
   }
 
   // Namen, für die es einen Steckbrief gibt, sollten auch übersetzt sein.
@@ -79,12 +139,18 @@ function main() {
         language: 'de',
         entries: Object.keys(entries).length,
         periods,
+        rulerLists: benutzteListen.size,
       },
       entries,
     }),
   );
 
   console.log(`\n› polities.de.json   ${Object.keys(entries).length} Steckbriefe, ${periods} Zeitabschnitte`);
+  console.log(
+    `› Herrscherlisten    ${benutzteListen.size} Gemeinwesen, ` +
+    `${Object.values(rulerLists).reduce((n, l) => n + l.length, 0)} Regierungszeiten ` +
+    `(${rulers} Zuordnungen zu Zeitabschnitten)`,
+  );
 
   if (problems.length) {
     console.log(`\n${problems.length} Hinweis(e):`);

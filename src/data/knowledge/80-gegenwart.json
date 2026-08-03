@@ -433,6 +433,21 @@
     ]
    },
    {
+    "from": 1918,
+    "to": 2005,
+    "ruler": "Jugoslawische Staatsführungen",
+    "rulerTitle": "König, ab 1945 Partei- und Staatsführung",
+    "capital": "Belgrad",
+    "government": "Königreich, ab 1945 sozialistische Bundesrepublik",
+    "religion": "Serbisch-orthodoxes Christentum, daneben Katholiken und Muslime",
+    "languages": ["Serbokroatisch", "Slowenisch", "Mazedonisch", "Albanisch"],
+    "economy": "Landwirtschaft, Schwerindustrie, in den 1960ern Arbeitermitbestimmung",
+    "summary": [
+     "Serbien ist in diesen Jahren kein eigener Staat, sondern Kern eines südslawischen Bundes – erst als Königreich, ab 1945 als sozialistische Föderation unter Tito.",
+     "Mit den Kriegen der 1990er zerfällt Jugoslawien. Was übrig bleibt, heißt ab 2003 nur noch Serbien und Montenegro; 2006 endet auch dieser Verband."
+    ]
+   },
+   {
     "from": 2006,
     "to": null,
     "ruler": "Aleksandar Vučić (seit 2017 als Präsident)",

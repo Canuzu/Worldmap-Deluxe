@@ -1,0 +1,204 @@
+{
+  "_hinweis": "Regierungsfolgen asiatischer Gemeinwesen. Chinesische Kaiser stehen unter ihrem Regierungsdevisen- bzw. Tempelnamen, wie es in der Literatur üblich ist. Wo eine Liste nur eine Auswahl führt, weist die Tafel für die Zwischenjahre darauf hin.",
+
+  "Han Empire": [
+    { "from": -202, "to": -195, "name": "Liu Bang (Han Gaozu)", "short": "Liu Bang", "house": "Westliche Han", "note": "Bauernsohn, der die Qin stürzt und die Dynastie begründet." },
+    { "from": -180, "to": -157, "name": "Kaiser Wen", "house": "Westliche Han", "note": "Sparsame Regierung nach daoistischem Vorbild." },
+    { "from": -157, "to": -141, "name": "Kaiser Jing", "house": "Westliche Han" },
+    { "from": -141, "to": -87, "name": "Han Wudi", "house": "Westliche Han", "note": "Macht den Konfuzianismus zur Staatslehre und öffnet die Seidenstraße." },
+    { "from": -87, "to": -74, "name": "Kaiser Zhao", "house": "Westliche Han" },
+    { "from": -74, "to": -49, "name": "Kaiser Xuan", "house": "Westliche Han" },
+    { "from": -49, "to": -33, "name": "Kaiser Yuan", "house": "Westliche Han" },
+    { "from": -33, "to": -7, "name": "Kaiser Cheng", "house": "Westliche Han" },
+    { "from": -7, "to": -1, "name": "Kaiser Ai", "short": "Ai", "house": "Westliche Han" },
+    { "from": -1, "to": 6, "name": "Kaiser Ping", "short": "Ping", "house": "Westliche Han", "note": "Wang Mang führt als Regent die Geschäfte." },
+    { "from": 9, "to": 23, "name": "Wang Mang", "house": "Xin-Dynastie", "note": "Unterbricht die Han-Herrschaft mit einem Reformexperiment." },
+    { "from": 25, "to": 57, "name": "Guangwu", "house": "Östliche Han", "note": "Stellt die Dynastie wieder her; Hauptstadt wird Luoyang." },
+    { "from": 57, "to": 75, "name": "Kaiser Ming", "house": "Östliche Han", "note": "Der Buddhismus erreicht China." },
+    { "from": 75, "to": 88, "name": "Kaiser Zhang", "house": "Östliche Han" },
+    { "from": 88, "to": 106, "name": "Kaiser He", "house": "Östliche Han" },
+    { "from": 146, "to": 168, "name": "Kaiser Huan", "house": "Östliche Han", "note": "Hofeunuchen und Beamtenfamilien ringen um die Macht." },
+    { "from": 168, "to": 189, "name": "Kaiser Ling", "house": "Östliche Han", "note": "184 erhebt sich der Aufstand der Gelben Turbane." },
+    { "from": 189, "to": 220, "name": "Kaiser Xian", "house": "Östliche Han", "note": "Letzter Han-Kaiser; das Reich zerfällt in die Drei Reiche." }
+  ],
+
+  "Tang Empire": [
+    { "from": 618, "to": 626, "name": "Gaozu", "house": "Tang", "note": "Gründer der Dynastie." },
+    { "from": 626, "to": 649, "name": "Taizong", "house": "Tang", "note": "Gilt als Musterherrscher; das Beamtenexamen wird ausgebaut." },
+    { "from": 649, "to": 683, "name": "Gaozong", "house": "Tang", "note": "Größte Ausdehnung des Reiches nach Zentralasien." },
+    { "from": 683, "to": 690, "name": "Zhongzong und Ruizong", "short": "Zhongzong", "house": "Tang", "note": "Kurze Regierungen unter der Vormundschaft ihrer Mutter." },
+    { "from": 690, "to": 705, "name": "Wu Zetian", "house": "Zhou", "note": "Die einzige Frau, die in China als Kaiserin aus eigenem Recht regiert." },
+    { "from": 705, "to": 712, "name": "Zhongzong und Ruizong", "short": "Zhongzong", "house": "Tang", "note": "Rückkehr der Tang auf den Thron." },
+    { "from": 712, "to": 756, "name": "Xuanzong", "house": "Tang", "note": "Glanzzeit der Dichtung; die Rebellion des An Lushan bricht sie ab." },
+    { "from": 756, "to": 762, "name": "Suzong", "house": "Tang" },
+    { "from": 762, "to": 779, "name": "Daizong", "house": "Tang" },
+    { "from": 779, "to": 805, "name": "Dezong", "house": "Tang" },
+    { "from": 805, "to": 820, "name": "Xianzong", "house": "Tang", "note": "Bringt die Militärgouverneure noch einmal unter Kontrolle." },
+    { "from": 820, "to": 840, "name": "Muzong, Jingzong und Wenzong", "short": "Muzong", "house": "Tang" },
+    { "from": 840, "to": 846, "name": "Wuzong", "house": "Tang", "note": "Lässt die buddhistischen Klöster verfolgen." },
+    { "from": 846, "to": 859, "name": "Xuānzong", "house": "Tang" },
+    { "from": 859, "to": 888, "name": "Yizong und Xizong", "short": "Yizong", "house": "Tang", "note": "Der Aufstand des Huang Chao verwüstet den Süden." },
+    { "from": 888, "to": 904, "name": "Zhaozong", "house": "Tang" },
+    { "from": 904, "to": 907, "name": "Aidi", "house": "Tang", "note": "Letzter Kaiser; es folgen die Fünf Dynastien." }
+  ],
+
+  "Song Empire": [
+    { "from": 960, "to": 976, "name": "Taizu", "house": "Nördliche Song", "note": "Feldherr, der das zersplitterte Reich wieder zusammenführt." },
+    { "from": 976, "to": 997, "name": "Taizong", "house": "Nördliche Song" },
+    { "from": 997, "to": 1022, "name": "Zhenzong", "house": "Nördliche Song", "note": "Erkauft mit dem Vertrag von Chanyuan Frieden mit den Liao." },
+    { "from": 1022, "to": 1063, "name": "Renzong", "house": "Nördliche Song" },
+    { "from": 1063, "to": 1067, "name": "Yingzong", "house": "Nördliche Song" },
+    { "from": 1067, "to": 1085, "name": "Shenzong", "house": "Nördliche Song", "note": "Die Reformen Wang Anshis spalten den Beamtenapparat." },
+    { "from": 1085, "to": 1100, "name": "Zhezong", "house": "Nördliche Song" },
+    { "from": 1100, "to": 1126, "name": "Huizong", "house": "Nördliche Song", "note": "Maler und Kalligraph auf dem Thron; die Jurchen nehmen ihn gefangen." },
+    { "from": 1126, "to": 1127, "name": "Qinzong", "house": "Nördliche Song", "note": "Der Norden geht an die Jin verloren." },
+    { "from": 1127, "to": 1162, "name": "Gaozong", "house": "Südliche Song", "note": "Verlegt den Hof nach Hangzhou." },
+    { "from": 1162, "to": 1189, "name": "Xiaozong", "house": "Südliche Song" },
+    { "from": 1189, "to": 1224, "name": "Guangzong und Ningzong", "short": "Guangzong", "house": "Südliche Song" },
+    { "from": 1224, "to": 1264, "name": "Lizong", "house": "Südliche Song", "note": "Die Mongolen zerstören die Jin und rücken nach Süden vor." },
+    { "from": 1264, "to": 1274, "name": "Duzong", "house": "Südliche Song" },
+    { "from": 1274, "to": 1279, "name": "Die letzten Kindkaiser", "short": "Kindkaiser", "house": "Südliche Song", "note": "1279 endet die Dynastie in der Seeschlacht von Yamen." }
+  ],
+
+  "Ming Empire": [
+    { "from": 1368, "to": 1398, "name": "Hongwu", "house": "Ming", "note": "Bettelmönch und Rebellenführer, der die Mongolen vertreibt." },
+    { "from": 1398, "to": 1402, "name": "Jianwen", "house": "Ming" },
+    { "from": 1402, "to": 1424, "name": "Yongle", "house": "Ming", "note": "Verlegt die Hauptstadt nach Peking und schickt Zheng He auf sieben Seereisen." },
+    { "from": 1424, "to": 1435, "name": "Hongxi und Xuande", "short": "Xuande", "house": "Ming" },
+    { "from": 1435, "to": 1464, "name": "Zhengtong / Tianshun", "short": "Zhengtong", "house": "Ming", "note": "1449 gerät der Kaiser bei Tumu in mongolische Gefangenschaft." },
+    { "from": 1464, "to": 1487, "name": "Chenghua", "house": "Ming" },
+    { "from": 1487, "to": 1505, "name": "Hongzhi", "house": "Ming" },
+    { "from": 1505, "to": 1521, "name": "Zhengde", "house": "Ming" },
+    { "from": 1521, "to": 1567, "name": "Jiajing", "house": "Ming", "note": "Zieht sich der Alchemie zu und überlässt die Regierung den Ministern." },
+    { "from": 1567, "to": 1572, "name": "Longqing", "house": "Ming" },
+    { "from": 1572, "to": 1620, "name": "Wanli", "house": "Ming", "note": "Nimmt zwanzig Jahre lang keine Audienzen mehr wahr." },
+    { "from": 1620, "to": 1627, "name": "Taichang und Tianqi", "short": "Tianqi", "house": "Ming" },
+    { "from": 1627, "to": 1644, "name": "Chongzhen", "house": "Ming", "note": "Nimmt sich das Leben, als Rebellen Peking einnehmen." }
+  ],
+
+  "Qing Empire": [
+    { "from": 1636, "to": 1643, "name": "Hong Taiji", "house": "Aisin Gioro", "note": "Gibt der Dynastie den Namen Qing." },
+    { "from": 1643, "to": 1661, "name": "Shunzhi", "house": "Aisin Gioro", "note": "1644 zieht das mandschurische Heer in Peking ein." },
+    { "from": 1661, "to": 1722, "name": "Kangxi", "house": "Aisin Gioro", "note": "61 Jahre auf dem Thron; sichert Taiwan, die Mongolei und Tibet." },
+    { "from": 1722, "to": 1735, "name": "Yongzheng", "house": "Aisin Gioro" },
+    { "from": 1735, "to": 1796, "name": "Qianlong", "house": "Aisin Gioro", "note": "Größte Ausdehnung des Reiches; tritt aus Ehrfurcht vor dem Großvater zurück." },
+    { "from": 1796, "to": 1820, "name": "Jiaqing", "house": "Aisin Gioro" },
+    { "from": 1820, "to": 1850, "name": "Daoguang", "house": "Aisin Gioro", "note": "Verliert den Ersten Opiumkrieg und Hongkong." },
+    { "from": 1850, "to": 1861, "name": "Xianfeng", "house": "Aisin Gioro", "note": "Der Taiping-Aufstand kostet Millionen Menschen das Leben." },
+    { "from": 1861, "to": 1875, "name": "Tongzhi", "house": "Aisin Gioro", "note": "Die eigentliche Macht liegt bei Kaiserinwitwe Cixi." },
+    { "from": 1875, "to": 1908, "name": "Guangxu", "house": "Aisin Gioro", "note": "Sein Reformversuch von 1898 endet nach hundert Tagen im Hausarrest." },
+    { "from": 1908, "to": 1912, "name": "Puyi", "house": "Aisin Gioro", "note": "Letzter Kaiser Chinas; dankt mit sechs Jahren ab." }
+  ],
+
+  "China": [
+    { "from": 1945, "to": 1949, "name": "Chiang Kai-shek", "short": "Chiang", "title": "Präsident der Republik China", "note": "Verliert den Bürgerkrieg und zieht sich nach Taiwan zurück." },
+    { "from": 1949, "to": 1976, "name": "Mao Zedong", "short": "Mao", "title": "Vorsitzender der KP Chinas", "note": "Großer Sprung nach vorn und Kulturrevolution." },
+    { "from": 1976, "to": 1978, "name": "Hua Guofeng", "short": "Hua", "title": "Parteivorsitzender" },
+    { "from": 1978, "to": 1989, "name": "Deng Xiaoping", "short": "Deng", "title": "Faktischer Führer", "note": "Öffnet die Wirtschaft; 1989 lässt die Führung den Protest auf dem Tiananmen niederschlagen." },
+    { "from": 1989, "to": 2002, "name": "Jiang Zemin", "short": "Jiang", "title": "Generalsekretär und Staatspräsident" },
+    { "from": 2002, "to": 2012, "name": "Hu Jintao", "short": "Hu", "title": "Generalsekretär und Staatspräsident" },
+    { "from": 2012, "name": "Xi Jinping", "short": "Xi", "title": "Generalsekretär und Staatspräsident" }
+  ],
+
+  "Japan": [
+    { "from": 1192, "to": 1199, "name": "Minamoto no Yoritomo", "short": "Yoritomo", "title": "Shōgun", "note": "Begründet die Militärherrschaft in Kamakura; der Tennō bleibt ohne Macht." },
+    { "from": 1199, "to": 1219, "name": "Minamoto no Yoriie und Sanetomo", "short": "Yoriie", "title": "Shōgun", "note": "Beide werden ermordet; die Macht geht an die Hōjō über." },
+    { "from": 1203, "to": 1333, "name": "Die Hōjō-Regenten", "short": "Hōjō", "title": "Shikken", "note": "Wehren 1274 und 1281 die mongolischen Invasionen ab." },
+    { "from": 1338, "to": 1358, "name": "Ashikaga Takauji", "short": "Takauji", "title": "Shōgun" },
+    { "from": 1368, "to": 1394, "name": "Ashikaga Yoshimitsu", "short": "Yoshimitsu", "title": "Shōgun", "note": "Baut den Goldenen Pavillon in Kyōto." },
+    { "from": 1467, "to": 1568, "name": "Zeit der streitenden Reiche", "short": "Sengoku", "note": "Der Shōgun ist machtlos; regionale Fürsten kämpfen um das Land." },
+    { "from": 1568, "to": 1582, "name": "Oda Nobunaga", "short": "Nobunaga", "title": "Reichseiniger" },
+    { "from": 1582, "to": 1598, "name": "Toyotomi Hideyoshi", "short": "Hideyoshi", "title": "Reichsregent" },
+    { "from": 1603, "to": 1616, "name": "Tokugawa Ieyasu", "short": "Ieyasu", "title": "Shōgun", "note": "Nach Sekigahara beginnt die 265-jährige Tokugawa-Herrschaft in Edo." },
+    { "from": 1623, "to": 1651, "name": "Tokugawa Iemitsu", "short": "Iemitsu", "title": "Shōgun", "note": "Schließt das Land bis auf Nagasaki gegen die Außenwelt ab." },
+    { "from": 1680, "to": 1709, "name": "Tokugawa Tsunayoshi", "short": "Tsunayoshi", "title": "Shōgun" },
+    { "from": 1716, "to": 1745, "name": "Tokugawa Yoshimune", "short": "Yoshimune", "title": "Shōgun" },
+    { "from": 1760, "to": 1786, "name": "Tokugawa Ieharu", "short": "Ieharu", "title": "Shōgun" },
+    { "from": 1787, "to": 1837, "name": "Tokugawa Ienari", "short": "Ienari", "title": "Shōgun", "note": "Fünfzig Jahre im Amt; die Finanzen des Shōgunats zerfallen." },
+    { "from": 1837, "to": 1853, "name": "Tokugawa Ieyoshi", "short": "Ieyoshi", "title": "Shōgun" },
+    { "from": 1853, "to": 1866, "name": "Die späten Shōgune", "short": "Bakumatsu", "note": "Perrys Geschwader erzwingt 1853 die Öffnung des Landes." },
+    { "from": 1866, "to": 1867, "name": "Tokugawa Yoshinobu", "short": "Yoshinobu", "title": "Shōgun", "note": "Gibt die Macht an den Tennō zurück." },
+    { "from": 1867, "to": 1912, "name": "Meiji-Tennō", "short": "Meiji", "title": "Tennō", "house": "Kaiserhaus", "note": "In vierzig Jahren vom Feudalstaat zur Industriemacht." },
+    { "from": 1912, "to": 1926, "name": "Taishō-Tennō", "short": "Taishō", "title": "Tennō", "house": "Kaiserhaus" },
+    { "from": 1926, "to": 1989, "name": "Shōwa-Tennō (Hirohito)", "short": "Shōwa", "title": "Tennō", "house": "Kaiserhaus", "note": "Krieg, Niederlage und Wiederaufstieg fallen in seine Regierungszeit." },
+    { "from": 1989, "to": 2019, "name": "Akihito", "title": "Tennō", "house": "Kaiserhaus", "note": "Dankt als erster Tennō seit zwei Jahrhunderten zu Lebzeiten ab." },
+    { "from": 2019, "name": "Naruhito", "title": "Tennō", "house": "Kaiserhaus" }
+  ],
+
+  "Empire of Japan": [
+    { "from": 1868, "to": 1912, "name": "Meiji-Tennō", "short": "Meiji", "house": "Kaiserhaus", "note": "Aufhebung der Samurai-Privilegien, Verfassung, Sieg über Russland." },
+    { "from": 1912, "to": 1926, "name": "Taishō-Tennō", "short": "Taishō", "house": "Kaiserhaus" },
+    { "from": 1926, "to": 1947, "name": "Shōwa-Tennō (Hirohito)", "short": "Shōwa", "house": "Kaiserhaus", "note": "1945 Kapitulation; 1947 tritt die neue Verfassung in Kraft." }
+  ],
+
+  "Mongol Empire": [
+    { "from": 1206, "to": 1227, "name": "Dschingis Khan", "short": "Dschingis", "house": "Borjigin", "note": "Einigt die Stämme der Steppe und beginnt die Eroberungen." },
+    { "from": 1229, "to": 1241, "name": "Ögedei Khan", "short": "Ögedei", "house": "Borjigin", "note": "Die Heere erreichen Ungarn und Schlesien." },
+    { "from": 1246, "to": 1248, "name": "Güyük Khan", "short": "Güyük", "house": "Borjigin" },
+    { "from": 1251, "to": 1259, "name": "Möngke Khan", "short": "Möngke", "house": "Borjigin", "note": "1258 fällt Bagdad." },
+    { "from": 1260, "to": 1294, "name": "Kublai Khan", "short": "Kublai", "house": "Borjigin", "note": "Erobert China und gründet die Yuan-Dynastie; das Reich zerfällt in Teilreiche." },
+    { "from": 1294, "to": 1307, "name": "Temür Khan", "short": "Temür", "house": "Borjigin" },
+    { "from": 1333, "to": 1368, "name": "Toghan Temür", "short": "Toghan", "house": "Borjigin", "note": "Wird von den Ming aus China vertrieben." }
+  ],
+
+  "Mughal Empire": [
+    { "from": 1526, "to": 1530, "name": "Babur", "house": "Timuriden", "note": "Timuriden-Fürst aus Ferghana; siegt bei Panipat." },
+    { "from": 1530, "to": 1540, "name": "Humayun", "house": "Timuriden" },
+    { "from": 1540, "to": 1545, "name": "Sher Shah Suri", "short": "Sher Shah", "house": "Suri", "note": "Verdrängt die Moguln für ein Jahrzehnt und baut die Verwaltung neu auf." },
+    { "from": 1555, "to": 1556, "name": "Humayun", "house": "Timuriden", "note": "Kehrt zurück und stirbt ein Jahr später." },
+    { "from": 1556, "to": 1605, "name": "Akbar der Große", "short": "Akbar", "house": "Timuriden", "note": "Hebt die Kopfsteuer für Nichtmuslime auf und sucht den Ausgleich der Religionen." },
+    { "from": 1605, "to": 1627, "name": "Jahangir", "house": "Timuriden" },
+    { "from": 1628, "to": 1658, "name": "Shah Jahan", "house": "Timuriden", "note": "Lässt für seine Frau das Taj Mahal errichten." },
+    { "from": 1658, "to": 1707, "name": "Aurangzeb", "house": "Timuriden", "note": "Größte Ausdehnung – und Beginn des Zerfalls durch endlose Kriege im Süden." },
+    { "from": 1707, "to": 1712, "name": "Bahadur Shah I.", "short": "Bahadur I.", "house": "Timuriden" },
+    { "from": 1712, "to": 1719, "name": "Thronkämpfe nach Bahadur Shah", "short": "Thronkämpfe", "note": "Vier Herrscher in sieben Jahren." },
+    { "from": 1719, "to": 1748, "name": "Muhammad Shah", "short": "Muhammad", "house": "Timuriden", "note": "1739 plündert Nadir Schah Delhi." },
+    { "from": 1759, "to": 1806, "name": "Shah Alam II.", "short": "Shah Alam", "house": "Timuriden", "note": "Steht ab 1803 unter britischem Schutz." },
+    { "from": 1837, "to": 1857, "name": "Bahadur Shah II.", "short": "Bahadur II.", "house": "Timuriden", "note": "Letzter Großmogul; nach dem Aufstand von 1857 verbannt." }
+  ],
+
+  "Sultanate of Delhi": [
+    { "from": 1206, "to": 1210, "name": "Qutb ud-Din Aibak", "short": "Qutb ud-Din", "house": "Sklavendynastie", "note": "Begründet das Sultanat; auf ihn geht das Qutb Minar zurück." },
+    { "from": 1211, "to": 1236, "name": "Iltutmish", "house": "Sklavendynastie" },
+    { "from": 1236, "to": 1240, "name": "Raziya Sultana", "short": "Raziya", "house": "Sklavendynastie", "note": "Einzige Frau auf dem Thron von Delhi." },
+    { "from": 1266, "to": 1287, "name": "Ghiyas ud-Din Balban", "short": "Balban", "house": "Sklavendynastie" },
+    { "from": 1296, "to": 1316, "name": "Alauddin Khalji", "short": "Alauddin", "house": "Khalji", "note": "Wehrt die Mongolen ab und dehnt die Herrschaft nach Süden aus." },
+    { "from": 1325, "to": 1351, "name": "Muhammad bin Tughluq", "short": "Muhammad", "house": "Tughluq", "note": "Verlegt die Hauptstadt – und wieder zurück; das Reich zerbricht an seinen Plänen." },
+    { "from": 1351, "to": 1388, "name": "Firuz Shah Tughluq", "short": "Firuz Shah", "house": "Tughluq" },
+    { "from": 1398, "to": 1414, "name": "Zerfall nach Timurs Überfall", "short": "Zerfall", "note": "1398 plündert Timur Delhi." },
+    { "from": 1451, "to": 1489, "name": "Bahlul Lodi", "short": "Bahlul", "house": "Lodi" },
+    { "from": 1489, "to": 1517, "name": "Sikandar Lodi", "short": "Sikandar", "house": "Lodi", "note": "Gründet Agra als Residenz." },
+    { "from": 1517, "to": 1526, "name": "Ibrahim Lodi", "short": "Ibrahim", "house": "Lodi", "note": "Unterliegt Babur bei Panipat." }
+  ],
+
+  "India": [
+    { "from": 1947, "to": 1964, "name": "Jawaharlal Nehru", "short": "Nehru", "title": "Premierminister", "note": "Teilung, Blockfreiheit und staatlich gelenkte Industrialisierung." },
+    { "from": 1964, "to": 1966, "name": "Lal Bahadur Shastri", "short": "Shastri", "title": "Premierminister" },
+    { "from": 1966, "to": 1977, "name": "Indira Gandhi", "short": "I. Gandhi", "title": "Premierministerin", "note": "1975–1977 regiert sie im Ausnahmezustand." },
+    { "from": 1977, "to": 1980, "name": "Morarji Desai", "short": "Desai", "title": "Premierminister" },
+    { "from": 1980, "to": 1984, "name": "Indira Gandhi", "short": "I. Gandhi", "title": "Premierministerin", "note": "1984 ermordet." },
+    { "from": 1984, "to": 1989, "name": "Rajiv Gandhi", "short": "R. Gandhi", "title": "Premierminister" },
+    { "from": 1991, "to": 1996, "name": "P. V. Narasimha Rao", "short": "Rao", "title": "Premierminister", "note": "Öffnet die Wirtschaft." },
+    { "from": 1998, "to": 2004, "name": "Atal Bihari Vajpayee", "short": "Vajpayee", "title": "Premierminister" },
+    { "from": 2004, "to": 2014, "name": "Manmohan Singh", "short": "Singh", "title": "Premierminister" },
+    { "from": 2014, "name": "Narendra Modi", "short": "Modi", "title": "Premierminister" }
+  ],
+
+  "Indonesia": [
+    { "from": 1945, "to": 1967, "name": "Sukarno", "title": "Staatspräsident", "note": "Führt das Land in die Unabhängigkeit von den Niederlanden." },
+    { "from": 1967, "to": 1998, "name": "Suharto", "title": "Staatspräsident", "note": "Militärgestützte „Neue Ordnung“; tritt in der Asienkrise zurück." },
+    { "from": 1998, "to": 1999, "name": "B. J. Habibie", "short": "Habibie", "title": "Staatspräsident", "note": "Gibt Osttimor die Abstimmung über die Unabhängigkeit frei." },
+    { "from": 1999, "to": 2001, "name": "Abdurrahman Wahid", "short": "Wahid", "title": "Staatspräsident" },
+    { "from": 2001, "to": 2004, "name": "Megawati Sukarnoputri", "short": "Megawati", "title": "Staatspräsidentin" },
+    { "from": 2004, "to": 2014, "name": "Susilo Bambang Yudhoyono", "short": "Yudhoyono", "title": "Staatspräsident" },
+    { "from": 2014, "to": 2024, "name": "Joko Widodo", "short": "Jokowi", "title": "Staatspräsident" },
+    { "from": 2024, "name": "Prabowo Subianto", "short": "Prabowo", "title": "Staatspräsident" }
+  ],
+
+  "Timurid Empire": [
+    { "from": 1370, "to": 1405, "name": "Timur (Tamerlan)", "short": "Timur", "house": "Timuriden", "note": "Zieht von Samarkand aus bis Delhi, Damaskus und Ankara." },
+    { "from": 1405, "to": 1447, "name": "Schahruch", "house": "Timuriden", "note": "Hält das Reich zusammen; Herat wird Zentrum der Buchkunst." },
+    { "from": 1447, "to": 1449, "name": "Ulugh Beg", "house": "Timuriden", "note": "Astronom auf dem Thron; sein Sternkatalog bleibt zwei Jahrhunderte maßgeblich." },
+    { "from": 1469, "to": 1506, "name": "Husain Baiqara", "short": "Husain", "house": "Timuriden", "note": "Letzte Blüte in Herat; danach zerfällt das Reich." }
+  ]
+}

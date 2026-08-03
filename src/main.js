@@ -137,6 +137,9 @@ async function main() {
       isWikiEnabled: () => prefs.wiki,
       onSelect: (name) => selectPolity(name, { open: Boolean(name) }),
       onFocus: (name) => atlas.focus(name, { padding: [80, 80] }),
+      // Ein Klick auf einen Herrscher in der Regierungsfolge setzt das Jahr.
+      // Die Karte springt auf den passenden Zeitschnitt, die Auswahl bleibt.
+      onYear: (jahr) => timeline.setYear(jahr),
     },
   );
 
@@ -214,7 +217,7 @@ async function main() {
     const epoch = state.epoch;
     if (epoch.byName.has(state.selected)) {
       atlas.select(state.selected);
-      if (panel.isOpen) panel.show(state.selected, epoch);
+      if (panel.isOpen) panel.show(state.selected, epoch, state.year);
       return;
     }
     const anchor = state.lastAnchor;
@@ -222,7 +225,7 @@ async function main() {
     if (replacement) {
       state.selected = replacement;
       atlas.select(replacement);
-      if (panel.isOpen) panel.show(replacement, epoch);
+      if (panel.isOpen) panel.show(replacement, epoch, state.year);
     } else {
       state.selected = null;
       atlas.select(null);
@@ -237,7 +240,7 @@ async function main() {
       if (entry?.anchor) state.lastAnchor = entry.anchor;
     }
     atlas.select(name, { zoom });
-    if (name && open) panel.show(name, state.epoch);
+    if (name && open) panel.show(name, state.epoch, state.year);
     if (!name) panel.dom.root.hidden = true;
     updateHash();
     announce();

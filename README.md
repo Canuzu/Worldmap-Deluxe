@@ -23,6 +23,7 @@ Religion, Bevölkerung, Wirtschaft, Wendepunkte und Nachbarn.
 | **Zeitregler** | jahresgenau wählbar; die Karte zeigt den nächstgelegenen der 62 Kartenstände und schreibt darunter, welcher das ist |
 | **Zeitreise** | Wiedergabetaste läuft alle Epochen durch, mit Überblendung zwischen den Zeitschnitten |
 | **Detailtafel** | Steckbrief je Gemeinwesen und Jahr – kuratierte Texte, Angaben aus dem Kartendatensatz, optional ein Wikipedia-Auszug |
+| **Herrscher zum Jahr** | 1.182 Regierungszeiten in 86 Gemeinwesen: Wer 1530 wählt, sieht Süleyman, wer 1900 wählt, Abdülhamid II. Die Regierungsfolge darunter ist anklickbar und nimmt die Karte mit |
 | **Nachbarn** | aus der Kartentopologie berechnet und anklickbar: eine Region lässt sich Nachbar für Nachbar erwandern |
 | **Besetzte Gebiete** | 1916/1918, 1940–1944 und 1960–2026: besetztes Land behält seine Farbe und trägt darüber eine Schraffur in der Farbe der Besatzungsmacht |
 | **Eiszeitliche Küstenlinie** | für die Zeitschnitte vor 10.000 v. Chr.: Doggerland, Beringia und Sundaland liegen trocken, so wie sie es waren |
@@ -163,11 +164,13 @@ src/
   data/
     names.de.json          deutsche Bezeichnungen + Schreibvarianten
     knowledge/*.json       redaktionelle Steckbriefe, thematisch getrennt
+    rulers/*.json          Regierungsfolgen, je Gemeinwesen eine Liste
 scripts/
   fetch-sources.mjs        Rohdaten herunterladen (nach data-src/)
   build-data.mjs           Vereinfachen, Anker berechnen, TopoJSON schreiben
-  build-knowledge.mjs      Steckbriefe und Namen zusammenführen
+  build-knowledge.mjs      Steckbriefe, Namen und Herrscherlisten zusammenführen
   check-knowledge.mjs      Abdeckung der Wissensbasis prüfen
+  check-herrscher.mjs      Deckung der Herrscherlisten je Zeitschnitt
 public/data/               erzeugte, ausgelieferte Datensätze
 ```
 
@@ -183,7 +186,9 @@ npm run build:data    # quantisiert, schreibt public/data/ (~20 s)
 npm run build:knowledge
 npm run check:data    # Abdeckung der Wissensbasis je Zeitschnitt
 npm run check:staaten # zählt alle 195 Staaten in den Gegenwartsjahren nach
+npm run check:herrscher # prüft, für wie viele Jahre ein Herrscher hinterlegt ist
 npm run check:layout  # Oberfläche in 5 Fenstergrößen × 6 Zuständen (braucht `npm run dev`)
+npm run format:rulers # bringt die Herrscherlisten wieder in ihre Zeilenform
 ```
 
 `build-data.mjs` erzeugt die Meeresebene aus Natural Earth, berechnet für jedes
@@ -493,11 +498,45 @@ Jahr 1000 Basileios II. erscheint und zum Jahr 1300 Andronikos II.
 }
 ```
 
-Stand: **225 Steckbriefe mit 289 Zeitabschnitten**, dazu **829 deutsche
-Bezeichnungen** und 103 Schreibvarianten. Damit sind rund **80 % der kartierten
+Stand: **242 Steckbriefe mit 311 Zeitabschnitten**, dazu **918 deutsche
+Bezeichnungen** und 102 Schreibvarianten. Damit sind rund **79 % der kartierten
 Fläche** über alle Zeitschnitte hinweg redaktionell erschlossen und **97 %**
 benannt. `npm run check:data` zeigt die verbleibenden Lücken nach Fläche
 sortiert – das ist die Arbeitsliste für weitere Einträge.
+
+#### Herrscher, die sich mit dem Jahr ändern
+
+Ein Zeitabschnitt kann Jahrhunderte umfassen: Das Osmanische Reich steht von
+1299 bis 1922 in drei Blöcken. Ein einzelner Name dazu wäre eine Momentaufnahme,
+die für die meisten Jahre schlicht falsch ist. Deshalb liegen die
+Regierungsfolgen getrennt in `src/data/rulers/` – je Gemeinwesen **eine** flache
+Liste, die der Build automatisch auf die Zeitabschnitte verteilt:
+
+```json
+"Ottoman Empire": [
+  { "from": 1451, "to": 1481, "name": "Mehmed II. der Eroberer", "short": "Mehmed II.",
+    "house": "Osmanen", "note": "Erobert 1453 Konstantinopel." }
+]
+```
+
+Die Tafel zeigt den Herrscher zum **gewählten Jahr**, nicht zum Zeitschnitt der
+Karte – wer den Regler auf 1530 stellt, sieht Süleyman, auf 1900 Abdülhamid II.
+Darunter läuft die Regierungsfolge als anklickbare Reihe: Ein Klick springt in
+die Mitte der jeweiligen Regierungszeit, und die Karte geht mit. Bewusst in die
+Mitte und nicht auf das Antrittsjahr – ein Herrschaftswechsel fällt oft mit
+einem Krieg zusammen, und die Karte des Antrittsjahres zeigt dann noch den
+Zustand davor.
+
+Wer über eine Abschnittsgrenze hinweg regiert, steht in beiden Listen; Karl V.
+erscheint sowohl im Block bis 1517 als auch im folgenden. Steht für ein Jahr
+niemand in der Liste – Thronvakanz, Bürgerkrieg, oder eine Liste, die nur eine
+Auswahl führt –, sagt die Tafel das ausdrücklich und nennt den zuletzt
+Regierenden, statt einen Namen zu behaupten.
+
+Stand: **86 Gemeinwesen mit 1.182 Regierungszeiten**. `npm run check:herrscher`
+misst, für wie viele der tatsächlich kartierten Fälle ein Name zum Jahr
+vorliegt – derzeit **91,5 %**; der Rest sind Gemeinwesen, die die Karte
+außerhalb der belegten Zeit zeigt.
 
 Für Gebiete ohne Steckbrief zeigt die Tafel weiterhin die Angaben des
 Kartendatensatzes (Fläche, Oberhoheit, Kulturraum, Grenzgüte, Nachbarn) und,

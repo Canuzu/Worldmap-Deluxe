@@ -10,11 +10,13 @@
     "build:krieg": "node scripts/build-fronts.mjs",
     "build:data": "node scripts/build-data.mjs",
     "build:knowledge": "node scripts/build-knowledge.mjs",
+    "format:rulers": "node scripts/format-rulers.mjs",
     "check:data": "node scripts/check-knowledge.mjs",
     "test": "node scripts/smoke.mjs",
     "check:zeit": "node scripts/check-anachronisms.mjs",
     "check:besatzung": "node scripts/check-besatzung.mjs",
     "check:staaten": "node scripts/check-staaten.mjs",
+    "check:herrscher": "node scripts/check-herrscher.mjs",
     "check:layout": "node scripts/check-layout.mjs"
   },
   "repository": {

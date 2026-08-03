@@ -1,0 +1,167 @@
+{
+  "_hinweis": "Regierungsfolgen der Antike. Für die frühen Reiche sind die Jahreszahlen Näherungen der Forschung, nicht überlieferte Daten; wo eine Liste nur eine Auswahl führt, weist die Tafel für die Zwischenjahre darauf hin. Negative Zahlen bedeuten Jahre vor Christus.",
+
+  "Roman Empire": [
+    { "from": -27, "to": 14, "name": "Augustus", "house": "Julisch-claudische Dynastie", "note": "Aus der Republik wird das Prinzipat – ein Kaisertum in republikanischen Formen." },
+    { "from": 14, "to": 37, "name": "Tiberius", "house": "Julisch-claudische Dynastie" },
+    { "from": 37, "to": 41, "name": "Caligula", "house": "Julisch-claudische Dynastie" },
+    { "from": 41, "to": 54, "name": "Claudius", "house": "Julisch-claudische Dynastie", "note": "Beginnt die Eroberung Britanniens." },
+    { "from": 54, "to": 68, "name": "Nero", "house": "Julisch-claudische Dynastie" },
+    { "from": 68, "to": 69, "name": "Vierkaiserjahr", "short": "4 Kaiser", "note": "Galba, Otho, Vitellius und Vespasian binnen eines Jahres." },
+    { "from": 69, "to": 79, "name": "Vespasian", "house": "Flavier" },
+    { "from": 79, "to": 81, "name": "Titus", "house": "Flavier", "note": "79 verschüttet der Vesuv Pompeji." },
+    { "from": 81, "to": 96, "name": "Domitian", "house": "Flavier" },
+    { "from": 96, "to": 98, "name": "Nerva", "house": "Adoptivkaiser" },
+    { "from": 98, "to": 117, "name": "Trajan", "house": "Adoptivkaiser", "note": "Unter ihm erreicht das Reich seine größte Ausdehnung." },
+    { "from": 117, "to": 138, "name": "Hadrian", "house": "Adoptivkaiser", "note": "Gibt eroberte Gebiete auf und befestigt die Grenzen." },
+    { "from": 138, "to": 161, "name": "Antoninus Pius", "short": "Antoninus", "house": "Adoptivkaiser" },
+    { "from": 161, "to": 180, "name": "Mark Aurel", "house": "Adoptivkaiser", "note": "Führt Krieg an der Donau und schreibt dabei seine „Selbstbetrachtungen“." },
+    { "from": 180, "to": 192, "name": "Commodus", "house": "Adoptivkaiser" },
+    { "from": 193, "to": 211, "name": "Septimius Severus", "short": "Sept. Severus", "house": "Severer" },
+    { "from": 211, "to": 217, "name": "Caracalla", "house": "Severer", "note": "Verleiht 212 allen Reichsbewohnern das Bürgerrecht." },
+    { "from": 218, "to": 222, "name": "Elagabal", "house": "Severer" },
+    { "from": 222, "to": 235, "name": "Severus Alexander", "short": "Sev. Alexander", "house": "Severer" },
+    { "from": 235, "to": 238, "name": "Maximinus Thrax", "short": "Maximinus", "note": "Beginn der Reichskrise: in fünfzig Jahren über zwanzig Kaiser." },
+    { "from": 238, "to": 244, "name": "Gordian III." },
+    { "from": 244, "to": 249, "name": "Philippus Arabs", "short": "Philippus" },
+    { "from": 249, "to": 251, "name": "Decius", "note": "Erste reichsweite Christenverfolgung." },
+    { "from": 253, "to": 260, "name": "Valerian", "note": "Gerät in persische Gefangenschaft – ein beispielloser Schock." },
+    { "from": 260, "to": 268, "name": "Gallienus", "note": "Gallisches Sonderreich und Palmyra spalten sich ab." },
+    { "from": 270, "to": 275, "name": "Aurelian", "note": "Stellt die Reichseinheit wieder her; „Restitutor Orbis“." },
+    { "from": 276, "to": 282, "name": "Probus" },
+    { "from": 284, "to": 305, "name": "Diokletian", "note": "Teilt die Herrschaft auf vier Kaiser auf – die Tetrarchie." },
+    { "from": 306, "to": 337, "name": "Konstantin der Große", "short": "Konstantin", "house": "Konstantinische Dynastie", "note": "Duldet das Christentum und gründet Konstantinopel." },
+    { "from": 337, "to": 361, "name": "Constantius II.", "house": "Konstantinische Dynastie" },
+    { "from": 361, "to": 363, "name": "Julian", "house": "Konstantinische Dynastie", "note": "Versucht die alten Kulte wiederzubeleben." },
+    { "from": 364, "to": 375, "name": "Valentinian I.", "house": "Valentinianische Dynastie", "note": "Von nun an regieren im Westen und Osten getrennte Kaiser." },
+    { "from": 375, "to": 383, "name": "Gratian", "house": "Valentinianische Dynastie" },
+    { "from": 379, "to": 395, "name": "Theodosius I.", "house": "Theodosianische Dynastie", "note": "Macht das Christentum zur Staatsreligion; nach ihm bleibt das Reich geteilt." }
+  ],
+
+  "Eastern Roman Empire": [
+    { "from": 395, "to": 408, "name": "Arcadius", "house": "Theodosianische Dynastie" },
+    { "from": 408, "to": 450, "name": "Theodosius II.", "house": "Theodosianische Dynastie", "note": "Lässt die Landmauer Konstantinopels bauen und das Gesetzbuch ordnen." },
+    { "from": 450, "to": 457, "name": "Markian" },
+    { "from": 457, "to": 474, "name": "Leon I." },
+    { "from": 474, "to": 491, "name": "Zenon", "note": "476 endet das weströmische Kaisertum." },
+    { "from": 491, "to": 518, "name": "Anastasios I." },
+    { "from": 518, "to": 527, "name": "Justin I." },
+    { "from": 527, "to": 565, "name": "Justinian I.", "note": "Erobert Italien und Nordafrika zurück, kodifiziert das römische Recht, baut die Hagia Sophia." },
+    { "from": 565, "to": 578, "name": "Justin II." },
+    { "from": 578, "to": 582, "name": "Tiberios II." },
+    { "from": 582, "to": 602, "name": "Maurikios" },
+    { "from": 602, "to": 610, "name": "Phokas" },
+    { "from": 610, "to": 641, "name": "Herakleios", "note": "Besiegt Persien – und verliert kurz darauf Syrien und Ägypten an die Araber." },
+    { "from": 641, "to": 668, "name": "Konstans II." },
+    { "from": 668, "to": 685, "name": "Konstantin IV.", "note": "Wehrt die arabische Belagerung Konstantinopels ab." },
+    { "from": 685, "to": 695, "name": "Justinian II." },
+    { "from": 695, "to": 698, "name": "Leontios" },
+    { "from": 698, "to": 705, "name": "Tiberios III." },
+    { "from": 705, "to": 711, "name": "Justinian II.", "note": "Zweite Regierungszeit nach der Rückkehr aus dem Exil." },
+    { "from": 711, "to": 717, "name": "Philippikos, Anastasios II. und Theodosios III.", "short": "3 Kaiser", "note": "Sechs Jahre schneller Thronwechsel." },
+    { "from": 717, "to": 741, "name": "Leon III.", "house": "Syrische Dynastie", "note": "Rettet die Stadt 718 vor den Arabern; beginnt den Bilderstreit." },
+    { "from": 741, "to": 775, "name": "Konstantin V.", "house": "Syrische Dynastie" },
+    { "from": 775, "to": 780, "name": "Leon IV.", "house": "Syrische Dynastie" },
+    { "from": 780, "to": 797, "name": "Konstantin VI.", "house": "Syrische Dynastie" },
+    { "from": 797, "to": 802, "name": "Irene", "house": "Syrische Dynastie", "note": "Erste Frau, die allein als Kaiserin regiert." }
+  ],
+
+  "Western Roman Empire": [
+    { "from": 395, "to": 423, "name": "Honorius", "house": "Theodosianische Dynastie", "note": "410 plündern die Westgoten Rom." },
+    { "from": 425, "to": 455, "name": "Valentinian III.", "house": "Theodosianische Dynastie", "note": "451 wird Attila auf den Katalaunischen Feldern gestoppt." },
+    { "from": 457, "to": 461, "name": "Majorian", "note": "Letzter Kaiser, der das Reich noch einmal zu sammeln versucht." },
+    { "from": 461, "to": 475, "name": "Schattenkaiser der Heermeister", "short": "Heermeister", "note": "Ricimer und seine Nachfolger setzen Kaiser ein und ab." },
+    { "from": 475, "to": 476, "name": "Romulus Augustulus", "short": "Romulus", "note": "Von Odoaker abgesetzt – das weströmische Kaisertum endet." }
+  ],
+
+  "Achaemenid Empire": [
+    { "from": -559, "to": -530, "name": "Kyros II. der Große", "short": "Kyros II.", "house": "Achämeniden", "note": "Stürzt die Meder und Babylon; erlaubt den Juden die Rückkehr." },
+    { "from": -530, "to": -522, "name": "Kambyses II.", "house": "Achämeniden", "note": "Erobert Ägypten." },
+    { "from": -522, "to": -486, "name": "Dareios I.", "house": "Achämeniden", "note": "Ordnet das Reich in Satrapien und legt die Königsstraße an." },
+    { "from": -486, "to": -465, "name": "Xerxes I.", "house": "Achämeniden", "note": "Sein Zug gegen Griechenland scheitert bei Salamis und Plataiai." },
+    { "from": -465, "to": -424, "name": "Artaxerxes I.", "house": "Achämeniden" },
+    { "from": -423, "to": -405, "name": "Dareios II.", "house": "Achämeniden" },
+    { "from": -404, "to": -358, "name": "Artaxerxes II.", "house": "Achämeniden" },
+    { "from": -358, "to": -338, "name": "Artaxerxes III.", "house": "Achämeniden" },
+    { "from": -336, "to": -330, "name": "Dareios III.", "house": "Achämeniden", "note": "Unterliegt Alexander bei Issos und Gaugamela." }
+  ],
+
+  "Ptolemaic Kingdom": [
+    { "from": -305, "to": -282, "name": "Ptolemaios I. Soter", "short": "Ptol. I.", "house": "Ptolemäer", "note": "Feldherr Alexanders; gründet Museion und Bibliothek von Alexandria." },
+    { "from": -282, "to": -246, "name": "Ptolemaios II. Philadelphos", "short": "Ptol. II.", "house": "Ptolemäer" },
+    { "from": -246, "to": -222, "name": "Ptolemaios III. Euergetes", "short": "Ptol. III.", "house": "Ptolemäer" },
+    { "from": -222, "to": -204, "name": "Ptolemaios IV. Philopator", "short": "Ptol. IV.", "house": "Ptolemäer" },
+    { "from": -204, "to": -180, "name": "Ptolemaios V. Epiphanes", "short": "Ptol. V.", "house": "Ptolemäer", "note": "Sein Erlass steht auf dem Stein von Rosetta." },
+    { "from": -180, "to": -145, "name": "Ptolemaios VI. Philometor", "short": "Ptol. VI.", "house": "Ptolemäer" },
+    { "from": -145, "to": -116, "name": "Ptolemaios VIII.", "short": "Ptol. VIII.", "house": "Ptolemäer" },
+    { "from": -116, "to": -80, "name": "Ptolemaios IX. und X.", "short": "Ptol. IX./X.", "house": "Ptolemäer", "note": "Brüder, die sich mehrfach gegenseitig vom Thron verdrängen." },
+    { "from": -80, "to": -51, "name": "Ptolemaios XII. Auletes", "short": "Ptol. XII.", "house": "Ptolemäer" },
+    { "from": -51, "to": -30, "name": "Kleopatra VII.", "short": "Kleopatra", "house": "Ptolemäer", "note": "Letzte Herrscherin; nach Actium wird Ägypten römische Provinz." }
+  ],
+
+  "Seleucid Kingdom": [
+    { "from": -312, "to": -281, "name": "Seleukos I. Nikator", "short": "Seleukos I.", "house": "Seleukiden", "note": "Feldherr Alexanders; sein Reich reicht vom Mittelmeer bis an den Indus." },
+    { "from": -281, "to": -261, "name": "Antiochos I. Soter", "short": "Antiochos I.", "house": "Seleukiden" },
+    { "from": -261, "to": -246, "name": "Antiochos II.", "house": "Seleukiden" },
+    { "from": -246, "to": -225, "name": "Seleukos II.", "house": "Seleukiden" },
+    { "from": -223, "to": -187, "name": "Antiochos III. der Große", "short": "Antiochos III.", "house": "Seleukiden", "note": "Unterliegt 190 bei Magnesia den Römern." },
+    { "from": -175, "to": -164, "name": "Antiochos IV. Epiphanes", "short": "Antiochos IV.", "house": "Seleukiden", "note": "Sein Eingriff in den Tempelkult löst den Makkabäeraufstand aus." },
+    { "from": -145, "to": -125, "name": "Demetrios II. und Antiochos VII.", "short": "Demetrios II.", "house": "Seleukiden" },
+    { "from": -125, "to": -96, "name": "Thronkämpfe der Seleukiden", "short": "Thronkämpfe", "note": "Mehrere Prätendenten teilen das schrumpfende Reich unter sich auf." },
+    { "from": -95, "to": -63, "name": "Zerfall unter rivalisierenden Königen", "short": "Zerfall", "note": "63 v. Chr. macht Pompeius Syrien zur römischen Provinz." }
+  ],
+
+  "Sasanian Empire": [
+    { "from": 224, "to": 242, "name": "Ardaschir I.", "house": "Sasaniden", "note": "Stürzt die Parther und gründet das neupersische Reich." },
+    { "from": 242, "to": 270, "name": "Schapur I.", "house": "Sasaniden", "note": "Nimmt den römischen Kaiser Valerian gefangen." },
+    { "from": 276, "to": 293, "name": "Bahram II.", "short": "Bahram II.", "house": "Sasaniden" },
+    { "from": 293, "to": 302, "name": "Narseh", "short": "Narseh", "house": "Sasaniden" },
+    { "from": 309, "to": 379, "name": "Schapur II.", "house": "Sasaniden" },
+    { "from": 399, "to": 420, "name": "Yazdegerd I.", "house": "Sasaniden" },
+    { "from": 420, "to": 438, "name": "Bahram V.", "short": "Bahram V.", "house": "Sasaniden" },
+    { "from": 459, "to": 484, "name": "Peroz I.", "short": "Peroz I.", "house": "Sasaniden", "note": "Fällt im Kampf gegen die Hephthaliten." },
+    { "from": 488, "to": 531, "name": "Kavadh I.", "short": "Kavadh I.", "house": "Sasaniden" },
+    { "from": 531, "to": 579, "name": "Chosrau I. Anuschirwan", "short": "Chosrau I.", "house": "Sasaniden", "note": "Reformiert Steuern und Heer; Blütezeit des Reiches." },
+    { "from": 590, "to": 628, "name": "Chosrau II.", "house": "Sasaniden", "note": "Erobert Jerusalem und Ägypten – und verliert alles wieder an Herakleios." },
+    { "from": 632, "to": 651, "name": "Yazdegerd III.", "house": "Sasaniden", "note": "Letzter Großkönig; die Araber erobern das Reich." }
+  ],
+
+  "Egypt": [
+    { "from": -2589, "to": -2566, "name": "Cheops (Chufu)", "short": "Cheops", "house": "4. Dynastie", "note": "Erbauer der Großen Pyramide von Gizeh." },
+    { "from": -2558, "to": -2532, "name": "Chephren", "house": "4. Dynastie" },
+    { "from": -2055, "to": -2004, "name": "Mentuhotep II.", "house": "11. Dynastie", "note": "Vereinigt das Land nach der Ersten Zwischenzeit." },
+    { "from": -1878, "to": -1839, "name": "Sesostris III.", "house": "12. Dynastie" },
+    { "from": -1479, "to": -1458, "name": "Hatschepsut", "house": "18. Dynastie", "note": "Regiert als Frau mit vollem Königstitel." },
+    { "from": -1479, "to": -1425, "name": "Thutmosis III.", "house": "18. Dynastie", "note": "Führt siebzehn Feldzüge nach Syrien; Ägypten auf dem Höhepunkt." },
+    { "from": -1353, "to": -1336, "name": "Echnaton", "house": "18. Dynastie", "note": "Erhebt den Sonnengott Aton zum alleinigen Gott und verlegt die Residenz." },
+    { "from": -1332, "to": -1323, "name": "Tutanchamun", "house": "18. Dynastie" },
+    { "from": -1279, "to": -1213, "name": "Ramses II.", "house": "19. Dynastie", "note": "66 Jahre auf dem Thron; Schlacht bei Kadesch und erster überlieferter Friedensvertrag." },
+    { "from": -1184, "to": -1153, "name": "Ramses III.", "house": "20. Dynastie", "note": "Wehrt die Seevölker ab." },
+    { "from": -747, "to": -656, "name": "Kuschitische Pharaonen", "short": "Kuschiten", "house": "25. Dynastie", "note": "Herrscher aus Nubien regieren ganz Ägypten." },
+    { "from": -664, "to": -525, "name": "Saitische Pharaonen", "short": "Saiten", "house": "26. Dynastie" },
+    { "from": 1805, "to": 1848, "name": "Muhammad Ali Pascha", "short": "Muhammad Ali", "house": "Muhammad-Ali-Dynastie", "note": "Baut Ägypten faktisch unabhängig vom Sultan zum Militärstaat um." },
+    { "from": 1863, "to": 1879, "name": "Ismail Pascha", "short": "Ismail", "house": "Muhammad-Ali-Dynastie", "note": "1869 wird der Sueskanal eröffnet; die Schulden führen ins britische Protektorat." },
+    { "from": 1879, "to": 1892, "name": "Tawfiq Pascha", "short": "Tawfiq", "house": "Muhammad-Ali-Dynastie", "note": "1882 besetzt Großbritannien das Land." },
+    { "from": 1892, "to": 1914, "name": "Abbas II.", "short": "Abbas II.", "house": "Muhammad-Ali-Dynastie" },
+    { "from": 1914, "to": 1917, "name": "Husain Kamil", "short": "Husain Kamil", "title": "Sultan unter britischem Protektorat", "house": "Muhammad-Ali-Dynastie" },
+    { "from": 1917, "to": 1936, "name": "Fuad I.", "house": "Muhammad-Ali-Dynastie" },
+    { "from": 1936, "to": 1952, "name": "Faruq", "house": "Muhammad-Ali-Dynastie", "note": "1952 stürzen ihn die Freien Offiziere." },
+    { "from": 1954, "to": 1970, "name": "Gamal Abdel Nasser", "short": "Nasser", "title": "Staatspräsident", "note": "Verstaatlicht 1956 den Sueskanal." },
+    { "from": 1970, "to": 1981, "name": "Anwar as-Sadat", "short": "Sadat", "title": "Staatspräsident", "note": "Schließt 1979 Frieden mit Israel; 1981 ermordet." },
+    { "from": 1981, "to": 2011, "name": "Husni Mubarak", "short": "Mubarak", "title": "Staatspräsident", "note": "Tritt im Arabischen Frühling zurück." },
+    { "from": 2012, "to": 2013, "name": "Mohammed Mursi", "short": "Mursi", "title": "Staatspräsident" },
+    { "from": 2014, "name": "Abd al-Fattah as-Sisi", "short": "as-Sisi", "title": "Staatspräsident" }
+  ],
+
+  "Empire of Alexander": [
+    { "from": -336, "to": -323, "name": "Alexander III. von Makedonien", "short": "Alexander", "house": "Argeaden", "note": "In dreizehn Jahren vom Balkan bis an den Indus; nach seinem Tod zerfällt das Reich unter den Diadochen." }
+  ],
+
+  "Hunnic Empire": [
+    { "from": 400, "to": 412, "name": "Uldin", "short": "Uldin", "note": "Erster hunnischer Anführer, den römische Quellen mit Namen nennen." },
+    { "from": 425, "to": 434, "name": "Ruga", "short": "Ruga", "note": "Onkel Attilas." },
+    { "from": 434, "to": 445, "name": "Bleda und Attila", "short": "Bleda", "note": "Brüder in gemeinsamer Herrschaft." },
+    { "from": 445, "to": 453, "name": "Attila", "note": "Zieht bis nach Gallien und Italien; nach seinem Tod zerfällt der Verband." },
+    { "from": 453, "to": 469, "name": "Ellac, Dengizich und Ernak", "short": "Söhne", "note": "Attilas Söhne verlieren die unterworfenen Völker." }
+  ]
+}

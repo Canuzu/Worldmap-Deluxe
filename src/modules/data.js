@@ -323,8 +323,47 @@ export class AtlasData {
       periods.find((p) => (p.from ?? -Infinity) <= year && year <= (p.to ?? Infinity)) ??
       periods.find((p) => (p.from ?? -Infinity) <= year) ??
       periods[0] ?? null;
-    return { key: canon, entry, period };
+    return { key: canon, entry, period, ruler: herrscherZu(period, year) };
   }
+}
+
+/**
+ * Den Herrscher eines Zeitabschnitts zum gewählten Jahr bestimmen.
+ *
+ * Ein Zeitabschnitt kann Jahrhunderte umfassen – das Osmanische Reich steht
+ * von 1299 bis 1922 in einem Block. Ein einzelner Name dazu wäre eine
+ * Momentaufnahme, die für die meisten Jahre falsch ist. Führt der Abschnitt
+ * eine Herrscherliste, wird daraus der zum Jahr passende Eintrag gewählt.
+ *
+ * Ohne Liste bleibt es beim einzelnen Namen des Abschnitts; die Wissensbasis
+ * lässt sich damit Stück für Stück nachrüsten, ohne dass etwas ausfällt.
+ */
+export function herrscherZu(period, year) {
+  if (!period) return null;
+  const liste = period.rulers;
+  if (!liste?.length) {
+    return period.ruler
+      ? { name: period.ruler, title: period.rulerTitle, house: period.dynasty,
+          from: period.from, to: period.to, reign: period.reign, image: period.rulerImage,
+          ausListe: false }
+      : null;
+  }
+  const genau = liste.find((r) => (r.from ?? -Infinity) <= year && year <= (r.to ?? Infinity));
+  // Liegt das Jahr in einer Lücke – Thronvakanz, Bürgerkrieg, oder schlicht ein
+  // Abschnitt, für den die Liste nur eine Auswahl führt –, wird der zuletzt
+  // Regierende gezeigt und als solcher gekennzeichnet. Lieber „zuletzt regierte“
+  // als ein Name, der für das Jahr falsch wäre.
+  const davor = genau ?? [...liste].reverse().find((r) => (r.from ?? -Infinity) <= year);
+  const treffer = davor ?? liste[0];
+  return {
+    ...treffer,
+    title: treffer.title ?? period.rulerTitle,
+    ausListe: true,
+    // Zwei verschiedene Lücken: hinter dem letzten Eintrag – oder vor dem ersten,
+    // wenn die Karte ein Gemeinwesen früher zeigt, als die Liste reicht.
+    nachwirkend: !genau && Boolean(davor),
+    vorzeitig: !davor,
+  };
 }
 
 export const atlasData = new AtlasData();
