@@ -175,6 +175,7 @@ scripts/
   check-knowledge.mjs      Abdeckung der Wissensbasis prüfen
   check-herrscher.mjs      Deckung der Herrscherlisten je Zeitschnitt
   check-ereignisse.mjs     Ereignisse je Zeitschnitt, Marken gegen die Küstenlinie
+  check-ladelast.mjs       Ladelast des ersten Aufrufs, nach Abschnitten getrennt
 public/data/               erzeugte, ausgelieferte Datensätze
 ```
 
@@ -193,6 +194,7 @@ npm run check:staaten # zählt alle 195 Staaten in den Gegenwartsjahren nach
 npm run check:herrscher # prüft, für wie viele Jahre ein Herrscher hinterlegt ist
 npm run check:ereignisse # verteilt die Ereignisse auf die Zeitschnitte und prüft die Orte
 npm run check:layout  # Oberfläche in 5 Fenstergrößen × 6 Zuständen (braucht `npm run dev`)
+npm run check:ladelast -- http://127.0.0.1:4173  # was der erste Aufruf lädt (braucht `npm run preview`)
 npm run format:rulers # bringt die Herrscherlisten wieder in ihre Zeilenform
 npm run format:ereignisse # sortiert die Ereignisse chronologisch und formatiert sie
 ```
@@ -523,6 +525,48 @@ der Karte steht das auch so: Die betroffenen Zeitschnitte tragen das Zeichen
 
 `npm run test` prüft es an Doggerland: In der Eiszeit muss die Nordsee bei
 54,5° N / 3° O Land sein, 1815 Meer.
+
+### Was der erste Aufruf kostet
+
+Für das Aussehen gibt es `npm run check:layout`, für die Daten vier
+Prüfskripte – für die Ladelast gab es nichts. Und genau dort lief der größte
+Brocken jahrelang unbemerkt mit: `ocean-hd.json`, **3,6 MB**, wurde 600 ms
+nach dem ersten Bild geholt, obwohl die Karte die feine Küstenlinie erst ab
+Zoomstufe 4,2 überhaupt einsetzt. Wer die Weltkarte anschaut und den Regler
+schiebt, bezahlte sie für nichts.
+
+Zwei Änderungen, beide vom selben Gedanken: **laden, wenn es einen Anlass
+gibt.**
+
+**Die feine Küstenlinie kommt beim Hineinzoomen.** Angefordert wird sie ab
+Zoomstufe 3 – eine gute Stufe vor der Wirkschwelle. Der Vorlauf ist der Punkt:
+Gemessen liegt die Datei 1,7 Sekunden nach dem Überschreiten der Anforderungs­schwelle
+vollständig vor, lange bevor Stufe 4,2 erreicht ist. Wer über einen geteilten
+Link direkt in einen nahen Ausschnitt einsteigt, löst sie sofort aus.
+
+**Die Nachbarjahre kommen in einer Ruhepause.** Sie machen die Zeitreise
+flüssig und sind jedes Kilobyte wert – aber nicht auf dem Weg zum ersten Bild.
+Geholt werden sie jetzt per `requestIdleCallback`, und zunächst nur je ein
+Nachbar; der weitere Vorgriff schaltet sich erst zu, wenn der Regler das erste
+Mal bewegt wurde. Ein Zeitschritt dauert weiterhin **0,3 s**.
+
+| | vorher | jetzt |
+|---|---|---|
+| Erstaufruf ohne Zutun | 6.877 kB | **2.882 kB** |
+| davon `ocean-hd.json` | 3.649 kB | 0 – kommt beim Zoomen |
+| davon Nachbarjahre | 1.185 kB | 838 kB, verzögert |
+| bis die Karte steht | | 1,5 s |
+
+`npm run check:ladelast` misst das in drei Abschnitten – bis die Karte steht,
+zehn Sekunden Ruhe danach, nach dem Hineinzoomen – und schlägt Alarm, wenn
+wieder etwas ohne Anlass in den Erstaufruf rutscht oder die Grenze von 3.100 kB
+fällt.
+
+Der nächstgrößte Posten ist `polities.de.json` (404 kB): Die Wissensbasis wird
+noch vor dem ersten Bild geladen, obwohl sie erst beim ersten Klick auf ein
+Land gebraucht wird. Sie später zu holen hieße, den Steckbrief hinhalten zu
+müssen – das ist ein Tausch, der sorgfältiger überlegt sein will als dieser
+hier.
 
 ### Barrierefreiheit
 

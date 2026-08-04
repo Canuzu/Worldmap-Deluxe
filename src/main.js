@@ -185,6 +185,8 @@ async function main() {
       eras: atlasData.eras,
       onChange: (index, { year } = {}) => {
         if (year != null) state.year = year;
+        // Ab jetzt wird gereist – der Vorgriff darf weiter greifen.
+        reisebereit = true;
         goto(index);
       },
     },
@@ -193,6 +195,38 @@ async function main() {
   /* -------------------------------------------------------- Kartenlogik */
 
   let loadToken = 0;
+
+  /**
+   * Die Nachbarschnitte erst in einer Ruhepause holen.
+   *
+   * Sie machen die Zeitreise flüssig und sind jeden Kilobyte wert – aber
+   * nicht auf dem Weg zum ersten Bild. Über ein Megabyte lag dort für den
+   * Fall bereit, dass jemand gleich den Regler bewegt; die meisten schauen
+   * erst einmal auf die Karte. Nach einer Ruhepause sind sie da, lange bevor
+   * der erste Schritt kommt.
+   *
+   * Ein neuer Sprung sagt den vorigen Vorgriff ab: Sonst lädt der Atlas die
+   * Nachbarn eines Jahres nach, das niemand mehr ansieht.
+   */
+  let reisebereit = false;
+  let prefetchHandle = null;
+  // Beide Fassungen zusammen setzen, sonst könnte ein Handle der einen Art
+  // an die Absage der anderen geraten.
+  const hatLeerlauf = typeof window.requestIdleCallback === 'function';
+  const imLeerlauf = hatLeerlauf
+    ? (fn) => window.requestIdleCallback(fn, { timeout: 2500 })
+    : (fn) => window.setTimeout(fn, 1200);
+  const abbrechen = hatLeerlauf
+    ? (h) => window.cancelIdleCallback(h)
+    : (h) => window.clearTimeout(h);
+
+  function planePrefetch(index) {
+    if (prefetchHandle != null) abbrechen(prefetchHandle);
+    prefetchHandle = imLeerlauf(() => {
+      prefetchHandle = null;
+      atlasData.prefetch(index, { weit: reisebereit });
+    });
+  }
 
   async function goto(index, { animate = true } = {}) {
     state.index = index;
@@ -216,7 +250,7 @@ async function main() {
     }
     atlas.setIceAge(eiszeit);
     atlas.setEpoch(epoch, { animate });
-    atlasData.prefetch(index);
+    planePrefetch(index);
 
     timeline.setStats({
       polities: epoch.polities.length,
@@ -253,8 +287,24 @@ async function main() {
     } else {
       state.selected = null;
       atlas.select(null);
+      const warOffen = panel.isOpen;
       panel.dom.root.hidden = true;
+      if (warOffen) buehneGeaendert();
     }
+  }
+
+  /**
+   * Die Karte sofort über die neue Bühnenbreite unterrichten.
+   *
+   * Der ResizeObserver in `watchStageSize()` tut das auch – aber erst im
+   * nächsten Einzelbild. Bis dahin rechnet Leaflet mit der alten Breite: Wer
+   * die Tafel schließt und ohne Pause auf die Karte klickt, trifft um die
+   * halbe Tafelbreite daneben. An dieser Stelle ist die Größenänderung
+   * bekannt, also wird sie gemeldet, statt auf die Beobachtung zu warten.
+   * Die Beobachtung bleibt für alles andere zuständig.
+   */
+  function buehneGeaendert() {
+    atlas.map.invalidateSize({ pan: false, animate: false });
   }
 
   function selectPolity(name, { open = true, zoom = false } = {}) {
@@ -264,8 +314,10 @@ async function main() {
       if (entry?.anchor) state.lastAnchor = entry.anchor;
     }
     atlas.select(name, { zoom });
+    const warOffen = panel.isOpen;
     if (name && open) panel.show(name, state.epoch, state.year);
     if (!name) panel.dom.root.hidden = true;
+    if (panel.isOpen !== warOffen) buehneGeaendert();
     updateHash();
     announce();
   }
@@ -461,6 +513,37 @@ async function main() {
   async function enablePhysical(on) {
     if (on && !atlas.physical?.length) atlas.setPhysical(await atlasData.loadPhysical());
     atlas.setShowPhysical(on);
+  }
+
+  /**
+   * Die hochaufgelöste Küstenlinie erst holen, wenn sie in Reichweite kommt.
+   *
+   * `ocean-hd.json` ist mit 3,6 MB (1,2 MB gepackt) der mit Abstand größte
+   * Brocken des Atlas – und war zugleich der einzige, der ohne Anlass geladen
+   * wurde: 600 ms nach dem ersten Bild, obwohl die Karte ihn erst ab
+   * Zoomstufe 4,2 überhaupt einsetzt. Wer die Weltkarte anschaut und den
+   * Regler schiebt, bezahlte ihn für nichts.
+   *
+   * Angefordert wird er jetzt eine gute Stufe vor der Wirkschwelle. Der
+   * Vorlauf ist der Punkt: Zwischen „ich zoome hinein“ und „die feine Küste
+   * wird gebraucht“ liegen dann ein paar Sekunden, in denen die Datei
+   * ankommen kann – sie ist da, bevor man sie sieht.
+   *
+   * Wer über einen geteilten Link direkt in einen nahen Ausschnitt einsteigt,
+   * löst die Anforderung sofort aus; deshalb wird auch einmal gleich geprüft.
+   */
+  function watchCoastNeed() {
+    const VORLAUF_AB_ZOOM = 3;
+    let angefordert = false;
+    const pruefen = () => {
+      if (angefordert || atlas.map.getZoom() < VORLAUF_AB_ZOOM) return;
+      angefordert = true;
+      atlasData.loadDetailedCoastline().then((ocean) => atlas.setDetailedCoastline(ocean));
+    };
+    // `zoom` feuert schon während der Animation, `zoomend` fängt Sprünge ohne
+    // Animation ab – beides zusammen gibt den frühestmöglichen Anlass.
+    atlas.map.on('zoom zoomend', pruefen);
+    pruefen();
   }
 
   /** Gewässer erst holen, wenn sie gebraucht werden. */
@@ -1040,15 +1123,15 @@ async function main() {
     window.setTimeout(() => $('app').classList.remove('is-entering'), 2200);
   }, 320);
 
-  // Erst nach dem ersten Bild: die hochaufgelöste Küstenlinie nachziehen und,
-  // falls voreingestellt, die Gewässer.
+  // Erst nach dem ersten Bild die Ebenen nachziehen, die eingeschaltet sind.
   window.setTimeout(() => {
-    atlasData.loadDetailedCoastline().then((ocean) => atlas.setDetailedCoastline(ocean));
     if (prefs.places) enablePlaces(true);
     if (prefs.physical) enablePhysical(true);
     if (prefs.rivers) enableWater(true);
     if (prefs.events) enableEvents(true);
   }, 600);
+
+  watchCoastNeed();
 }
 
 /* ------------------------------------------------------------- Texte */

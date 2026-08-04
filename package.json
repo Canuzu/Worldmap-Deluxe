@@ -19,7 +19,8 @@
     "check:staaten": "node scripts/check-staaten.mjs",
     "check:herrscher": "node scripts/check-herrscher.mjs",
     "check:ereignisse": "node scripts/check-ereignisse.mjs",
-    "check:layout": "node scripts/check-layout.mjs"
+    "check:layout": "node scripts/check-layout.mjs",
+    "check:ladelast": "node scripts/check-ladelast.mjs"
   },
   "repository": {
     "type": "git",

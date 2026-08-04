@@ -297,9 +297,19 @@ export class AtlasData {
     return task;
   }
 
-  /** Nachbarschnitte im Hintergrund holen, damit die Zeitreise flüssig läuft. */
-  prefetch(index) {
-    for (const i of [index + 1, index - 1, index + 2]) {
+  /**
+   * Nachbarschnitte im Hintergrund holen, damit die Zeitreise flüssig läuft.
+   *
+   * `weit` entscheidet, wie weit vorausgeschaut wird. Beim ersten Bild reicht
+   * je ein Nachbar: Mehr kostet ein halbes Megabyte für den Fall, dass jemand
+   * gleich zwei Schritte macht. Sobald der Regler das erste Mal bewegt wurde,
+   * ist klar, dass gereist wird – dann lohnt der weitere Vorgriff.
+   */
+  prefetch(index, { weit = false } = {}) {
+    const ziele = weit
+      ? [index + 1, index - 1, index + 2, index - 2]
+      : [index + 1, index - 1];
+    for (const i of ziele) {
       if (i < 0 || i >= this.epochs.length) continue;
       const key = this.epochAt(i).key;
       if (this._cache.has(key) || this._inflight.has(key)) continue;
