@@ -123,6 +123,16 @@ const GEGENWARTSPROBEN = [
   ['Quneitra', [35.82, 33.13], ['Syria', 'Syria', 'Syria', 'Syria'], '1974 an Syrien zurückgegeben'],
   ['Damaskus', [36.29, 33.51], ['Syria', 'Syria', 'Syria', 'Syria'], 'Syrien östlich der Waffenstillstandslinie'],
   ['Tiberias', [35.53, 32.79], ['Israel', 'Israel', 'Israel', 'Israel'], 'israelisch, westlich des Golan'],
+
+  // Drei Besetzungen, die seit Jahrzehnten laufen und international nicht
+  // anerkannt sind.
+  ['El Aaiún', [-13.20, 27.15], ['Western Sahara<Morocco>', 'Western Sahara<Morocco>', 'Western Sahara<Morocco>', 'Western Sahara<Morocco>'], 'Westsahara – 1975 von Marokko besetzt'],
+  ['Dakhla', [-15.60, 23.80], ['Western Sahara<Morocco>', 'Western Sahara<Morocco>', 'Western Sahara<Morocco>', 'Western Sahara<Morocco>'], 'Westsahara, Südteil'],
+  ['Agadir', [-9.60, 30.42], ['Morocco', 'Morocco', 'Morocco', 'Morocco'], 'Marokko selbst, nördlich der Westsahara'],
+  ['Nordnikosia', [33.36, 35.20], ['Cyprus<Turkey>', 'Cyprus<Turkey>', 'Cyprus<Turkey>', 'Cyprus<Turkey>'], 'seit 1974 türkisch besetzt'],
+  ['Kyrenia', [33.30, 35.30], ['Cyprus<Turkey>', 'Cyprus<Turkey>', 'Cyprus<Turkey>', 'Cyprus<Turkey>'], 'Nordküste Zyperns'],
+  ['Limassol', [33.04, 34.71], ['Cyprus', 'Cyprus', 'Cyprus', 'Cyprus'], 'Süden Zyperns, südlich der Grünen Linie'],
+  ['Dili', [125.50, -8.70], ['Timor-Leste<Indonesia>', 'Timor-Leste', 'Timor-Leste', 'Timor-Leste'], '1975–1999 von Indonesien besetzt, seit 2002 unabhängig'],
 ];
 
 /**
@@ -135,6 +145,12 @@ const GEGENWARTSPROBEN = [
  * spaltenweise vergleichen könnte.
  */
 const SONSTIGE = [
+  // 1715 – Russland hält Finnland und die Ostseeprovinzen
+  [1715, 'Reval', [24.75, 59.44], 'Sweden<Tsardom of Muscovy>', 'Estland, seit 1710 russisch besetzt'],
+  [1715, 'Riga', [24.11, 56.95], 'Sweden<Tsardom of Muscovy>', 'Livland, seit 1710 russisch besetzt'],
+  [1715, 'Åbo', [22.27, 60.45], 'Sweden<Tsardom of Muscovy>', 'Finnland, seit 1713 besetzt – die „große Unruhe“'],
+  [1715, 'Uppsala', [17.64, 59.86], 'Sweden', 'Schweden selbst blieb unbesetzt'],
+
   // 1800 – die napoleonische Tochterrepublik-Kette
   [1800, 'Amsterdam', [4.90, 52.37], 'Batavian Republic<France>', 'Batavische Republik, 1795 von Frankreich errichtet'],
   [1800, 'Bern', [7.45, 46.95], 'Helvetic Republic<France>', 'Helvetische Republik, 1798 von Frankreich errichtet'],
@@ -164,6 +180,30 @@ const SONSTIGE = [
   [1920, 'Izmir', [27.14, 38.42], 'Ottoman Sultanate<Greece>', 'griechische Besatzungszone 1919–1922'],
   [1920, 'Athen', [23.73, 37.98], 'Greece', 'Griechenland selbst'],
 
+  // 1880 und 1900 – Bosnien und Ägypten unter fremder Verwaltung
+  [1880, 'Sarajevo', [18.41, 43.86], 'Bosnia-Herzegovina<Austria Hungary>', 'seit dem Berliner Kongress 1878 besetzt, osmanische Oberhoheit'],
+  [1880, 'Kragujevac', [20.91, 44.01], 'Serbia', 'Serbien war 1878 unabhängig geworden'],
+  [1900, 'Sarajevo', [18.41, 43.86], 'Bosnia-Herzegovina<Austria Hungary>', 'erst 1908 annektiert'],
+  [1900, 'Kairo', [31.24, 30.04], 'Egypt<United Kingdom of Great Britain and Ireland>', 'britisch besetzt seit 1882, osmanische Provinz bis 1914'],
+  [1900, 'Bursa', [29.06, 40.19], 'Ottoman Empire', 'das Osmanische Reich selbst'],
+
+  // 1914 – Ägypten kurz vor dem Protektorat
+  [1914, 'Kairo', [31.24, 30.04], 'Egypt<United Kingdom of Great Britain and Ireland>', 'bis Dezember 1914 formal osmanisch'],
+  [1914, 'Wien', [16.37, 48.21], 'Austro-Hungarian Empire', 'unbesetzt'],
+
+  // 1930 – die Vereinigten Staaten in der Karibik
+  [1930, 'Port-au-Prince', [-72.34, 18.54], 'Haiti<United States>', 'US-Besatzung 1915–1934'],
+  [1930, 'Managua', [-86.25, 12.14], 'Nicaragua<United States>', 'US-Besatzung 1912–1933'],
+  [1930, 'Santiago de los Caballeros', [-70.70, 19.45], 'Dominican Republic', 'US-Besatzung endete 1924'],
+  [1930, 'San José', [-84.09, 9.93], 'Costa Rica', 'nie besetzt'],
+
+  // 1938 – Äthiopien und Ostchina
+  [1938, 'Addis Abeba', [38.75, 9.02], 'Ethiopia<Italy>', 'italienisch besetzt seit 1936'],
+  [1938, 'Schanghai', [121.47, 31.23], 'Chinese warlords<Empire of Japan>', 'gefallen im November 1937'],
+  [1938, 'Nanjing', [118.80, 32.06], 'Chinese warlords<Empire of Japan>', 'gefallen im Dezember 1937'],
+  [1938, 'Chongqing', [106.55, 29.56], 'Chinese warlords', 'Sitz der Nationalregierung, nie genommen'],
+  [1938, 'Lhasa', [91.11, 29.65], 'Tibet', 'Tibet war 1938 tatsächlich unabhängig'],
+
   // 1945 – die vier Zonen
   [1945, 'München', [11.58, 48.14], 'Germany<United States>', 'amerikanische Zone'],
   [1945, 'Hamburg', [10.00, 53.55], 'Germany<United Kingdom>', 'britische Zone'],
@@ -186,6 +226,8 @@ const JAHR1960 = [
   ['Gaza-Stadt', [34.47, 31.50], 'Palestine<Egypt>', 'Gazastreifen unter ägyptischer Verwaltung'],
   ['Tel Aviv', [34.78, 32.08], 'Israel', 'Israel in den Grenzen von 1949'],
   ['Majdal Schams', [35.77, 33.27], 'Syria', 'Golan – erst 1967 besetzt'],
+  ['Lhasa', [91.11, 29.65], 'Tibet<China>', '1950 einmarschiert, nach dem Aufstand 1959 direkt beherrscht'],
+  ['Delhi', [77.21, 28.61], 'India', 'Indien, südlich des Himalaya'],
 ];
 
 function pointInRing([x, y], ring) {

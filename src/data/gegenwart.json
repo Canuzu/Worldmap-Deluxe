@@ -1,339 +1,1086 @@
 {
-  "_hinweis": [
-    "Der Ursprungsdatensatz endet 2010. Diese Datei führt ihn bis in die",
-    "Gegenwart fort – nach demselben Muster wie die Kriegsjahre: Umbenennungen,",
-    "Teilungen an einer Linie, und Besatzung als eigene Eigenschaft.",
-    "",
-    "Der Zuschnitt der Gegenwart ist heikler als der historischer Jahre, weil er",
-    "laufende Konflikte betrifft. Zwei Grundsätze:",
-    "",
-    "1. Besetztes Gebiet behält den Namen des Landes, dem es völkerrechtlich",
-    "   zugerechnet wird. Die von Russland gehaltenen Teile der Ukraine sind in",
-    "   dieser Karte Ukraine mit Russland als Besatzungsmacht – nicht Russland.",
-    "   Dasselbe galt für Bergkarabach, das bis 2023 armenisch besetzt war.",
-    "2. Frontverläufe sind Momentaufnahmen. Der Stand ist bei jedem Jahr genannt;",
-    "   an einer aktiven Front verschiebt er sich weiter.",
-    "",
-    "Derselbe Grundsatz zwingt zu einer Korrektur, die weiter zurückreicht als",
-    "2010: Der Ursprungsdatensatz kennt überhaupt kein Palästina. Dieselbe",
-    "Israel-Fläche steht dort unverändert von 1938 bis 2010 und schließt",
-    "Westjordanland, Ost-Jerusalem und den Gazastreifen ein. Die Jahre ab 1960",
-    "korrigieren das an derselben Stelle, an der auch die Frontlinien liegen.",
-    "",
-    "Ein Jahr mit eigenem \"basis\"-Eintrag ersetzt den gleichnamigen Zeitschnitt",
-    "des Ursprungsdatensatzes, statt einen neuen hinzuzufügen."
-  ],
-
-  "basis": 2010,
-
-  "gebiete": {
-    "suedsudan": {
-      "_was": "Südsudan, am 9. Juli 2011 unabhängig geworden. Die Linie folgt der Grenze von 1956; das Gebiet Abyei ist bis heute umstritten und wird hier dem Süden zugeschlagen.",
-      "ring": [
-        [24.15, 8.68], [24.85, 9.80], [25.90, 10.30], [27.00, 9.50], [27.50, 9.55],
-        [27.50, 10.50], [29.00, 10.50], [29.00, 9.45], [29.50, 10.30], [30.80, 9.70],
-        [31.60, 9.80], [32.50, 11.00], [33.20, 10.40], [33.90, 10.00], [36.00, 4.00],
-        [33.00, 3.40], [28.00, 4.00], [24.00, 4.00], [24.15, 8.68]
-      ]
-    },
-    "kosovo": {
-      "_was": "Kosovo, 2008 für unabhängig erklärt. Rund hundert Staaten haben es anerkannt, Serbien nicht. Der Ursprungsdatensatz führt es 2010 noch nicht getrennt.",
-      "ring": [
-        [20.02, 42.55], [20.05, 42.85], [20.35, 43.10], [20.65, 43.28], [21.10, 43.25],
-        [21.45, 43.10], [21.80, 42.90], [21.75, 42.50], [21.55, 42.25], [21.10, 42.15],
-        [20.75, 42.05], [20.55, 41.85], [20.30, 42.10], [20.02, 42.55]
-      ]
-    },
-    "krim": {
-      "_was": "Halbinsel Krim, im März 2014 von Russland annektiert. Die Vereinten Nationen erkennen die Annexion nicht an; die Krim bleibt völkerrechtlich ukrainisch.",
-      "ring": [
-        [32.40, 46.20], [36.70, 46.20], [36.70, 44.30], [32.40, 44.30], [32.40, 46.20]
-      ]
-    },
-    "donbass-2015": {
-      "_was": "Von russisch geführten Kräften gehaltener Teil des Donbass nach dem Abkommen Minsk II vom Februar 2015 – die selbsternannten Republiken Donezk und Luhansk. Die Linie lässt Slowjansk, Kramatorsk, Bachmut, Sjewjerodonezk und Mariupol auf ukrainischer Seite und Donezk, Horliwka, Debalzewe und Luhansk auf der anderen.",
-      "ring": [
-        [40.20, 50.00], [39.80, 49.40], [39.20, 49.00], [38.60, 48.80], [38.45, 48.60],
-        [38.20, 48.35], [37.90, 48.20], [37.61, 48.10], [37.60, 47.95], [37.70, 47.60],
-        [37.85, 47.10], [38.20, 46.90], [40.20, 47.00], [40.20, 50.00]
-      ]
-    },
-    "ukraine-besetzt": {
-      "_was": "Von Russland gehaltenes Gebiet der Ukraine nach dem Überfall vom Februar 2022: Teile von Luhansk, Donezk, Saporischschja und Cherson, dazu die Krim. Westlich des Dnipro wurde Cherson im November 2022 befreit; die Linie folgt seither dem Fluss. Eine aktive Front – dieser Verlauf ist eine Momentaufnahme, keine Grenze.",
-      "ring": [
-        [40.20, 50.00], [38.20, 50.10], [37.60, 49.60], [37.50, 49.00], [38.00, 48.60],
-        [37.30, 48.30], [36.90, 47.90], [36.00, 47.60], [35.20, 47.50], [34.40, 47.30],
-        [33.90, 47.00], [33.40, 46.72], [32.90, 46.62], [32.40, 46.55], [31.90, 46.45],
-        [32.50, 45.20], [35.00, 45.00], [40.20, 45.50], [40.20, 50.00]
-      ]
-    },
-    "westjordanland": {
-      "_was": "Westjordanland einschließlich Ost-Jerusalem. Die Linie folgt der Waffenstillstandslinie von 1949 (der Grünen Linie) im Westen und dem Jordan im Osten. Seit 1967 von Israel besetzt; die Vereinten Nationen führen das Gebiet als besetztes palästinensisches Gebiet. Grenze des Maßstabs: Jerusalem lässt sich hier nicht teilen – die Grüne Linie lief mitten durch die Stadt, und auf wenige Kilometer genau ist dieser Zug nicht.",
-      "ring": [
-        [35.02, 32.47], [35.25, 32.53], [35.57, 32.40], [35.55, 31.87],
-        [35.47, 31.72], [35.43, 31.48], [35.33, 31.35], [35.13, 31.36],
-        [34.98, 31.55], [35.00, 31.72], [35.21, 31.79], [35.10, 31.93],
-        [34.88, 31.95], [34.96, 32.15], [34.95, 32.30], [35.02, 32.47]
-      ]
-    },
-    "gaza": {
-      "_was": "Gazastreifen. 1948 bis 1967 unter ägyptischer Verwaltung, danach von Israel besetzt. 2005 zog Israel Siedlungen und Bodentruppen ab, behielt aber die Kontrolle über Grenzen, Luftraum und Küste; die Vereinten Nationen führen das Gebiet weiterhin als besetzt. Seit Oktober 2023 stehen israelische Truppen wieder im Streifen.",
-      "ring": [
-        [34.10, 31.10], [34.35, 31.20], [34.57, 31.58], [34.50, 31.68],
-        [34.10, 31.42], [34.10, 31.10]
-      ]
-    },
-    "golan": {
-      "_was": "Golanhöhen, syrisches Gebiet, seit 1967 von Israel besetzt und 1981 annektiert. Die Annexion ist völkerrechtlich nicht anerkannt. Die Linie folgt der Waffenstillstandslinie von 1974; Quneitra kam damals an Syrien zurück und liegt außerhalb.",
-      "ring": [
-        [35.57, 32.85], [35.68, 32.72], [35.83, 32.90], [35.80, 33.10],
-        [35.78, 33.15], [35.86, 33.25], [35.92, 33.32], [35.60, 33.25],
-        [35.57, 32.85]
-      ]
-    },
-    "osttimor": {
-      "_was": "Osttimor. Der Ursprungsdatensatz kennt das Land nicht und ist zudem uneinheitlich: Dili, Baucau und Atauro liegen dort auf unbeanspruchtem Land, Suai und Lospalos dagegen innerhalb Indonesiens. Der Ring folgt der Grenze zwischen Ost- und Westtimor von der Nordküste bei Batugade zur Südküste bei Motamasin.",
-      "ring": [
-        [124.90, -8.00], [127.50, -8.00], [127.50, -9.80], [125.20, -9.80],
-        [124.95, -9.10], [124.90, -8.00]
-      ]
-    },
-    "osttimor-oecusse": {
-      "_was": "Oecusse, die osttimoresische Exklave in Westtimor.",
-      "ring": [
-        [124.02, -9.50], [124.47, -9.50], [124.47, -9.10], [124.02, -9.10],
-        [124.02, -9.50]
-      ]
-    },
-    "san-marino": {
-      "_was": "San Marino, seit dem Frühmittelalter eigenständig und damit die älteste bestehende Republik der Welt. Sie liegt vollständig in Italien und muss deshalb ausgeschnitten werden – der Ursprungsdatensatz kennt sie nicht. Der Ring ist eine Annäherung an die 61 km² um den Monte Titano.",
-      "ring": [
-        [12.40, 43.900], [12.51, 43.940], [12.49, 43.990], [12.400, 43.970],
-        [12.39, 43.930], [12.40, 43.900]
-      ]
-    },
-    "vatikan": {
-      "_was": "Vatikanstadt, seit den Lateranverträgen von 1929 eigener Staat und Beobachter bei den Vereinten Nationen. Mit 0,49 km² liegt er unter der Auflösung der Küstenliniendaten dieser Karte; gezeichnet ist ein Rechteck um den Petersdom und die vatikanischen Gärten. Auf der Weltkarte ist er nur über die Suche zu finden – sichtbar wird er erst bei höchster Vergrößerung.",
-      "ring": [
-        [12.4457, 41.9002], [12.4583, 41.9002], [12.4583, 41.9075],
-        [12.4457, 41.9075], [12.4457, 41.9002]
-      ]
-    },
-    "bergkarabach": {
-      "_was": "Bergkarabach und die umliegenden Bezirke, von 1994 bis 2020 unter armenischer Kontrolle. 2023 stellte Aserbaidschan die Kontrolle über das gesamte Gebiet her.",
-      "ring": [
-        [45.00, 40.60], [46.90, 40.30], [47.30, 39.60], [47.00, 38.90], [46.00, 38.90],
-        [45.00, 39.50], [45.00, 40.60]
-      ]
-    }
+ "_hinweis": [
+  "Der Ursprungsdatensatz endet 2010. Diese Datei führt ihn bis in die",
+  "Gegenwart fort – nach demselben Muster wie die Kriegsjahre: Umbenennungen,",
+  "Teilungen an einer Linie, und Besatzung als eigene Eigenschaft.",
+  "",
+  "Der Zuschnitt der Gegenwart ist heikler als der historischer Jahre, weil er",
+  "laufende Konflikte betrifft. Zwei Grundsätze:",
+  "",
+  "1. Besetztes Gebiet behält den Namen des Landes, dem es völkerrechtlich",
+  "   zugerechnet wird. Die von Russland gehaltenen Teile der Ukraine sind in",
+  "   dieser Karte Ukraine mit Russland als Besatzungsmacht – nicht Russland.",
+  "   Dasselbe galt für Bergkarabach, das bis 2023 armenisch besetzt war.",
+  "2. Frontverläufe sind Momentaufnahmen. Der Stand ist bei jedem Jahr genannt;",
+  "   an einer aktiven Front verschiebt er sich weiter.",
+  "",
+  "Derselbe Grundsatz zwingt zu einer Korrektur, die weiter zurückreicht als",
+  "2010: Der Ursprungsdatensatz kennt überhaupt kein Palästina. Dieselbe",
+  "Israel-Fläche steht dort unverändert von 1938 bis 2010 und schließt",
+  "Westjordanland, Ost-Jerusalem und den Gazastreifen ein. Die Jahre ab 1960",
+  "korrigieren das an derselben Stelle, an der auch die Frontlinien liegen.",
+  "",
+  "Ein Jahr mit eigenem \"basis\"-Eintrag ersetzt den gleichnamigen Zeitschnitt",
+  "des Ursprungsdatensatzes, statt einen neuen hinzuzufügen."
+ ],
+ "basis": 2010,
+ "gebiete": {
+  "suedsudan": {
+   "_was": "Südsudan, am 9. Juli 2011 unabhängig geworden. Die Linie folgt der Grenze von 1956; das Gebiet Abyei ist bis heute umstritten und wird hier dem Süden zugeschlagen.",
+   "ring": [
+    [
+     24.15,
+     8.68
+    ],
+    [
+     24.85,
+     9.8
+    ],
+    [
+     25.9,
+     10.3
+    ],
+    [
+     27.0,
+     9.5
+    ],
+    [
+     27.5,
+     9.55
+    ],
+    [
+     27.5,
+     10.5
+    ],
+    [
+     29.0,
+     10.5
+    ],
+    [
+     29.0,
+     9.45
+    ],
+    [
+     29.5,
+     10.3
+    ],
+    [
+     30.8,
+     9.7
+    ],
+    [
+     31.6,
+     9.8
+    ],
+    [
+     32.5,
+     11.0
+    ],
+    [
+     33.2,
+     10.4
+    ],
+    [
+     33.9,
+     10.0
+    ],
+    [
+     36.0,
+     4.0
+    ],
+    [
+     33.0,
+     3.4
+    ],
+    [
+     28.0,
+     4.0
+    ],
+    [
+     24.0,
+     4.0
+    ],
+    [
+     24.15,
+     8.68
+    ]
+   ]
   },
-
-  "jahre": [
+  "kosovo": {
+   "_was": "Kosovo, 2008 für unabhängig erklärt. Rund hundert Staaten haben es anerkannt, Serbien nicht. Der Ursprungsdatensatz führt es 2010 noch nicht getrennt.",
+   "ring": [
+    [
+     20.02,
+     42.55
+    ],
+    [
+     20.05,
+     42.85
+    ],
+    [
+     20.35,
+     43.1
+    ],
+    [
+     20.65,
+     43.28
+    ],
+    [
+     21.1,
+     43.25
+    ],
+    [
+     21.45,
+     43.1
+    ],
+    [
+     21.8,
+     42.9
+    ],
+    [
+     21.75,
+     42.5
+    ],
+    [
+     21.55,
+     42.25
+    ],
+    [
+     21.1,
+     42.15
+    ],
+    [
+     20.75,
+     42.05
+    ],
+    [
+     20.55,
+     41.85
+    ],
+    [
+     20.3,
+     42.1
+    ],
+    [
+     20.02,
+     42.55
+    ]
+   ]
+  },
+  "krim": {
+   "_was": "Halbinsel Krim, im März 2014 von Russland annektiert. Die Vereinten Nationen erkennen die Annexion nicht an; die Krim bleibt völkerrechtlich ukrainisch.",
+   "ring": [
+    [
+     32.4,
+     46.2
+    ],
+    [
+     36.7,
+     46.2
+    ],
+    [
+     36.7,
+     44.3
+    ],
+    [
+     32.4,
+     44.3
+    ],
+    [
+     32.4,
+     46.2
+    ]
+   ]
+  },
+  "donbass-2015": {
+   "_was": "Von russisch geführten Kräften gehaltener Teil des Donbass nach dem Abkommen Minsk II vom Februar 2015 – die selbsternannten Republiken Donezk und Luhansk. Die Linie lässt Slowjansk, Kramatorsk, Bachmut, Sjewjerodonezk und Mariupol auf ukrainischer Seite und Donezk, Horliwka, Debalzewe und Luhansk auf der anderen.",
+   "ring": [
+    [
+     40.2,
+     50.0
+    ],
+    [
+     39.8,
+     49.4
+    ],
+    [
+     39.2,
+     49.0
+    ],
+    [
+     38.6,
+     48.8
+    ],
+    [
+     38.45,
+     48.6
+    ],
+    [
+     38.2,
+     48.35
+    ],
+    [
+     37.9,
+     48.2
+    ],
+    [
+     37.61,
+     48.1
+    ],
+    [
+     37.6,
+     47.95
+    ],
+    [
+     37.7,
+     47.6
+    ],
+    [
+     37.85,
+     47.1
+    ],
+    [
+     38.2,
+     46.9
+    ],
+    [
+     40.2,
+     47.0
+    ],
+    [
+     40.2,
+     50.0
+    ]
+   ]
+  },
+  "ukraine-besetzt": {
+   "_was": "Von Russland gehaltenes Gebiet der Ukraine nach dem Überfall vom Februar 2022: Teile von Luhansk, Donezk, Saporischschja und Cherson, dazu die Krim. Westlich des Dnipro wurde Cherson im November 2022 befreit; die Linie folgt seither dem Fluss. Eine aktive Front – dieser Verlauf ist eine Momentaufnahme, keine Grenze.",
+   "ring": [
+    [
+     40.2,
+     50.0
+    ],
+    [
+     38.2,
+     50.1
+    ],
+    [
+     37.6,
+     49.6
+    ],
+    [
+     37.5,
+     49.0
+    ],
+    [
+     38.0,
+     48.6
+    ],
+    [
+     37.3,
+     48.3
+    ],
+    [
+     36.9,
+     47.9
+    ],
+    [
+     36.0,
+     47.6
+    ],
+    [
+     35.2,
+     47.5
+    ],
+    [
+     34.4,
+     47.3
+    ],
+    [
+     33.9,
+     47.0
+    ],
+    [
+     33.4,
+     46.72
+    ],
+    [
+     32.9,
+     46.62
+    ],
+    [
+     32.4,
+     46.55
+    ],
+    [
+     31.9,
+     46.45
+    ],
+    [
+     32.5,
+     45.2
+    ],
+    [
+     35.0,
+     45.0
+    ],
+    [
+     40.2,
+     45.5
+    ],
+    [
+     40.2,
+     50.0
+    ]
+   ]
+  },
+  "westjordanland": {
+   "_was": "Westjordanland einschließlich Ost-Jerusalem. Die Linie folgt der Waffenstillstandslinie von 1949 (der Grünen Linie) im Westen und dem Jordan im Osten. Seit 1967 von Israel besetzt; die Vereinten Nationen führen das Gebiet als besetztes palästinensisches Gebiet. Grenze des Maßstabs: Jerusalem lässt sich hier nicht teilen – die Grüne Linie lief mitten durch die Stadt, und auf wenige Kilometer genau ist dieser Zug nicht.",
+   "ring": [
+    [
+     35.02,
+     32.47
+    ],
+    [
+     35.25,
+     32.53
+    ],
+    [
+     35.57,
+     32.4
+    ],
+    [
+     35.55,
+     31.87
+    ],
+    [
+     35.47,
+     31.72
+    ],
+    [
+     35.43,
+     31.48
+    ],
+    [
+     35.33,
+     31.35
+    ],
+    [
+     35.13,
+     31.36
+    ],
+    [
+     34.98,
+     31.55
+    ],
+    [
+     35.0,
+     31.72
+    ],
+    [
+     35.21,
+     31.79
+    ],
+    [
+     35.1,
+     31.93
+    ],
+    [
+     34.88,
+     31.95
+    ],
+    [
+     34.96,
+     32.15
+    ],
+    [
+     34.95,
+     32.3
+    ],
+    [
+     35.02,
+     32.47
+    ]
+   ]
+  },
+  "gaza": {
+   "_was": "Gazastreifen. 1948 bis 1967 unter ägyptischer Verwaltung, danach von Israel besetzt. 2005 zog Israel Siedlungen und Bodentruppen ab, behielt aber die Kontrolle über Grenzen, Luftraum und Küste; die Vereinten Nationen führen das Gebiet weiterhin als besetzt. Seit Oktober 2023 stehen israelische Truppen wieder im Streifen.",
+   "ring": [
+    [
+     34.1,
+     31.1
+    ],
+    [
+     34.35,
+     31.2
+    ],
+    [
+     34.57,
+     31.58
+    ],
+    [
+     34.5,
+     31.68
+    ],
+    [
+     34.1,
+     31.42
+    ],
+    [
+     34.1,
+     31.1
+    ]
+   ]
+  },
+  "golan": {
+   "_was": "Golanhöhen, syrisches Gebiet, seit 1967 von Israel besetzt und 1981 annektiert. Die Annexion ist völkerrechtlich nicht anerkannt. Die Linie folgt der Waffenstillstandslinie von 1974; Quneitra kam damals an Syrien zurück und liegt außerhalb.",
+   "ring": [
+    [
+     35.57,
+     32.85
+    ],
+    [
+     35.68,
+     32.72
+    ],
+    [
+     35.83,
+     32.9
+    ],
+    [
+     35.8,
+     33.1
+    ],
+    [
+     35.78,
+     33.15
+    ],
+    [
+     35.86,
+     33.25
+    ],
+    [
+     35.92,
+     33.32
+    ],
+    [
+     35.6,
+     33.25
+    ],
+    [
+     35.57,
+     32.85
+    ]
+   ]
+  },
+  "osttimor": {
+   "_was": "Osttimor. Der Ursprungsdatensatz kennt das Land nicht und ist zudem uneinheitlich: Dili, Baucau und Atauro liegen dort auf unbeanspruchtem Land, Suai und Lospalos dagegen innerhalb Indonesiens. Der Ring folgt der Grenze zwischen Ost- und Westtimor von der Nordküste bei Batugade zur Südküste bei Motamasin.",
+   "ring": [
+    [
+     124.9,
+     -8.0
+    ],
+    [
+     127.5,
+     -8.0
+    ],
+    [
+     127.5,
+     -9.8
+    ],
+    [
+     125.2,
+     -9.8
+    ],
+    [
+     124.95,
+     -9.1
+    ],
+    [
+     124.9,
+     -8.0
+    ]
+   ]
+  },
+  "osttimor-oecusse": {
+   "_was": "Oecusse, die osttimoresische Exklave in Westtimor.",
+   "ring": [
+    [
+     124.02,
+     -9.5
+    ],
+    [
+     124.47,
+     -9.5
+    ],
+    [
+     124.47,
+     -9.1
+    ],
+    [
+     124.02,
+     -9.1
+    ],
+    [
+     124.02,
+     -9.5
+    ]
+   ]
+  },
+  "san-marino": {
+   "_was": "San Marino, seit dem Frühmittelalter eigenständig und damit die älteste bestehende Republik der Welt. Sie liegt vollständig in Italien und muss deshalb ausgeschnitten werden – der Ursprungsdatensatz kennt sie nicht. Der Ring ist eine Annäherung an die 61 km² um den Monte Titano.",
+   "ring": [
+    [
+     12.4,
+     43.9
+    ],
+    [
+     12.51,
+     43.94
+    ],
+    [
+     12.49,
+     43.99
+    ],
+    [
+     12.4,
+     43.97
+    ],
+    [
+     12.39,
+     43.93
+    ],
+    [
+     12.4,
+     43.9
+    ]
+   ]
+  },
+  "vatikan": {
+   "_was": "Vatikanstadt, seit den Lateranverträgen von 1929 eigener Staat und Beobachter bei den Vereinten Nationen. Mit 0,49 km² liegt er unter der Auflösung der Küstenliniendaten dieser Karte; gezeichnet ist ein Rechteck um den Petersdom und die vatikanischen Gärten. Auf der Weltkarte ist er nur über die Suche zu finden – sichtbar wird er erst bei höchster Vergrößerung.",
+   "ring": [
+    [
+     12.4457,
+     41.9002
+    ],
+    [
+     12.4583,
+     41.9002
+    ],
+    [
+     12.4583,
+     41.9075
+    ],
+    [
+     12.4457,
+     41.9075
+    ],
+    [
+     12.4457,
+     41.9002
+    ]
+   ]
+  },
+  "bergkarabach": {
+   "_was": "Bergkarabach und die umliegenden Bezirke, von 1994 bis 2020 unter armenischer Kontrolle. 2023 stellte Aserbaidschan die Kontrolle über das gesamte Gebiet her.",
+   "ring": [
+    [
+     45.0,
+     40.6
+    ],
+    [
+     46.9,
+     40.3
+    ],
+    [
+     47.3,
+     39.6
+    ],
+    [
+     47.0,
+     38.9
+    ],
+    [
+     46.0,
+     38.9
+    ],
+    [
+     45.0,
+     39.5
+    ],
+    [
+     45.0,
+     40.6
+    ]
+   ]
+  }
+ },
+ "jahre": [
+  {
+   "year": 1960,
+   "basis": 1960,
+   "stand": "1960",
+   "titel": "Afrikanisches Jahr der Unabhängigkeit",
+   "_warum": "Der Ursprungsdatensatz zeichnet hier dieselbe Israel-Fläche wie 2010 – einschließlich Westjordanland und Gazastreifen. 1960 gehörte beides nicht zu Israel: Jordanien hatte das Westjordanland 1950 annektiert, der Gazastreifen stand unter ägyptischer Verwaltung. Außerdem führt der Ursprungsdatensatz Tibet 1960 noch als eigenen Staat. China war 1950 einmarschiert; nach dem Aufstand von 1959 und der Flucht des Dalai Lama nach Indien gab es dort keine tibetische Regierung mehr.",
+   "teilungen": [
     {
-      "year": 1960,
-      "basis": 1960,
-      "stand": "1960",
-      "titel": "Afrikanisches Jahr der Unabhängigkeit",
-      "_warum": "Der Ursprungsdatensatz zeichnet hier dieselbe Israel-Fläche wie 2010 – einschließlich Westjordanland und Gazastreifen. 1960 gehörte beides nicht zu Israel: Jordanien hatte das Westjordanland 1950 annektiert, der Gazastreifen stand unter ägyptischer Verwaltung.",
-      "teilungen": [
-        { "land": "Israel", "gebiet": "westjordanland", "innen": { "name": "Jordan" } },
-        { "land": "Israel", "gebiet": "gaza", "innen": { "name": "Palestine", "besetzer": "Egypt" } }
-      ]
+     "land": "Israel",
+     "gebiet": "westjordanland",
+     "innen": {
+      "name": "Jordan"
+     }
     },
-
     {
-      "year": 1994,
-      "basis": 1994,
-      "stand": "1994",
-      "titel": "Nach dem Ende der Sowjetunion",
-      "_warum": "Siehe 1960 – dieselbe unveränderte Israel-Fläche. Seit 1967 sind Westjordanland, Ost-Jerusalem und Gazastreifen von Israel besetzt; die Osloer Verträge von 1993/94 richteten dort die Palästinensische Autonomiebehörde ein, ohne die Besatzung zu beenden.",
-      "teilungen": [
-        { "land": "Israel", "gebiet": "westjordanland", "innen": { "name": "Palestine", "besetzer": "Israel" } },
-        { "land": "Israel", "gebiet": "gaza", "innen": { "name": "Palestine", "besetzer": "Israel" } },
-        { "land": "Syria", "gebiet": "golan", "innen": { "besetzer": "Israel" } },
-        { "land": "Azerbaijan", "gebiet": "bergkarabach", "innen": { "besetzer": "Armenia" } },
-        { "land": "Italy", "gebiet": "san-marino", "innen": { "name": "San Marino" } },
-        { "land": "Italy", "gebiet": "vatikan", "innen": { "name": "Vatican City" } }
-      ]
-    },
-
-    {
-      "year": 2000,
-      "basis": 2000,
-      "stand": "2000",
-      "titel": "Jahrtausendwende",
-      "_warum": "Siehe 1994.",
-      "teilungen": [
-        { "land": "Israel", "gebiet": "westjordanland", "innen": { "name": "Palestine", "besetzer": "Israel" } },
-        { "land": "Israel", "gebiet": "gaza", "innen": { "name": "Palestine", "besetzer": "Israel" } },
-        { "land": "Syria", "gebiet": "golan", "innen": { "besetzer": "Israel" } },
-        { "land": "Azerbaijan", "gebiet": "bergkarabach", "innen": { "besetzer": "Armenia" } },
-        { "land": "Italy", "gebiet": "san-marino", "innen": { "name": "San Marino" } },
-        { "land": "Italy", "gebiet": "vatikan", "innen": { "name": "Vatican City" } },
-        { "land": "Indonesia", "gebiet": "osttimor", "innen": { "name": "Timor-Leste" } },
-        { "land": "Indonesia", "gebiet": "osttimor-oecusse", "innen": { "name": "Timor-Leste" } }
-      ]
-    },
-
-    {
-      "year": 2010,
-      "basis": 2010,
-      "stand": "2010",
-      "titel": "Nach der Finanzkrise",
-      "_warum": "Siehe 1994. 2005 hatte Israel Siedlungen und Bodentruppen aus dem Gazastreifen abgezogen, die Kontrolle über Grenzen, Luftraum und Küste aber behalten.",
-      "teilungen": [
-        { "land": "Israel", "gebiet": "westjordanland", "innen": { "name": "Palestine", "besetzer": "Israel" } },
-        { "land": "Israel", "gebiet": "gaza", "innen": { "name": "Palestine", "besetzer": "Israel" } },
-        { "land": "Syria", "gebiet": "golan", "innen": { "besetzer": "Israel" } },
-        { "land": "Azerbaijan", "gebiet": "bergkarabach", "innen": { "besetzer": "Armenia" } },
-        { "land": "Italy", "gebiet": "san-marino", "innen": { "name": "San Marino" } },
-        { "land": "Italy", "gebiet": "vatikan", "innen": { "name": "Vatican City" } },
-        { "land": "Indonesia", "gebiet": "osttimor", "innen": { "name": "Timor-Leste" } },
-        { "land": "Indonesia", "gebiet": "osttimor-oecusse", "innen": { "name": "Timor-Leste" } }
-      ]
-    },
-
-    {
-      "year": 2015,
-      "stand": "Dezember 2015",
-      "titel": "Südsudan, Krim und der Krieg im Donbass",
-      "umbenennen": {
-        "Netherlands Antilles": "Dutch Caribbean",
-        "Burma": "Myanmar"
-      },
-      "teilungen": [
-        {
-          "land": "Sudan",
-          "gebiet": "suedsudan",
-          "innen": { "name": "South Sudan" }
-        },
-        {
-          "land": "Serbia",
-          "gebiet": "kosovo",
-          "innen": { "name": "Kosovo" }
-        },
-        {
-          "land": "Ukraine",
-          "gebiet": "krim",
-          "innen": { "besetzer": "Russia" }
-        },
-        {
-          "land": "Ukraine",
-          "gebiet": "donbass-2015",
-          "innen": { "besetzer": "Russia" }
-        },
-        {
-          "land": "Azerbaijan",
-          "gebiet": "bergkarabach",
-          "innen": { "besetzer": "Armenia" }
-        },
-        {
-          "land": "Israel",
-          "gebiet": "westjordanland",
-          "innen": { "name": "Palestine", "besetzer": "Israel" }
-        },
-        {
-          "land": "Israel",
-          "gebiet": "gaza",
-          "innen": { "name": "Palestine", "besetzer": "Israel" }
-        },
-        {
-          "land": "Syria",
-          "gebiet": "golan",
-          "innen": { "besetzer": "Israel" }
-        },
-        {
-          "land": "Italy",
-          "gebiet": "san-marino",
-          "innen": { "name": "San Marino" }
-        },
-        {
-          "land": "Italy",
-          "gebiet": "vatikan",
-          "innen": { "name": "Vatican City" }
-        },
-        {
-          "land": "Indonesia",
-          "gebiet": "osttimor",
-          "innen": { "name": "Timor-Leste" }
-        },
-        {
-          "land": "Indonesia",
-          "gebiet": "osttimor-oecusse",
-          "innen": { "name": "Timor-Leste" }
-        }
-      ]
-    },
-
-    {
-      "year": 2026,
-      "stand": "Anfang 2026",
-      "titel": "Die Welt heute",
-      "umbenennen": {
-        "Netherlands Antilles": "Dutch Caribbean",
-        "Burma": "Myanmar",
-        "Macedonia": "North Macedonia",
-        "Swaziland": "Eswatini",
-        "Turkey": "Türkiye",
-        "Czech Republic": "Czechia"
-      },
-      "teilungen": [
-        {
-          "land": "Sudan",
-          "gebiet": "suedsudan",
-          "innen": { "name": "South Sudan" }
-        },
-        {
-          "land": "Serbia",
-          "gebiet": "kosovo",
-          "innen": { "name": "Kosovo" }
-        },
-        {
-          "land": "Ukraine",
-          "gebiet": "krim",
-          "innen": { "besetzer": "Russia" }
-        },
-        {
-          "land": "Ukraine",
-          "gebiet": "ukraine-besetzt",
-          "innen": { "besetzer": "Russia" }
-        },
-        {
-          "land": "Israel",
-          "gebiet": "westjordanland",
-          "innen": { "name": "Palestine", "besetzer": "Israel" }
-        },
-        {
-          "land": "Israel",
-          "gebiet": "gaza",
-          "innen": { "name": "Palestine", "besetzer": "Israel" }
-        },
-        {
-          "land": "Syria",
-          "gebiet": "golan",
-          "innen": { "besetzer": "Israel" }
-        },
-        {
-          "land": "Italy",
-          "gebiet": "san-marino",
-          "innen": { "name": "San Marino" }
-        },
-        {
-          "land": "Italy",
-          "gebiet": "vatikan",
-          "innen": { "name": "Vatican City" }
-        },
-        {
-          "land": "Indonesia",
-          "gebiet": "osttimor",
-          "innen": { "name": "Timor-Leste" }
-        },
-        {
-          "land": "Indonesia",
-          "gebiet": "osttimor-oecusse",
-          "innen": { "name": "Timor-Leste" }
-        }
-      ]
+     "land": "Israel",
+     "gebiet": "gaza",
+     "innen": {
+      "name": "Palestine",
+      "besetzer": "Egypt"
+     }
     }
-  ]
+   ],
+   "besetzt": {
+    "Tibet": "China"
+   }
+  },
+  {
+   "year": 1994,
+   "basis": 1994,
+   "stand": "1994",
+   "titel": "Nach dem Ende der Sowjetunion",
+   "_warum": "Siehe 1960 – dieselbe unveränderte Israel-Fläche. Seit 1967 sind Westjordanland, Ost-Jerusalem und Gazastreifen von Israel besetzt; die Osloer Verträge von 1993/94 richteten dort die Palästinensische Autonomiebehörde ein, ohne die Besatzung zu beenden.",
+   "teilungen": [
+    {
+     "land": "Israel",
+     "gebiet": "westjordanland",
+     "innen": {
+      "name": "Palestine",
+      "besetzer": "Israel"
+     }
+    },
+    {
+     "land": "Israel",
+     "gebiet": "gaza",
+     "innen": {
+      "name": "Palestine",
+      "besetzer": "Israel"
+     }
+    },
+    {
+     "land": "Syria",
+     "gebiet": "golan",
+     "innen": {
+      "besetzer": "Israel"
+     }
+    },
+    {
+     "land": "Azerbaijan",
+     "gebiet": "bergkarabach",
+     "innen": {
+      "besetzer": "Armenia"
+     }
+    },
+    {
+     "land": "Italy",
+     "gebiet": "san-marino",
+     "innen": {
+      "name": "San Marino"
+     }
+    },
+    {
+     "land": "Italy",
+     "gebiet": "vatikan",
+     "innen": {
+      "name": "Vatican City"
+     }
+    },
+    {
+     "land": "Indonesia",
+     "gebiet": "osttimor",
+     "innen": {
+      "name": "Timor-Leste",
+      "besetzer": "Indonesia"
+     }
+    },
+    {
+     "land": "Indonesia",
+     "gebiet": "osttimor-oecusse",
+     "innen": {
+      "name": "Timor-Leste",
+      "besetzer": "Indonesia"
+     }
+    }
+   ],
+   "besetzt": {
+    "Western Sahara": "Morocco"
+   },
+   "zonen": {
+    "Turkish Cypriot-administered area": {
+     "name": "Cyprus",
+     "besetzer": "Turkey"
+    }
+   }
+  },
+  {
+   "year": 2000,
+   "basis": 2000,
+   "stand": "2000",
+   "titel": "Jahrtausendwende",
+   "_warum": "Siehe 1994.",
+   "teilungen": [
+    {
+     "land": "Israel",
+     "gebiet": "westjordanland",
+     "innen": {
+      "name": "Palestine",
+      "besetzer": "Israel"
+     }
+    },
+    {
+     "land": "Israel",
+     "gebiet": "gaza",
+     "innen": {
+      "name": "Palestine",
+      "besetzer": "Israel"
+     }
+    },
+    {
+     "land": "Syria",
+     "gebiet": "golan",
+     "innen": {
+      "besetzer": "Israel"
+     }
+    },
+    {
+     "land": "Azerbaijan",
+     "gebiet": "bergkarabach",
+     "innen": {
+      "besetzer": "Armenia"
+     }
+    },
+    {
+     "land": "Italy",
+     "gebiet": "san-marino",
+     "innen": {
+      "name": "San Marino"
+     }
+    },
+    {
+     "land": "Italy",
+     "gebiet": "vatikan",
+     "innen": {
+      "name": "Vatican City"
+     }
+    },
+    {
+     "land": "Indonesia",
+     "gebiet": "osttimor",
+     "innen": {
+      "name": "Timor-Leste"
+     }
+    },
+    {
+     "land": "Indonesia",
+     "gebiet": "osttimor-oecusse",
+     "innen": {
+      "name": "Timor-Leste"
+     }
+    }
+   ],
+   "besetzt": {
+    "Western Sahara": "Morocco"
+   },
+   "zonen": {
+    "Turkish Cypriot-administered area": {
+     "name": "Cyprus",
+     "besetzer": "Turkey"
+    }
+   }
+  },
+  {
+   "year": 2010,
+   "basis": 2010,
+   "stand": "2010",
+   "titel": "Nach der Finanzkrise",
+   "_warum": "Siehe 1994. 2005 hatte Israel Siedlungen und Bodentruppen aus dem Gazastreifen abgezogen, die Kontrolle über Grenzen, Luftraum und Küste aber behalten.",
+   "teilungen": [
+    {
+     "land": "Israel",
+     "gebiet": "westjordanland",
+     "innen": {
+      "name": "Palestine",
+      "besetzer": "Israel"
+     }
+    },
+    {
+     "land": "Israel",
+     "gebiet": "gaza",
+     "innen": {
+      "name": "Palestine",
+      "besetzer": "Israel"
+     }
+    },
+    {
+     "land": "Syria",
+     "gebiet": "golan",
+     "innen": {
+      "besetzer": "Israel"
+     }
+    },
+    {
+     "land": "Azerbaijan",
+     "gebiet": "bergkarabach",
+     "innen": {
+      "besetzer": "Armenia"
+     }
+    },
+    {
+     "land": "Italy",
+     "gebiet": "san-marino",
+     "innen": {
+      "name": "San Marino"
+     }
+    },
+    {
+     "land": "Italy",
+     "gebiet": "vatikan",
+     "innen": {
+      "name": "Vatican City"
+     }
+    },
+    {
+     "land": "Indonesia",
+     "gebiet": "osttimor",
+     "innen": {
+      "name": "Timor-Leste"
+     }
+    },
+    {
+     "land": "Indonesia",
+     "gebiet": "osttimor-oecusse",
+     "innen": {
+      "name": "Timor-Leste"
+     }
+    }
+   ],
+   "besetzt": {
+    "Western Sahara": "Morocco"
+   },
+   "zonen": {
+    "Turkish Cypriot-administered area": {
+     "name": "Cyprus",
+     "besetzer": "Turkey"
+    }
+   }
+  },
+  {
+   "year": 2015,
+   "stand": "Dezember 2015",
+   "titel": "Südsudan, Krim und der Krieg im Donbass",
+   "umbenennen": {
+    "Netherlands Antilles": "Dutch Caribbean",
+    "Burma": "Myanmar"
+   },
+   "teilungen": [
+    {
+     "land": "Sudan",
+     "gebiet": "suedsudan",
+     "innen": {
+      "name": "South Sudan"
+     }
+    },
+    {
+     "land": "Serbia",
+     "gebiet": "kosovo",
+     "innen": {
+      "name": "Kosovo"
+     }
+    },
+    {
+     "land": "Ukraine",
+     "gebiet": "krim",
+     "innen": {
+      "besetzer": "Russia"
+     }
+    },
+    {
+     "land": "Ukraine",
+     "gebiet": "donbass-2015",
+     "innen": {
+      "besetzer": "Russia"
+     }
+    },
+    {
+     "land": "Azerbaijan",
+     "gebiet": "bergkarabach",
+     "innen": {
+      "besetzer": "Armenia"
+     }
+    },
+    {
+     "land": "Israel",
+     "gebiet": "westjordanland",
+     "innen": {
+      "name": "Palestine",
+      "besetzer": "Israel"
+     }
+    },
+    {
+     "land": "Israel",
+     "gebiet": "gaza",
+     "innen": {
+      "name": "Palestine",
+      "besetzer": "Israel"
+     }
+    },
+    {
+     "land": "Syria",
+     "gebiet": "golan",
+     "innen": {
+      "besetzer": "Israel"
+     }
+    },
+    {
+     "land": "Italy",
+     "gebiet": "san-marino",
+     "innen": {
+      "name": "San Marino"
+     }
+    },
+    {
+     "land": "Italy",
+     "gebiet": "vatikan",
+     "innen": {
+      "name": "Vatican City"
+     }
+    },
+    {
+     "land": "Indonesia",
+     "gebiet": "osttimor",
+     "innen": {
+      "name": "Timor-Leste"
+     }
+    },
+    {
+     "land": "Indonesia",
+     "gebiet": "osttimor-oecusse",
+     "innen": {
+      "name": "Timor-Leste"
+     }
+    }
+   ],
+   "besetzt": {
+    "Western Sahara": "Morocco"
+   },
+   "zonen": {
+    "Turkish Cypriot-administered area": {
+     "name": "Cyprus",
+     "besetzer": "Turkey"
+    }
+   }
+  },
+  {
+   "year": 2026,
+   "stand": "Anfang 2026",
+   "titel": "Die Welt heute",
+   "umbenennen": {
+    "Netherlands Antilles": "Dutch Caribbean",
+    "Burma": "Myanmar",
+    "Macedonia": "North Macedonia",
+    "Swaziland": "Eswatini",
+    "Turkey": "Türkiye",
+    "Czech Republic": "Czechia"
+   },
+   "teilungen": [
+    {
+     "land": "Sudan",
+     "gebiet": "suedsudan",
+     "innen": {
+      "name": "South Sudan"
+     }
+    },
+    {
+     "land": "Serbia",
+     "gebiet": "kosovo",
+     "innen": {
+      "name": "Kosovo"
+     }
+    },
+    {
+     "land": "Ukraine",
+     "gebiet": "krim",
+     "innen": {
+      "besetzer": "Russia"
+     }
+    },
+    {
+     "land": "Ukraine",
+     "gebiet": "ukraine-besetzt",
+     "innen": {
+      "besetzer": "Russia"
+     }
+    },
+    {
+     "land": "Israel",
+     "gebiet": "westjordanland",
+     "innen": {
+      "name": "Palestine",
+      "besetzer": "Israel"
+     }
+    },
+    {
+     "land": "Israel",
+     "gebiet": "gaza",
+     "innen": {
+      "name": "Palestine",
+      "besetzer": "Israel"
+     }
+    },
+    {
+     "land": "Syria",
+     "gebiet": "golan",
+     "innen": {
+      "besetzer": "Israel"
+     }
+    },
+    {
+     "land": "Italy",
+     "gebiet": "san-marino",
+     "innen": {
+      "name": "San Marino"
+     }
+    },
+    {
+     "land": "Italy",
+     "gebiet": "vatikan",
+     "innen": {
+      "name": "Vatican City"
+     }
+    },
+    {
+     "land": "Indonesia",
+     "gebiet": "osttimor",
+     "innen": {
+      "name": "Timor-Leste"
+     }
+    },
+    {
+     "land": "Indonesia",
+     "gebiet": "osttimor-oecusse",
+     "innen": {
+      "name": "Timor-Leste"
+     }
+    }
+   ],
+   "besetzt": {
+    "Western Sahara": "Morocco"
+   },
+   "zonen": {
+    "Turkish Cypriot-administered area": {
+     "name": "Cyprus",
+     "besetzer": "Turkey"
+    }
+   }
+  }
+ ]
 }

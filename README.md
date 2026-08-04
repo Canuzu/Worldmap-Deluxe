@@ -26,7 +26,7 @@ Religion, Bevölkerung, Wirtschaft, Wendepunkte und Nachbarn.
 | **Herrscher zum Jahr** | 1.182 Regierungszeiten in 86 Gemeinwesen: Wer 1530 wählt, sieht Süleyman, wer 1900 wählt, Abdülhamid II. Die Regierungsfolge darunter ist anklickbar und nimmt die Karte mit |
 | **Ereignisse auf der Karte** | 174 Verträge, Gründungen, Fahrten, Seuchen, Werke und Umbrüche – eingetragen dort, wo sie geschahen. Gezeigt wird, was in die Zeitspanne des jeweiligen Kartenstands fällt; Entdeckungsfahrten laufen als Route mit |
 | **Nachbarn** | aus der Kartentopologie berechnet und anklickbar: eine Region lässt sich Nachbar für Nachbar erwandern |
-| **Besetzte Gebiete** | 1800, 1815, 1916/1918, 1920, 1940–1945 und 1960–2026: besetztes Land behält seine Farbe und trägt darüber eine Schraffur in der Farbe der Besatzungsmacht – von den napoleonischen Tochterrepubliken über die vier Zonen von 1945 bis zur Krim |
+| **Besetzte Gebiete** | in 23 der 62 Zeitschnitte, lückenlos ab 1715: besetztes Land behält seine Farbe und trägt darüber eine Schraffur in der Farbe der Besatzungsmacht – vom russisch besetzten Finnland 1715 über die napoleonischen Tochterrepubliken und die vier Zonen von 1945 bis zur Westsahara, Nordzypern und der Krim |
 | **Eiszeitliche Küstenlinie** | für die Zeitschnitte vor 10.000 v. Chr.: Doggerland, Beringia und Sundaland liegen trocken, so wie sie es waren |
 | **Landschaftsnamen** | Gebirge, Wüsten, Hochebenen – sie erklären, warum Grenzen verlaufen, wie sie verlaufen |
 | **Kartengrundlage** | wahlweise Relief- oder physische Geländekarte unter den historischen Grenzen – bewusst ohne heutige Straßen, Städte oder Staatsgrenzen. Abschaltbar; ohne sie zeichnet der Atlas wie zuvor alles selbst |
@@ -285,7 +285,7 @@ Stelle des Landes – dort ist genau das die Frage.
 
 Die Linien sind von Hand gezogen und auf kontinentalen Maßstab ausgelegt;
 einzelne Brückenköpfe und Kessel lösen sie nicht auf. Damit sie nicht
-unbemerkt verrutschen, prüft `npm run check:besatzung` 483 Stichproben gegen
+unbemerkt verrutschen, prüft `npm run check:besatzung` 533 Stichproben gegen
 bekannte Daten – darunter die Orte, die trotz Belagerung nie gefallen sind:
 
 ```
@@ -313,22 +313,36 @@ zusätzlichen Schlüssel:
 |---|---|
 | `zonen` | Für Besatzungszonen, die der Ursprungsdatensatz schon als eigene Länder führt: Name ersetzen und Besetzer setzen in einem Zug – nach dem Umbenennen hießen alle vier gleich und ließen sich nicht mehr auseinanderhalten |
 
-Vier Zeitschnitte kommen dadurch hinzu, jeder ersetzt den gleichnamigen des
-Ursprungsdatensatzes:
+Zehn Zeitschnitte kommen dadurch hinzu oder werden ergänzt. Damit trägt
+**jeder Zeitschnitt ab 1715 die Besetzungen, die es zu seinem Stichtag gab** –
+23 der 62 insgesamt:
 
-- **1800** – die napoleonische Tochterrepublik-Kette: Batavische und
-  Helvetische Republik, Toskana, Modena, Parma und Lucca unter französischer
-  Militärkontrolle, Venetien seit Campo Formio österreichisch, Ägypten von
-  1798 bis 1801 in französischer Hand.
-- **1815** – die alliierte Besatzungsarmee in den siebzehn nordöstlichen
-  Departements Frankreichs, 150.000 Mann unter Wellington bis 1818. Paris
-  liegt bewusst außerhalb: Dort standen die Alliierten nur bis November 1815.
-- **1920** – das besetzte Rheinland bis 1930 und die griechische Zone um
-  Smyrna bis 1922. Letztere zeichnete der Ursprungsdatensatz als griechisches
-  Staatsgebiet; das war sie nie.
-- **1945** – Deutschland und Österreich in je vier Zonen, Japan und Südkorea
-  unter amerikanischer, Nordkorea und die Mandschurei unter sowjetischer
-  Besatzung.
+| Jahr | Was fehlte |
+|---|---|
+| **1715** | Finnland, Estland, Livland und Ingermanland unter russischer Besatzung. Der Datensatz zeichnet Schweden in den Grenzen seiner Großmachtzeit; militärisch hielt Russland das alles längst – Ingermanland seit 1703, das Baltikum seit 1710, Finnland seit 1713. Abgetreten wurde es erst 1721. |
+| **1800** | Die napoleonische Tochterrepublik-Kette: Batavische und Helvetische Republik, Toskana, Modena, Parma und Lucca unter französischer Militärkontrolle, Venetien seit Campo Formio österreichisch, Ägypten von 1798 bis 1801 in französischer Hand. |
+| **1815** | Die alliierte Besatzungsarmee in den siebzehn nordöstlichen Departements Frankreichs, 150.000 Mann unter Wellington bis 1818. Paris liegt bewusst außerhalb: Dort standen die Alliierten nur bis November 1815. |
+| **1880** | Bosnien und die Herzegowina. Der Berliner Kongress übertrug Österreich-Ungarn 1878 die Besetzung und Verwaltung; die Oberhoheit blieb ausdrücklich beim Sultan. Der Vertragstext benutzt das Wort „Okkupation“. |
+| **1900** | Bosnien weiterhin – und Ägypten, seit 1882 britisch besetzt, völkerrechtlich bis 1914 osmanische Provinz. Die Briten nannten es selbst „die vorübergehende Besetzung“ und blieben zweiundsiebzig Jahre. |
+| **1914** | Ägypten, bis zum Dezember 1914 formal osmanisch. |
+| **1920** | Das besetzte Rheinland bis 1930 und die griechische Zone um Smyrna bis 1922. Letztere zeichnete der Datensatz als griechisches Staatsgebiet; das war sie nie. |
+| **1930** | Haiti (1915–1934) und Nicaragua (1912–1933) unter US-Besatzung. Beide behielten Regierung und Flagge; Zoll, Finanzen und Nationalgarde lagen bei den Marines. |
+| **1938** | Äthiopien seit 1936 italienisch besetzt – kaum anerkannt, der Widerstand riss bis 1941 nicht ab. Und die ganze chinesische Ostküste seit Juli 1937 japanisch, von Peking über Shanghai und Nanjing bis Kanton und Wuhan. |
+| **1945** | Deutschland und Österreich in je vier Zonen, Japan und Südkorea unter amerikanischer, Nordkorea und die Mandschurei unter sowjetischer Besatzung. |
+| **1960** | Tibet. Der Datensatz führt es noch als eigenen Staat; China war 1950 einmarschiert, nach dem Aufstand von 1959 gab es dort keine tibetische Regierung mehr. |
+| **1994–2026** | Die Westsahara, seit 1975 von Marokko besetzt und von den Vereinten Nationen bis heute als Gebiet ohne Selbstregierung geführt. Nordzypern, seit 1974 türkisch besetzt – der Datensatz zeichnete es als eigenes Land. Und Osttimor, 1975 bis 1999 indonesisch besetzt. |
+
+**Wo die Reihe endet, und warum.** Vor 1715 hört der Atlas mit der Schraffur
+auf – nicht aus Bequemlichkeit, sondern weil die Kategorie dort nicht mehr
+trägt. „Besetzung“ setzt voraus, dass fremde Militärkontrolle und
+Rechtszugehörigkeit auseinanderfallen; genau diesen Unterschied macht die
+Schraffur sichtbar. Vor der Neuzeit fielen sie meist zusammen: Wer ein Land
+eroberte, herrschte dort auch von Rechts wegen. Alexander besetzte Persien
+nicht, er wurde Großkönig. Die Perser regierten Ägypten als 27. Dynastie, die
+Mongolen China als Yuan-Dynastie. Was es stattdessen gab – Tributpflicht,
+Lehnshoheit, Vasallenstatus – zeigt der Atlas schon, über die Einfärbung nach
+Oberhoheit. Es als Besetzung zu schraffieren hieße, die halbe Weltkarte zu
+schraffieren und dabei den Begriff bedeutungslos zu machen.
 
 **Zur Wortwahl.** „Besetzt“ meint hier durchweg fremde Militärkontrolle über
 ein Gebiet, das nicht dem Besatzer gehört. Die napoleonischen

@@ -647,12 +647,14 @@
    "title": "Nach dem Spanischen Erbfolgekrieg",
    "era": "absolutism",
    "polities": 600,
-   "features": 606,
-   "bytes": 485949,
+   "features": 607,
+   "bytes": 486856,
+   "stand": "1715",
+   "besatzung": true,
    "korrigiert": {
     "umbenannt": 2,
     "ergaenzt": 0,
-    "begruendung": "Siehe 1700 – das Kaisertum Österreich entstand erst 1804. Songhai fiel 1591 an Marokko; im Nigerbogen bestand der Nachfolgestaat Dendi bis 1901."
+    "begruendung": "Siehe 1700 – das Kaisertum Österreich entstand erst 1804. Songhai fiel 1591 an Marokko; im Nigerbogen bestand der Nachfolgestaat Dendi bis 1901. Der Ursprungsdatensatz zeichnet Schweden 1715 in den Grenzen seiner Großmachtzeit – einschließlich Finnlands, Estlands, Livlands und Ingermanlands. Militärisch hielt Russland diese Gebiete zu diesem Zeitpunkt längst: Ingermanland seit 1703, Livland und Estland seit 1710, Finnland seit 1713/14. Abgetreten wurden sie erst im Frieden von Nystad 1721."
    }
   },
   {
@@ -716,7 +718,14 @@
    "era": "imperialism",
    "polities": 169,
    "features": 173,
-   "bytes": 344443
+   "bytes": 344465,
+   "stand": "1880",
+   "besatzung": true,
+   "korrigiert": {
+    "umbenannt": 0,
+    "ergaenzt": 0,
+    "begruendung": "Der Berliner Kongress von 1878 übertrug Österreich-Ungarn die Besetzung und Verwaltung Bosniens und der Herzegowina – die Oberhoheit blieb ausdrücklich beim Sultan. Der Vertragstext benutzt das Wort „Okkupation“; erst 1908 folgte die Annexion. Der Ursprungsdatensatz zeichnet das Gebiet als eigenen Staat, ohne zu sagen, wer dort stand."
+   }
   },
   {
    "year": 1900,
@@ -727,11 +736,13 @@
    "era": "imperialism",
    "polities": 165,
    "features": 222,
-   "bytes": 354892,
+   "bytes": 355014,
+   "stand": "1900",
+   "besatzung": true,
    "korrigiert": {
     "umbenannt": 1,
     "ergaenzt": 0,
-    "begruendung": "„Indien\" als Staat entstand erst 1947 – gemeint sind die indischen Fürstenstaaten."
+    "begruendung": "„Indien\" als Staat entstand erst 1947 – gemeint sind die indischen Fürstenstaaten. Zwei Besetzungen prägten das Jahrzehnt und fehlten auf der Karte. Bosnien stand seit 1878 unter österreichisch-ungarischer Verwaltung, die Oberhoheit blieb osmanisch. Und Ägypten war seit der Niederschlagung des Urabi-Aufstands 1882 britisch besetzt – völkerrechtlich bis 1914 osmanische Provinz, tatsächlich von einem britischen Generalkonsul regiert. Die Briten nannten es selbst „die vorübergehende Besetzung“ und blieben zweiundsiebzig Jahre."
    }
   },
   {
@@ -743,11 +754,13 @@
    "era": "worldwars",
    "polities": 142,
    "features": 144,
-   "bytes": 338503,
+   "bytes": 338553,
+   "stand": "Sommer 1914",
+   "besatzung": true,
    "korrigiert": {
     "umbenannt": 1,
     "ergaenzt": 0,
-    "begruendung": "Die Republik Südafrika entstand 1961. 1914 bestand die Südafrikanische Union, ein Dominion des Britischen Empire."
+    "begruendung": "Die Republik Südafrika entstand 1961. 1914 bestand die Südafrikanische Union, ein Dominion des Britischen Empire. Ägypten war bis zum Dezember 1914 formal osmanische Provinz und seit 1882 britisch besetzt. Erst der Kriegseintritt des Osmanischen Reichs machte daraus ein britisches Protektorat."
    }
   },
   {
@@ -815,11 +828,13 @@
    "era": "worldwars",
    "polities": 161,
    "features": 163,
-   "bytes": 337819,
+   "bytes": 337859,
+   "stand": "1930",
+   "besatzung": true,
    "korrigiert": {
     "umbenannt": 1,
     "ergaenzt": 0,
-    "begruendung": "Siehe 1920 – der unabhängige Sudan entstand erst 1956."
+    "begruendung": "Siehe 1920 – der unabhängige Sudan entstand erst 1956. Die Vereinigten Staaten hielten in diesen Jahren zwei Länder der Karibik und Mittelamerikas militärisch besetzt: Haiti von 1915 bis 1934 und Nicaragua von 1912 bis 1933. Beide behielten ihre Regierungen und ihre Flaggen; Zoll, Finanzen und die Nationalgarde lagen bei den Marines. Aus der nicaraguanischen Nationalgarde ging Somoza hervor, aus dem Widerstand gegen sie Sandino."
    }
   },
   {
@@ -830,12 +845,14 @@
    "title": "Vorabend des Zweiten Weltkriegs",
    "era": "worldwars",
    "polities": 170,
-   "features": 174,
-   "bytes": 374005,
+   "features": 175,
+   "bytes": 374500,
+   "stand": "Ende 1938",
+   "besatzung": true,
    "korrigiert": {
     "umbenannt": 1,
     "ergaenzt": 0,
-    "begruendung": "Israel entstand 1948. Der Ursprungsdatensatz führt 1938 zwei deckungsgleiche Flächen – „Mandatory Palestine (GB)\" und „Israel\" –, also dasselbe Gebiet doppelt und eine davon unter dem Namen eines Staates, den es noch nicht gab. Beide werden hier zum britischen Mandatsgebiet zusammengefasst."
+    "begruendung": "Israel entstand 1948. Der Ursprungsdatensatz führt 1938 zwei deckungsgleiche Flächen – „Mandatory Palestine (GB)\" und „Israel\" –, also dasselbe Gebiet doppelt und eine davon unter dem Namen eines Staates, den es noch nicht gab. Beide werden hier zum britischen Mandatsgebiet zusammengefasst. Zwei große Besetzungen liefen schon, bevor der Krieg in Europa begann. Italien hatte Äthiopien 1935/36 überfallen und hielt es besetzt – kaum ein Staat erkannte das an, und der Widerstand riss bis 1941 nicht ab. Und Japan hatte seit Juli 1937 die ganze chinesische Ostküste genommen, von Peking über Shanghai und Nanjing bis Kanton und Wuhan. Der Ursprungsdatensatz schreibt „Ethiopia (Italy)“ und zeichnet China unversehrt."
    }
   },
   {
@@ -935,13 +952,13 @@
    "era": "coldwar",
    "polities": 158,
    "features": 161,
-   "bytes": 344115,
+   "bytes": 344127,
    "stand": "1960",
    "besatzung": true,
    "korrigiert": {
     "umbenannt": 0,
     "ergaenzt": 0,
-    "begruendung": "Der Ursprungsdatensatz zeichnet hier dieselbe Israel-Fläche wie 2010 – einschließlich Westjordanland und Gazastreifen. 1960 gehörte beides nicht zu Israel: Jordanien hatte das Westjordanland 1950 annektiert, der Gazastreifen stand unter ägyptischer Verwaltung."
+    "begruendung": "Der Ursprungsdatensatz zeichnet hier dieselbe Israel-Fläche wie 2010 – einschließlich Westjordanland und Gazastreifen. 1960 gehörte beides nicht zu Israel: Jordanien hatte das Westjordanland 1950 annektiert, der Gazastreifen stand unter ägyptischer Verwaltung. Außerdem führt der Ursprungsdatensatz Tibet 1960 noch als eigenen Staat. China war 1950 einmarschiert; nach dem Aufstand von 1959 und der Flucht des Dalai Lama nach Indien gab es dort keine tibetische Regierung mehr."
    }
   },
   {
@@ -952,8 +969,8 @@
    "title": "Nach dem Ende der Sowjetunion",
    "era": "present",
    "polities": 213,
-   "features": 217,
-   "bytes": 483365,
+   "features": 218,
+   "bytes": 483932,
    "stand": "1994",
    "besatzung": true,
    "korrigiert": {
@@ -969,7 +986,7 @@
    "label": "2000 n. Chr.",
    "title": "Jahrtausendwende",
    "era": "present",
-   "polities": 214,
+   "polities": 213,
    "features": 219,
    "bytes": 482932,
    "stand": "2000",
@@ -987,7 +1004,7 @@
    "label": "2010 n. Chr.",
    "title": "Nach der Finanzkrise",
    "era": "present",
-   "polities": 214,
+   "polities": 213,
    "features": 219,
    "bytes": 482923,
    "stand": "2010",
@@ -1005,7 +1022,7 @@
    "label": "2015 n. Chr.",
    "title": "Südsudan, Krim und der Krieg im Donbass",
    "era": "present",
-   "polities": 216,
+   "polities": 215,
    "features": 222,
    "bytes": 486191,
    "stand": "Dezember 2015",
@@ -1024,7 +1041,7 @@
    "label": "2026 n. Chr.",
    "title": "Die Welt heute",
    "era": "present",
-   "polities": 216,
+   "polities": 215,
    "features": 221,
    "bytes": 485404,
    "stand": "Anfang 2026",
