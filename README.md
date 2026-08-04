@@ -176,6 +176,8 @@ scripts/
   check-herrscher.mjs      Deckung der Herrscherlisten je Zeitschnitt
   check-ereignisse.mjs     Ereignisse je Zeitschnitt, Marken gegen die Küstenlinie
   check-ladelast.mjs       Ladelast des ersten Aufrufs, nach Abschnitten getrennt
+  check-fluss.mjs          Bildraten beim Schwenken und Zoomen, Speicherverbrauch
+  thin-coast.mjs           dünnt die feine Küstenlinie auf das Sichtbare aus
 public/data/               erzeugte, ausgelieferte Datensätze
 ```
 
@@ -195,6 +197,8 @@ npm run check:herrscher # prüft, für wie viele Jahre ein Herrscher hinterlegt 
 npm run check:ereignisse # verteilt die Ereignisse auf die Zeitschnitte und prüft die Orte
 npm run check:layout  # Oberfläche in 5 Fenstergrößen × 6 Zuständen (braucht `npm run dev`)
 npm run check:ladelast -- http://127.0.0.1:4173  # was der erste Aufruf lädt (braucht `npm run preview`)
+npm run check:fluss    -- http://127.0.0.1:4173  # Bildraten beim Schwenken und Zoomen
+npm run build:kueste   # dünnt public/data/base/ocean-hd.json auf 35 % aus
 npm run format:rulers # bringt die Herrscherlisten wieder in ihre Zeilenform
 npm run format:ereignisse # sortiert die Ereignisse chronologisch und formatiert sie
 ```
@@ -567,6 +571,72 @@ noch vor dem ersten Bild geladen, obwohl sie erst beim ersten Klick auf ein
 Land gebraucht wird. Sie später zu holen hieße, den Steckbrief hinhalten zu
 müssen – das ist ein Tausch, der sorgfältiger überlegt sein will als dieser
 hier.
+
+### Was das Ruckeln verursacht hat
+
+Der Atlas lief zäh, sobald man ihn bewegte. Gemessen mit einem eigenen
+Profil-Werkzeug (`npm run check:fluss`, gedrosselte Rechenleistung, damit die
+Zahlen nicht die Testmaschine beschreiben): **183 ms je Bild beim Schwenken**
+– rund sechs Bilder in der Sekunde. Vier Ursachen, alle gefunden, indem eine
+Ebene nach der anderen abgeschaltet und neu gemessen wurde.
+
+**Der Weichzeichner des Küstensaums: 50 ms je Bild.** Ein CSS-Filter über
+einem Pane wird bei jedem Bild neu über die ganze Fensterfläche gerechnet –
+auch beim bloßen Schwenken, wo sich am Inhalt nichts ändert. Er ist ersetzt
+durch das Verfahren, mit dem Kupferstecher Untiefen angelegt haben, bevor es
+Weichzeichner gab: Die Küstenlinie wird mehrfach gezeichnet, jedes Mal breiter
+und blasser. Vier Züge übereinander ergeben denselben weichen Verlauf – und
+die Arbeit fällt einmal beim Neuzeichnen an statt bei jedem Bild.
+
+**Die Beschriftungen: 34 ms je Bild.** Ihre Zeichenfläche lag in
+Bildschirmkoordinaten und wurde bei jeder Mausbewegung gegen die Verschiebung
+der Karte ausgeglichen – samt Kollisionsprüfung über alle Gemeinwesen. Lässt
+man den Ausgleich während des Ziehens weg, reitet sie einfach mit der Karte
+mit, und das ist ohnehin richtiger: Eine Beschriftung gehört zu einem Ort,
+nicht zum Bildschirm. Neu belegt wird erst, wenn die Bewegung steht. Dasselbe
+gilt für die Ortsebene.
+
+**Jede Fläche wurde zweimal gezeichnet.** Der Randsaum, der jedes Gebiet um
+gut einen Bildpunkt weitet, lag in einer zweiten Ebene über denselben Daten:
+1.307 Gemeinwesen im Zeitschnitt 1492, doppelt angelegt, doppelt projiziert,
+bei jeder Bewegung doppelt gezeichnet. Nötig war das wegen der Reihenfolge –
+alle Säume müssen unter allen Flächen liegen. Mit `destination-over` geht der
+Saum unter alles, was auf der Zeichenfläche schon steht: dieselbe Reihenfolge,
+halbe Arbeit, eine Ebene weniger.
+
+**Die feine Küstenlinie machte die Nahsicht unbedienbar.** 402.705
+Stützpunkte, rund 300 m Auflösung für die ganze Erde – als **eine** Leaflet-
+Ebene, die bei jedem Verschieben und jedem Zoomen komplett durchgerechnet
+wurde, dreimal, weil Meer, Saum und Kante sie sich teilen. Gemessen:
+anderthalb Sekunden je Schwenk. Drei Änderungen: Die Linie ist auf 35 %
+ausgedünnt (`npm run build:kueste`) – im Sichtvergleich bei Zoomstufe 6 ist
+kein Unterschied zu erkennen, die dänischen Inseln und das Wattenmeer stehen
+unverändert. Der breite Saum bekommt weiterhin die Übersichtsküste; in einem
+weichen Band von zehn Bildpunkten Breite verschwindet ein Kilometer
+Abweichung restlos. Und eingesetzt wird nicht in einem Zug, sondern Ebene für
+Ebene über mehrere Einzelbilder.
+
+Dazu: Der Saum zeichnet in einfacher statt doppelter Bildschirmauflösung – er
+wird ohnehin weich, vier Mal so viele Bildpunkte machen ihn nicht weicher. Und
+der Zwischenspeicher für Zeitschnitte hält sechs statt zehn Stände.
+
+| | vorher | jetzt |
+|---|---|---|
+| Schwenken, Median je Bild | 183 ms | **83–100 ms** |
+| Schwenken, schlechtestes Bild | 367 ms | **133 ms** |
+| Epochenwechsel | | 160 ms im Schnitt |
+| JS-Speicher nach zehn Zeitschnitten | 277 MB | **102 MB** |
+| `ocean-hd.json` | 3.736 kB | **1.425 kB** |
+
+Alle Zahlen mit auf ein Viertel gedrosselter Rechenleistung in einem Browser
+**ohne** Grafikbeschleunigung – auf einem gewöhnlichen Gerät entsprechend
+schneller. Sie taugen zum Vergleich zweier Fassungen, nicht als Versprechen.
+
+Was bleibt: Ein Zoomsprung im schwersten Zeitschnitt – 1492 mit 1.307
+Gemeinwesen – kostet weiterhin gut zwei Sekunden unter dieser Drosselung, weil
+Leaflet dabei sämtliche Stützpunkte neu projiziert. Eine höhere
+Vereinfachungstoleranz half nicht (gemessen); das wäre nur über abgestufte
+Auflösungen je Zoomstufe zu lösen.
 
 ### Barrierefreiheit
 

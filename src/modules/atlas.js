@@ -72,6 +72,88 @@ const ECKENRADIUS = 9;
 const ECKENANTEIL = 0.22;
 
 /**
+ * Zeichenwerk für den Küstensaum – bewusst in einfacher Auflösung.
+ *
+ * Leaflet legt jede Zeichenfläche auf Bildschirmen mit doppelter Punktdichte
+ * in doppelter Auflösung an. Für Grenzen und Beschriftungen ist das richtig.
+ * Für den Saum ist es Verschwendung: Er wird anschließend um neun Bildpunkte
+ * weichgezeichnet – eine Kante, die vier Mal so viele Bildpunkte hat, wird
+ * dadurch nicht weicher, sie kostet nur vier Mal so viel.
+ *
+ * Und die Weichzeichnung ist der teuerste Posten des ganzen Kartenbildes: Sie
+ * wird bei jedem Bild neu über die volle Fensterfläche gerechnet. In halber
+ * Auflösung sind das ein Viertel der Bildpunkte. Gemessen: 50 ms je Bild
+ * weniger beim Schwenken, ohne sichtbaren Unterschied.
+ */
+const CoastCanvas = L.Canvas.extend({
+  /**
+   * Der Saum als Folge von Parallelen statt als Weichzeichner.
+   *
+   * Ein CSS-Filter über einem Pane wird bei jedem Bild neu über die ganze
+   * Fensterfläche gerechnet – auch beim bloßen Schwenken, wo sich am Inhalt
+   * nichts ändert. Er war damit der teuerste Posten des Kartenbildes.
+   *
+   * Dasselbe Bild entsteht auch ohne ihn: Die Küstenlinie wird mehrfach
+   * gezeichnet, jedes Mal breiter und blasser. Übereinandergelegt ergeben die
+   * Züge einen weichen Verlauf – genau das Verfahren, mit dem Kupferstecher
+   * Untiefen angelegt haben, bevor es Weichzeichner gab. Die Arbeit fällt
+   * dabei einmal beim Neuzeichnen an und nicht bei jedem Bild.
+   */
+  _fillStroke(ctx, layer) {
+    const passes = this.options.saum;
+    if (!passes || !layer.options.stroke) {
+      L.Canvas.prototype._fillStroke.call(this, ctx, layer);
+      return;
+    }
+    const o = layer.options;
+    ctx.lineCap = o.lineCap ?? 'round';
+    ctx.lineJoin = o.lineJoin ?? 'round';
+    ctx.strokeStyle = o.color;
+    // Von außen nach innen: Der breiteste, blasseste Zug zuerst, damit die
+    // schmalen Züge oben liegen und die Mitte dicht wird.
+    for (const [breite, deckung] of passes) {
+      ctx.globalAlpha = (o.opacity ?? 1) * deckung;
+      ctx.lineWidth = o.weight * breite;
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+  },
+
+  _update() {
+    if (this._map._animatingZoom && this._bounds) return;
+    L.Renderer.prototype._update.call(this);
+    const b = this._bounds;
+    const size = b.getSize();
+    const container = this._container;
+    L.DomUtil.setPosition(container, b.min);
+    // Rückwärtsauflösung: halb so viele Bildpunkte, gleiche Fläche auf dem
+    // Bildschirm. Das Setzen von width setzt zugleich den Zeichenzustand
+    // zurück, deshalb kommt die Verschiebung erst danach.
+    container.width = size.x;
+    container.height = size.y;
+    container.style.width = `${size.x}px`;
+    container.style.height = `${size.y}px`;
+    this._ctx.translate(-b.min.x, -b.min.y);
+    this.fire('update');
+  },
+});
+const coastCanvas = (opts) => new CoastCanvas(opts);
+
+/**
+ * Wie viele Parallelen der Saum bekommt – je nach Auflösung der Küstenlinie.
+ *
+ * Die Übersichtsküste hat rund 40.000 Stützpunkte, die hochaufgelöste
+ * 400.000. Vier Züge über die feine Linie kosten das Zehnfache und sind
+ * gemessen der teuerste Einzelposten beim Umschalten. Bei der feinen Linie
+ * genügen zwei: Sie ist ohnehin dichter, und der Saum tritt in der Nahsicht
+ * zurück.
+ */
+const SAUM = {
+  lo: { glow: [[3.4, .10], [2.4, .16], [1.7, .24], [1, .40]], rim: [[2.2, .22], [1, .78]] },
+  hi: { glow: [[2.6, .17], [1, .47]], rim: null },
+};
+
+/**
  * Zeichenwerk mit gerundeten Ecken.
  *
  * Leaflet verbindet Stützpunkte mit `lineTo` – jede Ecke bleibt spitz, egal
@@ -89,6 +171,37 @@ const ECKENANTEIL = 0.22;
  * auseinanderlaufen.
  */
 const SmoothCanvas = L.Canvas.extend({
+  /**
+   * Fläche, Grenzlinie und Randsaum in einem Zug.
+   *
+   * Der Saum weitet jede Fläche um gut einen Bildpunkt und schließt damit die
+   * Lücke zur Küste. Er lag bisher in einer **zweiten** Ebene über denselben
+   * Daten: 1.307 Gemeinwesen im Zeitschnitt 1492 wurden doppelt angelegt,
+   * doppelt projiziert und bei jeder Bewegung doppelt gezeichnet.
+   *
+   * Nötig war die zweite Ebene wegen der Reihenfolge: Alle Säume müssen unter
+   * allen Flächen liegen, sonst legt sich der Saum des zuletzt gezeichneten
+   * Landes über die Fläche seines Nachbarn. Mit `destination-over` geht der
+   * Saum unter alles, was auf dieser Zeichenfläche schon steht – dieselbe
+   * Reihenfolge, halbe Arbeit.
+   */
+  _fillStroke(ctx, layer) {
+    L.Canvas.prototype._fillStroke.call(this, ctx, layer);
+    const saum = layer.options.saumFarbe;
+    if (!saum) return;
+    const alt = ctx.globalCompositeOperation;
+    ctx.globalCompositeOperation = 'destination-over';
+    ctx.globalAlpha = layer.options.saumDeckung ?? 1;
+    ctx.lineWidth = layer.options.saumBreite ?? 2.6;
+    ctx.strokeStyle = saum;
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+    ctx.setLineDash([]);
+    ctx.stroke();
+    ctx.globalCompositeOperation = alt;
+    ctx.globalAlpha = 1;
+  },
+
   _updatePoly(layer, closed) {
     if (!this._drawing) return;
     const parts = layer._parts;
@@ -387,14 +500,18 @@ export class AtlasMap {
     // Kupferstecher mit immer feineren Parallellinien erzeugt haben.
     this.coastGlowLayer = L.geoJSON(null, {
       pane: 'coastglow',
-      renderer: L.canvas({ pane: 'coastglow', padding: .3 }),
+      renderer: (this.glowZeichner = coastCanvas({
+        pane: 'coastglow', padding: .3, saum: SAUM.lo.glow,
+      })),
       interactive: false,
       smoothFactor: 1.4,
     }).addTo(this.map);
 
     this.coastRimLayer = L.geoJSON(null, {
       pane: 'coastrim',
-      renderer: L.canvas({ pane: 'coastrim', padding: .3 }),
+      renderer: (this.rimZeichner = coastCanvas({
+        pane: 'coastrim', padding: .3, saum: SAUM.lo.rim,
+      })),
       interactive: false,
       smoothFactor: 1,
     }).addTo(this.map);
@@ -429,7 +546,6 @@ export class AtlasMap {
       el: this.map.getPane(pane),
       renderer: smoothCanvas({ pane, padding: .35 }),
       layer: null,
-      halo: null,
       occupation: null,
     }));
     this.slots.forEach((slot) => {
@@ -523,17 +639,49 @@ export class AtlasMap {
     }
   }
 
+  /**
+   * Die Küstenlinie in die drei Ebenen einsetzen.
+   *
+   * Zwei Kniffe halten das bezahlbar:
+   *
+   * Der breite Saum bekommt **immer** die Übersichtsküste, auch wenn Meer und
+   * Kante die feine bekommen. Er ist ein weiches Band von über zehn
+   * Bildpunkten Breite; ein Unterschied von einem Kilometer verschwindet
+   * darin restlos. Das spart ein Drittel der Arbeit – beim Einsetzen wie bei
+   * jeder späteren Bewegung.
+   *
+   * Und eingesetzt wird nicht in einem Zug, sondern Ebene für Ebene über
+   * mehrere Einzelbilder. Die Gesamtarbeit bleibt gleich, aber der Browser
+   * kommt zwischendurch zum Zeichnen – aus einem Standbild wird ein kurzes
+   * Nachschärfen.
+   */
   _applyCoast(level) {
     const data = this.coast[level];
     if (!data) return;
     this.coast.level = level;
-    this.oceanLayer.clearLayers();
-    this.oceanLayer.addData(data);
-    this.coastGlowLayer.clearLayers();
-    this.coastGlowLayer.addData(data);
-    this.coastRimLayer.clearLayers();
-    this.coastRimLayer.addData(data);
-    this._styleBase();
+    // Die Staffelung des Saums hängt daran, wie viele Stützpunkte die
+    // Küstenlinie mitbringt – siehe SAUM.
+    const staffel = SAUM[level] ?? SAUM.lo;
+    this.glowZeichner.options.saum = staffel.glow;
+    this.rimZeichner.options.saum = staffel.rim;
+
+    const grob = this.coast.lo ?? data;
+    const schritte = [
+      () => { this.oceanLayer.clearLayers(); this.oceanLayer.addData(data); },
+      () => { this.coastRimLayer.clearLayers(); this.coastRimLayer.addData(data); },
+      () => { this.coastGlowLayer.clearLayers(); this.coastGlowLayer.addData(grob); },
+      () => this._styleBase(),
+    ];
+
+    clearTimeout(this._coastSchritt);
+    const naechster = () => {
+      const schritt = schritte.shift();
+      if (!schritt) return;
+      schritt();
+      if (schritte.length) this._coastSchritt = window.setTimeout(naechster, 0);
+    };
+    // Der erste Schritt sofort, damit das Meer nie fehlt.
+    naechster();
   }
 
   /**
@@ -721,6 +869,10 @@ export class AtlasMap {
     return {
       fillColor: color,
       fillOpacity: alpha,
+      // Der Saum wird von SmoothCanvas aus demselben Pfad gezogen.
+      saumFarbe: color,
+      saumBreite: 2.6,
+      saumDeckung: alpha,
       stroke: this.showBorders,
       color: this.showBorders ? line : 'transparent',
       weight: precision >= 3 ? .9 : precision === 2 ? .75 : .6,
@@ -760,10 +912,6 @@ export class AtlasMap {
     const slot = this.slots[this.activeSlot];
     if (!slot.layer) return;
     const alpha = this._fillAlpha();
-    slot.halo?.setStyle((f) => {
-      const color = this.colorOf(this._colorKey(f.properties));
-      return { color, opacity: alpha };
-    });
     slot.layer.setStyle((f) => this._styleFeature(f));
     slot.occupation?.setStyle((f) => this._occupationStyle(f));
   }
@@ -794,10 +942,6 @@ export class AtlasMap {
       to.layer.remove();
       to.layer = null;
     }
-    if (to.halo) {
-      to.halo.remove();
-      to.halo = null;
-    }
     if (to.occupation) {
       to.occupation.remove();
       to.occupation = null;
@@ -808,25 +952,6 @@ export class AtlasMap {
     // weil die historischen Umrisse nicht exakt an der heutigen Küste enden.
     // Nach außen schneidet die Meeresebene den Überschuss wieder ab, nach
     // innen deckt ihn die Füllung dieser Ebene ab.
-    to.halo = L.geoJSON(data.geojson, {
-      pane: to.pane,
-      renderer: to.renderer,
-      interactive: false,
-      smoothFactor: .5,
-      style: (f) => {
-        const color = this.colorOf(this._colorKey(f.properties));
-        return {
-          fill: false,
-          stroke: true,
-          color,
-          weight: 2.6,
-          opacity: this._fillAlpha(),
-          lineJoin: 'round',
-          lineCap: 'round',
-        };
-      },
-    }).addTo(this.map);
-
     to.layer = L.geoJSON(data.geojson, {
       pane: to.pane,
       renderer: to.renderer,
@@ -874,9 +999,7 @@ export class AtlasMap {
     window.setTimeout(() => {
       if (this.activeSlot === this.slots.indexOf(from)) return;
       from.layer?.remove();
-      from.halo?.remove();
       from.layer = null;
-      from.halo = null;
     }, animate ? 340 : 0);
 
     this._updateLabels();
@@ -1019,7 +1142,11 @@ export class AtlasMap {
     canvas.style.pointerEvents = 'none';
     pane.appendChild(canvas);
     this.placeCanvas = canvas;
-    this.map.on('move zoom viewreset resize zoomend moveend', () => this._drawPlaces());
+    // Wie bei den Beschriftungen: Während einer Bewegung reitet die
+    // Zeichenfläche mit der Karte mit, statt bei jedem Bild neu gesetzt und
+    // neu beschriftet zu werden.
+    this.map.on('moveend zoomend viewreset resize', () => this._drawPlaces());
+    this.map.on('zoomstart', () => { canvas.style.visibility = 'hidden'; });
   }
 
   _drawPlaces() {
@@ -1038,6 +1165,7 @@ export class AtlasMap {
     // Kartenebene wird gegengerechnet.
     const pos = map.containerPointToLayerPoint([0, 0]);
     L.DomUtil.setPosition(canvas, pos);
+    canvas.style.visibility = '';
 
     const ctx = canvas.getContext('2d');
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);

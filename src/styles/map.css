@@ -63,7 +63,9 @@
 
 /* Das breite Band: Tiefe. Stark weichgezeichnet, zurückhaltend in der Deckung. */
 .leaflet-coastglow-pane {
-  filter: blur(var(--coast-glow-blur));
+  /* Kein filter mehr: Die Weichzeichnung entsteht in der Zeichenfläche selbst,
+     als Folge immer breiterer, blasserer Parallelen. Ein CSS-Filter hätte sie
+     bei jedem Bild neu über die ganze Fensterfläche gerechnet. */
   opacity: calc(var(--coast-glow-alpha) * var(--coast-zoom-fade, 1));
   /* Über dem dunklen Meer soll der Saum leuchten, auf Papier eher färben. */
   mix-blend-mode: screen;
@@ -71,7 +73,6 @@
 
 /* Die enge Parallele: Kante. Kaum weichgezeichnet, dafür deutlich. */
 .leaflet-coastrim-pane {
-  filter: blur(1.2px);
   opacity: calc(var(--coast-rim-alpha) * var(--coast-zoom-fade, 1));
   mix-blend-mode: screen;
 }

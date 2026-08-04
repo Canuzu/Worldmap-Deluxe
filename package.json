@@ -10,6 +10,7 @@
     "build:krieg": "node scripts/build-fronts.mjs",
     "build:data": "node scripts/build-data.mjs",
     "build:knowledge": "node scripts/build-knowledge.mjs",
+    "build:kueste": "node scripts/thin-coast.mjs",
     "format:rulers": "node scripts/format-rulers.mjs",
     "format:ereignisse": "node scripts/format-ereignisse.mjs",
     "check:data": "node scripts/check-knowledge.mjs",
@@ -20,7 +21,8 @@
     "check:herrscher": "node scripts/check-herrscher.mjs",
     "check:ereignisse": "node scripts/check-ereignisse.mjs",
     "check:layout": "node scripts/check-layout.mjs",
-    "check:ladelast": "node scripts/check-ladelast.mjs"
+    "check:ladelast": "node scripts/check-ladelast.mjs",
+    "check:fluss": "node scripts/check-fluss.mjs"
   },
   "repository": {
     "type": "git",

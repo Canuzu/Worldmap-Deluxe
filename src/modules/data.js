@@ -160,7 +160,10 @@ export class AtlasData {
     this.base = {};
     this._cache = new Map();
     this._inflight = new Map();
-    this._maxCache = 10;
+    // Zehn vorbereitete Zeitschnitte lagen bei 170 MB Arbeitsspeicher – genug,
+    // dass die Speicherbereinigung beim Schwenken spürbar dazwischenfährt.
+    // Sechs decken den Vorgriff (±2) mit Reserve ab und halbieren das.
+    this._maxCache = 6;
   }
 
   async boot(onProgress = () => {}) {

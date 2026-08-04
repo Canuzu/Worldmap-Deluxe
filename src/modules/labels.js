@@ -35,15 +35,38 @@ export const LabelLayer = L.Layer.extend({
     canvas.style.transformOrigin = '50% 50%';
     this.getPane().appendChild(canvas);
 
-    map.on('move zoom viewreset resize zoomend moveend', this._reset, this);
+    /*
+     * Beim Ziehen wird nicht neu gezeichnet.
+     *
+     * Vorher hing dieses Neuzeichnen an `move` – also an jedem einzelnen Bild
+     * einer Ziehbewegung. Für jedes Bild lief die Kollisionsprüfung über alle
+     * Gemeinwesen, samt Textausmessung: gemessen 34 ms je Bild, der
+     * zweitgrößte Posten des ganzen Kartenbildes.
+     *
+     * Nötig war das, weil die Zeichenfläche in Bildschirmkoordinaten liegt und
+     * bei jedem Bild gegen die Verschiebung der Kartenebene ausgeglichen wurde.
+     * Lässt man diesen Ausgleich während des Ziehens weg, reitet sie einfach
+     * mit der Karte mit – und das ist genau richtig, denn eine Beschriftung
+     * gehört zu einem Ort, nicht zum Bildschirm. Ausgeglichen und neu belegt
+     * wird erst, wenn die Bewegung steht.
+     */
+    map.on('moveend zoomend viewreset resize', this._reset, this);
+    // Beim Zoomen skaliert Leaflet die ganze Kartenebene. Mitskalierter Text
+    // sieht verwaschen aus; für die Dauer der Bewegung tritt er deshalb ab.
+    map.on('zoomstart', this._verbergen, this);
     this._reset();
     return this;
   },
 
   onRemove(map) {
-    map.off('move zoom viewreset resize zoomend moveend', this._reset, this);
+    map.off('moveend zoomend viewreset resize', this._reset, this);
+    map.off('zoomstart', this._verbergen, this);
     this._canvas.remove();
     this._map = null;
+  },
+
+  _verbergen() {
+    if (this._canvas) this._canvas.style.visibility = 'hidden';
   },
 
   /** @param {{text:string, latlng:L.LatLng, bounds:L.LatLngBounds, rank:number, color:string}[]} items */
@@ -97,6 +120,8 @@ export const LabelLayer = L.Layer.extend({
     // wir zeichnen aber in Container-Koordinaten und gleichen das aus.
     const topLeft = map.containerPointToLayerPoint([0, 0]);
     L.DomUtil.setPosition(canvas, topLeft);
+
+    canvas.style.visibility = '';
 
     const ctx = canvas.getContext('2d');
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
