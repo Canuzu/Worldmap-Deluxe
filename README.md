@@ -653,6 +653,15 @@ Teilweg samt Füllung und Kontur kosten. Wer weniger als anderthalb Bildpunkte
 misst, wird nicht mehr gezeichnet. **Ein Zoomsprung im schwersten Zeitschnitt
 kostet damit 43 % weniger.**
 
+**Zwei Drittel jeder Zeichenfläche lagen außerhalb des Fensters.** Leaflet legt
+jede Zeichenfläche größer an als das Fenster, damit beim Verschieben nicht
+sofort ein leerer Rand auftaucht. Der Atlas hatte diesen Vorrat auf 30 bis 35 %
+gestellt – das ergibt rund das Dreifache der Fensterfläche, und jeder dieser
+Bildpunkte wird bei jedem Neuzeichnen mitgerastert. Bei 15 % bleibt es beim
+Doppelten; im Sichttest ist auch bei einem Zug über 900 Bildpunkte kein leerer
+Rand zu sehen, weil ohnehin während der Bewegung nachgezeichnet wird. Leaflets
+eigene Vorgabe liegt bei 10 %.
+
 Ausgelassen wird nur das Zeichnen. Die Geometrie bleibt vollständig: Ein
 Kleinstaat, der im Weltmaßstab keinen Bildpunkt füllt, ist weiter anklickbar,
 steht in Legende und Suche, wird bei Auswahl hervorgehoben – und zeichnet sich,
@@ -663,11 +672,11 @@ dort, wo einzelne Inselpunkte fortfallen.
 
 | | vorher | jetzt |
 |---|---|---|
-| Schwenken, Median je Bild | 183 ms | **83 ms** |
-| Schwenken, schlechtestes Bild | 367 ms | **133 ms** |
+| Schwenken, Median je Bild | 183 ms | **33–50 ms** |
 | Jahr weiterschalten (gleicher Zeitschnitt) | bis 1.400 ms | **17 ms** |
 | Epochenwechsel | 160 ms | **73–99 ms im Schnitt** |
-| Zoomsprung 1492, Weltansicht | 27,4 s (vier Sprünge) | **15,7 s** |
+| Zoomen im Weltmaßstab 1492 (vier Sprünge) | 27,4 s | **12,6 s** |
+| Feine Küste einsetzen | 4,1 s | **2,7 s** |
 | JS-Speicher nach zehn Zeitschnitten | 277 MB | **88–140 MB** |
 | `ocean-hd.json` | 3.736 kB | **1.425 kB** |
 
@@ -675,11 +684,14 @@ Alle Zahlen mit auf ein Viertel gedrosselter Rechenleistung in einem Browser
 **ohne** Grafikbeschleunigung – auf einem gewöhnlichen Gerät entsprechend
 schneller. Sie taugen zum Vergleich zweier Fassungen, nicht als Versprechen.
 
-Was bleibt: Ein Zoomsprung im schwersten Zeitschnitt kostet unter dieser
-Drosselung weiterhin rund vier Sekunden, weil Leaflet dabei sämtliche
-Stützpunkte neu projiziert. Eine höhere Vereinfachungstoleranz brächte noch
-einmal ein Viertel, kappt aber sichtbar Buchten und Landzungen; sauber wäre das
-nur über abgestufte Auflösungen je Zoomstufe zu lösen.
+Was bleibt: Ein einzelner Zoomsprung im schwersten Zeitschnitt kostet unter
+dieser Drosselung weiterhin rund drei Sekunden, weil Leaflet dabei sämtliche
+Stützpunkte neu projiziert. Drei Viertel dieser Zeit sind nicht JavaScript,
+sondern das Rastern der Flächen – in diesem Testbrowser ohne
+Grafikbeschleunigung entsprechend teuer, auf einem gewöhnlichen Gerät deutlich
+weniger. Eine höhere Vereinfachungstoleranz brächte noch einmal ein Viertel,
+kappt aber sichtbar Buchten und Landzungen; sauber wäre das nur über
+abgestufte Auflösungen je Zoomstufe zu lösen.
 
 ### Barrierefreiheit
 

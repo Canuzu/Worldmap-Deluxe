@@ -91,6 +91,22 @@ const ECKENANTEIL = 0.22;
  */
 const RING_MIN = 1.5;
 
+/**
+ * Wie weit über den Bildrand hinaus gezeichnet wird.
+ *
+ * Leaflet legt jede Zeichenfläche größer an als das Fenster, damit beim
+ * Verschieben nicht sofort ein leerer Rand auftaucht. Der Atlas hatte diesen
+ * Vorrat auf 30 bis 35 % gestellt – das ergibt eine Fläche von rund dem
+ * Dreifachen des Fensters, und **jeder** dieser Bildpunkte wird bei jedem
+ * Neuzeichnen mitgerastert, auch wenn zwei Drittel davon nie zu sehen sind.
+ *
+ * Bei 15 % bleibt es beim Doppelten. Gemessen kostet ein Zoomsprung damit
+ * ein Sechstel weniger; im Sichttest ist auch bei einem Zug über 700
+ * Bildpunkte kein leerer Rand zu sehen. Leaflets eigene Vorgabe liegt bei
+ * 10 %.
+ */
+const RAND = .15;
+
 /** Größte Ausdehnung eines Ringes in Bildpunkten. */
 function ringAusdehnung(p) {
   let x0 = Infinity;
@@ -553,7 +569,7 @@ export class AtlasMap {
     // Linie zwangsläufig deckungsgleich.
     this.oceanLayer = L.geoJSON(null, {
       pane: 'ocean',
-      renderer: plainCanvas({ pane: 'ocean', padding: .3 }),
+      renderer: plainCanvas({ pane: 'ocean', padding: RAND }),
       interactive: false,
       // Leaflet dünnt beim Projizieren auf Pixelgenauigkeit aus. Leaflets
       // Vorgabe von 1 px kappt sichtbar Buchten und Landzungen; 0.5 px
@@ -569,7 +585,7 @@ export class AtlasMap {
     this.coastLayer = L.geoJSON(null, {
       pane: 'coast',
       renderer: (this.saumZeichner = coastCanvas({
-        pane: 'coast', padding: .3, baender: [],
+        pane: 'coast', padding: RAND, baender: [],
       })),
       interactive: false,
       smoothFactor: 1.2,
@@ -577,14 +593,14 @@ export class AtlasMap {
 
     this.waterLayer = L.geoJSON(null, {
       pane: 'water',
-      renderer: plainCanvas({ pane: 'water', padding: .3 }),
+      renderer: plainCanvas({ pane: 'water', padding: RAND }),
       interactive: false,
       smoothFactor: 1.2,
     });
 
     this.graticuleLayer = L.geoJSON(graticule(), {
       pane: 'graticule',
-      renderer: plainCanvas({ pane: 'graticule', padding: .3 }),
+      renderer: plainCanvas({ pane: 'graticule', padding: RAND }),
       interactive: false,
     });
 
@@ -603,7 +619,7 @@ export class AtlasMap {
     this.slots = ['polityA', 'polityB'].map((pane) => ({
       pane,
       el: this.map.getPane(pane),
-      renderer: smoothCanvas({ pane, padding: .35 }),
+      renderer: smoothCanvas({ pane, padding: RAND }),
       layer: null,
       occupation: null,
     }));
