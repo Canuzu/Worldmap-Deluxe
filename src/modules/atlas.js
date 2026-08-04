@@ -35,8 +35,7 @@ const PANES = {
   // weichgezeichnetes für die Tiefe und ein schmales, fast scharfes für die
   // Kante. Genau so haben Kupferstecher Untiefen angelegt – erst der weite
   // Ton, dann die enge Parallele.
-  coastglow: 241,
-  coastrim: 243,
+  coast: 241,
   water: 246,
   graticule: 250,
   highlight: 256,
@@ -72,6 +71,71 @@ const ECKENRADIUS = 9;
 const ECKENANTEIL = 0.22;
 
 /**
+ * Was kleiner als anderthalb Bildpunkte ist, wird nicht gezeichnet.
+ *
+ * Im schwersten Zeitschnitt liegen 9.666 Ringe im Bild – aber nur 840 davon
+ * sind größer als zehn Bildpunkte. Der Rest sind Schären, Riffe, Sandbänke,
+ * Enklaven: Umrisse aus im Schnitt sieben Stützpunkten, die zusammen ein
+ * Viertel aller Punkte ausmachen und auf dem Bildschirm einen Fleck ergeben,
+ * den man nicht als Form erkennen kann.
+ *
+ * Jeder dieser Ringe kostet trotzdem einen eigenen Teilweg samt Füllung und
+ * Kontur. Gemessen kostete das im Weltmaßstab 46 % der gesamten Zeichenzeit
+ * eines Zoomsprungs – für nichts, was zu sehen wäre.
+ *
+ * Ausgelassen wird nur das **Zeichnen**. Die Geometrie bleibt vollständig
+ * erhalten: Ein Kleinstaat, der im Weltmaßstab keinen Bildpunkt füllt, ist
+ * weiter anklickbar, steht in der Legende und in der Suche, wird bei Auswahl
+ * hervorgehoben – und zeichnet sich, sobald er beim Hineinzoomen groß genug
+ * ist, um überhaupt eine Form zu haben.
+ */
+const RING_MIN = 1.5;
+
+/** Größte Ausdehnung eines Ringes in Bildpunkten. */
+function ringAusdehnung(p) {
+  let x0 = Infinity;
+  let y0 = Infinity;
+  let x1 = -Infinity;
+  let y1 = -Infinity;
+  for (let i = 0; i < p.length; i++) {
+    const q = p[i];
+    if (q.x < x0) x0 = q.x;
+    if (q.x > x1) x1 = q.x;
+    if (q.y < y0) y0 = q.y;
+    if (q.y > y1) y1 = q.y;
+  }
+  const bx = x1 - x0;
+  const by = y1 - y0;
+  return bx > by ? bx : by;
+}
+
+/**
+ * Leaflets Zeichenwerk, aber ohne die unsichtbaren Ringe.
+ *
+ * Alle Zeichenwerke des Atlas erben hiervon, damit die Regel an einer Stelle
+ * steht und nicht in jeder Ebene neu.
+ */
+const PlainCanvas = L.Canvas.extend({
+  _updatePoly(layer, closed) {
+    if (!this._drawing) return;
+    const ctx = this._ctx;
+    ctx.beginPath();
+    let etwas = false;
+    for (const punkte of layer._parts) {
+      if (punkte.length < 2) continue;
+      if (ringAusdehnung(punkte) < RING_MIN) continue;
+      for (let i = 0; i < punkte.length; i++) {
+        ctx[i === 0 ? 'moveTo' : 'lineTo'](punkte[i].x, punkte[i].y);
+      }
+      if (closed) ctx.closePath();
+      etwas = true;
+    }
+    if (etwas) this._fillStroke(ctx, layer);
+  },
+});
+const plainCanvas = (opts) => new PlainCanvas(opts);
+
+/**
  * Zeichenwerk für den Küstensaum – bewusst in einfacher Auflösung.
  *
  * Leaflet legt jede Zeichenfläche auf Bildschirmen mit doppelter Punktdichte
@@ -85,7 +149,7 @@ const ECKENANTEIL = 0.22;
  * Auflösung sind das ein Viertel der Bildpunkte. Gemessen: 50 ms je Bild
  * weniger beim Schwenken, ohne sichtbaren Unterschied.
  */
-const CoastCanvas = L.Canvas.extend({
+const CoastCanvas = PlainCanvas.extend({
   /**
    * Der Saum als Folge von Parallelen statt als Weichzeichner.
    *
@@ -100,21 +164,22 @@ const CoastCanvas = L.Canvas.extend({
    * dabei einmal beim Neuzeichnen an und nicht bei jedem Bild.
    */
   _fillStroke(ctx, layer) {
-    const passes = this.options.saum;
-    if (!passes || !layer.options.stroke) {
+    const baender = this.options.baender;
+    if (!baender?.length) {
       L.Canvas.prototype._fillStroke.call(this, ctx, layer);
       return;
     }
-    const o = layer.options;
-    ctx.lineCap = o.lineCap ?? 'round';
-    ctx.lineJoin = o.lineJoin ?? 'round';
-    ctx.strokeStyle = o.color;
-    // Von außen nach innen: Der breiteste, blasseste Zug zuerst, damit die
-    // schmalen Züge oben liegen und die Mitte dicht wird.
-    for (const [breite, deckung] of passes) {
-      ctx.globalAlpha = (o.opacity ?? 1) * deckung;
-      ctx.lineWidth = o.weight * breite;
-      ctx.stroke();
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    // Das breite, blasse Band zuerst, die enge Kante darüber – dieselbe
+    // Reihenfolge wie früher die zwei Ebenen, jetzt in einer Zeichenfläche.
+    for (const band of baender) {
+      ctx.strokeStyle = band.farbe;
+      for (const [breite, deckung] of band.staffel) {
+        ctx.globalAlpha = band.deckung * deckung;
+        ctx.lineWidth = band.breite * breite;
+        ctx.stroke();
+      }
     }
     ctx.globalAlpha = 1;
   },
@@ -149,8 +214,8 @@ const coastCanvas = (opts) => new CoastCanvas(opts);
  * zurück.
  */
 const SAUM = {
-  lo: { glow: [[3.4, .10], [2.4, .16], [1.7, .24], [1, .40]], rim: [[2.2, .22], [1, .78]] },
-  hi: { glow: [[2.6, .17], [1, .47]], rim: null },
+  lo: [[3.4, .10], [2.4, .16], [1.7, .24], [1, .40]],
+  hi: [[2.6, .17], [1, .47]],
 };
 
 /**
@@ -170,7 +235,7 @@ const SAUM = {
  * Fläche und Randlinie entstehen aus demselben Pfad, können also nicht
  * auseinanderlaufen.
  */
-const SmoothCanvas = L.Canvas.extend({
+const SmoothCanvas = PlainCanvas.extend({
   /**
    * Fläche, Grenzlinie und Randsaum in einem Zug.
    *
@@ -210,11 +275,14 @@ const SmoothCanvas = L.Canvas.extend({
     const ctx = this._ctx;
     const r = this.options.eckenradius ?? ECKENRADIUS;
     ctx.beginPath();
+    let etwas = false;
     for (const punkte of parts) {
+      if (ringAusdehnung(punkte) < RING_MIN) continue;
       zeichnePfad(ctx, punkte, closed, r);
       if (closed) ctx.closePath();
+      etwas = true;
     }
-    this._fillStroke(ctx, layer);
+    if (etwas) this._fillStroke(ctx, layer);
   },
 });
 
@@ -485,7 +553,7 @@ export class AtlasMap {
     // Linie zwangsläufig deckungsgleich.
     this.oceanLayer = L.geoJSON(null, {
       pane: 'ocean',
-      renderer: L.canvas({ pane: 'ocean', padding: .3 }),
+      renderer: plainCanvas({ pane: 'ocean', padding: .3 }),
       interactive: false,
       // Leaflet dünnt beim Projizieren auf Pixelgenauigkeit aus. Leaflets
       // Vorgabe von 1 px kappt sichtbar Buchten und Landzungen; 0.5 px
@@ -498,34 +566,25 @@ export class AtlasMap {
     // kostet einen Kompositionsschritt und kann nichts unscharf machen, was
     // scharf sein müsste. Zwei Ebenen übereinander ergeben den Verlauf, den
     // Kupferstecher mit immer feineren Parallellinien erzeugt haben.
-    this.coastGlowLayer = L.geoJSON(null, {
-      pane: 'coastglow',
-      renderer: (this.glowZeichner = coastCanvas({
-        pane: 'coastglow', padding: .3, saum: SAUM.lo.glow,
+    this.coastLayer = L.geoJSON(null, {
+      pane: 'coast',
+      renderer: (this.saumZeichner = coastCanvas({
+        pane: 'coast', padding: .3, baender: [],
       })),
       interactive: false,
-      smoothFactor: 1.4,
-    }).addTo(this.map);
-
-    this.coastRimLayer = L.geoJSON(null, {
-      pane: 'coastrim',
-      renderer: (this.rimZeichner = coastCanvas({
-        pane: 'coastrim', padding: .3, saum: SAUM.lo.rim,
-      })),
-      interactive: false,
-      smoothFactor: 1,
+      smoothFactor: 1.2,
     }).addTo(this.map);
 
     this.waterLayer = L.geoJSON(null, {
       pane: 'water',
-      renderer: L.canvas({ pane: 'water', padding: .3 }),
+      renderer: plainCanvas({ pane: 'water', padding: .3 }),
       interactive: false,
       smoothFactor: 1.2,
     });
 
     this.graticuleLayer = L.geoJSON(graticule(), {
       pane: 'graticule',
-      renderer: L.canvas({ pane: 'graticule', padding: .3 }),
+      renderer: plainCanvas({ pane: 'graticule', padding: .3 }),
       interactive: false,
     });
 
@@ -642,34 +701,19 @@ export class AtlasMap {
   /**
    * Die Küstenlinie in die drei Ebenen einsetzen.
    *
-   * Zwei Kniffe halten das bezahlbar:
-   *
-   * Der breite Saum bekommt **immer** die Übersichtsküste, auch wenn Meer und
-   * Kante die feine bekommen. Er ist ein weiches Band von über zehn
-   * Bildpunkten Breite; ein Unterschied von einem Kilometer verschwindet
-   * darin restlos. Das spart ein Drittel der Arbeit – beim Einsetzen wie bei
-   * jeder späteren Bewegung.
-   *
-   * Und eingesetzt wird nicht in einem Zug, sondern Ebene für Ebene über
-   * mehrere Einzelbilder. Die Gesamtarbeit bleibt gleich, aber der Browser
-   * kommt zwischendurch zum Zeichnen – aus einem Standbild wird ein kurzes
+   * Eingesetzt wird nicht in einem Zug, sondern Ebene für Ebene über mehrere
+   * Einzelbilder. Die Gesamtarbeit bleibt gleich, aber der Browser kommt
+   * zwischendurch zum Zeichnen – aus einem Standbild wird ein kurzes
    * Nachschärfen.
    */
   _applyCoast(level) {
     const data = this.coast[level];
     if (!data) return;
     this.coast.level = level;
-    // Die Staffelung des Saums hängt daran, wie viele Stützpunkte die
-    // Küstenlinie mitbringt – siehe SAUM.
-    const staffel = SAUM[level] ?? SAUM.lo;
-    this.glowZeichner.options.saum = staffel.glow;
-    this.rimZeichner.options.saum = staffel.rim;
-
-    const grob = this.coast.lo ?? data;
+    this.saumStaffel = SAUM[level] ?? SAUM.lo;
     const schritte = [
       () => { this.oceanLayer.clearLayers(); this.oceanLayer.addData(data); },
-      () => { this.coastRimLayer.clearLayers(); this.coastRimLayer.addData(data); },
-      () => { this.coastGlowLayer.clearLayers(); this.coastGlowLayer.addData(grob); },
+      () => { this.coastLayer.clearLayers(); this.coastLayer.addData(data); },
       () => this._styleBase(),
     ];
 
@@ -762,24 +806,24 @@ export class AtlasMap {
     const glow = this._cssVar('--coast-glow', '#6fb2e0');
     const nah = Math.min(1, Math.max(0, (z - 3) / 3));
     this.el.style.setProperty('--coast-zoom-fade', (1 - nah * 0.62).toFixed(3));
-    this.coastGlowLayer.setStyle({
-      fill: false,
-      stroke: true,
-      color: glow,
-      weight: Math.max(2.5, 11 - z * 1.9),
-      opacity: 1,
-      lineJoin: 'round',
-      lineCap: 'round',
-    });
-    this.coastRimLayer.setStyle({
-      fill: false,
-      stroke: true,
-      color: this._cssVar('--coast-rim', glow),
-      weight: Math.max(1, 2.6 - z * .12),
-      opacity: 1,
-      lineJoin: 'round',
-      lineCap: 'round',
-    });
+    const staffel = this.saumStaffel ?? SAUM.lo;
+    const fade = 1 - nah * 0.62;
+    const gedaempft = this.hasBasemap ? .5 : 1;
+    this.saumZeichner.options.baender = [
+      {
+        farbe: glow,
+        breite: Math.max(2.5, 11 - z * 1.9),
+        deckung: Number(this._cssVar('--coast-glow-alpha', '.85')) * fade * gedaempft,
+        staffel,
+      },
+      {
+        farbe: this._cssVar('--coast-rim', glow),
+        breite: Math.max(1, 2.6 - z * .12),
+        deckung: Number(this._cssVar('--coast-rim-alpha', '.5')) * fade * gedaempft,
+        staffel: [[1, 1]],
+      },
+    ];
+    this.coastLayer.setStyle({ fill: false, stroke: true, opacity: 1, weight: 1 });
     this.waterLayer.setStyle((f) => (
       f.geometry.type.includes('Line')
         ? { stroke: true, color: river, weight: .7, opacity: .75, fill: false }

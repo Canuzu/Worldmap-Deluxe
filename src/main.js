@@ -228,7 +228,27 @@ async function main() {
     });
   }
 
+  /**
+   * Einen Zeitschnitt anzeigen.
+   *
+   * Der Regler ist jahresgenau, die Karte kennt aber nur 62 Stände. Wer mit
+   * den Pfeiltasten von 1815 auf 1816 geht, bleibt beim selben Kartenstand –
+   * und dennoch wurde hier bisher der ganze Zeitschnitt neu aufgebaut: 1.307
+   * Gemeinwesen neu angelegt, neu projiziert, neu gezeichnet, dazu eine
+   * Überblendung von 300 ms. Bei gedrückt gehaltener Pfeiltaste stand die
+   * Karte damit dauerhaft im Neuaufbau.
+   *
+   * Ändert sich der Kartenstand nicht, bleibt die Karte deshalb unberührt.
+   * Aktualisiert wird nur, was am Jahr hängt: Steckbrief, Adresszeile und die
+   * Ansage für Vorlesesoftware.
+   */
   async function goto(index, { animate = true } = {}) {
+    if (state.epoch && index === state.index && state.epoch.meta === atlasData.epochAt(index)) {
+      if (state.selected && panel.isOpen) panel.show(state.selected, state.epoch, state.year);
+      updateHash();
+      announce();
+      return;
+    }
     state.index = index;
     const token = ++loadToken;
     let epoch;

@@ -48,13 +48,15 @@ optionale Ausnahme sind die abschaltbaren Wikipedia-Auszüge.
 Der Atlas soll wie eine gestochene Tafel wirken, nicht wie ein Kartendienst.
 Sechs Entscheidungen tragen das:
 
-**Der Küstensaum.** Zwei Linienebenen liegen über dem Meer, beide
-weichgezeichnet: eine breite für die Tiefe, eine schmale für die Kante.
-Zusammen ergeben sie den Verlauf, den Kupferstecher mit immer feineren
-Parallellinien um jede Küste gelegt haben. Nichts sonst verändert das
-Kartenbild so stark. Der Saum liegt zur Hälfte auf dem Land, deshalb laufen
-Breite und Deckung mit der Zoomstufe zurück – im Weltmaßstab umreißt er die
-Kontinente, in der Nahsicht bleibt nur die Kante.
+**Der Küstensaum.** Über dem Meer liegt eine Linienebene, in die zwei Bänder
+nacheinander gezogen werden: ein breites, blasses für die Tiefe und ein enges,
+fast scharfes für die Kante. Weich wird der Verlauf nicht durch einen
+Weichzeichner, sondern durch immer breitere, blassere Parallelen – genau das
+Verfahren, mit dem Kupferstecher Untiefen angelegt haben, bevor es
+Weichzeichner gab. Nichts sonst verändert das Kartenbild so stark. Der Saum
+liegt zur Hälfte auf dem Land, deshalb laufen Breite und Deckung mit der
+Zoomstufe zurück – im Weltmaßstab umreißt er die Kontinente, in der Nahsicht
+bleibt nur die Kante.
 
 **Gerundete Ecken.** Der Ursprungsdatensatz zeichnet viele Gemeinwesen mit
 sehr wenigen Stützpunkten – Bayern 1815 besteht aus knapp fünfzig, jeder Zug
@@ -620,23 +622,64 @@ Dazu: Der Saum zeichnet in einfacher statt doppelter Bildschirmauflösung – er
 wird ohnehin weich, vier Mal so viele Bildpunkte machen ihn nicht weicher. Und
 der Zwischenspeicher für Zeitschnitte hält sechs statt zehn Stände.
 
+### Was danach noch ruckelte
+
+Das Schwenken lief, das Bedienen nicht. Drei weitere Befunde, wieder einzeln
+gemessen.
+
+**Jeder Tastendruck baute die Karte neu auf.** Die Zeitleiste kennt 123.000
+Jahre, aber nur 88 Zeitschnitte – zwischen 1815 und 1816 liegt derselbe
+Kartenstand. Trotzdem legte jeder Schritt mit der Pfeiltaste alle 1.307
+Gemeinwesen neu an, projizierte sie und blendete sie über sich selbst. Ein
+Vergleich am Anfang von `goto()` – gleicher Zeitschnitt wie eben? – lässt in
+diesem Fall alles stehen und schreibt nur Jahreszahl, Adresse und Steckbrief
+fort. Gemessen: **17 ms statt bis zu 1,4 Sekunden** je Schritt. Das war der
+Grund, warum sich das Durchfahren der Zeit zäh anfühlte, obwohl der
+Epochenwechsel selbst gemessen schnell war – gemessen worden waren nur die
+Sprünge zwischen *verschiedenen* Zeitschnitten.
+
+**Der Saum lag in zwei Zeichenflächen.** Das breite, blasse Band und die enge
+Kante hatten je ein eigenes Pane mit eigenem Blendmodus – zwei
+bildschirmfüllende Ebenen, die der Browser bei jedem Bild einzeln
+zusammensetzen musste. Beide Züge gehen jetzt nacheinander in dieselbe Fläche;
+das Bild ist im Punktvergleich identisch.
+
+**Ein Viertel aller Stützpunkte lag in Ringen, die man nicht sehen kann.** Im
+Zeitschnitt 1492 liegen 9.666 geschlossene Ringe im Bild – aber nur 840 davon
+sind größer als zehn Bildpunkte. Der Rest sind Schären, Riffe, Sandbänke,
+Enklaven aus im Schnitt sieben Punkten, die im Weltmaßstab einen Fleck ergeben,
+den man nicht als Form erkennen kann – und die trotzdem jeweils einen eigenen
+Teilweg samt Füllung und Kontur kosten. Wer weniger als anderthalb Bildpunkte
+misst, wird nicht mehr gezeichnet. **Ein Zoomsprung im schwersten Zeitschnitt
+kostet damit 43 % weniger.**
+
+Ausgelassen wird nur das Zeichnen. Die Geometrie bleibt vollständig: Ein
+Kleinstaat, der im Weltmaßstab keinen Bildpunkt füllt, ist weiter anklickbar,
+steht in Legende und Suche, wird bei Auswahl hervorgehoben – und zeichnet sich,
+sobald er beim Hineinzoomen groß genug ist, um überhaupt eine Form zu haben. Im
+Punktvergleich zweier Fassungen ist die Nahsicht (Zoomstufe 5 und 6)
+unverändert; im Weltmaßstab weichen 0,6 % der Bildpunkte ab, ausschließlich
+dort, wo einzelne Inselpunkte fortfallen.
+
 | | vorher | jetzt |
 |---|---|---|
-| Schwenken, Median je Bild | 183 ms | **83–100 ms** |
+| Schwenken, Median je Bild | 183 ms | **83 ms** |
 | Schwenken, schlechtestes Bild | 367 ms | **133 ms** |
-| Epochenwechsel | | 160 ms im Schnitt |
-| JS-Speicher nach zehn Zeitschnitten | 277 MB | **102 MB** |
+| Jahr weiterschalten (gleicher Zeitschnitt) | bis 1.400 ms | **17 ms** |
+| Epochenwechsel | 160 ms | **73–99 ms im Schnitt** |
+| Zoomsprung 1492, Weltansicht | 27,4 s (vier Sprünge) | **15,7 s** |
+| JS-Speicher nach zehn Zeitschnitten | 277 MB | **88–140 MB** |
 | `ocean-hd.json` | 3.736 kB | **1.425 kB** |
 
 Alle Zahlen mit auf ein Viertel gedrosselter Rechenleistung in einem Browser
 **ohne** Grafikbeschleunigung – auf einem gewöhnlichen Gerät entsprechend
 schneller. Sie taugen zum Vergleich zweier Fassungen, nicht als Versprechen.
 
-Was bleibt: Ein Zoomsprung im schwersten Zeitschnitt – 1492 mit 1.307
-Gemeinwesen – kostet weiterhin gut zwei Sekunden unter dieser Drosselung, weil
-Leaflet dabei sämtliche Stützpunkte neu projiziert. Eine höhere
-Vereinfachungstoleranz half nicht (gemessen); das wäre nur über abgestufte
-Auflösungen je Zoomstufe zu lösen.
+Was bleibt: Ein Zoomsprung im schwersten Zeitschnitt kostet unter dieser
+Drosselung weiterhin rund vier Sekunden, weil Leaflet dabei sämtliche
+Stützpunkte neu projiziert. Eine höhere Vereinfachungstoleranz brächte noch
+einmal ein Viertel, kappt aber sichtbar Buchten und Landzungen; sauber wäre das
+nur über abgestufte Auflösungen je Zoomstufe zu lösen.
 
 ### Barrierefreiheit
 

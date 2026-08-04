@@ -23,15 +23,19 @@ const DROSSEL = Number(args[args.indexOf('--drossel') + 1]) || 4;
    Software (SwiftShader) und ist zusätzlich gedrosselt. Die Zahlen sind also
    deutlich pessimistischer als auf einem Gerät mit Grafikbeschleunigung; sie
    taugen zum Vergleich zwischen zwei Fassungen, nicht als Versprechen. */
-const GRENZE = { schwenken: 140, zoomen: 2600, epoche: 400, kueste: 5500 };
+const GRENZE = { schwenken: 140, zoomen: 2600, epoche: 400, kueste: 5000 };
 
 /* Die beiden großen Zahlen sind kein Freibrief, sondern der gemessene Stand:
    Ein Zoomsprung im schwersten Zeitschnitt (1492, 1.307 Gemeinwesen) und das
-   Einsetzen der feinen Küste kosten hier gut zwei bzw. viereinhalb Sekunden –
-   auf einem Gerät mit Grafikbeschleunigung entspricht das rund einer halben
-   bzw. gut einer Sekunde. Beides ist einmalig und nicht das, was man beim
-   Bedienen als Ruckeln merkt; dafür stehen die 140 ms beim Schwenken. Die
-   Schwellen sind so gesetzt, dass ein Rückschritt auffällt. */
+   Einsetzen der feinen Küste kosten hier gut zwei bzw. gut vier Sekunden –
+   auf einem Gerät mit Grafikbeschleunigung entspricht das rund eine halbe
+   bzw. eine Sekunde. Beides ist einmalig und nicht das, was man beim
+   Bedienen als Ruckeln merkt; dafür stehen die 140 ms beim Schwenken.
+
+   Die Schwellen liegen bewusst über dem gemessenen Stand (Zoomsprung 2,2 s,
+   feine Küste 4,1 s): Diese Umgebung teilt sich die Rechenleistung mit
+   anderen, einzelne Läufe streuen um mehr als die Hälfte. Eine Schwelle, die
+   knapp über dem besten Lauf liegt, meldet Rauschen statt Rückschritten. */
 
 const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
