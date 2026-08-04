@@ -24,6 +24,7 @@ Religion, Bevölkerung, Wirtschaft, Wendepunkte und Nachbarn.
 | **Zeitreise** | Wiedergabetaste läuft alle Epochen durch, mit Überblendung zwischen den Zeitschnitten |
 | **Detailtafel** | Steckbrief je Gemeinwesen und Jahr – kuratierte Texte, Angaben aus dem Kartendatensatz, optional ein Wikipedia-Auszug |
 | **Herrscher zum Jahr** | 1.182 Regierungszeiten in 86 Gemeinwesen: Wer 1530 wählt, sieht Süleyman, wer 1900 wählt, Abdülhamid II. Die Regierungsfolge darunter ist anklickbar und nimmt die Karte mit |
+| **Ereignisse auf der Karte** | 174 Verträge, Gründungen, Fahrten, Seuchen, Werke und Umbrüche – eingetragen dort, wo sie geschahen. Gezeigt wird, was in die Zeitspanne des jeweiligen Kartenstands fällt; Entdeckungsfahrten laufen als Route mit |
 | **Nachbarn** | aus der Kartentopologie berechnet und anklickbar: eine Region lässt sich Nachbar für Nachbar erwandern |
 | **Besetzte Gebiete** | 1916/1918, 1940–1944 und 1960–2026: besetztes Land behält seine Farbe und trägt darüber eine Schraffur in der Farbe der Besatzungsmacht |
 | **Eiszeitliche Küstenlinie** | für die Zeitschnitte vor 10.000 v. Chr.: Doggerland, Beringia und Sundaland liegen trocken, so wie sie es waren |
@@ -154,6 +155,7 @@ src/
   modules/
     atlas.js               Leaflet-Karte, Ebenen, Überblendung, Auswahl
     labels.js              Beschriftungsebene mit Kollisionsprüfung
+    ereignisse.js          Ereignisebene: Marken, Routen, Kartusche
     timeline.js            Zeitleiste, Epochenband, Wiedergabe
     panel.js               Detailtafel
     data.js                Laden, Zwischenspeichern, Nachbarschaftsgraph
@@ -165,12 +167,14 @@ src/
     names.de.json          deutsche Bezeichnungen + Schreibvarianten
     knowledge/*.json       redaktionelle Steckbriefe, thematisch getrennt
     rulers/*.json          Regierungsfolgen, je Gemeinwesen eine Liste
+    ereignisse/*.json      Ereignisse, nach Epochen getrennt
 scripts/
   fetch-sources.mjs        Rohdaten herunterladen (nach data-src/)
   build-data.mjs           Vereinfachen, Anker berechnen, TopoJSON schreiben
   build-knowledge.mjs      Steckbriefe, Namen und Herrscherlisten zusammenführen
   check-knowledge.mjs      Abdeckung der Wissensbasis prüfen
   check-herrscher.mjs      Deckung der Herrscherlisten je Zeitschnitt
+  check-ereignisse.mjs     Ereignisse je Zeitschnitt, Marken gegen die Küstenlinie
 public/data/               erzeugte, ausgelieferte Datensätze
 ```
 
@@ -187,8 +191,10 @@ npm run build:knowledge
 npm run check:data    # Abdeckung der Wissensbasis je Zeitschnitt
 npm run check:staaten # zählt alle 195 Staaten in den Gegenwartsjahren nach
 npm run check:herrscher # prüft, für wie viele Jahre ein Herrscher hinterlegt ist
+npm run check:ereignisse # verteilt die Ereignisse auf die Zeitschnitte und prüft die Orte
 npm run check:layout  # Oberfläche in 5 Fenstergrößen × 6 Zuständen (braucht `npm run dev`)
 npm run format:rulers # bringt die Herrscherlisten wieder in ihre Zeilenform
+npm run format:ereignisse # sortiert die Ereignisse chronologisch und formatiert sie
 ```
 
 `build-data.mjs` erzeugt die Meeresebene aus Natural Earth, berechnet für jedes
@@ -409,6 +415,59 @@ eigenen Kartenebene, in eigenen Farben, und verschwinden restlos beim
 Schließen. Während einer Schlacht tritt die Staatenkarte gedämpft zurück – bei
 diesem Maßstab ist sie ohnehin nur eine einfarbige Fläche und würde die
 Stellungen überstrahlen.
+
+### Ereignisse auf der Karte
+
+Dasselbe Problem in klein: Ein Vertrag, eine Gründung, eine Seuche, eine
+Entdeckungsfahrt ist kein Zustand, sondern ein Zeitpunkt. Bisher erschienen
+solche Ereignisse nur als Textzeile im Steckbrief des jeweiligen Gemeinwesens –
+also nur, wenn man es anklickte, und nur, wenn es überhaupt einen Steckbrief
+gab. Der Vertrag von Tordesillas gehört keinem Land.
+
+**174 Ereignisse** liegen jetzt als Marken auf der Karte, in sechs Arten:
+
+| | |
+|---|---|
+| **Verträge & Friedensschlüsse** | Kadesch 1259 v. Chr., Westfalen 1648, Versailles 1919, Paris 2015 |
+| **Gründungen & Bauwerke** | die Große Pyramide, Bagdad 762, der Sueskanal, die Vereinten Nationen |
+| **Fahrten & Entdeckungen** | Alexanders Zug, Zheng He, Magellan, Amundsen – als Route mitgezeichnet |
+| **Seuchen & Katastrophen** | die Justinianische Pest, der Schwarze Tod, Tambora, Tschernobyl |
+| **Wissen & Werke** | die Schrift, der Buchdruck, Newton, Darwin, die Doppelhelix |
+| **Aufstände & Umbrüche** | Marathon, die Bastille, die Oktoberrevolution, der Mauerfall |
+
+**Wann ein Ereignis erscheint.** Jeder Zeitschnitt gilt für eine Zeitspanne –
+von der Mitte zum vorigen bis zur Mitte zum nächsten. Genau die Ereignisse
+dieser Spanne werden gezeigt. Dadurch wechseln sie exakt dann, wenn auch die
+Karte wechselt, und jedes Ereignis ist bei genau einem Zeitschnitt zu sehen:
+1517 gehört zu 1530, nicht zu 1492. `npm run check:ereignisse` rechnet die
+Verteilung nach und listet die Zeitschnitte auf, die noch leer sind – derzeit
+fünf, alle vor 3000 v. Chr.
+
+**Warum sie golden und formverschieden sind.** Die Karte verteilt ihre Farben
+schon an die Gemeinwesen; eine zweite Farbordnung darüber wäre nicht mehr
+lesbar. Alle Marken tragen deshalb die Akzentfarbe, unterschieden werden die
+Arten allein durch die Form des Zeichens – Siegel, Stern, Segel, Ringe, Buch,
+Fahne –, so wie ein Kupferstecher es gemacht hätte.
+
+**Warum die Namen meist fehlen.** In der Weltansicht liegen Marken oft wenige
+Bildpunkte auseinander. Ab Zoomstufe 3,2 setzt die Ebene den Namen daneben,
+aber nur, wo er nicht auf einen schon gesetzten fällt; darunter erscheint er
+beim Überfahren. Die Legende zählt ohnehin alle Ereignisse der Zeitspanne auf,
+und ein Klick dort fliegt hin und schlägt sie auf.
+
+**Zwei Fallen, die dabei zuschnappten.** Magellans Route lief zunächst quer
+über Afrika: Von 140° West nach 145° Ost sind es in projizierten Koordinaten
+285 Grad in die falsche Richtung. Die Route wird deshalb entwirrt – jeder Punkt
+so um Vielfache von 360 verschoben, dass er am vorigen liegt – und für
+Weltumseglungen zusätzlich um eine Erdumdrehung versetzt gezeichnet, damit man
+von jedem Ausschnitt aus ein Stück sieht. Und ein vertauschtes Koordinatenpaar
+fiele auf der Karte erst auf, wenn man zufällig in dieses Jahr springt; das
+Prüfskript setzt deshalb jede Marke gegen die hochaufgelöste Küstenlinie und
+meldet, was im Meer landet. Was dort hingehört – eine Seeschlacht, eine
+Landung, eine Insel, die in der Küstenlinie fehlt – trägt `"aufSee": true`.
+
+Die Ebene wird **nachgeladen**, nicht mitgebündelt: 47 kB, die erst gebraucht
+werden, wenn die Karte schon steht.
 
 ### Ergänzungen am Ursprungsdatensatz
 

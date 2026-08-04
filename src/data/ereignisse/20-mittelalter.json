@@ -1,0 +1,170 @@
+{
+  "_hinweis": "Ereignisse zwischen dem 6. und dem 15. Jahrhundert. Aufbau siehe 10-antike.json.",
+
+  "ereignisse": [
+    { "id": "justinianische-pest", "jahr": 541, "bis": 549, "art": "seuche", "rang": 1,
+      "name": "Die Justinianische Pest", "ort": [29.92, 31.2], "wo": "vom Nildelta über das ganze Mittelmeer",
+      "text": "Der erste belegte Ausbruch der Beulenpest. Konstantinopel verliert nach zeitgenössischen Angaben die Hälfte seiner Einwohner. Justinians Plan, das Römische Reich wiederherzustellen, überlebt die Seuche nicht.",
+      "wiki": "Justinianische Pest" },
+
+    { "id": "grosser-kanal", "jahr": 609, "art": "gruendung", "rang": 2,
+      "name": "Der Große Kanal wird vollendet", "ort": [119.42, 32.39], "wo": "von Hangzhou bis in den Norden",
+      "text": "Rund 1.800 Kilometer künstliche Wasserstraße verbinden den reichen Süden mit der Hauptstadt im Norden. Fünf Millionen Zwangsarbeiter, ein gestürzter Kaiser – und die Verkehrsader, die China bis ins 19. Jahrhundert zusammenhält.",
+      "wiki": "Kaiserkanal" },
+
+    { "id": "hidschra", "jahr": 622, "art": "umbruch", "rang": 1,
+      "name": "Die Hidschra", "ort": [39.61, 24.47], "wo": "von Mekka nach Medina",
+      "text": "Mohammed und seine Anhänger verlassen Mekka. Aus einer verfolgten Gemeinde wird ein Gemeinwesen mit eigenem Recht – und der islamische Kalender beginnt mit diesem Jahr, nicht mit einer Geburt oder einer Offenbarung.",
+      "wiki": "Hidschra" },
+
+    { "id": "jerusalem-638", "jahr": 638, "art": "umbruch", "rang": 2,
+      "name": "Die Araber nehmen Jerusalem", "ort": [35.23, 31.78], "wo": "Jerusalem",
+      "text": "Sechs Jahre nach Mohammeds Tod fällt die Stadt kampflos. Innerhalb eines Jahrhunderts reicht das Kalifat von Spanien bis an den Indus – die schnellste Reichsbildung der Geschichte.",
+      "wiki": "Islamische Expansion" },
+
+    { "id": "felsendom", "jahr": 691, "art": "gruendung", "rang": 2,
+      "name": "Der Felsendom", "ort": [35.235, 31.778], "wo": "Tempelberg, Jerusalem",
+      "text": "Der älteste erhaltene Sakralbau des Islam, errichtet über dem Felsen, von dem aus Mohammed zum Himmel aufgestiegen sein soll – und auf dem zuvor der jüdische Tempel stand.",
+      "wiki": "Felsendom" },
+
+    { "id": "tours-poitiers", "jahr": 732, "art": "umbruch", "rang": 2,
+      "name": "Tours und Poitiers", "ort": [0.34, 46.58], "wo": "Westfranken",
+      "text": "Karl Martell stoppt einen arabischen Vorstoß nördlich der Pyrenäen. Ob es die Entscheidungsschlacht war, die spätere Jahrhunderte daraus machten, ist umstritten – die Expansion nach Norden endet dennoch hier.",
+      "wiki": "Schlacht von Tours und Poitiers" },
+
+    { "id": "bagdad", "jahr": 762, "art": "gruendung", "rang": 1,
+      "name": "Bagdad wird gegründet", "ort": [44.36, 33.31], "wo": "am Tigris",
+      "text": "Al-Mansur lässt eine kreisrunde Residenz bauen, die binnen fünfzig Jahren die größte Stadt der Welt wird. Im Haus der Weisheit übersetzt man Euklid, Ptolemäus und Galen ins Arabische – und rettet sie damit.",
+      "wiki": "Bagdad" },
+
+    { "id": "lindisfarne", "jahr": 793, "art": "umbruch", "rang": 2, "aufSee": true,
+      "name": "Der Überfall auf Lindisfarne", "ort": [-1.8, 55.68], "wo": "Northumbrien",
+      "text": "Nordmänner plündern ein Inselkloster. Der Schrecken der Chronisten markiert den Beginn von zweihundertfünfzig Jahren, in denen skandinavische Fahrten von Neufundland bis Bagdad reichen.",
+      "wiki": "Wikinger" },
+
+    { "id": "kaiserkroenung-800", "jahr": 800, "art": "umbruch", "rang": 1,
+      "name": "Karl wird Kaiser gekrönt", "ort": [12.45, 41.9], "wo": "Rom, Petersdom",
+      "text": "Am Weihnachtstag setzt Leo III. Karl dem Großen die Kaiserkrone auf. Der Westen hat wieder einen Kaiser – Konstantinopel sieht darin eine Anmaßung, und der Streit um die Nachfolge Roms beginnt.",
+      "wiki": "Kaiserkrönung Karls des Großen" },
+
+    { "id": "oleg-kiew", "jahr": 882, "art": "gruendung", "rang": 2,
+      "name": "Die Rus nehmen Kiew", "ort": [30.52, 50.45], "wo": "am Dnjepr",
+      "text": "Skandinavische Kaufleute und Krieger machen die Stadt am Handelsweg von den Warägern zu den Griechen zur Hauptstadt. Aus der Kiewer Rus leiten Russland, die Ukraine und Belarus bis heute ihre Herkunft ab – alle drei.",
+      "wiki": "Kiewer Rus" },
+
+    { "id": "cluny", "jahr": 910, "art": "gruendung", "rang": 3,
+      "name": "Die Gründung von Cluny", "ort": [4.66, 46.43], "wo": "Burgund",
+      "text": "Ein Kloster, das keinem Bischof und keinem Fürsten untersteht, sondern allein dem Papst. Von hier aus reformiert sich das Mönchtum – und mit ihm die Kirche, die sich gegen die weltliche Macht zu behaupten beginnt.",
+      "wiki": "Abtei Cluny" },
+
+    { "id": "cordoba-kalifat", "jahr": 929, "art": "gruendung", "rang": 2,
+      "name": "Das Kalifat von Córdoba", "ort": [-4.78, 37.88], "wo": "al-Andalus",
+      "text": "Abd ar-Rahman III. nimmt den Kalifentitel an. Córdoba wird mit Bädern, Straßenbeleuchtung und einer riesigen Bibliothek zur größten Stadt Westeuropas – während Paris ein Dorf ist.",
+      "wiki": "Kalifat von Córdoba" },
+
+    { "id": "lechfeld", "jahr": 955, "art": "umbruch", "rang": 2,
+      "name": "Die Schlacht auf dem Lechfeld", "ort": [10.9, 48.33], "wo": "bei Augsburg",
+      "text": "Otto I. beendet siebzig Jahre ungarischer Reiterzüge nach Westen. Die Ungarn werden sesshaft, nehmen das Christentum an – und Mitteleuropa bekommt seine bis heute gültige Ostgrenze.",
+      "wiki": "Schlacht auf dem Lechfeld" },
+
+    { "id": "taufe-rus", "jahr": 988, "art": "umbruch", "rang": 2,
+      "name": "Die Taufe der Rus", "ort": [30.52, 50.45], "wo": "Kiew",
+      "text": "Wladimir wählt für sein Reich die Orthodoxie – der Überlieferung nach, weil ihn die Pracht der Hagia Sophia überzeugte. Die Entscheidung bindet Osteuropa an Konstantinopel statt an Rom, mit Folgen bis heute.",
+      "wiki": "Christianisierung der Kiewer Rus" },
+
+    { "id": "vinland", "jahr": 1000, "art": "fahrt", "rang": 1,
+      "name": "Leif Eriksson erreicht Amerika", "ort": [-55.53, 51.6], "wo": "von Grönland nach Vinland",
+      "weg": [[-51.7, 64.18], [-53.1, 60.2], [-55.53, 51.6]],
+      "text": "Fünfhundert Jahre vor Kolumbus überwintern Nordmänner an der Nordspitze Neufundlands. Die Siedlung von L'Anse aux Meadows ist archäologisch gesichert – und wird nach wenigen Jahren aufgegeben.",
+      "wiki": "Vinland" },
+
+    { "id": "schisma-1054", "jahr": 1054, "art": "umbruch", "rang": 1,
+      "name": "Das Morgenländische Schisma", "ort": [28.98, 41.01], "wo": "Konstantinopel",
+      "text": "Ein päpstlicher Gesandter legt die Bannbulle auf den Altar der Hagia Sophia, der Patriarch antwortet mit dem Gegenbann. Der Bruch zwischen Rom und Konstantinopel wird erst 1965 förmlich aufgehoben.",
+      "wiki": "Morgenländisches Schisma" },
+
+    { "id": "hastings", "jahr": 1066, "art": "umbruch", "rang": 2,
+      "name": "Hastings", "ort": [0.49, 50.91], "wo": "Sussex",
+      "text": "An einem Tag wechselt England Herrscherhaus, Adel und Amtssprache. Zwanzig Jahre später verzeichnet das Domesday Book jeden Pflug und jedes Schwein des Landes.",
+      "wiki": "Schlacht bei Hastings" },
+
+    { "id": "canossa", "jahr": 1077, "art": "umbruch", "rang": 2,
+      "name": "Der Gang nach Canossa", "ort": [10.45, 44.57], "wo": "Emilia",
+      "text": "Heinrich IV. steht drei Tage im Büßergewand vor der Burg, in der Gregor VII. wartet. Die Frage, wer Bischöfe einsetzt, ist damit nicht entschieden – aber die Vorstellung, ein Papst könne einen Kaiser zwingen, ist in der Welt.",
+      "wiki": "Gang nach Canossa" },
+
+    { "id": "bologna", "jahr": 1088, "art": "gruendung", "rang": 2,
+      "name": "Die erste Universität", "ort": [11.35, 44.5], "wo": "Bologna",
+      "text": "Studenten stellen Lehrer an und bilden eine Rechtsgenossenschaft – daher universitas. Das Modell verbreitet sich über Paris und Oxford in ganz Europa und ist bis heute in Gebrauch.",
+      "wiki": "Universität Bologna" },
+
+    { "id": "clermont", "jahr": 1095, "art": "umbruch", "rang": 1,
+      "name": "Der Aufruf von Clermont", "ort": [3.09, 45.78], "wo": "Auvergne",
+      "text": "Urban II. ruft zum bewaffneten Zug nach Jerusalem auf. Aus einer byzantinischen Bitte um Söldner werden zwei Jahrhunderte Kreuzzüge – und eine Nachbarschaft, die bis heute Gedächtnis hat.",
+      "wiki": "Konzil von Clermont" },
+
+    { "id": "angkor", "jahr": 1150, "art": "gruendung", "rang": 2,
+      "name": "Angkor Wat", "ort": [103.87, 13.41], "wo": "Khmer-Reich",
+      "text": "Der größte Sakralbau der Welt, Mittelpunkt einer Stadt, in der eine Dreiviertelmillion Menschen von einem System aus Kanälen und Wasserbecken lebten. Als es versandet, endet auch die Metropole.",
+      "wiki": "Angkor Wat" },
+
+    { "id": "magna-carta", "jahr": 1215, "art": "vertrag", "rang": 1,
+      "name": "Die Magna Carta", "ort": [-0.56, 51.44], "wo": "Runnymede an der Themse",
+      "text": "Aufständische Barone zwingen Johann Ohneland zu einem Vertrag: keine Steuer ohne Zustimmung, keine Verhaftung ohne Urteil. Gedacht als Adelsprivileg, gelesen später als Wurzel des Rechtsstaats.",
+      "wiki": "Magna Carta" },
+
+    { "id": "bagdad-1258", "jahr": 1258, "art": "umbruch", "rang": 1,
+      "name": "Die Mongolen nehmen Bagdad", "ort": [44.36, 33.31], "wo": "Irak",
+      "text": "Hülegü lässt den letzten abbasidischen Kalifen töten und die Stadt plündern. Die Bewässerungsanlagen Mesopotamiens erholen sich nicht; das Zentrum der islamischen Gelehrsamkeit verlagert sich nach Kairo und Persien.",
+      "wiki": "Belagerung von Bagdad (1258)" },
+
+    { "id": "marco-polo", "jahr": 1271, "bis": 1295, "art": "fahrt", "rang": 1,
+      "name": "Die Reise Marco Polos", "ort": [116.18, 42.36], "wo": "von Venedig nach Shangdu",
+      "weg": [[12.34, 45.44], [34.79, 31.52], [44.36, 33.31], [56.45, 27.09], [64.42, 39.77], [75.99, 39.47], [94.66, 40.14], [116.18, 42.36]],
+      "text": "Vierundzwanzig Jahre unterwegs, siebzehn davon im Dienst Kublai Khans. Sein im Gefängnis diktierter Bericht ist Jahrhunderte lang Europas wichtigste Quelle über Asien – Kolumbus hatte ein Exemplar mit Notizen am Rand.",
+      "wiki": "Marco Polo" },
+
+    { "id": "mansa-musa", "jahr": 1324, "art": "fahrt", "rang": 2,
+      "name": "Die Pilgerfahrt Mansa Musas", "ort": [39.83, 21.42], "wo": "von Niani nach Mekka",
+      "weg": [[-8.42, 11.42], [-3, 16.77], [10, 26], [31.24, 30.04], [39.83, 21.42]],
+      "text": "Der Herrscher von Mali zieht mit Tausenden Begleitern und so viel Gold nach Mekka, dass der Preis in Kairo für Jahre fällt. Danach steht Mali auf den Karten Europas.",
+      "wiki": "Mansa Musa" },
+
+    { "id": "ibn-battuta", "jahr": 1325, "bis": 1354, "art": "fahrt", "rang": 2,
+      "name": "Die Reisen Ibn Battutas", "ort": [118.59, 24.87], "wo": "von Tanger bis China",
+      "weg": [[-5.8, 35.77], [10.17, 36.8], [31.24, 30.04], [39.83, 21.42], [44.36, 33.31], [38.28, 8.98], [69.24, 41.3], [77.21, 28.61], [73.51, 4.18], [118.59, 24.87]],
+      "text": "In neunundzwanzig Jahren rund 120.000 Kilometer – dreimal so weit wie Marco Polo. Sein Bericht zeigt eine islamische Welt, in der ein Gelehrter aus Marokko in Delhi Richter werden konnte.",
+      "wiki": "Ibn Battuta" },
+
+    { "id": "schwarzer-tod", "jahr": 1347, "bis": 1353, "art": "seuche", "rang": 1,
+      "name": "Der Schwarze Tod", "ort": [13.36, 38.12], "wo": "von Kaffa über Messina nach ganz Europa",
+      "text": "Genuesische Schiffe bringen die Pest von der Krim nach Sizilien. In sechs Jahren stirbt ein Drittel bis die Hälfte der Bevölkerung Europas. Löhne steigen, Leibeigenschaft löst sich auf – die Katastrophe verschiebt die Machtverhältnisse.",
+      "wiki": "Schwarzer Tod" },
+
+    { "id": "goldene-bulle", "jahr": 1356, "art": "vertrag", "rang": 2,
+      "name": "Die Goldene Bulle", "ort": [11.08, 49.45], "wo": "Nürnberg und Metz",
+      "text": "Sieben Kurfürsten wählen künftig den König, Mehrheit genügt, der Papst wird nicht gefragt. Das Reich bekommt eine Verfassung – und zugleich die Unteilbarkeit der Kurfürstentümer festgeschrieben.",
+      "wiki": "Goldene Bulle" },
+
+    { "id": "zheng-he", "jahr": 1405, "bis": 1433, "art": "fahrt", "rang": 1,
+      "name": "Die Fahrten Zheng Hes", "ort": [40.1, -3.22], "wo": "von Nanjing bis Ostafrika",
+      "weg": [[118.8, 32.06], [109.2, 13.77], [102.25, 2.2], [80.64, 5.95], [75.78, 11.25], [56.45, 27.09], [45.03, 12.79], [40.1, -3.22]],
+      "text": "Siebenmal fährt eine Flotte von über dreihundert Schiffen bis Arabien und Afrika – die größten Holzschiffe, die je gebaut wurden. 1433 stellt der Hof die Fahrten ein; sechzig Jahre später segeln Portugiesen in dieselben Gewässer.",
+      "wiki": "Zheng He" },
+
+    { "id": "konstanz", "jahr": 1414, "bis": 1418, "art": "vertrag", "rang": 2,
+      "name": "Das Konzil von Konstanz", "ort": [9.17, 47.66], "wo": "am Bodensee",
+      "text": "Drei Päpste treten ab oder werden abgesetzt, einer wird neu gewählt – das Abendländische Schisma endet. Jan Hus, mit sicherem Geleit erschienen, wird verbrannt; Böhmen erhebt sich daraufhin fünfzehn Jahre lang.",
+      "wiki": "Konzil von Konstanz" },
+
+    { "id": "buchdruck", "jahr": 1450, "art": "wissen", "rang": 1,
+      "name": "Der Druck mit beweglichen Lettern", "ort": [8.27, 49.99], "wo": "Mainz",
+      "text": "Gutenberg verbindet Metallguss, Presse und ölhaltige Farbe. Fünfzig Jahre später gibt es in Europa Millionen gedruckter Bücher – ohne diese Technik keine Reformation, keine Wissenschaft in ihrer heutigen Form.",
+      "wiki": "Johannes Gutenberg" },
+
+    { "id": "konstantinopel-1453", "jahr": 1453, "art": "umbruch", "rang": 1,
+      "name": "Der Fall Konstantinopels", "ort": [28.98, 41.01], "wo": "Bosporus",
+      "text": "Nach 53 Tagen Belagerung und dem Einsatz der größten Kanonen ihrer Zeit fällt die Stadt an Mehmed II. Das Römische Reich endet nach 1480 Jahren; griechische Gelehrte gehen nach Italien und bringen ihre Handschriften mit.",
+      "wiki": "Eroberung von Konstantinopel (1453)" }
+  ]
+}

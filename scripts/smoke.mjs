@@ -644,6 +644,44 @@ await check('Ohne erreichbare Kacheln bleibt die Karte vollständig', async () =
   if (flaechen < 3) throw new Error(`nur ${flaechen} Zeichenflächen`);
 });
 
+await check('Ereignisse erscheinen zur passenden Zeit und lassen sich öffnen', async () => {
+  await page.goto(`${BASE}/#position=4.6/48/12&year=1530`, { waitUntil: 'networkidle' });
+  await page.waitForSelector('.ev', { timeout: 8000 });
+  const marken = await page.locator('.ev').count();
+  if (marken < 3) throw new Error(`nur ${marken} Marken`);
+  await page.locator('.ev').first().click();
+  await page.waitForSelector('.evpop__title', { timeout: 3000 });
+  const titel = await page.textContent('.evpop__title');
+  if (!titel.trim()) throw new Error('Kartusche ohne Titel');
+});
+
+await check('Ereignisse wechseln mit dem Zeitschnitt', async () => {
+  // 1530 zeigt die Reformation, 1943 den Zweiten Weltkrieg – dieselbe Ebene,
+  // anderer Inhalt. Prüft, dass das Zeitfenster wirklich greift.
+  const namen = async () => page.locator('.ev__name').allTextContents();
+  const damals = await namen();
+  await page.goto(`${BASE}/#position=4.6/48/12&year=1943`, { waitUntil: 'networkidle' });
+  await page.waitForTimeout(2500);
+  const jetzt = await namen();
+  if (!jetzt.length) throw new Error('keine Ereignisse im zweiten Zeitschnitt');
+  if (jetzt.some((n) => damals.includes(n))) throw new Error('Ereignisse haben nicht gewechselt');
+});
+
+await check('Ereignisebene lässt sich abschalten', async () => {
+  await page.click('#btnLayers');
+  await page.waitForSelector('#optEvents', { timeout: 2000 });
+  // Das Kästchen selbst ist optisch ersetzt; bedient wird der Schalter, so
+  // wie es auch ein Mensch tut.
+  const schalter = page.locator('.switch:has(#optEvents)');
+  await schalter.click();
+  await page.waitForTimeout(600);
+  if (await page.locator('.ev').count()) throw new Error('Marken bleiben stehen');
+  await schalter.click();
+  await page.waitForTimeout(600);
+  if (!(await page.locator('.ev').count())) throw new Error('Marken kommen nicht zurück');
+  await page.keyboard.press('Escape');
+});
+
 await check('Mobiles Format bleibt bedienbar', async () => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.waitForTimeout(800);

@@ -196,6 +196,18 @@ export class AtlasData {
     return this._oceanHd;
   }
 
+  /**
+   * Ereignisse – Verträge, Gründungen, Fahrten, Seuchen, Werke, Umbrüche.
+   * Nicht ins Programm gebündelt, sondern nachgeladen: Sie werden erst
+   * gebraucht, wenn die Karte schon steht.
+   */
+  loadEreignisse() {
+    this._ereignisse ??= getJSON('data/knowledge/ereignisse.de.json')
+      .then((d) => d.ereignisse ?? [])
+      .catch(() => []);
+    return this._ereignisse;
+  }
+
   /** Seen und Flüsse – werden erst geholt, wenn die Ebene eingeschaltet wird. */
   loadWater() {
     this._water ??= Promise.all([

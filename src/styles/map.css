@@ -107,3 +107,147 @@
 .map.is-basemap .leaflet-polityB-pane { mix-blend-mode: multiply; }
 [data-theme="night"] .map.is-basemap .leaflet-polityA-pane,
 [data-theme="night"] .map.is-basemap .leaflet-polityB-pane { mix-blend-mode: screen; }
+
+/* ==================================================== Ereignisse
+
+   Eine Marke soll auf der Karte liegen wie ein gestochenes Zeichen: klein,
+   in der Akzentfarbe, mit einer Haarlinie umrandet. Keine eigene Farbordnung
+   – die Karte verteilt ihre Farben schon an die Gemeinwesen, eine zweite
+   darüber wäre nicht mehr lesbar. Unterschieden wird über die Form. */
+
+.leaflet-events-pane { pointer-events: none; }
+.leaflet-events-pane .leaflet-marker-icon { pointer-events: auto; }
+
+/* Leaflet setzt Breite, Höhe und Position; hier nur das Aussehen. */
+.ev__pin {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--gold);
+  background: color-mix(in srgb, var(--surface-solid) 88%, transparent);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--gold) 55%, transparent),
+    0 1px 3px rgba(0, 0, 0, .5);
+  transition: transform var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+/* Der Name steht rechts neben der Marke, wie eine Ortsbeschriftung – mit
+   demselben Halo, damit er über jedem Untergrund lesbar bleibt.
+
+   Standardmäßig verborgen: In der Weltansicht liegen Marken oft wenige
+   Bildpunkte auseinander, und zwei Namen übereinander sind schlechter als
+   keiner. Ab Zoomstufe 3,2 setzt das Modul die Klasse ev--benannt auf alles,
+   wofür Platz ist; bei Zeigerkontakt erscheint der Name immer. */
+.ev__name {
+  display: none;
+  position: absolute;
+  left: calc(100% + .3rem);
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  font: 500 11.5px/1 var(--font-ui);
+  color: var(--label-ink);
+  text-shadow:
+     0 0 3px var(--label-halo),  0 0 3px var(--label-halo),
+     1px 1px 2px var(--label-halo), -1px -1px 2px var(--label-halo);
+  pointer-events: none;
+}
+.ev--benannt .ev__name,
+.ev:hover .ev__name,
+.leaflet-marker-icon:focus-visible .ev__name { display: block; }
+/* Beim Überfahren nach vorn – sonst verschwindet der Name unter der Nachbarmarke. */
+.ev:hover .ev__name { z-index: 2; }
+.ev:hover .ev__pin,
+.leaflet-marker-icon:focus-visible .ev__pin {
+  transform: scale(1.22);
+  color: var(--gold-soft);
+}
+.leaflet-marker-icon:focus-visible { outline: none; }
+.leaflet-marker-icon:focus-visible .ev__pin {
+  box-shadow:
+    inset 0 0 0 1px var(--gold),
+    0 0 0 2px var(--gold), 0 1px 3px rgba(0, 0, 0, .5);
+}
+
+/* Route einer Fahrt: gestrichelt, weil sie ein Weg ist und keine Grenze. */
+.ev-weg {
+  stroke: var(--gold);
+  fill: none;
+}
+
+/* ------------------------------------------------ Kartusche zum Ereignis */
+
+.evpop .leaflet-popup-content-wrapper {
+  background: var(--surface-solid);
+  color: var(--ink);
+  border: 1px solid var(--hairline-strong);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-2);
+  /* Goldene Innenlinie wie beim Rahmen einer Kupferstichtafel. */
+  background-image: linear-gradient(color-mix(in srgb, var(--gold) 7%, transparent),
+                                    transparent 42%);
+}
+/* Leaflet rechnet die Breite selbst aus und schreibt sie ins Element. Mit
+   width:auto fiel sie auf die Breite des längsten Worts zusammen – zehn
+   Zeichen je Zeile. Deshalb eine feste, angenehme Lesebreite, die auf
+   schmalen Bildschirmen mitgeht. */
+.evpop .leaflet-popup-content {
+  margin: .85rem .95rem .8rem;
+  width: min(19rem, 68vw) !important;
+}
+.evpop .leaflet-popup-tip {
+  background: var(--surface-solid);
+  border: 1px solid var(--hairline-strong);
+}
+.evpop .leaflet-popup-close-button {
+  color: var(--ink-faint);
+  padding: .5rem .55rem 0 0;
+  font-size: 1.05rem;
+}
+.evpop .leaflet-popup-close-button:hover { color: var(--ink-strong); }
+
+.evpop__kicker {
+  display: flex;
+  padding-right: 1rem;
+  align-items: center;
+  gap: .35rem;
+  font-size: .64rem;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: .3rem;
+}
+.evpop__title {
+  font: 500 1.06rem/1.2 var(--font-display);
+  color: var(--ink-strong);
+  margin: 0 1.1rem .12rem 0;
+}
+.evpop__wo {
+  margin: 0 0 .5rem;
+  font-size: .74rem;
+  font-style: italic;
+  color: var(--ink-faint);
+}
+.evpop__text {
+  margin: 0;
+  font-size: .84rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.evpop__wiki {
+  display: inline-block;
+  margin-top: .55rem;
+  font-size: .74rem;
+  color: var(--azure);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--azure) 40%, transparent);
+}
+.evpop__wiki:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+/* Auf schmalen Bildschirmen darf die Kartusche nicht breiter sein als die
+   Karte selbst, sonst schiebt Leaflet sie über den Rand. */
+@media (max-width: 560px) {
+  .evpop .leaflet-popup-content { margin: .7rem .8rem .65rem; width: min(17rem, 72vw) !important; }
+  .ev__name { display: none; }
+}

@@ -1,0 +1,198 @@
+{
+  "_hinweis": [
+    "Ereignisse der Antike als Marken auf der Karte.",
+    "",
+    "Der Atlas zeigt Zustände – so sah die Welt im Jahr X aus. Ein Vertrag, eine",
+    "Gründung, eine Seuche, eine Fahrt ist aber kein Zustand, sondern ein",
+    "Zeitpunkt. Diese Ebene trägt sie dort ein, wo sie geschehen sind.",
+    "",
+    "Jedes Ereignis nennt Jahr, Art, Ort und einen kurzen Text. Für die frühen",
+    "Jahrtausende sind die Jahreszahlen Näherungen der Forschung; wo eine",
+    "Datierung umstritten ist, steht das im Text.",
+    "",
+    "art    vertrag | gruendung | fahrt | seuche | wissen | umbruch",
+    "rang   1 = weltgeschichtlich (ab Zoomstufe 0), 2 = wichtig (ab 3), 3 = Detail (ab 4,5)",
+    "ort    [Längengrad, Breitengrad]",
+    "weg    optionale Route – nur bei art \"fahrt\""
+  ],
+
+  "ereignisse": [
+    { "id": "uruk-schrift", "jahr": -3300, "art": "wissen", "rang": 1,
+      "name": "Die Schrift entsteht", "ort": [45.64, 31.32], "wo": "Uruk, Sumer",
+      "text": "In den Tempelmagazinen von Uruk werden Warenmengen erstmals in Ton geritzt. Aus der Buchhaltung wird die Schrift – und mit ihr beginnt, was wir Geschichte nennen.",
+      "wiki": "Keilschrift" },
+
+    { "id": "gizeh", "jahr": -2560, "art": "gruendung", "rang": 1,
+      "name": "Die Große Pyramide", "ort": [31.13, 29.98], "wo": "Gizeh, Ägypten",
+      "text": "Rund 2,3 Millionen Steinblöcke, 146 Meter hoch. Für 3.800 Jahre das höchste Bauwerk der Erde – gebaut von bezahlten Arbeitskolonnen, nicht von Sklaven.",
+      "wiki": "Cheops-Pyramide" },
+
+    { "id": "hammurabi", "jahr": -1754, "art": "wissen", "rang": 1,
+      "name": "Der Kodex Hammurabi", "ort": [44.42, 32.54], "wo": "Babylon",
+      "text": "282 Rechtssätze auf einer Dioritstele: Schadensersatz, Zinsobergrenzen, Beweislast. Nicht das erste Gesetzbuch, aber das erste, das öffentlich aufgestellt wurde – Recht als etwas Nachlesbares.",
+      "wiki": "Codex Hammurapi" },
+
+    { "id": "thera", "jahr": -1600, "art": "seuche", "rang": 2, "aufSee": true,
+      "name": "Der Ausbruch von Thera", "ort": [25.4, 36.4], "wo": "Santorin, Ägäis",
+      "text": "Eine der stärksten Eruptionen der Menschheitsgeschichte sprengt die Insel auseinander. Asche fällt bis Ägypten, eine Flutwelle trifft Kreta. Die minoische Palastkultur erholt sich nicht mehr ganz.",
+      "wiki": "Minoische Eruption" },
+
+    { "id": "kadesch", "jahr": -1259, "art": "vertrag", "rang": 1,
+      "name": "Der älteste erhaltene Friedensvertrag", "ort": [36.53, 34.56], "wo": "zwischen Ägypten und Hatti",
+      "text": "Sechzehn Jahre nach der Schlacht bei Kadesch schließen Ramses II. und Hattusili III. Frieden – mit Beistandspflicht und Auslieferungsklausel. Eine Kopie hängt heute im UN-Hauptquartier.",
+      "wiki": "Ägyptisch-Hethitischer Friedensvertrag" },
+
+    { "id": "bronzezeit-kollaps", "jahr": -1177, "art": "umbruch", "rang": 1,
+      "name": "Der Zusammenbruch der Bronzezeit", "ort": [35.78, 35.6], "wo": "Ugarit und das ganze östliche Mittelmeer",
+      "text": "Binnen einer Generation gehen Hattusa, Ugarit, Mykene und die Palastwirtschaft der ganzen Region unter. Seevölker, Dürre, Erdbeben, gerissene Handelsketten – die Forschung streitet über die Ursache, nicht über das Ausmaß.",
+      "wiki": "Späte Bronzezeit" },
+
+    { "id": "muye", "jahr": -1046, "art": "umbruch", "rang": 2,
+      "name": "Die Zhou stürzen die Shang", "ort": [114.05, 35.3], "wo": "Muye, Nordchina",
+      "text": "Der Sieger begründet seine Herrschaft mit dem Mandat des Himmels: Wer schlecht regiert, verliert es. Aus einer Rechtfertigung wird die politische Grundformel Chinas für dreitausend Jahre.",
+      "wiki": "Zhou-Dynastie" },
+
+    { "id": "jerusalem-tempel", "jahr": -957, "art": "gruendung", "rang": 2,
+      "name": "Der Erste Tempel in Jerusalem", "ort": [35.24, 31.78], "wo": "Jerusalem",
+      "text": "Nach biblischer Überlieferung lässt Salomo den Tempel errichten; archäologisch ist er nicht fassbar. Der Ort bleibt bis heute der Umstrittenste der Welt.",
+      "wiki": "Salomonischer Tempel" },
+
+    { "id": "olympia", "jahr": -776, "art": "gruendung", "rang": 2,
+      "name": "Die ersten Olympischen Spiele", "ort": [21.63, 37.64], "wo": "Olympia, Elis",
+      "text": "Alle vier Jahre ruhen die Waffen zwischen den griechischen Städten. Die Spiele werden zum gemeinsamen Kalender einer Welt, die politisch nie eine war.",
+      "wiki": "Olympische Spiele der Antike" },
+
+    { "id": "rom-gruendung", "jahr": -753, "art": "gruendung", "rang": 2,
+      "name": "Die Gründung Roms", "ort": [12.48, 41.89], "wo": "Latium",
+      "text": "Das überlieferte Gründungsjahr; archäologisch beginnt die Siedlung auf dem Palatin schon früher. Von hier aus wird in siebenhundert Jahren das Mittelmeer zum Binnenmeer eines einzigen Staates.",
+      "wiki": "Gründungssage Roms" },
+
+    { "id": "buddha", "jahr": -528, "art": "wissen", "rang": 1,
+      "name": "Die Erleuchtung des Buddha", "ort": [84.99, 24.7], "wo": "Bodhgaya, Magadha",
+      "text": "Siddhartha Gautama findet unter einem Feigenbaum die Lehre vom Leiden und seinem Ende. Sie verbreitet sich über Handelswege bis China und Japan – ohne Heer, ohne Staat.",
+      "wiki": "Siddhartha Gautama" },
+
+    { "id": "marathon", "jahr": -490, "art": "umbruch", "rang": 2,
+      "name": "Marathon", "ort": [23.96, 38.15], "wo": "Attika",
+      "text": "Athener Hopliten schlagen ein persisches Landungsheer. Ohne diesen Tag wäre die griechische Stadtstaatenwelt eine persische Provinz geworden – und mit ihr das, was Europa später aus ihr machte.",
+      "wiki": "Schlacht bei Marathon" },
+
+    { "id": "athen-demokratie", "jahr": -461, "art": "umbruch", "rang": 1,
+      "name": "Die attische Demokratie", "ort": [23.73, 37.98], "wo": "Athen",
+      "text": "Unter Perikles entscheidet die Volksversammlung über Krieg, Steuern und Gesetze; Ämter werden verlost, nicht vergeben. Ausgeschlossen bleiben Frauen, Sklaven und Zugezogene – vier Fünftel der Bevölkerung.",
+      "wiki": "Attische Demokratie" },
+
+    { "id": "pest-athen", "jahr": -430, "art": "seuche", "rang": 2,
+      "name": "Die Seuche von Athen", "ort": [23.73, 37.98], "wo": "Athen",
+      "text": "Im zweiten Jahr des Peloponnesischen Krieges rafft eine Epidemie ein Viertel der hinter den Mauern zusammengedrängten Bevölkerung dahin, darunter Perikles. Thukydides beschreibt sie als Erster nüchtern statt als Götterstrafe.",
+      "wiki": "Attische Seuche" },
+
+    { "id": "sokrates", "jahr": -399, "art": "wissen", "rang": 2,
+      "name": "Der Prozess gegen Sokrates", "ort": [23.72, 37.97], "wo": "Athen",
+      "text": "Eine Bürgerjury verurteilt ihn wegen Gottlosigkeit und Verführung der Jugend zum Tod. Die Demokratie, die ihn ertragen hatte, bringt ihn um – Platon macht daraus die Frage, ob die Vielen regieren sollen.",
+      "wiki": "Sokrates" },
+
+    { "id": "alexanderzug", "jahr": -334, "bis": -325, "art": "fahrt", "rang": 1,
+      "name": "Der Zug Alexanders", "ort": [73, 32.5], "wo": "von Makedonien bis zum Indus",
+      "weg": [[22.52, 40.76], [36.2, 36.85], [29.92, 31.2], [43.6, 36.4], [52.89, 29.94], [69.2, 34.53], [73, 32.5]],
+      "text": "In elf Jahren von Pella bis an den Hydaspes. Zurück bleiben zwanzig Städte namens Alexandria und eine griechisch geprägte Welt vom Nil bis nach Baktrien.",
+      "wiki": "Alexanderzug" },
+
+    { "id": "euklid", "jahr": -300, "art": "wissen", "rang": 2,
+      "name": "Die Elemente des Euklid", "ort": [29.9, 31.19], "wo": "Alexandria",
+      "text": "Dreizehn Bücher, in denen alles aus fünf Grundsätzen folgt. Zweitausend Jahre lang das meistbenutzte Lehrbuch der Welt – und das Vorbild dafür, wie ein Beweis aussieht.",
+      "wiki": "Elemente (Euklid)" },
+
+    { "id": "bibliothek-alexandria", "jahr": -295, "art": "gruendung", "rang": 1,
+      "name": "Museion und Bibliothek", "ort": [29.92, 31.2], "wo": "Alexandria",
+      "text": "Die Ptolemäer legen eine Sammlung an, die alles Geschriebene umfassen soll – Schiffe im Hafen müssen ihre Bücher zum Abschreiben abgeben. Hier wird der Erdumfang berechnet und Homer erstmals kritisch ediert.",
+      "wiki": "Bibliothek von Alexandria" },
+
+    { "id": "hannibal", "jahr": -218, "art": "fahrt", "rang": 2,
+      "name": "Hannibal über die Alpen", "ort": [7.69, 45.07], "wo": "von Neukarthago nach Oberitalien",
+      "weg": [[-0.98, 37.61], [0.87, 40.72], [4.75, 43.9], [7, 45.1], [7.69, 45.07]],
+      "text": "Mit Elefanten über einen Alpenpass, den niemand sicher kennt – ein Drittel des Heeres bleibt unterwegs. Fünfzehn Jahre steht Hannibal danach in Italien, ohne Rom nehmen zu können.",
+      "wiki": "Hannibals Alpenüberquerung" },
+
+    { "id": "mauer-china", "jahr": -214, "art": "gruendung", "rang": 1,
+      "name": "Die Mauer wird verbunden", "ort": [116.02, 40.36], "wo": "Nordgrenze des Qin-Reichs",
+      "text": "Qin Shihuangdi lässt die Wälle der einzelnen Fürstentümer zu einer durchgehenden Grenzbefestigung verbinden. Die heute sichtbare Mauer stammt fast ganz aus der Ming-Zeit, siebzehnhundert Jahre später.",
+      "wiki": "Chinesische Mauer" },
+
+    { "id": "terrakotta", "jahr": -210, "art": "gruendung", "rang": 2,
+      "name": "Das Grab des Ersten Kaisers", "ort": [109.28, 34.38], "wo": "bei Xianyang",
+      "text": "Über 8.000 lebensgroße Tonsoldaten bewachen ein Grab, an dem 700.000 Zwangsarbeiter gebaut haben sollen. Bis 1974 weiß niemand davon; die Grabkammer selbst ist bis heute nicht geöffnet.",
+      "wiki": "Terrakotta-Armee" },
+
+    { "id": "seidenstrasse", "jahr": -130, "art": "fahrt", "rang": 1,
+      "name": "Die Seidenstraße öffnet sich", "ort": [75.99, 39.47], "wo": "von Chang'an nach Westen",
+      "weg": [[108.95, 34.27], [94.66, 40.14], [87.62, 43.83], [75.99, 39.47], [69.24, 41.3], [58.38, 37.95], [44.36, 33.31], [36.29, 33.51]],
+      "text": "Nach der Gesandtschaft Zhang Qians beginnt der geregelte Fernhandel zwischen Han-China und dem Westen. Niemand fährt die ganze Strecke; Waren, Krankheitserreger und Ideen tun es doch.",
+      "wiki": "Seidenstraße" },
+
+    { "id": "spartacus", "jahr": -73, "art": "umbruch", "rang": 2,
+      "name": "Der Aufstand des Spartacus", "ort": [14.21, 41.1], "wo": "Capua und Süditalien",
+      "text": "Aus siebzig entflohenen Gladiatoren wird ein Heer von zehntausenden Sklaven, das zwei Jahre lang römische Legionen schlägt. Am Ende säumen 6.000 Kreuze die Via Appia.",
+      "wiki": "Spartacus" },
+
+    { "id": "caesar-rubikon", "jahr": -49, "art": "umbruch", "rang": 2,
+      "name": "Caesar überschreitet den Rubikon", "ort": [12.4, 44.1], "wo": "Norditalien",
+      "text": "Ein Feldherr führt sein Heer über die Grenze seiner Provinz – nach römischem Recht Hochverrat. Fünf Jahre später ist die Republik faktisch am Ende.",
+      "wiki": "Rubikon" },
+
+    { "id": "kalender", "jahr": -46, "art": "wissen", "rang": 2,
+      "name": "Der julianische Kalender", "ort": [12.48, 41.89], "wo": "Rom",
+      "text": "Auf Rat des Alexandriners Sosigenes bekommt das Jahr 365 Tage und alle vier Jahre einen Schalttag. Er hält – mit einer Korrektur von 1582 – bis heute.",
+      "wiki": "Julianischer Kalender" },
+
+    { "id": "varus", "jahr": 9, "art": "umbruch", "rang": 2,
+      "name": "Die Varusschlacht", "ort": [8.13, 52.41], "wo": "Kalkriese, Germanien",
+      "text": "Drei Legionen werden im Waldgelände aufgerieben. Rom gibt die Provinz zwischen Rhein und Elbe auf; die Grenze bleibt für vierhundert Jahre am Rhein – und Europa bekommt eine Bruchlinie, die es nie ganz verliert.",
+      "wiki": "Varusschlacht" },
+
+    { "id": "vesuv", "jahr": 79, "art": "seuche", "rang": 1,
+      "name": "Der Vesuv verschüttet Pompeji", "ort": [14.43, 40.82], "wo": "Golf von Neapel",
+      "text": "Innerhalb eines Tages begraben Bimsstein und Glutlawinen zwei Städte. Was sie tötete, hat sie erhalten: Pompeji ist der genaueste Blick, den wir auf einen antiken Alltag haben.",
+      "wiki": "Ausbruch des Vesuvs 79" },
+
+    { "id": "papier", "jahr": 105, "art": "wissen", "rang": 1,
+      "name": "Papier wird beschreibbar", "ort": [112.45, 34.62], "wo": "Luoyang, Han-Reich",
+      "text": "Cai Lun meldet dem Kaiser ein Verfahren aus Lumpen, Rinde und Fischernetzen. Über Samarkand erreicht das Papier im 8. Jahrhundert die islamische Welt, im 13. Europa – tausend Jahre Vorsprung.",
+      "wiki": "Papier" },
+
+    { "id": "antoninische-pest", "jahr": 165, "bis": 180, "art": "seuche", "rang": 2,
+      "name": "Die Antoninische Pest", "ort": [12.48, 41.89], "wo": "das ganze Römische Reich",
+      "text": "Vermutlich Pocken, aus dem Osten eingeschleppt. Über fünf Millionen Tote, Legionen ohne Ersatz, Felder ohne Bauern. Das Reich erreicht seine Grenzen – und hört auf zu wachsen.",
+      "wiki": "Antoninische Pest" },
+
+    { "id": "constitutio-antoniniana", "jahr": 212, "art": "vertrag", "rang": 2,
+      "name": "Das Bürgerrecht für alle", "ort": [12.48, 41.89], "wo": "das ganze Römische Reich",
+      "text": "Caracalla macht mit einem Erlass fast alle Reichsbewohner zu römischen Bürgern. Ein Gedanke von großer Reichweite – und zugleich eine Steuermaßnahme, denn Bürger zahlten Erbschaftssteuer.",
+      "wiki": "Constitutio Antoniniana" },
+
+    { "id": "nicaea", "jahr": 325, "art": "vertrag", "rang": 1,
+      "name": "Das Konzil von Nicäa", "ort": [29.72, 40.43], "wo": "Bithynien",
+      "text": "Konstantin lädt die Bischöfe des Reiches und lässt sie über die Natur Christi abstimmen. Aus einer verfolgten Sekte wird eine Reichskirche mit verbindlichem Bekenntnis – und mit Ketzern.",
+      "wiki": "Erstes Konzil von Nicäa" },
+
+    { "id": "konstantinopel-gruendung", "jahr": 330, "art": "gruendung", "rang": 1,
+      "name": "Konstantinopel wird Hauptstadt", "ort": [28.98, 41.01], "wo": "Bosporus",
+      "text": "Konstantin verlegt den Schwerpunkt des Reiches an die Meerenge zwischen Europa und Asien. Rom wird Provinzstadt; die neue Hauptstadt hält elfhundert Jahre.",
+      "wiki": "Konstantinopel" },
+
+    { "id": "staatsreligion", "jahr": 380, "art": "umbruch", "rang": 1,
+      "name": "Das Christentum wird Staatsreligion", "ort": [22.94, 40.64], "wo": "Thessaloniki",
+      "text": "Das Edikt Cunctos populos macht das nicäische Bekenntnis für alle Reichsbewohner verbindlich. Aus der geduldeten Religion wird die einzig erlaubte; die alten Kulte werden binnen einer Generation verboten.",
+      "wiki": "Cunctos populos" },
+
+    { "id": "rom-410", "jahr": 410, "art": "umbruch", "rang": 1,
+      "name": "Die Plünderung Roms", "ort": [12.48, 41.89], "wo": "Rom",
+      "text": "Zum ersten Mal seit achthundert Jahren steht ein fremdes Heer in der Stadt. Militärisch ein Zwischenfall – für die Zeitgenossen das Ende einer Selbstverständlichkeit. Augustinus schreibt daraufhin den Gottesstaat.",
+      "wiki": "Plünderung Roms (410)" },
+
+    { "id": "chalkedon", "jahr": 451, "art": "vertrag", "rang": 3,
+      "name": "Das Konzil von Chalkedon", "ort": [29.04, 40.98], "wo": "gegenüber von Konstantinopel",
+      "text": "Die Formel von den zwei Naturen Christi spaltet die Christenheit dauerhaft: Die Kirchen Ägyptens, Syriens und Armeniens gehen eigene Wege und tun es bis heute.",
+      "wiki": "Konzil von Chalkedon" }
+  ]
+}

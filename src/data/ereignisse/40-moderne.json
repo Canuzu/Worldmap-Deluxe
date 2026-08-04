@@ -1,0 +1,382 @@
+{
+  "_hinweis": "Ereignisse ab 1800. Aufbau siehe 10-antike.json.",
+
+  "ereignisse": [
+    { "id": "tambora", "jahr": 1815, "art": "seuche", "rang": 2,
+      "name": "Der Ausbruch des Tambora", "ort": [118, -8.25], "wo": "Sumbawa, Ostindien",
+      "text": "Der stärkste Vulkanausbruch der letzten zehntausend Jahre. Die Aschewolke senkt die Welttemperatur um ein halbes Grad; 1816 ist in Europa und Nordamerika das Jahr ohne Sommer, mit Missernten und Hungersnot.",
+      "wiki": "Tambora" },
+
+    { "id": "wiener-kongress", "jahr": 1815, "art": "vertrag", "rang": 1,
+      "name": "Der Wiener Kongress", "ort": [16.37, 48.21], "wo": "Wien",
+      "text": "Nach einem Vierteljahrhundert Krieg ordnen die Großmächte Europa neu – nach Gleichgewicht und Legitimität, nicht nach Nationen. Die Ordnung hält bis 1914 einen großen Krieg zwischen allen Mächten auf.",
+      "wiki": "Wiener Kongress" },
+
+    { "id": "eisenbahn", "jahr": 1830, "art": "wissen", "rang": 1,
+      "name": "Die erste moderne Eisenbahnlinie", "ort": [-2.71, 53.41], "wo": "Liverpool–Manchester",
+      "text": "Zum ersten Mal fährt eine Bahn planmäßig mit Dampf, auf eigener Trasse, für Güter und Personen. Entfernungen schrumpfen, und weil Fahrpläne stimmen müssen, bekommt ein Land erstmals eine einheitliche Uhrzeit.",
+      "wiki": "Liverpool and Manchester Railway" },
+
+    { "id": "sklaverei-uk", "jahr": 1833, "art": "umbruch", "rang": 2,
+      "name": "Das Ende der Sklaverei im Empire", "ort": [-0.13, 51.5], "wo": "London",
+      "text": "Das Parlament beschließt die Freilassung von 800.000 Menschen – und entschädigt dafür die Sklavenhalter mit einer Summe, an der Großbritannien bis 2015 abbezahlte. Die Befreiten erhielten nichts.",
+      "wiki": "Slavery Abolition Act 1833" },
+
+    { "id": "hunger-irland", "jahr": 1845, "bis": 1852, "art": "seuche", "rang": 2,
+      "name": "Die Große Hungersnot in Irland", "ort": [-8.24, 53.41], "wo": "Irland",
+      "text": "Eine Kartoffelfäule vernichtet die Ernährungsgrundlage der Landbevölkerung, während Getreide weiter exportiert wird. Eine Million Tote, zwei Millionen Auswanderer; Irland hat bis heute weniger Einwohner als 1841.",
+      "wiki": "Große Hungersnot in Irland" },
+
+    { "id": "1848", "jahr": 1848, "art": "umbruch", "rang": 1,
+      "name": "Die Revolutionen von 1848", "ort": [8.68, 50.11], "wo": "von Palermo bis Berlin",
+      "text": "Binnen Wochen erheben sich fünfzig europäische Städte für Verfassungen, Pressefreiheit und Nation. Fast überall scheitern die Aufstände – aber die Forderungen bleiben und werden in den folgenden Jahrzehnten eingelöst.",
+      "wiki": "Revolutionen 1848/1849" },
+
+    { "id": "darwin", "jahr": 1859, "art": "wissen", "rang": 1,
+      "name": "Die Entstehung der Arten", "ort": [0.06, 51.33], "wo": "Down House, Kent",
+      "text": "Zwanzig Jahre Zurückhaltung, dann erscheint das Buch und ist am ersten Tag ausverkauft. Arten sind nicht geschaffen, sondern geworden – die tiefste Umstellung des Selbstbilds seit Kopernikus.",
+      "wiki": "Über die Entstehung der Arten" },
+
+    { "id": "suezkanal", "jahr": 1869, "art": "gruendung", "rang": 1,
+      "name": "Der Sueskanal wird eröffnet", "ort": [32.35, 30.6], "wo": "Ägypten",
+      "text": "163 Kilometer verkürzen den Weg von London nach Bombay um 7.000. Zehntausende ägyptische Zwangsarbeiter sterben beim Bau; die Schulden dafür bringen Ägypten unter britische Kontrolle.",
+      "wiki": "Sueskanal" },
+
+    { "id": "krakatau", "jahr": 1883, "art": "seuche", "rang": 2, "aufSee": true,
+      "name": "Krakatau", "ort": [105.42, -6.1], "wo": "Sundastraße",
+      "text": "Die Explosion ist noch 4.800 Kilometer entfernt zu hören – der lauteste je verzeichnete Knall. Flutwellen töten über 36.000 Menschen; die Nachricht geht per Telegraf binnen Stunden um die Welt, zum ersten Mal in der Geschichte.",
+      "wiki": "Krakatau" },
+
+    { "id": "kongokonferenz", "jahr": 1884, "bis": 1885, "art": "vertrag", "rang": 1,
+      "name": "Die Berliner Konferenz", "ort": [13.38, 52.51], "wo": "Berlin, Wilhelmstraße",
+      "text": "Vierzehn Staaten regeln die Aufteilung Afrikas – kein afrikanischer Vertreter ist geladen. Die am Kartentisch gezogenen Linien sind bis heute Staatsgrenzen, quer durch Sprachen und Völker.",
+      "wiki": "Kongokonferenz" },
+
+    { "id": "roentgen", "jahr": 1895, "art": "wissen", "rang": 2,
+      "name": "Die Entdeckung der Röntgenstrahlen", "ort": [9.94, 49.79], "wo": "Würzburg",
+      "text": "Eine neue Art von Strahlen macht Knochen im lebenden Körper sichtbar. Röntgen verzichtet auf ein Patent; innerhalb eines Jahres arbeiten Kliniken auf allen Kontinenten damit.",
+      "wiki": "Röntgenstrahlung" },
+
+    { "id": "boxeraufstand", "jahr": 1900, "art": "umbruch", "rang": 2,
+      "name": "Der Boxeraufstand", "ort": [116.4, 39.9], "wo": "Peking",
+      "text": "Ein Aufstand gegen Missionare und Fremdherrschaft endet mit dem Einmarsch von acht Mächten in Peking, mit Plünderungen und Strafzahlungen, an denen China Jahrzehnte trägt. Das Kaiserreich hat elf Jahre später ausgedient.",
+      "wiki": "Boxeraufstand" },
+
+    { "id": "wright", "jahr": 1903, "art": "wissen", "rang": 1,
+      "name": "Der erste Motorflug", "ort": [-75.67, 36.02], "wo": "Kitty Hawk, North Carolina",
+      "text": "Zwölf Sekunden, 37 Meter. Zwei Fahrradmechaniker lösen das Problem nicht mit mehr Motorleistung, sondern mit Steuerbarkeit – dem Punkt, an dem alle vor ihnen scheiterten.",
+      "wiki": "Gebrüder Wright" },
+
+    { "id": "amundsen", "jahr": 1911, "art": "fahrt", "rang": 2,
+      "name": "Amundsen erreicht den Südpol", "ort": [0, -89.9], "wo": "von der Walbucht zum Pol",
+      "weg": [[163.7, -78.5], [170, -83], [100, -87], [0, -89.9]],
+      "text": "Fünf Männer, 52 Hunde, 99 Tage. Einen Monat später steht Scotts Gruppe am selben Punkt und findet das norwegische Zelt vor; auf dem Rückweg kommen alle fünf Briten um.",
+      "wiki": "Roald Amundsen" },
+
+    { "id": "panamakanal", "jahr": 1914, "art": "gruendung", "rang": 1,
+      "name": "Der Panamakanal wird eröffnet", "ort": [-79.68, 9.08], "wo": "Landenge von Panama",
+      "text": "82 Kilometer sparen den Weg um Kap Hoorn. Über 25.000 Arbeiter sterben in den französischen und amerikanischen Bauphasen, die meisten an Malaria und Gelbfieber – erst deren Bekämpfung macht den Bau möglich.",
+      "wiki": "Panamakanal" },
+
+    { "id": "sarajevo", "jahr": 1914, "art": "umbruch", "rang": 1,
+      "name": "Die Schüsse von Sarajevo", "ort": [18.41, 43.86], "wo": "Bosnien",
+      "text": "Zwei Schüsse auf den österreichischen Thronfolger, und binnen fünf Wochen stehen sechs Großmächte im Krieg. Nicht die Ursache, aber der Auslöser – die Bündnisse taten den Rest.",
+      "wiki": "Attentat von Sarajevo" },
+
+    { "id": "armenier", "jahr": 1915, "art": "umbruch", "rang": 1,
+      "name": "Der Völkermord an den Armeniern", "ort": [41.28, 39.9], "wo": "Ostanatolien und Syrien",
+      "text": "Deportationen und Massaker kosten über eine Million Menschen das Leben. Rafael Lemkin prägt daran später den Begriff Völkermord; die Türkei bestreitet die Einordnung bis heute.",
+      "wiki": "Völkermord an den Armeniern" },
+
+    { "id": "sykes-picot", "jahr": 1916, "art": "vertrag", "rang": 1,
+      "name": "Das Sykes-Picot-Abkommen", "ort": [-0.13, 51.5], "wo": "geheim vereinbart in London und Paris",
+      "text": "Zwei Diplomaten teilen den arabischen Osten des Osmanischen Reichs in britische und französische Einflusszonen – gleichzeitig zu den Zusagen an die Araber. Die Linien werden zu den Grenzen Syriens, des Libanon und des Irak.",
+      "wiki": "Sykes-Picot-Abkommen" },
+
+    { "id": "verdun", "jahr": 1916, "art": "umbruch", "rang": 1,
+      "name": "Verdun", "ort": [5.38, 49.16], "wo": "Maas-Höhen",
+      "text": "Zehn Monate um wenige Quadratkilometer, rund 700.000 Tote und Verwundete. Kein Durchbruch, kein Ziel außer dem Verbluten des Gegners – der Krieg als Maschine.",
+      "wiki": "Schlacht um Verdun" },
+
+    { "id": "oktoberrevolution", "jahr": 1917, "art": "umbruch", "rang": 1,
+      "name": "Die Oktoberrevolution", "ort": [30.31, 59.94], "wo": "Petrograd",
+      "text": "Die Bolschewiki übernehmen in einer fast unblutigen Nacht die Macht; es folgen fünf Jahre Bürgerkrieg. Zum ersten Mal regiert eine Partei im Namen einer Klasse – das prägt das ganze 20. Jahrhundert.",
+      "wiki": "Oktoberrevolution" },
+
+    { "id": "compiegne", "jahr": 1918, "art": "vertrag", "rang": 1,
+      "name": "Der Waffenstillstand von Compiègne", "ort": [2.83, 49.42], "wo": "Wald von Compiègne",
+      "text": "Am 11. November um 11 Uhr schweigen die Waffen. Über neun Millionen gefallene Soldaten, vier Reiche verschwunden. Im selben Eisenbahnwagen lässt Hitler 1940 Frankreich kapitulieren.",
+      "wiki": "Waffenstillstand von Compiègne (1918)" },
+
+    { "id": "spanische-grippe", "jahr": 1918, "bis": 1920, "art": "seuche", "rang": 1,
+      "name": "Die Spanische Grippe", "ort": [-100.44, 37.83], "wo": "weltweit, erste Nachweise in Kansas",
+      "text": "Zwischen 25 und 50 Millionen Tote – mehr als der Krieg, in kürzerer Zeit. Sie hieß spanisch, weil nur das neutrale Spanien nicht zensierte und deshalb als Einziges darüber berichtete.",
+      "wiki": "Spanische Grippe" },
+
+    { "id": "versailles", "jahr": 1919, "art": "vertrag", "rang": 1,
+      "name": "Der Vertrag von Versailles", "ort": [2.12, 48.8], "wo": "Spiegelsaal von Versailles",
+      "text": "Gebietsabtretungen, Entwaffnung, Reparationen und der Artikel, der Deutschland die alleinige Kriegsschuld zuweist. Der Vertrag gilt als zu hart, um zu versöhnen, und als zu milde, um zu binden.",
+      "wiki": "Friedensvertrag von Versailles" },
+
+    { "id": "voelkerbund", "jahr": 1920, "art": "gruendung", "rang": 2,
+      "name": "Der Völkerbund tritt zusammen", "ort": [6.14, 46.21], "wo": "Genf",
+      "text": "Der erste Versuch einer Weltorganisation zur Kriegsverhütung – ohne die USA, deren Präsident ihn erdacht hatte. Er scheitert an Mandschurei, Abessinien und dem eigenen Einstimmigkeitsprinzip.",
+      "wiki": "Völkerbund" },
+
+    { "id": "lausanne", "jahr": 1923, "art": "vertrag", "rang": 2,
+      "name": "Der Vertrag von Lausanne", "ort": [6.63, 46.52], "wo": "Schweiz",
+      "text": "Er ersetzt den Diktatfrieden von Sèvres und zieht die Grenzen der Türkei, wie sie bis heute gelten. Zugleich vereinbart er den Zwangsaustausch von 1,6 Millionen Menschen nach Religion – ein Modell, das im 20. Jahrhundert Schule macht.",
+      "wiki": "Vertrag von Lausanne" },
+
+    { "id": "penicillin", "jahr": 1928, "art": "wissen", "rang": 1,
+      "name": "Die Entdeckung des Penicillins", "ort": [-0.17, 51.52], "wo": "London, St Mary's Hospital",
+      "text": "Ein verschimmelter Nährboden, den Fleming vor dem Urlaub stehen ließ. Bis zur Massenproduktion vergehen sechzehn Jahre – dann verlieren Wundbrand, Lungenentzündung und Syphilis ihren Schrecken.",
+      "wiki": "Penicillin" },
+
+    { "id": "schwarzer-donnerstag", "jahr": 1929, "art": "umbruch", "rang": 1,
+      "name": "Der Börsenkrach", "ort": [-74.01, 40.71], "wo": "New York, Wall Street",
+      "text": "In wenigen Tagen verliert die Börse ein Drittel ihres Werts. Die folgende Weltwirtschaftskrise treibt in Deutschland sechs Millionen in die Arbeitslosigkeit – und die NSDAP von 2,6 auf 37 Prozent.",
+      "wiki": "Schwarzer Donnerstag" },
+
+    { "id": "salzmarsch", "jahr": 1930, "art": "umbruch", "rang": 2, "aufSee": true,
+      "name": "Der Salzmarsch", "ort": [72.63, 20.9], "wo": "von Ahmedabad nach Dandi",
+      "weg": [[72.58, 23.03], [72.83, 22.3], [72.9, 21.6], [72.63, 20.9]],
+      "text": "Gandhi läuft 385 Kilometer zum Meer und siedet Salz – ein Bruch des britischen Salzmonopols, der nichts kostet und alles zeigt. 60.000 Menschen werden verhaftet, die Bewegung ist nicht mehr aufzuhalten.",
+      "wiki": "Salzmarsch" },
+
+    { "id": "guernica", "jahr": 1937, "art": "umbruch", "rang": 2,
+      "name": "Die Bombardierung von Gernika", "ort": [-2.68, 43.31], "wo": "Baskenland",
+      "text": "Die deutsche Legion Condor erprobt an einer Kleinstadt den Angriff auf die Zivilbevölkerung. Picassos Bild macht daraus das Sinnbild des Luftkriegs – drei Jahre bevor er zur Regel wird.",
+      "wiki": "Luftangriff auf Gernika" },
+
+    { "id": "muenchen-1938", "jahr": 1938, "art": "vertrag", "rang": 1,
+      "name": "Das Münchner Abkommen", "ort": [11.58, 48.14], "wo": "München",
+      "text": "Vier Mächte übergeben das Sudetenland an Deutschland; die Tschechoslowakei sitzt nicht mit am Tisch. Chamberlain kehrt mit „Frieden für unsere Zeit“ zurück – ein halbes Jahr später steht die Wehrmacht in Prag.",
+      "wiki": "Münchner Abkommen" },
+
+    { "id": "novemberpogrome", "jahr": 1938, "art": "umbruch", "rang": 1,
+      "name": "Die Novemberpogrome", "ort": [13.38, 52.52], "wo": "im ganzen Deutschen Reich",
+      "text": "In einer Nacht brennen über tausend Synagogen, werden 7.500 Geschäfte zerstört, 30.000 Juden in Lager verschleppt. Die Verfolgung wird öffentlich und gewaltsam – und der Welt sichtbar.",
+      "wiki": "Novemberpogrome 1938" },
+
+    { "id": "westerplatte", "jahr": 1939, "art": "umbruch", "rang": 1,
+      "name": "Der Überfall auf Polen", "ort": [18.67, 54.41], "wo": "Danzig, Westerplatte",
+      "text": "Am 1. September um 4:45 Uhr beginnt der Zweite Weltkrieg. Zwei Tage später erklären Großbritannien und Frankreich den Krieg; am 17. September marschiert die Sowjetunion von Osten ein.",
+      "wiki": "Überfall auf Polen" },
+
+    { "id": "duenkirchen", "jahr": 1940, "art": "umbruch", "rang": 2,
+      "name": "Die Räumung von Dünkirchen", "ort": [2.38, 51.03], "wo": "Nordfrankreich",
+      "text": "In neun Tagen bringen Zerstörer, Fähren und Hunderte kleiner Privatboote 338.000 Soldaten über den Kanal. Frankreich fällt sechs Wochen später; Großbritannien bleibt im Krieg.",
+      "wiki": "Schlacht von Dünkirchen" },
+
+    { "id": "luftschlacht", "jahr": 1940, "art": "umbruch", "rang": 1,
+      "name": "Die Luftschlacht um England", "ort": [-0.13, 51.51], "wo": "Südengland",
+      "text": "Der erste Feldzug, der allein in der Luft entschieden wird – und der erste, den Deutschland verliert. Radar und ein durchdachtes Meldesystem wiegen die zahlenmäßige Unterlegenheit auf.",
+      "wiki": "Luftschlacht um England" },
+
+    { "id": "babyn-jar", "jahr": 1941, "art": "umbruch", "rang": 2,
+      "name": "Babyn Jar", "ort": [30.45, 50.47], "wo": "bei Kiew",
+      "text": "In zwei Tagen erschießen SS und Polizei 33.771 Kiewer Juden in einer Schlucht. Es ist das größte Einzelmassaker des Holocaust – begangen anderthalb Jahre vor der ersten Gaskammer in Auschwitz-Birkenau.",
+      "wiki": "Massaker von Babi Jar" },
+
+    { "id": "barbarossa", "jahr": 1941, "art": "umbruch", "rang": 1,
+      "name": "Der Überfall auf die Sowjetunion", "ort": [23.7, 52.1], "wo": "von der Ostsee bis zum Schwarzen Meer",
+      "text": "Drei Millionen Soldaten auf 2.000 Kilometern Front. Der von Anfang an als Vernichtungskrieg geplante Feldzug fordert bis 1945 rund 27 Millionen sowjetische Tote und entscheidet den Krieg in Europa.",
+      "wiki": "Deutsch-Sowjetischer Krieg" },
+
+    { "id": "pearl-harbor", "jahr": 1941, "art": "umbruch", "rang": 1, "aufSee": true,
+      "name": "Pearl Harbor", "ort": [-157.95, 21.36], "wo": "Hawaii",
+      "text": "Ein Überraschungsangriff versenkt vier Schlachtschiffe und tötet 2.400 Menschen. Am nächsten Tag treten die USA in den Krieg ein – aus einem europäischen und einem asiatischen Krieg wird ein Weltkrieg.",
+      "wiki": "Angriff auf Pearl Harbor" },
+
+    { "id": "el-alamein", "jahr": 1942, "art": "umbruch", "rang": 2,
+      "name": "El Alamein", "ort": [28.95, 30.83], "wo": "Ägypten",
+      "text": "Der Vorstoß nach Sues und zum Erdöl des Nahen Ostens wird gestoppt. „Nicht das Ende, aber vielleicht das Ende des Anfangs“, sagt Churchill.",
+      "wiki": "Schlacht von El Alamein" },
+
+    { "id": "midway", "jahr": 1942, "art": "umbruch", "rang": 2, "aufSee": true,
+      "name": "Midway", "ort": [-177.37, 28.21], "wo": "Zentralpazifik",
+      "text": "Japan verliert vier Flugzeugträger an einem Tag, die USA einen. Weil amerikanische Entzifferer den japanischen Funkverkehr mitlasen, wusste die unterlegene Seite, wo sie warten musste.",
+      "wiki": "Schlacht um Midway" },
+
+    { "id": "wannsee", "jahr": 1942, "art": "umbruch", "rang": 1,
+      "name": "Die Wannseekonferenz", "ort": [13.16, 52.43], "wo": "Berlin",
+      "text": "Fünfzehn hohe Beamte besprechen in neunzig Minuten die Organisation des Völkermords an den europäischen Juden. Der Mord hatte längst begonnen; hier wurde er zur abgestimmten Verwaltungsaufgabe.",
+      "wiki": "Wannseekonferenz" },
+
+    { "id": "stalingrad-ende", "jahr": 1943, "art": "umbruch", "rang": 1,
+      "name": "Die Kapitulation in Stalingrad", "ort": [44.52, 48.71], "wo": "an der Wolga",
+      "text": "Von 300.000 eingeschlossenen Soldaten kehren rund 6.000 nach Jahren aus der Gefangenschaft zurück. Der Wendepunkt des Krieges in Europa – von hier an weicht die Ostfront zurück.",
+      "wiki": "Schlacht von Stalingrad" },
+
+    { "id": "teheran", "jahr": 1943, "art": "vertrag", "rang": 2,
+      "name": "Die Konferenz von Teheran", "ort": [51.42, 35.7], "wo": "Iran",
+      "text": "Roosevelt, Churchill und Stalin treffen sich zum ersten Mal. Sie verabreden die Landung in Frankreich – und beginnen, Europas Nachkriegsordnung untereinander abzustecken.",
+      "wiki": "Konferenz von Teheran" },
+
+    { "id": "warschauer-ghetto", "jahr": 1943, "art": "umbruch", "rang": 2,
+      "name": "Der Aufstand im Warschauer Ghetto", "ort": [20.99, 52.25], "wo": "Warschau",
+      "text": "Wenige hundert schlecht bewaffnete Aufständische halten die SS vier Wochen auf. Der erste städtische Aufstand im besetzten Europa – geführt von Menschen, die wussten, dass sie nicht überleben würden.",
+      "wiki": "Aufstand im Warschauer Ghetto" },
+
+    { "id": "attentat-20-juli", "jahr": 1944, "art": "umbruch", "rang": 2,
+      "name": "Das Attentat vom 20. Juli", "ort": [21.38, 54.08], "wo": "Wolfsschanze, Ostpreußen",
+      "text": "Stauffenbergs Bombe explodiert, Hitler überlebt. In den folgenden Monaten werden rund 200 Beteiligte hingerichtet; der Widerstand aus dem Militär ist damit zerschlagen.",
+      "wiki": "Attentat vom 20. Juli 1944" },
+
+    { "id": "bretton-woods", "jahr": 1944, "art": "vertrag", "rang": 1,
+      "name": "Bretton Woods", "ort": [-71.5, 44.26], "wo": "New Hampshire",
+      "text": "44 Staaten verankern feste Wechselkurse am goldgedeckten Dollar und gründen Weltbank und Währungsfonds. Das System hält bis 1973 – der Dollar als Leitwährung bis heute.",
+      "wiki": "Bretton-Woods-System" },
+
+    { "id": "normandie", "jahr": 1944, "art": "umbruch", "rang": 1,
+      "name": "Die Landung in der Normandie", "ort": [-0.87, 49.37], "wo": "Küste der Normandie",
+      "text": "156.000 Soldaten an einem Tag über fünf Strandabschnitte – die größte Landungsoperation der Geschichte. Elf Monate später ist der Krieg in Europa vorbei.",
+      "wiki": "Operation Overlord" },
+
+    { "id": "hiroshima", "jahr": 1945, "art": "umbruch", "rang": 1,
+      "name": "Hiroshima und Nagasaki", "ort": [132.46, 34.39], "wo": "Japan",
+      "text": "Zwei Bomben töten bis Jahresende über 200.000 Menschen. Der Krieg endet binnen Tagen – und die Menschheit lebt seither mit der Möglichkeit, sich selbst auszulöschen.",
+      "wiki": "Atombombenabwürfe auf Hiroshima und Nagasaki" },
+
+    { "id": "nuernberg", "jahr": 1945, "bis": 1946, "art": "vertrag", "rang": 2,
+      "name": "Die Nürnberger Prozesse", "ort": [11.08, 49.45], "wo": "Nürnberg, Justizpalast",
+      "text": "Zum ersten Mal steht eine Staatsführung vor Gericht – für Angriffskrieg und Verbrechen gegen die Menschlichkeit. Der Einwand, man habe nur Befehle befolgt, wird ausdrücklich verworfen.",
+      "wiki": "Nürnberger Prozesse" },
+
+    { "id": "un-charta", "jahr": 1945, "art": "gruendung", "rang": 1,
+      "name": "Die Charta der Vereinten Nationen", "ort": [-122.42, 37.78], "wo": "San Francisco",
+      "text": "Fünfzig Staaten unterschreiben. Anders als der Völkerbund hat die neue Organisation einen Sicherheitsrat mit Zwangsmitteln – und fünf Vetomächte, die ihn seither regelmäßig blockieren.",
+      "wiki": "Charta der Vereinten Nationen" },
+
+    { "id": "menschenrechte", "jahr": 1948, "art": "vertrag", "rang": 1,
+      "name": "Die Allgemeine Erklärung der Menschenrechte", "ort": [2.29, 48.87], "wo": "Paris, Palais de Chaillot",
+      "text": "Dreißig Artikel, keine Verbindlichkeit, acht Enthaltungen. Und doch der meistübersetzte Text der Welt – der Maßstab, an dem sich seither jede Regierung messen lassen muss.",
+      "wiki": "Allgemeine Erklärung der Menschenrechte" },
+
+    { "id": "dna", "jahr": 1953, "art": "wissen", "rang": 1,
+      "name": "Die Doppelhelix", "ort": [0.12, 52.2], "wo": "Cambridge",
+      "text": "Watson und Crick beschreiben den Bau des Erbmoleküls – auf der Grundlage von Rosalind Franklins Röntgenaufnahmen, die ohne ihr Wissen weitergegeben wurden. Die Struktur erklärt zugleich, wie Vererbung funktioniert.",
+      "wiki": "Desoxyribonukleinsäure" },
+
+    { "id": "bandung", "jahr": 1955, "art": "vertrag", "rang": 2,
+      "name": "Die Konferenz von Bandung", "ort": [107.62, -6.91], "wo": "Java",
+      "text": "29 asiatische und afrikanische Staaten verabreden sich, in keinem der beiden Blöcke aufzugehen. Aus der Zusammenkunft wird die Bewegung der Blockfreien – die Dritte Welt betritt die Weltpolitik.",
+      "wiki": "Bandung-Konferenz" },
+
+    { "id": "roemische-vertraege", "jahr": 1957, "art": "vertrag", "rang": 1,
+      "name": "Die Römischen Verträge", "ort": [12.48, 41.89], "wo": "Rom, Kapitol",
+      "text": "Sechs Staaten gründen eine Wirtschaftsgemeinschaft, deren eigentlicher Zweck politisch ist: Deutschland und Frankreich so zu verflechten, dass Krieg zwischen ihnen unmöglich wird. Daraus wird die Europäische Union.",
+      "wiki": "Römische Verträge" },
+
+    { "id": "berliner-mauer", "jahr": 1961, "art": "umbruch", "rang": 1,
+      "name": "Der Bau der Berliner Mauer", "ort": [13.38, 52.52], "wo": "Berlin",
+      "text": "In einer Nacht wird eine Stadt geteilt, um die Abwanderung zu stoppen – 2,7 Millionen Menschen hatten die DDR bereits verlassen. Die Mauer steht 28 Jahre; mindestens 140 Menschen sterben an ihr.",
+      "wiki": "Berliner Mauer" },
+
+    { "id": "kubakrise", "jahr": 1962, "art": "umbruch", "rang": 1,
+      "name": "Die Kubakrise", "ort": [-79.55, 22.4], "wo": "Kuba",
+      "text": "Dreizehn Tage, in denen zwei Staaten mit Atomwaffen aufeinander zufuhren und im letzten Moment abbogen. Danach ein heißer Draht zwischen Washington und Moskau – und der erste Vertrag über Atomtests.",
+      "wiki": "Kubakrise" },
+
+    { "id": "mondlandung", "jahr": 1969, "art": "wissen", "rang": 1,
+      "name": "Der Start zum Mond", "ort": [-80.6, 28.39], "wo": "Cape Canaveral",
+      "text": "Apollo 11 hebt am 16. Juli ab; fünf Tage später steht ein Mensch auf einem anderen Himmelskörper. 600 Millionen sehen zu – das erste Ereignis, das die Menschheit gleichzeitig erlebt.",
+      "wiki": "Apollo 11" },
+
+    { "id": "pocken", "jahr": 1980, "art": "wissen", "rang": 1,
+      "name": "Die Pocken sind ausgerottet", "ort": [6.14, 46.23], "wo": "Genf, Weltgesundheitsversammlung",
+      "text": "Die einzige Krankheit des Menschen, die je vollständig besiegt wurde. Im 20. Jahrhundert hatte sie noch 300 Millionen Menschen getötet; die letzte natürliche Ansteckung war 1977 in Somalia.",
+      "wiki": "Pocken" },
+
+    { "id": "tschernobyl", "jahr": 1986, "art": "seuche", "rang": 1,
+      "name": "Tschernobyl", "ort": [30.1, 51.39], "wo": "Ukrainische SSR",
+      "text": "Ein Sicherheitstest zerstört Block 4; die Wolke zieht über halb Europa, bevor Moskau etwas mitteilt. Schwedische Messgeräte schlagen zuerst an. Die Vertuschung beschädigt das Vertrauen in den Sowjetstaat schwerer als der Unfall.",
+      "wiki": "Nuklearkatastrophe von Tschernobyl" },
+
+    { "id": "mauerfall", "jahr": 1989, "art": "umbruch", "rang": 1,
+      "name": "Der Fall der Mauer", "ort": [13.38, 52.52], "wo": "Berlin, Bornholmer Straße",
+      "text": "Eine missverständliche Pressekonferenz, dann Zehntausende an den Übergängen und ein Offizier, der die Schranke öffnet, ohne Befehl. Innerhalb eines Jahres ist Deutschland vereint, innerhalb von zwei die Sowjetunion aufgelöst.",
+      "wiki": "Mauerfall" },
+
+    { "id": "www", "jahr": 1991, "art": "wissen", "rang": 1,
+      "name": "Das World Wide Web wird öffentlich", "ort": [6.06, 46.23], "wo": "CERN, Genf",
+      "text": "Tim Berners-Lee stellt die erste Website online und gibt die Technik gebührenfrei frei. Die Entscheidung, kein Patent anzumelden, ist der Grund, warum das Web allen gehört.",
+      "wiki": "World Wide Web" },
+
+    { "id": "maastricht", "jahr": 1992, "art": "vertrag", "rang": 1,
+      "name": "Der Vertrag von Maastricht", "ort": [5.69, 50.85], "wo": "Niederlande",
+      "text": "Aus der Wirtschaftsgemeinschaft wird die Europäische Union, mit Unionsbürgerschaft und der Zusage einer gemeinsamen Währung. Zehn Jahre später ersetzt der Euro zwölf nationale Währungen.",
+      "wiki": "Vertrag von Maastricht" },
+
+    { "id": "apartheid-ende", "jahr": 1994, "art": "umbruch", "rang": 1,
+      "name": "Die ersten freien Wahlen in Südafrika", "ort": [28.19, -25.75], "wo": "Pretoria",
+      "text": "Nach 46 Jahren Apartheid stehen Millionen zum ersten Mal in ihrem Leben in einer Wahlschlange. Nelson Mandela wird Präsident und setzt statt auf Vergeltung auf eine Wahrheitskommission.",
+      "wiki": "Südafrikanische Parlamentswahlen 1994" },
+
+    { "id": "ruanda", "jahr": 1994, "art": "umbruch", "rang": 2,
+      "name": "Der Völkermord in Ruanda", "ort": [30.06, -1.94], "wo": "Ruanda",
+      "text": "In hundert Tagen werden rund 800.000 Menschen ermordet, überwiegend Tutsi, überwiegend mit Macheten. Die UN-Truppe vor Ort wird abgezogen statt verstärkt – das Versagen prägt die Debatte über Schutzverantwortung bis heute.",
+      "wiki": "Völkermord in Ruanda" },
+
+    { "id": "elfter-september", "jahr": 2001, "art": "umbruch", "rang": 1,
+      "name": "Der 11. September", "ort": [-74.01, 40.71], "wo": "New York und Washington",
+      "text": "Vier entführte Flugzeuge, fast 3.000 Tote. Es folgen zwei Kriege, ein weltweit ausgeweiteter Überwachungsapparat und eine Neuvermessung des Verhältnisses von Sicherheit und Freiheit.",
+      "wiki": "Terroranschläge am 11. September 2001" },
+
+    { "id": "euro", "jahr": 2002, "art": "gruendung", "rang": 1,
+      "name": "Der Euro kommt als Bargeld", "ort": [8.68, 50.11], "wo": "zwölf Staaten gleichzeitig",
+      "text": "Über Nacht wechseln 300 Millionen Menschen die Währung. Der größte Geldtausch der Geschichte – und die Bindung von Staaten aneinander, die sich in den Krisen danach als schwer lösbar erweist.",
+      "wiki": "Euro" },
+
+    { "id": "tsunami-2004", "jahr": 2004, "art": "seuche", "rang": 1, "aufSee": true,
+      "name": "Der Tsunami im Indischen Ozean", "ort": [95.98, 3.32], "wo": "vor Sumatra",
+      "text": "Ein Seebeben der Stärke 9,1 löst Wellen aus, die in vierzehn Ländern rund 230.000 Menschen töten. Danach entsteht das Frühwarnsystem, das es im Indischen Ozean bis dahin nicht gab.",
+      "wiki": "Erdbeben im Indischen Ozean 2004" },
+
+    { "id": "lehman", "jahr": 2008, "art": "umbruch", "rang": 1,
+      "name": "Der Zusammenbruch von Lehman Brothers", "ort": [-73.98, 40.76], "wo": "New York",
+      "text": "Eine Investmentbank fällt, und binnen Wochen steht das Weltfinanzsystem still. Staaten retten Banken mit Billionensummen; die Folgen tragen Euro-Zone und politische Landschaften ein Jahrzehnt lang.",
+      "wiki": "Finanzkrise ab 2007" },
+
+    { "id": "arabischer-fruehling", "jahr": 2011, "art": "umbruch", "rang": 1,
+      "name": "Der Arabische Frühling", "ort": [9.63, 35.02], "wo": "von Sidi Bouzid aus",
+      "text": "Ein tunesischer Gemüsehändler zündet sich an, und innerhalb von Wochen stürzen vier Regierungen. In Tunesien entsteht eine Demokratie, in Syrien, Libyen und Jemen jahrzehntelange Kriege.",
+      "wiki": "Arabischer Frühling" },
+
+    { "id": "fukushima", "jahr": 2011, "art": "seuche", "rang": 2,
+      "name": "Fukushima", "ort": [141.03, 37.42], "wo": "Japan",
+      "text": "Erdbeben und Flutwelle töten fast 20.000 Menschen und legen die Kühlung dreier Reaktoren lahm. Deutschland beschließt daraufhin binnen Monaten den Ausstieg aus der Kernenergie.",
+      "wiki": "Nuklearkatastrophe von Fukushima" },
+
+    { "id": "paris-klima", "jahr": 2015, "art": "vertrag", "rang": 1,
+      "name": "Das Pariser Klimaabkommen", "ort": [2.35, 48.86], "wo": "Paris",
+      "text": "195 Staaten verpflichten sich, die Erwärmung deutlich unter zwei Grad zu halten. Zum ersten Mal sind Industrie- und Entwicklungsländer im selben Vertrag – die Ziele setzt allerdings jeder Staat selbst.",
+      "wiki": "Übereinkommen von Paris" },
+
+    { "id": "brexit", "jahr": 2020, "art": "umbruch", "rang": 1,
+      "name": "Der Austritt Großbritanniens aus der EU", "ort": [-0.13, 51.5], "wo": "London und Brüssel",
+      "text": "Vier Jahre nach dem Referendum verlässt zum ersten Mal ein Mitglied die Union. Die Grenze in Irland, die niemand wollte, bleibt das ungelöste Stück.",
+      "wiki": "Brexit" },
+
+    { "id": "corona", "jahr": 2020, "bis": 2023, "art": "seuche", "rang": 1,
+      "name": "Die COVID-19-Pandemie", "ort": [114.31, 30.59], "wo": "von Wuhan aus weltweit",
+      "text": "Über sieben Millionen bestätigte Todesfälle, geschätzt drei- bis viermal so viele tatsächlich. Innerhalb eines Jahres entstehen Impfstoffe – so schnell wie nie zuvor –, und die halbe Menschheit erlebt Ausgangssperren.",
+      "wiki": "COVID-19-Pandemie" },
+
+    { "id": "ki", "jahr": 2022, "art": "wissen", "rang": 1,
+      "name": "Sprachmodelle werden allgemein zugänglich", "ort": [-122.42, 37.78], "wo": "San Francisco",
+      "text": "Innerhalb von zwei Monaten nutzen hundert Millionen Menschen ein Programm, das Sprache erzeugt. Ob daraus eine Umwälzung wie der Buchdruck wird, lässt sich aus der Nähe nicht sagen – dieser Atlas ist mit solcher Hilfe entstanden.",
+      "wiki": "Großes Sprachmodell" },
+
+    { "id": "ukraine-2022", "jahr": 2022, "art": "umbruch", "rang": 1,
+      "name": "Der russische Überfall auf die Ukraine", "ort": [30.52, 50.45], "wo": "Kiew und das ganze Land",
+      "text": "Der größte Krieg in Europa seit 1945. Millionen fliehen, Europa ordnet seine Energieversorgung und Verteidigungspolitik neu, Finnland und Schweden geben ihre Bündnisfreiheit auf.",
+      "wiki": "Russischer Überfall auf die Ukraine seit 2022" },
+
+    { "id": "gaza-2023", "jahr": 2023, "art": "umbruch", "rang": 1,
+      "name": "Der 7. Oktober und der Krieg in Gaza", "ort": [34.47, 31.5], "wo": "Israel und Gazastreifen",
+      "text": "Der Überfall der Hamas tötet rund 1.200 Menschen, 250 werden verschleppt. Der folgende Krieg fordert nach Angaben des Gesundheitsministeriums in Gaza Zehntausende Tote und macht den Küstenstreifen weitgehend unbewohnbar.",
+      "wiki": "Krieg in Israel und Gaza seit 2023" }
+  ]
+}

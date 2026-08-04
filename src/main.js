@@ -18,6 +18,7 @@ import { polityAt } from './modules/geo.js';
 import { esc, fold, highlight, areaText, distanceText, num } from './modules/format.js';
 import { ERA_COLORS } from './modules/palette.js';
 import { BattlePlayer, BATTLES } from './modules/battles.js';
+import { EventLayer, ARTEN, zeitfenster } from './modules/ereignisse.js';
 
 const $ = (id) => document.getElementById(id);
 const STORE_KEY = 'worldmap-deluxe:prefs';
@@ -35,6 +36,7 @@ const prefs = {
   occupation: true,
   places: true,
   physical: false,
+  events: true,
   wiki: true,
   focus: false,
   compactTimeline: false,
@@ -127,6 +129,22 @@ async function main() {
     lastAnchor: null,
   };
 
+  /* --------------------------------------------------------- Ereignisse */
+
+  const epochJahre = atlasData.epochs.map((e) => e.year);
+  const ereignisse = new EventLayer(atlas, {
+    // Ein aufgeschlagenes Ereignis blendet die Detailtafel nicht weg – man
+    // liest oft beides nebeneinander: das Land und was dort geschah.
+    onOpen: () => { layersMenu.hidden = true; },
+  });
+
+  /** Die Sammlung erst holen, wenn die Ebene wirklich gebraucht wird. */
+  async function enableEvents(on) {
+    if (on && !ereignisse.hatDaten) ereignisse.setDaten(await atlasData.loadEreignisse());
+    ereignisse.setSichtbar(on);
+    renderLegend();
+  }
+
   /* ------------------------------------------------------- Detailtafel */
 
   const panel = new DetailPanel(
@@ -204,6 +222,12 @@ async function main() {
       polities: epoch.polities.length,
       area: areaText(epoch.polities.reduce((sum, p) => sum + p.area, 0)).replace(' km²', ' km²'),
     });
+
+    // Ereignisse gehören zur Zeitspanne, für die dieser Kartenstand gilt –
+    // von der Mitte zum vorigen bis zur Mitte zum nächsten Zeitschnitt. So
+    // wechseln sie genau dann, wenn auch die Karte wechselt, und jedes
+    // Ereignis ist bei genau einem Zeitschnitt zu sehen.
+    ereignisse.setFenster(zeitfenster(epochJahre, index));
 
     renderLegend();
     reconcileSelection();
@@ -360,7 +384,11 @@ async function main() {
     }
 
     $('legendTitle').textContent = `Größte Gemeinwesen · ${epoch.meta.label}`;
-    list.innerHTML = epoch.polities.slice(0, 16).map((p) => `
+    // Mit eingeschalteter Ereignisebene wird die Liste der Gemeinwesen kürzer:
+    // Sonst stünde die Überschrift „Was in dieser Zeit geschah“ so weit unten,
+    // dass sie niemand findet, der nicht ohnehin scrollt.
+    const wieViele = prefs.events && ereignisse.aktuelle.length ? 11 : 16;
+    list.innerHTML = epoch.polities.slice(0, wieViele).map((p) => `
       <li><button type="button" data-name="${esc(p.name)}">
         <span class="sw" style="background:${esc(atlas.colorOfPolity(p.name))}"></span>
         <span class="nm">${esc(atlasData.germanName(p.name))}${p.occupiers?.length
@@ -385,9 +413,38 @@ async function main() {
             <span class="va">${num(count)} Gebiete</span>
           </button></li>`).join('')}`);
     }
+
+    renderEventLegend(list);
+  }
+
+  /**
+   * Die Ereignisse dieser Zeitspanne als Liste unter der Legende.
+   *
+   * Sie ist die zweite Hälfte der Ebene: Auf der Karte sieht man, *wo* etwas
+   * geschah, hier *was* – und was gerade außerhalb des Ausschnitts liegt.
+   * Ein Klick fliegt hin und schlägt es auf.
+   */
+  function renderEventLegend(list) {
+    if (!prefs.events) return;
+    const liste = ereignisse.aktuelle;
+    if (!liste.length) return;
+
+    const jahr = (e) => (e.jahr < 0 ? `${-e.jahr} v.` : String(e.jahr));
+    list.insertAdjacentHTML('beforeend', `
+      <li class="legend__head">Was in dieser Zeit geschah</li>
+      ${liste.map((e) => {
+        const art = ARTEN[e.art] ?? ARTEN.umbruch;
+        return `<li><button type="button" data-ereignis="${esc(e.id)}" title="${esc(art.label)}">
+          <span class="sw sw--ev"><svg viewBox="0 0 24 24" width="11" height="11" aria-hidden="true"><path d="${art.glyph}" fill="currentColor"/></svg></span>
+          <span class="nm">${esc(e.name)}</span>
+          <span class="va">${esc(jahr(e))}</span>
+        </button></li>`;
+      }).join('')}`);
   }
 
   $('legendList').addEventListener('click', (event) => {
+    const ev = event.target.closest('[data-ereignis]');
+    if (ev) { ereignisse.zeige(ev.dataset.ereignis); return; }
     const btn = event.target.closest('[data-name]');
     if (btn) selectPolity(btn.dataset.name, { zoom: true });
   });
@@ -840,6 +897,7 @@ async function main() {
     ['optOccupation', 'occupation', (v) => atlas.setOccupationVisible(v)],
     ['optPlaces', 'places', (v) => enablePlaces(v)],
     ['optPhysical', 'physical', (v) => enablePhysical(v)],
+    ['optEvents', 'events', (v) => enableEvents(v)],
     ['optWiki', 'wiki', () => {}],
   ];
   for (const [id, key, apply] of toggles) {
@@ -989,6 +1047,7 @@ async function main() {
     if (prefs.places) enablePlaces(true);
     if (prefs.physical) enablePhysical(true);
     if (prefs.rivers) enableWater(true);
+    if (prefs.events) enableEvents(true);
   }, 600);
 }
 

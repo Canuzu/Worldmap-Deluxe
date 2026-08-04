@@ -1,13 +1,15 @@
 #!/usr/bin/env node
 /**
- * Führt die redaktionellen Bausteine aus src/data zu den beiden Dateien
- * zusammen, die der Atlas zur Laufzeit lädt:
+ * Führt die redaktionellen Bausteine aus src/data zu den Dateien zusammen,
+ * die der Atlas zur Laufzeit lädt:
  *
- *   public/data/knowledge/polities.de.json   Steckbriefe
- *   public/data/knowledge/names.de.json      Namen und Schreibvarianten
+ *   public/data/knowledge/polities.de.json    Steckbriefe samt Herrscherlisten
+ *   public/data/knowledge/names.de.json       Namen und Schreibvarianten
+ *   public/data/knowledge/ereignisse.de.json  Ereignisse als Marken auf der Karte
  *
- * Die Steckbriefe liegen thematisch getrennt in src/data/knowledge/*.json,
- * damit sie überschaubar bleiben und sich getrennt pflegen lassen.
+ * Die Quelldateien liegen thematisch getrennt in src/data/knowledge/*.json,
+ * src/data/rulers/*.json und src/data/ereignisse/*.json, damit sie
+ * überschaubar bleiben und sich getrennt pflegen lassen.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -29,6 +31,10 @@ function readJSON(file) {
 function main() {
   fs.mkdirSync(OUT, { recursive: true });
 
+  // Alles, was auffällt, wird gesammelt und am Ende in einem Block ausgegeben –
+  // sonst geht ein Hinweis zwischen den Fortschrittszeilen unter.
+  const problems = [];
+
   /* ---------------------------------------------------------- Namen */
   const names = readJSON(path.join(SRC, 'names.de.json'));
   fs.writeFileSync(path.join(OUT, 'names.de.json'), JSON.stringify(names));
@@ -36,6 +42,41 @@ function main() {
     `› names.de.json      ${Object.keys(names.names).length} Namen, ` +
     `${Object.keys(names.aliases).length} Schreibvarianten`,
   );
+
+  /* ------------------------------------------------------- Ereignisse */
+  // Getrennt ausgeliefert statt ins Programm gebündelt: Sie werden erst
+  // gebraucht, wenn die Karte schon steht.
+  const evDir = path.join(SRC, 'ereignisse');
+  const ARTEN = ['vertrag', 'gruendung', 'fahrt', 'seuche', 'wissen', 'umbruch'];
+  const ereignisse = [];
+  const gesehen = new Set();
+
+  for (const file of fs.existsSync(evDir)
+    ? fs.readdirSync(evDir).filter((f) => f.endsWith('.json')).sort()
+    : []) {
+    const chunk = readJSON(path.join(evDir, file));
+    for (const e of chunk.ereignisse ?? []) {
+      if (gesehen.has(e.id)) problems.push(`doppelte Kennung "${e.id}" in ${file}`);
+      gesehen.add(e.id);
+      if (!ARTEN.includes(e.art)) problems.push(`${e.id}: unbekannte Art "${e.art}"`);
+      if (!Array.isArray(e.ort) || e.ort.length !== 2) problems.push(`${e.id}: kein Ort`);
+      else if (Math.abs(e.ort[0]) > 180 || Math.abs(e.ort[1]) > 90) {
+        problems.push(`${e.id}: Ort außerhalb der Erde (${e.ort.join(', ')}) – Länge und Breite vertauscht?`);
+      }
+      if (!Number.isFinite(e.jahr)) problems.push(`${e.id}: kein Jahr`);
+      if (e.bis != null && e.bis < e.jahr) problems.push(`${e.id}: endet vor dem Anfang`);
+      ereignisse.push(e);
+    }
+  }
+  ereignisse.sort((a, b) => a.jahr - b.jahr);
+  fs.writeFileSync(
+    path.join(OUT, 'ereignisse.de.json'),
+    JSON.stringify({
+      meta: { about: 'Ereignisse als Marken auf der Karte.', language: 'de', count: ereignisse.length },
+      ereignisse,
+    }),
+  );
+  console.log(`› ereignisse.de.json ${ereignisse.length} Ereignisse`);
 
   /* --------------------------------------------------- Herrscherlisten */
   // Die Listen liegen getrennt von den Steckbriefen: Sie sind lang, sie ändern
@@ -63,7 +104,6 @@ function main() {
   const files = fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => f.endsWith('.json')).sort() : [];
 
   const entries = {};
-  const problems = [];
   const benutzteListen = new Set();
   let periods = 0;
   let rulers = 0;
