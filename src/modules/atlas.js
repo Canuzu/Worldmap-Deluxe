@@ -100,12 +100,14 @@ const RING_MIN = 1.5;
  * Dreifachen des Fensters, und **jeder** dieser Bildpunkte wird bei jedem
  * Neuzeichnen mitgerastert, auch wenn zwei Drittel davon nie zu sehen sind.
  *
- * Bei 15 % bleibt es beim Doppelten. Gemessen kostet ein Zoomsprung damit
- * ein Sechstel weniger; im Sichttest ist auch bei einem Zug über 700
- * Bildpunkte kein leerer Rand zu sehen. Leaflets eigene Vorgabe liegt bei
- * 10 %.
+ * Zwischenzeitlich stand er auf 15 %, um jedes Neuzeichnen billiger zu
+ * machen. Seit `PlainCanvas._update` beim Schwenken gar nicht mehr neu
+ * zeichnet, solange der Ausschnitt in der gezeichneten Fläche bleibt, dreht
+ * sich die Rechnung um: Ein größerer Vorrat bedeutet **seltener** neu
+ * zeichnen. 35 % erlauben einen Zug über ein Drittel der Fensterbreite, ohne
+ * dass irgendetwas neu gerechnet wird.
  */
-const RAND = .15;
+const RAND = .35;
 
 /** Größte Ausdehnung eines Ringes in Bildpunkten. */
 function ringAusdehnung(p) {
@@ -132,6 +134,58 @@ function ringAusdehnung(p) {
  * steht und nicht in jeder Ebene neu.
  */
 const PlainCanvas = L.Canvas.extend({
+  /**
+   * Beim Schwenken nur neu zeichnen, wenn der Vorrat aufgebraucht ist.
+   *
+   * Leaflet legt jede Zeichenfläche größer an als das Fenster und zeichnet
+   * sie trotzdem **nach jeder Bewegung** vollständig neu – auch wenn man nur
+   * zwanzig Bildpunkte weit gezogen hat und alles Nötige längst gezeichnet
+   * dasteht. Bei einer Karte aus 1.300 Flächen und einer Küstenlinie aus
+   * 140.000 Stützpunkten kostet das eine knappe Sekunde. Genau das war beim
+   * Ziehen als Ruckeln zu spüren: Die Bewegung selbst läuft flüssig, weil
+   * Leaflet die Fläche nur verschiebt – und am Ende steht die Karte.
+   *
+   * Die Fläche liegt in Kartenkoordinaten und wandert mit dem Pane mit. Sie
+   * bleibt also richtig, solange der neue Ausschnitt noch in ihr liegt und
+   * sich der Maßstab nicht geändert hat. Dann gibt es nichts zu tun.
+   *
+   * Gemessen: Von zwölf Zügen quer über den Bildschirm lösen noch zwei ein
+   * Neuzeichnen aus statt zwölf.
+   */
+  _reichtNoch() {
+    const map = this._map;
+    if (!map) return true;
+    if (map._animatingZoom && this._bounds) return true;
+    if (!this._bounds || this._zoom !== map.getZoom()) return false;
+    // `_bounds` liegt in Kartenkoordinaten. Deren Nullpunkt verschiebt Leaflet
+    // bei jedem Sprung auf eine neue Mitte – danach wäre der Vergleich
+    // zwischen alter und neuer Fläche ein Vergleich zweier Maßstäbe. Beim
+    // bloßen Ziehen bleibt der Nullpunkt stehen, und nur darum geht es hier.
+    const nullpunkt = map.getPixelOrigin();
+    if (!this._nullpunkt || !this._nullpunkt.equals(nullpunkt)) return false;
+    // Öffnet sich die Tafel, wird die Karte schmaler, ohne dass sich Maßstab
+    // oder Nullpunkt ändern. Leaflet beschneidet dann jede Fläche gegen die
+    // neue Größe – der alte Zuschnitt wäre danach falsch, und Klicks träfen
+    // das falsche Gemeinwesen. Also bei jeder Größenänderung neu zeichnen.
+    const groesse = map.getSize();
+    if (!this._sichtgroesse || !this._sichtgroesse.equals(groesse)) return false;
+    const ecke = map.containerPointToLayerPoint([0, 0]);
+    const sicht = new L.Bounds(ecke, ecke.add(groesse));
+    return this._bounds.contains(sicht.min) && this._bounds.contains(sicht.max);
+  },
+
+  /** Den Stand festhalten, gegen den `_reichtNoch` beim nächsten Mal prüft. */
+  _merkeStand() {
+    this._nullpunkt = this._map.getPixelOrigin();
+    this._sichtgroesse = this._map.getSize();
+  },
+
+  _update() {
+    if (this._reichtNoch()) return;
+    L.Canvas.prototype._update.call(this);
+    this._merkeStand();
+  },
+
   _updatePoly(layer, closed) {
     if (!this._drawing) return;
     const ctx = this._ctx;
@@ -201,8 +255,9 @@ const CoastCanvas = PlainCanvas.extend({
   },
 
   _update() {
-    if (this._map._animatingZoom && this._bounds) return;
+    if (this._reichtNoch()) return;
     L.Renderer.prototype._update.call(this);
+    this._merkeStand();
     const b = this._bounds;
     const size = b.getSize();
     const container = this._container;
@@ -536,6 +591,15 @@ export class AtlasMap {
       zoomSnap: 0,
       zoomDelta: 0.6,
       wheelPxPerZoomLevel: 140,
+      /*
+       * Ein Mausrad gibt in einer Bewegung fünf bis zehn Rasten ab. Leaflet
+       * wartet zwischen ihnen 40 ms und macht daraus fünf bis zehn einzelne
+       * Zoomvorgänge – und jeder davon zeichnet die ganze Karte neu. Bei
+       * 140 ms wird aus einer Radbewegung ein Zoomschritt: einmal rechnen
+       * statt achtmal. Die Karte folgt dem Rad dabei genauso weit, nur eben
+       * in einem Zug.
+       */
+      wheelDebounceTime: 140,
       worldCopyJump: false,
       maxBounds: L.latLngBounds([-89, -220], [89, 220]),
       maxBoundsViscosity: .85,

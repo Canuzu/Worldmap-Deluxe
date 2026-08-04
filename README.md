@@ -693,7 +693,11 @@ Mal bewegt wurde. Ein Zeitschritt dauert weiterhin **0,3 s**.
 `npm run check:ladelast` misst das in drei Abschnitten – bis die Karte steht,
 zehn Sekunden Ruhe danach, nach dem Hineinzoomen – und schlägt Alarm, wenn
 wieder etwas ohne Anlass in den Erstaufruf rutscht oder die Grenze von 3.100 kB
-fällt.
+fällt. Gemessen werden muss dafür der **gebaute** Stand
+(`npm run build && npm run preview -- --port 4173`): Der Entwicklungsserver
+liefert jedes Modul einzeln und unverkleinert aus – allein Leaflet 1.100 kB
+statt 42 kB – und meldet rund 2,4 MB, die kein Besucher je lädt. Das Skript
+erkennt diesen Fall inzwischen und sagt es, statt Fehlalarm zu geben.
 
 Der nächstgrößte Posten ist `polities.de.json` (404 kB): Die Wissensbasis wird
 noch vor dem ersten Bild geladen, obwohl sie erst beim ersten Klick auf ein
@@ -780,15 +784,6 @@ Teilweg samt Füllung und Kontur kosten. Wer weniger als anderthalb Bildpunkte
 misst, wird nicht mehr gezeichnet. **Ein Zoomsprung im schwersten Zeitschnitt
 kostet damit 43 % weniger.**
 
-**Zwei Drittel jeder Zeichenfläche lagen außerhalb des Fensters.** Leaflet legt
-jede Zeichenfläche größer an als das Fenster, damit beim Verschieben nicht
-sofort ein leerer Rand auftaucht. Der Atlas hatte diesen Vorrat auf 30 bis 35 %
-gestellt – das ergibt rund das Dreifache der Fensterfläche, und jeder dieser
-Bildpunkte wird bei jedem Neuzeichnen mitgerastert. Bei 15 % bleibt es beim
-Doppelten; im Sichttest ist auch bei einem Zug über 900 Bildpunkte kein leerer
-Rand zu sehen, weil ohnehin während der Bewegung nachgezeichnet wird. Leaflets
-eigene Vorgabe liegt bei 10 %.
-
 Ausgelassen wird nur das Zeichnen. Die Geometrie bleibt vollständig: Ein
 Kleinstaat, der im Weltmaßstab keinen Bildpunkt füllt, ist weiter anklickbar,
 steht in Legende und Suche, wird bei Auswahl hervorgehoben – und zeichnet sich,
@@ -810,6 +805,68 @@ dort, wo einzelne Inselpunkte fortfallen.
 Alle Zahlen mit auf ein Viertel gedrosselter Rechenleistung in einem Browser
 **ohne** Grafikbeschleunigung – auf einem gewöhnlichen Gerät entsprechend
 schneller. Sie taugen zum Vergleich zweier Fassungen, nicht als Versprechen.
+
+### Der teuerste Fehler war, überhaupt zu zeichnen
+
+Nach alldem ruckelte es weiter, und die naheliegenden Verdächtigen waren es
+diesmal nicht. Zwei Fehlspuren, beide protokolliert, weil sie die Methode
+erklären:
+
+Erstens erschien der `backdrop-filter` der Bedienflächen als Übeltäter –
+8.333 ms in einem Durchgang, 0 ms ohne ihn. Die Zahl war echt, die
+Schlussfolgerung falsch: Dreimal derselbe, unveränderte Fall ergab
+8.334 / 302 / 0 ms. Gemessen worden war die Reihenfolge, nicht der Filter.
+Seither gilt: sechs Sekunden warmlaufen, den Ausgangsfall wiederholen.
+
+Zweitens schaltete die Messung gar nicht das Jahr weiter. `Tab` und
+Pfeiltaste hatten den Fokus auf der Karte gelassen, und Leaflets
+Tastaturbedienung schwenkt bei Pfeiltasten. Gemessen wurde ein Schwenk, der
+als Jahreswechsel verbucht wurde.
+
+Was schließlich half, war kein Zeitmaß, sondern ein Zählwerk:
+`CanvasRenderingContext2D.prototype.beginPath` wird überschrieben und zählt
+mit, wie viele Zeichenwege eine Bedienung auslöst. Das ist rauschfrei – eine
+Zahl, die sich zwischen zwei Durchgängen nicht um den Faktor zwanzig ändert.
+
+Und die Zahl sagte: **Leaflet zeichnet nach jeder Bewegung alles neu, auch
+wenn nichts Neues zu sehen ist.** Die Zeichenfläche ist absichtlich größer als
+das Fenster; zieht man 100 Bildpunkte weit, steht das Ergebnis längst da.
+Trotzdem läuft am Ende jeder Bewegung ein vollständiger Neuaufbau: 1.300
+Flächen projizieren, zuschneiden, rastern. Genau das war als Ruckeln zu
+spüren – die Bewegung selbst lief flüssig, und dann stand die Karte.
+
+`PlainCanvas._reichtNoch()` prüft vor jedem Neuzeichnen drei Dinge: gleicher
+Maßstab, gleicher Nullpunkt der Kartenkoordinaten, und liegt das Fenster noch
+in der gezeichneten Fläche? Wenn ja, gibt es nichts zu tun. Der Nullpunkt muss
+mitgeprüft werden, weil Leaflet ihn bei Sprüngen auf eine neue Mitte
+verschiebt – ohne diese Prüfung verglichen zwei verschiedene Maßstäbe
+miteinander. Und die Fenstergröße ebenso: Öffnet sich die Detailtafel, wird
+die Karte schmaler, ohne dass Maßstab oder Nullpunkt sich ändern; der alte
+Zuschnitt wäre danach falsch, und Klicks träfen das falsche Gemeinwesen.
+
+Damit dreht sich die Rechnung beim Vorrat um: Der Rand stand zwischenzeitlich
+auf 15 %, um jedes Neuzeichnen billiger zu machen. Jetzt bedeutet ein
+größerer Vorrat **seltener** neu zeichnen – 35 % erlauben einen Zug über ein
+Drittel der Fensterbreite, ohne dass irgendetwas gerechnet wird.
+
+Dazu ein zweiter Fund derselben Art: Ein Mausrad gibt in einer Bewegung fünf
+bis zehn Rasten ab. Leaflet wartet zwischen ihnen 40 ms und macht daraus fünf
+bis zehn einzelne Zoomvorgänge, jeder mit vollem Neuaufbau. Bei 140 ms wird
+aus einer Radbewegung ein Zoomschritt – die Karte folgt genauso weit, nur in
+einem Zug.
+
+Gemessen in Zeichenwegen, Weltansicht im Zeitschnitt 1492:
+
+| | vorher | jetzt |
+|---|---|---|
+| Fünf kurze Züge (je 100 px) | 3.683 | **148** |
+| Drei Züge quer über den Bildschirm | 1.772 | **1.022** |
+| Rad-Zoom, fünf Rasten | 144 | **91** |
+| Jahr weiterschalten im selben Zeitschnitt | 10 | **9** |
+
+Das kurze Ziehen – die häufigste Geste überhaupt – kostet damit **96 %
+weniger**. Im Sichtvergleich nach einem Zug über 960 Bildpunkte und nach
+einem Sprung auf eine neue Mitte ist kein leerer Rand zu sehen.
 
 Was bleibt: Ein einzelner Zoomsprung im schwersten Zeitschnitt kostet unter
 dieser Drosselung weiterhin rund drei Sekunden, weil Leaflet dabei sämtliche
