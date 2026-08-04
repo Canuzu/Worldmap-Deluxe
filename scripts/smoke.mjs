@@ -309,15 +309,37 @@ await check('Zeitleiste lässt sich einklappen', async () => {
   await page.waitForTimeout(400);
 });
 
-await check('Schlachtenfenster listet Schlachten auf', async () => {
+await check('Kriegsregister listet Kriege, Schlachten und Besetzungen', async () => {
+  await page.evaluate(() => { location.hash = 'year=1815'; });
+  await page.waitForTimeout(1200);
   await page.click('#btnBattles');
   await visible('#battlesBox');
-  const n = await page.locator('#battlesList li[data-battle]').count();
-  if (n < 3) throw new Error(`nur ${n} Schlachten`);
+  // Das Register wird nachgeladen; bis dahin steht dort nur ein Hinweis.
+  await page.waitForSelector('#battlesList li[data-krieg]', { timeout: 15000 });
+  const kriege = await page.locator('#battlesList li[data-krieg]').count();
+  if (kriege < 2) throw new Error(`nur ${kriege} Kriege`);
+  const schlachten = await page.locator('#battlesList li[data-schlacht]').count();
+  if (schlachten < 1) throw new Error('keine Schlacht im Zeitraum');
+  const verlauf = await page.locator('#battlesList li[data-verlauf]').count();
+  if (verlauf < 3) throw new Error(`nur ${verlauf} abspielbare Verläufe`);
+});
+
+await check('Ein Krieg legt Parteien und Schlachten auf die Karte', async () => {
+  await page.evaluate(() => document.querySelector('[data-krieg="napoleonisch"]').click());
+  await page.waitForTimeout(2200);
+  if (!(await page.locator('.kreg__tafel').isVisible())) throw new Error('keine Kriegstafel');
+  const marken = await page.locator('.leaflet-konflikt-pane .kf').count();
+  if (marken < 3) throw new Error(`nur ${marken} Schlachtmarken`);
+  const parteien = await page.evaluate(() => document.querySelectorAll('.leaflet-kriegsfeld-pane path').length);
+  if (parteien < 2) throw new Error(`nur ${parteien} umrissene Kriegsparteien`);
+  // Zurück ins Register, sonst steht der nächste Test vor der Kriegstafel.
+  await page.click('#battlesBack');
+  await page.waitForTimeout(600);
+  if (await page.locator('.kreg__tafel').count()) throw new Error('Kriegstafel bleibt stehen');
 });
 
 await check('Schlacht spielt Station für Station ab', async () => {
-  await page.click('[data-battle="waterloo"]');
+  await page.evaluate(() => document.querySelector('[data-verlauf="waterloo"]').click());
   await page.waitForSelector('#battlesPlayer:not([hidden])', { timeout: 8000 });
   await page.waitForTimeout(2500);
   const jahr = await page.textContent('#yearBig');
@@ -342,7 +364,27 @@ await check('Schlacht räumt ihre Ebene wieder ab', async () => {
   await page.waitForTimeout(500);
   const rest = await page.evaluate(() => document.querySelectorAll('.leaflet-battle-pane path').length);
   if (rest) throw new Error(`${rest} Stellungen bleiben stehen`);
+  const marken = await page.locator('.leaflet-konflikt-pane .kf').count();
+  if (marken) throw new Error(`${marken} Schlachtmarken bleiben stehen`);
   if (await page.locator('#battlesBox').isVisible()) throw new Error('Fenster bleibt offen');
+});
+
+await check('Vollbild lässt sich ein- und ausschalten', async () => {
+  // Der Testbrowser gewährt Vollbild nicht immer; geprüft wird deshalb, dass
+  // der Knopf da ist, seinen Zustand meldet und nichts kaputt macht.
+  const btn = page.locator('#btnFull');
+  if (!(await btn.isVisible())) throw new Error('Vollbildknopf fehlt');
+  await btn.click();
+  await page.waitForTimeout(700);
+  const zustand = await btn.getAttribute('aria-pressed');
+  if (zustand !== 'true' && zustand !== 'false') throw new Error(`aria-pressed: ${zustand}`);
+  if (await page.evaluate(() => Boolean(document.fullscreenElement))) {
+    await page.keyboard.press('Escape');
+    await page.waitForTimeout(700);
+  }
+  // Die Karte muss danach weiter bedienbar sein.
+  await page.waitForTimeout(300);
+  if (!(await page.locator('#map').isVisible())) throw new Error('Karte weg');
 });
 
 await check('Orte erscheinen gestaffelt und auf Deutsch', async () => {

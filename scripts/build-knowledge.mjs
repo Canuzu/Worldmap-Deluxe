@@ -78,6 +78,81 @@ function main() {
   );
   console.log(`› ereignisse.de.json ${ereignisse.length} Ereignisse`);
 
+  /* --------------------------------------------------------- Konflikte */
+  // Kriege und Schlachten liegen in denselben Quelldateien, weil sie
+  // zusammengehören: Eine Schlacht ohne ihren Krieg ist eine Anekdote.
+  // Ausgeliefert werden sie getrennt vom Programm, wie die Ereignisse.
+  const kDir = path.join(SRC, 'konflikte');
+  const K_ARTEN = ['krieg', 'eroberung', 'buergerkrieg', 'aufstand', 'revolution'];
+  const kriege = [];
+  const schlachten = [];
+  const kIds = new Set();
+  const sIds = new Set();
+
+  for (const file of fs.existsSync(kDir)
+    ? fs.readdirSync(kDir).filter((f) => f.endsWith('.json')).sort()
+    : []) {
+    const chunk = readJSON(path.join(kDir, file));
+    for (const k of chunk.kriege ?? []) {
+      if (kIds.has(k.id)) problems.push(`doppelte Kriegskennung "${k.id}" in ${file}`);
+      kIds.add(k.id);
+      if (!K_ARTEN.includes(k.art)) problems.push(`${k.id}: unbekannte Art "${k.art}"`);
+      if (!Number.isFinite(k.von)) problems.push(`${k.id}: kein Anfangsjahr`);
+      if (k.bis != null && k.bis < k.von) problems.push(`${k.id}: endet vor dem Anfang`);
+      if (!Array.isArray(k.ort) || Math.abs(k.ort[0]) > 180 || Math.abs(k.ort[1]) > 90) {
+        problems.push(`${k.id}: Schwerpunkt fehlt oder liegt außerhalb der Erde`);
+      }
+      if ((k.seiten ?? []).length < 2) problems.push(`${k.id}: weniger als zwei Seiten`);
+      kriege.push(k);
+    }
+    for (const s of chunk.schlachten ?? []) {
+      if (sIds.has(s.id)) problems.push(`doppelte Schlachtkennung "${s.id}" in ${file}`);
+      sIds.add(s.id);
+      if (!Number.isFinite(s.jahr)) problems.push(`${s.id}: kein Jahr`);
+      if (!Array.isArray(s.ort) || Math.abs(s.ort[0]) > 180 || Math.abs(s.ort[1]) > 90) {
+        problems.push(`${s.id}: Ort fehlt oder liegt außerhalb der Erde – Länge und Breite vertauscht?`);
+      }
+      schlachten.push(s);
+    }
+  }
+
+  // Erst nach dem Einlesen aller Dateien prüfen: Eine Schlacht darf in einer
+  // anderen Datei stehen als ihr Krieg.
+  for (const s of schlachten) {
+    if (!s.krieg) { problems.push(`${s.id}: kein Krieg zugeordnet`); continue; }
+    if (!kIds.has(s.krieg)) problems.push(`${s.id}: unbekannter Krieg "${s.krieg}"`);
+  }
+  const jeKrieg = new Map();
+  for (const s of schlachten) jeKrieg.set(s.krieg, (jeKrieg.get(s.krieg) ?? 0) + 1);
+  for (const k of kriege) {
+    if (!jeKrieg.has(k.id)) problems.push(`Krieg "${k.id}" hat keine einzige Schlacht`);
+    // Die Seiten einer Schlacht müssen zu denen ihres Krieges passen, sonst
+    // steht im Register ein Sieger, den es in diesem Krieg nicht gibt.
+    const namen = new Set((k.seiten ?? []).map((s) => s.name));
+    for (const s of schlachten.filter((x) => x.krieg === k.id)) {
+      if (s.sieger && !namen.has(s.sieger)) {
+        problems.push(`${s.id}: Sieger "${s.sieger}" ist keine Seite von "${k.id}"`);
+      }
+    }
+  }
+
+  kriege.sort((a, b) => a.von - b.von);
+  schlachten.sort((a, b) => a.jahr - b.jahr);
+  fs.writeFileSync(
+    path.join(OUT, 'konflikte.de.json'),
+    JSON.stringify({
+      meta: {
+        about: 'Kriege als Register, Schlachten als Marken auf der Karte.',
+        language: 'de',
+        kriege: kriege.length,
+        schlachten: schlachten.length,
+      },
+      kriege,
+      schlachten,
+    }),
+  );
+  console.log(`› konflikte.de.json  ${kriege.length} Kriege, ${schlachten.length} Schlachten`);
+
   /* --------------------------------------------------- Herrscherlisten */
   // Die Listen liegen getrennt von den Steckbriefen: Sie sind lang, sie ändern
   // sich anders (eine Liste wächst am Ende, ein Steckbrief wird umgeschrieben),

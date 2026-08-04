@@ -31,8 +31,9 @@ Religion, Bevölkerung, Wirtschaft, Wendepunkte und Nachbarn.
 | **Landschaftsnamen** | Gebirge, Wüsten, Hochebenen – sie erklären, warum Grenzen verlaufen, wie sie verlaufen |
 | **Kartengrundlage** | wahlweise Relief- oder physische Geländekarte unter den historischen Grenzen – bewusst ohne heutige Straßen, Städte oder Staatsgrenzen. Abschaltbar; ohne sie zeichnet der Atlas wie zuvor alles selbst |
 | **Orte zur Orientierung** | heutige Städte mit deutschen Namen, gestaffelt nach Rang eingeblendet – ohne sie ist die Karte ab Zoomstufe 6 anhaltslos |
+| **Kriege & Schlachten** | 87 Kriege und 175 Schlachten von Kadesch bis Bachmut. Das Register zeigt, was im eingestellten Jahr läuft – mit einem Balken, der die Dauer und den Stand angibt. Ein Klick legt die Kriegsparteien farbig auf die Karte und nummeriert seine Schlachtfelder in der Reihenfolge, in der sie geschlagen wurden |
 | **Berühmte Schlachten** | Gaugamela, Hastings, Waterloo, Stalingrad – der Verlauf läuft Station für Station ab, die Stellungen verschieben sich mit |
-| **Nur die Karte** | <kbd>F</kbd> blendet alle Bedienelemente aus; Suche und Zeitleiste lassen sich einzeln zuklappen |
+| **Vollbild** | <kbd>V</kbd> nimmt den ganzen Bildschirm, <kbd>F</kbd> blendet die Bedienelemente aus – beides einzeln, weil beides einzeln sinnvoll ist |
 | **Vier Einfärbungen** | nach Gemeinwesen, Oberhoheit, Kulturraum oder Genauigkeit des Grenzverlaufs |
 | **Suche** | über alle Gemeinwesen des aktuellen Zeitschnitts, deutsch und in der Schreibweise des Datensatzes |
 | **Zwei Farbwelten** | „Nachtatlas“ und „Pergament“ |
@@ -197,12 +198,14 @@ npm run check:data    # Abdeckung der Wissensbasis je Zeitschnitt
 npm run check:staaten # zählt alle 195 Staaten in den Gegenwartsjahren nach
 npm run check:herrscher # prüft, für wie viele Jahre ein Herrscher hinterlegt ist
 npm run check:ereignisse # verteilt die Ereignisse auf die Zeitschnitte und prüft die Orte
+npm run check:konflikte # prüft Kriege, Schlachtfelder und die Namen der Kriegsparteien
 npm run check:layout  # Oberfläche in 5 Fenstergrößen × 6 Zuständen (braucht `npm run dev`)
 npm run check:ladelast -- http://127.0.0.1:4173  # was der erste Aufruf lädt (braucht `npm run preview`)
 npm run check:fluss    -- http://127.0.0.1:4173  # Bildraten beim Schwenken und Zoomen
 npm run build:kueste   # dünnt public/data/base/ocean-hd.json auf 35 % aus
 npm run format:rulers # bringt die Herrscherlisten wieder in ihre Zeilenform
 npm run format:ereignisse # sortiert die Ereignisse chronologisch und formatiert sie
+npm run format:konflikte # dasselbe für Kriege und Schlachten
 ```
 
 `build-data.mjs` erzeugt die Meeresebene aus Natural Earth, berechnet für jedes
@@ -405,6 +408,59 @@ Annexionen Ost-Jerusalems (1980) und des Golan (1981) sind nicht anerkannt.
 Linie von 1949 lief mitten durch die Stadt; auf wenige Kilometer genau ist
 dieser Zug nicht, und die gezeichnete Linie sagt über den Status der Stadt
 nichts aus. Das steht so auch im Steckbrief, nicht nur hier.
+
+### Kriege und Schlachten – warum das eine in die Liste gehört und das andere auf die Karte
+
+87 Kriege und 175 Schlachten, von Kadesch (1274 v. Chr.) bis Bachmut (2023),
+in `src/data/konflikte/`. Die Frage war nicht, wie man sie einträgt, sondern
+**wo**.
+
+Ein Krieg hat keinen Ort. Der Dreißigjährige Krieg war kein Punkt in Böhmen,
+und ein Kreis über Mitteleuropa mit der Beschriftung „1618–1648“ sagt weniger
+als eine Zeile Text. Was ihn ausmacht, ist etwas, das eine Karte gar nicht
+darstellen kann: **eine Dauer und zwei Seiten**.
+
+Eine Liste kann das. Deshalb steht jeder Krieg im Register – mit einem Balken,
+auf dem markiert ist, wo das eingestellte Jahr in ihm liegt. Wer 1942 wählt,
+sieht auf einen Blick, dass der Zweite Weltkrieg über die Hälfte ist; wer 1618
+wählt, dass der Dreißigjährige Krieg gerade erst anfängt. Daneben stehen die
+beiden Lager in ihren Farben.
+
+Eine Schlacht dagegen **hat** einen Ort, ein Datum und einen Ausgang. Sie
+gehört auf die Karte: zwei gekreuzte Klingen, wie sie gestochene Tafeln seit
+dem 17. Jahrhundert benutzen, in der Farbe der Seite, die gewonnen hat. Das
+Zeitfenster ist dasselbe wie bei den Ereignissen – von der Mitte zum vorigen
+bis zur Mitte zum nächsten Zeitschnitt –, jede Schlacht erscheint also bei
+genau einem Kartenstand.
+
+Zusammengehalten wird beides durch die Auswahl. Ein Klick auf einen Krieg im
+Register tut drei Dinge auf einmal:
+
+- **Die Kriegsparteien werden umrissen**, jede Seite in ihrer Farbe, mit
+  einem breiten blassen Saum und einer scharfen Kante darüber. Gezeigt wird,
+  was der eingestellte Zeitschnitt hergibt: Wer 1942 wählt, sieht die Grenzen
+  von 1942. Ein Staat, den es in diesem Schnitt nicht gibt, wird
+  stillschweigend übergangen – ein fehlender Umriss ist besser als ein
+  falscher.
+- **Seine Schlachtfelder werden durchnummeriert** und in der Reihenfolge
+  verbunden, in der sie geschlagen wurden. Dieselben Ziffern stehen in der
+  Liste darunter. Aus einer Aufzählung wird ein Feldzug.
+- **Der Ausschnitt rückt** so, dass alles davon zu sehen ist – wobei das
+  Register links und die Zeitleiste unten einberechnet werden, sonst läge die
+  Hälfte eines Feldzugs unter der Tafel.
+
+Im selben Register steht drittens, **wer gerade wen besetzt hält**. Das ist
+keine dritte Datenquelle, sondern die Auswertung dessen, was ohnehin auf der
+Karte schraffiert ist: Eine Besetzung ist das Ergebnis eines Krieges und
+gehört neben ihn.
+
+`npm run check:konflikte` rechnet die Zuordnung nach, prüft jedes Schlachtfeld
+gegen die Küstenlinie – ein vertauschtes Koordinatenpaar fällt sonst erst auf
+der Karte auf, und dort erst, wenn jemand zufällig in dieses Jahr springt –
+und meldet Staatsnamen, die in keinem einzigen Zeitschnitt vorkommen. Der
+letzte Punkt ist der undankbarste: Der Kartendatensatz schreibt die
+Sowjetunion 1942 „USSR“ und 1960 „Soviet Union“, und ein Name, den es nirgends
+gibt, ergibt still einen fehlenden Umriss statt einer Fehlermeldung.
 
 ### Berühmte Schlachten
 
@@ -778,12 +834,15 @@ falls aktiviert, einen Wikipedia-Auszug.
 | `⇧` + `←` `→` | zum vorigen / nächsten Kartenstand springen |
 | `Bild ↑` `Bild ↓` | zehn Jahre |
 | `Leertaste` | Zeitreise starten und anhalten |
-| `/` oder `S` | Suche |
+| `/` | Suche |
+| `K` oder `S` | Kriege & Schlachten |
 | `T` | Farbwelt wechseln |
 | `E` | Ebenen und Einfärbung |
 | `L` | Legende |
+| `V` | Vollbild ein und aus |
+| `F` | nur die Karte – Bedienelemente ausblenden |
 | `0` | Ansicht zurücksetzen |
-| `Esc` | Tafel oder Fenster schließen |
+| `Esc` | Tafel, Fenster oder Vollbild schließen |
 | `?` | Übersicht der Tastenkürzel |
 
 ## Datenquellen

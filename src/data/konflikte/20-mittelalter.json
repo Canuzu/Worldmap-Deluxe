@@ -1,0 +1,394 @@
+{
+  "_hinweis": [
+    "Kriege und Schlachten zwischen 500 und 1500.",
+    "Aufbau siehe 10-antike.json."
+  ],
+
+  "kriege": [
+    {
+      "id": "gotenkrieg", "name": "Der Gotenkrieg Justinians", "von": 535, "bis": 554, "art": "eroberung", "rang": 2,
+      "ort": [12.5, 42.5], "wo": "Italien und Sizilien",
+      "seiten": [
+        { "name": "Oströmisches Reich", "staaten": ["Byzantine Empire", "Eastern Roman Empire"] },
+        { "name": "Ostgotenreich", "staaten": ["Ostrogoths"] }
+      ],
+      "text": "Justinian will das Weströmische Reich zurückholen und schafft es fast. Der Preis: Italien wird in zwanzig Jahren Krieg so gründlich verwüstet, dass die antike Städtelandschaft nicht wieder hochkommt – und drei Jahre nach dem Sieg stehen die Langobarden vor der Tür.",
+      "ausgang": "Italien wird byzantinisch und ist ruiniert.",
+      "wiki": "Gotenkrieg (535–554)"
+    },
+    {
+      "id": "arabexpansion", "name": "Die arabische Expansion", "von": 632, "bis": 750, "art": "eroberung", "rang": 1,
+      "ort": [35, 30], "wo": "Von Spanien bis zum Indus",
+      "seiten": [
+        { "name": "Kalifat", "staaten": ["Umayyad Caliphate", "Abbasid Caliphate"] },
+        { "name": "Byzanz, Persien und die Westgoten", "staaten": ["Byzantine Empire", "Visigothic Kingdom"] }
+      ],
+      "text": "In hundert Jahren entsteht das größte Reich, das die Welt bis dahin gesehen hat – von den Pyrenäen bis nach Zentralasien. Zwei erschöpfte Großmächte, ein neuer Glaube und eine Kavallerie, die schneller ist als jede Nachricht.",
+      "ausgang": "Persien fällt ganz, Byzanz verliert Syrien, Ägypten und Nordafrika.",
+      "wiki": "Islamische Expansion"
+    },
+    {
+      "id": "reconquista", "name": "Die Reconquista", "von": 722, "bis": 1492, "art": "eroberung", "rang": 2,
+      "ort": [-4, 39.5], "wo": "Iberische Halbinsel",
+      "seiten": [
+        { "name": "Die christlichen Reiche", "staaten": ["Castilla", "Aragón", "Portugal", "León"] },
+        { "name": "Al-Andalus", "staaten": ["Caliphate of Córdoba", "Almohad Caliphate", "Almoravid dynasty", "Granada"] }
+      ],
+      "text": "Kein Krieg, sondern ein siebenhundertjähriger Prozess mit langen Friedenszeiten, gemischten Bündnissen und Höfen, an denen Arabisch, Latein und Hebräisch nebeneinander gesprochen wurden. Der Begriff selbst stammt aus dem 19. Jahrhundert und erzählt mehr über dessen Nationalismus als über das Mittelalter.",
+      "ausgang": "1492 fällt Granada; im selben Jahr laufen Kolumbus' Schiffe aus.",
+      "wiki": "Reconquista"
+    },
+    {
+      "id": "sachsenkriege", "name": "Karls Sachsenkriege", "von": 772, "bis": 804, "art": "eroberung", "rang": 3,
+      "ort": [9.5, 52], "wo": "Zwischen Rhein, Weser und Elbe",
+      "seiten": [
+        { "name": "Frankenreich", "staaten": ["Frankish Kingdom", "Carolingian Empire", "Franks"] },
+        { "name": "Sachsen", "staaten": ["Saxons", "Saxony"] }
+      ],
+      "text": "Zweiunddreißig Jahre für ein Gebiet, das man in zwei Wochen durchreiten kann. Es geht nicht um Land, sondern um Unterwerfung samt Taufe – der erste europäische Krieg, in dem der Glaubenswechsel Kriegsziel ist.",
+      "ausgang": "Sachsen wird fränkisch und christlich; das Reich reicht an die Elbe.",
+      "wiki": "Sachsenkriege"
+    },
+    {
+      "id": "wikinger", "name": "Die Züge der Wikinger", "von": 793, "bis": 1066, "art": "eroberung", "rang": 2,
+      "ort": [-2, 55], "wo": "Nordsee, Britische Inseln, Nordfrankreich, Russland",
+      "seiten": [
+        { "name": "Nordmänner", "staaten": ["Denmark", "Norway"] },
+        { "name": "Angelsachsen, Franken und Iren", "staaten": ["Wessex", "England", "Frankish Kingdom", "Ireland"] }
+      ],
+      "text": "Zweihundertsiebzig Jahre lang laufen flache Schiffe Flüsse hinauf, die kein Feind für einen Weg gehalten hat. Aus Raubzügen werden Siedlungen, aus Siedlern Herzöge und Könige – die Normandie, das Danelag und die Rus gehen alle auf dieselbe Bootsbauweise zurück.",
+      "ausgang": "1066 endet das Zeitalter mit zwei Invasionen Englands im selben Jahr.",
+      "wiki": "Wikingerzeit"
+    },
+    {
+      "id": "kreuzzug1", "name": "Der Erste Kreuzzug", "von": 1096, "bis": 1099, "art": "krieg", "rang": 1,
+      "ort": [35.5, 33.5], "wo": "Anatolien, Syrien, Palästina",
+      "seiten": [
+        { "name": "Kreuzfahrerheere", "staaten": [] },
+        { "name": "Seldschuken und Fatimiden", "staaten": ["Seljuk Empire", "Fatimid Caliphate"] }
+      ],
+      "text": "Ein Hilferuf aus Konstantinopel wird in Clermont zu einem bewaffneten Wallfahrtsaufruf. Was ankommt, ist kein Entsatzheer, sondern eine Landnahme: Vier Kreuzfahrerstaaten entstehen, und für zwei Jahrhunderte hat Europa einen Brückenkopf in der Levante.",
+      "ausgang": "Jerusalem wird 1099 erobert und geplündert.",
+      "wiki": "Erster Kreuzzug"
+    },
+    {
+      "id": "genpei", "name": "Der Genpei-Krieg", "von": 1180, "bis": 1185, "art": "buergerkrieg", "rang": 3,
+      "ort": [134, 34.2], "wo": "Japan, Inlandsee",
+      "seiten": [
+        { "name": "Minamoto", "staaten": ["Japan"] },
+        { "name": "Taira", "staaten": [] }
+      ],
+      "text": "Zwei Kriegerfamilien kämpfen um die Kontrolle über einen Hof, der längst nicht mehr regiert. Der Sieger lässt sich nicht zum Kaiser machen, sondern zum Shogun – und damit beginnt eine Militärherrschaft, die bis 1868 dauert.",
+      "ausgang": "Die Taira gehen in einer Seeschlacht unter; das Kamakura-Shogunat entsteht.",
+      "wiki": "Genpei-Krieg"
+    },
+    {
+      "id": "kreuzzug3", "name": "Der Dritte Kreuzzug", "von": 1189, "bis": 1192, "art": "krieg", "rang": 2,
+      "ort": [35, 32.9], "wo": "Palästina",
+      "seiten": [
+        { "name": "Kreuzfahrerheere", "staaten": ["England", "France", "Holy Roman Empire"] },
+        { "name": "Ayyubiden unter Saladin", "staaten": ["Ayyubid Sultanate"] }
+      ],
+      "text": "Drei Könige ziehen los, einer ertrinkt unterwegs, einer reist verärgert ab, einer bleibt. Richard Löwenherz gewinnt Schlachten, aber nicht Jerusalem – und schließt am Ende einen Waffenstillstand, der christlichen Pilgern den Zugang zur Stadt sichert.",
+      "ausgang": "Akkon fällt an die Kreuzfahrer, Jerusalem bleibt muslimisch.",
+      "wiki": "Dritter Kreuzzug"
+    },
+    {
+      "id": "mongolen", "name": "Die Feldzüge der Mongolen", "von": 1206, "bis": 1279, "art": "eroberung", "rang": 1,
+      "ort": [80, 45], "wo": "Von Ungarn bis Korea",
+      "seiten": [
+        { "name": "Mongolisches Reich", "staaten": ["Northern Yuan"] },
+        { "name": "China, Persien, Russland, Ungarn", "staaten": ["Song Empire", "Kievan Rus", "Hungary", "Abbasid Caliphate"] }
+      ],
+      "text": "In siebzig Jahren entsteht das größte zusammenhängende Landreich der Geschichte. Der Grund ist keine Zahl, sondern eine Organisation: Zehnerschaften statt Stämme, Postrelais statt Boten, und eine Aufklärung, die Wochen vor dem Heer eintrifft.",
+      "ausgang": "1279 fällt auch Südchina; danach zerfällt das Reich in vier Teilreiche.",
+      "wiki": "Mongolische Eroberungen"
+    },
+    {
+      "id": "malireich", "name": "Die Ausdehnung Malis", "von": 1235, "bis": 1337, "art": "eroberung", "rang": 3,
+      "ort": [-6, 14], "wo": "Westafrika, Nigerbogen",
+      "seiten": [
+        { "name": "Mali", "staaten": ["Mali"] },
+        { "name": "Sosso und die Städte des Nigerbogens", "staaten": ["Empire of Ghana"] }
+      ],
+      "text": "Nach dem Sieg über Sosso kontrolliert Mali den Goldhandel zwischen Wüste und Wald. Mansa Musas Pilgerfahrt nach Mekka verteilt unterwegs so viel Gold, dass der Preis in Kairo jahrelang gedrückt bleibt – und Europa zeichnet Mali auf seine Karten.",
+      "ausgang": "Ein Reich von der Atlantikküste bis nach Gao, mit Timbuktu als Gelehrtenstadt.",
+      "wiki": "Malireich"
+    },
+    {
+      "id": "mongolenjapan", "name": "Die mongolischen Invasionen Japans", "von": 1274, "bis": 1281, "art": "krieg", "rang": 3,
+      "ort": [130.4, 33.6], "wo": "Kyushu, Bucht von Hakata",
+      "seiten": [
+        { "name": "Japan", "staaten": ["Japan"] },
+        { "name": "Yuan-Reich und Korea", "staaten": ["Northern Yuan", "Korea"] }
+      ],
+      "text": "Zweimal setzt eine Flotte über, zweimal zerschlägt ein Taifun sie. Japan nennt die Stürme „göttlicher Wind“ – kamikaze – und leitet daraus eine Unverwundbarkeit ab, die sechshundertfünfzig Jahre später verheerend nachwirkt.",
+      "ausgang": "Beide Invasionen scheitern; das Shogunat kann seine Krieger nicht entlohnen und gerät in die Krise.",
+      "wiki": "Mongoleninvasionen in Japan"
+    },
+    {
+      "id": "osmanaufstieg", "name": "Der Aufstieg der Osmanen", "von": 1300, "bis": 1453, "art": "eroberung", "rang": 1,
+      "ort": [28, 40.5], "wo": "Anatolien und der Balkan",
+      "seiten": [
+        { "name": "Osmanisches Reich", "staaten": ["Ottoman Empire"] },
+        { "name": "Byzanz, Serbien, Bulgarien, Ungarn", "staaten": ["Byzantine Empire", "Serbia", "Bulgaria", "Hungary"] }
+      ],
+      "text": "Aus einem Grenzfürstentum in Nordwestanatolien wird in anderthalb Jahrhunderten ein Reich auf zwei Kontinenten. Entscheidend ist nicht der Glaube, sondern die Verwaltung: bezahlte Berufssoldaten, ein Steuerkataster und die Bereitschaft, besiegte Eliten zu übernehmen statt zu vertreiben.",
+      "ausgang": "1453 fällt Konstantinopel; das Römische Reich hört nach 1480 Jahren auf zu bestehen.",
+      "wiki": "Osmanisches Reich"
+    },
+    {
+      "id": "hundertjaehrig", "name": "Der Hundertjährige Krieg", "von": 1337, "bis": 1453, "art": "krieg", "rang": 1,
+      "ort": [1.5, 48.5], "wo": "Frankreich",
+      "seiten": [
+        { "name": "England", "staaten": ["England"] },
+        { "name": "Frankreich", "staaten": ["France"] }
+      ],
+      "text": "Ein dynastischer Erbstreit wird zum Aufstand einer Nation gegen die andere. Am Anfang stehen Ritterheere, am Ende Kanonen und stehende Truppen; am Anfang sprechen Englands Könige Französisch, am Ende nicht mehr.",
+      "ausgang": "England verliert alles außer Calais; beide Länder gehen als Nationen daraus hervor.",
+      "wiki": "Hundertjähriger Krieg"
+    },
+    {
+      "id": "reconquistachina", "name": "Der Aufstand der Roten Turbane", "von": 1351, "bis": 1368, "art": "aufstand", "rang": 2,
+      "ort": [117, 32], "wo": "Mittleres und südliches China",
+      "seiten": [
+        { "name": "Rote Turbane", "staaten": ["Ming Empire"] },
+        { "name": "Yuan-Dynastie", "staaten": ["Northern Yuan"] }
+      ],
+      "text": "Ein Deichbruch am Gelben Fluss, eine Hungersnot, eine Zwangsarbeit von 150.000 Mann – und ein Bettelmönch namens Zhu Yuanzhang, der als Anführer endet. Siebzehn Jahre später ist die mongolische Herrschaft über China zu Ende.",
+      "ausgang": "Die Ming-Dynastie entsteht; die Yuan ziehen sich in die Steppe zurück.",
+      "wiki": "Roter-Turban-Aufstand"
+    },
+    {
+      "id": "timur", "name": "Die Feldzüge Timurs", "von": 1370, "bis": 1405, "art": "eroberung", "rang": 2,
+      "ort": [66, 39.7], "wo": "Von Anatolien bis Delhi",
+      "seiten": [
+        { "name": "Timuridenreich", "staaten": ["Timurid Empire"] },
+        { "name": "Goldene Horde, Delhi und die Osmanen", "staaten": ["Sultanate of Delhi", "Ottoman Empire"] }
+      ],
+      "text": "Fünfunddreißig Jahre Feldzug ohne verlorene Schlacht und ohne bleibende Ordnung. Timur plündert Delhi, schlägt die Osmanen bei Ankara und nimmt ihren Sultan gefangen – und stirbt auf dem Weg nach China. Zurück bleiben Schädelpyramiden und Samarkand.",
+      "ausgang": "Ein Reich, das seinen Gründer kaum überlebt; sein Urenkel Babur gründet später das Mogulreich.",
+      "wiki": "Timur"
+    },
+    {
+      "id": "hussiten", "name": "Die Hussitenkriege", "von": 1419, "bis": 1434, "art": "aufstand", "rang": 3,
+      "ort": [14.5, 49.8], "wo": "Böhmen",
+      "seiten": [
+        { "name": "Hussiten", "staaten": ["Bohemia and Moravia"] },
+        { "name": "Reich und Kirche", "staaten": ["Holy Roman Empire", "Hungary"] }
+      ],
+      "text": "Ein Prediger wird trotz Geleitbriefs verbrannt, und Böhmen steht auf. Bauern schlagen fünf Kreuzzugsheere – mit Wagenburgen und Handfeuerwaffen, der ersten Infanterie Europas, die berittene Ritter nicht mehr fürchtet.",
+      "ausgang": "Ein Kompromiss beendet den Krieg; die Wagenburg-Taktik prägt das Kriegswesen für ein Jahrhundert.",
+      "wiki": "Hussitenkriege"
+    },
+    {
+      "id": "aztekendreibund", "name": "Die Kriege des Aztekischen Dreibunds", "von": 1428, "bis": 1519, "art": "eroberung", "rang": 3,
+      "ort": [-99.1, 19.4], "wo": "Hochtal von Mexiko und Umland",
+      "seiten": [
+        { "name": "Dreibund von Tenochtitlan", "staaten": ["Aztec Empire"] },
+        { "name": "Tlaxcala und die unterworfenen Städte", "staaten": [] }
+      ],
+      "text": "Der Dreibund erobert kein Land, sondern Tribut: Wer zahlt, behält seine Herren und Götter. Das macht die Ausdehnung schnell und das Reich brüchig – neunzig Jahre später stellen die nie unterworfenen Tlaxcalteken das Fußvolk für seinen Untergang.",
+      "ausgang": "Ein Tributreich über fünf Millionen Menschen, ohne dauerhafte Verwaltung.",
+      "wiki": "Aztekenreich"
+    },
+    {
+      "id": "rosenkriege", "name": "Die Rosenkriege", "von": 1455, "bis": 1487, "art": "buergerkrieg", "rang": 3,
+      "ort": [-1.3, 52.5], "wo": "England",
+      "seiten": [
+        { "name": "Haus Lancaster", "staaten": ["England"] },
+        { "name": "Haus York", "staaten": [] }
+      ],
+      "text": "Zwei Zweige derselben Familie zerfleischen einander dreißig Jahre lang um einen Thron. Der Hochadel dünnt sich dabei so aus, dass der Sieger fast ohne Widerstand regieren kann – der Beginn des englischen Absolutismus unter den Tudors.",
+      "ausgang": "Heinrich Tudor siegt bei Bosworth und heiratet die Erbin des Gegners.",
+      "wiki": "Rosenkriege"
+    }
+  ],
+
+  "schlachten": [
+    { "id": "taginae", "krieg": "gotenkrieg", "jahr": 552, "datum": "Juli 552", "name": "Taginae",
+      "ort": [12.9, 43.1], "wo": "Umbrien", "rang": 3, "sieger": "Oströmisches Reich",
+      "text": "Narses lässt seine Bogenschützen die gotische Reiterei niederschießen, bevor sie herankommt. Totila fällt, und mit ihm die letzte Chance des Ostgotenreichs.",
+      "wiki": "Schlacht von Taginae" },
+
+    { "id": "jarmuk", "krieg": "arabexpansion", "jahr": 636, "datum": "August 636", "name": "Am Jarmuk",
+      "ort": [35.95, 32.75], "wo": "Grenzland zwischen Syrien und Jordanien", "rang": 1, "sieger": "Kalifat",
+      "text": "Sechs Tage Schlacht in einer Landschaft aus Schluchten, aus der es kein Zurück gibt. Byzanz verliert Syrien in einer Woche – und mit ihm die reichste Provinz, die es je besaß.",
+      "wiki": "Schlacht am Jarmuk" },
+
+    { "id": "kadisiya", "krieg": "arabexpansion", "jahr": 636, "datum": "November 636", "name": "Al-Qadisiyya",
+      "ort": [44.3, 31.7], "wo": "Südmesopotamien", "rang": 1, "sieger": "Kalifat",
+      "text": "Das sassanidische Heer wird an einem Kanal gestellt und aufgerieben. Zwei Jahre später ist Ktesiphon gefallen; das persische Reich der Antike endet nach vierhundert Jahren.",
+      "wiki": "Schlacht von Kadesia" },
+
+    { "id": "guadalete", "krieg": "arabexpansion", "jahr": 711, "datum": "Juli 711", "name": "Am Guadalete",
+      "ort": [-6, 36.6], "wo": "Andalusien", "rang": 2, "sieger": "Kalifat",
+      "text": "Ein Erkundungszug von siebentausend Mann schlägt das westgotische Aufgebot, weil zwei Flügel überlaufen. Sieben Jahre später ist fast die ganze Halbinsel muslimisch.",
+      "wiki": "Schlacht am Guadalete" },
+
+    { "id": "covadonga", "krieg": "reconquista", "jahr": 722, "datum": "um 722", "name": "Covadonga",
+      "ort": [-5, 43.3], "wo": "Asturisches Gebirge", "rang": 3, "sieger": "Die christlichen Reiche",
+      "text": "Ein Scharmützel in einem Bergtal, das die spätere Überlieferung zum Gründungsakt erhebt. Historisch bedeutsam ist es trotzdem: Im asturischen Bergland entsteht der Kern, aus dem die christlichen Reiche wachsen.",
+      "wiki": "Schlacht von Covadonga" },
+
+    { "id": "tours", "krieg": "arabexpansion", "jahr": 732, "datum": "Oktober 732", "name": "Tours und Poitiers",
+      "ort": [0.5, 46.8], "wo": "Westfrankreich", "rang": 1, "sieger": "Byzanz, Persien und die Westgoten",
+      "text": "Karl Martell stellt sein Fußvolk in einem Karree auf und lässt die andalusische Reiterei sich daran totlaufen. Ob die Schlacht Europa gerettet hat, ist umstritten; dass sie die Karolinger an die Macht brachte, nicht.",
+      "wiki": "Schlacht von Tours und Poitiers" },
+
+    { "id": "verden", "krieg": "sachsenkriege", "jahr": 782, "datum": "782", "name": "Das Blutgericht von Verden",
+      "ort": [9.23, 52.92], "wo": "An der Aller", "rang": 3, "sieger": "Frankenreich",
+      "text": "Nach einer verlorenen Schlacht lässt Karl der Große an einem Tag viereinhalbtausend gefangene Sachsen hinrichten. Die Zahl ist umstritten, die Wirkung nicht: Der Widerstand geht danach noch zwanzig Jahre weiter.",
+      "wiki": "Blutgericht von Verden" },
+
+    { "id": "lindisfarne", "krieg": "wikinger", "jahr": 793, "datum": "8. Juni 793", "name": "Der Überfall auf Lindisfarne",
+      "ort": [-1.797, 55.669], "wo": "Nordostengland, Gezeiteninsel in der Nordsee", "rang": 2, "sieger": "Nordmänner",
+      "text": "Ein Inselkloster ohne Mauern, weil bis dahin niemand vom Meer her kam. Alkuin schreibt entsetzt an den König: So etwas habe man in Britannien noch nie erlebt. Das Zeitalter der Wikinger beginnt an diesem Tag.",
+      "wiki": "Lindisfarne" },
+
+    { "id": "edington", "krieg": "wikinger", "jahr": 878, "datum": "Mai 878", "name": "Edington",
+      "ort": [-2.1, 51.27], "wo": "Wiltshire", "rang": 3, "sieger": "Angelsachsen, Franken und Iren",
+      "text": "Alfred hat den Winter in den Sümpfen von Somerset verbracht und sammelt im Frühjahr das Aufgebot dreier Grafschaften. Der Sieg rettet Wessex – das einzige angelsächsische Königreich, das die Wikingerzeit übersteht.",
+      "wiki": "Schlacht von Edington" },
+
+    { "id": "stamford", "krieg": "wikinger", "jahr": 1066, "datum": "25. September 1066", "name": "Stamford Bridge",
+      "ort": [-0.91, 53.99], "wo": "Yorkshire", "rang": 3, "sieger": "Angelsachsen, Franken und Iren",
+      "text": "Harold Godwinson marschiert in vier Tagen von London nach York und schlägt den norwegischen König. Drei Wochen später steht er, erschöpft und ohne halbes Heer, bei Hastings.",
+      "wiki": "Schlacht von Stamford Bridge" },
+
+    { "id": "dorylaeum", "krieg": "kreuzzug1", "jahr": 1097, "datum": "1. Juli 1097", "name": "Dorylaeum",
+      "ort": [30.5, 39.75], "wo": "Anatolien", "rang": 3, "sieger": "Kreuzfahrerheere",
+      "text": "Die seldschukischen Reiterbogenschützen umkreisen die vordere Kreuzfahrerabteilung stundenlang – bis der Rest des Heeres in ihrem Rücken auftaucht. Danach ist der Weg nach Syrien offen.",
+      "wiki": "Schlacht von Dorylaeum (1097)" },
+
+    { "id": "jerusalem1099", "krieg": "kreuzzug1", "jahr": 1099, "datum": "15. Juli 1099", "name": "Die Erstürmung Jerusalems",
+      "ort": [35.23, 31.78], "wo": "Palästina", "rang": 1, "sieger": "Kreuzfahrerheere",
+      "text": "Fünf Wochen Belagerung, zwei Belagerungstürme aus dem Holz zerlegter genuesischer Schiffe. Was danach geschieht, schildern christliche wie muslimische Quellen übereinstimmend als Massaker.",
+      "wiki": "Belagerung von Jerusalem (1099)" },
+
+    { "id": "dannoura", "krieg": "genpei", "jahr": 1185, "datum": "25. April 1185", "name": "Dan-no-ura",
+      "ort": [130.96, 33.96], "wo": "Meerenge von Shimonoseki", "rang": 3, "sieger": "Minamoto",
+      "text": "Als die Gezeiten kippen, kippt die Schlacht. Die Großmutter des siebenjährigen Kaisers springt mit ihm ins Meer; die Reichsinsignien gehen zum Teil verloren. Japan bekommt seinen ersten Shogun.",
+      "wiki": "Schlacht von Dan-no-ura" },
+
+    { "id": "hattin", "krieg": "kreuzzug3", "jahr": 1187, "datum": "4. Juli 1187", "name": "Hattin",
+      "ort": [35.45, 32.8], "wo": "Galiläa", "rang": 1, "sieger": "Ayyubiden unter Saladin",
+      "text": "Saladin lockt das Kreuzfahrerheer über eine wasserlose Hochebene und zündet das trockene Gras an. Nach zwei Tagen ohne Wasser ist es kampfunfähig; drei Monate später fällt Jerusalem.",
+      "wiki": "Schlacht bei Hattin" },
+
+    { "id": "arsuf", "krieg": "kreuzzug3", "jahr": 1191, "datum": "7. September 1191", "name": "Arsuf",
+      "ort": [34.81, 32.2], "wo": "Küste bei Jaffa", "rang": 3, "sieger": "Kreuzfahrerheere",
+      "text": "Richard hält seinen Marschverband stundenlang unter Beschuss geschlossen, bis der Gegenangriff sitzt. Ein taktisches Meisterstück, das strategisch wenig ändert.",
+      "wiki": "Schlacht von Arsuf" },
+
+    { "id": "navas", "krieg": "reconquista", "jahr": 1212, "datum": "16. Juli 1212", "name": "Las Navas de Tolosa",
+      "ort": [-3.6, 38.28], "wo": "Sierra Morena", "rang": 2, "sieger": "Die christlichen Reiche",
+      "text": "Kastilien, Aragón und Navarra kämpfen ausnahmsweise gemeinsam und brechen die almohadische Macht. Danach ist der Süden nur noch eine Frage der Zeit – die zweihundertachtzig Jahre dauert.",
+      "wiki": "Schlacht bei Las Navas de Tolosa" },
+
+    { "id": "kalka", "krieg": "mongolen", "jahr": 1223, "datum": "31. Mai 1223", "name": "An der Kalka",
+      "ort": [37.5, 47.2], "wo": "Nördlich des Asowschen Meeres", "rang": 3, "sieger": "Mongolisches Reich",
+      "text": "Ein mongolischer Erkundungszug schlägt das vereinigte Heer der Rus und verschwindet wieder. Fünfzehn Jahre später kommen sie zurück – und dann bleiben sie.",
+      "wiki": "Schlacht an der Kalka" },
+
+    { "id": "kirina", "krieg": "malireich", "jahr": 1235, "datum": "um 1235", "name": "Kirina",
+      "ort": [-8, 12.5], "wo": "Oberer Niger", "rang": 3, "sieger": "Mali",
+      "text": "Sundiata Keita schlägt den Sosso-König und wird zum ersten Mansa von Mali. Die Erzählung darüber wird seit achthundert Jahren mündlich weitergegeben – eines der längsten lebendigen Epen der Welt.",
+      "wiki": "Schlacht von Kirina" },
+
+    { "id": "mohi", "krieg": "mongolen", "jahr": 1241, "datum": "11. April 1241", "name": "Muhi",
+      "ort": [20.98, 48.02], "wo": "Ungarische Tiefebene", "rang": 2, "sieger": "Mongolisches Reich",
+      "text": "Zwei Tage nach Liegnitz wird auch das ungarische Heer vernichtet. Mitteleuropa liegt offen – und dann stirbt der Großkhan, und die Heere kehren zur Wahl nach Karakorum zurück.",
+      "wiki": "Schlacht bei Muhi" },
+
+    { "id": "bagdad1258", "krieg": "mongolen", "jahr": 1258, "datum": "Februar 1258", "name": "Der Fall von Bagdad",
+      "ort": [44.36, 33.31], "wo": "Mesopotamien", "rang": 1, "sieger": "Mongolisches Reich",
+      "text": "Die Hauptstadt des Abbasidenkalifats, seit fünfhundert Jahren das Zentrum der islamischen Gelehrsamkeit, wird geplündert und ihre Bibliotheken in den Tigris geworfen. Der Kalif wird in einen Teppich gewickelt und zu Tode getrampelt.",
+      "wiki": "Belagerung von Bagdad (1258)" },
+
+    { "id": "ainjalut", "krieg": "mongolen", "jahr": 1260, "datum": "3. September 1260", "name": "Ain Djalut",
+      "ort": [35.35, 32.55], "wo": "Jesreelebene", "rang": 2, "sieger": "China, Persien, Russland, Ungarn",
+      "text": "Die Mamluken aus Ägypten schlagen ein mongolisches Heer – die erste Niederlage, von der sich die Mongolen nicht erholen. Die Westgrenze des Reiches bleibt für immer am Euphrat.",
+      "wiki": "Schlacht bei ʿAin Djālūt" },
+
+    { "id": "yamen", "krieg": "mongolen", "jahr": 1279, "datum": "19. März 1279", "name": "Yamen",
+      "ort": [113, 22.2], "wo": "Perlflussdelta", "rang": 2, "sieger": "Mongolisches Reich",
+      "text": "Die letzte Song-Flotte wird im Delta gestellt. Ein Beamter springt mit dem achtjährigen Kaiser auf dem Rücken ins Meer; Zehntausende folgen. China ist zum ersten Mal vollständig unter fremder Herrschaft.",
+      "wiki": "Schlacht von Yamen" },
+
+    { "id": "hakata1281", "krieg": "mongolenjapan", "jahr": 1281, "datum": "August 1281", "name": "Die Bucht von Hakata",
+      "ort": [130.4, 33.6], "wo": "Kyushu", "rang": 3, "sieger": "Japan",
+      "text": "Viertausend Schiffe liegen vor der Küste, weil eine Mauer die Landung verhindert. Dann kommt der Taifun. Taucher haben die Wracks gefunden – viele waren Flussschiffe, für das offene Meer ungeeignet.",
+      "wiki": "Mongoleninvasionen in Japan" },
+
+    { "id": "crecy", "krieg": "hundertjaehrig", "jahr": 1346, "datum": "26. August 1346", "name": "Crécy",
+      "ort": [1.9, 50.25], "wo": "Picardie", "rang": 2, "sieger": "England",
+      "text": "Englische Langbogenschützen hinter Erdlöchern gegen den Aufmarsch der französischen Ritterschaft. Nach sechzehn Angriffen im Regen ist die Blüte des französischen Adels tot – und das Zeitalter der Panzerreiter geht zu Ende.",
+      "wiki": "Schlacht bei Crécy" },
+
+    { "id": "poyang", "krieg": "reconquistachina", "jahr": 1363, "datum": "September 1363", "name": "Auf dem Poyang-See",
+      "ort": [116.3, 29.1], "wo": "Jiangxi", "rang": 3, "sieger": "Rote Turbane",
+      "text": "Die größte Seeschlacht der Geschichte, gemessen an der Zahl der Beteiligten: mehrere hunderttausend Mann auf Flusskriegsschiffen. Zhu Yuanzhang siegt mit Brandern und wird fünf Jahre später Kaiser.",
+      "wiki": "Schlacht auf dem Poyang-See" },
+
+    { "id": "kosovo1389", "krieg": "osmanaufstieg", "jahr": 1389, "datum": "15. Juni 1389", "name": "Auf dem Amselfeld",
+      "ort": [21.1, 42.68], "wo": "Kosovo", "rang": 2, "sieger": "Osmanisches Reich",
+      "text": "Beide Herrscher fallen, der Ausgang ist militärisch unentschieden – und trotzdem wird Serbien danach osmanischer Vasall. Kaum eine Schlacht hat als nationaler Mythos länger nachgewirkt.",
+      "wiki": "Schlacht auf dem Amselfeld (1389)" },
+
+    { "id": "nikopolis", "krieg": "osmanaufstieg", "jahr": 1396, "datum": "25. September 1396", "name": "Nikopolis",
+      "ort": [24.9, 43.7], "wo": "Untere Donau", "rang": 3, "sieger": "Osmanisches Reich",
+      "text": "Der letzte große Kreuzzug scheitert an derselben Sache wie viele davor: Die französischen Ritter greifen ohne Absprache an, weil sie den ersten Angriff für sich beanspruchen.",
+      "wiki": "Schlacht bei Nikopolis" },
+
+    { "id": "delhi1398", "krieg": "timur", "jahr": 1398, "datum": "Dezember 1398", "name": "Die Plünderung Delhis",
+      "ort": [77.2, 28.6], "wo": "Nordindien", "rang": 3, "sieger": "Timuridenreich",
+      "text": "Timur schlägt die Elefanten des Sultanats mit brennendem Stroh auf Kamelrücken in die Flucht. Die Stadt wird drei Tage geplündert und braucht ein Jahrhundert, um sich zu erholen.",
+      "wiki": "Timur" },
+
+    { "id": "ankara1402", "krieg": "timur", "jahr": 1402, "datum": "20. Juli 1402", "name": "Ankara",
+      "ort": [32.85, 39.93], "wo": "Zentralanatolien", "rang": 2, "sieger": "Timuridenreich",
+      "text": "Timur schlägt Bayezid und nimmt ihn gefangen. Das Osmanische Reich zerfällt für elf Jahre in Bürgerkrieg – die einzige Atempause, die Konstantinopel im 15. Jahrhundert bekommt.",
+      "wiki": "Schlacht bei Ankara" },
+
+    { "id": "azincourt", "krieg": "hundertjaehrig", "jahr": 1415, "datum": "25. Oktober 1415", "name": "Azincourt",
+      "ort": [2.13, 50.46], "wo": "Artois", "rang": 2, "sieger": "England",
+      "text": "Ein aufgeweichter Acker zwischen zwei Wäldern, auf dem sich schwer gepanzerte Ritter selbst festfahren. Heinrich V. gewinnt mit einem erschöpften Heer und wird beinahe König von Frankreich.",
+      "wiki": "Schlacht von Azincourt" },
+
+    { "id": "kutna", "krieg": "hussiten", "jahr": 1422, "datum": "Januar 1422", "name": "Deutschbrod",
+      "ort": [15.58, 49.6], "wo": "Böhmisch-Mährisches Bergland", "rang": 3, "sieger": "Hussiten",
+      "text": "Žižka bricht mit den Wagenburgen aus einer Umzingelung aus und verfolgt das Reichsheer über den zugefrorenen Fluss. Ein blinder Feldherr schlägt zum vierten Mal einen Kreuzzug.",
+      "wiki": "Hussitenkriege" },
+
+    { "id": "azcapotzalco", "krieg": "aztekendreibund", "jahr": 1428, "datum": "1428", "name": "Der Sturz von Azcapotzalco",
+      "ort": [-99.18, 19.49], "wo": "Hochtal von Mexiko", "rang": 3, "sieger": "Dreibund von Tenochtitlan",
+      "text": "Drei Städte verbünden sich gegen ihren gemeinsamen Oberherrn und gewinnen. Danach lässt der Sieger die alten Chroniken verbrennen und die Geschichte neu schreiben – mit sich selbst am Anfang.",
+      "wiki": "Aztekenreich" },
+
+    { "id": "orleans", "krieg": "hundertjaehrig", "jahr": 1429, "datum": "8. Mai 1429", "name": "Der Entsatz von Orléans",
+      "ort": [1.9, 47.9], "wo": "Loire", "rang": 1, "sieger": "Frankreich",
+      "text": "Ein siebzehnjähriges Bauernmädchen bringt eine Belagerung in neun Tagen zu Fall, an der ein Heer seit sieben Monaten scheiterte. Was Jeanne d'Arc militärisch beitrug, ist strittig; dass sie den Krieg drehte, ist es nicht.",
+      "wiki": "Belagerung von Orléans" },
+
+    { "id": "castillon", "krieg": "hundertjaehrig", "jahr": 1453, "datum": "17. Juli 1453", "name": "Castillon",
+      "ort": [0.05, 44.85], "wo": "Gascogne", "rang": 3, "sieger": "Frankreich",
+      "text": "Die erste Schlacht der europäischen Geschichte, die von Artillerie entschieden wird: dreihundert Geschütze in einer Feldbefestigung. Der Hundertjährige Krieg endet mit dem Beginn des Kanonenzeitalters.",
+      "wiki": "Schlacht von Castillon" },
+
+    { "id": "konstantinopel1453", "krieg": "osmanaufstieg", "jahr": 1453, "datum": "29. Mai 1453", "name": "Der Fall Konstantinopels",
+      "ort": [28.98, 41.01], "wo": "Bosporus", "rang": 1, "sieger": "Osmanisches Reich",
+      "text": "Dreiundfünfzig Tage Belagerung, eine über Land gezogene Flotte und Kanonen, wie sie die Welt noch nicht gesehen hat. Mauern, die tausend Jahre gehalten hatten, halten sieben Wochen. Für viele endet hier das Mittelalter.",
+      "wiki": "Eroberung von Konstantinopel" },
+
+    { "id": "bosworth", "krieg": "rosenkriege", "jahr": 1485, "datum": "22. August 1485", "name": "Bosworth Field",
+      "ort": [-1.41, 52.59], "wo": "Leicestershire", "rang": 3, "sieger": "Haus Lancaster",
+      "text": "Richard III. reitet in einem letzten Vorstoß direkt auf seinen Gegner zu und wird im Sumpf gestellt. Sein Skelett wurde 2012 unter einem Parkplatz gefunden – mit genau den Verletzungen, die die Chroniken beschreiben.",
+      "wiki": "Schlacht von Bosworth" },
+
+    { "id": "granada1492", "krieg": "reconquista", "jahr": 1492, "datum": "2. Januar 1492", "name": "Die Übergabe Granadas",
+      "ort": [-3.6, 37.18], "wo": "Andalusien", "rang": 2, "sieger": "Die christlichen Reiche",
+      "text": "Nach zehn Jahren Belagerungskrieg übergibt Boabdil die Schlüssel der Alhambra. Im selben Jahr werden die Juden vertrieben und die Verträge mit Kolumbus geschlossen – drei Entscheidungen, die Spanien für Jahrhunderte prägen.",
+      "wiki": "Granadakrieg" }
+  ]
+}

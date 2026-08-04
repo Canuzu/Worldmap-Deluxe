@@ -239,3 +239,107 @@
   .evpop .leaflet-popup-content { margin: .7rem .8rem .65rem; width: min(17rem, 72vw) !important; }
   .ev__name { display: none; }
 }
+
+/* ============================================== Kriege & Schlachten
+
+   Eine Schlacht bekommt zwei gekreuzte Klingen – das Zeichen, mit dem
+   gestochene Tafeln seit dem 17. Jahrhundert ein Schlachtfeld markieren.
+   Anders als die Ereignismarken trägt sie eine Farbe: die der Seite, die
+   gewonnen hat. Genau darum geht es bei einer Schlacht, und man sieht es
+   ohne die Kartusche zu öffnen. */
+
+.leaflet-konflikt-pane { pointer-events: none; }
+.leaflet-konflikt-pane .leaflet-marker-icon { pointer-events: auto; }
+.leaflet-kriegsfeld-pane { pointer-events: none; }
+
+.kf__pin {
+  position: absolute;
+  inset: 1px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--c, var(--gold));
+  background: color-mix(in srgb, var(--surface-solid) 90%, transparent);
+  box-shadow:
+    inset 0 0 0 1.2px color-mix(in srgb, var(--c, var(--gold)) 70%, transparent),
+    0 1px 4px rgba(0, 0, 0, .55);
+  transition: transform var(--dur) var(--ease);
+}
+.kf__name {
+  display: none;
+  position: absolute;
+  left: calc(100% + .3rem);
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  font: 600 11.5px/1 var(--font-ui);
+  color: var(--label-ink);
+  text-shadow:
+     0 0 3px var(--label-halo),  0 0 3px var(--label-halo),
+     1px 1px 2px var(--label-halo), -1px -1px 2px var(--label-halo);
+  pointer-events: none;
+}
+.kf:hover .kf__name,
+.kf--benannt .kf__name,
+.leaflet-marker-icon:focus-visible .kf__name { display: block; }
+.kf:hover .kf__name { z-index: 2; }
+.kf:hover .kf__pin,
+.leaflet-marker-icon:focus-visible .kf__pin { transform: scale(1.25); }
+
+/* Die laufende Nummer eines Feldzugs: erst wenn ein Krieg ausgewählt ist,
+   und dann links oben an der Marke – wie die Ziffern auf einer Schlachtkarte,
+   zu denen die Legende die Erklärung liefert. */
+.kf u {
+  display: none;
+  position: absolute;
+  left: -.36rem;
+  top: -.36rem;
+  min-width: .95rem;
+  height: .95rem;
+  padding: 0 .16rem;
+  border-radius: .5rem;
+  font: 700 9.5px/.95rem var(--font-ui);
+  text-align: center;
+  text-decoration: none;
+  color: var(--surface-solid);
+  background: var(--ink-strong);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .5);
+}
+.kf--gewaehlt u { display: block; }
+
+/* Der Zug eines Krieges: gestrichelt von Schlachtfeld zu Schlachtfeld, in
+   der Reihenfolge der Jahre. Keine Grenze, kein Weg – eine Abfolge. */
+.kf-zug {
+  stroke: var(--ink-muted);
+  fill: none;
+}
+
+/* Die Kriegsparteien: nur ein Umriss und ein Hauch Füllung. Darunter muss
+   die Staatenkarte lesbar bleiben, sonst weiß man nicht mehr, wo man ist. */
+.leaflet-kriegsfeld-pane path {
+  animation: kfIn 380ms var(--ease);
+  pointer-events: none;
+}
+@keyframes kfIn { from { opacity: 0; } }
+
+.evpop__sieg {
+  margin: .5rem 0 0;
+  font-size: .76rem;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+}
+.evpop__sieg i {
+  width: .6rem;
+  height: .6rem;
+  border-radius: 2px;
+  background: var(--c, var(--gold));
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .3);
+  flex: none;
+}
+.evpop__krieg {
+  margin: .3rem 0 0;
+  font-size: .72rem;
+  color: var(--ink-faint);
+}

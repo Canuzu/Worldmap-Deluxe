@@ -19,6 +19,9 @@ import { esc, fold, highlight, areaText, distanceText, num } from './modules/for
 import { ERA_COLORS } from './modules/palette.js';
 import { BattlePlayer, BATTLES } from './modules/battles.js';
 import { EventLayer, ARTEN, zeitfenster } from './modules/ereignisse.js';
+import {
+  KonfliktLayer, KONFLIKT_ARTEN, SEITENFARBEN, spanneText, fortschritt,
+} from './modules/konflikte.js';
 
 const $ = (id) => document.getElementById(id);
 const STORE_KEY = 'worldmap-deluxe:prefs';
@@ -137,6 +140,21 @@ async function main() {
     // liest oft beides nebeneinander: das Land und was dort geschah.
     onOpen: () => { layersMenu.hidden = true; },
   });
+
+  /**
+   * Kriege und Schlachten.
+   *
+   * Eigene Ebene statt einer siebten Ereignisart: Wer die Ereignisse
+   * abschaltet, weil ihm die Karte zu voll ist, will die Schlachten trotzdem
+   * sehen können – und umgekehrt. Sie erscheint mit dem Register und
+   * verschwindet mit ihm.
+   */
+  const konflikte = new KonfliktLayer(atlas, {
+    onOpen: () => { layersMenu.hidden = true; },
+  });
+
+  // Für die Prüfwerkzeuge erreichbar, wie Karte und Atlas.
+  window.__konflikte = konflikte;
 
   /** Die Sammlung erst holen, wenn die Ebene wirklich gebraucht wird. */
   async function enableEvents(on) {
@@ -281,7 +299,10 @@ async function main() {
     // von der Mitte zum vorigen bis zur Mitte zum nächsten Zeitschnitt. So
     // wechseln sie genau dann, wenn auch die Karte wechselt, und jedes
     // Ereignis ist bei genau einem Zeitschnitt zu sehen.
-    ereignisse.setFenster(zeitfenster(epochJahre, index));
+    const fenster = zeitfenster(epochJahre, index);
+    ereignisse.setFenster(fenster);
+    konflikte.setFenster(fenster);
+    if (!document.getElementById('battlesBox').hidden) renderRegister();
 
     renderLegend();
     reconcileSelection();
@@ -784,28 +805,171 @@ async function main() {
 
   $('btnLayers').addEventListener('click', () => togglePopover(layersMenu, $('btnLayers')));
   $('btnLegend').addEventListener('click', () => togglePopover(legendBox, $('btnLegend')));
-  /* ------------------------------------------------------- Schlachten */
+  /* ---------------------------------------------- Kriege & Schlachten
+
+     Ein Register statt zweier Listen: Kriege der eingestellten Zeit,
+     darunter ihre Schlachten, darunter die besetzten Gebiete. Alles drei
+     gehört zusammen – eine Besetzung ist das Ergebnis eines Krieges, eine
+     Schlacht seine Entscheidung. Auf der Karte stehen nur die Schlachten;
+     ein Krieg hat keinen Ort, eine Besetzung hat ihre Schraffur schon. */
 
   const battlesBox = $('battlesBox');
   const battles = new BattlePlayer(atlas, { onStation: renderBattleStation });
 
-  function renderBattleList() {
-    $('battlesTitle').textContent = 'Berühmte Schlachten';
-    $('battlesPlayer').hidden = true;
-    $('battlesList').hidden = false;
-    $('battlesList').innerHTML = BATTLES.map((b) => `
-      <li data-battle="${esc(b.id)}">
-        <b>${esc(b.name)}</b>
-        <span>${esc(b.datum)} · ${esc(b.ort)}</span>
-        <i>${esc(b.worum)}</i>
-      </li>`).join('');
+  /** Wieviele Zeilen offen stehen, bevor eingeklappt wird. */
+  const REGISTER_KURZ = 6;
+  let registerVoll = false;
+
+  function jahrKurz(j) { return j < 0 ? `${-j} v.` : String(j); }
+
+  /**
+   * Ein Krieg als Zeile.
+   *
+   * Der Balken ist der Punkt der ganzen Übung: Er zeigt die Dauer und wo das
+   * eingestellte Jahr darin liegt. Wer 1942 einstellt, sieht auf einen Blick,
+   * dass der Zweite Weltkrieg über die Hälfte ist und der Pazifikkrieg gerade
+   * erst begonnen hat.
+   */
+  function kriegZeile(k, jahr) {
+    const anteil = fortschritt(k, jahr);
+    const laeuft = jahr >= k.von && (k.bis == null || jahr <= k.bis);
+    const seiten = k.seiten.map((s, i) => `
+      <span class="kreg__seite"><i style="background:${esc(SEITENFARBEN[i % SEITENFARBEN.length])}"></i>${esc(s.name)}</span>`).join('');
+    return `
+      <li class="kreg__krieg${konflikte.gewaehlt === k.id ? ' is-on' : ''}" data-krieg="${esc(k.id)}">
+        <div class="kreg__kopf">
+          <b>${esc(k.name)}</b>
+          <span class="kreg__jahre">${esc(spanneText(k.von, k.bis))}</span>
+        </div>
+        <div class="kreg__balken${laeuft ? ' is-laufend' : ''}" aria-hidden="true">
+          <i${anteil == null ? '' : ` style="width:${(anteil * 100).toFixed(1)}%"`}></i>
+        </div>
+        <div class="kreg__seiten">${seiten}</div>
+      </li>`;
   }
 
-  function openBattles() {
+  /** Der Steckbrief eines ausgewählten Krieges samt seiner Schlachten. */
+  function kriegTafel(k) {
+    const eigene = konflikte.schlachtenZu(k.id);
+    const art = KONFLIKT_ARTEN[k.art] ?? KONFLIKT_ARTEN.krieg;
+    return `
+      <div class="kreg__tafel">
+        <p class="kreg__kicker">${esc(art.kurz)} · ${esc(spanneText(k.von, k.bis))}</p>
+        <p class="kreg__wo">${esc(k.wo)}</p>
+        <ul class="battles__sides">${k.seiten.map((s, i) => `
+          <li><span class="sw" style="background:${esc(SEITENFARBEN[i % SEITENFARBEN.length])}"></span>
+            <b>${esc(s.name)}</b></li>`).join('')}</ul>
+        <p class="kreg__text">${esc(k.text)}</p>
+        <p class="kreg__ausgang"><b>Ausgang:</b> ${esc(k.ausgang)}</p>
+        ${k.wiki ? `<a class="kreg__wiki" href="https://de.wikipedia.org/wiki/${encodeURIComponent(k.wiki)}"
+          target="_blank" rel="noopener noreferrer">Bei Wikipedia nachlesen</a>` : ''}
+        <h5 class="kreg__abschnitt">${eigene.length} Schlacht${eigene.length === 1 ? '' : 'en'} auf der Karte</h5>
+        <ol class="kreg__schlachten">${eigene.map((s) => `
+          <li data-schlacht="${esc(s.id)}">
+            <b>${esc(s.name)}</b>
+            <span>${esc(s.datum ?? jahrKurz(s.jahr))}${s.sieger ? ` · Sieg: ${esc(s.sieger)}` : ''}</span>
+            ${s.verlauf ? '<em class="kreg__verlauf" data-verlauf="' + esc(s.verlauf) + '">Verlauf abspielen</em>' : ''}
+          </li>`).join('')}</ol>
+      </div>`;
+  }
+
+  /** Besetzte Gebiete des laufenden Zeitschnitts, nach Besatzungsmacht gebündelt. */
+  function besatzungsListe() {
+    const nach = new Map();
+    for (const p of state.epoch?.polities ?? []) {
+      for (const b of p.occupiers ?? []) {
+        if (!nach.has(b.name)) nach.set(b.name, []);
+        nach.get(b.name).push(p.name);
+      }
+    }
+    return [...nach.entries()].sort((a, b) => b[1].length - a[1].length);
+  }
+
+  function renderRegister() {
+    $('battlesTitle').textContent = 'Kriege & Schlachten';
+    $('battlesBack').hidden = true;
+    $('battlesPlayer').hidden = true;
+    const box = $('battlesList');
+    box.hidden = false;
+
+    if (!konflikte.hatDaten) {
+      box.innerHTML = '<p class="kreg__leer">Register wird geladen …</p>';
+      return;
+    }
+
+    const jahr = state.year;
+    if (konflikte.gewaehlt) {
+      const k = konflikte.krieg(konflikte.gewaehlt);
+      $('battlesTitle').textContent = k.name;
+      $('battlesBack').hidden = false;
+      box.innerHTML = kriegTafel(k);
+      return;
+    }
+
+    const kriege = konflikte.aktuelleKriege
+      .slice()
+      .sort((a, b) => (a.rang ?? 2) - (b.rang ?? 2) || a.von - b.von);
+    const gezeigt = registerVoll ? kriege : kriege.slice(0, REGISTER_KURZ);
+    const schlachten = konflikte.imFenster;
+    const besetzt = besatzungsListe();
+
+    const abschnitte = [];
+    abschnitte.push(`
+      <h4 class="kreg__abschnitt">${kriege.length
+        ? `${kriege.length} Krieg${kriege.length === 1 ? '' : 'e'} um ${jahrKurz(jahr)}`
+        : 'Kein Krieg verzeichnet'}</h4>
+      <ul class="kreg__liste">${gezeigt.map((k) => kriegZeile(k, jahr)).join('')}</ul>
+      ${kriege.length > REGISTER_KURZ
+        ? `<button type="button" class="kreg__mehr" data-act="mehr">${registerVoll
+          ? 'Weniger zeigen' : `Alle ${kriege.length} zeigen`}</button>`
+        : ''}`);
+
+    if (schlachten.length) {
+      abschnitte.push(`
+        <h4 class="kreg__abschnitt">${schlachten.length} Schlacht${schlachten.length === 1 ? '' : 'en'} in dieser Zeit</h4>
+        <ul class="kreg__liste kreg__liste--schlacht">${schlachten.map((s) => `
+          <li data-schlacht="${esc(s.id)}">
+            <b>${esc(s.name)}</b>
+            <span>${esc(s.datum ?? jahrKurz(s.jahr))}${s.wo ? ` · ${esc(s.wo)}` : ''}</span>
+          </li>`).join('')}</ul>`);
+    }
+
+    if (besetzt.length) {
+      abschnitte.push(`
+        <h4 class="kreg__abschnitt">Besetzte Gebiete</h4>
+        <ul class="kreg__liste kreg__liste--besatzung">${besetzt.map(([macht, gebiete]) => `
+          <li>
+            <b>${esc(atlasData.germanName(macht))}</b>
+            <span>hält ${gebiete.length} Gebiet${gebiete.length === 1 ? '' : 'e'}: ${
+  esc(gebiete.slice(0, 6).map((g) => atlasData.germanName(g)).join(', '))}${gebiete.length > 6 ? ' u. a.' : ''}</span>
+          </li>`).join('')}</ul>
+        <p class="kreg__fuss">Auf der Karte schraffiert, in der Farbe der Besatzungsmacht.</p>`);
+    }
+
+    abschnitte.push(`
+      <h4 class="kreg__abschnitt">Verlauf abspielbar</h4>
+      <ul class="kreg__liste kreg__liste--verlauf">${BATTLES.map((b) => `
+        <li data-verlauf="${esc(b.id)}">
+          <b>${esc(b.name)}</b>
+          <span>${esc(b.datum)} · ${esc(b.ort)}</span>
+        </li>`).join('')}</ul>`);
+
+    box.innerHTML = abschnitte.join('');
+  }
+
+  async function openBattles() {
     legendBox.hidden = true;
     layersMenu.hidden = true;
     battlesBox.hidden = false;
-    renderBattleList();
+    renderRegister();
+    if (!konflikte.hatDaten) {
+      konflikte.setDaten(await atlasData.loadKonflikte());
+      konflikte.setFenster(zeitfenster(epochJahre, state.index));
+      konflikte.setSichtbar(true);
+      renderRegister();
+    } else {
+      konflikte.setSichtbar(true);
+    }
   }
 
   function closeBattles() {
@@ -813,6 +977,8 @@ async function main() {
     battlesBox.hidden = true;
     $('app').classList.remove('is-battle');
     atlas.setShowLabels(prefs.labels);
+    konflikte.loese();
+    konflikte.setSichtbar(false);
     // Der Zeitschnitt bleibt, wo die Schlacht ihn hingestellt hat – wer den
     // Verlauf gesehen hat, will meist die Lage danach weiter betrachten.
   }
@@ -877,21 +1043,36 @@ async function main() {
   }
 
   battlesBox.addEventListener('click', (event) => {
-    const li = event.target.closest('li[data-battle]');
-    if (li) { startBattle(li.dataset.battle); return; }
+    // Der Verlauf hat Vorrang vor der Schlachtzeile, in der er steht.
+    const verlauf = event.target.closest('[data-verlauf]');
+    if (verlauf) { startBattle(verlauf.dataset.verlauf); return; }
+    const krieg = event.target.closest('[data-krieg]');
+    if (krieg) { waehleKrieg(krieg.dataset.krieg); return; }
+    const schlacht = event.target.closest('[data-schlacht]');
+    if (schlacht) { konflikte.zeige(schlacht.dataset.schlacht); return; }
     const step = event.target.closest('[data-step]');
     if (step) { battles.stop(); battles.goTo(Number(step.dataset.step)); return; }
     const act = event.target.closest('[data-act]')?.dataset.act;
-    if (act === 'prev') { battles.stop(); battles.step(-1); }
+    if (act === 'mehr') { registerVoll = !registerVoll; renderRegister(); }
+    else if (act === 'prev') { battles.stop(); battles.step(-1); }
     else if (act === 'next') { battles.stop(); battles.step(1); }
     else if (act === 'play') battles.toggle();
     else if (act === 'back') {
       battles.close();
       $('app').classList.remove('is-battle');
       atlas.setShowLabels(prefs.labels);
-      renderBattleList();
+      renderRegister();
     }
   });
+
+  /** Einen Krieg auswählen – oder die Auswahl aufheben, wenn er schon steht. */
+  function waehleKrieg(id) {
+    if (konflikte.gewaehlt === id) konflikte.loese();
+    else konflikte.waehle(id);
+    renderRegister();
+  }
+
+  $('battlesBack').addEventListener('click', () => { konflikte.loese(); renderRegister(); });
   $('battlesClose').addEventListener('click', closeBattles);
   $('btnBattles').addEventListener('click', toggleBattles);
 
@@ -943,6 +1124,51 @@ async function main() {
     window.setTimeout(() => atlas.map.invalidateSize(), 320);
   }
   $('btnFocus').addEventListener('click', () => setFocusMode(!$('app').classList.contains('is-focus')));
+
+  /**
+   * Vollbild – das echte, nicht nur das Wegblenden der Bedienelemente.
+   *
+   * Beides ist gemeint, wenn jemand „Vollbild“ sagt, und beides ist einzeln
+   * sinnvoll: F räumt die Bedienelemente weg und lässt das Fenster, wie es
+   * ist; V nimmt den ganzen Bildschirm und lässt die Bedienelemente stehen.
+   * Wer beides will, drückt beides.
+   *
+   * Die Anfrage kann abgelehnt werden – in einem eingebetteten Rahmen ohne
+   * Erlaubnis, oder wenn sie nicht aus einer Benutzereingabe kommt. Dann
+   * bleibt es bei der Karte im Fenster; eine Fehlermeldung wäre hier nur
+   * Lärm.
+   */
+  function istVollbild() {
+    return Boolean(document.fullscreenElement ?? document.webkitFullscreenElement);
+  }
+
+  async function setVollbild(on) {
+    const el = document.documentElement;
+    try {
+      if (on) await (el.requestFullscreen?.({ navigationUI: 'hide' }) ?? el.webkitRequestFullscreen?.());
+      else await (document.exitFullscreen?.() ?? document.webkitExitFullscreen?.());
+    } catch { /* abgelehnt – die Karte bleibt im Fenster */ }
+    zeigeVollbild();
+  }
+
+  function zeigeVollbild() {
+    const on = istVollbild();
+    const btn = $('btnFull');
+    btn.setAttribute('aria-pressed', String(on));
+    btn.dataset.label = on ? 'Vollbild verlassen (V)' : 'Vollbild (V)';
+    $('app').classList.toggle('is-vollbild', on);
+    // Die Fensterhöhe ändert sich beim Wechsel; Leaflet muss davon erfahren.
+    window.setTimeout(() => atlas.map.invalidateSize(), 120);
+  }
+
+  $('btnFull').addEventListener('click', () => setVollbild(!istVollbild()));
+  document.addEventListener('fullscreenchange', zeigeVollbild);
+  document.addEventListener('webkitfullscreenchange', zeigeVollbild);
+  // Ohne Unterstützung – ältere Browser, eingebettete Rahmen – hat der Knopf
+  // nichts zu tun und steht nicht im Weg.
+  if (!document.documentElement.requestFullscreen && !document.documentElement.webkitRequestFullscreen) {
+    $('btnFull').hidden = true;
+  }
 
   // Zeitleiste einklappen: Jahr und Regler bleiben, der Rest weicht.
   function setTimelineCompact(on) {
@@ -1095,6 +1321,8 @@ async function main() {
         break;
       case 's': toggleBattles(); event.preventDefault(); break;
       case 'f': setFocusMode(!document.getElementById('app').classList.contains('is-focus')); break;
+      case 'v': setVollbild(!istVollbild()); break;
+      case 'k': toggleBattles(); break;
       case ' ':
         timeline.toggle();
         event.preventDefault();
@@ -1257,12 +1485,14 @@ function shortcutsHtml() {
     ['Bild ↑ ↓', 'zehn Jahre'],
     ['Leertaste', 'Zeitreise starten und anhalten'],
     ['/', 'Suche öffnen'],
-    ['S', 'Berühmte Schlachten'],
+    ['S', 'Kriege &amp; Schlachten'],
     ['F', 'Nur die Karte – alles andere ausblenden'],
     ['T', 'Nachtatlas ⇄ Pergament'],
     ['E', 'Ebenen und Einfärbung'],
     ['L', 'Legende'],
     ['0', 'Ansicht zurücksetzen'],
+    ['V', 'Vollbild ein und aus'],
+    ['K', 'Kriege &amp; Schlachten'],
     ['Esc', 'Tafel, Fenster oder Vollbild schließen'],
     ['?', 'diese Übersicht'],
   ];

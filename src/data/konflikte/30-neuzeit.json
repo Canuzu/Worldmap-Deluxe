@@ -1,0 +1,384 @@
+{
+  "_hinweis": [
+    "Kriege und Schlachten zwischen 1500 und 1800.",
+    "Aufbau siehe 10-antike.json."
+  ],
+
+  "kriege": [
+    {
+      "id": "sengoku", "name": "Die Zeit der streitenden Reiche in Japan", "von": 1467, "bis": 1615, "art": "buergerkrieg", "rang": 2,
+      "ort": [136, 35.2], "wo": "Japan",
+      "seiten": [
+        { "name": "Oda, Toyotomi und Tokugawa", "staaten": ["Japan"] },
+        { "name": "Die übrigen Landesfürsten", "staaten": [] }
+      ],
+      "text": "Anderthalb Jahrhunderte, in denen der Kaiser ohne Macht und der Shogun ohne Land ist. Drei Männer einigen das Land nacheinander: Einer bricht den Widerstand, einer ordnet die Verwaltung, einer erbt beides – und schließt danach das Land für zweihundertfünfzig Jahre.",
+      "ausgang": "Die Tokugawa herrschen bis 1868; Japan schottet sich ab.",
+      "wiki": "Sengoku-Zeit"
+    },
+    {
+      "id": "italienkriege", "name": "Die Italienischen Kriege", "von": 1494, "bis": 1559, "art": "krieg", "rang": 2,
+      "ort": [10.5, 44.5], "wo": "Norditalien",
+      "seiten": [
+        { "name": "Frankreich", "staaten": ["France"] },
+        { "name": "Habsburg und Spanien", "staaten": ["Holy Roman Empire", "Spain", "Habsburg Monarchy"] }
+      ],
+      "text": "Fünfundsechzig Jahre Krieg um ein Land, das keiner der Beteiligten regieren kann. Militärisch ist es die Geburtsstunde der Neuzeit: Pike und Muskete verdrängen den Ritter, Söldnerheere ersetzen Lehnsaufgebote, und Festungen bekommen schräge Wälle gegen Kanonen.",
+      "ausgang": "Spanien beherrscht Italien für anderthalb Jahrhunderte.",
+      "wiki": "Italienische Kriege"
+    },
+    {
+      "id": "safawidenosman", "name": "Osmanisch-Safawidische Kriege", "von": 1514, "bis": 1639, "art": "krieg", "rang": 3,
+      "ort": [45, 37], "wo": "Ostanatolien, Mesopotamien, Kaukasus",
+      "seiten": [
+        { "name": "Osmanisches Reich", "staaten": ["Ottoman Empire"] },
+        { "name": "Safawidenreich", "staaten": ["Safavid Empire", "Persia"] }
+      ],
+      "text": "Hundertfünfundzwanzig Jahre Krieg zwischen zwei muslimischen Großmächten, sunnitisch gegen schiitisch. Die Grenze, die 1639 gezogen wird, verläuft ungefähr dort, wo heute die iranisch-türkische und die iranisch-irakische liegt.",
+      "ausgang": "Der Friede von Zuhab legt eine Grenze fest, die bis heute weitgehend gilt.",
+      "wiki": "Osmanisch-Safawidischer Krieg"
+    },
+    {
+      "id": "conquista", "name": "Die Conquista", "von": 1519, "bis": 1572, "art": "eroberung", "rang": 1,
+      "ort": [-85, 5], "wo": "Mexiko, Zentralamerika, Andenraum",
+      "seiten": [
+        { "name": "Spanien", "staaten": ["Spain"] },
+        { "name": "Azteken, Inka und ihre Nachbarn", "staaten": ["Aztec Empire", "Inca Empire"] }
+      ],
+      "text": "Wenige hundert Männer stürzen zwei Reiche mit Millionen Untertanen. Entscheidend sind nicht Pferde und Musketen, sondern zwei andere Dinge: einheimische Verbündete, die ihre eigenen Herren loswerden wollen – und Pocken, die vor den Heeren herlaufen und binnen einer Generation den größten Teil der Bevölkerung töten.",
+      "ausgang": "Ein spanisches Kolonialreich von Kalifornien bis Chile.",
+      "wiki": "Spanische Eroberung Amerikas"
+    },
+    {
+      "id": "mogulaufstieg", "name": "Die Kriege des Mogulreichs", "von": 1526, "bis": 1707, "art": "eroberung", "rang": 2,
+      "ort": [78, 24], "wo": "Nord- und Zentralindien",
+      "seiten": [
+        { "name": "Mogulreich", "staaten": ["Mughal Empire"] },
+        { "name": "Delhi-Sultanat, Rajputen und Marathen", "staaten": ["Sultanate of Delhi", "Rajputana", "Maratha Confederacy"] }
+      ],
+      "text": "Babur gewinnt Indien mit zwölftausend Mann und Feldartillerie. Seine Nachfolger bauen daraus einen Staat, der den größten Teil des Subkontinents umfasst und ein Viertel der Weltwirtschaftsleistung erwirtschaftet – bis Aurangzeb sich im Dekkan festkämpft und das Reich daran zerbricht.",
+      "ausgang": "Nach 1707 zerfällt das Reich; die Ostindienkompanie füllt die Lücke.",
+      "wiki": "Mogulreich"
+    },
+    {
+      "id": "schmalkaldisch", "name": "Der Schmalkaldische Krieg", "von": 1546, "bis": 1547, "art": "buergerkrieg", "rang": 3,
+      "ort": [12, 51], "wo": "Süd- und Mitteldeutschland",
+      "seiten": [
+        { "name": "Kaiser und Katholiken", "staaten": ["Holy Roman Empire", "Habsburg Monarchy"] },
+        { "name": "Protestantische Fürsten", "staaten": ["Saxony", "Electoral Hesse"] }
+      ],
+      "text": "Karl V. gewinnt militärisch und verliert politisch: Er kann die Reformation nicht rückgängig machen. Acht Jahre später legt der Augsburger Religionsfriede fest, dass der Landesherr das Bekenntnis bestimmt – ein Notbehelf, der Europa hundert Jahre Frieden erkauft und dann zerbricht.",
+      "ausgang": "Kaiserlicher Sieg ohne Ergebnis; 1555 folgt der Religionsfriede.",
+      "wiki": "Schmalkaldischer Krieg"
+    },
+    {
+      "id": "hugenotten", "name": "Die Hugenottenkriege", "von": 1562, "bis": 1598, "art": "buergerkrieg", "rang": 2,
+      "ort": [2.3, 47], "wo": "Frankreich",
+      "seiten": [
+        { "name": "Katholische Liga", "staaten": ["France"] },
+        { "name": "Hugenotten", "staaten": ["Navarre"] }
+      ],
+      "text": "Acht Kriege in sechsunddreißig Jahren, drei ermordete Könige und eine Bluthochzeit. Am Ende wechselt ein protestantischer Thronfolger die Konfession, weil Paris ihm eine Messe wert ist – und erlässt das Edikt von Nantes, das Andersgläubigen erstmals in Europa dauerhaft Rechte zusichert.",
+      "ausgang": "Heinrich IV. wird König; das Edikt von Nantes gibt den Hugenotten Bürgerrechte.",
+      "wiki": "Hugenottenkriege"
+    },
+    {
+      "id": "niederlaendisch", "name": "Der Achtzigjährige Krieg", "von": 1568, "bis": 1648, "art": "aufstand", "rang": 2,
+      "ort": [4.9, 52], "wo": "Die Niederlande",
+      "seiten": [
+        { "name": "Vereinigte Provinzen", "staaten": ["Dutch Republic", "Netherlands"] },
+        { "name": "Spanien", "staaten": ["Spain"] }
+      ],
+      "text": "Ein Steueraufstand wird zum Unabhängigkeitskrieg und die Aufständischen zur reichsten Nation Europas. Während der Kampf noch läuft, gründen sie eine Aktiengesellschaft, die Ostindienkompanie, und finanzieren ihren Krieg mit dem Gewürzhandel.",
+      "ausgang": "Der Westfälische Friede erkennt die Niederlande als souverän an.",
+      "wiki": "Achtzigjähriger Krieg"
+    },
+    {
+      "id": "armada", "name": "Der Englisch-Spanische Krieg", "von": 1585, "bis": 1604, "art": "krieg", "rang": 2,
+      "ort": [-2, 50], "wo": "Ärmelkanal, Atlantik, Karibik",
+      "seiten": [
+        { "name": "England", "staaten": ["England"] },
+        { "name": "Spanien", "staaten": ["Spain"] }
+      ],
+      "text": "Die größte Invasionsflotte des Jahrhunderts scheitert an Wetter, Brandern und der falschen Annahme, man könne unterwegs ein Landheer aufnehmen. England zieht daraus den Schluss, dass seine Sicherheit auf dem Wasser liegt – und baut daraufhin eine Marine statt einer Armee.",
+      "ausgang": "Spanien bleibt Großmacht, England wird Seemacht.",
+      "wiki": "Englisch-Spanischer Krieg (1585–1604)"
+    },
+    {
+      "id": "dreissig", "name": "Der Dreißigjährige Krieg", "von": 1618, "bis": 1648, "art": "krieg", "rang": 1,
+      "ort": [11, 50], "wo": "Mitteleuropa, vor allem das Reich",
+      "seiten": [
+        { "name": "Kaiser, Spanien und die Liga", "staaten": ["Holy Roman Empire", "Habsburg Monarchy", "Spain"] },
+        { "name": "Protestantische Union, Schweden und Frankreich", "staaten": ["Sweden", "France", "Saxony", "Brandenburg"] }
+      ],
+      "text": "Beginnt als böhmischer Ständestreit und endet als europäischer Machtkampf, in dem das katholische Frankreich die protestantischen Schweden bezahlt. In Teilen des Reiches stirbt jeder Dritte – nicht an Kampfhandlungen, sondern an Hunger und Seuchen, die die durchziehenden Heere mitbringen.",
+      "ausgang": "Der Westfälische Friede ordnet Europa neu und begründet das System souveräner Staaten.",
+      "wiki": "Dreißigjähriger Krieg"
+    },
+    {
+      "id": "mingqing", "name": "Der Untergang der Ming", "von": 1618, "bis": 1683, "art": "eroberung", "rang": 2,
+      "ort": [117, 40], "wo": "Nordchina, Peking, Yangtse",
+      "seiten": [
+        { "name": "Qing-Dynastie", "staaten": ["Qing Empire", "Manchu Empire"] },
+        { "name": "Ming-Dynastie", "staaten": ["Ming Empire"] }
+      ],
+      "text": "Eine Hungersnot, ein Bauernaufstand und ein General, der lieber die Mandschu ins Land lässt als die Aufständischen. Der letzte Ming-Kaiser erhängt sich im Palastgarten; die neue Dynastie zwingt allen Männern den Zopf auf – wer ihn nicht trägt, verliert den Kopf.",
+      "ausgang": "Die Qing herrschen bis 1912 über China.",
+      "wiki": "Übergang von Ming zu Qing"
+    },
+    {
+      "id": "englbuerger", "name": "Der Englische Bürgerkrieg", "von": 1642, "bis": 1651, "art": "buergerkrieg", "rang": 2,
+      "ort": [-1.5, 52.3], "wo": "England, Schottland, Irland",
+      "seiten": [
+        { "name": "Parlament", "staaten": ["England"] },
+        { "name": "König und Royalisten", "staaten": [] }
+      ],
+      "text": "Ein Streit über Steuerbewilligung endet damit, dass ein König wegen Hochverrats an seinem eigenen Volk hingerichtet wird. Der Gedanke, dass ein Herrscher dem Recht unterworfen ist und nicht umgekehrt, hat hier seinen praktischen Ursprung.",
+      "ausgang": "Karl I. wird 1649 hingerichtet; England ist elf Jahre Republik.",
+      "wiki": "Englischer Bürgerkrieg"
+    },
+    {
+      "id": "grossertuerken", "name": "Der Große Türkenkrieg", "von": 1683, "bis": 1699, "art": "krieg", "rang": 2,
+      "ort": [19, 46.5], "wo": "Ungarn und der Balkan",
+      "seiten": [
+        { "name": "Heilige Liga", "staaten": ["Holy Roman Empire", "Habsburg Monarchy", "Poland", "Venice", "Russia"] },
+        { "name": "Osmanisches Reich", "staaten": ["Ottoman Empire"] }
+      ],
+      "text": "Die zweite Belagerung Wiens scheitert, und danach dreht sich die Richtung: Zum ersten Mal seit dreihundert Jahren verlieren die Osmanen dauerhaft Land in Europa. Ungarn wird habsburgisch, und aus einem Verteidigungsbündnis wird eine Großmacht an der Donau.",
+      "ausgang": "Der Friede von Karlowitz gibt Ungarn und Siebenbürgen an die Habsburger.",
+      "wiki": "Großer Türkenkrieg"
+    },
+    {
+      "id": "nordischerkrieg", "name": "Der Große Nordische Krieg", "von": 1700, "bis": 1721, "art": "krieg", "rang": 2,
+      "ort": [28, 58], "wo": "Ostsee, Polen, Ukraine",
+      "seiten": [
+        { "name": "Russland und Verbündete", "staaten": ["Russia", "Russian Empire", "Denmark", "Poland", "Saxony"] },
+        { "name": "Schweden", "staaten": ["Sweden"] }
+      ],
+      "text": "Ein Achtzehnjähriger auf dem schwedischen Thron schlägt in acht Jahren alle Nachbarn und verliert dann alles in einer einzigen Schlacht in der Ukraine. Schweden hört auf, Großmacht zu sein; Russland fängt damit an – und baut an der eroberten Küste eine neue Hauptstadt.",
+      "ausgang": "Schweden verliert die Ostseeprovinzen, Russland wird europäische Großmacht.",
+      "wiki": "Großer Nordischer Krieg"
+    },
+    {
+      "id": "spanerbfolge", "name": "Der Spanische Erbfolgekrieg", "von": 1701, "bis": 1714, "art": "krieg", "rang": 2,
+      "ort": [4, 48], "wo": "Europa, Mittelmeer, Amerika",
+      "seiten": [
+        { "name": "Große Allianz", "staaten": ["England", "United Kingdom of Great Britain and Ireland", "Dutch Republic", "Holy Roman Empire", "Habsburg Monarchy"] },
+        { "name": "Frankreich und Spanien", "staaten": ["France", "Spain"] }
+      ],
+      "text": "Der letzte spanische Habsburger stirbt kinderlos, und ganz Europa kämpft dreizehn Jahre um sein Erbe. Der Ausgang begründet ein Prinzip, das die Diplomatie zwei Jahrhunderte lang leitet: Keine Macht darf so groß werden, dass die anderen sie nicht mehr aufhalten können.",
+      "ausgang": "Ein Bourbone bleibt in Madrid, aber Frankreich und Spanien dürfen nie vereinigt werden; Britannien bekommt Gibraltar.",
+      "wiki": "Spanischer Erbfolgekrieg"
+    },
+    {
+      "id": "oestererbfolge", "name": "Der Österreichische Erbfolgekrieg", "von": 1740, "bis": 1748, "art": "krieg", "rang": 3,
+      "ort": [16.5, 50.5], "wo": "Schlesien, Böhmen, Niederlande, Indien",
+      "seiten": [
+        { "name": "Preußen, Frankreich und Bayern", "staaten": ["Prussia", "France", "Bavaria"] },
+        { "name": "Österreich und Britannien", "staaten": ["Habsburg Monarchy", "Austria", "United Kingdom of Great Britain and Ireland"] }
+      ],
+      "text": "Friedrich II. marschiert wenige Wochen nach seinem Regierungsantritt in Schlesien ein, ohne Kriegserklärung und ohne Rechtsgrund. Die reichste Provinz Österreichs wechselt den Besitzer – und Preußen wird eine Macht, mit der man rechnen muss.",
+      "ausgang": "Preußen behält Schlesien; Maria Theresia behält alles andere.",
+      "wiki": "Österreichischer Erbfolgekrieg"
+    },
+    {
+      "id": "siebenjaehrig", "name": "Der Siebenjährige Krieg", "von": 1756, "bis": 1763, "art": "krieg", "rang": 1,
+      "ort": [14, 51.5], "wo": "Europa, Nordamerika, Indien, Westafrika, Philippinen",
+      "seiten": [
+        { "name": "Preußen und Britannien", "staaten": ["Prussia", "United Kingdom of Great Britain and Ireland"] },
+        { "name": "Österreich, Frankreich und Russland", "staaten": ["Habsburg Monarchy", "Austria", "France", "Russia", "Russian Empire"] }
+      ],
+      "text": "Der erste Krieg, der auf fünf Kontinenten zugleich geführt wird – Churchill nannte ihn den ersten Weltkrieg. In Europa hält Preußen gegen drei Großmächte durch; außerhalb Europas verliert Frankreich Kanada und Indien an Britannien und bezahlt damit die Weltordnung des 19. Jahrhunderts.",
+      "ausgang": "Preußen behält Schlesien, Britannien wird Weltmacht, Frankreich verliert sein Kolonialreich.",
+      "wiki": "Siebenjähriger Krieg"
+    },
+    {
+      "id": "amrevolution", "name": "Der Amerikanische Unabhängigkeitskrieg", "von": 1775, "bis": 1783, "art": "revolution", "rang": 1,
+      "ort": [-76, 39.5], "wo": "Die dreizehn Kolonien",
+      "seiten": [
+        { "name": "Die Vereinigten Staaten und Frankreich", "staaten": ["United States", "France"] },
+        { "name": "Großbritannien", "staaten": ["United Kingdom of Great Britain and Ireland", "United Kingdom"] }
+      ],
+      "text": "Kolonien erklären ihre Unabhängigkeit mit dem Argument, Steuern ohne Vertretung seien Unrecht – und gewinnen, weil Frankreich aus Rache für 1763 eine Flotte schickt. Frankreich ruiniert sich dabei so gründlich, dass sechs Jahre später seine eigene Revolution beginnt.",
+      "ausgang": "Großbritannien erkennt die Vereinigten Staaten an.",
+      "wiki": "Amerikanischer Unabhängigkeitskrieg"
+    }
+  ],
+
+  "schlachten": [
+    { "id": "tschaldiran", "krieg": "safawidenosman", "jahr": 1514, "datum": "23. August 1514", "name": "Tschaldiran",
+      "ort": [44.38, 39], "wo": "Ostanatolien", "rang": 3, "sieger": "Osmanisches Reich",
+      "text": "Safawidische Reiterei gegen osmanische Feldartillerie und Janitscharen mit Handfeuerwaffen. Der Schah wird verwundet und zieht sich nie wieder persönlich in eine Schlacht – Persien setzt fortan auf Tiefe statt Gegenstoß.",
+      "wiki": "Schlacht bei Tschaldiran" },
+
+    { "id": "tenochtitlan", "krieg": "conquista", "jahr": 1521, "datum": "13. August 1521", "name": "Die Belagerung von Tenochtitlan",
+      "ort": [-99.13, 19.43], "wo": "Hochtal von Mexiko", "rang": 1, "sieger": "Spanien",
+      "text": "Dreiundneunzig Tage Belagerung einer Stadt auf einer Insel im See, mit eigens gebauten Brigantinen und zehntausenden tlaxcaltekischen Verbündeten. In der Stadt wütet zugleich die Pockenepidemie. Am Ende ist eine der größten Städte der Welt eine Ruine.",
+      "wiki": "Belagerung von Tenochtitlan" },
+
+    { "id": "pavia", "krieg": "italienkriege", "jahr": 1525, "datum": "24. Februar 1525", "name": "Pavia",
+      "ort": [9.16, 45.19], "wo": "Lombardei", "rang": 2, "sieger": "Habsburg und Spanien",
+      "text": "Spanische Arkebusiere schießen aus dem Unterholz die französische Reiterei zusammen. Der König von Frankreich gerät in Gefangenschaft – und die Handfeuerwaffe hat die Panzerreiterei endgültig überholt.",
+      "wiki": "Schlacht bei Pavia (1525)" },
+
+    { "id": "panipat1526", "krieg": "mogulaufstieg", "jahr": 1526, "datum": "21. April 1526", "name": "Panipat",
+      "ort": [76.97, 29.39], "wo": "Nordindien", "rang": 2, "sieger": "Mogulreich",
+      "text": "Babur stellt siebenhundert Wagen mit Ketten verbunden auf und dahinter seine Feldgeschütze. Das Sultanatsheer mit seinen Elefanten läuft dagegen an. Nordindien wechselt an einem Vormittag den Besitzer.",
+      "wiki": "Erste Schlacht bei Panipat" },
+
+    { "id": "romsacco", "krieg": "italienkriege", "jahr": 1527, "datum": "6. Mai 1527", "name": "Der Sacco di Roma",
+      "ort": [12.48, 41.9], "wo": "Rom", "rang": 3, "sieger": "Habsburg und Spanien",
+      "text": "Unbezahlte kaiserliche Landsknechte plündern die Stadt des Papstes acht Tage lang. Für viele endet mit diesem Datum die Hochrenaissance – die Künstler verlassen Rom und verteilen sich über Europa.",
+      "wiki": "Sacco di Roma (1527)" },
+
+    { "id": "cajamarca", "krieg": "conquista", "jahr": 1532, "datum": "16. November 1532", "name": "Cajamarca",
+      "ort": [-78.51, -7.16], "wo": "Nordperu", "rang": 1, "sieger": "Spanien",
+      "text": "Hundertachtundsechzig Spanier nehmen auf einem Platz den Inka-Herrscher gefangen, der von achtzigtausend Mann begleitet wird. Das Lösegeld – ein Raum voll Gold – wird gezahlt, und Atahualpa wird trotzdem hingerichtet.",
+      "wiki": "Schlacht von Cajamarca" },
+
+    { "id": "muehlberg", "krieg": "schmalkaldisch", "jahr": 1547, "datum": "24. April 1547", "name": "Mühlberg",
+      "ort": [13.22, 51.44], "wo": "An der Elbe", "rang": 3, "sieger": "Kaiser und Katholiken",
+      "text": "Ein Bauer verrät die Furt, das kaiserliche Heer setzt im Morgennebel über. Tizians Reiterbildnis Karls V. nach dieser Schlacht wird zum Vorbild jedes Herrscherporträts zu Pferde bis Napoleon.",
+      "wiki": "Schlacht bei Mühlberg" },
+
+    { "id": "bartholomaeus", "krieg": "hugenotten", "jahr": 1572, "datum": "24. August 1572", "name": "Die Bartholomäusnacht",
+      "ort": [2.35, 48.86], "wo": "Paris und ganz Frankreich", "rang": 2, "sieger": "Katholische Liga",
+      "text": "Aus einem Anschlag auf einen Anführer wird binnen Stunden ein Massaker, das sich über Wochen aufs ganze Land ausbreitet. Zeitgenössische Schätzungen nennen fünf- bis dreißigtausend Tote. Der Krieg, den man beenden wollte, dauert danach noch sechsundzwanzig Jahre.",
+      "wiki": "Bartholomäusnacht" },
+
+    { "id": "leiden", "krieg": "niederlaendisch", "jahr": 1574, "datum": "3. Oktober 1574", "name": "Der Entsatz von Leiden",
+      "ort": [4.49, 52.16], "wo": "Holland", "rang": 3, "sieger": "Vereinigte Provinzen",
+      "text": "Die Aufständischen durchstechen die Deiche und lassen das Meer ins Land, um mit flachen Booten bis an die Stadt zu kommen. Zur Belohnung bekommt Leiden eine Universität statt Steuerfreiheit – und wird zum Zentrum europäischer Gelehrsamkeit.",
+      "wiki": "Belagerung von Leiden" },
+
+    { "id": "nagashino", "krieg": "sengoku", "jahr": 1575, "datum": "28. Juni 1575", "name": "Nagashino",
+      "ort": [137.56, 34.92], "wo": "Zentraljapan", "rang": 3, "sieger": "Oda, Toyotomi und Tokugawa",
+      "text": "Dreitausend Arkebusiere hinter Palisaden, in drei Reihen im Wechsel feuernd, gegen die berühmteste Reiterei Japans. Die Reiterei hört an diesem Tag auf, den Krieg zu entscheiden.",
+      "wiki": "Schlacht von Nagashino" },
+
+    { "id": "haldighati", "krieg": "mogulaufstieg", "jahr": 1576, "datum": "18. Juni 1576", "name": "Haldighati",
+      "ort": [73.68, 24.94], "wo": "Rajasthan", "rang": 3, "sieger": "Mogulreich",
+      "text": "Ein Rajputenfürst hält gegen die Übermacht ein Gebirgstal und entkommt verwundet. Er unterwirft sich nie – und wird deshalb bis heute in Rajasthan mehr gefeiert als mancher Sieger.",
+      "wiki": "Schlacht von Haldighati" },
+
+    { "id": "armada1588", "krieg": "armada", "jahr": 1588, "datum": "August 1588", "name": "Der Untergang der Armada",
+      "ort": [-1, 50.5], "wo": "Ärmelkanal und Nordsee", "rang": 1, "sieger": "England",
+      "text": "Hundertdreißig Schiffe segeln los, weniger als die Hälfte kommt zurück – die meisten Verluste durch Stürme auf dem Rückweg um Schottland und Irland. England prägt eine Medaille mit der Aufschrift: Gott blies, und sie wurden zerstreut.",
+      "wiki": "Spanische Armada" },
+
+    { "id": "ivry", "krieg": "hugenotten", "jahr": 1590, "datum": "14. März 1590", "name": "Ivry",
+      "ort": [1.44, 48.88], "wo": "Normandie", "rang": 3, "sieger": "Hugenotten",
+      "text": "Heinrich von Navarra soll seinen Leuten gesagt haben, wenn sie die Fahnen verlören, sollten sie seinem weißen Federbusch folgen. Er gewinnt und braucht dann noch drei Jahre und eine Konversion, um in Paris einzuziehen.",
+      "wiki": "Schlacht bei Ivry" },
+
+    { "id": "nieuwpoort", "krieg": "niederlaendisch", "jahr": 1600, "datum": "2. Juli 1600", "name": "Nieuwpoort",
+      "ort": [2.75, 51.13], "wo": "Flandern", "rang": 3, "sieger": "Vereinigte Provinzen",
+      "text": "Moritz von Oranien führt ein Heer, das gedrillt wird wie kein anderes in Europa – Salvenfeuer in Gliedern, geübt nach einem gedruckten Handbuch. Die Militärreform, die daraus entsteht, kopiert der ganze Kontinent.",
+      "wiki": "Schlacht bei Nieuwpoort" },
+
+    { "id": "sekigahara", "krieg": "sengoku", "jahr": 1600, "datum": "21. Oktober 1600", "name": "Sekigahara",
+      "ort": [136.46, 35.37], "wo": "Zentraljapan", "rang": 2, "sieger": "Oda, Toyotomi und Tokugawa",
+      "text": "Hundertsechzigtausend Mann in einem Talkessel im Nebel. Der Ausgang hängt an einem Verbündeten, der sich stundenlang nicht entscheidet und dann die Seite wechselt. Tokugawa Ieyasu wird Shogun; Japan hat 250 Jahre Frieden.",
+      "wiki": "Schlacht von Sekigahara" },
+
+    { "id": "weisserberg", "krieg": "dreissig", "jahr": 1620, "datum": "8. November 1620", "name": "Am Weißen Berg",
+      "ort": [14.32, 50.09], "wo": "Vor Prag", "rang": 2, "sieger": "Kaiser, Spanien und die Liga",
+      "text": "Eine Stunde Schlacht beendet den böhmischen Aufstand. Was folgt, ist eine Umwälzung: Der protestantische Adel wird enteignet, das Land rekatholisiert, und Böhmen bleibt für dreihundert Jahre habsburgisch.",
+      "wiki": "Schlacht am Weißen Berg" },
+
+    { "id": "breitenfeld", "krieg": "dreissig", "jahr": 1631, "datum": "17. September 1631", "name": "Breitenfeld",
+      "ort": [12.38, 51.4], "wo": "Bei Leipzig", "rang": 2, "sieger": "Protestantische Union, Schweden und Frankreich",
+      "text": "Gustav Adolf stellt seine Truppen flacher und beweglicher auf als die massigen Gevierthaufen der Gegenseite und zerlegt sie. Die schwedische Aufstellung wird zum Vorbild der europäischen Heere für ein Jahrhundert.",
+      "wiki": "Schlacht bei Breitenfeld (1631)" },
+
+    { "id": "magdeburg", "krieg": "dreissig", "jahr": 1631, "datum": "20. Mai 1631", "name": "Die Zerstörung Magdeburgs",
+      "ort": [11.63, 52.13], "wo": "An der Elbe", "rang": 2, "sieger": "Kaiser, Spanien und die Liga",
+      "text": "Von fünfundzwanzigtausend Einwohnern überleben etwa fünftausend. Das Wort „magdeburgisieren“ geht in mehrere Sprachen ein, und die Flugschriften darüber sind die erste europaweite Medienkampagne über eine Kriegsgräueltat.",
+      "wiki": "Magdeburger Hochzeit" },
+
+    { "id": "luetzen", "krieg": "dreissig", "jahr": 1632, "datum": "16. November 1632", "name": "Lützen",
+      "ort": [12.14, 51.25], "wo": "Bei Leipzig", "rang": 3, "sieger": "Protestantische Union, Schweden und Frankreich",
+      "text": "Schweden gewinnt das Feld und verliert seinen König, der im Nebel von seiner Reiterei abkommt. Ohne Gustav Adolf ist Schweden noch dreizehn Jahre im Krieg, aber nicht mehr sein Motor.",
+      "wiki": "Schlacht bei Lützen (1632)" },
+
+    { "id": "rocroi", "krieg": "dreissig", "jahr": 1643, "datum": "19. Mai 1643", "name": "Rocroi",
+      "ort": [4.52, 49.92], "wo": "Ardennen", "rang": 3, "sieger": "Protestantische Union, Schweden und Frankreich",
+      "text": "Die spanischen Tercios, hundertfünfzig Jahre lang unbesiegt, werden von französischer Artillerie zusammengeschossen. Spanien ist danach keine erste Macht mehr; Frankreich wird es.",
+      "wiki": "Schlacht bei Rocroi" },
+
+    { "id": "shanhaiguan", "krieg": "mingqing", "jahr": 1644, "datum": "27. Mai 1644", "name": "Shanhaiguan",
+      "ort": [119.75, 40.01], "wo": "Wo die Große Mauer ans Meer stößt", "rang": 2, "sieger": "Qing-Dynastie",
+      "text": "Der Grenzgeneral Wu Sangui öffnet den Mandschu das Tor, um sich an den Aufständischen zu rächen, die Peking eingenommen haben. Er bekommt seine Rache und liefert China aus.",
+      "wiki": "Schlacht am Shanhai-Pass" },
+
+    { "id": "naseby", "krieg": "englbuerger", "jahr": 1645, "datum": "14. Juni 1645", "name": "Naseby",
+      "ort": [-0.98, 52.4], "wo": "Northamptonshire", "rang": 3, "sieger": "Parlament",
+      "text": "Cromwells New Model Army – bezahlt, gedrillt, nach Können statt Herkunft befördert – zerschlägt das königliche Hauptheer. Im Gepäck des Königs findet man seine Korrespondenz über irische Hilfstruppen; sie wird gedruckt und ruiniert ihn politisch.",
+      "wiki": "Schlacht von Naseby" },
+
+    { "id": "wien1683", "krieg": "grossertuerken", "jahr": 1683, "datum": "12. September 1683", "name": "Der Entsatz von Wien",
+      "ort": [16.37, 48.21], "wo": "Wienerwald", "rang": 1, "sieger": "Heilige Liga",
+      "text": "Zwei Monate Belagerung, dann kommt vom Kahlenberg der größte Kavallerieangriff der Geschichte – über zwanzigtausend Reiter unter dem polnischen König den Hang hinunter. Danach dreht sich die Richtung der Kriege an der Donau.",
+      "wiki": "Schlacht am Kahlenberg" },
+
+    { "id": "zenta", "krieg": "grossertuerken", "jahr": 1697, "datum": "11. September 1697", "name": "Zenta",
+      "ort": [20.09, 45.93], "wo": "An der Theiß", "rang": 3, "sieger": "Heilige Liga",
+      "text": "Prinz Eugen greift das osmanische Heer beim Flussübergang an – halb drüben, halb noch diesseits. In zwei Stunden ist der Krieg entschieden, und Ungarn ist habsburgisch.",
+      "wiki": "Schlacht bei Zenta" },
+
+    { "id": "narva", "krieg": "nordischerkrieg", "jahr": 1700, "datum": "30. November 1700", "name": "Narva",
+      "ort": [28.19, 59.38], "wo": "Estland", "rang": 3, "sieger": "Schweden",
+      "text": "Achttausend Schweden schlagen im Schneesturm ein viermal so großes russisches Heer. Karl XII. hält Russland danach für erledigt – der teuerste Irrtum seiner Laufbahn.",
+      "wiki": "Schlacht bei Narva (1700)" },
+
+    { "id": "blenheim", "krieg": "spanerbfolge", "jahr": 1704, "datum": "13. August 1704", "name": "Höchstädt",
+      "ort": [10.57, 48.63], "wo": "An der Donau", "rang": 2, "sieger": "Große Allianz",
+      "text": "Marlborough marschiert vierhundert Kilometer quer durch Deutschland, ohne dass der Gegner merkt wohin, und schlägt zusammen mit Prinz Eugen das französische Heer. Frankreich verliert zum ersten Mal seit vierzig Jahren eine große Feldschlacht.",
+      "wiki": "Schlacht bei Höchstädt (1704)" },
+
+    { "id": "malplaquet", "krieg": "spanerbfolge", "jahr": 1709, "datum": "11. September 1709", "name": "Malplaquet",
+      "ort": [3.85, 50.29], "wo": "Nordfrankreich", "rang": 3, "sieger": "Große Allianz",
+      "text": "Die verlustreichste Schlacht des Jahrhunderts: über dreißigtausend Tote und Verwundete an einem Tag. Der Sieger hat mehr Verluste als der Verlierer, und in London beginnt man, den Krieg satt zu haben.",
+      "wiki": "Schlacht bei Malplaquet" },
+
+    { "id": "poltawa", "krieg": "nordischerkrieg", "jahr": 1709, "datum": "8. Juli 1709", "name": "Poltawa",
+      "ort": [34.55, 49.59], "wo": "Ukraine", "rang": 1, "sieger": "Russland und Verbündete",
+      "text": "Nach einem Winter im offenen Land, ohne Nachschub und mit verwundetem König, läuft das schwedische Heer gegen russische Feldschanzen an. In wenigen Stunden endet Schwedens Großmachtzeit und beginnt Russlands.",
+      "wiki": "Schlacht bei Poltawa" },
+
+    { "id": "mollwitz", "krieg": "oestererbfolge", "jahr": 1741, "datum": "10. April 1741", "name": "Mollwitz",
+      "ort": [17.35, 50.86], "wo": "Schlesien", "rang": 3, "sieger": "Preußen, Frankreich und Bayern",
+      "text": "Friedrich II. verlässt das Feld, weil er es für verloren hält – und erfährt unterwegs, dass seine Infanterie es doch gewonnen hat. Er hat daraus gelernt und ist danach nie wieder vorzeitig geritten.",
+      "wiki": "Schlacht bei Mollwitz" },
+
+    { "id": "leuthen", "krieg": "siebenjaehrig", "jahr": 1757, "datum": "5. Dezember 1757", "name": "Leuthen",
+      "ort": [16.77, 51.09], "wo": "Schlesien", "rang": 2, "sieger": "Preußen und Britannien",
+      "text": "Fünf Wochen nach Roßbach, achthundert Kilometer weiter östlich, gegen die doppelte Übermacht: Friedrich lässt sein Heer hinter einer Hügelkette entlangmarschieren und erscheint an der ungedeckten Flanke. Napoleon nannte es ein Meisterwerk.",
+      "wiki": "Schlacht bei Leuthen" },
+
+    { "id": "plassey", "krieg": "siebenjaehrig", "jahr": 1757, "datum": "23. Juni 1757", "name": "Plassey",
+      "ort": [88.25, 23.8], "wo": "Bengalen", "rang": 1, "sieger": "Preußen und Britannien",
+      "text": "Dreitausend Mann der Ostindienkompanie schlagen fünfzigtausend – weil der Befehlshaber der Gegenseite bestochen ist und nicht eingreift. Eine Handelsgesellschaft übernimmt damit die Steuerhoheit über Bengalen; der Beginn des britischen Indien.",
+      "wiki": "Schlacht bei Plassey" },
+
+    { "id": "rossbach", "krieg": "siebenjaehrig", "jahr": 1757, "datum": "5. November 1757", "name": "Roßbach",
+      "ort": [11.87, 51.28], "wo": "Bei Merseburg", "rang": 3, "sieger": "Preußen und Britannien",
+      "text": "Ein französisch-reichsständisches Heer versucht die Umgehung und wird im Marsch von der preußischen Reiterei erwischt. Neunzig Minuten, kaum fünfhundert eigene Verluste – und Preußens Ruf in ganz Europa gemacht.",
+      "wiki": "Schlacht bei Roßbach" },
+
+    { "id": "quebec1759", "krieg": "siebenjaehrig", "jahr": 1759, "datum": "13. September 1759", "name": "Quebec",
+      "ort": [-71.235, 46.803], "wo": "Sankt-Lorenz-Strom", "rang": 2, "sieger": "Preußen und Britannien",
+      "text": "Britische Truppen erklettern nachts eine Steilküste, die für unbesteigbar galt, und stehen im Morgengrauen vor der Stadt. Beide Befehlshaber fallen. Kanada wird britisch, und damit Nordamerika englischsprachig.",
+      "wiki": "Schlacht auf der Abraham-Ebene" },
+
+    { "id": "saratoga", "krieg": "amrevolution", "jahr": 1777, "datum": "17. Oktober 1777", "name": "Saratoga",
+      "ort": [-73.64, 43], "wo": "New York", "rang": 1, "sieger": "Die Vereinigten Staaten und Frankreich",
+      "text": "Eine ganze britische Armee ergibt sich – der erste Beweis, dass die Aufständischen gewinnen können. Frankreich schließt daraufhin ein Bündnis, und aus einem Kolonialaufstand wird ein Weltkrieg.",
+      "wiki": "Schlacht von Saratoga" },
+
+    { "id": "yorktown", "krieg": "amrevolution", "jahr": 1781, "datum": "19. Oktober 1781", "name": "Yorktown",
+      "ort": [-76.508, 37.238], "wo": "Virginia, an der Bucht (Seeblockade)", "rang": 1, "sieger": "Die Vereinigten Staaten und Frankreich",
+      "text": "Eine französische Flotte sperrt die Bucht, ein französisch-amerikanisches Heer schließt die Halbinsel ab. Cornwallis kapituliert; die britische Kapelle soll dabei „Die Welt steht kopf“ gespielt haben.",
+      "wiki": "Schlacht von Yorktown" }
+  ]
+}

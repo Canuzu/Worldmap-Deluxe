@@ -22,7 +22,9 @@
     "check:ereignisse": "node scripts/check-ereignisse.mjs",
     "check:layout": "node scripts/check-layout.mjs",
     "check:ladelast": "node scripts/check-ladelast.mjs",
-    "check:fluss": "node scripts/check-fluss.mjs"
+    "check:fluss": "node scripts/check-fluss.mjs",
+    "format:konflikte": "node scripts/format-konflikte.mjs",
+    "check:konflikte": "node scripts/check-konflikte.mjs"
   },
   "repository": {
     "type": "git",

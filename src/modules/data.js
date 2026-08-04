@@ -211,6 +211,14 @@ export class AtlasData {
     return this._ereignisse;
   }
 
+  /** Kriege und Schlachten – geholt, wenn das Register zum ersten Mal aufgeht. */
+  loadKonflikte() {
+    this._konflikte ??= getJSON('data/knowledge/konflikte.de.json')
+      .then((d) => ({ kriege: d.kriege ?? [], schlachten: d.schlachten ?? [] }))
+      .catch(() => ({ kriege: [], schlachten: [] }));
+    return this._konflikte;
+  }
+
   /** Seen und Flüsse – werden erst geholt, wenn die Ebene eingeschaltet wird. */
   loadWater() {
     this._water ??= Promise.all([

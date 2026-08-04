@@ -981,3 +981,215 @@
 .app.is-battle .leaflet-polityA-pane,
 .app.is-battle .leaflet-polityB-pane,
 .app.is-battle .leaflet-ocean-pane { transition: opacity 400ms var(--ease); }
+
+/* ================================================= Kriegsregister
+
+   Drei Abschnitte in einem Fenster: Kriege der eingestellten Zeit, ihre
+   Schlachten, die besetzten Gebiete. Sie stehen untereinander statt in
+   Reitern – wer wissen will, was gerade Krieg ist, will meist auch wissen,
+   wer gerade wen besetzt hält. */
+
+.kreg {
+  overflow-y: auto;
+  display: grid;
+  gap: .1rem;
+  align-content: start;
+}
+.kreg[hidden] { display: none; }
+
+.kreg__abschnitt {
+  margin: .75rem 0 .35rem;
+  font-size: .66rem;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--gold);
+}
+.kreg__abschnitt:first-child { margin-top: 0; }
+
+.kreg__liste {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: .2rem;
+}
+.kreg__liste li {
+  padding: .42rem .5rem;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  transition: background var(--dur) var(--ease);
+}
+.kreg__liste li:hover { background: var(--surface-2); }
+.kreg__liste b {
+  display: block;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--ink-strong);
+}
+.kreg__liste span {
+  display: block;
+  font-size: .71rem;
+  line-height: 1.4;
+  color: var(--ink-muted);
+}
+/* Die besetzten Gebiete sind eine Auskunft, kein Ziel – kein Zeigefinger. */
+.kreg__liste--besatzung li { cursor: default; }
+
+/* ------------------------------------------------------- Kriegszeile */
+
+.kreg__krieg.is-on { background: var(--surface-2); box-shadow: inset 2px 0 0 var(--gold); }
+.kreg__kopf { display: flex; align-items: baseline; gap: .45rem; }
+.kreg__kopf b { flex: 1; }
+.kreg__jahre {
+  font-size: .69rem;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+  flex: none;
+}
+
+/* Der Balken ist der Grund, warum Kriege in einer Liste stehen und nicht auf
+   der Karte: Er zeigt die Dauer und den Stand. Der helle Teil ist vorbei. */
+.kreg__balken {
+  position: relative;
+  height: 3px;
+  margin: .3rem 0 .28rem;
+  border-radius: 2px;
+  background: var(--hairline-strong);
+  overflow: hidden;
+}
+.kreg__balken i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--ink-faint);
+}
+.kreg__balken.is-laufend i { background: var(--gold); }
+/* Ein andauernder Krieg hat kein Ende und damit keinen Stand – er bekommt
+   statt eines Balkens eine durchgehende Linie in der Akzentfarbe. */
+.kreg__balken.is-laufend i:not([style]) { width: 100%; opacity: .45; }
+
+.kreg__seiten { display: flex; flex-wrap: wrap; gap: .1rem .7rem; }
+.kreg__seite {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  font-size: .7rem;
+  color: var(--ink-muted);
+}
+.kreg__seite i {
+  width: .45rem;
+  height: .45rem;
+  border-radius: 1.5px;
+  flex: none;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .3);
+}
+
+.kreg__mehr {
+  margin-top: .35rem;
+  padding: .3rem;
+  border: 0;
+  border-radius: var(--r-sm);
+  background: none;
+  font: inherit;
+  font-size: .72rem;
+  color: var(--gold);
+  cursor: pointer;
+}
+.kreg__mehr:hover { background: var(--surface-2); }
+
+.kreg__leer, .kreg__fuss {
+  margin: .3rem 0 0;
+  font-size: .72rem;
+  color: var(--ink-faint);
+  line-height: 1.5;
+}
+
+/* ------------------------------------------------------ Kriegstafel */
+
+.kreg__tafel h4 {
+  margin: .1rem 0 .15rem;
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  font-weight: 500;
+  color: var(--ink-strong);
+}
+.kreg__tafel h5 { margin: .8rem 0 .3rem; }
+.kreg__kicker {
+  margin: 0;
+  font-size: .66rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--gold);
+}
+.kreg__wo { margin: 0 0 .6rem; font-size: .74rem; color: var(--ink-faint); }
+.kreg__text { margin: .1rem 0 .5rem; font-size: .82rem; line-height: 1.6; color: var(--ink); }
+.kreg__ausgang {
+  margin: 0;
+  padding: .45rem .55rem;
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+  border-left: 2px solid var(--gold);
+  font-size: .78rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.kreg__ausgang b { color: var(--gold); font-weight: 600; }
+.kreg__wiki {
+  display: inline-block;
+  margin-top: .5rem;
+  font-size: .74rem;
+  color: var(--ink-muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--hairline-strong);
+}
+.kreg__wiki:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+/* Die Schlachten eines Krieges sind nummeriert – dieselben Ziffern stehen
+   auf der Karte an den Marken. */
+.kreg__schlachten {
+  list-style: none;
+  counter-reset: sch;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: .2rem;
+}
+.kreg__schlachten li {
+  counter-increment: sch;
+  position: relative;
+  padding: .4rem .5rem .4rem 1.7rem;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  transition: background var(--dur) var(--ease);
+}
+.kreg__schlachten li::before {
+  content: counter(sch);
+  position: absolute;
+  left: .4rem;
+  top: .45rem;
+  width: .95rem;
+  height: .95rem;
+  border-radius: .5rem;
+  font: 700 9.5px/.95rem var(--font-ui);
+  text-align: center;
+  color: var(--surface-solid);
+  background: var(--ink-strong);
+}
+.kreg__schlachten li:hover { background: var(--surface-2); }
+.kreg__schlachten b { display: block; font-size: .84rem; font-weight: 600; color: var(--ink-strong); }
+.kreg__schlachten span { display: block; font-size: .7rem; color: var(--ink-muted); }
+.kreg__verlauf {
+  display: inline-block;
+  margin-top: .2rem;
+  font-style: normal;
+  font-size: .69rem;
+  font-weight: 600;
+  color: var(--gold);
+}
+.kreg__verlauf:hover { text-decoration: underline; }
+
+.dock__btn--back { flex: none; }
+/* Ohne diese Zeile schlägt display:flex des Knopfes das hidden-Attribut. */
+.dock__btn[hidden] { display: none; }

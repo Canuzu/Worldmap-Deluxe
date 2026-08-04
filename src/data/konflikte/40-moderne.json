@@ -1,0 +1,645 @@
+{
+  "_hinweis": [
+    "Kriege und Schlachten seit 1789.",
+    "Aufbau siehe 10-antike.json."
+  ],
+
+  "kriege": [
+    {
+      "id": "frzrevkriege", "name": "Die Französischen Revolutionskriege", "von": 1792, "bis": 1802, "art": "revolution", "rang": 2,
+      "ort": [5, 48.5], "wo": "Rheinland, Italien, Ägypten",
+      "seiten": [
+        { "name": "Frankreich", "staaten": ["France"] },
+        { "name": "Die Koalitionen", "staaten": ["Habsburg Monarchy", "Austria", "Prussia", "United Kingdom of Great Britain and Ireland", "Russia"] }
+      ],
+      "text": "Europas Monarchien wollen die Revolution ersticken und erfinden dabei ihren eigenen Gegner: Frankreich führt die allgemeine Wehrpflicht ein und stellt Heere auf, wie sie kein Fürstenstaat bezahlen kann. Aus Untertanen werden Bürger in Uniform.",
+      "ausgang": "Frankreich behält die linksrheinischen Gebiete; ein General namens Bonaparte wird Erster Konsul.",
+      "wiki": "Koalitionskriege"
+    },
+    {
+      "id": "napoleonisch", "name": "Die Napoleonischen Kriege", "von": 1803, "bis": 1815, "art": "krieg", "rang": 1,
+      "ort": [12, 49], "wo": "Ganz Europa, von Portugal bis Moskau",
+      "seiten": [
+        { "name": "Frankreich und seine Verbündeten", "staaten": ["France"] },
+        { "name": "Die Koalitionen", "staaten": ["United Kingdom of Great Britain and Ireland", "United Kingdom", "Russian Empire", "Russia", "Habsburg Monarchy", "Austrian Empire", "Prussia"] }
+      ],
+      "text": "Zwölf Jahre, in denen ein Mann die Landkarte Europas mehrfach neu zeichnet. Er schafft das Heilige Römische Reich ab, verbreitet ein Gesetzbuch, das in halb Europa gilt, und weckt genau dadurch die Nationalbewegungen, die ihn am Ende stürzen.",
+      "ausgang": "Der Wiener Kongress ordnet Europa neu; die Grenzen halten fast hundert Jahre.",
+      "wiki": "Napoleonische Kriege"
+    },
+    {
+      "id": "suedamunabh", "name": "Die südamerikanischen Unabhängigkeitskriege", "von": 1809, "bis": 1826, "art": "revolution", "rang": 2,
+      "ort": [-70, -12], "wo": "Von Venezuela bis Bolivien",
+      "seiten": [
+        { "name": "Die Unabhängigen", "staaten": ["Vice-Royalty of New Granada", "Argentina", "Chile", "Peru", "Bolivia", "Venezuela"] },
+        { "name": "Spanien", "staaten": ["Spain"] }
+      ],
+      "text": "Als Napoleon den spanischen König absetzt, stellt sich in den Kolonien die Frage, wem man eigentlich gehorcht. Siebzehn Jahre später gibt es auf dem Kontinent kein spanisches Festland mehr – und ein Dutzend Republiken mit Grenzen, die aus Verwaltungsbezirken stammen.",
+      "ausgang": "Spanien verliert Südamerika; Bolívars Traum eines geeinten Kontinents zerfällt sofort.",
+      "wiki": "Südamerikanische Unabhängigkeitskriege"
+    },
+    {
+      "id": "opiumkriege", "name": "Die Opiumkriege", "von": 1839, "bis": 1860, "art": "krieg", "rang": 2,
+      "ort": [116, 27], "wo": "Südchinesische Küste, Jangtse, Peking",
+      "seiten": [
+        { "name": "Großbritannien und Frankreich", "staaten": ["United Kingdom", "United Kingdom of Great Britain and Ireland", "France"] },
+        { "name": "Qing-China", "staaten": ["Qing Empire", "China"] }
+      ],
+      "text": "Ein Krieg, geführt für das Recht, Opium zu verkaufen. China verliert Hongkong, muss Häfen öffnen und Zölle abgeben. In der chinesischen Geschichtsschreibung beginnt hier das „Jahrhundert der Demütigung“ – ein Begriff, der bis heute Politik macht.",
+      "ausgang": "Ungleiche Verträge, Hongkong wird britisch, der Sommerpalast wird niedergebrannt.",
+      "wiki": "Opiumkriege"
+    },
+    {
+      "id": "taiping", "name": "Der Taiping-Aufstand", "von": 1850, "bis": 1864, "art": "aufstand", "rang": 1,
+      "ort": [117, 30.5], "wo": "Süd- und Mittelchina",
+      "seiten": [
+        { "name": "Taiping-Himmelreich", "staaten": [] },
+        { "name": "Qing-China", "staaten": ["Qing Empire", "China"] }
+      ],
+      "text": "Ein durchgefallener Prüfungskandidat hält sich für den jüngeren Bruder Jesu und stellt ein Millionenheer auf. Der blutigste Bürgerkrieg der Geschichte: Schätzungen reichen von zwanzig bis siebzig Millionen Toten – mehr als im Ersten Weltkrieg.",
+      "ausgang": "Nanjing fällt 1864; die Qing überleben, aber nur noch als Schatten.",
+      "wiki": "Taiping-Aufstand"
+    },
+    {
+      "id": "krimkrieg", "name": "Der Krimkrieg", "von": 1853, "bis": 1856, "art": "krieg", "rang": 3,
+      "ort": [33.5, 44.6], "wo": "Krim, Schwarzes Meer, Ostsee",
+      "seiten": [
+        { "name": "Britannien, Frankreich und die Osmanen", "staaten": ["United Kingdom", "France", "Ottoman Empire"] },
+        { "name": "Russland", "staaten": ["Russian Empire", "Russia"] }
+      ],
+      "text": "Der erste Krieg mit Telegrafen, Eisenbahnen und Kriegsfotografie – und der erste, über den zu Hause gelesen wird, während er läuft. Florence Nightingale zeigt, dass mehr Soldaten an Infektionen sterben als an Wunden, und begründet die moderne Krankenpflege.",
+      "ausgang": "Russland verliert; das Schwarze Meer wird neutralisiert.",
+      "wiki": "Krimkrieg"
+    },
+    {
+      "id": "sepoy", "name": "Der Indische Aufstand", "von": 1857, "bis": 1858, "art": "aufstand", "rang": 2,
+      "ort": [79, 26.5], "wo": "Nordindien",
+      "seiten": [
+        { "name": "Aufständische Sepoys und Fürsten", "staaten": ["Mughal Empire"] },
+        { "name": "Britische Ostindienkompanie", "staaten": ["British Raj", "United Kingdom"] }
+      ],
+      "text": "Ein Gerücht über gefettete Patronenhülsen bringt ein Fass zum Überlaufen, das lange voll war. Nach der Niederschlagung wird die Ostindienkompanie aufgelöst: Indien geht direkt an die Krone – und der letzte Mogul stirbt in der Verbannung in Rangun.",
+      "ausgang": "Indien wird britische Kronkolonie; das Mogulreich endet formell.",
+      "wiki": "Indischer Aufstand von 1857"
+    },
+    {
+      "id": "usbuerger", "name": "Der Amerikanische Bürgerkrieg", "von": 1861, "bis": 1865, "art": "buergerkrieg", "rang": 1,
+      "ort": [-79, 36], "wo": "Die Vereinigten Staaten",
+      "seiten": [
+        { "name": "Die Union", "staaten": ["United States"] },
+        { "name": "Die Konföderierten Staaten", "staaten": [] }
+      ],
+      "text": "Sechshunderttausend Tote in vier Jahren – mehr Amerikaner als in allen anderen Kriegen des Landes zusammen. Er beginnt als Streit über die Ausdehnung der Sklaverei und endet mit ihrer Abschaffung; und er zeigt zum ersten Mal, was Industrie im Krieg bedeutet.",
+      "ausgang": "Die Union bleibt bestehen, die Sklaverei wird abgeschafft.",
+      "wiki": "Sezessionskrieg"
+    },
+    {
+      "id": "deutscheinigung", "name": "Die deutschen Einigungskriege", "von": 1864, "bis": 1871, "art": "krieg", "rang": 2,
+      "ort": [10, 50.5], "wo": "Dänemark, Böhmen, Frankreich",
+      "seiten": [
+        { "name": "Preußen und der Norddeutsche Bund", "staaten": ["Prussia", "German Empire"] },
+        { "name": "Dänemark, Österreich und Frankreich", "staaten": ["Denmark", "Habsburg Monarchy", "Austria", "France"] }
+      ],
+      "text": "Drei Kriege in sieben Jahren, jeder kurz, jeder geplant. Bismarck kürzt eine Depesche so, dass Frankreich sich beleidigt fühlt und erklärt den Krieg. Im Spiegelsaal von Versailles wird ein Kaiserreich ausgerufen – und ein Konflikt gestiftet, der zweimal in Weltkriege mündet.",
+      "ausgang": "Das Deutsche Reich entsteht; Frankreich verliert Elsass-Lothringen.",
+      "wiki": "Deutsche Einigungskriege"
+    },
+    {
+      "id": "wettlaufafrika", "name": "Der Wettlauf um Afrika", "von": 1881, "bis": 1914, "art": "eroberung", "rang": 1,
+      "ort": [20, 5], "wo": "Fast der ganze Kontinent",
+      "seiten": [
+        { "name": "Die Kolonialmächte", "staaten": ["United Kingdom", "France", "German Empire", "Belgium", "Portugal", "Italy"] },
+        { "name": "Afrikanische Reiche und Völker", "staaten": ["Abyssinia", "Asante", "Zulu", "Sokoto Caliphate", "Dahomey", "Madagascar"] }
+      ],
+      "text": "1870 sind zehn Prozent des Kontinents europäisch beherrscht, 1914 sind es neunzig. Die Grenzen werden auf einer Konferenz in Berlin gezogen, an der kein Afrikaner teilnimmt – mit Lineal und über Sprachgrenzen hinweg. Sie gelten bis heute.",
+      "ausgang": "Bis auf Äthiopien und Liberia ist der Kontinent aufgeteilt.",
+      "wiki": "Wettlauf um Afrika"
+    },
+    {
+      "id": "burenkrieg", "name": "Der Zweite Burenkrieg", "von": 1899, "bis": 1902, "art": "krieg", "rang": 3,
+      "ort": [26, -28], "wo": "Südafrika",
+      "seiten": [
+        { "name": "Britisches Empire", "staaten": ["United Kingdom", "South Africa"] },
+        { "name": "Buren-Republiken", "staaten": ["Transvaal", "Orange Free State"] }
+      ],
+      "text": "Die größte Militärmacht der Welt braucht drei Jahre und eine halbe Million Soldaten gegen achtzigtausend Farmer. Um den Partisanenkrieg zu brechen, werden Höfe niedergebrannt und Familien in Lager gesperrt – das Wort Konzentrationslager kommt hier in den europäischen Sprachgebrauch.",
+      "ausgang": "Britischer Sieg um einen Preis, der das Empire erschüttert.",
+      "wiki": "Zweiter Burenkrieg"
+    },
+    {
+      "id": "russjap", "name": "Der Russisch-Japanische Krieg", "von": 1904, "bis": 1905, "art": "krieg", "rang": 2,
+      "ort": [124, 40], "wo": "Mandschurei, Gelbes Meer, Tsushima",
+      "seiten": [
+        { "name": "Japan", "staaten": ["Japan", "Empire of Japan"] },
+        { "name": "Russland", "staaten": ["Russian Empire", "Russia"] }
+      ],
+      "text": "Zum ersten Mal in der Neuzeit schlägt ein asiatischer Staat eine europäische Großmacht. Die russische Ostseeflotte fährt achtzehntausend Seemeilen um die halbe Welt und wird in einem Nachmittag versenkt. In Russland folgt die Revolution von 1905.",
+      "ausgang": "Japan wird Großmacht; Russland verliert Prestige und bekommt eine Revolution.",
+      "wiki": "Russisch-Japanischer Krieg"
+    },
+    {
+      "id": "weltkrieg1", "name": "Der Erste Weltkrieg", "von": 1914, "bis": 1918, "art": "krieg", "rang": 1,
+      "ort": [5, 49.5], "wo": "Europa, Naher Osten, Afrika, Weltmeere",
+      "seiten": [
+        { "name": "Entente", "staaten": ["France", "United Kingdom", "Russian Empire", "Italy", "United States", "Serbia", "Belgium"] },
+        { "name": "Mittelmächte", "staaten": ["German Empire", "Austro-Hungarian Empire", "Ottoman Empire", "Bulgaria"] }
+      ],
+      "text": "Alle rechnen mit sechs Wochen, es werden vier Jahre. Maschinengewehre und Schnellfeuergeschütze machen den Angriff unmöglich und den Krieg zum Stillstand; das Ergebnis ist ein Grabensystem von der Nordsee bis zur Schweiz. Vier Kaiserreiche gehen unter.",
+      "ausgang": "Die Mittelmächte kapitulieren; die Friedensordnung von Versailles legt den Keim für den nächsten Krieg.",
+      "wiki": "Erster Weltkrieg"
+    },
+    {
+      "id": "russrev", "name": "Revolution und Bürgerkrieg in Russland", "von": 1917, "bis": 1922, "art": "revolution", "rang": 1,
+      "ort": [40, 55], "wo": "Vom Baltikum bis Wladiwostok",
+      "seiten": [
+        { "name": "Die Roten", "staaten": ["USSR", "Russia"] },
+        { "name": "Die Weißen und die Interventionsmächte", "staaten": ["United Kingdom", "France", "Japan", "United States"] }
+      ],
+      "text": "Zwei Revolutionen in einem Jahr, dann fünf Jahre Bürgerkrieg auf einem Sechstel der Landfläche der Erde. Am Ende steht der erste Staat, der sich zum Ziel setzt, die Gesellschaftsordnung selbst umzubauen – und ein Bürgerkrieg mit sieben bis zwölf Millionen Toten, die meisten durch Hunger und Typhus.",
+      "ausgang": "Die Sowjetunion entsteht; das Zarenreich und seine Randgebiete werden neu geordnet.",
+      "wiki": "Russischer Bürgerkrieg"
+    },
+    {
+      "id": "chinbuerger", "name": "Der Chinesische Bürgerkrieg", "von": 1927, "bis": 1949, "art": "buergerkrieg", "rang": 2,
+      "ort": [113, 32], "wo": "China",
+      "seiten": [
+        { "name": "Kommunistische Partei", "staaten": ["China"] },
+        { "name": "Kuomintang", "staaten": ["Taiwan"] }
+      ],
+      "text": "Zweiundzwanzig Jahre mit einer Unterbrechung durch die japanische Invasion. Der Lange Marsch – zehntausend Kilometer in einem Jahr, neun von zehn Teilnehmern kommen nicht an – wird zum Gründungsmythos. 1949 zieht die unterlegene Seite nach Taiwan.",
+      "ausgang": "Die Volksrepublik wird ausgerufen; die Republik China besteht auf Taiwan fort.",
+      "wiki": "Chinesischer Bürgerkrieg"
+    },
+    {
+      "id": "spanbuerger", "name": "Der Spanische Bürgerkrieg", "von": 1936, "bis": 1939, "art": "buergerkrieg", "rang": 2,
+      "ort": [-3.7, 40.4], "wo": "Spanien",
+      "seiten": [
+        { "name": "Die Republik", "staaten": ["Spain"] },
+        { "name": "Die Nationalisten", "staaten": [] }
+      ],
+      "text": "Ein Militärputsch gegen eine gewählte Regierung wird zum Übungsplatz des kommenden Weltkriegs: Deutsche Bomber erproben in Guernica den Luftangriff auf Städte, sowjetische Panzer die Gegenseite. Die Demokratien bleiben neutral, Freiwillige aus fünfzig Ländern nicht.",
+      "ausgang": "Franco siegt und regiert bis 1975.",
+      "wiki": "Spanischer Bürgerkrieg"
+    },
+    {
+      "id": "weltkrieg2", "name": "Der Zweite Weltkrieg", "von": 1939, "bis": 1945, "art": "krieg", "rang": 1,
+      "ort": [20, 50], "wo": "Europa, Nordafrika, Asien, Pazifik",
+      "seiten": [
+        { "name": "Die Alliierten", "staaten": ["United Kingdom", "USSR", "United States", "France", "China", "Poland"] },
+        { "name": "Die Achsenmächte", "staaten": ["Germany", "Italy", "Japan", "Empire of Japan"] }
+      ],
+      "text": "Der tödlichste Krieg der Geschichte: fünfzig bis siebzig Millionen Tote, die Mehrzahl Zivilisten. Er umfasst den planmäßigen Völkermord an den europäischen Juden, den ersten und bisher einzigen Einsatz von Atomwaffen und das Ende der europäischen Vorherrschaft über die Welt.",
+      "ausgang": "Bedingungslose Kapitulation Deutschlands und Japans; die Welt wird zwischen zwei Supermächten geteilt.",
+      "wiki": "Zweiter Weltkrieg"
+    },
+    {
+      "id": "indochina", "name": "Der Indochinakrieg", "von": 1946, "bis": 1954, "art": "revolution", "rang": 3,
+      "ort": [104.5, 21.5], "wo": "Vietnam, Laos, Kambodscha",
+      "seiten": [
+        { "name": "Viet Minh", "staaten": ["Vietnam"] },
+        { "name": "Frankreich", "staaten": ["France"] }
+      ],
+      "text": "Frankreich will nach dem Weltkrieg seine Kolonie zurück und verliert sie an eine Guerilla, die Artillerie in Einzelteilen durch den Dschungel auf die Berge trägt. Nach Dien Bien Phu ist die französische Kolonialzeit in Asien beendet.",
+      "ausgang": "Die Genfer Konferenz teilt Vietnam am 17. Breitengrad.",
+      "wiki": "Indochinakrieg"
+    },
+    {
+      "id": "nahost", "name": "Die Nahostkriege", "von": 1948, "bis": 1973, "art": "krieg", "rang": 2,
+      "ort": [35, 31.5], "wo": "Palästina, Sinai, Golan, Suezkanal",
+      "seiten": [
+        { "name": "Israel", "staaten": ["Israel"] },
+        { "name": "Die arabischen Nachbarstaaten", "staaten": ["Egypt", "Syria", "Jordan", "Iraq", "Lebanon"] }
+      ],
+      "text": "Vier zwischenstaatliche Kriege in fünfundzwanzig Jahren, jeder mit anderen Grenzen als Ergebnis. 1948 entstehen Israel und das Flüchtlingsproblem, 1967 die Besetzung von Westjordanland, Gaza, Sinai und Golan – die Konfliktlinie, an der sich bis heute alles entzündet.",
+      "ausgang": "Waffenstillstände statt Frieden; Ägypten und Jordanien schließen später Friedensverträge.",
+      "wiki": "Nahostkonflikt"
+    },
+    {
+      "id": "korea", "name": "Der Koreakrieg", "von": 1950, "bis": 1953, "art": "krieg", "rang": 2,
+      "ort": [127.5, 38], "wo": "Koreanische Halbinsel",
+      "seiten": [
+        { "name": "Südkorea und die Vereinten Nationen", "staaten": ["United States"] },
+        { "name": "Nordkorea und China", "staaten": ["China"] }
+      ],
+      "text": "Die Front läuft zweimal die ganze Halbinsel hinauf und hinunter und bleibt am Ende fast dort stehen, wo sie begann. Drei Millionen Tote für eine Linie, die sich um wenige Kilometer verschoben hat – und einen Waffenstillstand, der bis heute kein Friedensvertrag ist.",
+      "ausgang": "Waffenstillstand entlang des 38. Breitengrades; formell dauert der Krieg an.",
+      "wiki": "Koreakrieg"
+    },
+    {
+      "id": "algerien", "name": "Der Algerienkrieg", "von": 1954, "bis": 1962, "art": "revolution", "rang": 3,
+      "ort": [3, 35.5], "wo": "Algerien",
+      "seiten": [
+        { "name": "Nationale Befreiungsfront", "staaten": ["Algeria"] },
+        { "name": "Frankreich", "staaten": ["France"] }
+      ],
+      "text": "Algerien gilt staatsrechtlich nicht als Kolonie, sondern als Teil Frankreichs – deshalb heißt der Krieg acht Jahre lang offiziell keiner. Er stürzt die Vierte Republik, bringt de Gaulle zurück und hinterlässt in beiden Ländern Wunden, die Jahrzehnte nicht verhandelt wurden.",
+      "ausgang": "Algerien wird 1962 unabhängig; über eine Million Menschen verlassen das Land.",
+      "wiki": "Algerienkrieg"
+    },
+    {
+      "id": "vietnam", "name": "Der Vietnamkrieg", "von": 1955, "bis": 1975, "art": "krieg", "rang": 1,
+      "ort": [107, 15.5], "wo": "Vietnam, Laos, Kambodscha",
+      "seiten": [
+        { "name": "Nordvietnam und die FNL", "staaten": ["Vietnam"] },
+        { "name": "Südvietnam und die Vereinigten Staaten", "staaten": ["United States"] }
+      ],
+      "text": "Der erste Krieg, den man abends im Fernsehen sah – und der erste, den eine Supermacht deshalb zu Hause verlor. Mehr Bomben fallen auf Indochina als im ganzen Zweiten Weltkrieg auf Europa; die Front bewegt sich trotzdem nicht.",
+      "ausgang": "1975 fällt Saigon; Vietnam wird vereinigt.",
+      "wiki": "Vietnamkrieg"
+    },
+    {
+      "id": "afghan", "name": "Der sowjetische Afghanistankrieg", "von": 1979, "bis": 1989, "art": "krieg", "rang": 2,
+      "ort": [67, 34], "wo": "Afghanistan",
+      "seiten": [
+        { "name": "Sowjetunion und die Regierung in Kabul", "staaten": ["USSR", "Afghanistan"] },
+        { "name": "Mudschahedin", "staaten": ["Pakistan"] }
+      ],
+      "text": "Zehn Jahre in einem Land, dessen Geografie jede Besetzung teuer macht. Die USA finanzieren die Gegenseite über Pakistan; einige der Netzwerke, die dabei entstehen, beschäftigen die Welt zwanzig Jahre später erneut. Für die Sowjetunion wird es ein Sargnagel.",
+      "ausgang": "Der Rückzug 1989 ist ein Vorbote des Zerfalls der Sowjetunion.",
+      "wiki": "Sowjetische Intervention in Afghanistan"
+    },
+    {
+      "id": "iranirak", "name": "Der Erste Golfkrieg", "von": 1980, "bis": 1988, "art": "krieg", "rang": 3,
+      "ort": [47.5, 31], "wo": "Grenzgebiet Iran–Irak, Schatt al-Arab",
+      "seiten": [
+        { "name": "Irak", "staaten": ["Iraq"] },
+        { "name": "Iran", "staaten": ["Iran"] }
+      ],
+      "text": "Acht Jahre Stellungskrieg mit Giftgas, Kindersoldaten und Angriffen auf Städte – das 20. Jahrhundert im Zeitraffer. Eine Million Tote, und die Grenze verläuft am Ende dort, wo sie am Anfang verlief.",
+      "ausgang": "Waffenstillstand ohne Gebietsänderung.",
+      "wiki": "Erster Golfkrieg"
+    },
+    {
+      "id": "jugoslawien", "name": "Die Jugoslawienkriege", "von": 1991, "bis": 1999, "art": "buergerkrieg", "rang": 2,
+      "ort": [18.4, 44], "wo": "Kroatien, Bosnien, Kosovo",
+      "seiten": [
+        { "name": "Kroatien, Bosnien und die NATO", "staaten": ["Croatia", "Bosnia and Herzegovina", "United States", "United Kingdom"] },
+        { "name": "Serbien und die Bundesrepublik Jugoslawien", "staaten": ["Serbia", "Yugoslavia", "Montenegro"] }
+      ],
+      "text": "Der erste Krieg auf europäischem Boden seit 1945, mit Belagerung, Vertreibung und Völkermord. Sarajevo liegt 1425 Tage unter Beschuss – länger als Leningrad. In Srebrenica werden über achttausend Männer und Jungen ermordet, unter den Augen von UN-Truppen.",
+      "ausgang": "Jugoslawien zerfällt in sieben Staaten; ein internationales Tribunal verurteilt die Verantwortlichen.",
+      "wiki": "Jugoslawienkriege"
+    },
+    {
+      "id": "ruanda", "name": "Der Völkermord in Ruanda", "von": 1994, "bis": 1994, "art": "buergerkrieg", "rang": 1,
+      "ort": [29.9, -1.95], "wo": "Ruanda",
+      "seiten": [
+        { "name": "Ruandische Patriotische Front", "staaten": ["Rwanda"] },
+        { "name": "Die Regierung und die Interahamwe", "staaten": [] }
+      ],
+      "text": "In hundert Tagen werden achthunderttausend Menschen ermordet, überwiegend mit Macheten, überwiegend von Nachbarn. Die Welt zieht ihre Blauhelme ab, statt sie zu verstärken. Der Nachhall zieht den Kongo in einen Krieg mit Millionen Toten.",
+      "ausgang": "Die RPF beendet den Völkermord militärisch; zwei Millionen Menschen fliehen in den Kongo.",
+      "wiki": "Völkermord in Ruanda"
+    },
+    {
+      "id": "irak2003", "name": "Der Irakkrieg", "von": 2003, "bis": 2011, "art": "krieg", "rang": 2,
+      "ort": [44, 33], "wo": "Irak",
+      "seiten": [
+        { "name": "Die Koalition", "staaten": ["United States", "United Kingdom"] },
+        { "name": "Irak", "staaten": ["Iraq"] }
+      ],
+      "text": "Begründet mit Massenvernichtungswaffen, die nicht gefunden werden. Das Regime fällt in drei Wochen, der Staat zerfällt danach acht Jahre lang. Aus dem Zerfall geht die Organisation hervor, die sich später Islamischer Staat nennt.",
+      "ausgang": "Abzug 2011; der Irak bleibt instabil.",
+      "wiki": "Irakkrieg"
+    },
+    {
+      "id": "syrien", "name": "Der Syrische Bürgerkrieg", "von": 2011, "bis": 2024, "art": "buergerkrieg", "rang": 2,
+      "ort": [38, 35], "wo": "Syrien",
+      "seiten": [
+        { "name": "Opposition und kurdische Kräfte", "staaten": ["Turkey"] },
+        { "name": "Regierung, Russland und Iran", "staaten": ["Syria", "Russia", "Iran"] }
+      ],
+      "text": "Aus Protesten gegen ein Regime wird ein Krieg mit einem halben Dutzend ausländischer Luftwaffen über demselben Land. Über eine halbe Million Tote, dreizehn Millionen Vertriebene – die größte Fluchtbewegung seit dem Zweiten Weltkrieg.",
+      "ausgang": "Das Regime fällt Ende 2024; das Land bleibt zerrissen.",
+      "wiki": "Bürgerkrieg in Syrien"
+    },
+    {
+      "id": "ukraine", "name": "Der russische Angriff auf die Ukraine", "von": 2014, "art": "krieg", "rang": 1,
+      "ort": [36, 48.5], "wo": "Krim, Donbass, Ostukraine",
+      "seiten": [
+        { "name": "Ukraine", "staaten": ["Ukraine"] },
+        { "name": "Russland", "staaten": ["Russia"] }
+      ],
+      "text": "2014 die Annexion der Krim, 2022 der Angriff auf das ganze Land – der größte Krieg in Europa seit 1945. Drohnen und Satellitenaufklärung machen jede Bewegung sichtbar, und trotzdem sehen die Frontlinien aus wie 1916.",
+      "ausgang": "Andauernd.",
+      "wiki": "Russisch-Ukrainischer Krieg"
+    }
+  ],
+
+  "schlachten": [
+    { "id": "valmy", "krieg": "frzrevkriege", "jahr": 1792, "datum": "20. September 1792", "name": "Valmy",
+      "ort": [4.77, 49.08], "wo": "Champagne", "rang": 2, "sieger": "Frankreich",
+      "text": "Kaum eine Schlacht, eher eine Kanonade – aber das Freiwilligenheer der Revolution läuft nicht davon. Goethe, der zusieht, notiert: Von hier und heute gehe eine neue Epoche der Weltgeschichte aus.",
+      "wiki": "Kanonade von Valmy" },
+
+    { "id": "abukir", "krieg": "frzrevkriege", "jahr": 1798, "datum": "1. August 1798", "name": "Abukir",
+      "ort": [30.06, 31.32], "wo": "Nildelta", "rang": 3, "sieger": "Die Koalitionen",
+      "text": "Nelson greift die vor Anker liegende französische Flotte von der Landseite an, wo sie ihre Kanonen nicht bemannt hat. Napoleons Heer sitzt danach in Ägypten fest.",
+      "wiki": "Seeschlacht bei Abukir" },
+
+    { "id": "austerlitz", "krieg": "napoleonisch", "jahr": 1805, "datum": "2. Dezember 1805", "name": "Austerlitz",
+      "ort": [16.76, 49.13], "wo": "Mähren", "rang": 1, "sieger": "Frankreich und seine Verbündeten",
+      "text": "Napoleon gibt absichtlich eine Anhöhe preis, um den Gegner zum Angriff auf seine Flanke zu verleiten – und stößt dann durch die entblößte Mitte. Die Dreikaiserschlacht gilt als sein Meisterstück.",
+      "wiki": "Schlacht bei Austerlitz" },
+
+    { "id": "trafalgar", "krieg": "napoleonisch", "jahr": 1805, "datum": "21. Oktober 1805", "name": "Trafalgar",
+      "ort": [-6.2, 36.3], "wo": "Vor der andalusischen Küste", "rang": 1, "sieger": "Die Koalitionen",
+      "text": "Nelson durchbricht die gegnerische Linie in zwei Kolonnen statt parallel zu ihr zu segeln – und verliert dabei sein Leben. Britannien beherrscht danach hundert Jahre lang die Meere.",
+      "wiki": "Schlacht von Trafalgar" },
+
+    { "id": "jena", "krieg": "napoleonisch", "jahr": 1806, "datum": "14. Oktober 1806", "name": "Jena und Auerstedt",
+      "ort": [11.6, 50.95], "wo": "Thüringen", "rang": 2, "sieger": "Frankreich und seine Verbündeten",
+      "text": "Das Heer Friedrichs des Großen wird an einem Tag zerschlagen. Die Niederlage löst in Preußen Reformen aus – Bauernbefreiung, Städteordnung, allgemeine Wehrpflicht –, die den Staat gründlicher verändern als jede Schlacht.",
+      "wiki": "Schlacht bei Jena und Auerstedt" },
+
+    { "id": "borodino", "krieg": "napoleonisch", "jahr": 1812, "datum": "7. September 1812", "name": "Borodino",
+      "ort": [35.82, 55.52], "wo": "Westlich von Moskau", "rang": 2, "sieger": "Frankreich und seine Verbündeten",
+      "text": "Der blutigste Tag der napoleonischen Kriege: siebzigtausend Tote und Verwundete in zwölf Stunden. Napoleon nimmt Moskau und findet es leer und brennend – gewonnen hat er damit nichts.",
+      "wiki": "Schlacht bei Borodino" },
+
+    { "id": "leipzig", "krieg": "napoleonisch", "jahr": 1813, "datum": "16.–19. Oktober 1813", "name": "Die Völkerschlacht bei Leipzig",
+      "ort": [12.38, 51.31], "wo": "Sachsen", "rang": 1, "sieger": "Die Koalitionen",
+      "text": "Die größte Schlacht Europas vor dem Ersten Weltkrieg: über fünfhunderttausend Mann aus einem Dutzend Ländern. Napoleon verliert Deutschland in vier Tagen; die Sprengung der Elsterbrücke lässt sein Nachhutkorps zurück.",
+      "wiki": "Völkerschlacht bei Leipzig" },
+
+    { "id": "waterloo", "krieg": "napoleonisch", "jahr": 1815, "datum": "18. Juni 1815", "name": "Waterloo",
+      "ort": [4.4, 50.68], "wo": "Südlich von Brüssel", "rang": 1, "sieger": "Die Koalitionen", "verlauf": "waterloo",
+      "text": "Wellington hält den ganzen Tag einen Höhenrücken, bis am Abend die Preußen aus dem Wald von Osten kommen. Napoleons Rückkehr endet nach hundert Tagen; Europa bleibt bei der Ordnung des Wiener Kongresses.",
+      "wiki": "Schlacht bei Waterloo" },
+
+    { "id": "boyaca", "krieg": "suedamunabh", "jahr": 1819, "datum": "7. August 1819", "name": "Boyacá",
+      "ort": [-73.44, 5.45], "wo": "Kolumbianische Anden", "rang": 3, "sieger": "Die Unabhängigen",
+      "text": "Bolívar führt sein Heer durch überflutetes Tiefland und über einen viertausend Meter hohen Pass, wo niemand ihn erwartet. Die Schlacht dauert zwei Stunden und macht Neugranada frei.",
+      "wiki": "Schlacht von Boyacá" },
+
+    { "id": "ayacucho", "krieg": "suedamunabh", "jahr": 1824, "datum": "9. Dezember 1824", "name": "Ayacucho",
+      "ort": [-74.2, -13.2], "wo": "Peruanische Anden", "rang": 3, "sieger": "Die Unabhängigen",
+      "text": "Auf einer Hochebene in viertausend Metern Höhe endet die spanische Herrschaft über das südamerikanische Festland. Der Vizekönig wird gefangen genommen und unterschreibt die Kapitulation.",
+      "wiki": "Schlacht von Ayacucho" },
+
+    { "id": "kanton1841", "krieg": "opiumkriege", "jahr": 1841, "datum": "1841", "name": "Die Fahrt der Nemesis",
+      "ort": [113.3, 23.1], "wo": "Perlfluss", "rang": 3, "sieger": "Großbritannien und Frankreich",
+      "text": "Ein eiserner Dampfer mit flachem Tiefgang fährt Flüsse hinauf, in die kein Segelschiff kommt, und zerschießt Dschunkenflotten und Forts. Der technische Abstand eines halben Jahrhunderts an einem einzigen Schiff.",
+      "wiki": "Erster Opiumkrieg" },
+
+    { "id": "sewastopol", "krieg": "krimkrieg", "jahr": 1855, "datum": "September 1855", "name": "Die Belagerung von Sewastopol",
+      "ort": [33.53, 44.6], "wo": "Krim", "rang": 3, "sieger": "Britannien, Frankreich und die Osmanen",
+      "text": "Elf Monate Grabenkrieg um eine Festung, mit Minenstollen, Scharfschützen und Dauerbeschuss – eine Vorwegnahme dessen, was sechzig Jahre später in Flandern normal wird.",
+      "wiki": "Belagerung von Sewastopol (1854–1855)" },
+
+    { "id": "delhi1857", "krieg": "sepoy", "jahr": 1857, "datum": "September 1857", "name": "Die Rückeroberung Delhis",
+      "ort": [77.23, 28.66], "wo": "Nordindien", "rang": 3, "sieger": "Britische Ostindienkompanie",
+      "text": "Sechs Tage Straßenkampf um die Mogulhauptstadt. Der letzte Großmogul, ein achtzigjähriger Dichter, wird gefangen genommen und nach Birma verbannt; seine Söhne werden erschossen.",
+      "wiki": "Belagerung von Delhi" },
+
+    { "id": "sommerpalast", "krieg": "opiumkriege", "jahr": 1860, "datum": "Oktober 1860", "name": "Die Zerstörung des Sommerpalasts",
+      "ort": [116.27, 40], "wo": "Peking", "rang": 2, "sieger": "Großbritannien und Frankreich",
+      "text": "Dreieinhalbtausend Soldaten brauchen drei Tage, um die Anlage niederzubrennen – als Strafaktion für die Misshandlung von Gesandten. Victor Hugo nannte es einen Raubzug zweier Banditen.",
+      "wiki": "Alter Sommerpalast" },
+
+    { "id": "antietam", "krieg": "usbuerger", "jahr": 1862, "datum": "17. September 1862", "name": "Antietam",
+      "ort": [-77.74, 39.47], "wo": "Maryland", "rang": 2, "sieger": "Die Union",
+      "text": "Der blutigste Einzeltag der amerikanischen Geschichte: 22.000 Ausfälle. Der knappe Erfolg reicht Lincoln, um die Emanzipationsproklamation zu verkünden – und macht den Krieg zu einem über die Sklaverei.",
+      "wiki": "Schlacht am Antietam" },
+
+    { "id": "gettysburg", "krieg": "usbuerger", "jahr": 1863, "datum": "1.–3. Juli 1863", "name": "Gettysburg",
+      "ort": [-77.23, 39.81], "wo": "Pennsylvania", "rang": 1, "sieger": "Die Union",
+      "text": "Drei Tage, fünfzigtausend Ausfälle, und am dritten ein Frontalangriff über anderthalb Kilometer offenes Feld gegen Artillerie. Danach greift der Süden nie wieder im Norden an. Lincolns zweiminütige Rede auf dem Friedhof definiert das Land neu.",
+      "wiki": "Schlacht von Gettysburg" },
+
+    { "id": "nanjing1864", "krieg": "taiping", "jahr": 1864, "datum": "Juli 1864", "name": "Der Fall von Nanjing",
+      "ort": [118.8, 32.06], "wo": "Am Jangtse", "rang": 2, "sieger": "Qing-China",
+      "text": "Nach zwei Jahren Belagerung wird die Hauptstadt des Himmelreichs durch eine Mine gesprengt. Was folgt, überlebt kaum jemand. Der Aufstand hatte mehr Menschenleben gekostet als jeder Krieg vor ihm.",
+      "wiki": "Taiping-Aufstand" },
+
+    { "id": "appomattox", "krieg": "usbuerger", "jahr": 1865, "datum": "9. April 1865", "name": "Appomattox",
+      "ort": [-78.8, 37.38], "wo": "Virginia", "rang": 2, "sieger": "Die Union",
+      "text": "Lee ergibt sich in einem Wohnhaus; Grant lässt die Südstaatler ihre Pferde behalten, weil sie sie zur Frühjahrsbestellung brauchen. Eine Geste, die den Nachkriegsjahren die Richtung hätte geben können.",
+      "wiki": "Schlacht bei Appomattox Court House" },
+
+    { "id": "koeniggraetz", "krieg": "deutscheinigung", "jahr": 1866, "datum": "3. Juli 1866", "name": "Königgrätz",
+      "ort": [15.75, 50.29], "wo": "Böhmen", "rang": 2, "sieger": "Preußen und der Norddeutsche Bund",
+      "text": "Das preußische Zündnadelgewehr feuert im Liegen und fünfmal so schnell wie der österreichische Vorderlader. In sieben Wochen ist entschieden, wer Deutschland einigt – und dass Österreich nicht dazugehört.",
+      "wiki": "Schlacht bei Königgrätz" },
+
+    { "id": "sedan", "krieg": "deutscheinigung", "jahr": 1870, "datum": "1./2. September 1870", "name": "Sedan",
+      "ort": [4.94, 49.7], "wo": "Ardennen", "rang": 2, "sieger": "Preußen und der Norddeutsche Bund",
+      "text": "Eine ganze französische Armee samt Kaiser wird in einem Talkessel eingeschlossen und muss kapitulieren. In Paris wird zwei Tage später die Republik ausgerufen – und der Krieg geht trotzdem weiter.",
+      "wiki": "Schlacht von Sedan" },
+
+    { "id": "isandlwana", "krieg": "wettlaufafrika", "jahr": 1879, "datum": "22. Januar 1879", "name": "Isandlwana",
+      "ort": [30.65, -28.35], "wo": "Zululand", "rang": 3, "sieger": "Afrikanische Reiche und Völker",
+      "text": "Zwanzigtausend Zulu überrennen ein britisches Lager und töten dreizehnhundert Soldaten – die schwerste Niederlage einer europäischen Armee gegen einen afrikanischen Gegner. Sechs Monate später ist das Zulureich trotzdem zerschlagen.",
+      "wiki": "Schlacht bei Isandlwana" },
+
+    { "id": "adua", "krieg": "wettlaufafrika", "jahr": 1896, "datum": "1. März 1896", "name": "Adua",
+      "ort": [38.85, 14.17], "wo": "Nordäthiopien", "rang": 2, "sieger": "Afrikanische Reiche und Völker",
+      "text": "Menelik II. hat sich jahrelang Gewehre gekauft und schlägt das italienische Expeditionskorps vernichtend. Äthiopien bleibt als einziger afrikanischer Staat unkolonisiert – und wird zum Symbol für den ganzen Kontinent.",
+      "wiki": "Schlacht von Adua" },
+
+    { "id": "omdurman", "krieg": "wettlaufafrika", "jahr": 1898, "datum": "2. September 1898", "name": "Omdurman",
+      "ort": [32.48, 15.65], "wo": "Sudan, am Nil", "rang": 3, "sieger": "Die Kolonialmächte",
+      "text": "Maschinengewehre und Schnellfeuerartillerie gegen Reiterei und Speere: fünfzigtausend Angreifer, zwölftausend Tote in fünf Stunden, siebenundvierzig auf britischer Seite. Der junge Winston Churchill reitet mit und schreibt darüber.",
+      "wiki": "Schlacht von Omdurman" },
+
+    { "id": "paardeberg", "krieg": "burenkrieg", "jahr": 1900, "datum": "18.–27. Februar 1900", "name": "Paardeberg",
+      "ort": [25, -29.2], "wo": "Oranje-Freistaat", "rang": 3, "sieger": "Britisches Empire",
+      "text": "Viertausend Buren werden an einer Flussschleife eingeschlossen und kapitulieren nach neun Tagen Beschuss. Der konventionelle Krieg ist damit entschieden – und der zweieinhalbjährige Partisanenkrieg beginnt.",
+      "wiki": "Schlacht bei Paardeberg" },
+
+    { "id": "spionkop", "krieg": "burenkrieg", "jahr": 1900, "datum": "23./24. Januar 1900", "name": "Spion Kop",
+      "ort": [29.52, -28.65], "wo": "Natal", "rang": 3, "sieger": "Buren-Republiken",
+      "text": "Britische Truppen nehmen nachts einen Hügelkamm und stellen bei Tagesanbruch fest, dass sie auf der falschen Kuppe stehen – von drei Seiten einsehbar. Unter den Anwesenden: Churchill als Reporter und Gandhi als Sanitäter.",
+      "wiki": "Schlacht am Spionkop" },
+
+    { "id": "tsushima", "krieg": "russjap", "jahr": 1905, "datum": "27./28. Mai 1905", "name": "Tsushima",
+      "ort": [129.5, 34.5], "wo": "Meerenge zwischen Korea und Japan", "rang": 1, "sieger": "Japan",
+      "text": "Die Baltische Flotte, achtzehntausend Seemeilen unterwegs, wird in zwei Tagen fast vollständig versenkt. Japan verliert drei Torpedoboote. Zum ersten Mal seit Jahrhunderten schlägt eine nichteuropäische Marine eine europäische.",
+      "wiki": "Seeschlacht bei Tsushima" },
+
+    { "id": "marne1914", "krieg": "weltkrieg1", "jahr": 1914, "datum": "5.–12. September 1914", "name": "An der Marne",
+      "ort": [3.4, 48.9], "wo": "Östlich von Paris", "rang": 1, "sieger": "Entente",
+      "text": "Die deutsche Rechte biegt vor Paris nach Osten ab und öffnet dabei eine Lücke. Pariser Taxis fahren Reserven an die Front. Der Bewegungskrieg endet nach sechs Wochen, und die Gräben werden ausgehoben.",
+      "wiki": "Erste Schlacht an der Marne" },
+
+    { "id": "tannenberg", "krieg": "weltkrieg1", "jahr": 1914, "datum": "26.–30. August 1914", "name": "Tannenberg",
+      "ort": [20.14, 53.5], "wo": "Ostpreußen", "rang": 2, "sieger": "Mittelmächte",
+      "text": "Zwei russische Armeen operieren ohne verschlüsselten Funk; die deutsche Seite hört mit und schlägt sie nacheinander. Der Name wird bewusst gewählt – als Revanche für 1410.",
+      "wiki": "Schlacht bei Tannenberg (1914)" },
+
+    { "id": "jutland", "krieg": "weltkrieg1", "jahr": 1916, "datum": "31. Mai 1916", "name": "Skagerrakschlacht",
+      "ort": [6, 56.8], "wo": "Nordsee vor Jütland", "rang": 3, "sieger": "Entente",
+      "text": "Die größte Seeschlacht des Krieges, taktisch für Deutschland günstig und strategisch folgenlos: Die britische Blockade bleibt bestehen, und die deutsche Hochseeflotte läuft nie wieder aus.",
+      "wiki": "Skagerrakschlacht" },
+
+    { "id": "somme", "krieg": "weltkrieg1", "jahr": 1916, "datum": "1. Juli – 18. November 1916", "name": "An der Somme",
+      "ort": [2.7, 50], "wo": "Picardie", "rang": 1, "sieger": "Entente",
+      "text": "Am ersten Tag fallen zwanzigtausend britische Soldaten – der verlustreichste Tag der britischen Militärgeschichte. Nach viereinhalb Monaten hat die Front sich zehn Kilometer verschoben. Hier fahren zum ersten Mal Panzer.",
+      "wiki": "Schlacht an der Somme" },
+
+    { "id": "verdun", "krieg": "weltkrieg1", "jahr": 1916, "datum": "Februar–Dezember 1916", "name": "Verdun",
+      "ort": [5.38, 49.16], "wo": "Lothringen", "rang": 1, "sieger": "Entente",
+      "text": "Zehn Monate um ein paar Quadratkilometer Hügelland, mit dem erklärten Ziel, den Gegner ausbluten zu lassen. Dreihunderttausend Tote. Der Boden ist bis heute gesperrt – zu viele Blindgänger und zu viel Gift im Erdreich.",
+      "wiki": "Schlacht um Verdun" },
+
+    { "id": "amiens1918", "krieg": "weltkrieg1", "jahr": 1918, "datum": "8. August 1918", "name": "Amiens",
+      "ort": [2.3, 49.9], "wo": "Picardie", "rang": 2, "sieger": "Entente",
+      "text": "Panzer, Flugzeuge, Artillerie und Infanterie greifen zum ersten Mal koordiniert an, ohne vorheriges Trommelfeuer. Ludendorff nennt es den schwarzen Tag des deutschen Heeres; hundert Tage später ist der Krieg vorbei.",
+      "wiki": "Schlacht bei Amiens (1918)" },
+
+    { "id": "warschau1920", "krieg": "russrev", "jahr": 1920, "datum": "August 1920", "name": "Das Wunder an der Weichsel",
+      "ort": [21, 52.23], "wo": "Vor Warschau", "rang": 2, "sieger": "Die Weißen und die Interventionsmächte",
+      "text": "Die Rote Armee steht vor Warschau auf dem Weg nach Deutschland; ein polnischer Flankenangriff wirft sie zurück. Die Weltrevolution bleibt östlich der Weichsel stehen.",
+      "wiki": "Schlacht bei Warschau (1920)" },
+
+    { "id": "guernica", "krieg": "spanbuerger", "jahr": 1937, "datum": "26. April 1937", "name": "Guernica",
+      "ort": [-2.68, 43.31], "wo": "Baskenland", "rang": 2, "sieger": "Die Nationalisten",
+      "text": "Die deutsche Legion Condor bombardiert an einem Markttag eine Kleinstadt ohne militärische Bedeutung, um die Wirkung zu erproben. Picassos Bild macht daraus das bekannteste Antikriegswerk des Jahrhunderts.",
+      "wiki": "Luftangriff auf Gernika" },
+
+    { "id": "ebro", "krieg": "spanbuerger", "jahr": 1938, "datum": "Juli–November 1938", "name": "Am Ebro",
+      "ort": [0.5, 41.1], "wo": "Katalonien", "rang": 3, "sieger": "Die Nationalisten",
+      "text": "Die letzte Offensive der Republik: hunderttausend Mann setzen nachts über den Fluss und werden in vier Monaten aufgerieben. Danach ist der Ausgang entschieden.",
+      "wiki": "Ebroschlacht" },
+
+    { "id": "frankreich1940", "krieg": "weltkrieg2", "jahr": 1940, "datum": "10. Mai – 22. Juni 1940", "name": "Der Westfeldzug",
+      "ort": [4.5, 49.9], "wo": "Ardennen, Nordfrankreich", "rang": 1, "sieger": "Die Achsenmächte",
+      "text": "Panzerverbände fahren durch die Ardennen, die als unpassierbar galten, und stehen nach zehn Tagen am Meer. Die stärkste Armee Europas kapituliert nach sechs Wochen – nicht wegen fehlender Panzer, sondern weil niemand mit dieser Geschwindigkeit gerechnet hat.",
+      "wiki": "Westfeldzug" },
+
+    { "id": "luftschlacht", "krieg": "weltkrieg2", "jahr": 1940, "datum": "Juli–Oktober 1940", "name": "Die Luftschlacht um England",
+      "ort": [0.5, 51.3], "wo": "Südengland und der Kanal", "rang": 1, "sieger": "Die Alliierten",
+      "text": "Die erste Schlacht, die ausschließlich in der Luft entschieden wird. Radar und ein Leitsystem am Boden gleichen die zahlenmäßige Unterlegenheit aus. Ohne Luftherrschaft keine Invasion – die Landung wird abgesagt.",
+      "wiki": "Luftschlacht um England" },
+
+    { "id": "moskau1941", "krieg": "weltkrieg2", "jahr": 1941, "datum": "Oktober 1941 – Januar 1942", "name": "Vor Moskau",
+      "ort": [37.3, 55.8], "wo": "Zentralrussland", "rang": 2, "sieger": "Die Alliierten",
+      "text": "Deutsche Spähtrupps sehen die Türme des Kremls; dann kommen der Schlamm, der Frost und sibirische Divisionen, die aus dem Osten frei geworden sind. Der erste gescheiterte Feldzug – und das Ende des Blitzkriegs.",
+      "wiki": "Schlacht um Moskau" },
+
+    { "id": "midway", "krieg": "weltkrieg2", "jahr": 1942, "datum": "4.–7. Juni 1942", "name": "Midway",
+      "ort": [-177.4, 28.2], "wo": "Zentralpazifik", "rang": 1, "sieger": "Die Alliierten",
+      "text": "Amerikanische Codebrecher wissen, wohin die japanische Flotte fährt. In sechs Minuten gehen drei Flugzeugträger verloren, ein vierter am Nachmittag. Der Krieg im Pazifik dreht sich an einem einzigen Vormittag.",
+      "wiki": "Schlacht um Midway" },
+
+    { "id": "stalingrad", "krieg": "weltkrieg2", "jahr": 1942, "datum": "August 1942 – Februar 1943", "name": "Stalingrad",
+      "ort": [44.5, 48.7], "wo": "An der Wolga", "rang": 1, "sieger": "Die Alliierten", "verlauf": "stalingrad",
+      "text": "Fünf Monate Häuserkampf, dann eine Zangenoperation, die eine ganze Armee einschließt. Von den neunzigtausend Gefangenen kehren fünftausend zurück. Der Wendepunkt des Krieges in Europa.",
+      "wiki": "Schlacht von Stalingrad" },
+
+    { "id": "kursk", "krieg": "weltkrieg2", "jahr": 1943, "datum": "Juli–August 1943", "name": "Kursk",
+      "ort": [36.2, 51.7], "wo": "Zentralrussland", "rang": 2, "sieger": "Die Alliierten",
+      "text": "Die größte Panzerschlacht der Geschichte, gegen eine Verteidigung, die seit Monaten in acht Linien vorbereitet ist – weil die sowjetische Seite den Angriffsplan kennt. Danach greift die Wehrmacht im Osten nicht mehr an.",
+      "wiki": "Unternehmen Zitadelle" },
+
+    { "id": "normandie", "krieg": "weltkrieg2", "jahr": 1944, "datum": "6. Juni 1944", "name": "Die Landung in der Normandie",
+      "ort": [-0.85, 49.35], "wo": "Nordfrankreich", "rang": 1, "sieger": "Die Alliierten",
+      "text": "Die größte Landungsoperation der Geschichte: siebentausend Schiffe, zwei künstliche Häfen, eine Ölleitung unter dem Kanal. Eine monatelange Täuschung lässt die Verteidiger die Hauptlandung woanders erwarten.",
+      "wiki": "Operation Overlord" },
+
+    { "id": "berlin1945", "krieg": "weltkrieg2", "jahr": 1945, "datum": "16. April – 2. Mai 1945", "name": "Die Schlacht um Berlin",
+      "ort": [13.4, 52.52], "wo": "Brandenburg und Berlin", "rang": 1, "sieger": "Die Alliierten",
+      "text": "Zweieinhalb Millionen Soldaten, sechstausend Panzer, vierzigtausend Geschütze gegen eine Stadt, die aus Volkssturm und Resten besteht. Am 30. April nimmt sich Hitler das Leben, am 2. Mai kapituliert die Stadt.",
+      "wiki": "Schlacht um Berlin" },
+
+    { "id": "hiroshima", "krieg": "weltkrieg2", "jahr": 1945, "datum": "6. und 9. August 1945", "name": "Hiroshima und Nagasaki",
+      "ort": [132.46, 34.39], "wo": "Westjapan", "rang": 1, "sieger": "Die Alliierten",
+      "text": "Zwei Bomben, rund zweihunderttausend Tote, die meisten Zivilisten. Der einzige Einsatz von Kernwaffen im Krieg – und der Beginn einer Ordnung, in der Großmächte einander nicht mehr direkt angreifen können.",
+      "wiki": "Atombombenabwürfe auf Hiroshima und Nagasaki" },
+
+    { "id": "huaihai", "krieg": "chinbuerger", "jahr": 1948, "datum": "November 1948 – Januar 1949", "name": "Huaihai",
+      "ort": [117.2, 34.3], "wo": "Nordostchina", "rang": 2, "sieger": "Kommunistische Partei",
+      "text": "Eineinhalb Millionen Soldaten und fünf Millionen Bauern, die mit Schubkarren den Nachschub tragen. Die Kuomintang verliert fünfhunderttausend Mann und damit den Krieg.",
+      "wiki": "Huaihai-Kampagne" },
+
+    { "id": "inchon", "krieg": "korea", "jahr": 1950, "datum": "15. September 1950", "name": "Die Landung bei Incheon",
+      "ort": [126.6, 37.46], "wo": "Westküste Koreas", "rang": 3, "sieger": "Südkorea und die Vereinten Nationen",
+      "text": "Eine Landung an einer Küste mit neun Metern Tidenhub und einem Zeitfenster von wenigen Stunden. Sie gelingt und schneidet die nordkoreanische Armee ab – bis China eingreift und die Front zurückschiebt.",
+      "wiki": "Schlacht von Incheon" },
+
+    { "id": "dienbienphu", "krieg": "indochina", "jahr": 1954, "datum": "März–Mai 1954", "name": "Dien Bien Phu",
+      "ort": [103.02, 21.39], "wo": "Nordwestvietnam", "rang": 2, "sieger": "Viet Minh",
+      "text": "Die Franzosen setzen sich in ein Talbecken, überzeugt, der Gegner könne keine Artillerie auf die Höhen bringen. Zehntausende Träger schleppen die Geschütze in Einzelteilen hinauf. Nach 56 Tagen ist Frankreichs Kolonialreich in Asien zu Ende.",
+      "wiki": "Schlacht um Điện Biên Phủ" },
+
+    { "id": "algier", "krieg": "algerien", "jahr": 1957, "datum": "Januar–September 1957", "name": "Die Schlacht um Algier",
+      "ort": [3.06, 36.75], "wo": "Kasbah von Algier", "rang": 3, "sieger": "Frankreich",
+      "text": "Ein Häuserkampf ohne Front: Bomben in Cafés, Razzien in der Altstadt, systematische Folter durch die Fallschirmjäger. Militärisch gewonnen, politisch verloren – die Berichte darüber kosten Frankreich den Rückhalt zu Hause.",
+      "wiki": "Schlacht um Algier" },
+
+    { "id": "sechstage", "krieg": "nahost", "jahr": 1967, "datum": "5.–10. Juni 1967", "name": "Der Sechstagekrieg",
+      "ort": [34.5, 30.5], "wo": "Sinai, Westjordanland, Golan", "rang": 1, "sieger": "Israel",
+      "text": "In den ersten drei Stunden wird die ägyptische Luftwaffe am Boden zerstört. Nach sechs Tagen hat Israel sein Gebiet verdreifacht – und die Besetzung begonnen, die den Konflikt bis heute bestimmt.",
+      "wiki": "Sechstagekrieg" },
+
+    { "id": "tet", "krieg": "vietnam", "jahr": 1968, "datum": "Januar–Februar 1968", "name": "Die Tet-Offensive",
+      "ort": [107.6, 16.47], "wo": "Ganz Südvietnam", "rang": 1, "sieger": "Nordvietnam und die FNL",
+      "text": "Über hundert gleichzeitige Angriffe am Neujahrsfest, militärisch ein Fehlschlag mit schweren Verlusten. Aber die Bilder aus der US-Botschaft in Saigon widerlegen alles, was der amerikanischen Öffentlichkeit erzählt worden war.",
+      "wiki": "Tet-Offensive" },
+
+    { "id": "jomkippur", "krieg": "nahost", "jahr": 1973, "datum": "6.–25. Oktober 1973", "name": "Der Jom-Kippur-Krieg",
+      "ort": [32.5, 30.3], "wo": "Suezkanal und Golan", "rang": 2, "sieger": "Israel",
+      "text": "Ägypten und Syrien greifen am höchsten Feiertag an und durchbrechen die Linien. Israel dreht die Lage in zwei Wochen – aber der Schock führt zu Verhandlungen, aus denen 1979 der Friede mit Ägypten hervorgeht. Der Ölpreis vervierfacht sich.",
+      "wiki": "Jom-Kippur-Krieg" },
+
+    { "id": "saigon1975", "krieg": "vietnam", "jahr": 1975, "datum": "30. April 1975", "name": "Der Fall von Saigon",
+      "ort": [106.7, 10.78], "wo": "Südvietnam", "rang": 2, "sieger": "Nordvietnam und die FNL",
+      "text": "Panzer durchbrechen das Tor des Präsidentenpalasts, während vom Botschaftsdach Hubschrauber abheben. Zwanzig Jahre Krieg enden an einem Vormittag.",
+      "wiki": "Fall von Saigon" },
+
+    { "id": "panjshir", "krieg": "afghan", "jahr": 1982, "datum": "1980–1985", "name": "Das Pandschschir-Tal",
+      "ort": [69.8, 35.4], "wo": "Hindukusch", "rang": 3, "sieger": "Mudschahedin",
+      "text": "Neun sowjetische Offensiven in ein einziges Tal, keine hält. Ahmad Schah Massoud verteidigt es mit ein paar tausend Mann – gegen eine Armee, die dreißig Kilometer entfernt Kabul kontrolliert.",
+      "wiki": "Pandschschir-Tal" },
+
+    { "id": "basra", "krieg": "iranirak", "jahr": 1987, "datum": "Januar–Februar 1987", "name": "Vor Basra",
+      "ort": [47.8, 30.5], "wo": "Südirak, Sumpfland", "rang": 3, "sieger": "Irak",
+      "text": "Iranische Angriffswellen laufen gegen ein System aus Wassergräben, Minen und Betonstellungen. Zehntausende Tote in wenigen Wochen, viele davon sehr junge Freiwillige. Die Front bewegt sich um wenige Kilometer.",
+      "wiki": "Erster Golfkrieg" },
+
+    { "id": "vukovar", "krieg": "jugoslawien", "jahr": 1991, "datum": "August–November 1991", "name": "Vukovar",
+      "ort": [19, 45.35], "wo": "Ostkroatien", "rang": 3, "sieger": "Serbien und die Bundesrepublik Jugoslawien",
+      "text": "Achtzig Tage Beschuss auf eine Stadt an der Donau, bis nichts mehr steht. Die Bilder der Ruinen sind die ersten, die Westeuropa begreifen lassen, dass hier wirklich Krieg ist.",
+      "wiki": "Schlacht um Vukovar" },
+
+    { "id": "sarajevo", "krieg": "jugoslawien", "jahr": 1993, "datum": "1992–1996", "name": "Die Belagerung von Sarajevo",
+      "ort": [18.41, 43.86], "wo": "Bosnien", "rang": 2, "sieger": "Kroatien, Bosnien und die NATO",
+      "text": "1425 Tage – die längste Belagerung einer Hauptstadt in der modernen Kriegsgeschichte. Eine Stadt, die acht Jahre zuvor Olympische Spiele ausgerichtet hatte, lebt vier Jahre lang unter Scharfschützen und Granatwerfern.",
+      "wiki": "Belagerung von Sarajevo" },
+
+    { "id": "kigali", "krieg": "ruanda", "jahr": 1994, "datum": "April–Juli 1994", "name": "Kigali",
+      "ort": [30.06, -1.94], "wo": "Ruanda", "rang": 1, "sieger": "Ruandische Patriotische Front",
+      "text": "Hundert Tage, in denen der Rundfunk Listen mit Namen verliest und Straßensperren zu Hinrichtungsstätten werden. Die RPF nimmt die Hauptstadt im Juli und beendet das Morden – ohne fremde Hilfe.",
+      "wiki": "Völkermord in Ruanda" },
+
+    { "id": "srebrenica", "krieg": "jugoslawien", "jahr": 1995, "datum": "11.–22. Juli 1995", "name": "Srebrenica",
+      "ort": [19.3, 44.1], "wo": "Ostbosnien", "rang": 1, "sieger": "Serbien und die Bundesrepublik Jugoslawien",
+      "text": "Eine von den Vereinten Nationen erklärte Schutzzone wird überrannt; über achttausend Männer und Jungen werden ermordet. Internationale Gerichte haben es als Völkermord eingestuft – der erste in Europa seit 1945.",
+      "wiki": "Massaker von Srebrenica" },
+
+    { "id": "bagdad2003", "krieg": "irak2003", "jahr": 2003, "datum": "April 2003", "name": "Der Fall von Bagdad",
+      "ort": [44.36, 33.31], "wo": "Irak", "rang": 2, "sieger": "Die Koalition",
+      "text": "Drei Wochen von der Grenze bis zur Hauptstadt. Der gestürzte Standbild-Sockel geht um die Welt; was danach kommt – Plünderung, Auflösung von Armee und Verwaltung, acht Jahre Aufstand – war nicht geplant.",
+      "wiki": "Irakkrieg" },
+
+    { "id": "krim2014", "krieg": "ukraine", "jahr": 2014, "datum": "Februar–März 2014", "name": "Die Annexion der Krim",
+      "ort": [34.1, 44.95], "wo": "Krim", "rang": 2, "sieger": "Russland",
+      "text": "Soldaten ohne Hoheitsabzeichen besetzen Flughäfen und Parlament; ein Referendum unter ihrer Aufsicht ergibt 97 Prozent. Die erste gewaltsame Grenzverschiebung in Europa seit 1945.",
+      "wiki": "Annexion der Krim" },
+
+    { "id": "aleppo", "krieg": "syrien", "jahr": 2016, "datum": "2012–2016", "name": "Aleppo",
+      "ort": [37.16, 36.2], "wo": "Nordsyrien", "rang": 2, "sieger": "Regierung, Russland und Iran",
+      "text": "Vier Jahre Kampf um die größte Stadt des Landes, mit Fassbomben und Tunneln. Die Altstadt, seit dem Mittelalter Weltkulturerbe, ist danach zu großen Teilen zerstört.",
+      "wiki": "Schlacht um Aleppo" },
+
+    { "id": "kyjiw2022", "krieg": "ukraine", "jahr": 2022, "datum": "Februar–April 2022", "name": "Die Schlacht um Kyjiw",
+      "ort": [30.5, 50.45], "wo": "Nordukraine", "rang": 1, "sieger": "Ukraine",
+      "text": "Eine Kolonne von sechzig Kilometern Länge steht auf einer Straße und kommt nicht weiter, weil ihr der Sprit und die Sicherung fehlen. Nach fünf Wochen zieht sich die Angriffsgruppe zurück; der Plan eines schnellen Umsturzes ist gescheitert.",
+      "wiki": "Schlacht um Kiew (2022)" },
+
+    { "id": "bachmut", "krieg": "ukraine", "jahr": 2023, "datum": "August 2022 – Mai 2023", "name": "Bachmut",
+      "ort": [38, 48.6], "wo": "Donbass", "rang": 2, "sieger": "Russland",
+      "text": "Zehn Monate um eine Stadt von siebzigtausend Einwohnern, in einem Gelände aus Gräben und zerschossenen Baumreihen, das Beobachter an die Somme erinnert. Beide Seiten verlieren Zehntausende.",
+      "wiki": "Schlacht um Bachmut" }
+  ]
+}
