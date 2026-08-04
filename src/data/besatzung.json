@@ -1,0 +1,152 @@
+{
+  "_hinweis": [
+    "Besetzte Gebiete außerhalb der beiden Weltkriege.",
+    "",
+    "Der Ursprungsdatensatz kennt nur völkerrechtliche Zugehörigkeit. Wer 1800",
+    "auf die Karte sah, fand die Batavische und die Helvetische Republik als",
+    "gewöhnliche Staaten neben Frankreich – obwohl beide von französischen",
+    "Truppen errichtet und besetzt gehalten wurden. Und 1945 stand dort",
+    "„Germany (USA)“ neben „Germany (Soviet)“: vier Zonen als vier Länder in",
+    "vier Farben, als wäre Deutschland zerfallen statt besetzt.",
+    "",
+    "Diese Datei trägt die Besatzung dort nach, wo es sie gab. Sie benutzt",
+    "denselben Aufbau wie wwi.json und wwii.json:",
+    "",
+    "  zonen        NAME wird ersetzt UND OCCUPIER gesetzt, in einem Zug –",
+    "               für Zonen, die der Datensatz schon als eigene Länder führt",
+    "  besetzt      NAME bleibt, OCCUPIER kommt hinzu (ganzes Land)",
+    "  teilungen    Das Land wird an einer Linie zerschnitten",
+    "",
+    "Jedes Jahr nennt sich selbst als Grundlage: Der Zeitschnitt ersetzt den",
+    "gleichnamigen des Ursprungsdatensatzes, statt einen neuen hinzuzufügen.",
+    "",
+    "Zur Wortwahl: „besetzt“ meint hier durchweg fremde Militärkontrolle über",
+    "ein Gebiet, das nicht dem Besatzer gehört. Die napoleonischen",
+    "Tochterrepubliken waren formal souverän und hatten eigene Verfassungen –",
+    "und französische Garnisonen, eine französisch bestimmte Außenpolitik und",
+    "eine Regierung, die Paris einsetzte und absetzte. Die Schraffur sagt",
+    "genau das: Hier bestimmt jemand anderes.",
+    "",
+    "Was hier bewusst NICHT steht: Kolonien und Mandate. Sie sind fremde",
+    "Herrschaft, aber anderer Art, und der Atlas zeigt sie schon – über die",
+    "Einfärbung nach Oberhoheit. Beides in dieselbe Schraffur zu werfen würde",
+    "einen Unterschied einebnen, auf den es ankommt."
+  ],
+
+  "basis": 1800,
+
+  "gebiete": {
+    "aegypten-1798": {
+      "_was": "Ägypten unter französischer Besatzung 1798–1801. Bonaparte landete im Juli 1798 bei Alexandria; nach der Vernichtung seiner Flotte bei Abukir saß das Heer fest und kapitulierte 1801 vor den Briten. Die Linie folgt der heutigen Grenze Ägyptens, weil die osmanische Provinzgrenze nach Süden ohnehin unscharf war.",
+      "ring": [[24.7, 31.5], [27.0, 31.4], [29.8, 31.5], [31.8, 31.6], [34.2, 31.3], [34.9, 29.5], [34.3, 27.7], [35.7, 23.0], [36.9, 22.0], [24.0, 22.0], [24.0, 29.5], [24.7, 31.5]]
+    },
+    "frankreich-besatzungszone-1815": {
+      "_was": "Die siebzehn nordöstlichen Departements, in denen nach Waterloo bis 1818 eine alliierte Besatzungsarmee von 150.000 Mann unter Wellington stand – Briten, Preußen, Österreicher, Russen und weitere. Frankreich bezahlte sie, bis die Kriegsentschädigung getilgt war. Paris liegt bewusst außerhalb: Die Alliierten standen dort nur von Juli bis November 1815 und zogen sich danach auf die Grenzdepartements zurück. Angeschrieben ist Großbritannien, weil Wellington den Oberbefehl führte; es war ein gemeinsames Heer.",
+      "ring": [[2.55, 51.15], [4.3, 50.4], [5.9, 49.5], [7.7, 49.1], [7.6, 47.6], [6.4, 46.3], [5.5, 46.9], [4.6, 47.6], [3.6, 48.4], [3.0, 49.3], [2.2, 50.2], [2.55, 51.15]]
+    },
+    "rheinland-1920": {
+      "_was": "Das besetzte Rheinland 1918–1930: das gesamte linke Rheinufer und drei Brückenköpfe von je 30 km Halbmesser bei Köln (britisch), Koblenz (amerikanisch) und Mainz (französisch). 1923 kam die Ruhrbesetzung hinzu. Angeschrieben ist Frankreich, das die meisten Truppen stellte und die Zone bis zuletzt hielt.",
+      "ring": [[5.85, 51.9], [6.35, 51.85], [7.45, 51.15], [7.35, 50.55], [7.9, 50.45], [8.65, 50.1], [8.55, 49.5], [8.2, 49.0], [7.6, 49.05], [6.35, 49.47], [6.1, 50.15], [5.85, 51.9]]
+    },
+    "smyrna-1920": {
+      "_was": "Die griechische Besatzungszone um Smyrna (İzmir), Mai 1919 bis September 1922. Der Ursprungsdatensatz zeichnet sie als griechisches Staatsgebiet; das war sie nie. Der Vertrag von Sèvres stellte sie für fünf Jahre unter griechische Verwaltung, die Oberhoheit blieb osmanisch, und danach sollte eine Volksabstimmung folgen. Stattdessen kam der türkische Befreiungskrieg.",
+      "ring": [[26.4, 39.4], [27.6, 39.3], [28.5, 38.9], [28.7, 38.1], [27.9, 37.6], [26.9, 37.6], [26.5, 38.4], [26.4, 39.4]]
+    },
+    "oesterreich-sowjetzone": {
+      "_was": "Sowjetische Besatzungszone in Österreich 1945–1955: Niederösterreich, Burgenland und das Mühlviertel nördlich der Donau. Wien lag darin und war selbst in vier Sektoren geteilt.",
+      "ring": [[14.45, 49.1], [17.4, 49.1], [17.4, 47.35], [16.05, 47.4], [15.85, 48.0], [14.45, 48.25], [14.45, 49.1]]
+    },
+    "oesterreich-britischezone": {
+      "_was": "Britische Besatzungszone in Österreich 1945–1955: Steiermark, Kärnten und Osttirol.",
+      "ring": [[12.4, 47.2], [13.2, 47.05], [14.5, 47.5], [16.1, 47.4], [16.3, 46.3], [12.4, 46.3], [12.4, 47.2]]
+    },
+    "oesterreich-franzoesischezone": {
+      "_was": "Französische Besatzungszone in Österreich 1945–1955: Tirol und Vorarlberg.",
+      "ring": [[9.4, 47.7], [11.2, 47.8], [12.4, 47.75], [12.4, 46.9], [10.4, 46.6], [9.4, 46.8], [9.4, 47.7]]
+    }
+  },
+
+  "jahre": [
+    {
+      "year": 1800,
+      "basis": 1800,
+      "stand": "1800",
+      "titel": "Napoleonische Umwälzung",
+      "_warum": "Der Ursprungsdatensatz zeichnet die Batavische und die Helvetische Republik sowie die oberitalienischen Kleinstaaten als gewöhnliche souveräne Staaten. Alle standen unter französischer Militärkontrolle: Frankreich hatte sie errichtet oder erobert, hielt Garnisonen im Land, bestimmte ihre Außenpolitik und setzte ihre Regierungen ein. Venetien war seit Campo Formio (1797) österreichisch besetzt. Ägypten hielt ein französisches Heer von 1798 bis 1801.",
+      "besetzt": {
+        "Batavian Republic": "France",
+        "Helvetic Republic": "France",
+        "Parma": "France",
+        "Modena": "France",
+        "Lucca": "France",
+        "Tuscany": "France",
+        "Venetia": "Austrian Empire"
+      },
+      "teilungen": [
+        {
+          "land": "Ottoman Empire",
+          "gebiet": "aegypten-1798",
+          "innen": { "name": "Egypt", "besetzer": "France" }
+        }
+      ]
+    },
+    {
+      "year": 1815,
+      "basis": 1815,
+      "stand": "1815",
+      "titel": "Wiener Kongress",
+      "_warum": "Nach Waterloo stand bis 1818 eine alliierte Besatzungsarmee in den nordöstlichen Departements Frankreichs – das größte Besatzungsregime des 19. Jahrhunderts in Europa und im Ursprungsdatensatz nicht zu sehen, weil er nur Staatszugehörigkeit kennt.",
+      "teilungen": [
+        {
+          "land": "France",
+          "gebiet": "frankreich-besatzungszone-1815",
+          "innen": { "besetzer": "United Kingdom of Great Britain and Ireland" }
+        }
+      ]
+    },
+    {
+      "year": 1920,
+      "basis": 1920,
+      "stand": "1920",
+      "titel": "Nach dem Krieg: Versailles und die neuen Staaten",
+      "_warum": "Zwei Besatzungen bestimmten die Nachkriegsjahre und fehlten auf der Karte: das Rheinland bis 1930 und die griechische Zone um Smyrna bis 1922. Konstantinopel und die Meerengen waren bis 1923 ebenfalls besetzt; der Ursprungsdatensatz führt Ostthrakien und die Nordwesttürkei 1920 aber ganz ohne Staatsnamen, sodass dort schon vor diesem Schritt eine Lücke klafft, an der nichts zu färben ist.",
+      "teilungen": [
+        { "land": "Germany", "gebiet": "rheinland-1920", "innen": { "besetzer": "France" } },
+        {
+          "land": "Greece",
+          "gebiet": "smyrna-1920",
+          "innen": { "name": "Ottoman Sultanate", "besetzer": "Greece" }
+        }
+      ]
+    },
+    {
+      "year": 1945,
+      "basis": 1945,
+      "stand": "Ende 1945",
+      "titel": "Stunde Null: die Welt nach dem Krieg",
+      "_warum": "Der Ursprungsdatensatz führt die Besatzungszonen als eigene Staaten – „Germany (USA)“ neben „Germany (Soviet)“, vier Zonen in vier Farben. Deutschland war 1945 aber nicht in vier Länder zerfallen, sondern ein besetztes Land mit vier Besatzungsmächten. Dasselbe gilt für Japan, Korea und die Mandschurei. Österreich war ebenfalls in vier Zonen geteilt; der Datensatz führt es als einen Staat, deshalb hier die Aufteilung an den Landesgrenzen.",
+      "zonen": {
+        "Germany (USA)": { "name": "Germany", "besetzer": "United States" },
+        "Germany (UK)": { "name": "Germany", "besetzer": "United Kingdom" },
+        "Germany (France)": { "name": "Germany", "besetzer": "France" },
+        "Germany (Soviet)": { "name": "Germany", "besetzer": "USSR" },
+        "Japan (USA)": { "name": "Japan", "besetzer": "United States" },
+        "Korea (USA)": { "name": "Korea", "besetzer": "United States" },
+        "Korea (USSR)": { "name": "Korea", "besetzer": "USSR" }
+      },
+      "besetzt": {
+        "Manchuria": "USSR"
+      },
+      "teilungen": [
+        { "land": "Austria", "gebiet": "oesterreich-sowjetzone", "innen": { "besetzer": "USSR" } },
+        { "land": "Austria", "gebiet": "oesterreich-britischezone", "innen": { "besetzer": "United Kingdom" } },
+        {
+          "land": "Austria",
+          "gebiet": "oesterreich-franzoesischezone",
+          "innen": { "besetzer": "France" },
+          "aussen": { "besetzer": "United States" }
+        }
+      ]
+    }
+  ]
+}

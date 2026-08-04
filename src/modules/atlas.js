@@ -1117,12 +1117,33 @@ export class AtlasMap {
     }
     candidates.sort((a, b) => (b.pa ?? 0) - (a.pa ?? 0));
 
+    /*
+     * Höchstens zwei Beschriftungen je Gemeinwesen – und die zweite nur, wenn
+     * sie weit genug weg steht.
+     *
+     * Ein Gemeinwesen kann aus mehreren Teilstücken bestehen, und manchmal
+     * gehört an jedes ein Name: Russland reicht über die Datumsgrenze, das
+     * Vereinigte Königreich hat Übersee. Seit die Karte Besatzung zeigt, ist
+     * aber der häufigere Fall ein anderer: Ein Land ist an einer Frontlinie
+     * zerschnitten, und die Stücke liegen nebeneinander. Österreich 1945
+     * bekam so zweimal „Österreich“ übereinander, keine zwei Handbreit
+     * auseinander.
+     *
+     * Zehn Grad Abstand trennt die beiden Fälle sauber: Besatzungszonen
+     * liegen darunter, Übersee darüber.
+     */
     const perName = new Map();
     const items = [];
     for (const p of candidates) {
-      const used = perName.get(p.n) ?? 0;
-      if (used >= 2) continue;
-      perName.set(p.n, used + 1);
+      const schon = perName.get(p.n);
+      if (schon) {
+        if (schon.length >= 2) continue;
+        const [x, y] = schon[0];
+        if (Math.abs(p.c[0] - x) < 10 && Math.abs(p.c[1] - y) < 10) continue;
+        schon.push(p.c);
+      } else {
+        perName.set(p.n, [p.c]);
+      }
       items.push({
         key: p.n,
         text: this._labelName ? this._labelName(p.n) : p.n,

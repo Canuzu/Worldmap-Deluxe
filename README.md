@@ -26,7 +26,7 @@ Religion, Bevölkerung, Wirtschaft, Wendepunkte und Nachbarn.
 | **Herrscher zum Jahr** | 1.182 Regierungszeiten in 86 Gemeinwesen: Wer 1530 wählt, sieht Süleyman, wer 1900 wählt, Abdülhamid II. Die Regierungsfolge darunter ist anklickbar und nimmt die Karte mit |
 | **Ereignisse auf der Karte** | 174 Verträge, Gründungen, Fahrten, Seuchen, Werke und Umbrüche – eingetragen dort, wo sie geschahen. Gezeigt wird, was in die Zeitspanne des jeweiligen Kartenstands fällt; Entdeckungsfahrten laufen als Route mit |
 | **Nachbarn** | aus der Kartentopologie berechnet und anklickbar: eine Region lässt sich Nachbar für Nachbar erwandern |
-| **Besetzte Gebiete** | 1916/1918, 1940–1944 und 1960–2026: besetztes Land behält seine Farbe und trägt darüber eine Schraffur in der Farbe der Besatzungsmacht |
+| **Besetzte Gebiete** | 1800, 1815, 1916/1918, 1920, 1940–1945 und 1960–2026: besetztes Land behält seine Farbe und trägt darüber eine Schraffur in der Farbe der Besatzungsmacht – von den napoleonischen Tochterrepubliken über die vier Zonen von 1945 bis zur Krim |
 | **Eiszeitliche Küstenlinie** | für die Zeitschnitte vor 10.000 v. Chr.: Doggerland, Beringia und Sundaland liegen trocken, so wie sie es waren |
 | **Landschaftsnamen** | Gebirge, Wüsten, Hochebenen – sie erklären, warum Grenzen verlaufen, wie sie verlaufen |
 | **Kartengrundlage** | wahlweise Relief- oder physische Geländekarte unter den historischen Grenzen – bewusst ohne heutige Straßen, Städte oder Staatsgrenzen. Abschaltbar; ohne sie zeichnet der Atlas wie zuvor alles selbst |
@@ -285,7 +285,7 @@ Stelle des Landes – dort ist genau das die Frage.
 
 Die Linien sind von Hand gezogen und auf kontinentalen Maßstab ausgelegt;
 einzelne Brückenköpfe und Kessel lösen sie nicht auf. Damit sie nicht
-unbemerkt verrutschen, prüft `npm run check:besatzung` 448 Stichproben gegen
+unbemerkt verrutschen, prüft `npm run check:besatzung` 483 Stichproben gegen
 bekannte Daten – darunter die Orte, die trotz Belagerung nie gefallen sind:
 
 ```
@@ -294,6 +294,63 @@ Stalingrad    frei  frei  Ger.  frei  frei   nur im Herbst 1942
 Sewastopol    frei  frei  Ger.  Ger.  frei   hielt bis Juli 1942
 Paris         Ger.  Ger.  Ger.  Ger.  frei   befreit August 1944
 ```
+
+### Besetzung gibt es nicht nur im Weltkrieg
+
+Die Schraffur gab es zuerst nur dort, wo sie am offensichtlichsten fehlte: in
+den beiden Weltkriegen. Das führte zu einem schiefen Bild. Wer 1942 einstellte,
+sah ein besetztes Europa; wer auf 1800 sprang, sah die Batavische und die
+Helvetische Republik als gewöhnliche souveräne Staaten neben Frankreich –
+obwohl beide von französischen Truppen errichtet, besetzt gehalten und von
+Paris aus regiert wurden. Und 1945 stand auf der Karte „Germany (USA)“ neben
+„Germany (Soviet)“: vier Zonen als vier Länder in vier Farben, als wäre
+Deutschland zerfallen statt besetzt.
+
+`src/data/besatzung.json` trägt das nach, mit demselben Mechanismus und einem
+zusätzlichen Schlüssel:
+
+| | |
+|---|---|
+| `zonen` | Für Besatzungszonen, die der Ursprungsdatensatz schon als eigene Länder führt: Name ersetzen und Besetzer setzen in einem Zug – nach dem Umbenennen hießen alle vier gleich und ließen sich nicht mehr auseinanderhalten |
+
+Vier Zeitschnitte kommen dadurch hinzu, jeder ersetzt den gleichnamigen des
+Ursprungsdatensatzes:
+
+- **1800** – die napoleonische Tochterrepublik-Kette: Batavische und
+  Helvetische Republik, Toskana, Modena, Parma und Lucca unter französischer
+  Militärkontrolle, Venetien seit Campo Formio österreichisch, Ägypten von
+  1798 bis 1801 in französischer Hand.
+- **1815** – die alliierte Besatzungsarmee in den siebzehn nordöstlichen
+  Departements Frankreichs, 150.000 Mann unter Wellington bis 1818. Paris
+  liegt bewusst außerhalb: Dort standen die Alliierten nur bis November 1815.
+- **1920** – das besetzte Rheinland bis 1930 und die griechische Zone um
+  Smyrna bis 1922. Letztere zeichnete der Ursprungsdatensatz als griechisches
+  Staatsgebiet; das war sie nie.
+- **1945** – Deutschland und Österreich in je vier Zonen, Japan und Südkorea
+  unter amerikanischer, Nordkorea und die Mandschurei unter sowjetischer
+  Besatzung.
+
+**Zur Wortwahl.** „Besetzt“ meint hier durchweg fremde Militärkontrolle über
+ein Gebiet, das nicht dem Besatzer gehört. Die napoleonischen
+Tochterrepubliken waren formal souverän und hatten eigene Verfassungen – und
+französische Garnisonen, eine französisch bestimmte Außenpolitik und eine
+Regierung, die Paris einsetzte und absetzte. Die Schraffur sagt genau das:
+Hier bestimmt jemand anderes.
+
+**Was bewusst nicht dazugehört:** Kolonien und Mandate. Sie sind fremde
+Herrschaft, aber anderer Art, und der Atlas zeigt sie schon – über die
+Einfärbung nach Oberhoheit. Beides in dieselbe Schraffur zu werfen würde einen
+Unterschied einebnen, auf den es ankommt.
+
+**Ein Nebenbefund.** Im Jahr eines Thronwechsels passen zwei Namen: Ludwig XIV.
+regiert bis 1715, Ludwig XV. ab 1715, und beide Zeilen enthalten das Jahr. Die
+Detailtafel zeigte bisher den ersten Treffer, also den Vorgänger. Jeder
+Zeitschnitt beschreibt aber den Stand am Ende des Jahres – die Karte von 1715
+ist die nach Ludwigs Tod im September. Über alle 62 Zeitschnitte trifft das
+49 Mal zu, und in jedem einzelnen Fall ist der spätere der richtige: 1900
+Viktor Emanuel III. statt des im Juli erschossenen Umberto, 1916 Karl I. statt
+des im November gestorbenen Franz Joseph, 1945 der Alliierte Kontrollrat statt
+Hitler.
 
 ### Von 2010 bis heute
 

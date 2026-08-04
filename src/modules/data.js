@@ -381,7 +381,19 @@ export function herrscherZu(period, year) {
           ausListe: false }
       : null;
   }
-  const genau = liste.find((r) => (r.from ?? -Infinity) <= year && year <= (r.to ?? Infinity));
+  /*
+   * Im Jahr eines Thronwechsels passen zwei Namen.
+   *
+   * Ludwig XIV. regiert bis 1715, Ludwig XV. ab 1715; beide Zeilen enthalten
+   * das Jahr. Gezeigt wird der spätere, denn jeder Zeitschnitt beschreibt den
+   * Stand am Ende des Jahres – die Karte von 1715 ist die nach Ludwigs Tod im
+   * September. Über alle 62 Zeitschnitte trifft das 49 Mal zu, und in jedem
+   * einzelnen Fall ist der spätere der richtige: 1900 Viktor Emanuel III.
+   * statt des im Juli erschossenen Umberto, 1916 Karl I. statt des im
+   * November gestorbenen Franz Joseph, 1945 der Alliierte Kontrollrat statt
+   * Hitler.
+   */
+  const genau = liste.findLast((r) => (r.from ?? -Infinity) <= year && year <= (r.to ?? Infinity));
   // Liegt das Jahr in einer Lücke – Thronvakanz, Bürgerkrieg, oder schlicht ein
   // Abschnitt, für den die Liste nur eine Auswahl führt –, wird der zuletzt
   // Regierende gezeigt und als solcher gekennzeichnet. Lieber „zuletzt regierte“

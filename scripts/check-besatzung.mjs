@@ -125,6 +125,60 @@ const GEGENWARTSPROBEN = [
   ['Tiberias', [35.53, 32.79], ['Israel', 'Israel', 'Israel', 'Israel'], 'israelisch, westlich des Golan'],
 ];
 
+/**
+ * Besetzte Gebiete außerhalb der Weltkriege – aus src/data/besatzung.json.
+ *
+ * [Jahr, Ort, [Länge, Breite], "Name" oder "Name<Besatzer>", Beleg]
+ *
+ * Getrennt von der Tabelle oben, weil jedes dieser Jahre für sich steht:
+ * Zwischen 1800 und 1945 liegt kein durchgehender Frontverlauf, den man
+ * spaltenweise vergleichen könnte.
+ */
+const SONSTIGE = [
+  // 1800 – die napoleonische Tochterrepublik-Kette
+  [1800, 'Amsterdam', [4.90, 52.37], 'Batavian Republic<France>', 'Batavische Republik, 1795 von Frankreich errichtet'],
+  [1800, 'Bern', [7.45, 46.95], 'Helvetic Republic<France>', 'Helvetische Republik, 1798 von Frankreich errichtet'],
+  [1800, 'Florenz', [11.26, 43.77], 'Tuscany<France>', 'Toskana unter französischer Kontrolle'],
+  [1800, 'Herzogtum Parma', [9.80, 44.70], 'Parma<France>', '1802 von Frankreich einverleibt'],
+  [1800, 'Lucca', [10.50, 43.84], 'Lucca<France>', 'französische Tochterrepublik ab 1799'],
+  [1800, 'Venedig', [12.34, 45.44], 'Venetia<Austrian Empire>', 'seit Campo Formio 1797 österreichisch'],
+  [1800, 'Kairo', [31.24, 30.04], 'Egypt<France>', 'französische Besatzung 1798–1801'],
+  [1800, 'Damaskus', [36.29, 33.51], 'Ottoman Empire', 'osmanisch, außerhalb der ägyptischen Zone'],
+  [1800, 'Paris', [2.35, 48.86], 'France', 'Frankreich selbst ist nicht besetzt'],
+  [1800, 'Madrid', [-3.70, 40.42], 'Spain', 'Spanien war Verbündeter, nicht besetzt'],
+
+  // 1815 – die alliierte Besatzungsarmee in Nordostfrankreich
+  [1815, 'Metz', [6.18, 49.12], 'France<United Kingdom of Great Britain and Ireland>', 'Grenzdepartement, bis 1818 besetzt'],
+  [1815, 'Reims', [4.03, 49.26], 'France<United Kingdom of Great Britain and Ireland>', 'Champagne, im Besatzungsgebiet'],
+  [1815, 'Lille', [3.06, 50.63], 'France<United Kingdom of Great Britain and Ireland>', 'Nordfrankreich, im Besatzungsgebiet'],
+  [1815, 'Paris', [2.35, 48.86], 'France', 'die Alliierten zogen im November 1815 ab'],
+  [1815, 'Bordeaux', [-0.58, 44.84], 'France', 'Südwesten, nie besetzt'],
+  [1815, 'Marseille', [5.37, 43.30], 'France', 'Süden, nie besetzt'],
+
+  // 1920 – Rheinland und Smyrna
+  [1920, 'Köln', [6.96, 50.94], 'Germany<France>', 'britischer Brückenkopf im besetzten Rheinland'],
+  [1920, 'Trier', [6.64, 49.76], 'Germany<France>', 'linkes Rheinufer'],
+  [1920, 'Mainz', [8.27, 50.00], 'Germany<France>', 'französischer Brückenkopf'],
+  [1920, 'Frankfurt', [8.68, 50.11], 'Germany', 'rechtsrheinisch, außerhalb der Brückenköpfe'],
+  [1920, 'Berlin', [13.40, 52.52], 'Germany', 'unbesetzt'],
+  [1920, 'Izmir', [27.14, 38.42], 'Ottoman Sultanate<Greece>', 'griechische Besatzungszone 1919–1922'],
+  [1920, 'Athen', [23.73, 37.98], 'Greece', 'Griechenland selbst'],
+
+  // 1945 – die vier Zonen
+  [1945, 'München', [11.58, 48.14], 'Germany<United States>', 'amerikanische Zone'],
+  [1945, 'Hamburg', [10.00, 53.55], 'Germany<United Kingdom>', 'britische Zone'],
+  [1945, 'Freiburg', [7.85, 47.99], 'Germany<France>', 'französische Zone'],
+  [1945, 'Leipzig', [12.37, 51.34], 'Germany<USSR>', 'sowjetische Zone'],
+  [1945, 'Wien', [16.37, 48.21], 'Austria<USSR>', 'Wien lag in der sowjetischen Zone'],
+  [1945, 'Innsbruck', [11.40, 47.27], 'Austria<France>', 'Tirol war französisch besetzt'],
+  [1945, 'Graz', [15.44, 47.07], 'Austria<United Kingdom>', 'Steiermark war britisch besetzt'],
+  [1945, 'Salzburg', [13.05, 47.81], 'Austria<United States>', 'Salzburg war amerikanisch besetzt'],
+  [1945, 'Tokio', [139.69, 35.69], 'Japan<United States>', 'amerikanische Besatzung bis 1952'],
+  [1945, 'Seoul', [126.98, 37.57], 'Korea<United States>', 'südlich des 38. Breitengrads'],
+  [1945, 'Pjöngjang', [125.75, 39.02], 'Korea<USSR>', 'nördlich des 38. Breitengrads'],
+  [1945, 'Zürich', [8.54, 47.38], 'Switzerland', 'die Schweiz war nie besetzt'],
+];
+
 /** Zusätzlich für 1960, als das Westjordanland jordanisch und Gaza ägyptisch war. */
 const JAHR1960 = [
   ['Ramallah', [35.21, 31.90], 'Jordan', 'Westjordanland – 1950 von Jordanien annektiert'],
@@ -171,7 +225,7 @@ function lageAt(collection, point) {
 }
 
 const daten = new Map();
-for (const jahr of [...JAHRE, ...GEGENWART, 1960]) {
+for (const jahr of [...new Set([...JAHRE, ...GEGENWART, 1960, ...SONSTIGE.map((z) => z[0])])]) {
   const file = path.join(DIR, `world_${jahr}.geojson`);
   if (!fs.existsSync(file)) {
     console.error(`Abgeleitete Jahre fehlen – bitte zuerst \`npm run build:krieg\` ausführen.`);
@@ -214,8 +268,19 @@ for (const [ort, punkt, erwartet, beleg] of JAHR1960) {
   console.log(`${ort.padEnd(16)}${`${gut ? '✓' : '✗'} ${ist}`.padStart(26)}   ${beleg}`);
 }
 
+console.log('\nBesetzte Gebiete außerhalb der Weltkriege:');
+let letztesJahr = null;
+for (const [jahr, ort, punkt, erwartet, beleg] of SONSTIGE) {
+  if (jahr !== letztesJahr) { console.log(`  ${jahr}`); letztesJahr = jahr; }
+  const ist = lageAt(daten.get(jahr), punkt);
+  const gut = ist === erwartet;
+  if (!gut) fehler++;
+  console.log(`    ${ort.padEnd(14)}${`${gut ? '✓' : '✗'} ${ist}`.padStart(46)}   ${beleg}`);
+}
+
 const gesamt = PROBEN.length * JAHRE.length
   + GEGENWARTSPROBEN.length * GEGENWART.length
-  + JAHR1960.length;
+  + JAHR1960.length
+  + SONSTIGE.length;
 console.log(`\n${gesamt - fehler}/${gesamt} Stichproben stimmen.`);
 process.exit(fehler ? 1 : 0);

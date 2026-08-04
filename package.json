@@ -8,7 +8,7 @@
     "preview": "vite preview",
     "fetch:data": "node scripts/fetch-sources.mjs",
     "build:krieg": "node scripts/build-fronts.mjs",
-    "build:data": "node scripts/build-data.mjs",
+    "build:data": "node scripts/build-data.mjs && node scripts/thin-coast.mjs",
     "build:knowledge": "node scripts/build-knowledge.mjs",
     "build:kueste": "node scripts/thin-coast.mjs",
     "format:rulers": "node scripts/format-rulers.mjs",

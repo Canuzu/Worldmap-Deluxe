@@ -1,5 +1,5 @@
 {
- "generated": "2026-07-29",
+ "generated": "2026-08-04",
  "source": {
   "name": "Historical Basemaps",
   "author": "André Ourednik u. a.",
@@ -678,13 +678,15 @@
    "label": "1800 n. Chr.",
    "title": "Napoleonische Umwälzung",
    "era": "revolution",
-   "polities": 546,
-   "features": 558,
-   "bytes": 513848,
+   "polities": 547,
+   "features": 559,
+   "bytes": 514928,
+   "stand": "1800",
+   "besatzung": true,
    "korrigiert": {
     "umbenannt": 1,
     "ergaenzt": 0,
-    "begruendung": "Songhai fiel 1591 an Marokko; im Nigerbogen bestand der Nachfolgestaat Dendi bis 1901."
+    "begruendung": "Songhai fiel 1591 an Marokko; im Nigerbogen bestand der Nachfolgestaat Dendi bis 1901. Der Ursprungsdatensatz zeichnet die Batavische und die Helvetische Republik sowie die oberitalienischen Kleinstaaten als gewöhnliche souveräne Staaten. Alle standen unter französischer Militärkontrolle: Frankreich hatte sie errichtet oder erobert, hielt Garnisonen im Land, bestimmte ihre Außenpolitik und setzte ihre Regierungen ein. Venetien war seit Campo Formio (1797) österreichisch besetzt. Ägypten hielt ein französisches Heer von 1798 bis 1801."
    }
   },
   {
@@ -695,12 +697,14 @@
    "title": "Wiener Kongress",
    "era": "revolution",
    "polities": 312,
-   "features": 327,
-   "bytes": 489016,
+   "features": 328,
+   "bytes": 490566,
+   "stand": "1815",
+   "besatzung": true,
    "korrigiert": {
     "umbenannt": 1,
     "ergaenzt": 0,
-    "begruendung": "Kanada entstand als Dominion erst 1867. 1815 bestanden dort britische Kolonien, zusammengefasst als Britisch-Nordamerika."
+    "begruendung": "Kanada entstand als Dominion erst 1867. 1815 bestanden dort britische Kolonien, zusammengefasst als Britisch-Nordamerika. Nach Waterloo stand bis 1818 eine alliierte Besatzungsarmee in den nordöstlichen Departements Frankreichs – das größte Besatzungsregime des 19. Jahrhunderts in Europa und im Ursprungsdatensatz nicht zu sehen, weil er nur Staatszugehörigkeit kennt."
    }
   },
   {
@@ -792,12 +796,14 @@
    "title": "Nach den Pariser Vorortverträgen",
    "era": "worldwars",
    "polities": 163,
-   "features": 165,
-   "bytes": 388583,
+   "features": 167,
+   "bytes": 390904,
+   "stand": "1920",
+   "besatzung": true,
    "korrigiert": {
     "umbenannt": 1,
     "ergaenzt": 0,
-    "begruendung": "Der unabhängige Sudan entstand 1956. 1920 war das Gebiet das gemeinsam von Großbritannien und Ägypten verwaltete Kondominium."
+    "begruendung": "Der unabhängige Sudan entstand 1956. 1920 war das Gebiet das gemeinsam von Großbritannien und Ägypten verwaltete Kondominium. Zwei Besatzungen bestimmten die Nachkriegsjahre und fehlten auf der Karte: das Rheinland bis 1930 und die griechische Zone um Smyrna bis 1922. Konstantinopel und die Meerengen waren bis 1923 ebenfalls besetzt; der Ursprungsdatensatz führt Ostthrakien und die Nordwesttürkei 1920 aber ganz ohne Staatsnamen, sodass dort schon vor diesem Schritt eine Lücke klafft, an der nichts zu färben ist."
    }
   },
   {
@@ -909,13 +915,15 @@
    "label": "1945 n. Chr.",
    "title": "Ende des Zweiten Weltkriegs",
    "era": "worldwars",
-   "polities": 183,
-   "features": 185,
-   "bytes": 363380,
+   "polities": 179,
+   "features": 188,
+   "bytes": 364929,
+   "stand": "Ende 1945",
+   "besatzung": true,
    "korrigiert": {
     "umbenannt": 2,
     "ergaenzt": 0,
-    "begruendung": "Auch 1945 bestand Israel noch nicht; das Gebiet war bis Mai 1948 britisches Mandatsgebiet. Jordanien hieß bis 1949 Transjordanien und wurde erst 1946 unabhängig."
+    "begruendung": "Auch 1945 bestand Israel noch nicht; das Gebiet war bis Mai 1948 britisches Mandatsgebiet. Jordanien hieß bis 1949 Transjordanien und wurde erst 1946 unabhängig. Der Ursprungsdatensatz führt die Besatzungszonen als eigene Staaten – „Germany (USA)“ neben „Germany (Soviet)“, vier Zonen in vier Farben. Deutschland war 1945 aber nicht in vier Länder zerfallen, sondern ein besetztes Land mit vier Besatzungsmächten. Dasselbe gilt für Japan, Korea und die Mandschurei. Österreich war ebenfalls in vier Zonen geteilt; der Datensatz führt es als einen Staat, deshalb hier die Aufteilung an den Landesgrenzen."
    }
   },
   {

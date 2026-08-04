@@ -18,7 +18,12 @@
  * Wattenmeer stehen unverändert. `keep-shapes` sorgt dafür, dass dabei keine
  * Insel verschwindet, auch keine kleine.
  *
- * Aufruf: npm run build:kueste
+ * Läuft am Ende von `npm run build:data` automatisch mit: build-data.mjs
+ * erzeugt die Küstenlinie jedes Mal neu aus Natural Earth und macht die
+ * Ausdünnung damit rückgängig. Das ist einmal passiert und hat die feine
+ * Küste unbemerkt wieder auf 3,7 MB gebracht.
+ *
+ * Aufruf: npm run build:kueste (oder als Teil von npm run build:data)
  */
 import fs from 'node:fs';
 import path from 'node:path';

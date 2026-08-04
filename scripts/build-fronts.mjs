@@ -36,7 +36,12 @@ const ROOT = path.resolve(import.meta.dirname, '..');
 const HIST_DIR = path.join(ROOT, 'data-src/historical');
 const OUT_DIR = path.join(ROOT, 'data-src/derived');
 const MAPSHAPER = path.join(ROOT, 'node_modules/.bin/mapshaper');
-const SPECS = ['src/data/wwi.json', 'src/data/wwii.json', 'src/data/gegenwart.json'];
+const SPECS = [
+  'src/data/besatzung.json',
+  'src/data/wwi.json',
+  'src/data/wwii.json',
+  'src/data/gegenwart.json',
+];
 
 const TMP = fs.mkdtempSync(path.join(os.tmpdir(), 'wmd-krieg-'));
 let counter = 0;
@@ -69,6 +74,28 @@ function renameExpression(map) {
 function occupyExpression(map) {
   return Object.entries(map)
     .map(([land, macht]) => `if (NAME === ${JSON.stringify(land)}) OCCUPIER = ${JSON.stringify(macht)};`)
+    .join(' ');
+}
+
+/**
+ * Besatzungszonen, die der Ursprungsdatensatz schon als eigene Länder führt.
+ *
+ * 1945 stehen dort „Germany (USA)“, „Germany (Soviet)“, „Japan (USA)“ und so
+ * fort – vier Zonen als vier Staaten, jede in einer eigenen Farbe. Das ist
+ * nicht falsch, aber es liest sich, als wäre Deutschland 1945 in vier Länder
+ * zerfallen. Es war ein besetztes Land mit vier Besatzungsmächten, und genau
+ * so soll es aussehen: eine Fläche, schraffiert in der Farbe dessen, der dort
+ * stand.
+ *
+ * Umbenennen und Besetzen muss dabei in einem Zug geschehen – nach dem
+ * Umbenennen heißen alle vier gleich und lassen sich nicht mehr auseinander
+ * halten.
+ */
+function zoneExpression(map) {
+  return Object.entries(map)
+    .map(([von, { name, besetzer }]) => `if (NAME === ${JSON.stringify(von)}) { `
+      + `NAME = ${JSON.stringify(name)}; SUBJECTO = ${JSON.stringify(name)}; PARTOF = ${JSON.stringify(name)}; `
+      + `OCCUPIER = ${JSON.stringify(besetzer)}; }`)
     .join(' ');
 }
 
@@ -142,6 +169,7 @@ function buildYear(spec, gebiete, basisDatei) {
   // existiert – mapshaper würde es sonst je nach Teilmenge mal führen, mal
   // nicht, und die Ebenen ließen sich nicht mehr zusammenlegen.
   const steps = ['OCCUPIER = null;'];
+  if (spec.zonen) steps.push(zoneExpression(spec.zonen));
   if (spec.umbenennen) steps.push(renameExpression(spec.umbenennen));
   if (spec.besetzt) steps.push(occupyExpression(spec.besetzt));
 

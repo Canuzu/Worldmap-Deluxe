@@ -495,7 +495,6 @@
   "Italy": "Italien",
   "Ivory Coast": "Elfenbeinküste",
   "Japan": "Japan",
-  "Japan (USA)": "Japan (US-Besatzung)",
   "Japan (Warring States)": "Japan der Streitenden Reiche",
   "Jin Empire": "Jin-Reich",
   "Jumanos": "Jumano",
@@ -1025,6 +1024,10 @@
   "minor states": "Kleinere Staaten",
   "minor states under Indian influence": "Kleinstaaten im indischen Einflussbereich",
   "state societies and Aramaean kingdoms": "Staatengesellschaften und aramäische Reiche",
-  "Đại Việt": "Đại Việt"
+  "Đại Việt": "Đại Việt",
+  "Batavian Republic": "Batavische Republik",
+  "Helvetic Republic": "Helvetische Republik",
+  "Lucca": "Lucca",
+  "Ottoman Sultanate": "Osmanisches Sultanat"
  }
 }
