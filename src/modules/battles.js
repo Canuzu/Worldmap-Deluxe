@@ -78,6 +78,35 @@ const ZUG_AB = .45;
 const ANFLUG_HALT = 2200;
 const ANFLUG_EIN = 2100;
 
+/**
+ * Der Ausschnitt je Station – und wann die Karte ihm folgt.
+ *
+ * Eine Schlacht hat nicht durchgehend denselben Maßstab. Bei Tannenberg
+ * stehen die Heere am ersten Tag sechzig Kilometer auseinander und am dritten
+ * auf einem Feld von drei; eine feste Zoomstufe zeigt entweder das eine als
+ * Punktwolke oder das andere als leere Fläche. Deshalb rechnet jede Station
+ * ihren eigenen Rahmen aus dem, was in ihr steht.
+ *
+ * Nur: Eine Karte, die bei jedem Stationswechsel nachfährt, ist unruhig, und
+ * Unruhe kostet mehr Verständnis, als der genauere Maßstab bringt. Sie fährt
+ * deshalb erst, wenn sich der geforderte Rahmen deutlich ändert – um mehr als
+ * ein Drittel der Bildbreite verschoben oder um mehr als eine halbe Zoomstufe
+ * anders. Bei Waterloo und Azincourt steht die Karte damit still, bei
+ * Tannenberg und den Feldzügen fährt sie drei- bis viermal.
+ *
+ * Und sie fährt in der **zweiten Hälfte** des Stationsfensters, zusammen mit
+ * dem Gleiten der Truppen. Eine Bewegung trägt beides: Wer sieht, wie sich
+ * ein Flügel löst, sieht die Karte mit ihm gehen. Führe sie am Übergang
+ * zwischen zwei Stationen, wäre es ein zweiter, unmotivierter Ruck.
+ */
+const SICHT_VERSATZ = .34;
+const SICHT_STUFE = .46;
+/** Weniger als vier Kilometer über die freie Breite wird nie gezeigt. */
+const ENGSTE_BREITE = 4000;
+/** Nachfahren beim Abspielen bzw. nach einem Sprung. */
+const SICHT_DAUER = 2.3;
+const SICHT_DAUER_KURZ = 1.1;
+
 /** Weich anfahren, weich ankommen – kein Heer bewegt sich mit einem Ruck. */
 const weich = (t) => (t < .5 ? 4 * t * t * t : 1 - ((-2 * t + 2) ** 3) / 2);
 const klemm = (v, a, b) => (v < a ? a : v > b ? b : v);
@@ -957,14 +986,21 @@ const SchlachtLeinwand = L.Layer.extend({
 export class BattlePlayer {
   /**
    * @param {object} atlas
-   * @param {{onStation?: Function, onTick?: Function}} rueckruf
+   * @param {{onStation?: Function, onTick?: Function, onKamera?: Function,
+   *          rand?: Function}} rueckruf
    *   `onStation` bei Stationswechsel und beim Anhalten – die Tafel wird neu
    *   geschrieben. `onTick` in jedem Bild – nur der Schieber wandert.
+   *   `onKamera` sagt, ob die Karte gerade von Hand geführt wird.
+   *   `rand` liefert, wie weit Tafel, Zeichenerklärung und Beiblatt ins Bild
+   *   ragen – der Ausschnitt wird in das freie Feld gelegt, nicht unter die
+   *   Tafel.
    */
-  constructor(atlas, { onStation, onTick } = {}) {
+  constructor(atlas, { onStation, onTick, onKamera, rand } = {}) {
     this.atlas = atlas;
     this.onStation = onStation ?? (() => {});
     this.onTick = onTick ?? (() => {});
+    this.onKamera = onKamera ?? (() => {});
+    this.randGeber = rand ?? null;
     this.battle = null;
     this.zeit = 0;
     this.playing = false;
@@ -973,6 +1009,22 @@ export class BattlePlayer {
     this._station = 0;
     /** Wie lange ein Stationsfenster beim Abspielen dauert. */
     this.dauer = 6200;
+    /** Lage, auf die zuletzt nachgefahren wurde – Bezug für die Schwelle. */
+    this._sicht = null;
+    this._sichtSchluessel = null;
+    /** Solange wahr, führt der Betrachter die Karte selbst. */
+    this._frei = false;
+    /** Solange wahr, wird nicht nachgefahren (Ziehen am Schieber). */
+    this._halt = false;
+    this._flugBis = 0;
+    this._eingriff = () => {
+      // Eigene Flüge lösen dasselbe Ereignis aus – sie zählen nicht als
+      // Eingriff, sonst gäbe die Karte nach dem ersten Nachfahren auf.
+      if (this._anflug || performance.now() < this._flugBis) return;
+      if (this._frei || !this.battle) return;
+      this._frei = true;
+      this.onKamera(true);
+    };
 
     const pane = atlas.map.createPane('battle');
     pane.style.zIndex = '258';
@@ -1026,6 +1078,25 @@ export class BattlePlayer {
     // weit, dass der Ort selbst verschwindet.
     const weit = klemm(battle.zoom - 4.6, 3.4, battle.zoom - 1.5);
 
+    /* Die Weltkarte hört bei Stufe 10 auf – darüber hat sie nichts mehr zu
+       zeigen. Ein Schlachtfeld schon: Waterloo steht auf 13. Die Grenze wird
+       deshalb für die Dauer der Schlacht angehoben. Ohne das riss der erste
+       eigene Zoomschritt die Karte von Stufe 13 auf 10 zurück – ein Sprung
+       über drei Stufen, ausgelöst von einer Radraste. */
+    if (this._maxAlt === undefined) this._maxAlt = map.options.maxZoom;
+    map.setMaxZoom(Math.max(this._maxAlt ?? 10, battle.zoom + 2));
+
+    this._frei = false;
+    this._halt = false;
+    this._sicht = null;
+    this._sichtSchluessel = null;
+    this._rand = null;
+    this.onKamera(false);
+    map.off('dragstart', this._eingriff);
+    map.off('zoomstart', this._eingriff);
+    map.on('dragstart', this._eingriff);
+    map.on('zoomstart', this._eingriff);
+
     clearTimeout(this._anflugTimer);
     this._anflug = true;
     this._auf = performance.now() + ANFLUG_HALT + ANFLUG_EIN;
@@ -1039,7 +1110,14 @@ export class BattlePlayer {
     };
     pulsen();
     this._anflugTimer = window.setTimeout(() => {
-      map.flyTo(ziel, battle.zoom, { duration: ANFLUG_EIN / 1000 });
+      // Der Anflug landet nicht auf dem gesetzten Maßstab, sondern gleich auf
+      // dem Rahmen der ersten Station: Sonst stünde die Karte einen Wimpernschlag
+      // still und führe dann noch einmal – ein Ruck ohne Anlass.
+      const erste = this._rahmenFuer(0);
+      const lage = erste ? this._lageFuer(erste) : { mitte: ziel, zoom: battle.zoom };
+      this._sicht = erste ? lage : null;
+      this._sichtSchluessel = '0|0';
+      map.flyTo(lage.mitte, lage.zoom, { duration: ANFLUG_EIN / 1000 });
       this._anflugTimer = window.setTimeout(() => {
         this._anflug = false;
         cancelAnimationFrame(this._pulsRahmen);
@@ -1054,6 +1132,193 @@ export class BattlePlayer {
 
   /** Wo die Karte beim Anflug steht – für die Beiblatt-Karte. */
   get imAnflug() { return !!this._anflug; }
+
+  /* ------------------------------------------------------- Ausschnitt */
+
+  /** Wahr, solange der Betrachter die Karte selbst führt. */
+  get kameraFrei() { return !!this._frei; }
+
+  /**
+   * Nachfahren aussetzen – solange am Schieber gezogen wird.
+   *
+   * Wer am Schieber zieht, sucht eine Stelle im Verlauf und schaut dabei auf
+   * die Truppen. Führe die Karte bei jedem Zwischenwert mit, wäre das ein
+   * Ritt über die halbe Provinz. Sie steht deshalb still und holt erst beim
+   * Loslassen nach.
+   */
+  setKameraHalt(an) {
+    this._halt = !!an;
+    if (!an) this._folge(true);
+  }
+
+  /** Die Führung zurückgeben: Die Karte nimmt den Faden wieder auf. */
+  folgeWieder() {
+    if (!this._frei) return;
+    this._frei = false;
+    this.onKamera(false);
+    // Die Karte steht jetzt irgendwo – der alte Bezug taugt nicht mehr.
+    this._sicht = null;
+    this._sichtSchluessel = null;
+    this._folge(true);
+  }
+
+  /**
+   * Der Rahmen einer Station: was in ihr steht, mit etwas Luft darum.
+   *
+   * Gerechnet aus den Stellungen **und** den Pfeilen – ein Anmarschpfeil sagt,
+   * wohin der Blick als Nächstes gehört. Wo die Rechnung schiefliegt, weil
+   * eine Station nur ein Fähnchen enthält oder ein Pfeil weit über das Feld
+   * hinausweist, steht in den Daten ein `sicht`-Rahmen als Handkorrektur.
+   */
+  _rahmenFuer(i) {
+    const s = this.battle?.stationen[i];
+    if (!s) return null;
+    if (s.sicht) {
+      const [[a, b], [c, d]] = s.sicht;
+      const r = [[Math.min(a, c), Math.min(b, d)], [Math.max(a, c), Math.max(b, d)]];
+      r.hand = true;
+      return r;
+    }
+    let wl = Infinity;
+    let sl = Infinity;
+    let el = -Infinity;
+    let nl = -Infinity;
+    for (const st of s.stellungen) {
+      for (const [x, y] of st.punkte) {
+        if (x < wl) wl = x;
+        if (x > el) el = x;
+        if (y < sl) sl = y;
+        if (y > nl) nl = y;
+      }
+    }
+    if (!Number.isFinite(wl)) return null;
+    // Etwas Luft: Ein Rahmen, der die Umrisse berührt, sieht abgeschnitten aus.
+    const dx = Math.max((el - wl) * .12, 1e-4);
+    const dy = Math.max((nl - sl) * .12, 1e-4);
+    return [[wl - dx, sl - dy], [el + dx, nl + dy]];
+  }
+
+  /**
+   * Welcher Rahmen jetzt gilt: der der laufenden Station – und ab der Mitte
+   * des Fensters der der nächsten, denn dorthin gleiten die Truppen gerade.
+   */
+  _sichtZiel() {
+    const i = this._station;
+    const weiter = this._teil() >= ZUG_AB && i < this.count - 1;
+    return this._rahmenFuer(weiter ? i + 1 : i) ?? this._rahmenFuer(i);
+  }
+
+  /** Wie weit Tafel und Beiblatt ins Bild ragen, höchstens alle 400 ms neu. */
+  _randHolen() {
+    const jetzt = performance.now();
+    if (this._rand && jetzt - this._randZeit < 400) return this._rand;
+    const r = this.randGeber?.() ?? null;
+    this._rand = {
+      l: r?.l || 0, r: r?.r || 0, o: r?.o || 0, u: r?.u || 0,
+    };
+    this._randZeit = jetzt;
+    return this._rand;
+  }
+
+  /**
+   * Kartenlage, die einen Rahmen mittig ins **freie** Feld legt.
+   *
+   * Die Tafel liegt über der Karte, nicht daneben. Zentriert man stumpf auf
+   * das Kartenfenster, steht ein Drittel der Schlacht hinter der Tafel. Der
+   * Mittelpunkt wird deshalb um die halbe Differenz der Ränder versetzt, und
+   * die Zoomstufe rechnet nur mit dem, was übrig bleibt.
+   *
+   * Der Maßstab wird von Hand gerechnet, nicht mit `getBoundsZoom`: Das
+   * klemmt auf `maxZoom` der Karte, und die steht bei 10, weil die Weltkarte
+   * darüber nichts mehr zu zeigen hat. Ein Schlachtfeld braucht 13. (Dass die
+   * Schlachten überhaupt dort ankommen, liegt daran, dass `flyTo` die Grenze
+   * nicht anwendet – ein Fund dieser Rechnung. Beim Öffnen wird sie deshalb
+   * angehoben, sonst risse ein eigener Zoomschritt die Karte auf Stufe 10
+   * zurück.)
+   */
+  _lageFuer(rahmen) {
+    const map = this.atlas.map;
+    const rand = this._randHolen();
+    const groesse = map.getSize();
+    // Nie mehr als 60 Prozent verschenken – sonst bliebe auf schmalen
+    // Fenstern ein Streifen übrig, und die Schlacht wäre ein Fleck darin.
+    const kl = Math.min(rand.l, groesse.x * .45);
+    const kr = Math.min(rand.r, groesse.x * .45);
+    const ko = Math.min(rand.o, groesse.y * .4);
+    const ku = Math.min(rand.u, groesse.y * .4);
+    const frei = L.point(
+      Math.max(groesse.x - kl - kr, groesse.x * .4),
+      Math.max(groesse.y - ko - ku, groesse.y * .4),
+    );
+    const grenzen = L.latLngBounds(
+      [rahmen[0][1], rahmen[0][0]], [rahmen[1][1], rahmen[1][0]],
+    );
+    const z0 = this.battle.zoom;
+    const nw = map.project(grenzen.getNorthWest(), z0);
+    const se = map.project(grenzen.getSouthEast(), z0);
+    const breitePx = Math.max(Math.abs(se.x - nw.x), 1e-6);
+    const skala = Math.min(
+      frei.x / breitePx,
+      frei.y / Math.max(Math.abs(se.y - nw.y), 1e-6),
+    );
+    /* Zwei Grenzen halten die Rechnung im Zaum.
+     *
+     * Die eine ist der gesetzte Maßstab: Er steckt die Absicht des
+     * Verfassers, wie viel Umland zur Schlacht gehört. Zwei Stufen weiter
+     * aufziehen darf die Rechnung – das braucht sie, wenn ein Abschnitt über
+     * das Feld hinausgreift, wie bei Waterloo, sobald die Preußen kommen –,
+     * aber nur eine reichliche halbe Stufe näher heran. Näher heranzugehen
+     * war genau die Klage.
+     *
+     * Die andere ist absolut: Unter vier Kilometern über die freie Breite
+     * wird nicht gezoomt. Bei Hastings stehen drei Bataillone auf anderthalb
+     * Kilometern; die formatfüllend zu zeigen hieße, eine leere Wiese zu
+     * vergrößern. Ohne diese Schranke zöge die Rechnung genau dort am
+     * weitesten hinein, wo am wenigsten zu sehen ist.
+     *
+     * Ein von Hand gesetzter `sicht`-Rahmen darf enger: Wer ihn einträgt,
+     * weiß, was er will.
+     */
+    const mProPx = map.distance(grenzen.getNorthWest(), grenzen.getNorthEast()) / breitePx;
+    const eng = z0 + Math.log2(Math.max((frei.x * mProPx) / ENGSTE_BREITE, 1e-6));
+    const roh = Math.min(map.getScaleZoom(skala, z0), eng);
+    const zoom = klemm(roh, z0 - 2, z0 + (rahmen.hand ? 1.5 : .8));
+    const p = map.project(grenzen.getCenter(), zoom)
+      .add(L.point((kr - kl) / 2, (ku - ko) / 2));
+    return { mitte: map.unproject(p, zoom), zoom, frei };
+  }
+
+  /**
+   * Nachfahren, wenn es sich lohnt.
+   *
+   * @param {boolean} sofort Nach einem Sprung oder beim Loslassen des
+   *   Schiebers – dann kürzer, weil keine Bewegung mitläuft, der man folgt.
+   */
+  _folge(sofort = false) {
+    if (!this.battle || this._anflug || this._halt || this._frei) return;
+    if (!this.leinwand._map) return;
+    const schluessel = `${this._station}|${this._teil() >= ZUG_AB ? 1 : 0}`;
+    if (schluessel === this._sichtSchluessel && !sofort) return;
+    this._sichtSchluessel = schluessel;
+    const rahmen = this._sichtZiel();
+    if (!rahmen) return;
+    const map = this.atlas.map;
+    const neu = this._lageFuer(rahmen);
+    if (this._sicht) {
+      const d = map.project(neu.mitte, neu.zoom)
+        .distanceTo(map.project(this._sicht.mitte, neu.zoom));
+      const dz = Math.abs(neu.zoom - this._sicht.zoom);
+      // Die Schwelle: darunter bleibt die Karte stehen. Das ist der ganze
+      // Unterschied zwischen „folgt der Schlacht“ und „zappelt“. Gemessen an
+      // der freien Breite, nicht an der des Fensters: Ein Drittel des Fensters
+      // wäre bei offener Tafel mehr als das halbe sichtbare Feld.
+      if (d < neu.frei.x * SICHT_VERSATZ && dz < SICHT_STUFE) return;
+    }
+    this._sicht = neu;
+    const dauer = sofort || this._sprung ? SICHT_DAUER_KURZ : SICHT_DAUER;
+    this._flugBis = performance.now() + dauer * 1000 + 200;
+    map.flyTo(neu.mitte, neu.zoom, { duration: dauer });
+  }
 
   /**
    * Flächen, die für Beschriftungen gesperrt sind.
@@ -1072,6 +1337,15 @@ export class BattlePlayer {
     clearTimeout(this._anflugTimer);
     cancelAnimationFrame(this._pulsRahmen);
     this._anflug = false;
+    this.atlas.map.off('dragstart', this._eingriff);
+    this.atlas.map.off('zoomstart', this._eingriff);
+    // Grenze zurücksetzen, aber ohne `setMaxZoom`: Das zöge die Karte sofort
+    // auf Stufe 10 herunter, während sie noch auf dem Schlachtfeld steht.
+    // Erst der nächste eigene Zoomschritt greift die Grenze wieder auf.
+    if (this._maxAlt !== undefined) this.atlas.map.options.maxZoom = this._maxAlt;
+    if (this._frei) { this._frei = false; this.onKamera(false); }
+    this._sicht = null;
+    this._sichtSchluessel = null;
     this.battle = null;
     if (this.leinwand._map) this.atlas.map.removeLayer(this.leinwand);
   }
@@ -1088,6 +1362,9 @@ export class BattlePlayer {
     if (this.zeit >= b - 1e-9) this.zeit = a;
     this.playing = true;
     this._zuletzt = performance.now();
+    // Wer den Verlauf neu startet, will ihn sehen – also nimmt die Karte die
+    // Führung wieder auf, auch wenn zwischendurch von Hand geschoben wurde.
+    if (this._frei) this.folgeWieder();
     this.onStation(this);
     this._laufe();
   }
@@ -1098,7 +1375,12 @@ export class BattlePlayer {
   goTo(index) {
     if (!this.battle) return;
     const i = klemm(Math.round(index), 0, this.count - 1);
+    // Ein Sprung ist keine Bewegung, der man folgt: Die Karte fährt kürzer.
+    this._sprung = true;
     this.setZeit(this.battle.stationen[i].t);
+    this._sprung = false;
+    // Wer eine Station anspringt, will sie sehen – die Karte übernimmt wieder.
+    if (this._frei) this.folgeWieder();
   }
 
   step(dir) {
@@ -1265,5 +1547,10 @@ export class BattlePlayer {
       koerper: this._anflug ? [] : koerper,
       pfeile: this._anflug ? [] : pfeile,
     });
+
+    // Zuletzt: Braucht dieser Abschnitt einen anderen Ausschnitt? `_folge`
+    // entscheidet selbst, ob sich das Fahren lohnt, und tut in aller Regel
+    // nichts – der Aufruf je Bild kostet einen Zeichenkettenvergleich.
+    this._folge();
   }
 }

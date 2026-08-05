@@ -683,6 +683,48 @@ Zeichenerklärung und Beiblatt melden ihre Bildschirmflächen an die Leinwand
 zurück, damit kein Verbandsfähnchen darunter verschwindet – die Fähnchen
 weichen ihnen aus, als stünde dort bereits eine Beschriftung.
 
+**Der Ausschnitt je Station.** Eine Schlacht hat nicht durchgehend denselben
+Maßstab. Bei Tannenberg stehen die Heere am ersten Tag zweihundert Kilometer
+auseinander und am letzten auf einem Kessel von siebzig; eine feste Zoomstufe
+zeigt entweder das eine als Punktwolke oder das andere als leere Fläche. Jede
+Station rechnet deshalb ihren eigenen Rahmen aus dem, was in ihr steht –
+Stellungen **und** Pfeile, denn ein Anmarschpfeil sagt, wohin der Blick als
+Nächstes gehört. Wo die Rechnung schiefliegt, steht in den Daten ein
+`sicht`-Rahmen als Handkorrektur; `npm run check:schlachten` prüft ihn mit.
+
+Vier Regeln halten das im Zaum:
+
+- **Der Rahmen liegt im freien Feld, nicht im Fenster.** Tafel, Zeitleiste,
+  Kopfleiste, Zeichenerklärung und Beiblatt liegen über der Karte. Wer stumpf
+  auf die Fenstermitte zentriert, schiebt bei offener Tafel ein Drittel der
+  Schlacht darunter. Gemessen wird, welcher Streifen an jeder Seite verdeckt
+  ist; der Ausschnitt kommt in das, was übrig bleibt.
+- **Der gesetzte Maßstab bleibt der Anker.** Zwei Stufen weiter aufziehen darf
+  die Rechnung – das braucht sie, sobald bei Waterloo die Preußen kommen –,
+  aber nur eine reichliche halbe Stufe näher heran. Dazu eine absolute
+  Schranke: Unter vier Kilometern über die freie Breite wird nicht gezoomt,
+  sonst zöge die Rechnung genau dort am weitesten hinein, wo am wenigsten zu
+  sehen ist.
+- **Gefahren wird nur bei deutlicher Änderung** – mehr als ein Drittel der
+  freien Breite verschoben oder mehr als eine halbe Zoomstufe anders. Azincourt
+  und Hastings stehen damit still, Waterloo fährt zweimal, Tannenberg zweimal,
+  Marathon einmal, ganz am Ende, wenn die Verfolgung zu den Schiffen läuft.
+- **Gefahren wird in der zweiten Hälfte des Stationsfensters**, zusammen mit
+  dem Gleiten der Truppen. Eine Bewegung trägt beides; am Übergang zwischen
+  zwei Stationen wäre es ein zweiter, unmotivierter Ruck. Am Schieber steht die
+  Karte still und holt erst beim Loslassen nach: Wer eine Stelle im Verlauf
+  sucht, schaut auf die Truppen, nicht auf einen Ritt über die halbe Provinz.
+
+Sobald jemand selbst zieht oder zoomt, hört das Nachfahren auf – sonst risse
+die Karte einem den Ausschnitt unter der Hand weg. Ein Knopf über der
+Zeitleiste sagt es und gibt die Führung zurück; ein Sprung auf eine Station
+oder ein neuer Start tut dasselbe.
+
+Dabei kam heraus, dass die Zoomgrenze der Weltkarte bei Stufe 10 liegt und die
+Schlachten ihre Stufe 13 nur deshalb erreichten, weil Leaflets `flyTo` die
+Grenze nicht anwendet – ein eigener Zoomschritt riss die Karte über drei Stufen
+zurück. Für die Dauer einer Schlacht wird die Grenze jetzt angehoben.
+
 #### Gelände
 
 Bei fast jeder dieser Schlachten hat das Gelände mitentschieden: der Schlamm

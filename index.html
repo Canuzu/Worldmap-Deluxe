@@ -161,6 +161,17 @@
         <figcaption class="beiblatt__t" id="battleInsetTitle"></figcaption>
       </figure>
 
+      <!-- Wer die Karte selbst zieht oder zoomt, übernimmt die Führung: Das
+           Nachfahren je Station hört auf, bis er sie hier zurückgibt. Ohne
+           diesen Hinweis wundert man sich nur, dass die Karte nicht mehr
+           mitgeht, und weiß nicht, woran es liegt. -->
+      <button class="kamzur" id="battleKamera" type="button" hidden>
+        <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true">
+          <path d="M12 5V2L7.5 6 12 10V7a5 5 0 11-5 5H5a7 7 0 107-7z" fill="currentColor"/>
+        </svg>
+        Karte folgt der Schlacht wieder
+      </button>
+
       <!-- Hinweis-Tooltip an der Maus -->
       <div class="hovertip" id="hovertip" hidden></div>
 

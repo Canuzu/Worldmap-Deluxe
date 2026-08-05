@@ -120,6 +120,25 @@ for (const b of SCHLACHTEN) {
     if (!s.kurz) meldung(b.id, `Station ${i} ohne Kurzfassung für die Stationsliste`);
     else if (s.kurz.length > 60) meldung(b.id, `Station ${i}: Kurzfassung zu lang (${s.kurz.length} Zeichen)`);
 
+    /* Handkorrektur des Ausschnitts. Sie darf alles – deshalb muss sie
+       geprüft werden: Ein vertauschtes Zahlenpaar ergäbe einen Rahmen ohne
+       Ausdehnung, und die Karte flöge auf die Zoomgrenze irgendwohin. */
+    if (s.sicht) {
+      const gut = Array.isArray(s.sicht) && s.sicht.length === 2
+        && s.sicht.every((q) => Array.isArray(q) && q.length === 2 && q.every(Number.isFinite));
+      if (!gut) meldung(b.id, `Station ${i}: "sicht" ist kein Paar aus zwei Punkten`);
+      else {
+        const [[a, c], [d, e]] = s.sicht;
+        if (Math.abs(d - a) < 1e-4 || Math.abs(e - c) < 1e-4) {
+          meldung(b.id, `Station ${i}: "sicht" hat keine Ausdehnung`);
+        }
+        const weg = km(b.mitte, [(a + d) / 2, (c + e) / 2]);
+        if (weg > grenze) {
+          meldung(b.id, `Station ${i}: "sicht" liegt ${weg.toFixed(0)} km vom Schlachtfeld`);
+        }
+      }
+    }
+
     for (const st of s.stellungen) {
       stellungen++;
       if (!st.id) meldung(b.id, `Station ${i}: Stellung ohne Kennung`);

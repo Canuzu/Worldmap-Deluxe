@@ -479,6 +479,64 @@ await check('Stellungen gleiten zwischen zwei Stationen', async () => {
   if (haelt === zieht) throw new Error('Umrisse unverändert – es wird nicht gegliten');
 });
 
+await check('Der Ausschnitt folgt der Schlacht, aber nur wo er muss', async () => {
+  /* Zwei Gegenproben in einem Zug: Ein Feldzug über zweihundert Kilometer
+     muss den Maßstab wechseln, sonst sind die Heere Flecken; eine Feldschlacht
+     auf zwei Kilometern darf es nicht, sonst zappelt die Karte. Gemessen wird
+     an den gerechneten Lagen, nicht an einem laufenden Flug – der wäre je nach
+     Rechenlast des Prüfrechners mal angekommen und mal nicht. */
+  const stufen = (id) => page.evaluate((v) => {
+    const p = window.__battles;
+    const b = p.battle;
+    if (!b || b.id !== v) return null;
+    const raus = [];
+    for (let i = 0; i < b.stationen.length; i++) {
+      const r = p._rahmenFuer(i);
+      raus.push(r ? +p._lageFuer(r).zoom.toFixed(2) : null);
+    }
+    return raus;
+  }, id);
+
+  const oeffne = async (id) => {
+    await page.click('[data-act="back"]');
+    await page.waitForTimeout(500);
+    await page.evaluate((v) => document.querySelector(`[data-verlauf="${v}"]`)?.click(), id);
+    await gelandet();
+  };
+
+  await oeffne('tannenberg');
+  const weit = await stufen('tannenberg');
+  if (!weit) throw new Error('Tannenberg nicht offen');
+  if (Math.max(...weit) - Math.min(...weit) < .8) {
+    throw new Error(`Feldzug ohne Maßstabswechsel: ${Math.min(...weit)} bis ${Math.max(...weit)}`);
+  }
+
+  await oeffne('azincourt');
+  const eng = await stufen('azincourt');
+  if (!eng) throw new Error('Azincourt nicht offen');
+  if (Math.max(...eng) - Math.min(...eng) > .2) {
+    throw new Error(`Feldschlacht wechselt den Maßstab: ${Math.min(...eng)} bis ${Math.max(...eng)}`);
+  }
+});
+
+await check('Eigenes Zoomen übernimmt die Führung, der Hinweis gibt sie zurück', async () => {
+  if (await page.evaluate(() => window.__battles.kameraFrei)) {
+    throw new Error('Karte gibt die Führung schon vor dem ersten Eingriff ab');
+  }
+  if (await page.locator('#battleKamera').isVisible()) throw new Error('Hinweis steht ohne Anlass');
+  // Ein eigener Zoomschritt – wie ihn ein Mausrad auslöst.
+  await page.evaluate(() => { window.__atlasMap.setZoom(window.__atlasMap.getZoom() - .6); });
+  await page.waitForTimeout(900);
+  if (!(await page.evaluate(() => window.__battles.kameraFrei))) {
+    throw new Error('Eingriff wird nicht bemerkt');
+  }
+  if (!(await page.locator('#battleKamera').isVisible())) throw new Error('kein Hinweis');
+  await page.click('#battleKamera');
+  await page.waitForTimeout(600);
+  if (await page.evaluate(() => window.__battles.kameraFrei)) throw new Error('Führung nicht zurückgegeben');
+  if (await page.locator('#battleKamera').isVisible()) throw new Error('Hinweis bleibt stehen');
+});
+
 await check('Schlacht räumt ihre Ebene wieder ab', async () => {
   await page.click('#battlesClose');
   await page.waitForTimeout(500);

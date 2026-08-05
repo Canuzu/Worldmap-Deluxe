@@ -815,7 +815,12 @@ async function main() {
      ein Krieg hat keinen Ort, eine Besetzung hat ihre Schraffur schon. */
 
   const battlesBox = $('battlesBox');
-  const battles = new BattlePlayer(atlas, { onStation: renderBattleStation, onTick: tickBattle });
+  const battles = new BattlePlayer(atlas, {
+    onStation: renderBattleStation,
+    onTick: tickBattle,
+    onKamera: zeigeKameraHinweis,
+    rand: randMessen,
+  });
   // Für die Prüfskripte, wie __atlas und __konflikte auch.
   window.__battles = battles;
 
@@ -1093,6 +1098,54 @@ async function main() {
     battles.setSperren(sperren);
   }
 
+  /**
+   * Wie weit die Tafeln ins Kartenbild ragen – für den Ausschnitt je Station.
+   *
+   * Die Tafel liegt über der Karte, nicht daneben; ebenso Zeitleiste, Kopf,
+   * Zeichenerklärung und Beiblatt. Wer stumpf auf die Mitte des Kartenfensters
+   * zentriert, schiebt bei geöffneter Tafel ein Drittel der Schlacht darunter.
+   * Gemessen wird deshalb, welcher Streifen an jeder Seite verdeckt ist; der
+   * Abspieler legt den Ausschnitt in das, was übrig bleibt.
+   *
+   * Ein Element gilt als Bank oben oder unten, wenn es über zwei Drittel der
+   * Breite läuft – so wandert die Tafel auf schmalen Fenstern, wo sie zum
+   * unteren Blatt wird, von selbst in die richtige Rechnung.
+   */
+  function randMessen() {
+    const b = atlas.el.getBoundingClientRect();
+    const rand = { l: 0, r: 0, o: 0, u: 0 };
+    if (!b.width || !b.height) return rand;
+    for (const id of ['brand', 'timeline', 'battlesBox', 'battleLegend', 'battleInset']) {
+      const el = $(id);
+      if (!el || el.hidden || el.offsetParent === null) continue;
+      const q = el.getBoundingClientRect();
+      if (q.width < 8 || q.height < 8) continue;
+      const luft = 14;
+      if (q.width > b.width * .66) {
+        if (q.top - b.top > b.height / 2) rand.u = Math.max(rand.u, b.bottom - q.top + luft);
+        else rand.o = Math.max(rand.o, q.bottom - b.top + luft);
+      } else if (q.left - b.left + q.width / 2 < b.width / 2) {
+        rand.l = Math.max(rand.l, q.right - b.left + luft);
+      } else {
+        rand.r = Math.max(rand.r, b.right - q.left + luft);
+      }
+    }
+    return rand;
+  }
+
+  /**
+   * Der Hinweis, wenn die Karte von Hand geführt wird.
+   *
+   * Sobald jemand selbst zieht oder zoomt, hört das Nachfahren auf – sonst
+   * risse die Karte einem den Ausschnitt unter der Hand weg. Nur merkt man
+   * das nicht, man wundert sich bloß, dass sie nicht mehr mitgeht. Der
+   * Hinweis sagt es und gibt den Weg zurück.
+   */
+  function zeigeKameraHinweis(frei) {
+    const el = $('battleKamera');
+    if (el) el.hidden = !frei;
+  }
+
   function aktualisiereBeiblatt() {
     if (!beiblatt || $('battleInset').hidden) return;
     const b = atlas.map.getBounds();
@@ -1237,12 +1290,20 @@ async function main() {
     if (!schieber) return;
     battles.stop();
     schieber.dataset.zieht = '1';
+    // Beim Ziehen steht die Karte still: Wer eine Stelle sucht, schaut auf
+    // die Truppen, nicht auf einen Ritt über die halbe Provinz.
+    battles.setKameraHalt(true);
     battles.setFortschritt(Number(schieber.value) / 1000);
   });
   battlesBox.addEventListener('change', (event) => {
     const schieber = event.target.closest('#battlesSchieber');
-    if (schieber) delete schieber.dataset.zieht;
+    if (!schieber) return;
+    delete schieber.dataset.zieht;
+    // Losgelassen: Jetzt darf die Karte nachholen, was sie ausgelassen hat.
+    battles.setKameraHalt(false);
   });
+
+  $('battleKamera').addEventListener('click', () => battles.folgeWieder());
 
   battlesBox.addEventListener('click', (event) => {
     // Der Verlauf hat Vorrang vor der Schlachtzeile, in der er steht.

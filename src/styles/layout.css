@@ -951,13 +951,13 @@
   height: 15px;
   border-radius: 50%;
   background: var(--gold);
-  border: 2px solid var(--surface-1);
+  border: 2px solid var(--surface-solid);
   box-shadow: 0 1px 6px rgba(0, 0, 0, .5);
 }
 .battles__schieber::-moz-range-thumb {
   width: 15px;
   height: 15px;
-  border: 2px solid var(--surface-1);
+  border: 2px solid var(--surface-solid);
   border-radius: 50%;
   background: var(--gold);
 }
@@ -1089,7 +1089,7 @@
   margin: 0;
   padding: .4rem .4rem .3rem;
   border-radius: var(--r-sm);
-  background: color-mix(in srgb, var(--surface-1) 90%, transparent);
+  background: color-mix(in srgb, var(--surface-solid) 90%, transparent);
   border: 1px solid var(--hairline);
   box-shadow: var(--shadow-1, 0 4px 18px rgba(0, 0, 0, .35));
   backdrop-filter: blur(6px);
@@ -1109,6 +1109,38 @@
 
 @media (max-width: 900px) { .beiblatt { display: none; } }
 
+/* Der Weg zurück zur geführten Karte. Liegt mittig über der Zeitleiste, wo
+   der Blick beim Verfolgen einer Schlacht ohnehin hinwandert – und nicht in
+   der Tafel, denn wer gerade auf der Karte gezogen hat, schaut auf die
+   Karte. Er erscheint nur, wenn er gebraucht wird. */
+.kamzur {
+  position: absolute;
+  z-index: 470;
+  left: 50%;
+  bottom: calc(var(--console-h, 9rem) + 1.4rem + var(--safe-b));
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .34rem .7rem .34rem .55rem;
+  font: inherit;
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .01em;
+  color: var(--ink);
+  background: color-mix(in srgb, var(--surface-solid) 92%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 45%, var(--hairline));
+  border-radius: 999px;
+  box-shadow: var(--shadow-1);
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+  animation: battleIn 320ms var(--ease);
+}
+.kamzur[hidden] { display: none; }
+.kamzur:hover { border-color: color-mix(in srgb, var(--gold) 75%, var(--hairline)); }
+.kamzur svg { color: var(--gold); flex: none; }
+@media (prefers-reduced-motion: reduce) { .kamzur { animation: none; } }
+
 /* Zeichenerklärung: liegt auf der Karte, unten rechts, und nennt nur, was in
    dieser Schlacht wirklich vorkommt. Eine Legende, die Zeichen erklärt, die
    nicht im Bild sind, ist selbst Unordnung. */
@@ -1122,7 +1154,7 @@
   overflow: auto;
   padding: .55rem .65rem;
   border-radius: var(--r-sm);
-  background: color-mix(in srgb, var(--surface-1) 88%, transparent);
+  background: color-mix(in srgb, var(--surface-solid) 88%, transparent);
   border: 1px solid var(--hairline);
   box-shadow: var(--shadow-1, 0 4px 18px rgba(0, 0, 0, .35));
   backdrop-filter: blur(6px);
