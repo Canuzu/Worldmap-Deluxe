@@ -17,7 +17,7 @@ import { DetailPanel } from './modules/panel.js';
 import { polityAt } from './modules/geo.js';
 import { esc, fold, highlight, areaText, distanceText, num } from './modules/format.js';
 import { ERA_COLORS } from './modules/palette.js';
-import { BattlePlayer, BATTLES } from './modules/battles.js';
+import { BattlePlayer, BATTLES, ladeBattles } from './modules/battles.js';
 import { EventLayer, ARTEN, zeitfenster } from './modules/ereignisse.js';
 import {
   KonfliktLayer, KONFLIKT_ARTEN, SEITENFARBEN, spanneText, fortschritt,
@@ -964,6 +964,8 @@ async function main() {
     layersMenu.hidden = true;
     battlesBox.hidden = false;
     renderRegister();
+    // Die Verläufe sind ein eigener Brocken und kommen erst hier nach.
+    if (!BATTLES.length) { await ladeBattles(); renderRegister(); }
     if (!konflikte.hatDaten) {
       konflikte.setDaten(await atlasData.loadKonflikte());
       konflikte.setFenster(zeitfenster(epochJahre, state.index));
@@ -976,6 +978,7 @@ async function main() {
 
   function closeBattles() {
     battles.close();
+    renderBattleLegend(null);
     battlesBox.hidden = true;
     $('app').classList.remove('is-battle');
     atlas.setShowLabels(prefs.labels);
@@ -1009,8 +1012,60 @@ async function main() {
     // mitten in den Stellungen, und ihre Namen stuenden quer ueber dem Feld.
     konflikte.setSichtbar(false);
     ereignisse.setSichtbar(false);
+    renderBattleLegend(BATTLES.find((x) => x.id === id));
     battles.start(id);
     battles.play();
+  }
+
+  /**
+   * Zeichenerklärung der Schlacht, auf der Karte statt in der Tafel.
+   *
+   * Ohne sie muss man raten, was ein gestrichelter Umriss bedeutet, was eine
+   * Schraffur unterscheidet und wofür die grünen Punktfelder stehen. Sie
+   * nennt nur, was in **dieser** Schlacht wirklich vorkommt – eine Legende,
+   * die Zeichen erklärt, die nicht im Bild sind, ist selbst Unordnung.
+   */
+  const GATTUNGSNAMEN = {
+    fuss: 'Fußvolk', bogen: 'Bogen und Schützen', reiter: 'Reiterei',
+    geschuetz: 'Geschütze', schiff: 'Schiffe', gemischt: 'gemischter Verband',
+  };
+  const GELAENDENAMEN = {
+    fluss: 'Fluss', see: 'See', sumpf: 'Sumpf, nasser Grund', wald: 'Wald',
+    hoehe: 'Höhenzug', stadt: 'Ortschaft', mauer: 'Mauer, Befestigung',
+    weg: 'Straße', furt: 'Furt, Übergang',
+  };
+
+  function renderBattleLegend(b) {
+    const box = $('battleLegend');
+    if (!b) { box.hidden = true; box.innerHTML = ''; return; }
+    const gattungen = [...new Set(b.stationen
+      .flatMap((s) => s.stellungen)
+      .filter((s) => s.form !== 'pfeil')
+      .map((s) => s.gattung)
+      .filter(Boolean))];
+    const gelaende = [...new Set((b.gelaende ?? []).map((g) => g.art))];
+    const hatGeschlagen = b.stationen.some((s) => s.stellungen.some((x) => x.geschlagen));
+    const hatRueckzug = b.stationen.some((s) => s.stellungen.some((x) => x.rueckzug));
+    const hatFinte = b.stationen.some((s) => s.stellungen.some((x) => x.finte));
+
+    box.innerHTML = `
+      <div class="blgd__t">Zeichenerklärung</div>
+      <ul class="blgd__l">
+        ${b.parteien.map((p) => `<li><i class="blgd__sw" style="--c:${esc(p.farbe)}"></i>${esc(p.name)}</li>`).join('')}
+      </ul>
+      ${gattungen.length > 1 ? `<ul class="blgd__l">
+        ${gattungen.map((g) => `<li><i class="blgd__m blgd__m--${esc(g)}"></i>${esc(GATTUNGSNAMEN[g] ?? g)}</li>`).join('')}
+      </ul>` : ''}
+      <ul class="blgd__l">
+        <li><i class="blgd__p"></i>Angriff, Vorstoß</li>
+        ${hatRueckzug ? '<li><i class="blgd__p blgd__p--rueck"></i>Rückzug, Flucht</li>' : ''}
+        ${hatFinte ? '<li><i class="blgd__p blgd__p--finte"></i>Scheinbewegung</li>' : ''}
+        ${hatGeschlagen ? '<li><i class="blgd__sw blgd__sw--weich"></i>geschlagen, weichend</li>' : ''}
+      </ul>
+      ${gelaende.length ? `<ul class="blgd__l">
+        ${gelaende.map((g) => `<li><i class="blgd__g blgd__g--${esc(g)}"></i>${esc(GELAENDENAMEN[g] ?? g)}</li>`).join('')}
+      </ul>` : ''}`;
+    box.hidden = false;
   }
 
   /**
@@ -1028,15 +1083,28 @@ async function main() {
     $('battlesTitle').textContent = b.name;
     const box = $('battlesPlayer');
     box.hidden = false;
-    const marken = b.stationen.map((s) => {
-      const [von, bis] = player.spanne;
-      return { p: bis > von ? ((s.t - von) / (bis - von)) * 100 : 0, zeit: s.zeit };
-    });
+    const [von, bis] = player.spanne;
+    const lage = (t) => (bis > von ? ((t - von) / (bis - von)) * 100 : 0);
+
+    // Kräfteverhältnis: Die Zahlen stehen als Text in den Parteien, für den
+    // Balken braucht es sie als Zahl. Wo keine hinterlegt ist, entfällt er –
+    // ein Balken aus geratenen Werten wäre schlimmer als keiner.
+    const zahlen = b.parteien.map((p) => p.zahl ?? 0);
+    const summe = zahlen.reduce((a, x) => a + x, 0);
+    const balken = summe && zahlen.every((z) => z > 0) ? `
+      <div class="battles__kraft" role="img" aria-label="Kräfteverhältnis">
+        ${b.parteien.map((p, i) => `<span style="--c:${esc(p.farbe)};flex:${zahlen[i]}"
+           title="${esc(p.name)}: ${zahlen[i].toLocaleString('de-DE')}"></span>`).join('')}
+      </div>
+      <p class="battles__kraftText">${b.parteien.map((p, i) =>
+        `${esc(p.name)} ${zahlen[i].toLocaleString('de-DE')}`).join(' · ')}</p>` : '';
+
     box.innerHTML = `
       <p class="battles__meta">${esc(b.datum)} · ${esc(b.ort)}</p>
       <ul class="battles__sides">${b.parteien.map((p) => `
         <li><span class="sw" style="background:${esc(p.farbe)}"></span>
           <b>${esc(p.name)}</b><span>${esc(p.fuehrung)} · ${esc(p.staerke)}</span></li>`).join('')}</ul>
+      ${balken}
       <div class="battles__stage">
         <div class="battles__zeit">${esc(st.zeit)}</div>
         <p class="battles__text">${esc(st.text)}</p>
@@ -1044,8 +1112,8 @@ async function main() {
       <div class="battles__achse">
         <div class="battles__spur">
           <div class="battles__fuell" id="battlesFuell"></div>
-          ${marken.map((m, i) => `<i class="battles__marke${i === player.index ? ' is-on' : ''}"
-             style="left:${m.p.toFixed(2)}%" data-step="${i}" title="${esc(m.zeit)}"></i>`).join('')}
+          ${b.stationen.map((s, i) => `<i class="battles__marke${i === player.index ? ' is-on' : ''}"
+             style="left:${lage(s.t).toFixed(2)}%" data-step="${i}" title="${esc(s.zeit)}"></i>`).join('')}
         </div>
         <input class="battles__schieber" id="battlesSchieber" type="range"
                min="0" max="1000" step="1" value="${Math.round(player.fortschritt * 1000)}"
@@ -1065,7 +1133,23 @@ async function main() {
         </button>
         <span class="battles__zaehler">${player.index + 1} / ${player.count}</span>
         <button class="chip chip--action" data-act="back">Andere Schlacht</button>
-      </div>`;
+      </div>
+
+      <ol class="battles__stationen">${b.stationen.map((s, i) => `
+        <li class="${i === player.index ? 'is-on' : ''}${i < player.index ? ' is-vorbei' : ''}" data-step="${i}">
+          <span class="battles__stZeit">${esc(s.zeit)}</span>
+          <span class="battles__stKurz">${esc(s.kurz ?? s.text.split(/(?<=\.)\s/)[0])}</span>
+        </li>`).join('')}</ol>
+
+      ${b.ausgang ? `<div class="battles__ausgang">
+        <h4>Ausgang</h4>
+        <p>${esc(b.ausgang)}</p>
+        ${b.verluste?.length ? `<table class="battles__verluste"><tbody>${b.verluste.map((v) => `
+          <tr><th><i class="sw" style="background:${esc(b.parteien.find((p) => p.id === v.partei)?.farbe ?? '#888')}"></i>${esc(b.parteien.find((p) => p.id === v.partei)?.name ?? v.partei)}</th>
+              <td>${esc(v.text)}</td></tr>`).join('')}</tbody></table>` : ''}
+        ${b.folgen ? `<h4>Folgen</h4><p>${esc(b.folgen)}</p>` : ''}
+        ${b.streit ? `<p class="battles__streit">${esc(b.streit)}</p>` : ''}
+      </div>` : ''}`;
     tickBattle(player);
   }
 
@@ -1111,6 +1195,7 @@ async function main() {
     else if (act === 'play') battles.toggle();
     else if (act === 'back') {
       battles.close();
+      renderBattleLegend(null);
       $('app').classList.remove('is-battle');
       atlas.setShowLabels(prefs.labels);
       konflikte.setSichtbar(true);

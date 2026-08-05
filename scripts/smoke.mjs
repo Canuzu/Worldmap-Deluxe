@@ -399,17 +399,24 @@ await check('Zeitachse lässt sich frei ziehen', async () => {
 });
 
 await check('Stellungen gleiten zwischen zwei Stationen', async () => {
-  // Zwei Zeitpunkte innerhalb desselben Stationsfensters, einer davor und
-  // einer mitten im Zug: Liegen die Umrisse dann gleich, wird nicht gegliten.
-  const umriss = (f) => page.evaluate((x) => {
-    window.__battles.setFortschritt(x);
-    const k = window.__battles.leinwand._inhalt.koerper.filter((q) => q.deckung > .5);
+  // Innerhalb eines Stationsfensters ruhen die Körper zuerst, während sich die
+  // Pfeile zeichnen; erst danach setzen sie sich in Bewegung. Gemessen wird
+  // deshalb im Bewegungsabschnitt, nicht am Anfang des Fensters.
+  const umriss = (teil) => page.evaluate((x) => {
+    const p = window.__battles;
+    const st = p.battle.stationen;
+    const [von, bis] = p.spanne;
+    const fenster = st[1].t - st[0].t;
+    p.setZeit(st[0].t + fenster * x);
+    const k = p.leinwand._inhalt.koerper.filter((q) => q.deckung > .5);
     return k.map((q) => q.punkte[0].map((v) => v.toFixed(4)).join(',')).join('|');
-  }, f);
-  const a = await umriss(0.02);
-  const b = await umriss(0.14);
-  if (!a) throw new Error('keine Stellungen im Bild');
-  if (a === b) throw new Error('Umrisse unverändert – es wird nicht gegliten');
+  }, teil);
+  const ruht = await umriss(0.10);
+  const haelt = await umriss(0.40);
+  const zieht = await umriss(0.95);
+  if (!ruht) throw new Error('keine Stellungen im Bild');
+  if (ruht !== haelt) throw new Error('Stellungen ruhen nicht, solange die Pfeile laufen');
+  if (haelt === zieht) throw new Error('Umrisse unverändert – es wird nicht gegliten');
 });
 
 await check('Schlacht räumt ihre Ebene wieder ab', async () => {

@@ -26,9 +26,28 @@
  * sie verschwinden restlos, sobald man die Schlacht schließt.
  */
 import L from 'leaflet';
-import spec from '../data/battles.json';
 
-export const BATTLES = spec.schlachten;
+/**
+ * Die Verläufe kommen erst, wenn jemand sie sehen will.
+ *
+ * Zwölf Schlachten mit 1.006 Stellungen sind rund 350 kB. Fest eingebunden
+ * lägen sie in jedem Erstaufruf, obwohl die meisten Besucher nie eine
+ * Schlacht öffnen – gemessen wuchs der Erstaufruf dadurch um 366 kB und riss
+ * die Grenze von `check:ladelast`. Als eigener Brocken kommt er beim Öffnen
+ * des Registers nach, und das dauert keine hundert Millisekunden.
+ *
+ * `BATTLES` ist bewusst ein `let` mit lebendiger Bindung: Wer es einmal
+ * importiert hat, sieht die geladene Liste, ohne sie sich reichen zu lassen.
+ */
+export let BATTLES = [];
+
+export async function ladeBattles() {
+  if (!BATTLES.length) {
+    const spec = (await import('../data/battles.json')).default;
+    BATTLES = spec.schlachten;
+  }
+  return BATTLES;
+}
 
 /* ------------------------------------------------------------ Choreografie */
 
@@ -169,19 +188,26 @@ function weicherWeg(ctx, p, spannung = .5) {
   ctx.closePath();
 }
 
-/** Offener Zug, ebenfalls weich – für Flüsse und Höhenzüge. */
-function weicheLinie(ctx, p) {
+/**
+ * Offener Zug, ebenfalls weich – für Flüsse, Wege und Mauern.
+ *
+ * Die Spannung ist einstellbar, weil ein Fluss mit fünf Stützpunkten über
+ * zwanzig Kilometer sonst weit über seine Punkte hinausschwingt: Aus dem
+ * Aufidus wurde ein Bogen, der halb Apulien durchschnitt.
+ */
+function weicheLinie(ctx, p, spannung = 1) {
   const n = p.length;
   ctx.moveTo(p[0][0], p[0][1]);
   if (n < 3) { for (let i = 1; i < n; i++) ctx.lineTo(p[i][0], p[i][1]); return; }
+  const f = spannung / 6;
   for (let i = 0; i < n - 1; i++) {
     const p0 = p[Math.max(0, i - 1)];
     const p1 = p[i];
     const p2 = p[i + 1];
     const p3 = p[Math.min(n - 1, i + 2)];
     ctx.bezierCurveTo(
-      p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6,
-      p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6,
+      p1[0] + (p2[0] - p0[0]) * f, p1[1] + (p2[1] - p0[1]) * f,
+      p2[0] - (p3[0] - p1[0]) * f, p2[1] - (p3[1] - p1[1]) * f,
       p2[0], p2[1],
     );
   }
@@ -201,19 +227,80 @@ function mitAlpha(farbe, a) {
  * Bei fast jeder dieser Schlachten hat das Gelände mitentschieden: der
  * Hohlweg von Waterloo, der Schlamm von Azincourt, die Meerenge von Lepanto.
  * Ohne Andeutung sieht man auf der Karte nur farbige Flecken in einer Ebene.
- * Die Signaturen sind bewusst blass – sie sollen die Karte darunter nicht
- * ersetzen, sondern das eine Merkmal hervorheben, auf das es ankam.
+ *
+ * Anders als die Staatenkarte darunter wird hier **gezeichnet wie auf einer
+ * Stabskarte**: Wald bekommt eine Punktkörnung, Höhen bekommen Höhenlinien,
+ * Ortschaften eine Baublock-Schraffur, Wege eine doppelte Linie. Eine
+ * einfarbige Fläche in Grün ist ein Fleck; eine gekörnte Fläche mit
+ * geschlossener Kante liest sich als Wald.
  */
+/**
+ * Wie stark Geländeformen gerundet werden.
+ *
+ * Ein Truppenkörper darf rund sein, ein Höhenzug nicht: Eine lange, flache
+ * Ellipse beult bei voller Spannung an den Enden weit über ihre Stützpunkte
+ * hinaus, und aus einem schmalen Kamm wird ein Ei. Ein Drittel der Spannung
+ * hält die Form, ohne sie eckig zu machen.
+ */
+const GELAENDE_SPANNUNG = .32;
+
 const GELAENDE = {
-  fluss: { farbe: '#5c9ad6', breite: 3.4, linie: true },
-  see: { farbe: '#5c9ad6', breite: 1.2 },
-  sumpf: { farbe: '#6e8f86', breite: 0, muster: 'strich' },
-  wald: { farbe: '#5f8a5a', breite: 0, muster: 'punkt' },
-  hoehe: { farbe: '#a58b5f', breite: 1.4, muster: 'hoehe' },
-  stadt: { farbe: '#9a9186', breite: 1.2, muster: 'raster' },
-  mauer: { farbe: '#d8c9ae', breite: 3, linie: true },
-  weg: { farbe: '#c4b28a', breite: 2.2, linie: true, gestrichelt: true },
+  fluss: { farbe: '#4d92d8', breite: 4, linie: true, ader: true },
+  see: { farbe: '#3f7fc0', flaeche: '#3f7fc0', deckung: .34, kante: .8 },
+  sumpf: { farbe: '#6f9a8c', flaeche: '#6f9a8c', deckung: .2, muster: 'sumpf', kante: 0 },
+  wald: { farbe: '#4f8250', flaeche: '#4f8250', deckung: .26, muster: 'wald', kante: 1.1 },
+  hoehe: { farbe: '#b08d55', flaeche: '#b08d55', deckung: .1, kante: 1.4, schraffur: true },
+  stadt: { farbe: '#c3b39a', flaeche: '#8d7f6c', deckung: .3, muster: 'stadt', kante: 1.2 },
+  mauer: { farbe: '#e0d0b0', breite: 4.5, linie: true, zinnen: true },
+  weg: { farbe: '#cbb894', breite: 2.6, linie: true, doppelt: true },
+  furt: { farbe: '#9fc6e8', breite: 2.4, linie: true, gestrichelt: true },
 };
+
+/**
+ * Waffengattungen als Füllmuster.
+ *
+ * Eine Farbe sagt, wer da steht. Sie sagt nicht, **was** da steht – und
+ * genau davon hängt bei jeder dieser Schlachten der Ausgang ab: ob Reiterei
+ * eine Lücke ausnutzen kann, ob Bogenschützen einen Hang decken, ob eine
+ * Batterie den Anmarsch bestreicht. Auf gedruckten Stabskarten unterscheidet
+ * man das seit dem 18. Jahrhundert durch Schraffuren, nicht durch Farben.
+ * Dieselbe Sprache hier: Die Partei gibt den Farbton, die Gattung das Muster.
+ */
+const GATTUNGEN = {
+  fuss: { strich: 'waagerecht', abstand: 5 },
+  bogen: { strich: 'kreuz', abstand: 6 },
+  reiter: { strich: 'schraeg', abstand: 5 },
+  geschuetz: { strich: 'punkt', abstand: 6 },
+  schiff: { strich: 'welle', abstand: 7 },
+  gemischt: { strich: null },
+};
+
+/** Musterkacheln je Farbe und Gattung – einmal angelegt, dann wiederverwendet. */
+const MUSTER = new Map();
+function musterFuer(ctx, farbe, gattung) {
+  const g = GATTUNGEN[gattung] ?? GATTUNGEN.gemischt;
+  if (!g.strich) return null;
+  const schluessel = `${farbe}|${gattung}`;
+  if (MUSTER.has(schluessel)) return MUSTER.get(schluessel);
+  const d = g.abstand;
+  const k = document.createElement('canvas');
+  k.width = d;
+  k.height = d;
+  const c = k.getContext('2d');
+  c.strokeStyle = mitAlpha(farbe, .55);
+  c.fillStyle = mitAlpha(farbe, .55);
+  c.lineWidth = 1;
+  c.beginPath();
+  if (g.strich === 'waagerecht') { c.moveTo(0, d / 2); c.lineTo(d, d / 2); }
+  if (g.strich === 'schraeg') { c.moveTo(0, d); c.lineTo(d, 0); c.moveTo(-1, 1); c.lineTo(1, -1); }
+  if (g.strich === 'kreuz') { c.moveTo(0, d); c.lineTo(d, 0); c.moveTo(0, 0); c.lineTo(d, d); }
+  if (g.strich === 'welle') { c.moveTo(0, d * .7); c.quadraticCurveTo(d / 2, 0, d, d * .7); }
+  if (g.strich === 'punkt') { c.arc(d / 2, d / 2, 1.1, 0, Math.PI * 2); c.fill(); }
+  else c.stroke();
+  const muster = ctx.createPattern(k, 'repeat');
+  MUSTER.set(schluessel, muster);
+  return muster;
+}
 
 /* ------------------------------------------------------------- Zeichenwerk */
 
@@ -283,11 +370,42 @@ const SchlachtLeinwand = L.Layer.extend({
     ctx.clearRect(0, 0, c.width, c.height);
     const inhalt = this._inhalt;
     if (!inhalt) return;
+    const groesse = this._map.getSize();
 
+    this._buehne(ctx, groesse, inhalt);
     for (const g of inhalt.gelaende ?? []) this._gelaende(ctx, g);
     for (const k of inhalt.koerper ?? []) this._koerper(ctx, k);
+    this._pfeilPlaetze = [];
     for (const p of inhalt.pfeile ?? []) this._pfeil(ctx, p);
-    this._beschriftungen(ctx, inhalt.koerper ?? []);
+    // Erst die Verbände beschriften, dann das Gelände: Wo beides um denselben
+    // Platz streitet, gewinnt die Truppe – sie ist die Aussage, der Flurname
+    // ist der Hintergrund.
+    const belegt = this._beschriftungen(ctx, inhalt.koerper ?? [], this._pfeilPlaetze);
+    for (const g of inhalt.gelaende ?? []) this._gelaendeName(ctx, g, belegt);
+  },
+
+  /**
+   * Die Bühne: alles außerhalb des Schlachtfelds tritt zurück.
+   *
+   * Bei Zoomstufe 12 ist die Staatenkarte eine einzige Fläche bis zum
+   * Bildrand. Das Auge findet darin keinen Halt und weiß nicht, wo die
+   * Schlacht anfängt und wo bloß noch Landschaft ist. Ein weicher Schatten von
+   * außen nach innen setzt das Feld in einen Rahmen – dasselbe, was ein
+   * Kartograf mit einem angedeuteten Blattrand macht.
+   */
+  _buehne(ctx, groesse, inhalt) {
+    const a = inhalt.buehne ?? 1;
+    if (a <= 0) return;
+    const r = Math.hypot(groesse.x, groesse.y) / 2;
+    const g = ctx.createRadialGradient(
+      groesse.x / 2, groesse.y / 2, r * .34,
+      groesse.x / 2, groesse.y / 2, r,
+    );
+    g.addColorStop(0, 'rgba(6,9,15,0)');
+    g.addColorStop(.55, `rgba(6,9,15,${(.26 * a).toFixed(3)})`);
+    g.addColorStop(1, `rgba(4,6,11,${(.62 * a).toFixed(3)})`);
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, groesse.x, groesse.y);
   },
 
   _gelaende(ctx, g) {
@@ -295,71 +413,248 @@ const SchlachtLeinwand = L.Layer.extend({
     const p = g.punkte.map((q) => this._punkt(q));
     if (p.length < 2) return;
     ctx.save();
-    ctx.globalAlpha = (g.deckung ?? .5) * (this._inhalt.gelaendeDeckung ?? 1);
+    ctx.globalAlpha = (g.deckung ?? 1) * (this._inhalt.gelaendeDeckung ?? 1);
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';
-    if (art.linie) {
-      // Ein Fluss bekommt ein breites, blasses Bett und eine schmale Ader –
-      // dieselbe Staffelung wie der Küstensaum der Karte.
-      ctx.beginPath();
-      weicheLinie(ctx, p);
-      if (art.gestrichelt) ctx.setLineDash([7, 6]);
-      ctx.strokeStyle = mitAlpha(art.farbe, .28);
-      ctx.lineWidth = art.breite * 2.4;
-      ctx.stroke();
-      ctx.strokeStyle = mitAlpha(art.farbe, .85);
-      ctx.lineWidth = art.breite;
-      ctx.stroke();
-      ctx.restore();
-      return;
-    }
+
+    if (art.linie) { this._gelaendeLinie(ctx, art, p); ctx.restore(); return; }
+
     ctx.beginPath();
-    weicherWeg(ctx, p);
-    ctx.fillStyle = mitAlpha(art.farbe, art.muster === 'punkt' ? .3 : .22);
-    ctx.fill();
-    if (art.breite) {
-      ctx.strokeStyle = mitAlpha(art.farbe, .7);
-      ctx.lineWidth = art.breite;
-      if (art.muster === 'hoehe') ctx.setLineDash([5, 4]);
+    weicherWeg(ctx, p, GELAENDE_SPANNUNG);
+    if (art.flaeche) {
+      ctx.fillStyle = mitAlpha(art.flaeche, art.deckung ?? .25);
+      ctx.fill();
+    }
+    if (art.muster) this._gelaendeMuster(ctx, art, p);
+    if (art.kante) {
+      ctx.beginPath();
+      weicherWeg(ctx, p, GELAENDE_SPANNUNG);
+      ctx.strokeStyle = mitAlpha(art.farbe, .55);
+      ctx.lineWidth = art.kante;
       ctx.stroke();
+    }
+    // Ein Höhenzug bekommt eine Böschungsschraffur: kurze Striche senkrecht
+    // zur Kante, nach innen gerichtet. Das ist das Zeichen für „hier geht es
+    // hinauf" – konzentrische Ringe sahen aus wie zufällige Schlingen und
+    // sagten nichts über die Richtung des Hanges.
+    if (art.schraffur) {
+      let mx = 0;
+      let my = 0;
+      for (const q of p) { mx += q[0]; my += q[1]; }
+      mx /= p.length;
+      my /= p.length;
+      ctx.strokeStyle = mitAlpha(art.farbe, .6);
+      ctx.lineWidth = 1.1;
+      for (let i = 0; i < p.length; i++) {
+        const a = p[i];
+        const b = p[(i + 1) % p.length];
+        const d = Math.hypot(b[0] - a[0], b[1] - a[1]);
+        const n = Math.max(1, Math.round(d / 13));
+        for (let k = 0; k < n; k++) {
+          const t = (k + .5) / n;
+          const x = a[0] + (b[0] - a[0]) * t;
+          const y = a[1] + (b[1] - a[1]) * t;
+          // Nach innen zeigen, Länge abwechselnd – wie im Kartenwerk üblich.
+          let ux = mx - x;
+          let uy = my - y;
+          const l = Math.hypot(ux, uy) || 1;
+          ux /= l;
+          uy /= l;
+          const laenge = k % 2 ? 4 : 7;
+          ctx.beginPath();
+          ctx.moveTo(x, y);
+          ctx.lineTo(x + ux * laenge, y + uy * laenge);
+          ctx.stroke();
+        }
+      }
     }
     ctx.restore();
   },
 
-  /** Ein Truppenkörper: weiche Form, weicher Schein, klare Kante. */
+  _gelaendeLinie(ctx, art, p) {
+    ctx.beginPath();
+    weicheLinie(ctx, p, GELAENDE_SPANNUNG);
+    if (art.gestrichelt) ctx.setLineDash([7, 6]);
+    if (art.doppelt) {
+      // Ein Weg ist auf jeder Stabskarte eine doppelte Linie: heller Kern
+      // zwischen zwei dunklen Rändern.
+      ctx.strokeStyle = 'rgba(24,20,14,.55)';
+      ctx.lineWidth = art.breite + 2.4;
+      ctx.stroke();
+      ctx.strokeStyle = mitAlpha(art.farbe, .95);
+      ctx.lineWidth = art.breite;
+      ctx.stroke();
+      return;
+    }
+    ctx.strokeStyle = mitAlpha(art.farbe, .24);
+    ctx.lineWidth = art.breite * 2.6;
+    ctx.stroke();
+    ctx.strokeStyle = mitAlpha(art.farbe, .9);
+    ctx.lineWidth = art.breite;
+    ctx.stroke();
+    if (art.ader) {
+      ctx.strokeStyle = mitAlpha('#cfe6ff', .5);
+      ctx.lineWidth = Math.max(1, art.breite * .3);
+      ctx.stroke();
+    }
+    // Eine Mauer bekommt Zinnen: kurze Striche quer zur Linie.
+    if (art.zinnen) {
+      ctx.strokeStyle = mitAlpha(art.farbe, .85);
+      ctx.lineWidth = 1.6;
+      for (let i = 0; i < p.length - 1; i++) {
+        const [x1, y1] = p[i];
+        const [x2, y2] = p[i + 1];
+        const d = Math.hypot(x2 - x1, y2 - y1);
+        const n = Math.max(1, Math.round(d / 11));
+        for (let k = 0; k < n; k++) {
+          const t = (k + .5) / n;
+          const x = x1 + (x2 - x1) * t;
+          const y = y1 + (y2 - y1) * t;
+          const ux = -(y2 - y1) / d;
+          const uy = (x2 - x1) / d;
+          ctx.beginPath();
+          ctx.moveTo(x, y);
+          ctx.lineTo(x + ux * 4.5, y + uy * 4.5);
+          ctx.stroke();
+        }
+      }
+    }
+  },
+
+  /** Körnung innerhalb einer Geländefläche – Wald, Sumpf, Baublöcke. */
+  _gelaendeMuster(ctx, art, p) {
+    let x0 = Infinity;
+    let y0 = Infinity;
+    let x1 = -Infinity;
+    let y1 = -Infinity;
+    for (const [x, y] of p) {
+      if (x < x0) x0 = x;
+      if (x > x1) x1 = x;
+      if (y < y0) y0 = y;
+      if (y > y1) y1 = y;
+    }
+    if (x1 - x0 > 900 || y1 - y0 > 900) return;
+    ctx.save();
+    ctx.beginPath();
+    weicherWeg(ctx, p, GELAENDE_SPANNUNG);
+    ctx.clip();
+    ctx.strokeStyle = mitAlpha(art.farbe, .55);
+    ctx.fillStyle = mitAlpha(art.farbe, .5);
+    ctx.lineWidth = 1;
+    const d = art.muster === 'stadt' ? 9 : 11;
+    for (let y = y0; y < y1 + d; y += d) {
+      for (let x = x0 + ((Math.round(y / d) % 2) * d) / 2; x < x1 + d; x += d) {
+        ctx.beginPath();
+        if (art.muster === 'wald') {
+          // Ein Kringel mit Stiel – das übliche Waldzeichen.
+          ctx.arc(x, y - 1, 2.1, 0, Math.PI * 2);
+          ctx.fill();
+        } else if (art.muster === 'sumpf') {
+          ctx.moveTo(x - 3, y);
+          ctx.lineTo(x + 3, y);
+          ctx.moveTo(x - 1.8, y + 2.4);
+          ctx.lineTo(x + 1.8, y + 2.4);
+          ctx.stroke();
+        } else if (art.muster === 'stadt') {
+          ctx.fillRect(x - 2.2, y - 2.2, 4.4, 4.4);
+        }
+      }
+    }
+    ctx.restore();
+  },
+
+  /** Ortsnamen und Flurnamen – klein, kursiv, wie auf einer Meßtischkarte. */
+  _gelaendeName(ctx, g, belegt = []) {
+    if (!g.name) return;
+    const p = g.punkte.map((q) => this._punkt(q));
+    let x = 0;
+    let y = 0;
+    for (const q of p) { x += q[0]; y += q[1]; }
+    x /= p.length;
+    y /= p.length;
+    const art = GELAENDE[g.art] ?? GELAENDE.hoehe;
+    ctx.font = 'italic 500 10.5px ui-serif, Georgia, serif';
+    const w = ctx.measureText(g.name).width + 6;
+    const platz = [[x, y], [x, y - 15], [x, y + 15], [x - w * .7, y], [x + w * .7, y]]
+      .find(([px, py]) => !belegt.some(
+        (b) => Math.abs(b.x - px) < (b.w + w) / 2 + 4 && Math.abs(b.y - py) < (b.h + 14) / 2 + 3,
+      ));
+    if (!platz) return;
+    [x, y] = platz;
+    belegt.push({ x, y, w, h: 14 });
+    ctx.save();
+    ctx.globalAlpha = .95 * (this._inhalt.gelaendeDeckung ?? 1);
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.font = 'italic 500 10.5px ui-serif, Georgia, serif';
+    ctx.lineJoin = 'round';
+    ctx.strokeStyle = 'rgba(8,12,20,.8)';
+    ctx.lineWidth = 3;
+    ctx.strokeText(g.name, x, y);
+    ctx.fillStyle = mitAlpha(art.farbe, .95);
+    ctx.fillText(g.name, x, y);
+    ctx.restore();
+  },
+
+  /**
+   * Ein Truppenkörper.
+   *
+   * Drei Lagen: eine gedeckte Grundfarbe, darüber die Schraffur der
+   * Waffengattung, darüber eine klare Kante. Die Grundfarbe allein ergäbe
+   * einen Fleck; erst die Schraffur macht daraus etwas, das aussieht, als
+   * stünde jemand darin.
+   */
   _koerper(ctx, k) {
     const p = k.punkte.map((q) => this._punkt(q));
     if (p.length < 3) return;
     ctx.save();
     ctx.globalAlpha = k.deckung;
+
     ctx.beginPath();
     weicherWeg(ctx, p);
-
-    // Der Schein hebt den Körper von der Karte ab, ohne sie zuzudecken.
-    // Gemessen kostet er nichts: Mit und ohne liegt die Bildrate gleich.
-    ctx.shadowColor = mitAlpha(k.farbe, .55);
-    ctx.shadowBlur = 16;
-    ctx.fillStyle = mitAlpha(k.farbe, .3);
+    ctx.shadowColor = 'rgba(0,0,0,.55)';
+    ctx.shadowBlur = 10;
+    ctx.shadowOffsetY = 2;
+    ctx.fillStyle = mitAlpha(k.farbe, k.geschlagen ? .2 : .34);
     ctx.fill();
     ctx.shadowBlur = 0;
-    ctx.fillStyle = mitAlpha(k.farbe, .16);
-    ctx.fill();
+    ctx.shadowOffsetY = 0;
 
-    ctx.strokeStyle = mitAlpha(k.farbe, .95);
-    ctx.lineWidth = k.geschlagen ? 1.4 : 2.4;
+    const muster = musterFuer(ctx, k.farbe, k.gattung);
+    if (muster) {
+      ctx.save();
+      ctx.beginPath();
+      weicherWeg(ctx, p);
+      ctx.clip();
+      ctx.globalAlpha = k.deckung * (k.geschlagen ? .4 : .85);
+      ctx.fillStyle = muster;
+      ctx.fill();
+      ctx.restore();
+      ctx.globalAlpha = k.deckung;
+    }
+
+    ctx.beginPath();
+    weicherWeg(ctx, p);
+    ctx.strokeStyle = k.geschlagen ? mitAlpha(k.farbe, .7) : mitAlpha(k.farbe, 1);
+    ctx.lineWidth = k.geschlagen ? 1.4 : 2.6;
     ctx.lineJoin = 'round';
-    if (k.geschlagen) ctx.setLineDash([6, 5]);
+    if (k.geschlagen) ctx.setLineDash([5, 4]);
     ctx.stroke();
     ctx.restore();
   },
 
   /**
-   * Ein Pfeil, der sich zeichnet.
+   * Ein Pfeil, der sich zeichnet – in drei Ausführungen.
    *
    * `k.fortschritt` läuft von 0 bis 1: Der Schaft wächst von hinten nach
-   * vorn, die Spitze setzt erst im letzten Viertel auf und wächst dabei in
-   * ihre Größe hinein. Ein Pfeil, der als Ganzes erscheint, zeigt eine
-   * Richtung; ein Pfeil, der sich zeichnet, zeigt eine Bewegung.
+   * vorn, die Spitze setzt erst im letzten Viertel auf. Ein Pfeil, der als
+   * Ganzes erscheint, zeigt eine Richtung; ein Pfeil, der sich zeichnet,
+   * zeigt eine Bewegung.
+   *
+   * Angriff bekommt eine volle Spitze, Rückzug eine gestrichelte Linie mit
+   * offener Spitze, eine Finte eine gepunktete. Die Unterscheidung ist nicht
+   * Zierrat: Bei Hastings ist der Unterschied zwischen Flucht und
+   * Scheinflucht die ganze Schlacht.
    */
   _pfeil(ctx, a) {
     const p = a.punkte.map((q) => this._punkt(q));
@@ -367,7 +662,6 @@ const SchlachtLeinwand = L.Layer.extend({
     const f = klemm(a.fortschritt, 0, 1);
     if (f <= 0) return;
 
-    // Gesamtlänge, damit der Schaft in echten Bildpunkten wächst.
     const stuecke = [];
     let laenge = 0;
     for (let i = 1; i < p.length; i++) {
@@ -377,7 +671,7 @@ const SchlachtLeinwand = L.Layer.extend({
     }
     if (laenge < 1) return;
 
-    const spitzeGross = klemm(laenge * .22, 9, 34);
+    const spitzeGross = klemm(laenge * .2, 10, 30);
     const schaftZiel = laenge - spitzeGross * .8;
     const bis = klemm(f / .78, 0, 1) * schaftZiel;
 
@@ -399,101 +693,183 @@ const SchlachtLeinwand = L.Layer.extend({
       break;
     }
 
+    const breit = a.rueckzug ? 2.6 : a.finte ? 2.2 : 4;
     ctx.save();
     ctx.globalAlpha = a.deckung;
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
+
+    // Dunkler Grund unter dem Pfeil: Über einer Truppenfläche derselben Farbe
+    // wäre er sonst nicht zu sehen.
     ctx.beginPath();
     weicheLinie(ctx, weg);
-    ctx.shadowColor = mitAlpha(a.farbe, .5);
-    ctx.shadowBlur = 10;
-    ctx.strokeStyle = mitAlpha(a.farbe, .95);
-    ctx.lineWidth = a.rueckzug ? 2.4 : 3.6;
-    if (a.rueckzug) ctx.setLineDash([8, 6]);
+    ctx.strokeStyle = 'rgba(6,9,15,.55)';
+    ctx.lineWidth = breit + 3.4;
     ctx.stroke();
-    ctx.shadowBlur = 0;
+
+    ctx.beginPath();
+    weicheLinie(ctx, weg);
+    if (a.rueckzug) ctx.setLineDash([9, 6]);
+    if (a.finte) ctx.setLineDash([2.5, 4]);
+    ctx.strokeStyle = mitAlpha(a.farbe, 1);
+    ctx.lineWidth = breit;
+    ctx.stroke();
+    ctx.setLineDash([]);
 
     const spitzeF = klemm((f - .72) / .28, 0, 1);
     if (spitzeF > 0) {
       const [ux, uy] = richtung;
-      const s = spitzeGross * (.4 + .6 * spitzeF);
+      const s = spitzeGross * (.45 + .55 * spitzeF);
       const ende = weg.at(-1);
       const seite = [-uy, ux];
+      const spitze = [ende[0] + ux * s * .5, ende[1] + uy * s * .5];
+      const l = [ende[0] - ux * s * .42 + seite[0] * s * .4, ende[1] - uy * s * .42 + seite[1] * s * .4];
+      const r = [ende[0] - ux * s * .42 - seite[0] * s * .4, ende[1] - uy * s * .42 - seite[1] * s * .4];
       ctx.beginPath();
-      ctx.moveTo(ende[0] + ux * s * .55, ende[1] + uy * s * .55);
-      ctx.lineTo(ende[0] - ux * s * .45 + seite[0] * s * .42, ende[1] - uy * s * .45 + seite[1] * s * .42);
-      ctx.lineTo(ende[0] - ux * s * .45 - seite[0] * s * .42, ende[1] - uy * s * .45 - seite[1] * s * .42);
+      ctx.moveTo(...spitze);
+      ctx.lineTo(...l);
+      ctx.lineTo(...r);
       ctx.closePath();
-      ctx.fillStyle = mitAlpha(a.farbe, .95);
-      ctx.fill();
+      if (a.rueckzug) {
+        // Offene Spitze: ein Rückzug ist kein Stoß.
+        ctx.strokeStyle = mitAlpha(a.farbe, 1);
+        ctx.lineWidth = 2.2;
+        ctx.stroke();
+      } else {
+        ctx.strokeStyle = 'rgba(6,9,15,.55)';
+        ctx.lineWidth = 3;
+        ctx.stroke();
+        ctx.fillStyle = mitAlpha(a.farbe, 1);
+        ctx.fill();
+      }
+    }
+
+    if (a.name && f > .5) {
+      const mitte = weg[Math.floor(weg.length / 2)] ?? weg[0];
+      ctx.globalAlpha = a.deckung * klemm((f - .5) * 3, 0, 1);
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.font = '600 10.5px ui-sans-serif, system-ui, sans-serif';
+      ctx.lineJoin = 'round';
+      ctx.strokeStyle = 'rgba(6,9,15,.9)';
+      ctx.lineWidth = 3.5;
+      ctx.strokeText(a.name, mitte[0], mitte[1] - 11);
+      ctx.fillStyle = '#eef2f8';
+      ctx.fillText(a.name, mitte[0], mitte[1] - 11);
+      this._pfeilPlaetze?.push({
+        x: mitte[0], y: mitte[1] - 11, w: ctx.measureText(a.name).width + 6, h: 14,
+      });
     }
     ctx.restore();
   },
 
   /**
-   * Verband und Stärke, direkt auf die Leinwand – so laufen sie mit.
+   * Verband und Stärke als Fähnchen mit Zeigerlinie.
    *
-   * Bei fünf Landungsabschnitten auf achtzig Kilometern liegen die
-   * Schwerpunkte so dicht, dass sich die Namen überlagern. Sie weichen
-   * deshalb aus: Jede Beschriftung sucht sich unter fünf Plätzen den ersten
-   * freien; findet sie keinen, entfällt sie. Lieber ein Name weniger als zwei
-   * übereinander, die beide unlesbar sind.
+   * Text mitten auf der Fläche verdeckt die Schraffur und wird bei zwei
+   * benachbarten Verbänden sofort unlesbar. Ein Fähnchen daneben, mit einer
+   * dünnen Linie zum Körper, ist das, was auf jeder gedruckten Stabskarte
+   * steht – und es lässt sich verschieben, wenn der Platz belegt ist.
    *
-   * Die größte Fläche schreibt zuerst – sie ist die, auf die es ankommt.
+   * Die größte Fläche schreibt zuerst; wer keinen freien Platz findet,
+   * entfällt. Lieber ein Name weniger als zwei übereinander.
    */
-  _beschriftungen(ctx, koerper) {
-    const belegt = [];
-    const frei = (x, y, w) => !belegt.some(
-      (b) => Math.abs(b.x - x) < (b.w + w) / 2 + 6 && Math.abs(b.y - y) < 26,
+  _beschriftungen(ctx, koerper, vorbelegt = []) {
+    const belegt = [...vorbelegt];
+    const frei = (x, y, w, h) => !belegt.some(
+      (b) => Math.abs(b.x - x) < (b.w + w) / 2 + 5 && Math.abs(b.y - y) < (b.h + h) / 2 + 4,
     );
 
     const mit = koerper
-      .filter((k) => k.name && k.deckung >= .35)
+      .filter((k) => k.name && k.deckung >= .4)
       .map((k) => {
         const p = k.punkte.map((q) => this._punkt(q));
         let x = 0;
         let y = 0;
         let x0 = Infinity;
         let x1 = -Infinity;
+        let y0 = Infinity;
+        let y1 = -Infinity;
         for (const q of p) {
           x += q[0];
           y += q[1];
           if (q[0] < x0) x0 = q[0];
           if (q[0] > x1) x1 = q[0];
+          if (q[1] < y0) y0 = q[1];
+          if (q[1] > y1) y1 = q[1];
         }
-        return { k, x: x / p.length, y: y / p.length, gross: x1 - x0 };
+        return {
+          k, x: x / p.length, y: y / p.length,
+          rx: (x1 - x0) / 2, ry: (y1 - y0) / 2, gross: (x1 - x0) * (y1 - y0),
+        };
       })
       .sort((a, b) => b.gross - a.gross);
 
     ctx.save();
-    ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.lineJoin = 'round';
-    for (const { k, x, y } of mit) {
-      ctx.font = '600 12px ui-sans-serif, system-ui, sans-serif';
-      const w = ctx.measureText(k.name).width;
-      // Mitte zuerst, dann darüber und darunter, zuletzt seitlich.
-      const plaetze = [[x, y], [x, y - 26], [x, y + 26], [x, y - 46], [x, y + 46]];
-      const platz = plaetze.find(([px, py]) => frei(px, py, w));
+    for (const { k, x, y, rx, ry } of mit) {
+      ctx.font = '600 11.5px ui-sans-serif, system-ui, sans-serif';
+      const wName = ctx.measureText(k.name).width;
+      ctx.font = '500 10px ui-sans-serif, system-ui, sans-serif';
+      const wZahl = k.staerke ? ctx.measureText(k.staerke).width : 0;
+      const w = Math.max(wName, wZahl) + 14;
+      const h = k.staerke ? 30 : 19;
+
+      // Erst innen, dann in vier Richtungen nach außen ausweichen.
+      const ax = Math.max(rx + w / 2 + 6, 26);
+      const ay = Math.max(ry + h / 2 + 6, 20);
+      const plaetze = [
+        [x, y, false], [x, y - ay, true], [x, y + ay, true],
+        [x + ax, y, true], [x - ax, y, true],
+        [x + ax * .8, y - ay * .8, true], [x - ax * .8, y + ay * .8, true],
+      ];
+      const platz = plaetze.find(([px, py]) => frei(px, py, w, h));
       if (!platz) continue;
-      const [px, py] = platz;
-      belegt.push({ x: px, y: py, w });
+      const [px, py, zeiger] = platz;
+      belegt.push({ x: px, y: py, w, h });
 
       ctx.globalAlpha = klemm((k.deckung - .3) / .5, 0, 1);
-      ctx.strokeStyle = 'rgba(8,12,20,.85)';
-      ctx.lineWidth = 3.5;
-      ctx.strokeText(k.name, px, py);
-      ctx.fillStyle = '#f2f5fa';
-      ctx.fillText(k.name, px, py);
+      if (zeiger) {
+        ctx.beginPath();
+        ctx.moveTo(px, py);
+        ctx.lineTo(x, y);
+        ctx.strokeStyle = mitAlpha(k.farbe, .6);
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(x, y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = mitAlpha(k.farbe, .9);
+        ctx.fill();
+      }
+
+      // Das Fähnchen selbst: dunkle Tafel mit farbigem Balken links.
+      const l = px - w / 2;
+      const o = py - h / 2;
+      ctx.beginPath();
+      ctx.roundRect(l, o, w, h, 3);
+      ctx.fillStyle = 'rgba(10,14,22,.82)';
+      ctx.fill();
+      ctx.strokeStyle = mitAlpha(k.farbe, .8);
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.roundRect(l, o, 3, h, [3, 0, 0, 3]);
+      ctx.fillStyle = mitAlpha(k.farbe, 1);
+      ctx.fill();
+
+      ctx.textAlign = 'center';
+      ctx.font = '600 11.5px ui-sans-serif, system-ui, sans-serif';
+      ctx.fillStyle = '#f0f4fa';
+      ctx.fillText(k.name, px + 1.5, k.staerke ? o + 11 : py);
       if (k.staerke) {
-        ctx.font = '500 10.5px ui-sans-serif, system-ui, sans-serif';
-        ctx.lineWidth = 3;
-        ctx.strokeText(k.staerke, px, py + 14);
+        ctx.font = '500 10px ui-sans-serif, system-ui, sans-serif';
         ctx.fillStyle = mitAlpha(k.farbe, .95);
-        ctx.fillText(k.staerke, px, py + 14);
+        ctx.fillText(k.staerke, px + 1.5, o + 22);
       }
     }
     ctx.restore();
+    return belegt;
   },
 });
 
@@ -696,7 +1072,9 @@ export class BattlePlayer {
         pfeile.push({
           punkte: s.punkte,
           farbe: this.farben.get(s.partei) ?? '#8a94a6',
+          name: s.name ?? '',
           rueckzug: !!s.rueckzug,
+          finte: !!s.finte,
           fortschritt: klemm(teil / PFEIL_BIS, 0, 1),
           // Der Pfeil hat seine Aussage gemacht, sobald die Bewegung läuft.
           deckung: 1 - weich(klemm((teil - .72) / .28, 0, 1)) * .85,
@@ -713,6 +1091,7 @@ export class BattlePlayer {
         farbe: this.farben.get(s.partei) ?? '#8a94a6',
         name: s.name ?? '',
         staerke: s.staerke ?? '',
+        gattung: s.gattung ?? 'gemischt',
         geschlagen: !!s.geschlagen,
         // Wer in der nächsten Station fehlt, ist geschlagen oder abgezogen –
         // er verblasst, statt zu verschwinden.
@@ -731,15 +1110,18 @@ export class BattlePlayer {
           farbe: this.farben.get(s.partei) ?? '#8a94a6',
           name: s.name ?? '',
           staerke: s.staerke ?? '',
+          gattung: s.gattung ?? 'gemischt',
           geschlagen: !!s.geschlagen,
           deckung: zug,
         });
       }
     }
 
+    const auf = klemm((performance.now() - this._auf) / 900, 0, 1);
     this.leinwand.setInhalt({
       gelaende: b.gelaende ?? [],
-      gelaendeDeckung: klemm((performance.now() - this._auf) / 900, 0, 1),
+      gelaendeDeckung: auf,
+      buehne: auf,
       koerper,
       pfeile,
     });

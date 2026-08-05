@@ -577,10 +577,15 @@ ist aber kein Zustand, sondern eine **Bewegung** – und die fällt aus einer
 Karte heraus, die nur Jahresschnitte kennt.
 
 Zwölf Schlachten haben einen abspielbaren Verlauf, von Marathon bis zur
-Normandie: Marathon, Gaugamela, Cannae, Hastings, Azincourt, der Fall
-Konstantinopels, Lepanto, Trafalgar, Waterloo, Tannenberg, Stalingrad,
-Normandie. Jede besteht aus sechs bis sieben Stationen mit eigener Zeitmarke,
-zusammen rund 460 Truppenstellungen.
+Normandie: **138 Stationen, 1.006 Truppenstellungen, 83 Geländezüge.** Jede
+Schlacht ist in zehn bis vierzehn Abschnitte gegliedert, jede Stellung ist ein
+benannter Verband mit Führer, Stärke und Waffengattung.
+
+| | | | |
+|---|---|---|---|
+| Marathon 490 v. Chr. | Gaugamela 331 v. Chr. | Cannae 216 v. Chr. | Hastings 1066 |
+| Azincourt 1415 | Konstantinopel 1453 | Lepanto 1571 | Trafalgar 1805 |
+| Waterloo 1815 | Tannenberg 1914 | Stalingrad 1942 | Normandie 1944 |
 
 #### Warum gegliten wird und nicht umgeschaltet
 
@@ -600,13 +605,11 @@ stülpt sich die Form beim Überblenden um. Drei Schritte lösen das:
    dem kleinsten Abstand über alle Punktpaare. Ohne diesen Schritt krempelt
    sich die Truppe beim Vorrücken einmal um.
 3. **Weiche Kurve statt Polygonzug.** Über die Stützpunkte läuft eine
-   Catmull-Rom-Kurve, in Bézier-Stücke umgerechnet. Aus neun Ecken wird eine
-   Form, die aussieht, als läge sie mit dem Stift auf einer Stabskarte.
+   Catmull-Rom-Kurve, in Bézier-Stücke umgerechnet.
 
 Zusammengehalten wird das über eine **Kennung je Stellung**, die über die
 Stationen hinweg gleich bleibt. Wer in beiden Stationen vorkommt, gleitet; wer
-nur in der neuen vorkommt, blendet ein; wer verschwindet, verblasst, statt
-wegzuspringen.
+nur in der neuen vorkommt, blendet ein; wer verschwindet, verblasst.
 
 #### Die Choreografie einer Station
 
@@ -618,7 +621,68 @@ Eine Station ist ein Abschnitt, kein Augenblick. Innerhalb ihres Fensters:
 | 45 – 100 % | Die Stellungen gleiten in die Lage der nächsten Station. Die Pfeile verblassen – sie haben ihre Aussage gemacht, jetzt zeigt sie die Bewegung selbst. |
 
 Erst lesen, dann die Absicht sehen, dann die Ausführung. Gleichzeitig wäre die
-Bewegung vorbei, bevor man den Satz gelesen hat.
+Bewegung vorbei, bevor man den Satz gelesen hat. `npm run test` prüft beides:
+dass die Körper während der Pfeilphase stillstehen **und** dass sie sich
+danach bewegen.
+
+#### Die Bildsprache einer Stabskarte
+
+Eine Farbe sagt, wer da steht. Sie sagt nicht, **was** da steht – und davon
+hängt bei jeder dieser Schlachten der Ausgang ab: ob Reiterei eine Lücke
+ausnutzen kann, ob Bogenschützen einen Hang decken, ob eine Batterie den
+Anmarsch bestreicht. Auf gedruckten Stabskarten unterscheidet man das seit dem
+18. Jahrhundert durch Schraffuren, nicht durch Farben. Dieselbe Sprache hier:
+
+- **Die Partei gibt den Farbton, die Gattung das Muster.** Fußvolk waagerecht,
+  Reiterei schräg, Bogenschützen kreuzweise, Geschütze gepunktet, Schiffe als
+  Wellenlinie. Wer geschlagen ist, bekommt einen gestrichelten Umriss und eine
+  blassere Schraffur.
+- **Drei Pfeilarten.** Angriff mit voller Spitze, Rückzug gestrichelt mit
+  offener Spitze, Scheinbewegung gepunktet. Bei Hastings ist der Unterschied
+  zwischen Flucht und Scheinflucht die ganze Schlacht.
+- **Beschriftung als Fähnchen mit Zeigerlinie**, nicht als Text auf der Fläche.
+  Text mitten im Körper verdeckt die Schraffur und wird bei zwei benachbarten
+  Verbänden unlesbar. Die Fähnchen weichen einander aus: Jedes sucht unter
+  sieben Plätzen den ersten freien, und wer keinen findet, entfällt – lieber
+  ein Name weniger als zwei übereinander.
+- **Eine Bühne.** Bei Zoomstufe 12 ist die Staatenkarte eine einzige Fläche bis
+  zum Bildrand; das Auge findet darin keinen Halt. Ein weicher Schatten von
+  außen nach innen setzt das Feld in einen Rahmen.
+
+#### Gelände
+
+Bei fast jeder dieser Schlachten hat das Gelände mitentschieden: der Schlamm
+von Azincourt, der Höhenzug von Mont-Saint-Jean, der Große Sumpf bei Marathon,
+die Theodosianische Mauer, die Untiefen im Golf von Patras. **83 benannte
+Geländezüge** in neun Signaturen legen das darunter:
+
+| | |
+|---|---|
+| Wald | Punktkörnung mit geschlossener Kante |
+| Höhenzug | Böschungsschraffur – kurze Striche nach innen, die die Richtung des Hanges zeigen |
+| Ortschaft | Baublock-Raster |
+| Sumpf | liegende Doppelstriche |
+| Fluss | breites Bett, schmale Ader, heller Kern |
+| Mauer | Linie mit Zinnenstrichen |
+| Weg | doppelte Linie, heller Kern zwischen dunklen Rändern |
+| See, Furt | Fläche bzw. gestrichelte Linie |
+
+Konzentrische Höhenlinien standen zwischenzeitlich drin und sahen aus wie
+zufällige Schlingen: Sie sagen nichts darüber, wo oben ist. Die
+Böschungsschraffur tut es.
+
+#### Was in der Tafel steht
+
+Neben dem laufenden Text: ein **Kräftebalken** (bei Azincourt sieht man 6.000
+gegen 20.000, statt es auszurechnen), eine **Stationsliste** mit Uhrzeiten zum
+Anspringen, und am Ende **Ausgang, Verluste je Partei, Folgen** – dazu ein
+Absatz `streit`, der nennt, wo die Forschung uneins ist. Bei Azincourt etwa,
+dass die französische Heeresstärke heute deutlich niedriger geschätzt wird als
+früher, was die Rolle des Geländes eher noch vergrößert.
+
+Auf der Karte selbst liegt eine **Zeichenerklärung**, die nur nennt, was in
+dieser Schlacht wirklich vorkommt – eine Legende, die Zeichen erklärt, die
+nicht im Bild sind, ist selbst Unordnung.
 
 #### Die Zeitachse
 
@@ -630,17 +694,9 @@ Abständen. Bei Konstantinopel sieht man daran, dass sieben Wochen Belagerung
 auf eine Nacht Sturmangriff zulaufen.
 
 Die Zeitmarken sind je Schlacht einheitlich – Minuten bei einer Feldschlacht,
-Tage bei Tannenberg, Monate bei Stalingrad. Die Abstände bestimmen nur die
-Reihenfolge und die Lage der Marken; jedes Fenster wird gleich lang abgespielt,
-sonst rauschte der Sturmangriff vorbei, während man bei der Belagerung wartet.
-
-#### Gelände
-
-Bei fast jeder dieser Schlachten hat das Gelände mitentschieden: der Schlamm
-von Azincourt, der Höhenzug von Mont-Saint-Jean, das Sumpfgebiet bei Marathon,
-die Theodosianische Mauer, die Untiefen im Golf von Patras. Sieben Signaturen –
-Fluss, See, Sumpf, Wald, Höhe, Stadt, Mauer – legen das eine Merkmal darunter,
-auf das es ankam. Bewusst blass: Sie sollen die Karte nicht ersetzen.
+Tage bei Tannenberg, Monate bei Stalingrad. Jedes Fenster wird gleich lang
+abgespielt, sonst rauschte der Sturmangriff vorbei, während man bei der
+Belagerung wartet.
 
 #### Warum eine Leinwand und keine Kartenebene
 
@@ -649,8 +705,13 @@ Leaflet-Ebenen aus Einzelformen hieße das, sechzig Mal in der Sekunde Objekte
 anzulegen, zu projizieren und wegzuwerfen. Stattdessen zeichnet eine eigene
 Leinwand einmal je Bild in Bildschirmkoordinaten. Gemessen bei geviertelter
 Rechenleistung kostet ein Bild **2,2 bis 3,7 ms** – bei der schwersten
-Schlacht mit 48 Stellungen genauso wie bei der leichtesten. Auf einem
-gewöhnlichen Gerät ist das unter einer Millisekunde.
+Schlacht genauso wie bei der leichtesten.
+
+Und die Verläufe selbst kommen erst, wenn jemand sie sehen will: 1.006
+Stellungen sind rund 350 kB, die fest eingebunden in jedem Erstaufruf lägen,
+obwohl die meisten Besucher nie eine Schlacht öffnen. Gemessen wuchs der
+Erstaufruf dadurch um 366 kB und riss die Grenze von `check:ladelast`. Als
+eigener Brocken kommt er beim Öffnen des Registers nach – 2.928 statt 3.275 kB.
 
 Truppenstellungen sind **keine** Staatsgrenzen. Sie liegen deshalb in einer
 eigenen Ebene, in eigenen Farben, und verschwinden restlos beim Schließen.
@@ -663,11 +724,13 @@ Von Hand gesetzte Geometrie geht schief, ohne dass es beim Lesen auffällt.
 `npm run check:schlachten` prüft deshalb für alle zwölf Verläufe: dass jede
 Stellung im Umkreis des Schlachtfelds liegt (der zulässige Radius folgt aus
 der Zoomstufe), dass die Zeitmarken steigen, dass eine Kennung nicht in einer
-Station der einen und in der nächsten der anderen Partei gehört, dass
-Landschlachten an Land und Seeschlachten auf dem Wasser liegen – geprüft gegen
-die hochaufgelöste Küstenlinie, weil die Übersichtslinie eine vier Kilometer
-breite Küstenebene wie die von Marathon glatt ins Meer legt – und dass jeder
-Verlauf aus dem Kriegsregister erreichbar ist.
+Station der einen und in der nächsten der anderen Partei gehört, dass jede
+Fläche eine bekannte Waffengattung führt, dass jeder Geländezug einen Namen
+hat, dass Ausgang, Verluste, Folgen und die Zahlen für den Kräftebalken
+vollständig sind – und dass Landschlachten an Land und Seeschlachten auf dem
+Wasser liegen, geprüft gegen die hochaufgelöste Küstenlinie, weil die
+Übersichtslinie eine vier Kilometer breite Küstenebene wie die von Marathon
+glatt ins Meer legt.
 
 ### Ereignisse auf der Karte
 
