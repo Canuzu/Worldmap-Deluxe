@@ -25,6 +25,8 @@ import os from 'node:os';
 import { execFileSync } from 'node:child_process';
 import { feature as topoFeature } from 'topojson-client';
 import { anchorPoint } from './lib/polylabel.mjs';
+import { NAMEN_AUS_OBERHERR, vertauschtExpression, vertauschtNamen, ZUWEISUNGEN }
+  from './lib/quellfehler.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const HIST_DIR = path.join(ROOT, 'data-src/historical');
@@ -297,6 +299,63 @@ function applyFills(year, layerFile, key, nebenfelder) {
 }
 
 /**
+ * Zuweisungen: ein Gebiet vom falschen Reich abtrennen und dem richtigen
+ * zuschlagen.
+ *
+ * Anders als eine Umbenennung trifft das nur einen Teil einer Flaeche - etwa
+ * Belgien, das im Ursprungsdatensatz 1815 noch am Oesterreichischen
+ * Kaiserreich haengt, waehrend der Rest des Reiches richtig liegt. Geschnitten
+ * wird ausschliesslich das genannte Reich; alles andere im Rechteck bleibt
+ * unberuehrt, damit ein Nachbar nicht mitgenommen wird.
+ */
+function applyZuweisungen(year, layerFile, key, nebenfelder) {
+  const regeln = ZUWEISUNGEN[year];
+  if (!regeln?.length) return layerFile;
+
+  let current = layerFile;
+  regeln.forEach((regel, i) => {
+    const tag = `${key}-zuweisung-${i}`;
+    const regionFile = path.join(TMP, `${tag}-region.json`);
+    fs.writeFileSync(regionFile, JSON.stringify({
+      type: 'FeatureCollection',
+      features: [{
+        type: 'Feature',
+        properties: {},
+        geometry: { type: 'Polygon', coordinates: [[...regel.ring, regel.ring[0]]] },
+      }],
+    }));
+
+    const betroffen = `NAME === ${JSON.stringify(regel.von)}`;
+
+    // Das Stueck im Rechteck bekommt den neuen Namen ...
+    const innen = path.join(TMP, `${tag}-innen.json`);
+    mapshaper([
+      current, '-filter', betroffen, '-clip', regionFile,
+      '-each', `NAME = ${JSON.stringify(regel.an)}; `
+        + `SUBJECTO = ${JSON.stringify(regel.an)}; PARTOF = ${JSON.stringify(regel.an)};`,
+      '-o', 'format=geojson', innen,
+    ]);
+
+    // ... der Rest desselben Reiches behaelt seinen.
+    const aussen = path.join(TMP, `${tag}-aussen.json`);
+    mapshaper([current, '-filter', betroffen, '-erase', regionFile,
+      '-o', 'format=geojson', aussen]);
+
+    const uebrig = path.join(TMP, `${tag}-uebrig.json`);
+    mapshaper([current, '-filter', `!(${betroffen})`, '-o', 'format=geojson', uebrig]);
+
+    const roh = path.join(TMP, `${tag}-roh.json`);
+    mapshaper([innen, aussen, uebrig, 'combine-files', '-merge-layers', 'force',
+      '-o', 'format=geojson', roh]);
+
+    // Das Stueck grenzt an das Reich, dem es zufaellt - ohne Verschmelzen
+    // bliebe eine Grenze mittendrin stehen, die es nie gab.
+    current = mergeNames([regel.an], roh, tag, nebenfelder);
+  });
+  return current;
+}
+
+/**
  * Flaechen mit gleichem Namen verschmelzen - beschraenkt auf die genannten.
  * Ueber die ganze Ebene angewandt verliert -dissolve2 bei einzelnen
  * entarteten Kleinstflaechen des Ursprungsdatensatzes die Geometrie; was
@@ -333,6 +392,7 @@ function buildEpoch(entry, entfallen = []) {
   const topoPath = path.join(TMP, `${key}.topo.json`);
 
   const fix = renameExpression(entry.year);
+  const vertauscht = vertauschtExpression(entry.year);
   // Die Kriegsjahre führen zusätzlich die Besatzungsmacht. Sie muss durch die
   // ganze Kette mit: Zwei Flächen desselben Landes mit verschiedenen
   // Besatzern sind zwei Gemeinwesen, keine Dublette.
@@ -352,6 +412,11 @@ function buildEpoch(entry, entfallen = []) {
   const zwischen = path.join(TMP, `${key}.arbeit.json`);
   mapshaper([
     src,
+    // Erst die handwerklichen Fehler der Quelle geradeziehen, dann wegfiltern
+    // - sonst faellt heraus, was nur keine Beschriftung hat. Danach erst die
+    // historischen Richtigstellungen (siehe lib/quellfehler.mjs).
+    ...(vertauscht ? ['-each', vertauscht] : []),
+    '-each', NAMEN_AUS_OBERHERR,
     '-filter', 'NAME != null && String(NAME).trim() !== ""',
     ...(fix ? ['-each', fix] : []),
     // Nach dem Umbenennen zusammengehoerige Flaechen verschmelzen, damit keine
@@ -363,11 +428,16 @@ function buildEpoch(entry, entfallen = []) {
   // Grenze mitten durch ein Reich laeuft - aber nur die betroffenen. Ein
   // -dissolve2 ueber die ganze Ebene verliert bei einzelnen Kleinstflaechen
   // des Ursprungsdatensatzes die Geometrie (etwa Jaburrara im Jahr 1815).
-  const verschmolzen = fix
-    ? mergeNames(Object.values(CORRECTIONS[entry.year].rename), zwischen, `${key}-umbenannt`, nebenfelder)
+  const zuNamen = [
+    ...(fix ? Object.values(CORRECTIONS[entry.year].rename) : []),
+    ...vertauschtNamen(entry.year),
+  ];
+  const verschmolzen = zuNamen.length
+    ? mergeNames(zuNamen, zwischen, `${key}-umbenannt`, nebenfelder)
     : zwischen;
 
-  const gefuellt = applyFills(entry.year, verschmolzen, key, nebenfelder);
+  const zugewiesen = applyZuweisungen(entry.year, verschmolzen, key, nebenfelder);
+  const gefuellt = applyFills(entry.year, zugewiesen, key, nebenfelder);
 
   mapshaper([
     gefuellt,

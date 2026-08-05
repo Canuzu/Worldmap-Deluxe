@@ -31,6 +31,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
 import { execFileSync } from 'node:child_process';
+import { NAMEN_AUS_OBERHERR, vertauschtExpression, ZUWEISUNGEN }
+  from './lib/quellfehler.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const HIST_DIR = path.join(ROOT, 'data-src/historical');
@@ -156,6 +158,34 @@ function applySplit(input, rule, regionFile) {
   return out;
 }
 
+/**
+ * Ein Gebiet vom falschen Reich abtrennen und dem richtigen zuschlagen -
+ * dasselbe wie `applyZuweisungen` in build-data.mjs, nur ohne Besatzung:
+ * hier ist OCCUPIER an dieser Stelle noch überall null.
+ */
+function applyZuweisung(input, regel) {
+  const regionFile = writeRegion(`zuweisung-${regel.an}`, regel.ring);
+  const betroffen = `NAME === ${JSON.stringify(regel.von)}`;
+  const neu = `NAME = ${JSON.stringify(regel.an)}; `
+    + `SUBJECTO = ${JSON.stringify(regel.an)}; PARTOF = ${JSON.stringify(regel.an)};`;
+
+  const innen = tmpFile(`${regel.an}-zu-innen`);
+  mapshaper([input, '-filter', betroffen, '-clip', regionFile,
+    '-each', neu, '-o', 'format=geojson', innen]);
+
+  const aussen = tmpFile(`${regel.an}-zu-aussen`);
+  mapshaper([input, '-filter', betroffen, '-erase', regionFile,
+    '-o', 'format=geojson', aussen]);
+
+  const uebrig = tmpFile(`${regel.an}-zu-uebrig`);
+  mapshaper([input, '-filter', `!(${betroffen})`, '-o', 'format=geojson', uebrig]);
+
+  const out = tmpFile(`${regel.an}-zu-vereint`);
+  mapshaper([innen, aussen, uebrig, 'combine-files', '-merge-layers', 'force',
+    '-o', 'format=geojson', out]);
+  return out;
+}
+
 function featureCount(file) {
   const g = JSON.parse(fs.readFileSync(file, 'utf8'));
   return g.features?.length ?? 0;
@@ -168,6 +198,11 @@ function buildYear(spec, gebiete, basisDatei) {
   // OCCUPIER auf allen Flächen anlegen, damit das Feld in jeder Zwischenstufe
   // existiert – mapshaper würde es sonst je nach Teilmenge mal führen, mal
   // nicht, und die Ebenen ließen sich nicht mehr zusammenlegen.
+  // Das Jahr der *Quelldatei* - die Fehler stecken in ihr, nicht im
+  // Zeitschnitt, der sie benutzt.
+  const quelljahr = Number(basisDatei.match(/world_(\d+)/)?.[1]);
+  const vertauscht = vertauschtExpression(quelljahr);
+
   const steps = ['OCCUPIER = null;'];
   if (spec.zonen) steps.push(zoneExpression(spec.zonen));
   if (spec.umbenennen) steps.push(renameExpression(spec.umbenennen));
@@ -175,10 +210,20 @@ function buildYear(spec, gebiete, basisDatei) {
 
   mapshaper([
     src,
+    // Erst die handwerklichen Fehler der Quelle geradeziehen, dann wegfiltern
+    // - sonst fällt heraus, was nur keine Beschriftung hat. Beide Bausteine
+    // teilt dieser Weg mit build-data.mjs (siehe lib/quellfehler.mjs), sonst
+    // zeigten abgeleitete und gebaute Fassung desselben Jahres Verschiedenes.
+    ...(vertauscht ? ['-each', vertauscht] : []),
+    '-each', NAMEN_AUS_OBERHERR,
     '-filter', 'NAME != null && NAME !== ""',
     '-each', steps.join(' '),
     '-o', 'format=geojson', current,
   ]);
+
+  for (const regel of ZUWEISUNGEN[quelljahr] ?? []) {
+    current = applyZuweisung(current, regel);
+  }
 
   for (const rule of spec.teilungen ?? []) {
     const gebiet = gebiete[rule.gebiet];

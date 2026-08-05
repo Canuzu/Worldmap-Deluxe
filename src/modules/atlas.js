@@ -92,22 +92,38 @@ const ECKENANTEIL = 0.22;
 const RING_MIN = 1.5;
 
 /**
- * Wie weit über den Bildrand hinaus gezeichnet wird.
+ * Wie weit über den Bildrand hinaus gezeichnet wird – zwei Werte, weil die
+ * Rechnung beim Zoomen anders steht als beim Ziehen.
  *
  * Leaflet legt jede Zeichenfläche größer an als das Fenster, damit beim
- * Verschieben nicht sofort ein leerer Rand auftaucht. Der Atlas hatte diesen
- * Vorrat auf 30 bis 35 % gestellt – das ergibt eine Fläche von rund dem
- * Dreifachen des Fensters, und **jeder** dieser Bildpunkte wird bei jedem
- * Neuzeichnen mitgerastert, auch wenn zwei Drittel davon nie zu sehen sind.
+ * Verschieben nicht sofort ein leerer Rand auftaucht. Was dieser Vorrat
+ * kostet und was er bringt, hängt davon ab, warum neu gezeichnet wird:
  *
- * Zwischenzeitlich stand er auf 15 %, um jedes Neuzeichnen billiger zu
- * machen. Seit `PlainCanvas._update` beim Schwenken gar nicht mehr neu
- * zeichnet, solange der Ausschnitt in der gezeichneten Fläche bleibt, dreht
- * sich die Rechnung um: Ein größerer Vorrat bedeutet **seltener** neu
- * zeichnen. 35 % erlauben einen Zug über ein Drittel der Fensterbreite, ohne
- * dass irgendetwas neu gerechnet wird.
+ *   Beim **Ziehen** zeichnet `_reichtNoch` nur dann neu, wenn der Ausschnitt
+ *   aus der gezeichneten Fläche gewandert ist. Ein großer Vorrat bedeutet
+ *   hier *seltener* neu zeichnen – 35 % erlauben einen Zug über ein Drittel
+ *   der Fensterbreite, ohne dass irgendetwas gerechnet wird.
+ *
+ *   Beim **Zoomen** hilft kein Vorrat: Der Maßstab ändert sich, es muss so
+ *   oder so alles neu. Jeder zusätzliche Bildpunkt ist reine Zugabe. Bei
+ *   35 % ist die Fläche das 2,9-Fache des Fensters, bei 12 % das 1,6-Fache.
+ *
+ * Gemessen im Zeitschnitt 1492, zwei Zoomsprünge, Rechenleistung geviertelt:
+ *
+ *   Vorrat   blockiert   längste Aufgabe
+ *     35 %     4.290 ms      977 ms
+ *     25 %     3.380 ms      790 ms
+ *     15 %     3.080 ms      562 ms
+ *
+ * Die längste Aufgabe ist das, was man als Stocken sieht. Deshalb legt
+ * `_update` die Fläche klein an, wenn der Anlass ein Zoomschritt war, und
+ * groß, wenn es ein Zug war. Nach einem Zoomschritt löst der erste Zug
+ * einmal ein Neuzeichnen aus – danach ist wieder Vorrat da.
  */
-const RAND = .35;
+const RAND_ZUG = .35;
+const RAND_ZOOM = .12;
+
+
 
 /** Größte Ausdehnung eines Ringes in Bildpunkten. */
 function ringAusdehnung(p) {
@@ -182,8 +198,43 @@ const PlainCanvas = L.Canvas.extend({
 
   _update() {
     if (this._reichtNoch()) return;
-    L.Canvas.prototype._update.call(this);
+    this.options.padding = this._zoom === this._map.getZoom() ? RAND_ZUG : RAND_ZOOM;
+    const dichte = this.options.dichte;
+    if (dichte) this._legeFlaecheAn(dichte);
+    else L.Canvas.prototype._update.call(this);
     this._merkeStand();
+  },
+
+  /**
+   * Die Zeichenfläche in einer eigenen Punktdichte anlegen.
+   *
+   * Leaflet legt sie auf Bildschirmen mit doppelter Punktdichte ebenfalls
+   * doppelt an – vier Mal so viele Bildpunkte, vier Mal so viel Rasterarbeit.
+   * Gemessen kostet allein das beim Zoomen 58 % mehr, bei exakt gleicher Zahl
+   * an Zeichenwegen: reine Rasterung, kein JavaScript.
+   *
+   * Ersetzt `L.Canvas.prototype._update` vollständig, statt hinterher noch
+   * einmal umzustellen: Das Setzen von `width` legt den Bildspeicher neu an
+   * und löscht ihn: zweimal je Bewegung ist teurer als der ganze Gewinn.
+   *
+   * Für die Grenzflächen lohnt es sich nicht – gemessen bleibt die längste
+   * Aufgabe eines Zoomsprungs gleich, ob sie in einfacher oder in doppelter
+   * Dichte gezeichnet werden. Der Saum dagegen wird ohnehin weich; dort sind
+   * vier Mal so viele Bildpunkte reine Zugabe.
+   */
+  _legeFlaecheAn(dichte) {
+    L.Renderer.prototype._update.call(this);
+    const b = this._bounds;
+    const size = b.getSize();
+    const c = this._container;
+    L.DomUtil.setPosition(c, b.min);
+    c.width = Math.round(size.x * dichte);
+    c.height = Math.round(size.y * dichte);
+    c.style.width = `${size.x}px`;
+    c.style.height = `${size.y}px`;
+    if (dichte !== 1) this._ctx.scale(dichte, dichte);
+    this._ctx.translate(-b.min.x, -b.min.y);
+    this.fire('update');
   },
 
   _updatePoly(layer, closed) {
@@ -256,21 +307,12 @@ const CoastCanvas = PlainCanvas.extend({
 
   _update() {
     if (this._reichtNoch()) return;
-    L.Renderer.prototype._update.call(this);
-    this._merkeStand();
-    const b = this._bounds;
-    const size = b.getSize();
-    const container = this._container;
-    L.DomUtil.setPosition(container, b.min);
+    this.options.padding = this._zoom === this._map.getZoom() ? RAND_ZUG : RAND_ZOOM;
     // Rückwärtsauflösung: halb so viele Bildpunkte, gleiche Fläche auf dem
-    // Bildschirm. Das Setzen von width setzt zugleich den Zeichenzustand
-    // zurück, deshalb kommt die Verschiebung erst danach.
-    container.width = size.x;
-    container.height = size.y;
-    container.style.width = `${size.x}px`;
-    container.style.height = `${size.y}px`;
-    this._ctx.translate(-b.min.x, -b.min.y);
-    this.fire('update');
+    // Bildschirm. Der Saum wird ohnehin weich - vier Mal so viele Bildpunkte
+    // machen ihn nicht weicher, sie kosten nur vier Mal so viel.
+    this._legeFlaecheAn(1);
+    this._merkeStand();
   },
 });
 const coastCanvas = (opts) => new CoastCanvas(opts);
@@ -633,7 +675,7 @@ export class AtlasMap {
     // Linie zwangsläufig deckungsgleich.
     this.oceanLayer = L.geoJSON(null, {
       pane: 'ocean',
-      renderer: plainCanvas({ pane: 'ocean', padding: RAND }),
+      renderer: plainCanvas({ pane: 'ocean', padding: RAND_ZUG }),
       interactive: false,
       // Leaflet dünnt beim Projizieren auf Pixelgenauigkeit aus. Leaflets
       // Vorgabe von 1 px kappt sichtbar Buchten und Landzungen; 0.5 px
@@ -649,7 +691,7 @@ export class AtlasMap {
     this.coastLayer = L.geoJSON(null, {
       pane: 'coast',
       renderer: (this.saumZeichner = coastCanvas({
-        pane: 'coast', padding: RAND, baender: [],
+        pane: 'coast', padding: RAND_ZUG, baender: [],
       })),
       interactive: false,
       smoothFactor: 1.2,
@@ -657,14 +699,14 @@ export class AtlasMap {
 
     this.waterLayer = L.geoJSON(null, {
       pane: 'water',
-      renderer: plainCanvas({ pane: 'water', padding: RAND }),
+      renderer: plainCanvas({ pane: 'water', padding: RAND_ZUG }),
       interactive: false,
       smoothFactor: 1.2,
     });
 
     this.graticuleLayer = L.geoJSON(graticule(), {
       pane: 'graticule',
-      renderer: plainCanvas({ pane: 'graticule', padding: RAND }),
+      renderer: plainCanvas({ pane: 'graticule', padding: RAND_ZUG }),
       interactive: false,
     });
 
@@ -683,7 +725,7 @@ export class AtlasMap {
     this.slots = ['polityA', 'polityB'].map((pane) => ({
       pane,
       el: this.map.getPane(pane),
-      renderer: smoothCanvas({ pane, padding: RAND }),
+      renderer: smoothCanvas({ pane, padding: RAND_ZUG }),
       layer: null,
       occupation: null,
     }));

@@ -248,6 +248,42 @@ Aufgenommen wird nur, was fachlich unstrittig ist. Wo die richtige Zuordnung
 unklar ist, bleibt der Befund lieber offen stehen – eine selbstbewusste
 falsche Korrektur wäre schlimmer.
 
+#### Handwerkliche Fehler: `scripts/lib/quellfehler.mjs`
+
+Davon getrennt liegen Fehler, die keine historische Frage sind. Sie betreffen
+nicht *wann* ein Reich bestand, sondern *ob es überhaupt durchkommt* – und sie
+fallen lautlos aus, weil beide Aufbereitungswege namenlose Flächen wegwerfen.
+
+Der Datensatz führt drei Felder: `NAME`, `SUBJECTO` („untersteht") und
+`PARTOF`. Ist `NAME` leer, ist das meist richtig – der unbeanspruchte Rest der
+Landmasse. Ist `NAME` aber leer, **obwohl `SUBJECTO` gesetzt ist**, gehört die
+Fläche einem Reich und nur die Beschriftung fehlt. Über alle 62 Zeitschnitte
+sind das fünf Werte, und zwei davon sind keine Kleinigkeit:
+
+- Der **ganze indonesische Archipel** – Sumatra, Java, Borneo, Sulawesi, Bali,
+  Lombok, Sumbawa, Halmahera – trägt im Zeitschnitt 1815 `NAME: null` bei
+  `SUBJECTO: "Dutch East Indies"`. Übrig blieb allein die Insel Bangka.
+- Das **Vereinigte Königreich der Niederlande** trägt dort als Namen sieben
+  Leerzeichen.
+
+Von 1808 bis 1879 fehlten damit die Niederlande und Indonesien auf der Karte.
+Die Regel dagegen ist so einfach wie belastbar: Fehlt der Name, steht aber ein
+Oberherr da, dann ist der Oberherr der Name – genau das bedeutet das Feld.
+
+Zwei weitere Fehler derselben Art im selben Zeitschnitt, beide gesondert
+begründet: Die südafrikanischen Kapsiedlungen heißen im Datensatz
+„Dutch East Indies" – der Name gehört an den Archipel, die Fläche ans Kap, das
+1806 britisch besetzt und 1814 abgetreten wurde. Und **Belgien** hängt noch am
+Österreichischen Kaiserreich, obwohl die Österreichischen Niederlande 1795 an
+Frankreich fielen und der Wiener Kongress sie 1815 den Niederlanden zuschlug;
+das Stück wird herausgeschnitten und dem richtigen Nachbarn zugeschlagen.
+
+Alle vier sind durch Stichproben in `npm run check:besatzung` festgehalten –
+Amsterdam, Brüssel, Java, Sumatra, Sulawesi, die Molukken, das Kapland und
+Wien als Gegenprobe. Beide Aufbereitungswege teilen sich die Datei, sonst
+zeigten `data-src/derived` und `public/data/epochs` für dasselbe Jahr
+Verschiedenes.
+
 ### Herkunft ist sichtbar, nicht nur dokumentiert
 
 Was nicht unverändert aus dem Ursprungsdatensatz stammt, trägt in der
@@ -849,6 +885,22 @@ auf 15 %, um jedes Neuzeichnen billiger zu machen. Jetzt bedeutet ein
 größerer Vorrat **seltener** neu zeichnen – 35 % erlauben einen Zug über ein
 Drittel der Fensterbreite, ohne dass irgendetwas gerechnet wird.
 
+Beim Zoomen allerdings nicht. Dort ändert sich der Maßstab, es muss so oder so
+alles neu – jeder zusätzliche Bildpunkt ist reine Zugabe. Der größere Vorrat
+machte deshalb genau das schlechter, was er beim Ziehen besser machte:
+
+| Vorrat | blockierte Zeit | längste Aufgabe |
+|---|---|---|
+| 35 % | 4.290 ms | 977 ms |
+| 25 % | 3.380 ms | 790 ms |
+| 15 % | 3.080 ms | 562 ms |
+
+Die längste Aufgabe ist das, was man als Stocken sieht. `_update` legt die
+Fläche deshalb **je nach Anlass** verschieden groß an: klein (12 %), wenn ein
+Zoomschritt sie ausgelöst hat, groß (35 %), wenn ein Zug sie ausgelöst hat.
+Nach einem Zoomschritt kostet der erste Zug einmal ein Neuzeichnen, danach ist
+wieder Vorrat da.
+
 Dazu ein zweiter Fund derselben Art: Ein Mausrad gibt in einer Bewegung fünf
 bis zehn Rasten ab. Leaflet wartet zwischen ihnen 40 ms und macht daraus fünf
 bis zehn einzelne Zoomvorgänge, jeder mit vollem Neuaufbau. Bei 140 ms wird
@@ -867,6 +919,22 @@ Gemessen in Zeichenwegen, Weltansicht im Zeitschnitt 1492:
 Das kurze Ziehen – die häufigste Geste überhaupt – kostet damit **96 %
 weniger**. Im Sichtvergleich nach einem Zug über 960 Bildpunkte und nach
 einem Sprung auf eine neue Mitte ist kein leerer Rand zu sehen.
+
+Und zwei Zoomsprünge, gemessen auf einem Bildschirm mit doppelter Punktdichte –
+so, wie ein heutiges Gerät ihn hat:
+
+| | vorher | jetzt |
+|---|---|---|
+| blockierte Zeit | 5.050 ms | **3.510 ms** |
+| längste Aufgabe | 1.345 ms | **740 ms** |
+
+Zwei Dinge, die dabei **nicht** halfen und deshalb draußen blieben: Die Punkte
+eines Linienzuges enger als einen Bildpunkt auszudünnen brachte null – Leaflet
+vereinfacht beim Zuschneiden bereits nach Douglas-Peucker, es liegt nichts
+Dichteres mehr da. Und die Grenzflächen in einfacher statt doppelter
+Punktdichte zu zeichnen ließ die längste Aufgabe unverändert; die Rasterarbeit
+steckt nicht dort. Für den Küstensaum lohnt es weiterhin, für die Grenzen
+nicht – die Schärfe wäre umsonst geopfert.
 
 Was bleibt: Ein einzelner Zoomsprung im schwersten Zeitschnitt kostet unter
 dieser Drosselung weiterhin rund drei Sekunden, weil Leaflet dabei sämtliche

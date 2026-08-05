@@ -1,5 +1,5 @@
 {
- "generated": "2026-08-04",
+ "generated": "2026-08-05",
  "source": {
   "name": "Historical Basemaps",
   "author": "André Ourednik u. a.",
@@ -156,9 +156,9 @@
    "label": "5000 v. Chr.",
    "title": "Frühe Ackerbaukulturen",
    "era": "neolithic",
-   "polities": 28,
-   "features": 28,
-   "bytes": 226468
+   "polities": 29,
+   "features": 29,
+   "bytes": 242524
   },
   {
    "year": -4000,
@@ -195,8 +195,8 @@
    "title": "Bronzezeitliche Reiche",
    "era": "bronze",
    "polities": 45,
-   "features": 45,
-   "bytes": 168514,
+   "features": 46,
+   "bytes": 169466,
    "korrigiert": {
     "umbenannt": 1,
     "ergaenzt": 0,
@@ -417,8 +417,8 @@
    "title": "Arabische Expansion",
    "era": "earlymiddle",
    "polities": 123,
-   "features": 128,
-   "bytes": 294901,
+   "features": 129,
+   "bytes": 295131,
    "korrigiert": {
     "umbenannt": 5,
     "ergaenzt": 2,
@@ -698,9 +698,9 @@
    "label": "1815 n. Chr.",
    "title": "Wiener Kongress",
    "era": "revolution",
-   "polities": 312,
-   "features": 328,
-   "bytes": 490566,
+   "polities": 313,
+   "features": 334,
+   "bytes": 498669,
    "stand": "1815",
    "besatzung": true,
    "korrigiert": {

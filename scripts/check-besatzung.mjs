@@ -171,6 +171,18 @@ const SONSTIGE = [
   [1815, 'Bordeaux', [-0.58, 44.84], 'France', 'Südwesten, nie besetzt'],
   [1815, 'Marseille', [5.37, 43.30], 'France', 'Süden, nie besetzt'],
 
+  // 1815 – die Lücken, die der Ursprungsdatensatz an den Niederlanden und
+  // ihren Kolonien ließ. Sie blieben von 1808 bis 1879 unbemerkt, weil der
+  // Datensatz die Flächen führt, nur ohne Namen (siehe lib/quellfehler.mjs).
+  [1815, 'Amsterdam', [4.90, 52.37], 'United Kingdom of Netherlands', 'Vereinigtes Königreich der Niederlande, 1815 vom Wiener Kongress geschaffen'],
+  [1815, 'Brüssel', [4.35, 50.85], 'United Kingdom of Netherlands', 'Belgien fiel 1815 an die Niederlande, nicht mehr an Österreich'],
+  [1815, 'Java', [110.40, -7.00], 'Dutch East Indies', 'Java, seit 1816 wieder niederländisch nach der britischen Zwischenzeit'],
+  [1815, 'Sumatra', [100.35, -0.95], 'Dutch East Indies', 'Sumatras Westküste, niederländisch'],
+  [1815, 'Sulawesi', [119.90, -3.50], 'Dutch East Indies', 'Makassar und Umland, niederländisch'],
+  [1815, 'Molukken', [127.90, 0.80], 'Dutch East Indies', 'Halmahera, Kern des Gewürzhandels'],
+  [1815, 'Kapland', [18.60, -33.50], 'Cape Colony', '1806 britisch besetzt, 1814 vertraglich abgetreten – nicht Niederländisch-Indien'],
+  [1815, 'Wien', [16.37, 48.21], 'Austrian Empire', 'Österreich selbst bleibt unberührt'],
+
   // 1920 – Rheinland und Smyrna
   [1920, 'Köln', [6.96, 50.94], 'Germany<France>', 'britischer Brückenkopf im besetzten Rheinland'],
   [1920, 'Trier', [6.64, 49.76], 'Germany<France>', 'linkes Rheinufer'],
