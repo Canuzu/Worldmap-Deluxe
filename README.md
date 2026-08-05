@@ -649,6 +649,40 @@ Anmarsch bestreicht. Auf gedruckten Stabskarten unterscheidet man das seit dem
   zum Bildrand; das Auge findet darin keinen Halt. Ein weicher Schatten von
   außen nach innen setzt das Feld in einen Rahmen.
 
+#### Zu nah dran – und was dagegen hilft
+
+Ein Schlachtfeld braucht Zoomstufe 13, die Orientierung bräuchte Stufe 8.
+Beides gleichzeitig geht nicht. Bei Stufe 13 zeigt der Atlas eine einfarbige
+Fläche mit ein paar Formen darauf, und man weiß nicht, wo auf der Welt man
+gelandet ist. Zwei Antworten, beide aus dem Handwerk der gedruckten Atlanten:
+
+**Der Anflug.** Die Karte springt nicht mehr auf das Schlachtfeld, sondern
+zeigt zuerst die Region – bei Waterloo also Brüssel, Antwerpen, Namur,
+Charleroi und die flandrische Küste –, hält zwei Sekunden, und fliegt dann
+hinein. Währenddessen pulst eine Zielmarke genau dort, wo es hingeht; ohne sie
+fliegt die Karte auf eine Stelle zu, die sich in nichts vom Umland
+unterscheidet. Der Verlauf beginnt erst nach der Landung: Sonst liefen die
+ersten Stationen ab, während die Karte noch unterwegs ist.
+
+**Das Beiblatt.** Unten rechts liegt dauerhaft ein Nebenkärtchen – die Lösung,
+die Atlanten seit dem 18. Jahrhundert für genau dieses Problem haben: Die
+Hauptkarte zeigt den Gegenstand, das kleine Blatt zeigt, wo er liegt, mit einem
+Rechteck um den dargestellten Ausschnitt. Wird der Ausschnitt kleiner als ein
+paar Bildpunkte, hilft ein Rechteck nicht mehr weiter; dann steht dort ein
+Fadenkreuz.
+
+Gezeichnet wird es aus der Küstenlinie, die der Atlas ohnehin im Speicher hat –
+es kommt kein Byte dazu. Der Maßstab war zuerst zehnfach so weit wie das
+Schlachtfeld; das ergab bei Waterloo 500 km Belgien und Nordfrankreich,
+richtig, aber ohne einen Umriss, den man wiedererkennt. Orientierung entsteht
+erst bei rund tausend Kilometern, wo Britannien, die Nordseeküste und die
+Alpen ins Bild kommen. Die Kurve ist deshalb flach: ein Sockel von 1.100 km,
+der bei ausgedehnten Feldzügen langsam mitwächst.
+
+Zeichenerklärung und Beiblatt melden ihre Bildschirmflächen an die Leinwand
+zurück, damit kein Verbandsfähnchen darunter verschwindet – die Fähnchen
+weichen ihnen aus, als stünde dort bereits eine Beschriftung.
+
 #### Gelände
 
 Bei fast jeder dieser Schlachten hat das Gelände mitentschieden: der Schlamm

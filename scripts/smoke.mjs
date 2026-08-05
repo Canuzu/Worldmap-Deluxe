@@ -22,6 +22,19 @@ const check = async (name, fn) => {
     checks.push(`  ✗ ${name} – ${err.message}`);
   }
 };
+/**
+ * Auf das Ende des Anflugs warten.
+ *
+ * Nur auf `imAnflug === false` zu warten ist ein Wettlauf: Beim Klick ist der
+ * Anflug noch gar nicht gestartet – `startBattle` holt vorher den Zeitschnitt –,
+ * und die Bedingung trifft sofort zu. Deshalb erst auf den Beginn warten.
+ */
+const gelandet = async () => {
+  await page.waitForFunction(() => window.__battles?.imAnflug === true, null, { timeout: 20000 });
+  await page.waitForFunction(() => window.__battles?.imAnflug === false, null, { timeout: 20000 });
+  await page.waitForTimeout(700);
+};
+
 const visible = async (sel) => {
   if (!(await page.locator(sel).isVisible())) throw new Error(`${sel} nicht sichtbar`);
 };
@@ -346,7 +359,9 @@ await check('Ein Krieg legt Parteien und Schlachten auf die Karte', async () => 
 await check('Schlacht spielt Station für Station ab', async () => {
   await page.evaluate(() => document.querySelector('[data-verlauf="waterloo"]').click());
   await page.waitForSelector('#battlesPlayer:not([hidden])', { timeout: 8000 });
-  await page.waitForTimeout(2500);
+  // Die Karte fliegt erst die Region an und dann hinein; vorher steht auf der
+  // Leinwand nur die Zielmarke.
+  await gelandet();
   const jahr = await page.textContent('#yearBig');
   if (!jahr.includes('1815')) throw new Error(`Zeitschnitt: ${jahr}`);
   // Die Stellungen liegen auf einer Leinwand, nicht in Einzelelementen: Der
@@ -371,6 +386,51 @@ await check('Schlacht spielt Station für Station ab', async () => {
   if (erste === zweite) throw new Error(`Station unverändert: ${erste}`);
   const zaehler = await page.textContent('.battles__zaehler');
   if (!/\d+ \/ \d+/.test(zaehler)) throw new Error(`Zähler: ${zaehler}`);
+});
+
+await check('Anflug zeigt erst die Region, dann das Schlachtfeld', async () => {
+  // Zurück ins Register und eine andere Schlacht öffnen, um den Anflug
+  // vollständig zu sehen.
+  await page.click('[data-act="back"]');
+  await page.waitForTimeout(600);
+  const spur = [];
+  await page.evaluate(() => {
+    window.__spur = [];
+    const bis = performance.now() + 9000;
+    const tick = () => {
+      window.__spur.push(+window.__atlasMap.getZoom().toFixed(2));
+      if (performance.now() < bis) setTimeout(tick, 120);
+    };
+    tick();
+    document.querySelector('[data-verlauf="cannae"]')?.click();
+  });
+  await gelandet();
+  spur.push(...await page.evaluate(() => window.__spur));
+  const ziel = await page.evaluate(() => window.__battles.battle.zoom);
+  const weiteste = Math.min(...spur);
+  const engste = Math.max(...spur);
+  if (engste < ziel - .2) throw new Error(`nie angekommen: höchstens ${engste}`);
+  // Zwischen Weitwinkel und Schlachtfeld müssen mindestens drei Zoomstufen
+  // liegen – sonst war es ein Sprung und kein Anflug.
+  const halt = spur.filter((z) => z > 2.6 && z < ziel - 3);
+  if (halt.length < 6) throw new Error(`kein Halt im Weitwinkel (${halt.length} Bilder)`);
+  if (weiteste > ziel - 3) throw new Error(`nicht weit genug herausgezoomt: ${weiteste}`);
+});
+
+await check('Beiblatt-Karte zeigt den Ausschnitt', async () => {
+  const inset = page.locator('#battleInset');
+  if (!(await inset.isVisible())) throw new Error('kein Beiblatt');
+  const gemalt = await page.evaluate(() => {
+    const c = document.querySelector('.beiblatt__blatt');
+    if (!c) return -1;
+    const d = c.getContext('2d').getImageData(0, 0, c.width, c.height).data;
+    let n = 0;
+    for (let i = 3; i < d.length; i += 4 * 53) if (d[i] > 8) n++;
+    return n;
+  });
+  if (gemalt < 50) throw new Error(`Beiblatt fast leer (${gemalt} Bildpunkte)`);
+  const titel = await page.textContent('#battleInsetTitle');
+  if (!titel.trim()) throw new Error('Beiblatt ohne Ortsangabe');
 });
 
 await check('Zeitachse lässt sich frei ziehen', async () => {

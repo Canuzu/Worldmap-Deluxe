@@ -18,6 +18,7 @@ import { polityAt } from './modules/geo.js';
 import { esc, fold, highlight, areaText, distanceText, num } from './modules/format.js';
 import { ERA_COLORS } from './modules/palette.js';
 import { BattlePlayer, BATTLES, ladeBattles } from './modules/battles.js';
+import { Beiblatt } from './modules/beiblatt.js';
 import { EventLayer, ARTEN, zeitfenster } from './modules/ereignisse.js';
 import {
   KonfliktLayer, KONFLIKT_ARTEN, SEITENFARBEN, spanneText, fortschritt,
@@ -426,7 +427,7 @@ async function main() {
   });
 
   atlas.on('select', (name) => selectPolity(name));
-  atlas.on('view', () => { updateScale(); updateHash(); });
+  atlas.on('view', () => { updateScale(); updateHash(); aktualisiereBeiblatt(); });
 
   /* ------------------------------------------------------ Hover-Hinweis */
 
@@ -979,6 +980,7 @@ async function main() {
   function closeBattles() {
     battles.close();
     renderBattleLegend(null);
+    zeigeBeiblatt(null);
     battlesBox.hidden = true;
     $('app').classList.remove('is-battle');
     atlas.setShowLabels(prefs.labels);
@@ -1012,9 +1014,13 @@ async function main() {
     // mitten in den Stellungen, und ihre Namen stuenden quer ueber dem Feld.
     konflikte.setSichtbar(false);
     ereignisse.setSichtbar(false);
-    renderBattleLegend(BATTLES.find((x) => x.id === id));
-    battles.start(id);
-    battles.play();
+    const meta2 = BATTLES.find((x) => x.id === id);
+    renderBattleLegend(meta2);
+    zeigeBeiblatt(meta2);
+    window.addEventListener('resize', meldeSperren);
+    // Erst nach dem Anflug losspielen: Sonst laufen die ersten Stationen ab,
+    // während die Karte noch unterwegs ist.
+    battles.start(id, { danach: () => battles.play() });
   }
 
   /**
@@ -1035,6 +1041,65 @@ async function main() {
     weg: 'Straße', furt: 'Furt, Übergang',
     wind: 'Windrichtung', stroemung: 'Strömung',
   };
+
+  /**
+   * Beiblatt-Karte: wo liegt das, was die Hauptkarte zeigt.
+   *
+   * Der Maßstab folgt der Ausdehnung der Schlacht – ein Feldzug über 150 km
+   * braucht ein weiteres Blatt als ein Schlachtfeld von zwei Kilometern,
+   * sonst ist der Punkt in beiden Fällen gleich nichtssagend.
+   */
+  let beiblatt = null;
+  function zeigeBeiblatt(b) {
+    const box = $('battleInset');
+    if (!b) { box.hidden = true; return; }
+    beiblatt ??= new Beiblatt(box);
+    /* Der Maßstab des Beiblatts.
+     *
+     * Zehnfache Ausdehnung des Schlachtfelds war zu wenig: Bei Waterloo zeigte
+     * das Blatt 500 km Belgien und Nordfrankreich – richtig, aber ohne einen
+     * Umriss, den man wiedererkennt. Orientierung entsteht erst bei etwa
+     * tausend Kilometern, wo Britannien, die Alpen und die Nordseeküste ins
+     * Bild kommen. Die Kurve ist deshalb flach: ein Sockel von 1.100 km, der
+     * bei ausgedehnten Feldzügen langsam mitwächst. */
+    const feldKm = (40075 / 2 ** b.zoom) * (atlas.map.getSize().x / 256);
+    const spann = Math.min(1100 + feldKm * 4, 5000);
+    beiblatt.setLage(b.mitte, spann, atlasData.base?.ocean);
+    $('battleInsetTitle').textContent = b.ort;
+    box.hidden = false;
+    aktualisiereBeiblatt();
+    // Erst nach dem Einblenden messen, sonst steht die Höhe noch nicht fest.
+    requestAnimationFrame(meldeSperren);
+  }
+
+  /**
+   * Zeichenerklärung und Beiblatt als gesperrte Flächen an die Leinwand
+   * melden, damit keine Verbandsbeschriftung darunter verschwindet.
+   */
+  function meldeSperren() {
+    const buehne = atlas.el.getBoundingClientRect();
+    const sperren = ['battleLegend', 'battleInset']
+      .map((id) => $(id))
+      .filter((el) => el && !el.hidden)
+      .map((el) => {
+        const r = el.getBoundingClientRect();
+        return {
+          x: r.left - buehne.left + r.width / 2,
+          y: r.top - buehne.top + r.height / 2,
+          w: r.width + 10,
+          h: r.height + 10,
+        };
+      });
+    battles.setSperren(sperren);
+  }
+
+  function aktualisiereBeiblatt() {
+    if (!beiblatt || $('battleInset').hidden) return;
+    const b = atlas.map.getBounds();
+    beiblatt.setAusschnitt([
+      [b.getWest(), b.getNorth()], [b.getEast(), b.getSouth()],
+    ]);
+  }
 
   function renderBattleLegend(b) {
     const box = $('battleLegend');
@@ -1197,6 +1262,9 @@ async function main() {
     else if (act === 'back') {
       battles.close();
       renderBattleLegend(null);
+      zeigeBeiblatt(null);
+      window.removeEventListener('resize', meldeSperren);
+      battles.setSperren([]);
       $('app').classList.remove('is-battle');
       atlas.setShowLabels(prefs.labels);
       konflikte.setSichtbar(true);

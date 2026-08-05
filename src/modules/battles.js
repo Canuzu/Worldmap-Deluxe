@@ -68,6 +68,16 @@ export async function ladeBattles() {
 const PFEIL_BIS = .45;
 const ZUG_AB = .45;
 
+/**
+ * Der Anflug: erst die Region zeigen, kurz halten, dann hinein.
+ *
+ * 1.300 ms Weitwinkel, 900 ms Halt, 2.100 ms Hineinflug. Kürzer wirkt
+ * gehetzt, länger lässt es warten – gemessen an einer Landung, die man ein
+ * Dutzend Mal hintereinander ansieht, ohne dass sie lästig wird.
+ */
+const ANFLUG_HALT = 2200;
+const ANFLUG_EIN = 2100;
+
 /** Weich anfahren, weich ankommen – kein Heer bewegt sich mit einem Ruck. */
 const weich = (t) => (t < .5 ? 4 * t * t * t : 1 - ((-2 * t + 2) ** 3) / 2);
 const klemm = (v, a, b) => (v < a ? a : v > b ? b : v);
@@ -380,6 +390,7 @@ const SchlachtLeinwand = L.Layer.extend({
     const groesse = this._map.getSize();
 
     this._buehne(ctx, groesse, inhalt);
+    if (inhalt.ziel) { this._zielmarke(ctx, inhalt.ziel); return; }
     for (const g of inhalt.gelaende ?? []) this._gelaende(ctx, g);
     for (const k of inhalt.koerper ?? []) this._koerper(ctx, k);
     this._pfeilPlaetze = [];
@@ -387,7 +398,9 @@ const SchlachtLeinwand = L.Layer.extend({
     // Erst die Verbände beschriften, dann das Gelände: Wo beides um denselben
     // Platz streitet, gewinnt die Truppe – sie ist die Aussage, der Flurname
     // ist der Hintergrund.
-    const belegt = this._beschriftungen(ctx, inhalt.koerper ?? [], this._pfeilPlaetze);
+    const belegt = this._beschriftungen(
+      ctx, inhalt.koerper ?? [], [...(this._pfeilPlaetze ?? []), ...(inhalt.sperren ?? [])],
+    );
     for (const g of inhalt.gelaende ?? []) this._gelaendeName(ctx, g, belegt);
   },
 
@@ -413,6 +426,34 @@ const SchlachtLeinwand = L.Layer.extend({
     g.addColorStop(1, `rgba(4,6,11,${(.62 * a).toFixed(3)})`);
     ctx.fillStyle = g;
     ctx.fillRect(0, 0, groesse.x, groesse.y);
+  },
+
+  /**
+   * Die Zielmarke des Anflugs: ein Ring, der pulst, bis die Karte steht.
+   *
+   * Ohne sie fliegt die Karte auf eine Stelle zu, die sich in nichts vom
+   * Umland unterscheidet, und man weiß erst nach der Landung, wohin man
+   * eigentlich gesehen hat.
+   */
+  _zielmarke(ctx, lonlat) {
+    const [x, y] = this._punkt(lonlat);
+    const t = (performance.now() % 1600) / 1600;
+    ctx.save();
+    for (let i = 0; i < 2; i++) {
+      const f = (t + i * .5) % 1;
+      ctx.globalAlpha = (1 - f) * .55;
+      ctx.beginPath();
+      ctx.arc(x, y, 10 + f * 34, 0, Math.PI * 2);
+      ctx.strokeStyle = '#e9c46a';
+      ctx.lineWidth = 1.6;
+      ctx.stroke();
+    }
+    ctx.globalAlpha = .95;
+    ctx.beginPath();
+    ctx.arc(x, y, 4.5, 0, Math.PI * 2);
+    ctx.fillStyle = '#e9c46a';
+    ctx.fill();
+    ctx.restore();
   },
 
   _gelaende(ctx, g) {
@@ -956,8 +997,20 @@ export class BattlePlayer {
     return b > a ? klemm((this.zeit - a) / (b - a), 0, 1) : 0;
   }
 
-  /** Schlacht öffnen: passender Ausschnitt, Station 1, Gelände blendet ein. */
-  start(id) {
+  /**
+   * Schlacht öffnen – mit Anflug statt Sprung.
+   *
+   * Die Karte stand bisher augenblicklich auf dem Schlachtfeld. Bei
+   * Zoomstufe 13 sieht man dort eine einfarbige Fläche mit ein paar Formen
+   * darauf und weiß nicht, wo auf der Welt man gelandet ist. Deshalb erst
+   * die Region – „hier, südlich von Brüssel“ –, kurz halten, dann hinein.
+   * Vier Sekunden, in denen man die Frage „wo ist das?“ beantwortet bekommt,
+   * bevor die Frage „was geschah dort?“ überhaupt gestellt wird.
+   *
+   * Der Verlauf beginnt erst nach der Landung: `danach` wird gerufen, wenn
+   * die Karte steht.
+   */
+  start(id, { danach } = {}) {
     const battle = BATTLES.find((b) => b.id === id);
     if (!battle) return null;
     this.battle = battle;
@@ -965,16 +1018,60 @@ export class BattlePlayer {
     this._vorrat = new Map();
     this.zeit = battle.stationen[0].t;
     this._station = 0;
-    this._auf = performance.now();
     if (!this.leinwand._map) this.leinwand.addTo(this.atlas.map);
-    this.atlas.map.flyTo([battle.mitte[1], battle.mitte[0]], battle.zoom, { duration: 1.2 });
+
+    const map = this.atlas.map;
+    const ziel = [battle.mitte[1], battle.mitte[0]];
+    // Weit genug, dass Küste und Nachbarschaft im Bild sind, aber nicht so
+    // weit, dass der Ort selbst verschwindet.
+    const weit = klemm(battle.zoom - 4.6, 3.4, battle.zoom - 1.5);
+
+    clearTimeout(this._anflugTimer);
+    this._anflug = true;
+    this._auf = performance.now() + ANFLUG_HALT + ANFLUG_EIN;
     this._bild();
+
+    map.flyTo(ziel, weit, { duration: 1.3 });
+    const pulsen = () => {
+      if (!this._anflug) return;
+      this._bild();
+      this._pulsRahmen = requestAnimationFrame(pulsen);
+    };
+    pulsen();
+    this._anflugTimer = window.setTimeout(() => {
+      map.flyTo(ziel, battle.zoom, { duration: ANFLUG_EIN / 1000 });
+      this._anflugTimer = window.setTimeout(() => {
+        this._anflug = false;
+        cancelAnimationFrame(this._pulsRahmen);
+        this._bild();
+        danach?.();
+      }, ANFLUG_EIN);
+    }, ANFLUG_HALT);
+
     this.onStation(this);
     return battle;
   }
 
+  /** Wo die Karte beim Anflug steht – für die Beiblatt-Karte. */
+  get imAnflug() { return !!this._anflug; }
+
+  /**
+   * Flächen, die für Beschriftungen gesperrt sind.
+   *
+   * Zeichenerklärung und Beiblatt liegen über der Karte. Ein Verbandsfähnchen,
+   * das dort landet, ist unlesbar – und man sieht nicht einmal, dass es
+   * überdeckt ist. Die Fähnchen weichen deshalb aus, als stünde dort bereits
+   * eine Beschriftung. Übergeben werden Bildschirmrechtecke relativ zur
+   * Karte; sie ändern sich nur beim Öffnen und bei einer Größenänderung,
+   * deshalb kein Auslesen je Bild.
+   */
+  setSperren(rechtecke) { this.sperren = rechtecke ?? []; this._bild(); }
+
   close() {
     this.stop();
+    clearTimeout(this._anflugTimer);
+    cancelAnimationFrame(this._pulsRahmen);
+    this._anflug = false;
     this.battle = null;
     if (this.leinwand._map) this.atlas.map.removeLayer(this.leinwand);
   }
@@ -1160,8 +1257,13 @@ export class BattlePlayer {
       gelaende: b.gelaende ?? [],
       gelaendeDeckung: auf,
       buehne: auf,
-      koerper,
-      pfeile,
+      sperren: this.sperren,
+      // Während des Anflugs steht nur eine Zielmarke im Bild: Die Stellungen
+      // wären auf Regionalmaßstab ohnehin Flecken, und sie würden die Frage
+      // „wo ist das?“ überdecken, die der Anflug gerade beantwortet.
+      ziel: this._anflug ? b.mitte : null,
+      koerper: this._anflug ? [] : koerper,
+      pfeile: this._anflug ? [] : pfeile,
     });
   }
 }
