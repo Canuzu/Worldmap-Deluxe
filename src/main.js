@@ -814,7 +814,9 @@ async function main() {
      ein Krieg hat keinen Ort, eine Besetzung hat ihre Schraffur schon. */
 
   const battlesBox = $('battlesBox');
-  const battles = new BattlePlayer(atlas, { onStation: renderBattleStation });
+  const battles = new BattlePlayer(atlas, { onStation: renderBattleStation, onTick: tickBattle });
+  // Für die Prüfskripte, wie __atlas und __konflikte auch.
+  window.__battles = battles;
 
   /** Wieviele Zeilen offen stehen, bevor eingeklappt wird. */
   const REGISTER_KURZ = 6;
@@ -979,6 +981,7 @@ async function main() {
     atlas.setShowLabels(prefs.labels);
     konflikte.loese();
     konflikte.setSichtbar(false);
+    ereignisse.setSichtbar(prefs.events);
     // Der Zeitschnitt bleibt, wo die Schlacht ihn hingestellt hat – wer den
     // Verlauf gesehen hat, will meist die Lage danach weiter betrachten.
   }
@@ -1002,10 +1005,21 @@ async function main() {
     // ueberstrahlen. Beschriftungen aus, damit keine Laendernamen dazwischenstehen.
     $('app').classList.add('is-battle');
     atlas.setShowLabels(false);
+    // Auch Kriegsregister und Ereignisse treten zurueck: Deren Marken laegen
+    // mitten in den Stellungen, und ihre Namen stuenden quer ueber dem Feld.
+    konflikte.setSichtbar(false);
+    ereignisse.setSichtbar(false);
     battles.start(id);
     battles.play();
   }
 
+  /**
+   * Die Tafel neu schreiben – nur bei Stationswechsel, nicht in jedem Bild.
+   *
+   * Der Schieber wandert sechzig Mal in der Sekunde; würde die Tafel dabei
+   * jedes Mal neu gesetzt, wäre der laufende Text bei jedem Bild neu im
+   * Aufbau und der Griff des Schiebers unter der Maus weg.
+   */
   function renderBattleStation(player) {
     const b = player.battle;
     if (!b) return;
@@ -1014,6 +1028,10 @@ async function main() {
     $('battlesTitle').textContent = b.name;
     const box = $('battlesPlayer');
     box.hidden = false;
+    const marken = b.stationen.map((s) => {
+      const [von, bis] = player.spanne;
+      return { p: bis > von ? ((s.t - von) / (bis - von)) * 100 : 0, zeit: s.zeit };
+    });
     box.innerHTML = `
       <p class="battles__meta">${esc(b.datum)} · ${esc(b.ort)}</p>
       <ul class="battles__sides">${b.parteien.map((p) => `
@@ -1023,10 +1041,18 @@ async function main() {
         <div class="battles__zeit">${esc(st.zeit)}</div>
         <p class="battles__text">${esc(st.text)}</p>
       </div>
-      <div class="battles__steps">${b.stationen.map((_, i) => `
-        <i class="${i === player.index ? 'is-on' : ''}" data-step="${i}"></i>`).join('')}</div>
+      <div class="battles__achse">
+        <div class="battles__spur">
+          <div class="battles__fuell" id="battlesFuell"></div>
+          ${marken.map((m, i) => `<i class="battles__marke${i === player.index ? ' is-on' : ''}"
+             style="left:${m.p.toFixed(2)}%" data-step="${i}" title="${esc(m.zeit)}"></i>`).join('')}
+        </div>
+        <input class="battles__schieber" id="battlesSchieber" type="range"
+               min="0" max="1000" step="1" value="${Math.round(player.fortschritt * 1000)}"
+               aria-label="Zeitpunkt der Schlacht" />
+      </div>
       <div class="battles__controls">
-        <button class="tbtn" data-act="prev" ${player.index === 0 ? 'disabled' : ''} aria-label="Zurück">
+        <button class="tbtn" data-act="prev" ${player.index === 0 && player.fortschritt <= 0 ? 'disabled' : ''} aria-label="Zurück">
           <svg viewBox="0 0 24 24" width="16" height="16"><path d="M15.4 5L8.4 12l7 7 1.4-1.4L11.2 12l5.6-5.6L15.4 5z" fill="currentColor"/></svg>
         </button>
         <button class="tbtn tbtn--play" data-act="play" aria-label="${player.playing ? 'Anhalten' : 'Abspielen'}">
@@ -1040,7 +1066,33 @@ async function main() {
         <span class="battles__zaehler">${player.index + 1} / ${player.count}</span>
         <button class="chip chip--action" data-act="back">Andere Schlacht</button>
       </div>`;
+    tickBattle(player);
   }
+
+  /** In jedem Bild: nur der Schieber und der gefüllte Teil der Spur. */
+  function tickBattle(player) {
+    const schieber = document.getElementById('battlesSchieber');
+    if (!schieber) return;
+    const f = player.fortschritt;
+    if (document.activeElement !== schieber || !schieber.dataset.zieht) {
+      schieber.value = String(Math.round(f * 1000));
+    }
+    const fuell = document.getElementById('battlesFuell');
+    if (fuell) fuell.style.width = `${(f * 100).toFixed(2)}%`;
+  }
+
+  // Freies Ziehen: Der Schieber führt die Schlacht, nicht umgekehrt.
+  battlesBox.addEventListener('input', (event) => {
+    const schieber = event.target.closest('#battlesSchieber');
+    if (!schieber) return;
+    battles.stop();
+    schieber.dataset.zieht = '1';
+    battles.setFortschritt(Number(schieber.value) / 1000);
+  });
+  battlesBox.addEventListener('change', (event) => {
+    const schieber = event.target.closest('#battlesSchieber');
+    if (schieber) delete schieber.dataset.zieht;
+  });
 
   battlesBox.addEventListener('click', (event) => {
     // Der Verlauf hat Vorrang vor der Schlachtzeile, in der er steht.
@@ -1061,6 +1113,8 @@ async function main() {
       battles.close();
       $('app').classList.remove('is-battle');
       atlas.setShowLabels(prefs.labels);
+      konflikte.setSichtbar(true);
+      ereignisse.setSichtbar(prefs.events);
       renderRegister();
     }
   });

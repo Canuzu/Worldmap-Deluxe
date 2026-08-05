@@ -324,6 +324,11 @@ await check('Kriegsregister listet Kriege, Schlachten und Besetzungen', async ()
   if (verlauf < 3) throw new Error(`nur ${verlauf} abspielbare Verläufe`);
 });
 
+await check('Alle zwölf Verläufe sind aus dem Register erreichbar', async () => {
+  const n = await page.evaluate(() => document.querySelectorAll('[data-verlauf]').length);
+  if (n < 12) throw new Error(`nur ${n} Verläufe angeboten`);
+});
+
 await check('Ein Krieg legt Parteien und Schlachten auf die Karte', async () => {
   await page.evaluate(() => document.querySelector('[data-krieg="napoleonisch"]').click());
   await page.waitForTimeout(2200);
@@ -344,8 +349,17 @@ await check('Schlacht spielt Station für Station ab', async () => {
   await page.waitForTimeout(2500);
   const jahr = await page.textContent('#yearBig');
   if (!jahr.includes('1815')) throw new Error(`Zeitschnitt: ${jahr}`);
-  const gezeichnet = await page.evaluate(() => document.querySelectorAll('.leaflet-battle-pane path').length);
-  if (gezeichnet < 2) throw new Error(`nur ${gezeichnet} Stellungen gezeichnet`);
+  // Die Stellungen liegen auf einer Leinwand, nicht in Einzelelementen: Der
+  // Nachweis ist deshalb nicht die Zahl der Knoten, sondern gesetzte Bildpunkte.
+  const gemalt = await page.evaluate(() => {
+    const c = document.querySelector('.leaflet-battle-pane canvas');
+    if (!c) return -1;
+    const d = c.getContext('2d').getImageData(0, 0, c.width, c.height).data;
+    let n = 0;
+    for (let i = 3; i < d.length; i += 4 * 97) if (d[i] > 8) n++;
+    return n;
+  });
+  if (gemalt < 20) throw new Error(`nur ${gemalt} gesetzte Bildpunkte auf der Schlachtleinwand`);
   const erste = await page.textContent('.battles__zeit');
 
   // Halten, damit die Prüfung nicht gegen den Automatiklauf arbeitet.
@@ -359,11 +373,50 @@ await check('Schlacht spielt Station für Station ab', async () => {
   if (!/\d+ \/ \d+/.test(zaehler)) throw new Error(`Zähler: ${zaehler}`);
 });
 
+await check('Zeitachse lässt sich frei ziehen', async () => {
+  const schieber = page.locator('#battlesSchieber');
+  if (!(await schieber.count())) throw new Error('kein Schieber');
+  const vorher = await page.textContent('.battles__zeit');
+  // Ans Ende ziehen: Dort steht immer eine andere Station als am Anfang.
+  await page.evaluate(() => {
+    const s = document.getElementById('battlesSchieber');
+    s.value = '1000';
+    s.dispatchEvent(new Event('input', { bubbles: true }));
+  });
+  await page.waitForTimeout(500);
+  const nachher = await page.textContent('.battles__zeit');
+  if (vorher === nachher) throw new Error(`Station unverändert: ${vorher}`);
+  const f = await page.evaluate(() => window.__battles.fortschritt);
+  if (f < .99) throw new Error(`Fortschritt nur ${f.toFixed(2)}`);
+  // Und wieder zurück – der Verlauf muss in beide Richtungen laufen.
+  await page.evaluate(() => {
+    const s = document.getElementById('battlesSchieber');
+    s.value = '0';
+    s.dispatchEvent(new Event('input', { bubbles: true }));
+  });
+  await page.waitForTimeout(500);
+  if (await page.evaluate(() => window.__battles.index) !== 0) throw new Error('nicht zurück an den Anfang');
+});
+
+await check('Stellungen gleiten zwischen zwei Stationen', async () => {
+  // Zwei Zeitpunkte innerhalb desselben Stationsfensters, einer davor und
+  // einer mitten im Zug: Liegen die Umrisse dann gleich, wird nicht gegliten.
+  const umriss = (f) => page.evaluate((x) => {
+    window.__battles.setFortschritt(x);
+    const k = window.__battles.leinwand._inhalt.koerper.filter((q) => q.deckung > .5);
+    return k.map((q) => q.punkte[0].map((v) => v.toFixed(4)).join(',')).join('|');
+  }, f);
+  const a = await umriss(0.02);
+  const b = await umriss(0.14);
+  if (!a) throw new Error('keine Stellungen im Bild');
+  if (a === b) throw new Error('Umrisse unverändert – es wird nicht gegliten');
+});
+
 await check('Schlacht räumt ihre Ebene wieder ab', async () => {
   await page.click('#battlesClose');
   await page.waitForTimeout(500);
-  const rest = await page.evaluate(() => document.querySelectorAll('.leaflet-battle-pane path').length);
-  if (rest) throw new Error(`${rest} Stellungen bleiben stehen`);
+  const rest = await page.evaluate(() => document.querySelectorAll('.leaflet-battle-pane canvas').length);
+  if (rest) throw new Error(`${rest} Schlachtleinwände bleiben stehen`);
   const marken = await page.locator('.leaflet-konflikt-pane .kf').count();
   if (marken) throw new Error(`${marken} Schlachtmarken bleiben stehen`);
   if (await page.locator('#battlesBox').isVisible()) throw new Error('Fenster bleibt offen');
@@ -738,7 +791,14 @@ console.log(checks.join('\n'));
 const failed = checks.filter((c) => c.includes('✗')).length;
 console.log(`\n${checks.length - failed}/${checks.length} Prüfungen bestanden`);
 
-const relevant = errors.filter((e) => !/ERR_TUNNEL|ERR_NAME_NOT_RESOLVED|wikipedia/i.test(e));
+/* Netzfehler des Wikipedia-Abrufs sind kein Befund: Der Atlas holt von genau
+   einem fremden Rechner, und ob der erreichbar ist, sagt nichts über den Code.
+   ERR_CERT_AUTHORITY_INVALID steht mit dabei, weil die Meldung des Browsers
+   die Adresse nicht mitführt - hinter einem abfangenden Netzzugang ist sie
+   dieselbe Ursache wie ERR_TUNNEL. */
+const relevant = errors.filter(
+  (e) => !/ERR_TUNNEL|ERR_NAME_NOT_RESOLVED|ERR_CERT_AUTHORITY_INVALID|wikipedia/i.test(e),
+);
 if (relevant.length) console.log(`\nKonsolenfehler:\n${relevant.slice(0, 10).join('\n')}`);
 else console.log('Keine Konsolenfehler (Netzfehler zu wikipedia.org ausgenommen).');
 

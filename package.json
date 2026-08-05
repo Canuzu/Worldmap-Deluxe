@@ -24,7 +24,8 @@
     "check:ladelast": "node scripts/check-ladelast.mjs",
     "check:fluss": "node scripts/check-fluss.mjs",
     "format:konflikte": "node scripts/format-konflikte.mjs",
-    "check:konflikte": "node scripts/check-konflikte.mjs"
+    "check:konflikte": "node scripts/check-konflikte.mjs",
+    "check:schlachten": "node scripts/check-schlachten.mjs"
   },
   "repository": {
     "type": "git",

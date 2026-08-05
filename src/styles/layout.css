@@ -896,17 +896,69 @@
 }
 .battles__text { margin: 0; font-size: .82rem; line-height: 1.55; color: var(--ink); }
 
-/* Stationsleiste: zeigt Länge und Stand des Verlaufs auf einen Blick */
-.battles__steps { display: flex; gap: .25rem; margin: .7rem 0 .5rem; }
-.battles__steps i {
-  flex: 1;
-  height: 3px;
+/* Zeitachse: die Schlacht als durchgehende Größe, nicht als Folge von Bildern.
+   Die Marken sitzen dort, wo die Stationen liegen – bei einer Schlacht mit
+   einer langen Ruhephase und einem kurzen Sturm sieht man das an den
+   Abständen. Der Schieber selbst liegt unsichtbar darüber, damit Ziehen,
+   Tastatur und Berührung ohne eigene Bedienlogik funktionieren. */
+.battles__achse { position: relative; margin: .8rem 0 .6rem; height: 20px; }
+.battles__spur {
+  position: absolute;
+  inset: 8px 0 auto;
+  height: 4px;
   border-radius: 2px;
   background: var(--hairline-strong);
-  cursor: pointer;
-  transition: background var(--dur) var(--ease);
+  overflow: visible;
 }
-.battles__steps i.is-on { background: var(--gold); }
+.battles__fuell {
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--gold) 55%, transparent), var(--gold));
+}
+.battles__marke {
+  position: absolute;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  margin: -3.5px 0 0 -3.5px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 1.5px solid var(--hairline-strong);
+  cursor: pointer;
+  transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.battles__marke:hover { transform: scale(1.35); }
+.battles__marke.is-on {
+  border-color: var(--gold);
+  background: var(--gold);
+  transform: scale(1.25);
+}
+.battles__schieber {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  margin: 0;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+.battles__schieber::-webkit-slider-thumb {
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 2px solid var(--surface-1);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, .5);
+}
+.battles__schieber::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  border: 2px solid var(--surface-1);
+  border-radius: 50%;
+  background: var(--gold);
+}
+.battles__schieber:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 
 .battles__controls { display: flex; align-items: center; gap: .3rem; }
 .battles__zaehler {
@@ -917,23 +969,18 @@
   flex: 1;
 }
 
-/* Stellungen auf der Karte */
-.battle-shape { animation: battleIn 320ms var(--ease); }
-.battle-arrow { animation: battleIn 420ms var(--ease); }
-@keyframes battleIn { from { opacity: 0; } }
-
-.battle-tag span {
+/* Stellungen auf der Karte: eine eigene Leinwand, die beim Öffnen und
+   Schließen der Schlacht weich kommt und geht. Alles Übrige – Gleiten der
+   Truppenkörper, Wachsen der Pfeile – rechnet das Modul selbst; CSS kann
+   nicht zwischen zwei Umrissen überblenden. */
+.battle-canvas {
   position: absolute;
-  transform: translate(-50%, -160%);
-  white-space: nowrap;
-  padding: .1rem .4rem;
-  border-radius: 4px;
-  font-size: .68rem;
-  font-weight: 600;
-  color: #fff;
-  background: var(--c, #666);
-  box-shadow: 0 1px 6px rgba(0, 0, 0, .45);
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  animation: battleIn 500ms var(--ease);
 }
+@keyframes battleIn { from { opacity: 0; } }
 
 /* Auf schmalen Geräten spannen Aufklappmenüs und Schlachtenfenster über die
    ganze Breite unter der Kopfleiste. Rechts angeschlagen ragten sie über den

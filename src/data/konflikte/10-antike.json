@@ -1,470 +1,1343 @@
 {
-  "_hinweis": [
-    "Kriege und Schlachten der Antike bis 500 n. Chr.",
-    "",
-    "Ein Krieg ist kein Zeitpunkt und kein Zustand, sondern eine Spanne mit zwei",
-    "Seiten – deshalb steht er im Register und nicht als Marke auf der Karte.",
-    "Seine Schlachten dagegen sind Orte und werden eingetragen.",
-    "",
-    "Aufbau eines Krieges:",
-    "  von/bis   Jahre; bis darf fehlen, wenn er andauert",
-    "  art       krieg | eroberung | buergerkrieg | aufstand | revolution",
-    "  rang      1 = weltbewegend, 2 = groß, 3 = regional",
-    "  ort       Schwerpunkt [Länge, Breite] – dorthin springt die Karte",
-    "  seiten    zwei (selten mehr) Parteien mit den Namen aus dem Kartendatensatz",
-    "  ausgang   ein Satz, wie er endete",
-    "",
-    "Aufbau einer Schlacht:",
-    "  krieg     Kennung des Krieges, zu dem sie gehört",
-    "  ort       [Länge, Breite] des Schlachtfeldes",
-    "  sieger    Name der siegreichen Seite, wie in seiten.name",
-    "  verlauf   Kennung in battles.json, falls der Verlauf abspielbar ist"
-  ],
-
-  "kriege": [
+ "_hinweis": [
+  "Kriege und Schlachten der Antike bis 500 n. Chr.",
+  "",
+  "Ein Krieg ist kein Zeitpunkt und kein Zustand, sondern eine Spanne mit zwei",
+  "Seiten – deshalb steht er im Register und nicht als Marke auf der Karte.",
+  "Seine Schlachten dagegen sind Orte und werden eingetragen.",
+  "",
+  "Aufbau eines Krieges:",
+  "  von/bis   Jahre; bis darf fehlen, wenn er andauert",
+  "  art       krieg | eroberung | buergerkrieg | aufstand | revolution",
+  "  rang      1 = weltbewegend, 2 = groß, 3 = regional",
+  "  ort       Schwerpunkt [Länge, Breite] – dorthin springt die Karte",
+  "  seiten    zwei (selten mehr) Parteien mit den Namen aus dem Kartendatensatz",
+  "  ausgang   ein Satz, wie er endete",
+  "",
+  "Aufbau einer Schlacht:",
+  "  krieg     Kennung des Krieges, zu dem sie gehört",
+  "  ort       [Länge, Breite] des Schlachtfeldes",
+  "  sieger    Name der siegreichen Seite, wie in seiten.name",
+  "  verlauf   Kennung in battles.json, falls der Verlauf abspielbar ist"
+ ],
+ "kriege": [
+  {
+   "id": "hethiteragypt",
+   "name": "Der Krieg um Kadesch",
+   "von": -1290,
+   "bis": -1259,
+   "art": "krieg",
+   "rang": 2,
+   "ort": [
+    36.5,
+    34.5
+   ],
+   "wo": "Syrien, Orontestal",
+   "seiten": [
     {
-      "id": "hethiteragypt", "name": "Der Krieg um Kadesch", "von": -1290, "bis": -1259, "art": "krieg", "rang": 2,
-      "ort": [36.5, 34.5], "wo": "Syrien, Orontestal",
-      "seiten": [
-        { "name": "Ägypten", "staaten": ["Egypt"] },
-        { "name": "Hethiterreich", "staaten": ["Hittites"] }
-      ],
-      "text": "Zwei Großmächte streiten drei Jahrzehnte um die syrischen Handelsstädte zwischen ihnen. Am Ende steht der älteste erhaltene Friedensvertrag der Welt – in zwei Fassungen, ägyptisch und hethitisch, mit unterschiedlicher Darstellung, wer nachgegeben hat. Eine Kopie hängt heute im Hauptquartier der Vereinten Nationen.",
-      "ausgang": "Waffenstillstand und Bündnisvertrag um 1259 v. Chr.; die Grenze bleibt, wo sie war.",
-      "wiki": "Ägyptisch-Hethitischer Friedensvertrag"
+     "name": "Ägypten",
+     "staaten": [
+      "Egypt"
+     ]
     },
     {
-      "id": "seevoelker", "name": "Der Sturm der Seevölker", "von": -1200, "bis": -1150, "art": "krieg", "rang": 1,
-      "ort": [33, 33.5], "wo": "Östliches Mittelmeer, Levante, Ägypten",
-      "seiten": [
-        { "name": "Ägypten und die Levantestädte", "staaten": ["Egypt"] },
-        { "name": "Die Seevölker", "staaten": [] }
-      ],
-      "text": "Innerhalb von zwei Generationen brechen fast alle Reiche des östlichen Mittelmeers zusammen: die Hethiter, Mykene, Ugarit, die Handelsnetze. Wer die Seevölker waren, ist bis heute strittig – vermutlich waren sie eher Folge als Ursache: Dürre, Hunger und Wanderung setzten eine Kette in Gang, die niemand mehr anhielt.",
-      "ausgang": "Ägypten hält stand und ist danach erschöpft; die Bronzezeit endet.",
-      "wiki": "Seevölker"
-    },
-    {
-      "id": "shangzhou", "name": "Der Sturz der Shang", "von": -1050, "bis": -1046, "art": "eroberung", "rang": 2,
-      "ort": [114.4, 35.6], "wo": "Nordchina, Gelbes Fluss",
-      "seiten": [
-        { "name": "Zhou", "staaten": ["Zhou states"] },
-        { "name": "Shang", "staaten": ["Shang"] }
-      ],
-      "text": "Die Zhou rechtfertigen ihren Aufstand mit einer Idee, die China dreitausend Jahre begleitet: dem Mandat des Himmels. Ein Herrscher regiert, solange er tugendhaft ist; wird er es nicht, darf er gestürzt werden. Damit ist jeder erfolgreiche Umsturz nachträglich legitim – und jede Dynastie in Gefahr.",
-      "ausgang": "Die Zhou-Dynastie beginnt; sie wird die längste in der chinesischen Geschichte.",
-      "wiki": "Zhou-Dynastie"
-    },
-    {
-      "id": "assyrien", "name": "Die assyrische Expansion", "von": -745, "bis": -612, "art": "eroberung", "rang": 2,
-      "ort": [43.15, 36.35], "wo": "Mesopotamien, Levante, Ägypten",
-      "seiten": [
-        { "name": "Assyrien", "staaten": ["Assyria"] },
-        { "name": "Babylonien, Israel, Ägypten und Elam", "staaten": ["Babylonia", "Israel", "Egypt", "Elam"] }
-      ],
-      "text": "Das erste Reich, das eroberte Völker planmäßig umsiedelt, um Aufstände zu verhindern – und das erste mit einem stehenden Heer und einem Straßennetz für Eilboten. Seine Reliefs zeigen die Gewalt nicht verschämt, sondern als Programm.",
-      "ausgang": "612 v. Chr. fällt Ninive an Babylonier und Meder; das Reich verschwindet vollständig.",
-      "wiki": "Assyrisches Reich"
-    },
-    {
-      "id": "perserkriege", "name": "Die Perserkriege", "von": -499, "bis": -449, "art": "krieg", "rang": 1,
-      "ort": [23.7, 38], "wo": "Ägäis, Griechenland, Kleinasien",
-      "seiten": [
-        { "name": "Griechische Städte", "staaten": ["Greek city-states"] },
-        { "name": "Perserreich", "staaten": ["Achaemenid Empire", "Persia"] }
-      ],
-      "text": "Ein Weltreich greift nach einer Handvoll zerstrittener Stadtstaaten und scheitert. Der Ausgang begründet das Selbstbild, das Griechenland und später Europa von sich hat: dass Freie besser kämpfen als Untertanen. Athen finanziert aus der Kriegskasse den Bund, aus dem sein Seereich wird.",
-      "ausgang": "Persien verzichtet auf die Ägäis; Athen steigt zur Seemacht auf.",
-      "wiki": "Perserkriege"
-    },
-    {
-      "id": "peloponnes", "name": "Der Peloponnesische Krieg", "von": -431, "bis": -404, "art": "krieg", "rang": 1,
-      "ort": [22.8, 37.7], "wo": "Griechenland, Sizilien, Ionien",
-      "seiten": [
-        { "name": "Athen und der Seebund", "staaten": ["Greek city-states"] },
-        { "name": "Sparta und der Peloponnesische Bund", "staaten": ["Greek city-states"] }
-      ],
-      "text": "Siebenundzwanzig Jahre, in denen sich die griechische Welt selbst aufreibt: Seemacht gegen Landmacht, Demokratie gegen Oligarchie. Thukydides schreibt darüber das erste Buch, das Krieg nicht als Schicksal erklärt, sondern als Folge von Interessen.",
-      "ausgang": "Athen kapituliert, die Mauern fallen – und Griechenland ist so erschöpft, dass Makedonien eine Generation später leichtes Spiel hat.",
-      "wiki": "Peloponnesischer Krieg"
-    },
-    {
-      "id": "boiotisch", "name": "Der Boiotische Krieg", "von": -378, "bis": -362, "art": "krieg", "rang": 3,
-      "ort": [22.8, 38.1], "wo": "Mittelgriechenland und Peloponnes",
-      "seiten": [
-        { "name": "Theben und der Boiotische Bund", "staaten": ["Greek city-states"] },
-        { "name": "Sparta und seine Bündner", "staaten": ["Greek city-states"] }
-      ],
-      "text": "Sechzehn Jahre, in denen Theben die griechische Vormacht wird und wieder verliert. Epaminondas erfindet die schiefe Schlachtordnung, befreit Messenien aus spartanischer Hörigkeit und nimmt Sparta damit die Grundlage seines Heeres – die Heloten.",
-      "ausgang": "Sparta ist als Großmacht erledigt, Theben überlebt seinen Feldherrn nicht.",
-      "wiki": "Böotischer Krieg"
-    },
-    {
-      "id": "alexanderzug", "name": "Der Alexanderzug", "von": -334, "bis": -323, "art": "eroberung", "rang": 1,
-      "ort": [50, 33], "wo": "Kleinasien, Levante, Ägypten, Persien, Indus",
-      "seiten": [
-        { "name": "Makedonien und der Korinthische Bund", "staaten": ["Macedonia", "Macedon and Hellenic League"] },
-        { "name": "Perserreich", "staaten": ["Achaemenid Empire", "Persia"] }
-      ],
-      "text": "Elf Jahre, fünftausend Kilometer, kein verlorenes Feld. Alexander zerschlägt das größte Reich seiner Zeit und hinterlässt einen Kulturraum, in dem von Alexandria bis Baktrien Griechisch geschrieben wird – auch lange nachdem sein eigenes Reich zerfallen ist.",
-      "ausgang": "Das Perserreich endet; nach Alexanders Tod teilen seine Feldherren die Beute unter sich auf.",
-      "wiki": "Alexanderzug"
-    },
-    {
-      "id": "punisch1", "name": "Erster Punischer Krieg", "von": -264, "bis": -241, "art": "krieg", "rang": 2,
-      "ort": [12.6, 37.5], "wo": "Sizilien und das westliche Mittelmeer",
-      "seiten": [
-        { "name": "Römische Republik", "staaten": ["Rome"] },
-        { "name": "Karthago", "staaten": ["Carthage"] }
-      ],
-      "text": "Rom hat keine Flotte und baut sich in zwei Monaten eine, nach dem Vorbild eines gestrandeten karthagischen Schiffs. Der Enterhaken macht aus jedem Seegefecht eine Landschlacht – und aus einer Landmacht die stärkste Seemacht des Mittelmeers.",
-      "ausgang": "Karthago verliert Sizilien, die erste römische Provinz.",
-      "wiki": "Erster Punischer Krieg"
-    },
-    {
-      "id": "kalinga", "name": "Der Kalinga-Krieg", "von": -262, "bis": -261, "art": "eroberung", "rang": 3,
-      "ort": [85.8, 20.2], "wo": "Ostindien, Küste von Odisha",
-      "seiten": [
-        { "name": "Maurya-Reich", "staaten": ["Mauryan Empire"] },
-        { "name": "Kalinga", "staaten": ["Kalinga"] }
-      ],
-      "text": "Ashoka gewinnt und ist entsetzt über den Preis: hunderttausend Tote nach eigener Angabe. Er lässt seine Reue in Fels hauen, wendet sich dem Buddhismus zu und macht Gewaltverzicht zur Staatsdoktrin – der einzige Fall der Antike, in dem ein Sieger seinen Sieg öffentlich bereut.",
-      "ausgang": "Kalinga wird erobert; Ashoka schwört der Eroberung ab.",
-      "wiki": "Kalingakrieg"
-    },
-    {
-      "id": "reichseinigungqin", "name": "Die Einigungskriege der Qin", "von": -230, "bis": -221, "art": "eroberung", "rang": 1,
-      "ort": [113, 34.5], "wo": "Das Gebiet der Streitenden Reiche",
-      "seiten": [
-        { "name": "Qin", "staaten": ["Qin"] },
-        { "name": "Die sechs übrigen Reiche", "staaten": ["Han"] }
-      ],
-      "text": "In neun Jahren unterwirft Qin sechs Nachbarreiche und schafft, was zweihundertfünfzig Jahre Krieg nicht geschafft hatten: ein Reich. Danach werden Schrift, Maße, Achsbreiten und Münzen vereinheitlicht – der Grund, warum China als Einheit denkbar wurde und geblieben ist.",
-      "ausgang": "Das erste chinesische Kaiserreich entsteht; die Dynastie selbst hält nur fünfzehn Jahre.",
-      "wiki": "Reichseinigungskriege der Qin"
-    },
-    {
-      "id": "punisch2", "name": "Zweiter Punischer Krieg", "von": -218, "bis": -201, "art": "krieg", "rang": 1,
-      "ort": [11.5, 40.5], "wo": "Italien, Spanien, Nordafrika",
-      "seiten": [
-        { "name": "Römische Republik", "staaten": ["Rome"] },
-        { "name": "Karthago", "staaten": ["Carthage"] }
-      ],
-      "text": "Hannibal führt ein Heer samt Elefanten über die Alpen und schlägt Rom fünfzehn Jahre lang auf eigenem Boden. Er gewinnt jede Schlacht und verliert den Krieg: Rom weigert sich zu verhandeln, ersetzt Heer um Heer und trägt den Krieg schließlich nach Afrika.",
-      "ausgang": "Karthago verliert Spanien, die Flotte und jede eigene Außenpolitik.",
-      "wiki": "Zweiter Punischer Krieg"
-    },
-    {
-      "id": "chuhan", "name": "Der Chu-Han-Krieg", "von": -206, "bis": -202, "art": "buergerkrieg", "rang": 3,
-      "ort": [116, 33.5], "wo": "Zentralchina",
-      "seiten": [
-        { "name": "Han unter Liu Bang", "staaten": ["Han Empire"] },
-        { "name": "Chu unter Xiang Yu", "staaten": [] }
-      ],
-      "text": "Nach dem Sturz der Qin kämpfen zwei Männer um das Erbe: ein Adliger, der jede Schlacht gewinnt, und ein Dorfbeamter, der besser zuhört. Der Beamte siegt und gründet die Dynastie, nach der sich die Chinesen bis heute benennen.",
-      "ausgang": "Liu Bang gründet die Han-Dynastie.",
-      "wiki": "Chu-Han-Krieg"
-    },
-    {
-      "id": "punisch3", "name": "Dritter Punischer Krieg", "von": -149, "bis": -146, "art": "krieg", "rang": 3,
-      "ort": [10.3, 36.85], "wo": "Nordafrika",
-      "seiten": [
-        { "name": "Römische Republik", "staaten": ["Rome"] },
-        { "name": "Karthago", "staaten": ["Carthage"] }
-      ],
-      "text": "Kein Machtkampf mehr, sondern eine Hinrichtung: Karthago ist militärisch längst harmlos, aber wirtschaftlich wieder stark. Cato schließt jede Rede im Senat mit demselben Satz. Nach dreijähriger Belagerung wird die Stadt Haus für Haus genommen und geschleift.",
-      "ausgang": "Karthago hört auf zu bestehen; Nordafrika wird römische Provinz.",
-      "wiki": "Dritter Punischer Krieg"
-    },
-    {
-      "id": "hanxiongnu", "name": "Han gegen die Xiongnu", "von": -133, "bis": 89, "art": "krieg", "rang": 2,
-      "ort": [105, 42], "wo": "Nordchina, Gansu-Korridor, Mongolei",
-      "seiten": [
-        { "name": "Han-Reich", "staaten": ["Han Empire", "China"] },
-        { "name": "Xiongnu", "staaten": ["Xiongnu"] }
-      ],
-      "text": "China hört auf, Tribut zu zahlen, und geht in die Steppe. Um die Xiongnu zu umgehen, schickt Kaiser Wu einen Gesandten nach Westen – der kommt nach dreizehn Jahren zurück und berichtet von Reichen jenseits der Wüste. So entsteht aus einem Krieg die Seidenstraße.",
-      "ausgang": "Die Xiongnu zerfallen; der Gansu-Korridor bleibt chinesisch.",
-      "wiki": "Han-Xiongnu-Krieg"
-    },
-    {
-      "id": "galliienkrieg", "name": "Der Gallische Krieg", "von": -58, "bis": -50, "art": "eroberung", "rang": 2,
-      "ort": [3, 47], "wo": "Gallien zwischen Rhein, Pyrenäen und Atlantik",
-      "seiten": [
-        { "name": "Römische Republik", "staaten": ["Rome"] },
-        { "name": "Gallische Stämme", "staaten": ["Celtic kingdoms", "Celts"] }
-      ],
-      "text": "Caesar erobert in acht Jahren ein Gebiet so groß wie Frankreich und schreibt selbst den Bericht darüber – die erste Kriegsberichterstattung, die zugleich Wahlkampf ist. Am Ende hat er das Heer, mit dem er den Bürgerkrieg beginnen wird.",
-      "ausgang": "Gallien wird römisch und bleibt es fünfhundert Jahre.",
-      "wiki": "Gallischer Krieg"
-    },
-    {
-      "id": "roembuerger", "name": "Caesars Bürgerkrieg", "von": -49, "bis": -45, "art": "buergerkrieg", "rang": 2,
-      "ort": [20, 39.5], "wo": "Italien, Griechenland, Ägypten, Spanien",
-      "seiten": [
-        { "name": "Caesar und die Popularen", "staaten": ["Rome"] },
-        { "name": "Pompeius und der Senat", "staaten": [] }
-      ],
-      "text": "Ein Feldherr überschreitet mit seinem Heer einen Grenzfluss, den er unbewaffnet hätte überschreiten müssen. Vier Jahre später gibt es keine Republik mehr, sondern einen Diktator auf Lebenszeit – und drei Jahre danach ein Attentat, das nichts zurückholt.",
-      "ausgang": "Caesar siegt; die Republik ist faktisch beendet.",
-      "wiki": "Bürgerkrieg zwischen Caesar und Pompeius"
-    },
-    {
-      "id": "germanien", "name": "Roms Griff nach Germanien", "von": -12, "bis": 16, "art": "eroberung", "rang": 2,
-      "ort": [8.5, 52.2], "wo": "Zwischen Rhein, Weser und Elbe",
-      "seiten": [
-        { "name": "Römisches Reich", "staaten": ["Roman Empire", "Rome"] },
-        { "name": "Germanische Stämme", "staaten": ["Germanic tribes"] }
-      ],
-      "text": "Zwanzig Jahre lang ist Germanien fast eine Provinz. Dann verliert Varus drei Legionen in einem Waldstück, und Rom zieht die Grenze an den Rhein zurück – eine Linie, die Europa bis heute in zwei Rechtstraditionen teilt.",
-      "ausgang": "Rom gibt das Land östlich des Rheins auf.",
-      "wiki": "Römisch-Germanische Kriege"
-    },
-    {
-      "id": "juedisch1", "name": "Der Jüdische Krieg", "von": 66, "bis": 74, "art": "aufstand", "rang": 2,
-      "ort": [35.23, 31.78], "wo": "Judäa",
-      "seiten": [
-        { "name": "Römisches Reich", "staaten": ["Roman Empire", "Rome"] },
-        { "name": "Judäa", "staaten": ["Judea"] }
-      ],
-      "text": "Ein Aufstand gegen die römische Steuerverwaltung endet mit der Zerstörung des Zweiten Tempels. Aus einer Tempelreligion wird eine Schriftreligion – die Synagoge tritt an die Stelle des Opferdienstes, und das Judentum überlebt in einer Form, die keinen Ort mehr braucht.",
-      "ausgang": "Jerusalem fällt 70, Masada 73/74.",
-      "wiki": "Jüdischer Krieg"
-    },
-    {
-      "id": "markomannen", "name": "Die Markomannenkriege", "von": 166, "bis": 180, "art": "krieg", "rang": 3,
-      "ort": [16.4, 48.2], "wo": "Donaugrenze, Pannonien, Böhmen",
-      "seiten": [
-        { "name": "Römisches Reich", "staaten": ["Roman Empire", "Rome"] },
-        { "name": "Markomannen und Quaden", "staaten": ["Germanic tribes"] }
-      ],
-      "text": "Zum ersten Mal seit Jahrhunderten stehen Germanen wieder in Italien. Mark Aurel führt den Krieg vom Feldlager aus und schreibt dort seine Selbstbetrachtungen – Philosophie zwischen zwei Feldzügen. Die Grenze hält, aber sie hält nur noch mit Mühe.",
-      "ausgang": "Die Donaugrenze wird gehalten; der Druck aus dem Norden bleibt.",
-      "wiki": "Markomannenkriege"
-    },
-    {
-      "id": "sassaniden", "name": "Römisch-Persische Kriege", "von": 230, "bis": 628, "art": "krieg", "rang": 2,
-      "ort": [42, 35.5], "wo": "Mesopotamien, Armenien, Syrien",
-      "seiten": [
-        { "name": "Rom und Byzanz", "staaten": ["Roman Empire", "Byzantine Empire", "Eastern Roman Empire"] },
-        { "name": "Sassanidenreich", "staaten": ["Sasanian Empire", "Persia"] }
-      ],
-      "text": "Vierhundert Jahre Grenzkrieg zwischen den beiden einzigen Großmächten der Alten Welt, über dieselben Städte und dieselben Flüsse. Beide erschöpfen sich so gründlich, dass ein dritter Beteiligter, mit dem keiner gerechnet hat, in wenigen Jahrzehnten beide Räume neu ordnet.",
-      "ausgang": "Nach dem letzten großen Krieg 602–628 sind beide Reiche ausgeblutet – kurz vor der arabischen Expansion.",
-      "wiki": "Römisch-Persische Kriege"
-    },
-    {
-      "id": "voelkerwanderung", "name": "Die Völkerwanderung", "von": 375, "bis": 476, "art": "krieg", "rang": 1,
-      "ort": [15, 46], "wo": "Europa zwischen Schwarzem Meer und Atlantik",
-      "seiten": [
-        { "name": "Weströmisches Reich", "staaten": ["Western Roman Empire", "Roman Empire"] },
-        { "name": "Goten, Vandalen, Hunnen, Franken", "staaten": ["Visigoths", "Ostrogoths", "Vandals", "Huns", "Franks"] }
-      ],
-      "text": "Kein einzelner Krieg, sondern hundert Jahre Druck: Der Hunnensturm schiebt die Goten über die Donau, Rom nimmt sie auf und kann sie nicht ernähren, aus Flüchtlingen werden Heere. Am Ende sitzt in Ravenna kein Kaiser mehr, sondern ein germanischer König, der die Insignien nach Konstantinopel schickt.",
-      "ausgang": "476 endet das weströmische Kaisertum; auf seinem Boden entstehen germanische Königreiche.",
-      "wiki": "Völkerwanderung"
+     "name": "Hethiterreich",
+     "staaten": [
+      "Hittites"
+     ]
     }
-  ],
-
-  "schlachten": [
-    { "id": "kadesch", "krieg": "hethiteragypt", "jahr": -1274, "datum": "um 1274 v. Chr.", "name": "Kadesch",
-      "ort": [36.52, 34.56], "wo": "Am Orontes", "rang": 2, "sieger": "Ägypten",
-      "text": "Die erste Schlacht der Geschichte, deren Verlauf sich einigermaßen rekonstruieren lässt – weil beide Seiten darüber schrieben. Ramses II. läuft in einen Hinterhalt und stellt die Sache anschließend zu Hause als Triumph dar, in Stein, mehrfach.",
-      "wiki": "Schlacht bei Kadesch" },
-
-    { "id": "deltaschlacht", "krieg": "seevoelker", "jahr": -1175, "datum": "um 1175 v. Chr.", "name": "Die Schlacht im Nildelta",
-      "ort": [31.8, 31.3], "wo": "Nildelta, in den Flussarmen (Seeschlacht)", "rang": 2, "sieger": "Ägypten und die Levantestädte",
-      "text": "Ramses III. lässt die Schiffe der Seevölker in die Flussarme laufen und dort von Bogenschützen am Ufer zusammenschießen. Die Reliefs von Medinet Habu zeigen es Schritt für Schritt – die älteste Darstellung einer Seeschlacht.",
-      "wiki": "Seevölker" },
-
-    { "id": "muye", "krieg": "shangzhou", "jahr": -1046, "datum": "um 1046 v. Chr.", "name": "Muye",
-      "ort": [114.07, 35.31], "wo": "Nordchina", "rang": 2, "sieger": "Zhou",
-      "text": "Nach der Überlieferung laufen die Zwangssoldaten der Shang zum Gegner über, statt zu kämpfen. Der letzte Shang-König verbrennt sich in seinem Palast. Aus dem Sieg wird das Mandat des Himmels abgeleitet.",
-      "wiki": "Schlacht von Muye" },
-
-    { "id": "lachisch", "krieg": "assyrien", "jahr": -701, "datum": "701 v. Chr.", "name": "Lachisch",
-      "ort": [34.85, 31.56], "wo": "Judäa", "rang": 3, "sieger": "Assyrien",
-      "text": "Sanheribs Reliefs im Palast von Ninive zeigen die Belagerung im Detail: Rampe, Sturmbock, Deportation. Die Ausgrabung hat die Rampe gefunden, genau dort, wo das Relief sie zeigt – Bild und Boden stimmen überein.",
-      "wiki": "Belagerung von Lachisch" },
-
-    { "id": "ninive612", "krieg": "assyrien", "jahr": -612, "datum": "612 v. Chr.", "name": "Der Fall Ninives",
-      "ort": [43.15, 36.36], "wo": "Am Tigris", "rang": 2, "sieger": "Babylonien, Israel, Ägypten und Elam",
-      "text": "Babylonier und Meder nehmen die größte Stadt der Welt und zerstören sie so gründlich, dass zweihundert Jahre später Xenophon daran vorbeimarschiert, ohne zu wissen, was das für Ruinen sind.",
-      "wiki": "Ninive" },
-
-    { "id": "marathon", "krieg": "perserkriege", "jahr": -490, "datum": "September 490 v. Chr.", "name": "Marathon",
-      "ort": [23.96, 38.15], "wo": "Attika", "rang": 1, "sieger": "Griechische Städte",
-      "text": "Neuntausend Athener greifen eine weit überlegene Landungsarmee im Laufschritt an – nach damaligem Verständnis Selbstmord. Sie gewinnen, und Athen erfährt zum ersten Mal, dass Bürger im Schlachtfeld etwas taugen.",
-      "wiki": "Schlacht bei Marathon" },
-
-    { "id": "salamis", "krieg": "perserkriege", "jahr": -480, "datum": "September 480 v. Chr.", "name": "Salamis",
-      "ort": [23.53, 37.95], "wo": "Bucht vor Athen", "rang": 1, "sieger": "Griechische Städte",
-      "text": "Themistokles lockt die persische Flotte in eine Meerenge, in der ihre Übermacht zur Falle wird. Xerxes sieht vom Ufer aus zu, wie sein Seeweg nach Griechenland verschwindet.",
-      "wiki": "Schlacht von Salamis" },
-
-    { "id": "thermopylen", "krieg": "perserkriege", "jahr": -480, "datum": "August 480 v. Chr.", "name": "Thermopylen",
-      "ort": [22.54, 38.8], "wo": "Mittelgriechenland", "rang": 1, "sieger": "Perserreich",
-      "text": "Ein Engpass zwischen Berg und Meer, in dem Zahlen nichts nützen – bis ein Ortskundiger den Bergpfad verrät. Die Nachhut fällt vollständig. Die verlorene Schlacht wird berühmter als jeder Sieg.",
-      "wiki": "Schlacht bei den Thermopylen" },
-
-    { "id": "plataeae", "krieg": "perserkriege", "jahr": -479, "datum": "August 479 v. Chr.", "name": "Plataiai",
-      "ort": [23.27, 38.22], "wo": "Böotien", "rang": 2, "sieger": "Griechische Städte",
-      "text": "Die größte Hoplitenaufstellung, die Griechenland je zustande brachte, wirft das persische Landheer. Am selben Tag fällt bei Mykale die Flotte – der Feldzug ist zu Ende.",
-      "wiki": "Schlacht von Plataiai" },
-
-    { "id": "syrakus", "krieg": "peloponnes", "jahr": -413, "datum": "413 v. Chr.", "name": "Die Sizilische Expedition",
-      "ort": [15.29, 37.07], "wo": "Syrakus", "rang": 2, "sieger": "Sparta und der Peloponnesische Bund",
-      "text": "Athen schickt die größte Flotte seiner Geschichte gegen eine Stadt, die es nicht bedroht. Zwei Jahre später ist die Flotte versenkt, das Heer gefangen, und der Krieg zu Hause verloren.",
-      "wiki": "Sizilische Expedition" },
-
-    { "id": "aigospotamoi", "krieg": "peloponnes", "jahr": -405, "datum": "405 v. Chr.", "name": "Aigospotamoi",
-      "ort": [26.4, 40.3], "wo": "Hellespont", "rang": 2, "sieger": "Sparta und der Peloponnesische Bund",
-      "text": "Lysander erwischt die athenische Flotte am Strand beim Proviantholen. Ohne Schiffe kann Athen kein Getreide mehr aus dem Schwarzen Meer holen – die Stadt verhungert sich in die Kapitulation.",
-      "wiki": "Schlacht bei Aigospotamoi" },
-
-    { "id": "leuktra", "krieg": "boiotisch", "jahr": -371, "datum": "371 v. Chr.", "name": "Leuktra",
-      "ort": [23.2, 38.28], "wo": "Böotien", "rang": 3, "sieger": "Theben und der Boiotische Bund",
-      "text": "Epaminondas stellt seinen linken Flügel fünfzig Mann tief statt acht und bricht damit die spartanische Elite. Der Mythos der Unbesiegbarkeit endet an einem einzigen Nachmittag.",
-      "wiki": "Schlacht bei Leuktra" },
-
-    { "id": "mantineia362", "krieg": "boiotisch", "jahr": -362, "datum": "4. Juli 362 v. Chr.", "name": "Mantineia",
-      "ort": [22.4, 37.63], "wo": "Arkadien", "rang": 3, "sieger": "Theben und der Boiotische Bund",
-      "text": "Theben gewinnt das Feld und verliert Epaminondas. Xenophon schließt sein Geschichtswerk mit dem Befund, danach sei die Lage in Griechenland unklarer gewesen als zuvor – ein seltener Fall von Ehrlichkeit über einen Sieg.",
-      "wiki": "Schlacht von Mantineia (362 v. Chr.)" },
-
-    { "id": "granikos", "krieg": "alexanderzug", "jahr": -334, "datum": "Mai 334 v. Chr.", "name": "Am Granikos",
-      "ort": [27.25, 40.15], "wo": "Nordwestliches Kleinasien", "rang": 3, "sieger": "Makedonien und der Korinthische Bund",
-      "text": "Alexanders erste Schlacht in Asien, gegen einen Fluss und eine Uferböschung gewonnen. Er reitet selbst in der vordersten Reihe und wäre um ein Haar gefallen.",
-      "wiki": "Schlacht am Granikos" },
-
-    { "id": "issos", "krieg": "alexanderzug", "jahr": -333, "datum": "November 333 v. Chr.", "name": "Issos",
-      "ort": [36.2, 36.85], "wo": "Kilikische Küste", "rang": 2, "sieger": "Makedonien und der Korinthische Bund",
-      "text": "Dareios stellt sich auf einer schmalen Küstenebene, auf der seine Übermacht keinen Platz hat. Er flieht und lässt seine Familie im Lager zurück.",
-      "wiki": "Schlacht bei Issos" },
-
-    { "id": "gaugamela", "krieg": "alexanderzug", "jahr": -331, "datum": "1. Oktober 331 v. Chr.", "name": "Gaugamela",
-      "ort": [43.6, 36.4], "wo": "Nordirak, östlich von Ninive", "rang": 1, "sieger": "Makedonien und der Korinthische Bund", "verlauf": "gaugamela",
-      "text": "Die letzte Feldschlacht des Perserreichs. Ein zahlenmäßig weit unterlegenes Heer sprengt die persische Mitte und beendet zweihundert Jahre achaimenidischer Herrschaft.",
-      "wiki": "Schlacht von Gaugamela" },
-
-    { "id": "hydaspes", "krieg": "alexanderzug", "jahr": -326, "datum": "Mai 326 v. Chr.", "name": "Am Hydaspes",
-      "ort": [73.6, 32.5], "wo": "Pandschab", "rang": 3, "sieger": "Makedonien und der Korinthische Bund",
-      "text": "Gegen Kriegselefanten und einen angeschwollenen Fluss gewonnen – und danach verweigert das Heer den Weitermarsch. Alexanders Eroberung endet nicht an einem Gegner, sondern an der Erschöpfung seiner eigenen Leute.",
-      "wiki": "Schlacht am Hydaspes" },
-
-    { "id": "kalingaschlacht", "krieg": "kalinga", "jahr": -261, "datum": "261 v. Chr.", "name": "Die Schlacht am Daya",
-      "ort": [85.78, 20.13], "wo": "Odisha", "rang": 3, "sieger": "Maurya-Reich",
-      "text": "Nach der Überlieferung färbte sich der Fluss rot. Ashokas Felsedikt spricht von hunderttausend Toten und ebenso vielen Verschleppten – und davon, dass ihn das umgestimmt habe.",
-      "wiki": "Kalingakrieg" },
-
-    { "id": "mylae", "krieg": "punisch1", "jahr": -260, "datum": "260 v. Chr.", "name": "Mylae",
-      "ort": [15.24, 38.22], "wo": "Nordküste Siziliens", "rang": 3, "sieger": "Römische Republik",
-      "text": "Roms erste Seeschlacht, gewonnen mit einer Erfindung: einer Enterbrücke mit Eisendorn, die das gegnerische Deck festnagelt. Aus Seekrieg wird Nahkampf, und darin ist Rom besser.",
-      "wiki": "Seeschlacht bei Mylae" },
-
-    { "id": "aegatischen", "krieg": "punisch1", "jahr": -241, "datum": "10. März 241 v. Chr.", "name": "Bei den Ägatischen Inseln",
-      "ort": [12.2, 37.95], "wo": "Westlich Siziliens", "rang": 3, "sieger": "Römische Republik",
-      "text": "Eine aus privaten Spenden finanzierte römische Flotte fängt den karthagischen Nachschub ab. Karthago hat kein Geld mehr für eine neue und muss Frieden schließen.",
-      "wiki": "Seeschlacht bei den Ägatischen Inseln" },
-
-    { "id": "changping_qin", "krieg": "reichseinigungqin", "jahr": -225, "datum": "225 v. Chr.", "name": "Die Flutung von Daliang",
-      "ort": [114.35, 34.79], "wo": "Hauptstadt von Wei", "rang": 3, "sieger": "Qin",
-      "text": "Qin leitet den Gelben Fluss auf die Mauern der gegnerischen Hauptstadt. Nach drei Monaten ist die Stadt weggespült und das Reich Wei erledigt – Belagerungstechnik als Wasserbau.",
-      "wiki": "Reichseinigungskriege der Qin" },
-
-    { "id": "qinchu", "krieg": "reichseinigungqin", "jahr": -223, "datum": "223 v. Chr.", "name": "Der Feldzug gegen Chu",
-      "ort": [113.6, 30.6], "wo": "Mittlerer Jangtse", "rang": 3, "sieger": "Qin",
-      "text": "Wang Jian verlangt sechshunderttausend Mann – das ganze Aufgebot – und bekommt sie. Er lagert ein Jahr lang, ohne anzugreifen, bis der Gegner abzieht, und schlägt ihn dann im Marsch.",
-      "wiki": "Reichseinigungskriege der Qin" },
-
-    { "id": "trasimeno", "krieg": "punisch2", "jahr": -217, "datum": "21. Juni 217 v. Chr.", "name": "Am Trasimenischen See",
-      "ort": [12.13, 43.16], "wo": "Umbrien", "rang": 3, "sieger": "Karthago",
-      "text": "Hannibal legt sich im Morgennebel zwischen Ufer und Hügel auf die Lauer. Ein ganzes römisches Heer marschiert in den Hinterhalt und wird am Wasser aufgerieben.",
-      "wiki": "Schlacht am Trasimenischen See" },
-
-    { "id": "cannae", "krieg": "punisch2", "jahr": -216, "datum": "2. August 216 v. Chr.", "name": "Cannae",
-      "ort": [16.13, 41.31], "wo": "Apulien", "rang": 1, "sieger": "Karthago",
-      "text": "Hannibal lässt seine Mitte absichtlich zurückweichen und schließt die vorstürmenden Legionen von beiden Seiten ein. Bis heute das Lehrbuchbeispiel der Umfassung – und die verlustreichste Niederlage der römischen Geschichte.",
-      "wiki": "Schlacht von Cannae" },
-
-    { "id": "metaurus", "krieg": "punisch2", "jahr": -207, "datum": "207 v. Chr.", "name": "Am Metaurus",
-      "ort": [12.9, 43.7], "wo": "Umbrien", "rang": 3, "sieger": "Römische Republik",
-      "text": "Hannibals Bruder Hasdrubal kommt mit Verstärkung über die Alpen. Der Bote mit der Absprache wird abgefangen, das Heer gestellt und vernichtet. Hannibal erfährt davon, als man ihm den Kopf seines Bruders ins Lager wirft.",
-      "wiki": "Schlacht am Metaurus" },
-
-    { "id": "gaixia", "krieg": "chuhan", "jahr": -202, "datum": "202 v. Chr.", "name": "Gaixia",
-      "ort": [117.4, 33.4], "wo": "Anhui", "rang": 3, "sieger": "Han unter Liu Bang",
-      "text": "Xiang Yu ist eingeschlossen und hört nachts aus dem gegnerischen Lager die Lieder seiner Heimat – ein Zeichen, dass Chu bereits übergelaufen ist. Er bricht aus und nimmt sich am Fluss das Leben.",
-      "wiki": "Schlacht von Gaixia" },
-
-    { "id": "zama", "krieg": "punisch2", "jahr": -202, "datum": "19. Oktober 202 v. Chr.", "name": "Zama",
-      "ort": [9.5, 36.3], "wo": "Nordafrika, südwestlich von Karthago", "rang": 2, "sieger": "Römische Republik",
-      "text": "Scipio hat von Hannibal gelernt und stellt seine Reihen so, dass die Kriegselefanten hindurchlaufen statt aufzuprallen. Hannibals einzige verlorene Schlacht ist die, die den Krieg entscheidet.",
-      "wiki": "Schlacht bei Zama" },
-
-    { "id": "karthago146", "krieg": "punisch3", "jahr": -146, "datum": "Frühjahr 146 v. Chr.", "name": "Die Zerstörung Karthagos",
-      "ort": [10.32, 36.85], "wo": "Nordafrika", "rang": 2, "sieger": "Römische Republik",
-      "text": "Sechs Tage Häuserkampf in einer Stadt mit sechsstöckigen Wohnblöcken. Scipio Aemilianus soll beim Anblick der Brände geweint und Homer zitiert haben – in dem Bewusstsein, dass eines Tages auch Rom an der Reihe sei.",
-      "wiki": "Belagerung von Karthago" },
-
-    { "id": "mobei", "krieg": "hanxiongnu", "jahr": -119, "datum": "119 v. Chr.", "name": "Der Feldzug in die Wüste Gobi",
-      "ort": [104, 45], "wo": "Mongolei", "rang": 3, "sieger": "Han-Reich",
-      "text": "Zwei Heere ziehen tausend Kilometer weit in die Steppe, um einen Gegner zu stellen, der keine Städte hat. Es gelingt – zum Preis von zehntausenden Pferden, die China Jahrzehnte nicht ersetzen kann.",
-      "wiki": "Schlacht von Mobei" },
-
-    { "id": "alesia", "krieg": "galliienkrieg", "jahr": -52, "datum": "September 52 v. Chr.", "name": "Alesia",
-      "ort": [4.5, 47.54], "wo": "Burgund", "rang": 2, "sieger": "Römische Republik",
-      "text": "Caesar baut zwei Ringwälle: einen nach innen gegen die Belagerten, einen nach außen gegen das Entsatzheer. Vercingetorix ergibt sich – und mit ihm die Vorstellung eines freien Galliens.",
-      "wiki": "Schlacht um Alesia" },
-
-    { "id": "pharsalos", "krieg": "roembuerger", "jahr": -48, "datum": "9. August 48 v. Chr.", "name": "Pharsalos",
-      "ort": [22.38, 39.29], "wo": "Thessalien", "rang": 2, "sieger": "Caesar und die Popularen",
-      "text": "Caesar hat die Hälfte der Männer und weist seine Veteranen an, den jungen Rittern des Pompeius ins Gesicht zu stoßen statt auf den Leib. Die Adelssöhne weichen aus Eitelkeit zurück, und die Flanke bricht.",
-      "wiki": "Schlacht von Pharsalos" },
-
-    { "id": "actium", "krieg": "roembuerger", "jahr": -31, "datum": "2. September 31 v. Chr.", "name": "Actium",
-      "ort": [20.75, 38.94], "wo": "Westgriechische Küste", "rang": 1, "sieger": "Caesar und die Popularen",
-      "text": "Die Seeschlacht, aus der das Kaiserreich hervorgeht: Octavian gegen Antonius und Kleopatra. Kleopatras Geschwader dreht ab, Antonius folgt, und mit ihm endet das hellenistische Ägypten.",
-      "wiki": "Schlacht bei Actium" },
-
-    { "id": "teutoburg", "krieg": "germanien", "jahr": 9, "datum": "Herbst 9 n. Chr.", "name": "Die Varusschlacht",
-      "ort": [8.13, 52.18], "wo": "Kalkriese am Wiehengebirge", "rang": 1, "sieger": "Germanische Stämme",
-      "text": "Arminius hat als römischer Offizier gedient und weiß genau, wie eine Marschkolonne aussieht, die sich über Kilometer durch nassen Wald zieht. Drei Legionen gehen unter, ihre Nummern werden nie wieder vergeben.",
-      "wiki": "Varusschlacht" },
-
-    { "id": "jerusalem70", "krieg": "juedisch1", "jahr": 70, "datum": "August 70 n. Chr.", "name": "Die Belagerung Jerusalems",
-      "ort": [35.23, 31.78], "wo": "Judäa", "rang": 1, "sieger": "Römisches Reich",
-      "text": "Fünf Monate Belagerung, drei Mauerringe, Hungersnot und Parteikämpfe innerhalb der Stadt. Mit dem Tempel verbrennt das Zentrum einer Religion – und sie erfindet sich ohne dieses Zentrum neu.",
-      "wiki": "Belagerung Jerusalems (70)" },
-
-    { "id": "carnuntum", "krieg": "markomannen", "jahr": 172, "datum": "172 n. Chr.", "name": "Der Gegenstoß über die Donau",
-      "ort": [16.9, 48.11], "wo": "Carnuntum, Pannonien", "rang": 3, "sieger": "Römisches Reich",
-      "text": "Mark Aurel führt den Krieg vom Feldlager an der Donau aus und schreibt dort nachts seine Selbstbetrachtungen. Die Markomannen werden zurückgeworfen, aber nicht unterworfen – für eine Provinz reicht die Kraft nicht mehr.",
-      "wiki": "Markomannenkriege" },
-
-    { "id": "edessa260", "krieg": "sassaniden", "jahr": 260, "datum": "260 n. Chr.", "name": "Edessa",
-      "ort": [38.79, 37.16], "wo": "Nordmesopotamien", "rang": 2, "sieger": "Sassanidenreich",
-      "text": "Kaiser Valerian gerät in persische Gefangenschaft – der einzige römische Kaiser, dem das je geschieht. Schapur lässt den Triumph in Felswände hauen, wo er bis heute zu sehen ist.",
-      "wiki": "Schlacht von Edessa" },
-
-    { "id": "adrianopel378", "krieg": "voelkerwanderung", "jahr": 378, "datum": "9. August 378", "name": "Adrianopel",
-      "ort": [26.56, 41.68], "wo": "Thrakien", "rang": 1, "sieger": "Goten, Vandalen, Hunnen, Franken",
-      "text": "Kaiser Valens greift die Goten an, ohne die Verstärkung abzuwarten, und fällt mit zwei Dritteln des Ostheeres. Rom verliert an einem Tag den Ruf, Barbaren jederzeit schlagen zu können.",
-      "wiki": "Schlacht von Adrianopel (378)" },
-
-    { "id": "katalaun", "krieg": "voelkerwanderung", "jahr": 451, "datum": "20. Juni 451", "name": "Auf den Katalaunischen Feldern",
-      "ort": [4.4, 48.7], "wo": "Champagne", "rang": 2, "sieger": "Weströmisches Reich",
-      "text": "Römer und Westgoten, eben noch Feinde, stellen sich gemeinsam Attila entgegen. Es ist der letzte große Sieg, den Westrom erringt – und er wird von einem Bündnis errungen, das es selbst nicht mehr zusammenhalten kann.",
-      "wiki": "Schlacht auf den Katalaunischen Feldern" },
-
-    { "id": "rom476", "krieg": "voelkerwanderung", "jahr": 476, "datum": "4. September 476", "name": "Die Absetzung des letzten Kaisers",
-      "ort": [12.2, 44.42], "wo": "Ravenna", "rang": 1, "sieger": "Goten, Vandalen, Hunnen, Franken",
-      "text": "Odoaker setzt Romulus Augustulus ab und schickt die Kaiserinsignien nach Konstantinopel: Der Westen brauche keinen eigenen Kaiser mehr. Zeitgenossen halten das für eine Verwaltungsfrage; die Nachwelt für das Ende der Antike.",
-      "wiki": "Odoaker" },
-
-    { "id": "ninive627", "krieg": "sassaniden", "jahr": 627, "datum": "12. Dezember 627", "name": "Ninive",
-      "ort": [43.15, 36.35], "wo": "Nordmesopotamien", "rang": 2, "sieger": "Rom und Byzanz",
-      "text": "Herakleios gewinnt den letzten römisch-persischen Krieg und holt das Kreuzreliquiar nach Jerusalem zurück. Fünf Jahre später stehen arabische Heere an denselben Grenzen, und beide Sieger sind zu erschöpft, um sie zu halten.",
-      "wiki": "Schlacht bei Ninive (627)" }
-  ]
+   ],
+   "text": "Zwei Großmächte streiten drei Jahrzehnte um die syrischen Handelsstädte zwischen ihnen. Am Ende steht der älteste erhaltene Friedensvertrag der Welt – in zwei Fassungen, ägyptisch und hethitisch, mit unterschiedlicher Darstellung, wer nachgegeben hat. Eine Kopie hängt heute im Hauptquartier der Vereinten Nationen.",
+   "ausgang": "Waffenstillstand und Bündnisvertrag um 1259 v. Chr.; die Grenze bleibt, wo sie war.",
+   "wiki": "Ägyptisch-Hethitischer Friedensvertrag"
+  },
+  {
+   "id": "seevoelker",
+   "name": "Der Sturm der Seevölker",
+   "von": -1200,
+   "bis": -1150,
+   "art": "krieg",
+   "rang": 1,
+   "ort": [
+    33,
+    33.5
+   ],
+   "wo": "Östliches Mittelmeer, Levante, Ägypten",
+   "seiten": [
+    {
+     "name": "Ägypten und die Levantestädte",
+     "staaten": [
+      "Egypt"
+     ]
+    },
+    {
+     "name": "Die Seevölker",
+     "staaten": []
+    }
+   ],
+   "text": "Innerhalb von zwei Generationen brechen fast alle Reiche des östlichen Mittelmeers zusammen: die Hethiter, Mykene, Ugarit, die Handelsnetze. Wer die Seevölker waren, ist bis heute strittig – vermutlich waren sie eher Folge als Ursache: Dürre, Hunger und Wanderung setzten eine Kette in Gang, die niemand mehr anhielt.",
+   "ausgang": "Ägypten hält stand und ist danach erschöpft; die Bronzezeit endet.",
+   "wiki": "Seevölker"
+  },
+  {
+   "id": "shangzhou",
+   "name": "Der Sturz der Shang",
+   "von": -1050,
+   "bis": -1046,
+   "art": "eroberung",
+   "rang": 2,
+   "ort": [
+    114.4,
+    35.6
+   ],
+   "wo": "Nordchina, Gelbes Fluss",
+   "seiten": [
+    {
+     "name": "Zhou",
+     "staaten": [
+      "Zhou states"
+     ]
+    },
+    {
+     "name": "Shang",
+     "staaten": [
+      "Shang"
+     ]
+    }
+   ],
+   "text": "Die Zhou rechtfertigen ihren Aufstand mit einer Idee, die China dreitausend Jahre begleitet: dem Mandat des Himmels. Ein Herrscher regiert, solange er tugendhaft ist; wird er es nicht, darf er gestürzt werden. Damit ist jeder erfolgreiche Umsturz nachträglich legitim – und jede Dynastie in Gefahr.",
+   "ausgang": "Die Zhou-Dynastie beginnt; sie wird die längste in der chinesischen Geschichte.",
+   "wiki": "Zhou-Dynastie"
+  },
+  {
+   "id": "assyrien",
+   "name": "Die assyrische Expansion",
+   "von": -745,
+   "bis": -612,
+   "art": "eroberung",
+   "rang": 2,
+   "ort": [
+    43.15,
+    36.35
+   ],
+   "wo": "Mesopotamien, Levante, Ägypten",
+   "seiten": [
+    {
+     "name": "Assyrien",
+     "staaten": [
+      "Assyria"
+     ]
+    },
+    {
+     "name": "Babylonien, Israel, Ägypten und Elam",
+     "staaten": [
+      "Babylonia",
+      "Israel",
+      "Egypt",
+      "Elam"
+     ]
+    }
+   ],
+   "text": "Das erste Reich, das eroberte Völker planmäßig umsiedelt, um Aufstände zu verhindern – und das erste mit einem stehenden Heer und einem Straßennetz für Eilboten. Seine Reliefs zeigen die Gewalt nicht verschämt, sondern als Programm.",
+   "ausgang": "612 v. Chr. fällt Ninive an Babylonier und Meder; das Reich verschwindet vollständig.",
+   "wiki": "Assyrisches Reich"
+  },
+  {
+   "id": "perserkriege",
+   "name": "Die Perserkriege",
+   "von": -499,
+   "bis": -449,
+   "art": "krieg",
+   "rang": 1,
+   "ort": [
+    23.7,
+    38
+   ],
+   "wo": "Ägäis, Griechenland, Kleinasien",
+   "seiten": [
+    {
+     "name": "Griechische Städte",
+     "staaten": [
+      "Greek city-states"
+     ]
+    },
+    {
+     "name": "Perserreich",
+     "staaten": [
+      "Achaemenid Empire",
+      "Persia"
+     ]
+    }
+   ],
+   "text": "Ein Weltreich greift nach einer Handvoll zerstrittener Stadtstaaten und scheitert. Der Ausgang begründet das Selbstbild, das Griechenland und später Europa von sich hat: dass Freie besser kämpfen als Untertanen. Athen finanziert aus der Kriegskasse den Bund, aus dem sein Seereich wird.",
+   "ausgang": "Persien verzichtet auf die Ägäis; Athen steigt zur Seemacht auf.",
+   "wiki": "Perserkriege"
+  },
+  {
+   "id": "peloponnes",
+   "name": "Der Peloponnesische Krieg",
+   "von": -431,
+   "bis": -404,
+   "art": "krieg",
+   "rang": 1,
+   "ort": [
+    22.8,
+    37.7
+   ],
+   "wo": "Griechenland, Sizilien, Ionien",
+   "seiten": [
+    {
+     "name": "Athen und der Seebund",
+     "staaten": [
+      "Greek city-states"
+     ]
+    },
+    {
+     "name": "Sparta und der Peloponnesische Bund",
+     "staaten": [
+      "Greek city-states"
+     ]
+    }
+   ],
+   "text": "Siebenundzwanzig Jahre, in denen sich die griechische Welt selbst aufreibt: Seemacht gegen Landmacht, Demokratie gegen Oligarchie. Thukydides schreibt darüber das erste Buch, das Krieg nicht als Schicksal erklärt, sondern als Folge von Interessen.",
+   "ausgang": "Athen kapituliert, die Mauern fallen – und Griechenland ist so erschöpft, dass Makedonien eine Generation später leichtes Spiel hat.",
+   "wiki": "Peloponnesischer Krieg"
+  },
+  {
+   "id": "boiotisch",
+   "name": "Der Boiotische Krieg",
+   "von": -378,
+   "bis": -362,
+   "art": "krieg",
+   "rang": 3,
+   "ort": [
+    22.8,
+    38.1
+   ],
+   "wo": "Mittelgriechenland und Peloponnes",
+   "seiten": [
+    {
+     "name": "Theben und der Boiotische Bund",
+     "staaten": [
+      "Greek city-states"
+     ]
+    },
+    {
+     "name": "Sparta und seine Bündner",
+     "staaten": [
+      "Greek city-states"
+     ]
+    }
+   ],
+   "text": "Sechzehn Jahre, in denen Theben die griechische Vormacht wird und wieder verliert. Epaminondas erfindet die schiefe Schlachtordnung, befreit Messenien aus spartanischer Hörigkeit und nimmt Sparta damit die Grundlage seines Heeres – die Heloten.",
+   "ausgang": "Sparta ist als Großmacht erledigt, Theben überlebt seinen Feldherrn nicht.",
+   "wiki": "Böotischer Krieg"
+  },
+  {
+   "id": "alexanderzug",
+   "name": "Der Alexanderzug",
+   "von": -334,
+   "bis": -323,
+   "art": "eroberung",
+   "rang": 1,
+   "ort": [
+    50,
+    33
+   ],
+   "wo": "Kleinasien, Levante, Ägypten, Persien, Indus",
+   "seiten": [
+    {
+     "name": "Makedonien und der Korinthische Bund",
+     "staaten": [
+      "Macedonia",
+      "Macedon and Hellenic League"
+     ]
+    },
+    {
+     "name": "Perserreich",
+     "staaten": [
+      "Achaemenid Empire",
+      "Persia"
+     ]
+    }
+   ],
+   "text": "Elf Jahre, fünftausend Kilometer, kein verlorenes Feld. Alexander zerschlägt das größte Reich seiner Zeit und hinterlässt einen Kulturraum, in dem von Alexandria bis Baktrien Griechisch geschrieben wird – auch lange nachdem sein eigenes Reich zerfallen ist.",
+   "ausgang": "Das Perserreich endet; nach Alexanders Tod teilen seine Feldherren die Beute unter sich auf.",
+   "wiki": "Alexanderzug"
+  },
+  {
+   "id": "punisch1",
+   "name": "Erster Punischer Krieg",
+   "von": -264,
+   "bis": -241,
+   "art": "krieg",
+   "rang": 2,
+   "ort": [
+    12.6,
+    37.5
+   ],
+   "wo": "Sizilien und das westliche Mittelmeer",
+   "seiten": [
+    {
+     "name": "Römische Republik",
+     "staaten": [
+      "Rome"
+     ]
+    },
+    {
+     "name": "Karthago",
+     "staaten": [
+      "Carthage"
+     ]
+    }
+   ],
+   "text": "Rom hat keine Flotte und baut sich in zwei Monaten eine, nach dem Vorbild eines gestrandeten karthagischen Schiffs. Der Enterhaken macht aus jedem Seegefecht eine Landschlacht – und aus einer Landmacht die stärkste Seemacht des Mittelmeers.",
+   "ausgang": "Karthago verliert Sizilien, die erste römische Provinz.",
+   "wiki": "Erster Punischer Krieg"
+  },
+  {
+   "id": "kalinga",
+   "name": "Der Kalinga-Krieg",
+   "von": -262,
+   "bis": -261,
+   "art": "eroberung",
+   "rang": 3,
+   "ort": [
+    85.8,
+    20.2
+   ],
+   "wo": "Ostindien, Küste von Odisha",
+   "seiten": [
+    {
+     "name": "Maurya-Reich",
+     "staaten": [
+      "Mauryan Empire"
+     ]
+    },
+    {
+     "name": "Kalinga",
+     "staaten": [
+      "Kalinga"
+     ]
+    }
+   ],
+   "text": "Ashoka gewinnt und ist entsetzt über den Preis: hunderttausend Tote nach eigener Angabe. Er lässt seine Reue in Fels hauen, wendet sich dem Buddhismus zu und macht Gewaltverzicht zur Staatsdoktrin – der einzige Fall der Antike, in dem ein Sieger seinen Sieg öffentlich bereut.",
+   "ausgang": "Kalinga wird erobert; Ashoka schwört der Eroberung ab.",
+   "wiki": "Kalingakrieg"
+  },
+  {
+   "id": "reichseinigungqin",
+   "name": "Die Einigungskriege der Qin",
+   "von": -230,
+   "bis": -221,
+   "art": "eroberung",
+   "rang": 1,
+   "ort": [
+    113,
+    34.5
+   ],
+   "wo": "Das Gebiet der Streitenden Reiche",
+   "seiten": [
+    {
+     "name": "Qin",
+     "staaten": [
+      "Qin"
+     ]
+    },
+    {
+     "name": "Die sechs übrigen Reiche",
+     "staaten": [
+      "Han"
+     ]
+    }
+   ],
+   "text": "In neun Jahren unterwirft Qin sechs Nachbarreiche und schafft, was zweihundertfünfzig Jahre Krieg nicht geschafft hatten: ein Reich. Danach werden Schrift, Maße, Achsbreiten und Münzen vereinheitlicht – der Grund, warum China als Einheit denkbar wurde und geblieben ist.",
+   "ausgang": "Das erste chinesische Kaiserreich entsteht; die Dynastie selbst hält nur fünfzehn Jahre.",
+   "wiki": "Reichseinigungskriege der Qin"
+  },
+  {
+   "id": "punisch2",
+   "name": "Zweiter Punischer Krieg",
+   "von": -218,
+   "bis": -201,
+   "art": "krieg",
+   "rang": 1,
+   "ort": [
+    11.5,
+    40.5
+   ],
+   "wo": "Italien, Spanien, Nordafrika",
+   "seiten": [
+    {
+     "name": "Römische Republik",
+     "staaten": [
+      "Rome"
+     ]
+    },
+    {
+     "name": "Karthago",
+     "staaten": [
+      "Carthage"
+     ]
+    }
+   ],
+   "text": "Hannibal führt ein Heer samt Elefanten über die Alpen und schlägt Rom fünfzehn Jahre lang auf eigenem Boden. Er gewinnt jede Schlacht und verliert den Krieg: Rom weigert sich zu verhandeln, ersetzt Heer um Heer und trägt den Krieg schließlich nach Afrika.",
+   "ausgang": "Karthago verliert Spanien, die Flotte und jede eigene Außenpolitik.",
+   "wiki": "Zweiter Punischer Krieg"
+  },
+  {
+   "id": "chuhan",
+   "name": "Der Chu-Han-Krieg",
+   "von": -206,
+   "bis": -202,
+   "art": "buergerkrieg",
+   "rang": 3,
+   "ort": [
+    116,
+    33.5
+   ],
+   "wo": "Zentralchina",
+   "seiten": [
+    {
+     "name": "Han unter Liu Bang",
+     "staaten": [
+      "Han Empire"
+     ]
+    },
+    {
+     "name": "Chu unter Xiang Yu",
+     "staaten": []
+    }
+   ],
+   "text": "Nach dem Sturz der Qin kämpfen zwei Männer um das Erbe: ein Adliger, der jede Schlacht gewinnt, und ein Dorfbeamter, der besser zuhört. Der Beamte siegt und gründet die Dynastie, nach der sich die Chinesen bis heute benennen.",
+   "ausgang": "Liu Bang gründet die Han-Dynastie.",
+   "wiki": "Chu-Han-Krieg"
+  },
+  {
+   "id": "punisch3",
+   "name": "Dritter Punischer Krieg",
+   "von": -149,
+   "bis": -146,
+   "art": "krieg",
+   "rang": 3,
+   "ort": [
+    10.3,
+    36.85
+   ],
+   "wo": "Nordafrika",
+   "seiten": [
+    {
+     "name": "Römische Republik",
+     "staaten": [
+      "Rome"
+     ]
+    },
+    {
+     "name": "Karthago",
+     "staaten": [
+      "Carthage"
+     ]
+    }
+   ],
+   "text": "Kein Machtkampf mehr, sondern eine Hinrichtung: Karthago ist militärisch längst harmlos, aber wirtschaftlich wieder stark. Cato schließt jede Rede im Senat mit demselben Satz. Nach dreijähriger Belagerung wird die Stadt Haus für Haus genommen und geschleift.",
+   "ausgang": "Karthago hört auf zu bestehen; Nordafrika wird römische Provinz.",
+   "wiki": "Dritter Punischer Krieg"
+  },
+  {
+   "id": "hanxiongnu",
+   "name": "Han gegen die Xiongnu",
+   "von": -133,
+   "bis": 89,
+   "art": "krieg",
+   "rang": 2,
+   "ort": [
+    105,
+    42
+   ],
+   "wo": "Nordchina, Gansu-Korridor, Mongolei",
+   "seiten": [
+    {
+     "name": "Han-Reich",
+     "staaten": [
+      "Han Empire",
+      "China"
+     ]
+    },
+    {
+     "name": "Xiongnu",
+     "staaten": [
+      "Xiongnu"
+     ]
+    }
+   ],
+   "text": "China hört auf, Tribut zu zahlen, und geht in die Steppe. Um die Xiongnu zu umgehen, schickt Kaiser Wu einen Gesandten nach Westen – der kommt nach dreizehn Jahren zurück und berichtet von Reichen jenseits der Wüste. So entsteht aus einem Krieg die Seidenstraße.",
+   "ausgang": "Die Xiongnu zerfallen; der Gansu-Korridor bleibt chinesisch.",
+   "wiki": "Han-Xiongnu-Krieg"
+  },
+  {
+   "id": "galliienkrieg",
+   "name": "Der Gallische Krieg",
+   "von": -58,
+   "bis": -50,
+   "art": "eroberung",
+   "rang": 2,
+   "ort": [
+    3,
+    47
+   ],
+   "wo": "Gallien zwischen Rhein, Pyrenäen und Atlantik",
+   "seiten": [
+    {
+     "name": "Römische Republik",
+     "staaten": [
+      "Rome"
+     ]
+    },
+    {
+     "name": "Gallische Stämme",
+     "staaten": [
+      "Celtic kingdoms",
+      "Celts"
+     ]
+    }
+   ],
+   "text": "Caesar erobert in acht Jahren ein Gebiet so groß wie Frankreich und schreibt selbst den Bericht darüber – die erste Kriegsberichterstattung, die zugleich Wahlkampf ist. Am Ende hat er das Heer, mit dem er den Bürgerkrieg beginnen wird.",
+   "ausgang": "Gallien wird römisch und bleibt es fünfhundert Jahre.",
+   "wiki": "Gallischer Krieg"
+  },
+  {
+   "id": "roembuerger",
+   "name": "Caesars Bürgerkrieg",
+   "von": -49,
+   "bis": -45,
+   "art": "buergerkrieg",
+   "rang": 2,
+   "ort": [
+    20,
+    39.5
+   ],
+   "wo": "Italien, Griechenland, Ägypten, Spanien",
+   "seiten": [
+    {
+     "name": "Caesar und die Popularen",
+     "staaten": [
+      "Rome"
+     ]
+    },
+    {
+     "name": "Pompeius und der Senat",
+     "staaten": []
+    }
+   ],
+   "text": "Ein Feldherr überschreitet mit seinem Heer einen Grenzfluss, den er unbewaffnet hätte überschreiten müssen. Vier Jahre später gibt es keine Republik mehr, sondern einen Diktator auf Lebenszeit – und drei Jahre danach ein Attentat, das nichts zurückholt.",
+   "ausgang": "Caesar siegt; die Republik ist faktisch beendet.",
+   "wiki": "Bürgerkrieg zwischen Caesar und Pompeius"
+  },
+  {
+   "id": "germanien",
+   "name": "Roms Griff nach Germanien",
+   "von": -12,
+   "bis": 16,
+   "art": "eroberung",
+   "rang": 2,
+   "ort": [
+    8.5,
+    52.2
+   ],
+   "wo": "Zwischen Rhein, Weser und Elbe",
+   "seiten": [
+    {
+     "name": "Römisches Reich",
+     "staaten": [
+      "Roman Empire",
+      "Rome"
+     ]
+    },
+    {
+     "name": "Germanische Stämme",
+     "staaten": [
+      "Germanic tribes"
+     ]
+    }
+   ],
+   "text": "Zwanzig Jahre lang ist Germanien fast eine Provinz. Dann verliert Varus drei Legionen in einem Waldstück, und Rom zieht die Grenze an den Rhein zurück – eine Linie, die Europa bis heute in zwei Rechtstraditionen teilt.",
+   "ausgang": "Rom gibt das Land östlich des Rheins auf.",
+   "wiki": "Römisch-Germanische Kriege"
+  },
+  {
+   "id": "juedisch1",
+   "name": "Der Jüdische Krieg",
+   "von": 66,
+   "bis": 74,
+   "art": "aufstand",
+   "rang": 2,
+   "ort": [
+    35.23,
+    31.78
+   ],
+   "wo": "Judäa",
+   "seiten": [
+    {
+     "name": "Römisches Reich",
+     "staaten": [
+      "Roman Empire",
+      "Rome"
+     ]
+    },
+    {
+     "name": "Judäa",
+     "staaten": [
+      "Judea"
+     ]
+    }
+   ],
+   "text": "Ein Aufstand gegen die römische Steuerverwaltung endet mit der Zerstörung des Zweiten Tempels. Aus einer Tempelreligion wird eine Schriftreligion – die Synagoge tritt an die Stelle des Opferdienstes, und das Judentum überlebt in einer Form, die keinen Ort mehr braucht.",
+   "ausgang": "Jerusalem fällt 70, Masada 73/74.",
+   "wiki": "Jüdischer Krieg"
+  },
+  {
+   "id": "markomannen",
+   "name": "Die Markomannenkriege",
+   "von": 166,
+   "bis": 180,
+   "art": "krieg",
+   "rang": 3,
+   "ort": [
+    16.4,
+    48.2
+   ],
+   "wo": "Donaugrenze, Pannonien, Böhmen",
+   "seiten": [
+    {
+     "name": "Römisches Reich",
+     "staaten": [
+      "Roman Empire",
+      "Rome"
+     ]
+    },
+    {
+     "name": "Markomannen und Quaden",
+     "staaten": [
+      "Germanic tribes"
+     ]
+    }
+   ],
+   "text": "Zum ersten Mal seit Jahrhunderten stehen Germanen wieder in Italien. Mark Aurel führt den Krieg vom Feldlager aus und schreibt dort seine Selbstbetrachtungen – Philosophie zwischen zwei Feldzügen. Die Grenze hält, aber sie hält nur noch mit Mühe.",
+   "ausgang": "Die Donaugrenze wird gehalten; der Druck aus dem Norden bleibt.",
+   "wiki": "Markomannenkriege"
+  },
+  {
+   "id": "sassaniden",
+   "name": "Römisch-Persische Kriege",
+   "von": 230,
+   "bis": 628,
+   "art": "krieg",
+   "rang": 2,
+   "ort": [
+    42,
+    35.5
+   ],
+   "wo": "Mesopotamien, Armenien, Syrien",
+   "seiten": [
+    {
+     "name": "Rom und Byzanz",
+     "staaten": [
+      "Roman Empire",
+      "Byzantine Empire",
+      "Eastern Roman Empire"
+     ]
+    },
+    {
+     "name": "Sassanidenreich",
+     "staaten": [
+      "Sasanian Empire",
+      "Persia"
+     ]
+    }
+   ],
+   "text": "Vierhundert Jahre Grenzkrieg zwischen den beiden einzigen Großmächten der Alten Welt, über dieselben Städte und dieselben Flüsse. Beide erschöpfen sich so gründlich, dass ein dritter Beteiligter, mit dem keiner gerechnet hat, in wenigen Jahrzehnten beide Räume neu ordnet.",
+   "ausgang": "Nach dem letzten großen Krieg 602–628 sind beide Reiche ausgeblutet – kurz vor der arabischen Expansion.",
+   "wiki": "Römisch-Persische Kriege"
+  },
+  {
+   "id": "voelkerwanderung",
+   "name": "Die Völkerwanderung",
+   "von": 375,
+   "bis": 476,
+   "art": "krieg",
+   "rang": 1,
+   "ort": [
+    15,
+    46
+   ],
+   "wo": "Europa zwischen Schwarzem Meer und Atlantik",
+   "seiten": [
+    {
+     "name": "Weströmisches Reich",
+     "staaten": [
+      "Western Roman Empire",
+      "Roman Empire"
+     ]
+    },
+    {
+     "name": "Goten, Vandalen, Hunnen, Franken",
+     "staaten": [
+      "Visigoths",
+      "Ostrogoths",
+      "Vandals",
+      "Huns",
+      "Franks"
+     ]
+    }
+   ],
+   "text": "Kein einzelner Krieg, sondern hundert Jahre Druck: Der Hunnensturm schiebt die Goten über die Donau, Rom nimmt sie auf und kann sie nicht ernähren, aus Flüchtlingen werden Heere. Am Ende sitzt in Ravenna kein Kaiser mehr, sondern ein germanischer König, der die Insignien nach Konstantinopel schickt.",
+   "ausgang": "476 endet das weströmische Kaisertum; auf seinem Boden entstehen germanische Königreiche.",
+   "wiki": "Völkerwanderung"
+  }
+ ],
+ "schlachten": [
+  {
+   "id": "kadesch",
+   "krieg": "hethiteragypt",
+   "jahr": -1274,
+   "datum": "um 1274 v. Chr.",
+   "name": "Kadesch",
+   "ort": [
+    36.52,
+    34.56
+   ],
+   "wo": "Am Orontes",
+   "rang": 2,
+   "sieger": "Ägypten",
+   "text": "Die erste Schlacht der Geschichte, deren Verlauf sich einigermaßen rekonstruieren lässt – weil beide Seiten darüber schrieben. Ramses II. läuft in einen Hinterhalt und stellt die Sache anschließend zu Hause als Triumph dar, in Stein, mehrfach.",
+   "wiki": "Schlacht bei Kadesch"
+  },
+  {
+   "id": "deltaschlacht",
+   "krieg": "seevoelker",
+   "jahr": -1175,
+   "datum": "um 1175 v. Chr.",
+   "name": "Die Schlacht im Nildelta",
+   "ort": [
+    31.8,
+    31.3
+   ],
+   "wo": "Nildelta, in den Flussarmen (Seeschlacht)",
+   "rang": 2,
+   "sieger": "Ägypten und die Levantestädte",
+   "text": "Ramses III. lässt die Schiffe der Seevölker in die Flussarme laufen und dort von Bogenschützen am Ufer zusammenschießen. Die Reliefs von Medinet Habu zeigen es Schritt für Schritt – die älteste Darstellung einer Seeschlacht.",
+   "wiki": "Seevölker"
+  },
+  {
+   "id": "muye",
+   "krieg": "shangzhou",
+   "jahr": -1046,
+   "datum": "um 1046 v. Chr.",
+   "name": "Muye",
+   "ort": [
+    114.07,
+    35.31
+   ],
+   "wo": "Nordchina",
+   "rang": 2,
+   "sieger": "Zhou",
+   "text": "Nach der Überlieferung laufen die Zwangssoldaten der Shang zum Gegner über, statt zu kämpfen. Der letzte Shang-König verbrennt sich in seinem Palast. Aus dem Sieg wird das Mandat des Himmels abgeleitet.",
+   "wiki": "Schlacht von Muye"
+  },
+  {
+   "id": "lachisch",
+   "krieg": "assyrien",
+   "jahr": -701,
+   "datum": "701 v. Chr.",
+   "name": "Lachisch",
+   "ort": [
+    34.85,
+    31.56
+   ],
+   "wo": "Judäa",
+   "rang": 3,
+   "sieger": "Assyrien",
+   "text": "Sanheribs Reliefs im Palast von Ninive zeigen die Belagerung im Detail: Rampe, Sturmbock, Deportation. Die Ausgrabung hat die Rampe gefunden, genau dort, wo das Relief sie zeigt – Bild und Boden stimmen überein.",
+   "wiki": "Belagerung von Lachisch"
+  },
+  {
+   "id": "ninive612",
+   "krieg": "assyrien",
+   "jahr": -612,
+   "datum": "612 v. Chr.",
+   "name": "Der Fall Ninives",
+   "ort": [
+    43.15,
+    36.36
+   ],
+   "wo": "Am Tigris",
+   "rang": 2,
+   "sieger": "Babylonien, Israel, Ägypten und Elam",
+   "text": "Babylonier und Meder nehmen die größte Stadt der Welt und zerstören sie so gründlich, dass zweihundert Jahre später Xenophon daran vorbeimarschiert, ohne zu wissen, was das für Ruinen sind.",
+   "wiki": "Ninive"
+  },
+  {
+   "id": "marathon",
+   "krieg": "perserkriege",
+   "jahr": -490,
+   "datum": "September 490 v. Chr.",
+   "name": "Marathon",
+   "ort": [
+    23.96,
+    38.15
+   ],
+   "wo": "Attika",
+   "rang": 1,
+   "sieger": "Griechische Städte",
+   "text": "Neuntausend Athener greifen eine weit überlegene Landungsarmee im Laufschritt an – nach damaligem Verständnis Selbstmord. Sie gewinnen, und Athen erfährt zum ersten Mal, dass Bürger im Schlachtfeld etwas taugen.",
+   "verlauf": "marathon",
+   "wiki": "Schlacht bei Marathon"
+  },
+  {
+   "id": "salamis",
+   "krieg": "perserkriege",
+   "jahr": -480,
+   "datum": "September 480 v. Chr.",
+   "name": "Salamis",
+   "ort": [
+    23.53,
+    37.95
+   ],
+   "wo": "Bucht vor Athen",
+   "rang": 1,
+   "sieger": "Griechische Städte",
+   "text": "Themistokles lockt die persische Flotte in eine Meerenge, in der ihre Übermacht zur Falle wird. Xerxes sieht vom Ufer aus zu, wie sein Seeweg nach Griechenland verschwindet.",
+   "wiki": "Schlacht von Salamis"
+  },
+  {
+   "id": "thermopylen",
+   "krieg": "perserkriege",
+   "jahr": -480,
+   "datum": "August 480 v. Chr.",
+   "name": "Thermopylen",
+   "ort": [
+    22.54,
+    38.8
+   ],
+   "wo": "Mittelgriechenland",
+   "rang": 1,
+   "sieger": "Perserreich",
+   "text": "Ein Engpass zwischen Berg und Meer, in dem Zahlen nichts nützen – bis ein Ortskundiger den Bergpfad verrät. Die Nachhut fällt vollständig. Die verlorene Schlacht wird berühmter als jeder Sieg.",
+   "wiki": "Schlacht bei den Thermopylen"
+  },
+  {
+   "id": "plataeae",
+   "krieg": "perserkriege",
+   "jahr": -479,
+   "datum": "August 479 v. Chr.",
+   "name": "Plataiai",
+   "ort": [
+    23.27,
+    38.22
+   ],
+   "wo": "Böotien",
+   "rang": 2,
+   "sieger": "Griechische Städte",
+   "text": "Die größte Hoplitenaufstellung, die Griechenland je zustande brachte, wirft das persische Landheer. Am selben Tag fällt bei Mykale die Flotte – der Feldzug ist zu Ende.",
+   "wiki": "Schlacht von Plataiai"
+  },
+  {
+   "id": "syrakus",
+   "krieg": "peloponnes",
+   "jahr": -413,
+   "datum": "413 v. Chr.",
+   "name": "Die Sizilische Expedition",
+   "ort": [
+    15.29,
+    37.07
+   ],
+   "wo": "Syrakus",
+   "rang": 2,
+   "sieger": "Sparta und der Peloponnesische Bund",
+   "text": "Athen schickt die größte Flotte seiner Geschichte gegen eine Stadt, die es nicht bedroht. Zwei Jahre später ist die Flotte versenkt, das Heer gefangen, und der Krieg zu Hause verloren.",
+   "wiki": "Sizilische Expedition"
+  },
+  {
+   "id": "aigospotamoi",
+   "krieg": "peloponnes",
+   "jahr": -405,
+   "datum": "405 v. Chr.",
+   "name": "Aigospotamoi",
+   "ort": [
+    26.4,
+    40.3
+   ],
+   "wo": "Hellespont",
+   "rang": 2,
+   "sieger": "Sparta und der Peloponnesische Bund",
+   "text": "Lysander erwischt die athenische Flotte am Strand beim Proviantholen. Ohne Schiffe kann Athen kein Getreide mehr aus dem Schwarzen Meer holen – die Stadt verhungert sich in die Kapitulation.",
+   "wiki": "Schlacht bei Aigospotamoi"
+  },
+  {
+   "id": "leuktra",
+   "krieg": "boiotisch",
+   "jahr": -371,
+   "datum": "371 v. Chr.",
+   "name": "Leuktra",
+   "ort": [
+    23.2,
+    38.28
+   ],
+   "wo": "Böotien",
+   "rang": 3,
+   "sieger": "Theben und der Boiotische Bund",
+   "text": "Epaminondas stellt seinen linken Flügel fünfzig Mann tief statt acht und bricht damit die spartanische Elite. Der Mythos der Unbesiegbarkeit endet an einem einzigen Nachmittag.",
+   "wiki": "Schlacht bei Leuktra"
+  },
+  {
+   "id": "mantineia362",
+   "krieg": "boiotisch",
+   "jahr": -362,
+   "datum": "4. Juli 362 v. Chr.",
+   "name": "Mantineia",
+   "ort": [
+    22.4,
+    37.63
+   ],
+   "wo": "Arkadien",
+   "rang": 3,
+   "sieger": "Theben und der Boiotische Bund",
+   "text": "Theben gewinnt das Feld und verliert Epaminondas. Xenophon schließt sein Geschichtswerk mit dem Befund, danach sei die Lage in Griechenland unklarer gewesen als zuvor – ein seltener Fall von Ehrlichkeit über einen Sieg.",
+   "wiki": "Schlacht von Mantineia (362 v. Chr.)"
+  },
+  {
+   "id": "granikos",
+   "krieg": "alexanderzug",
+   "jahr": -334,
+   "datum": "Mai 334 v. Chr.",
+   "name": "Am Granikos",
+   "ort": [
+    27.25,
+    40.15
+   ],
+   "wo": "Nordwestliches Kleinasien",
+   "rang": 3,
+   "sieger": "Makedonien und der Korinthische Bund",
+   "text": "Alexanders erste Schlacht in Asien, gegen einen Fluss und eine Uferböschung gewonnen. Er reitet selbst in der vordersten Reihe und wäre um ein Haar gefallen.",
+   "wiki": "Schlacht am Granikos"
+  },
+  {
+   "id": "issos",
+   "krieg": "alexanderzug",
+   "jahr": -333,
+   "datum": "November 333 v. Chr.",
+   "name": "Issos",
+   "ort": [
+    36.2,
+    36.85
+   ],
+   "wo": "Kilikische Küste",
+   "rang": 2,
+   "sieger": "Makedonien und der Korinthische Bund",
+   "text": "Dareios stellt sich auf einer schmalen Küstenebene, auf der seine Übermacht keinen Platz hat. Er flieht und lässt seine Familie im Lager zurück.",
+   "wiki": "Schlacht bei Issos"
+  },
+  {
+   "id": "gaugamela",
+   "krieg": "alexanderzug",
+   "jahr": -331,
+   "datum": "1. Oktober 331 v. Chr.",
+   "name": "Gaugamela",
+   "ort": [
+    43.6,
+    36.4
+   ],
+   "wo": "Nordirak, östlich von Ninive",
+   "rang": 1,
+   "sieger": "Makedonien und der Korinthische Bund",
+   "verlauf": "gaugamela",
+   "text": "Die letzte Feldschlacht des Perserreichs. Ein zahlenmäßig weit unterlegenes Heer sprengt die persische Mitte und beendet zweihundert Jahre achaimenidischer Herrschaft.",
+   "wiki": "Schlacht von Gaugamela"
+  },
+  {
+   "id": "hydaspes",
+   "krieg": "alexanderzug",
+   "jahr": -326,
+   "datum": "Mai 326 v. Chr.",
+   "name": "Am Hydaspes",
+   "ort": [
+    73.6,
+    32.5
+   ],
+   "wo": "Pandschab",
+   "rang": 3,
+   "sieger": "Makedonien und der Korinthische Bund",
+   "text": "Gegen Kriegselefanten und einen angeschwollenen Fluss gewonnen – und danach verweigert das Heer den Weitermarsch. Alexanders Eroberung endet nicht an einem Gegner, sondern an der Erschöpfung seiner eigenen Leute.",
+   "wiki": "Schlacht am Hydaspes"
+  },
+  {
+   "id": "kalingaschlacht",
+   "krieg": "kalinga",
+   "jahr": -261,
+   "datum": "261 v. Chr.",
+   "name": "Die Schlacht am Daya",
+   "ort": [
+    85.78,
+    20.13
+   ],
+   "wo": "Odisha",
+   "rang": 3,
+   "sieger": "Maurya-Reich",
+   "text": "Nach der Überlieferung färbte sich der Fluss rot. Ashokas Felsedikt spricht von hunderttausend Toten und ebenso vielen Verschleppten – und davon, dass ihn das umgestimmt habe.",
+   "wiki": "Kalingakrieg"
+  },
+  {
+   "id": "mylae",
+   "krieg": "punisch1",
+   "jahr": -260,
+   "datum": "260 v. Chr.",
+   "name": "Mylae",
+   "ort": [
+    15.24,
+    38.22
+   ],
+   "wo": "Nordküste Siziliens",
+   "rang": 3,
+   "sieger": "Römische Republik",
+   "text": "Roms erste Seeschlacht, gewonnen mit einer Erfindung: einer Enterbrücke mit Eisendorn, die das gegnerische Deck festnagelt. Aus Seekrieg wird Nahkampf, und darin ist Rom besser.",
+   "wiki": "Seeschlacht bei Mylae"
+  },
+  {
+   "id": "aegatischen",
+   "krieg": "punisch1",
+   "jahr": -241,
+   "datum": "10. März 241 v. Chr.",
+   "name": "Bei den Ägatischen Inseln",
+   "ort": [
+    12.2,
+    37.95
+   ],
+   "wo": "Westlich Siziliens",
+   "rang": 3,
+   "sieger": "Römische Republik",
+   "text": "Eine aus privaten Spenden finanzierte römische Flotte fängt den karthagischen Nachschub ab. Karthago hat kein Geld mehr für eine neue und muss Frieden schließen.",
+   "wiki": "Seeschlacht bei den Ägatischen Inseln"
+  },
+  {
+   "id": "changping_qin",
+   "krieg": "reichseinigungqin",
+   "jahr": -225,
+   "datum": "225 v. Chr.",
+   "name": "Die Flutung von Daliang",
+   "ort": [
+    114.35,
+    34.79
+   ],
+   "wo": "Hauptstadt von Wei",
+   "rang": 3,
+   "sieger": "Qin",
+   "text": "Qin leitet den Gelben Fluss auf die Mauern der gegnerischen Hauptstadt. Nach drei Monaten ist die Stadt weggespült und das Reich Wei erledigt – Belagerungstechnik als Wasserbau.",
+   "wiki": "Reichseinigungskriege der Qin"
+  },
+  {
+   "id": "qinchu",
+   "krieg": "reichseinigungqin",
+   "jahr": -223,
+   "datum": "223 v. Chr.",
+   "name": "Der Feldzug gegen Chu",
+   "ort": [
+    113.6,
+    30.6
+   ],
+   "wo": "Mittlerer Jangtse",
+   "rang": 3,
+   "sieger": "Qin",
+   "text": "Wang Jian verlangt sechshunderttausend Mann – das ganze Aufgebot – und bekommt sie. Er lagert ein Jahr lang, ohne anzugreifen, bis der Gegner abzieht, und schlägt ihn dann im Marsch.",
+   "wiki": "Reichseinigungskriege der Qin"
+  },
+  {
+   "id": "trasimeno",
+   "krieg": "punisch2",
+   "jahr": -217,
+   "datum": "21. Juni 217 v. Chr.",
+   "name": "Am Trasimenischen See",
+   "ort": [
+    12.13,
+    43.16
+   ],
+   "wo": "Umbrien",
+   "rang": 3,
+   "sieger": "Karthago",
+   "text": "Hannibal legt sich im Morgennebel zwischen Ufer und Hügel auf die Lauer. Ein ganzes römisches Heer marschiert in den Hinterhalt und wird am Wasser aufgerieben.",
+   "wiki": "Schlacht am Trasimenischen See"
+  },
+  {
+   "id": "cannae",
+   "krieg": "punisch2",
+   "jahr": -216,
+   "datum": "2. August 216 v. Chr.",
+   "name": "Cannae",
+   "ort": [
+    16.13,
+    41.31
+   ],
+   "wo": "Apulien",
+   "rang": 1,
+   "sieger": "Karthago",
+   "text": "Hannibal lässt seine Mitte absichtlich zurückweichen und schließt die vorstürmenden Legionen von beiden Seiten ein. Bis heute das Lehrbuchbeispiel der Umfassung – und die verlustreichste Niederlage der römischen Geschichte.",
+   "verlauf": "cannae",
+   "wiki": "Schlacht von Cannae"
+  },
+  {
+   "id": "metaurus",
+   "krieg": "punisch2",
+   "jahr": -207,
+   "datum": "207 v. Chr.",
+   "name": "Am Metaurus",
+   "ort": [
+    12.9,
+    43.7
+   ],
+   "wo": "Umbrien",
+   "rang": 3,
+   "sieger": "Römische Republik",
+   "text": "Hannibals Bruder Hasdrubal kommt mit Verstärkung über die Alpen. Der Bote mit der Absprache wird abgefangen, das Heer gestellt und vernichtet. Hannibal erfährt davon, als man ihm den Kopf seines Bruders ins Lager wirft.",
+   "wiki": "Schlacht am Metaurus"
+  },
+  {
+   "id": "gaixia",
+   "krieg": "chuhan",
+   "jahr": -202,
+   "datum": "202 v. Chr.",
+   "name": "Gaixia",
+   "ort": [
+    117.4,
+    33.4
+   ],
+   "wo": "Anhui",
+   "rang": 3,
+   "sieger": "Han unter Liu Bang",
+   "text": "Xiang Yu ist eingeschlossen und hört nachts aus dem gegnerischen Lager die Lieder seiner Heimat – ein Zeichen, dass Chu bereits übergelaufen ist. Er bricht aus und nimmt sich am Fluss das Leben.",
+   "wiki": "Schlacht von Gaixia"
+  },
+  {
+   "id": "zama",
+   "krieg": "punisch2",
+   "jahr": -202,
+   "datum": "19. Oktober 202 v. Chr.",
+   "name": "Zama",
+   "ort": [
+    9.5,
+    36.3
+   ],
+   "wo": "Nordafrika, südwestlich von Karthago",
+   "rang": 2,
+   "sieger": "Römische Republik",
+   "text": "Scipio hat von Hannibal gelernt und stellt seine Reihen so, dass die Kriegselefanten hindurchlaufen statt aufzuprallen. Hannibals einzige verlorene Schlacht ist die, die den Krieg entscheidet.",
+   "wiki": "Schlacht bei Zama"
+  },
+  {
+   "id": "karthago146",
+   "krieg": "punisch3",
+   "jahr": -146,
+   "datum": "Frühjahr 146 v. Chr.",
+   "name": "Die Zerstörung Karthagos",
+   "ort": [
+    10.32,
+    36.85
+   ],
+   "wo": "Nordafrika",
+   "rang": 2,
+   "sieger": "Römische Republik",
+   "text": "Sechs Tage Häuserkampf in einer Stadt mit sechsstöckigen Wohnblöcken. Scipio Aemilianus soll beim Anblick der Brände geweint und Homer zitiert haben – in dem Bewusstsein, dass eines Tages auch Rom an der Reihe sei.",
+   "wiki": "Belagerung von Karthago"
+  },
+  {
+   "id": "mobei",
+   "krieg": "hanxiongnu",
+   "jahr": -119,
+   "datum": "119 v. Chr.",
+   "name": "Der Feldzug in die Wüste Gobi",
+   "ort": [
+    104,
+    45
+   ],
+   "wo": "Mongolei",
+   "rang": 3,
+   "sieger": "Han-Reich",
+   "text": "Zwei Heere ziehen tausend Kilometer weit in die Steppe, um einen Gegner zu stellen, der keine Städte hat. Es gelingt – zum Preis von zehntausenden Pferden, die China Jahrzehnte nicht ersetzen kann.",
+   "wiki": "Schlacht von Mobei"
+  },
+  {
+   "id": "alesia",
+   "krieg": "galliienkrieg",
+   "jahr": -52,
+   "datum": "September 52 v. Chr.",
+   "name": "Alesia",
+   "ort": [
+    4.5,
+    47.54
+   ],
+   "wo": "Burgund",
+   "rang": 2,
+   "sieger": "Römische Republik",
+   "text": "Caesar baut zwei Ringwälle: einen nach innen gegen die Belagerten, einen nach außen gegen das Entsatzheer. Vercingetorix ergibt sich – und mit ihm die Vorstellung eines freien Galliens.",
+   "wiki": "Schlacht um Alesia"
+  },
+  {
+   "id": "pharsalos",
+   "krieg": "roembuerger",
+   "jahr": -48,
+   "datum": "9. August 48 v. Chr.",
+   "name": "Pharsalos",
+   "ort": [
+    22.38,
+    39.29
+   ],
+   "wo": "Thessalien",
+   "rang": 2,
+   "sieger": "Caesar und die Popularen",
+   "text": "Caesar hat die Hälfte der Männer und weist seine Veteranen an, den jungen Rittern des Pompeius ins Gesicht zu stoßen statt auf den Leib. Die Adelssöhne weichen aus Eitelkeit zurück, und die Flanke bricht.",
+   "wiki": "Schlacht von Pharsalos"
+  },
+  {
+   "id": "actium",
+   "krieg": "roembuerger",
+   "jahr": -31,
+   "datum": "2. September 31 v. Chr.",
+   "name": "Actium",
+   "ort": [
+    20.75,
+    38.94
+   ],
+   "wo": "Westgriechische Küste",
+   "rang": 1,
+   "sieger": "Caesar und die Popularen",
+   "text": "Die Seeschlacht, aus der das Kaiserreich hervorgeht: Octavian gegen Antonius und Kleopatra. Kleopatras Geschwader dreht ab, Antonius folgt, und mit ihm endet das hellenistische Ägypten.",
+   "wiki": "Schlacht bei Actium"
+  },
+  {
+   "id": "teutoburg",
+   "krieg": "germanien",
+   "jahr": 9,
+   "datum": "Herbst 9 n. Chr.",
+   "name": "Die Varusschlacht",
+   "ort": [
+    8.13,
+    52.18
+   ],
+   "wo": "Kalkriese am Wiehengebirge",
+   "rang": 1,
+   "sieger": "Germanische Stämme",
+   "text": "Arminius hat als römischer Offizier gedient und weiß genau, wie eine Marschkolonne aussieht, die sich über Kilometer durch nassen Wald zieht. Drei Legionen gehen unter, ihre Nummern werden nie wieder vergeben.",
+   "wiki": "Varusschlacht"
+  },
+  {
+   "id": "jerusalem70",
+   "krieg": "juedisch1",
+   "jahr": 70,
+   "datum": "August 70 n. Chr.",
+   "name": "Die Belagerung Jerusalems",
+   "ort": [
+    35.23,
+    31.78
+   ],
+   "wo": "Judäa",
+   "rang": 1,
+   "sieger": "Römisches Reich",
+   "text": "Fünf Monate Belagerung, drei Mauerringe, Hungersnot und Parteikämpfe innerhalb der Stadt. Mit dem Tempel verbrennt das Zentrum einer Religion – und sie erfindet sich ohne dieses Zentrum neu.",
+   "wiki": "Belagerung Jerusalems (70)"
+  },
+  {
+   "id": "carnuntum",
+   "krieg": "markomannen",
+   "jahr": 172,
+   "datum": "172 n. Chr.",
+   "name": "Der Gegenstoß über die Donau",
+   "ort": [
+    16.9,
+    48.11
+   ],
+   "wo": "Carnuntum, Pannonien",
+   "rang": 3,
+   "sieger": "Römisches Reich",
+   "text": "Mark Aurel führt den Krieg vom Feldlager an der Donau aus und schreibt dort nachts seine Selbstbetrachtungen. Die Markomannen werden zurückgeworfen, aber nicht unterworfen – für eine Provinz reicht die Kraft nicht mehr.",
+   "wiki": "Markomannenkriege"
+  },
+  {
+   "id": "edessa260",
+   "krieg": "sassaniden",
+   "jahr": 260,
+   "datum": "260 n. Chr.",
+   "name": "Edessa",
+   "ort": [
+    38.79,
+    37.16
+   ],
+   "wo": "Nordmesopotamien",
+   "rang": 2,
+   "sieger": "Sassanidenreich",
+   "text": "Kaiser Valerian gerät in persische Gefangenschaft – der einzige römische Kaiser, dem das je geschieht. Schapur lässt den Triumph in Felswände hauen, wo er bis heute zu sehen ist.",
+   "wiki": "Schlacht von Edessa"
+  },
+  {
+   "id": "adrianopel378",
+   "krieg": "voelkerwanderung",
+   "jahr": 378,
+   "datum": "9. August 378",
+   "name": "Adrianopel",
+   "ort": [
+    26.56,
+    41.68
+   ],
+   "wo": "Thrakien",
+   "rang": 1,
+   "sieger": "Goten, Vandalen, Hunnen, Franken",
+   "text": "Kaiser Valens greift die Goten an, ohne die Verstärkung abzuwarten, und fällt mit zwei Dritteln des Ostheeres. Rom verliert an einem Tag den Ruf, Barbaren jederzeit schlagen zu können.",
+   "wiki": "Schlacht von Adrianopel (378)"
+  },
+  {
+   "id": "katalaun",
+   "krieg": "voelkerwanderung",
+   "jahr": 451,
+   "datum": "20. Juni 451",
+   "name": "Auf den Katalaunischen Feldern",
+   "ort": [
+    4.4,
+    48.7
+   ],
+   "wo": "Champagne",
+   "rang": 2,
+   "sieger": "Weströmisches Reich",
+   "text": "Römer und Westgoten, eben noch Feinde, stellen sich gemeinsam Attila entgegen. Es ist der letzte große Sieg, den Westrom erringt – und er wird von einem Bündnis errungen, das es selbst nicht mehr zusammenhalten kann.",
+   "wiki": "Schlacht auf den Katalaunischen Feldern"
+  },
+  {
+   "id": "rom476",
+   "krieg": "voelkerwanderung",
+   "jahr": 476,
+   "datum": "4. September 476",
+   "name": "Die Absetzung des letzten Kaisers",
+   "ort": [
+    12.2,
+    44.42
+   ],
+   "wo": "Ravenna",
+   "rang": 1,
+   "sieger": "Goten, Vandalen, Hunnen, Franken",
+   "text": "Odoaker setzt Romulus Augustulus ab und schickt die Kaiserinsignien nach Konstantinopel: Der Westen brauche keinen eigenen Kaiser mehr. Zeitgenossen halten das für eine Verwaltungsfrage; die Nachwelt für das Ende der Antike.",
+   "wiki": "Odoaker"
+  },
+  {
+   "id": "ninive627",
+   "krieg": "sassaniden",
+   "jahr": 627,
+   "datum": "12. Dezember 627",
+   "name": "Ninive",
+   "ort": [
+    43.15,
+    36.35
+   ],
+   "wo": "Nordmesopotamien",
+   "rang": 2,
+   "sieger": "Rom und Byzanz",
+   "text": "Herakleios gewinnt den letzten römisch-persischen Krieg und holt das Kreuzreliquiar nach Jerusalem zurück. Fünf Jahre später stehen arabische Heere an denselben Grenzen, und beide Sieger sind zu erschöpft, um sie zu halten.",
+   "wiki": "Schlacht bei Ninive (627)"
+  }
+ ]
 }

@@ -199,6 +199,7 @@ npm run check:staaten # zählt alle 195 Staaten in den Gegenwartsjahren nach
 npm run check:herrscher # prüft, für wie viele Jahre ein Herrscher hinterlegt ist
 npm run check:ereignisse # verteilt die Ereignisse auf die Zeitschnitte und prüft die Orte
 npm run check:konflikte # prüft Kriege, Schlachtfelder und die Namen der Kriegsparteien
+npm run check:schlachten # prüft die zwölf abspielbaren Verläufe: Geometrie, Zeitmarken, Kennungen
 npm run check:layout  # Oberfläche in 5 Fenstergrößen × 6 Zuständen (braucht `npm run dev`)
 npm run check:ladelast -- http://127.0.0.1:4173  # was der erste Aufruf lädt (braucht `npm run preview`)
 npm run check:fluss    -- http://127.0.0.1:4173  # Bildraten beim Schwenken und Zoomen
@@ -572,20 +573,101 @@ gibt, ergibt still einen fehlenden Umriss statt einer Fehlermeldung.
 ### Berühmte Schlachten
 
 Der Atlas zeigt sonst Zustände: So sah die Welt im Jahr X aus. Eine Schlacht
-ist aber kein Zustand, sondern eine Abfolge – und die fällt aus einer Karte
-heraus, die nur Jahresschnitte kennt.
+ist aber kein Zustand, sondern eine **Bewegung** – und die fällt aus einer
+Karte heraus, die nur Jahresschnitte kennt.
 
-`src/data/battles.json` beschreibt jede Schlacht als Kette von Stationen mit
-eigener Uhrzeit oder eigenem Tag. Zu jeder Station liegen die Stellungen der
-Beteiligten vor, als Fläche oder als Stoßpfeil. Beim Start springt die Karte
-auf den passenden Zeitschnitt und den passenden Ausschnitt, dann läuft der
-Verlauf ab; einzelne Stationen lassen sich anspringen.
+Zwölf Schlachten haben einen abspielbaren Verlauf, von Marathon bis zur
+Normandie: Marathon, Gaugamela, Cannae, Hastings, Azincourt, der Fall
+Konstantinopels, Lepanto, Trafalgar, Waterloo, Tannenberg, Stalingrad,
+Normandie. Jede besteht aus sechs bis sieben Stationen mit eigener Zeitmarke,
+zusammen rund 460 Truppenstellungen.
+
+#### Warum gegliten wird und nicht umgeschaltet
+
+Wer zwei Standbilder nacheinander sieht, muss sich die Bewegung dazudenken.
+Wer die Bewegung sieht, versteht sie. Bei einer Umfassung, einem Durchbruch,
+einem geordneten Zurückweichen ist genau das der ganze Inhalt: Cannae ist
+nicht die Aufstellung und nicht das Ergebnis, Cannae ist der Weg dazwischen.
+
+Zwei Umrisse ineinander zu überführen ist aber nicht trivial – sie haben
+selten gleich viele Stützpunkte, und wenn man sie einfach paarweise verbindet,
+stülpt sich die Form beim Überblenden um. Drei Schritte lösen das:
+
+1. **Gemeinsames Raster.** Beide Umrisse werden nach Bogenlänge auf 48 Punkte
+   nachabgetastet. Eine gedehnte Linie und ein geschlossenes Karree sind
+   danach vergleichbar.
+2. **Anfangspunkt drehen.** Gesucht wird die Drehung des zweiten Ringes mit
+   dem kleinsten Abstand über alle Punktpaare. Ohne diesen Schritt krempelt
+   sich die Truppe beim Vorrücken einmal um.
+3. **Weiche Kurve statt Polygonzug.** Über die Stützpunkte läuft eine
+   Catmull-Rom-Kurve, in Bézier-Stücke umgerechnet. Aus neun Ecken wird eine
+   Form, die aussieht, als läge sie mit dem Stift auf einer Stabskarte.
+
+Zusammengehalten wird das über eine **Kennung je Stellung**, die über die
+Stationen hinweg gleich bleibt. Wer in beiden Stationen vorkommt, gleitet; wer
+nur in der neuen vorkommt, blendet ein; wer verschwindet, verblasst, statt
+wegzuspringen.
+
+#### Die Choreografie einer Station
+
+Eine Station ist ein Abschnitt, kein Augenblick. Innerhalb ihres Fensters:
+
+| | |
+|---|---|
+| 0 – 45 % | Die Stellungen ruhen. Die Pfeile zeichnen sich von hinten nach vorn, die Spitze setzt erst im letzten Viertel auf. |
+| 45 – 100 % | Die Stellungen gleiten in die Lage der nächsten Station. Die Pfeile verblassen – sie haben ihre Aussage gemacht, jetzt zeigt sie die Bewegung selbst. |
+
+Erst lesen, dann die Absicht sehen, dann die Ausführung. Gleichzeitig wäre die
+Bewegung vorbei, bevor man den Satz gelesen hat.
+
+#### Die Zeitachse
+
+Abspielen, Springen und freies Ziehen sind derselbe Vorgang mit verschiedenen
+Antrieben: Alle setzen einen Zeitpunkt, und aus dem Zeitpunkt folgt das Bild.
+Der Schieber lässt sich mitten in eine Bewegung ziehen und wieder zurück; die
+Marken darauf sitzen dort, wo die Stationen liegen, nicht in gleichen
+Abständen. Bei Konstantinopel sieht man daran, dass sieben Wochen Belagerung
+auf eine Nacht Sturmangriff zulaufen.
+
+Die Zeitmarken sind je Schlacht einheitlich – Minuten bei einer Feldschlacht,
+Tage bei Tannenberg, Monate bei Stalingrad. Die Abstände bestimmen nur die
+Reihenfolge und die Lage der Marken; jedes Fenster wird gleich lang abgespielt,
+sonst rauschte der Sturmangriff vorbei, während man bei der Belagerung wartet.
+
+#### Gelände
+
+Bei fast jeder dieser Schlachten hat das Gelände mitentschieden: der Schlamm
+von Azincourt, der Höhenzug von Mont-Saint-Jean, das Sumpfgebiet bei Marathon,
+die Theodosianische Mauer, die Untiefen im Golf von Patras. Sieben Signaturen –
+Fluss, See, Sumpf, Wald, Höhe, Stadt, Mauer – legen das eine Merkmal darunter,
+auf das es ankam. Bewusst blass: Sie sollen die Karte nicht ersetzen.
+
+#### Warum eine Leinwand und keine Kartenebene
+
+Die Stellungen ändern sich bei laufender Schlacht in **jedem** Bild. Über
+Leaflet-Ebenen aus Einzelformen hieße das, sechzig Mal in der Sekunde Objekte
+anzulegen, zu projizieren und wegzuwerfen. Stattdessen zeichnet eine eigene
+Leinwand einmal je Bild in Bildschirmkoordinaten. Gemessen bei geviertelter
+Rechenleistung kostet ein Bild **2,2 bis 3,7 ms** – bei der schwersten
+Schlacht mit 48 Stellungen genauso wie bei der leichtesten. Auf einem
+gewöhnlichen Gerät ist das unter einer Millisekunde.
 
 Truppenstellungen sind **keine** Staatsgrenzen. Sie liegen deshalb in einer
-eigenen Kartenebene, in eigenen Farben, und verschwinden restlos beim
-Schließen. Während einer Schlacht tritt die Staatenkarte gedämpft zurück – bei
-diesem Maßstab ist sie ohnehin nur eine einfarbige Fläche und würde die
-Stellungen überstrahlen.
+eigenen Ebene, in eigenen Farben, und verschwinden restlos beim Schließen.
+Während einer Schlacht treten Staatenkarte, Kriegsregister und Ereignisse
+zurück – deren Marken lägen sonst mitten in den Stellungen.
+
+#### Geprüft wird die Geometrie, nicht nur der Text
+
+Von Hand gesetzte Geometrie geht schief, ohne dass es beim Lesen auffällt.
+`npm run check:schlachten` prüft deshalb für alle zwölf Verläufe: dass jede
+Stellung im Umkreis des Schlachtfelds liegt (der zulässige Radius folgt aus
+der Zoomstufe), dass die Zeitmarken steigen, dass eine Kennung nicht in einer
+Station der einen und in der nächsten der anderen Partei gehört, dass
+Landschlachten an Land und Seeschlachten auf dem Wasser liegen – geprüft gegen
+die hochaufgelöste Küstenlinie, weil die Übersichtslinie eine vier Kilometer
+breite Küstenebene wie die von Marathon glatt ins Meer legt – und dass jeder
+Verlauf aus dem Kriegsregister erreichbar ist.
 
 ### Ereignisse auf der Karte
 
