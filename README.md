@@ -666,10 +666,18 @@ Geländezüge** in neun Signaturen legen das darunter:
 | Mauer | Linie mit Zinnenstrichen |
 | Weg | doppelte Linie, heller Kern zwischen dunklen Rändern |
 | See, Furt | Fläche bzw. gestrichelte Linie |
+| Wind, Strömung | gefiederter Pfeil, wie auf einer Seekarte |
 
 Konzentrische Höhenlinien standen zwischenzeitlich drin und sahen aus wie
 zufällige Schlingen: Sie sagen nichts darüber, wo oben ist. Die
 Böschungsschraffur tut es.
+
+Wind und Strömung sind bei einer Segel- oder Ruderschlacht das, was bei einer
+Landschlacht der Hang ist. Bei Trafalgar erklärt der schwache Westwind, warum
+Nelsons Anlauf zwei Stunden dauerte und wehrlos überstanden werden musste; bei
+Lepanto dreht der Wind gegen Mittag und nimmt den Osmanen den Vorteil.
+Zeitgenossen hielten das für ein Zeichen. Ohne das Zeichen auf der Karte fehlt
+in beiden Fällen der Grund.
 
 #### Was in der Tafel steht
 

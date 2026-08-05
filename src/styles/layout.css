@@ -1170,6 +1170,21 @@
 .blgd__g--stadt { background: rgba(141, 127, 108, .5); }
 .blgd__g--mauer { background: rgba(224, 208, 176, .7); }
 .blgd__g--weg { background: rgba(203, 184, 148, .7); }
+.blgd__g--wind, .blgd__g--stroemung {
+  background: none;
+  border-top: 2px solid rgba(143, 168, 196, .9);
+  height: 0;
+  position: relative;
+}
+.blgd__g--stroemung { border-top-color: rgba(111, 176, 216, .9); }
+.blgd__g--wind::after, .blgd__g--stroemung::after {
+  content: '';
+  position: absolute;
+  right: -1px; top: -3px;
+  border: 3px solid transparent;
+  border-left-color: currentColor;
+  color: rgba(143, 168, 196, .9);
+}
 
 @media (max-width: 720px) { .blgd { display: none; } }
 

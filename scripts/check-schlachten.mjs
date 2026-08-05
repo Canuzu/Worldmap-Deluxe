@@ -97,7 +97,8 @@ let fehler = 0;
 const meldung = (id, was) => { fehler++; console.log(`  ✗ ${id.padEnd(16)} ${was}`); };
 
 const GATTUNGEN = new Set(['fuss', 'bogen', 'reiter', 'geschuetz', 'schiff', 'gemischt']);
-const ARTEN = new Set(['fluss', 'see', 'sumpf', 'wald', 'hoehe', 'stadt', 'mauer', 'weg', 'furt']);
+const ARTEN = new Set(['fluss', 'see', 'sumpf', 'wald', 'hoehe', 'stadt', 'mauer', 'weg',
+  'furt', 'wind', 'stroemung']);
 
 console.log('Schlacht          Stationen  Stellungen  Weiteste  Grenze   Gelände  Tafel');
 console.log('─'.repeat(80));

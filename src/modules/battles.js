@@ -254,6 +254,13 @@ const GELAENDE = {
   mauer: { farbe: '#e0d0b0', breite: 4.5, linie: true, zinnen: true },
   weg: { farbe: '#cbb894', breite: 2.6, linie: true, doppelt: true },
   furt: { farbe: '#9fc6e8', breite: 2.4, linie: true, gestrichelt: true },
+  /* Wind und Strömung sind bei einer Ruder- oder Segelschlacht das, was bei
+     einer Landschlacht der Hang ist. Bei Trafalgar erklärt der schwache
+     Westwind, warum der Anlauf zwei Stunden dauerte und die Briten ihn
+     wehrlos überstehen mussten. Gezeichnet als gefiederter Pfeil, wie auf
+     einer Seekarte. */
+  wind: { farbe: '#8fa8c4', breite: 2, linie: true, feder: true },
+  stroemung: { farbe: '#6fb0d8', breite: 2, linie: true, feder: true, wellig: true },
 };
 
 /**
@@ -497,6 +504,36 @@ const SchlachtLeinwand = L.Layer.extend({
       ctx.lineWidth = Math.max(1, art.breite * .3);
       ctx.stroke();
     }
+    // Ein Windpfeil bekommt Federn am hinteren Ende und eine Spitze vorn –
+    // das Zeichen für Windrichtung auf jeder Seekarte.
+    if (art.feder) {
+      const [ax, ay] = p[0];
+      const [bx, by] = p.at(-1);
+      const d = Math.hypot(bx - ax, by - ay) || 1;
+      const ux = (bx - ax) / d;
+      const uy = (by - ay) / d;
+      const sx = -uy;
+      const sy = ux;
+      ctx.strokeStyle = mitAlpha(art.farbe, .9);
+      ctx.lineWidth = 1.6;
+      for (let k = 0; k < 4; k++) {
+        const t = .06 + k * .085;
+        const x = ax + (bx - ax) * t;
+        const y = ay + (by - ay) * t;
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(x + (sx - ux) * 9, y + (sy - uy) * 9);
+        ctx.stroke();
+      }
+      ctx.beginPath();
+      ctx.moveTo(bx, by);
+      ctx.lineTo(bx - ux * 12 + sx * 5, by - uy * 12 + sy * 5);
+      ctx.lineTo(bx - ux * 12 - sx * 5, by - uy * 12 - sy * 5);
+      ctx.closePath();
+      ctx.fillStyle = mitAlpha(art.farbe, .9);
+      ctx.fill();
+    }
+
     // Eine Mauer bekommt Zinnen: kurze Striche quer zur Linie.
     if (art.zinnen) {
       ctx.strokeStyle = mitAlpha(art.farbe, .85);
@@ -776,6 +813,7 @@ const SchlachtLeinwand = L.Layer.extend({
    */
   _beschriftungen(ctx, koerper, vorbelegt = []) {
     const belegt = [...vorbelegt];
+    this._entfallen = 0;
     const frei = (x, y, w, h) => !belegt.some(
       (b) => Math.abs(b.x - x) < (b.w + w) / 2 + 5 && Math.abs(b.y - y) < (b.h + h) / 2 + 4,
     );
@@ -825,7 +863,7 @@ const SchlachtLeinwand = L.Layer.extend({
         [x + ax * .8, y - ay * .8, true], [x - ax * .8, y + ay * .8, true],
       ];
       const platz = plaetze.find(([px, py]) => frei(px, py, w, h));
-      if (!platz) continue;
+      if (!platz) { this._entfallen = (this._entfallen ?? 0) + 1; continue; }
       const [px, py, zeiger] = platz;
       belegt.push({ x: px, y: py, w, h });
 

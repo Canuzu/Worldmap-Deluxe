@@ -26052,6 +26052,42 @@
       ]
      ],
      "name": "Enge von Lepanto"
+    },
+    {
+     "art": "wind",
+     "punkte": [
+      [
+       21.44,
+       38.4
+      ],
+      [
+       21.34,
+       38.395
+      ],
+      [
+       21.24,
+       38.39
+      ]
+     ],
+     "name": "Wind, morgens aus Ost"
+    },
+    {
+     "art": "stroemung",
+     "punkte": [
+      [
+       21.42,
+       38.1
+      ],
+      [
+       21.3,
+       38.09
+      ],
+      [
+       21.18,
+       38.085
+      ]
+     ],
+     "name": "Strömung aus dem Golf"
     }
    ],
    "stationen": [
@@ -29472,9 +29508,9 @@
    "jahr": 1815,
    "mitte": [
     -6.3,
-    36.28
+    36.29
    ],
-   "zoom": 10.4,
+   "zoom": 10.9,
    "see": true,
    "worum": "Nelson bricht mit der Regel, dass Linie gegen Linie fährt. Er läuft in zwei Kolonnen quer auf die feindliche Linie zu, zerschneidet sie in drei Teile und macht aus der Schlacht ein Gemenge, in dem die bessere Seemannschaft entscheidet. Der Preis: Beim Anlauf kann er nicht antworten.",
    "parteien": [
@@ -29541,6 +29577,42 @@
       ]
      ],
      "name": "Kap Trafalgar"
+    },
+    {
+     "art": "wind",
+     "punkte": [
+      [
+       -6.47,
+       36.4
+      ],
+      [
+       -6.4,
+       36.392
+      ],
+      [
+       -6.33,
+       36.386
+      ]
+     ],
+     "name": "Wind aus West, 2 bis 3 Knoten"
+    },
+    {
+     "art": "stroemung",
+     "punkte": [
+      [
+       -6.18,
+       36.18
+      ],
+      [
+       -6.23,
+       36.23
+      ],
+      [
+       -6.27,
+       36.29
+      ]
+     ],
+     "name": "Dünung aus Südwest"
     }
    ],
    "stationen": [
@@ -45087,52 +45159,52 @@
      "art": "stadt",
      "punkte": [
       [
-       44.70487,
-       48.71437
+       44.64544,
+       48.70421
       ],
       [
-       44.67118,
-       48.79679
+       44.6246,
+       48.77892
       ],
       [
-       44.59419,
-       48.83683
+       44.59611,
+       48.82029
       ],
       [
-       44.51767,
-       48.85183
+       44.57065,
+       48.83782
       ],
       [
-       44.44317,
-       48.83242
+       44.5506,
+       48.82359
       ],
       [
-       44.39328,
-       48.77091
+       44.54345,
+       48.77132
       ],
       [
-       44.40903,
-       48.68692
+       44.55811,
+       48.69611
       ],
       [
-       44.44501,
-       48.61614
+       44.57827,
+       48.63029
       ],
       [
-       44.49642,
-       48.53411
+       44.6046,
+       48.5577
       ],
       [
-       44.58983,
-       48.51293
+       44.63522,
+       48.53459
       ],
       [
-       44.64485,
-       48.58243
+       44.64459,
+       48.58846
       ],
       [
-       44.72784,
-       48.61954
+       44.66321,
+       48.62029
       ]
      ],
      "name": "Stalingrad"

@@ -1033,6 +1033,7 @@ async function main() {
     fluss: 'Fluss', see: 'See', sumpf: 'Sumpf, nasser Grund', wald: 'Wald',
     hoehe: 'Höhenzug', stadt: 'Ortschaft', mauer: 'Mauer, Befestigung',
     weg: 'Straße', furt: 'Furt, Übergang',
+    wind: 'Windrichtung', stroemung: 'Strömung',
   };
 
   function renderBattleLegend(b) {
