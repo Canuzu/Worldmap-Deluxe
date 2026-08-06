@@ -558,6 +558,38 @@ await check('Kleine Verbände wachsen auf Mindestgröße und werden zum Zeichen'
   if (mindeste.size < 2) throw new Error('Mindestgröße hängt nicht an der Stärke');
 });
 
+await check('Blattrand fasst das freie Feld ein und nennt die Schlacht', async () => {
+  const w = await page.evaluate(() => {
+    const l = window.__battles.leinwand;
+    const m = l._blattMasse(l._map.getSize(), l._inhalt);
+    if (!m) return null;
+    const d = l._dichte;
+    const ctx = l._leinwand.getContext('2d');
+    const deckung = (x, y) => ctx.getImageData(Math.round(x * d), Math.round(y * d), 1, 1).data[3];
+    const g = l._map.getSize();
+    return {
+      x0: Math.round(m.x0),
+      y0: Math.round(m.y0),
+      breit: Math.round(m.x1 - m.x0),
+      hoch: Math.round(m.y1 - m.y0),
+      fenster: { x: g.x, y: g.y },
+      titel: m.titel,
+      datum: m.datum,
+      band: deckung(m.x0 + 6, (m.y0 + m.y1) / 2),
+      kartusche: deckung(m.x0 + 30, m.y0 + 30),
+    };
+  });
+  if (!w) throw new Error('kein Blattrand');
+  // Das Blatt liegt im freien Feld, nicht am Fenster: Links steht die Tafel.
+  if (w.x0 < 120) throw new Error(`Blatt beginnt bei ${w.x0} – die Tafel liegt darauf`);
+  if (w.y0 < 30) throw new Error(`Blatt beginnt bei y=${w.y0} – unter der Kopfleiste`);
+  if (w.breit > w.fenster.x - 200) throw new Error('Blatt so breit wie das Fenster');
+  if (w.band < 150) throw new Error(`Randband kaum gezeichnet (Deckung ${w.band})`);
+  if (w.kartusche < 150) throw new Error('keine Kartusche');
+  if (!/Waterloo/.test(w.titel)) throw new Error(`Kartusche nennt: ${w.titel}`);
+  if (!/1815/.test(w.datum)) throw new Error(`Kartusche ohne Datum: ${w.datum}`);
+});
+
 await check('Eigenes Zoomen übernimmt die Führung, der Hinweis gibt sie zurück', async () => {
   if (await page.evaluate(() => window.__battles.kameraFrei)) {
     throw new Error('Karte gibt die Führung schon vor dem ersten Eingriff ab');

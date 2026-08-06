@@ -787,6 +787,35 @@ sind auf diesem Maßstab oft das Einzige, was die Staatenkarte noch beizutragen
 hat – bei Tannenberg läuft die deutsch-russische Grenze mitten durchs Bild.
 Zurückgenommen wird jetzt nur die **Füllung** (`atlas.setSchlachtmodus`).
 
+**Der Blattrand.** Eine Schlacht schwebte randlos im Browserfenster. Ein
+gedrucktes Blatt hat eine Fassung, und die tut mehr, als hübsch zu sein: Sie
+sagt, wo die Karte aufhört und der Apparat anfängt – die Tafel liegt dann
+sichtbar *neben* dem Blatt und nicht darauf. Der Rahmen umschließt deshalb
+genau das freie Feld, dieselbe Messung, mit der auch der Ausschnitt gelegt
+wird; alles Gezeichnete endet an ihm, wie ein Stich am Blattrand aufhört.
+
+Der Rand ist selbst die Skala: eine **Gradleiter** aus abwechselnd hellen und
+dunklen Abschnitten, je einer eine runde Gradstufe breit, dazu die Zahlen in
+Grad, Minuten und Sekunden – aber nur so fein, wie die Stufe es verlangt
+(„4° 25′“ statt „4,4167°“). Bei Waterloo sind das Minuten, bei Tannenberg
+Viertelgrade. Sie sieht nicht nur nach Karte aus, sie sagt auch etwas: wie weit
+das Feld reicht und wo auf der Erde es liegt. Dazu oben links eine **Kartusche**
+mit Titel und Datum, damit das Blatt selbst nennt, was es zeigt – wichtig, wenn
+jemand ein Bild davon macht. Die Fähnchen weichen ihr aus wie einer
+Beschriftung.
+
+Auf schmalen Fenstern gibt es keinen Rahmen: Ein Blattrand um ein Feld von
+zweihundert Bildpunkten ist kein Blattrand, sondern ein Kasten.
+
+Die Messung des freien Feldes hat dabei zwei falsche Regeln überlebt. „Breiter
+als zwei Drittel heißt oben oder unten“ schlug die Kopfleiste der linken Seite
+zu, wo sie vierhundert Bildpunkte fraß und das Blatt bis unter den Titel schob.
+„Die geringste Tiefe gewinnt“ scheiterte auf schmalen Fenstern, wo die Tafel
+als unteres Blatt über die ganze Breite läuft: Von links und rechts ragt sie
+gleich weit herein, beides knapp weniger als von unten – und das Blatt blieb
+ein Streifen von elf Bildpunkten. Jetzt gewinnt die Seite, die die **größte
+Restfläche** übrig lässt.
+
 Dabei kam heraus, dass die Zoomgrenze der Weltkarte bei Stufe 10 liegt und die
 Schlachten ihre Stufe 13 nur deshalb erreichten, weil Leaflets `flyTo` die
 Grenze nicht anwendet – ein eigener Zoomschritt riss die Karte über drei Stufen

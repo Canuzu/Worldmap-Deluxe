@@ -1128,9 +1128,20 @@ async function main() {
    * Gemessen wird deshalb, welcher Streifen an jeder Seite verdeckt ist; der
    * Abspieler legt den Ausschnitt in das, was übrig bleibt.
    *
-   * Ein Element gilt als Bank oben oder unten, wenn es über zwei Drittel der
-   * Breite läuft – so wandert die Tafel auf schmalen Fenstern, wo sie zum
-   * unteren Blatt wird, von selbst in die richtige Rechnung.
+   * Zugeordnet wird nach der **größten übrigen Fläche**: Für jede der vier
+   * Seiten wird gerechnet, wie tief das Element von dort aus ins Bild ragte
+   * und was dann noch frei bliebe; die Seite mit der größten Restfläche
+   * gewinnt. Die Kopfleiste ist breit und flach, also oben; die Tafel ist
+   * schmal und hoch, also links; das Beiblatt liegt unten rechts, kostet von
+   * rechts aber weniger als von unten.
+   *
+   * Zwei naheliegende Wege waren falsch. „Breiter als zwei Drittel heißt oben
+   * oder unten“ schlug die Kopfleiste der linken Seite zu, wo sie
+   * vierhundert Bildpunkte fraß und das Blatt bis unter den Titel schob. Und
+   * „die geringste Tiefe gewinnt“ scheiterte auf schmalen Fenstern, wo die
+   * Tafel als unteres Blatt über die ganze Breite läuft: Von links und von
+   * rechts ragt sie dann gleich weit herein, beides knapp weniger als von
+   * unten – und das Blatt blieb ein Streifen von elf Bildpunkten.
    */
   function randMessen() {
     const b = atlas.el.getBoundingClientRect();
@@ -1142,14 +1153,20 @@ async function main() {
       const q = el.getBoundingClientRect();
       if (q.width < 8 || q.height < 8) continue;
       const luft = 14;
-      if (q.width > b.width * .66) {
-        if (q.top - b.top > b.height / 2) rand.u = Math.max(rand.u, b.bottom - q.top + luft);
-        else rand.o = Math.max(rand.o, q.bottom - b.top + luft);
-      } else if (q.left - b.left + q.width / 2 < b.width / 2) {
-        rand.l = Math.max(rand.l, q.right - b.left + luft);
-      } else {
-        rand.r = Math.max(rand.r, b.right - q.left + luft);
-      }
+      const tiefe = {
+        l: q.right - b.left,
+        r: b.right - q.left,
+        o: q.bottom - b.top,
+        u: b.bottom - q.top,
+      };
+      const rest = {
+        l: (b.width - tiefe.l) * b.height,
+        r: (b.width - tiefe.r) * b.height,
+        o: b.width * (b.height - tiefe.o),
+        u: b.width * (b.height - tiefe.u),
+      };
+      const seite = Object.keys(rest).reduce((a, k) => (rest[k] > rest[a] ? k : a), 'l');
+      rand[seite] = Math.max(rand[seite], tiefe[seite] + luft);
     }
     return rand;
   }

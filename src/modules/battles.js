@@ -465,6 +465,50 @@ function grundMuster(ctx, see) {
   return muster;
 }
 
+/**
+ * Der Blattrand: die Fassung eines gestochenen Atlasblattes.
+ *
+ * Eine Schlacht schwebte bisher randlos im Browserfenster. Ein gedrucktes
+ * Blatt hat eine Fassung, und die tut mehr, als hübsch zu sein: Sie sagt, wo
+ * die Karte aufhört und der Apparat anfängt – die Tafel liegt dann sichtbar
+ * *neben* dem Blatt und nicht darauf.
+ *
+ * Der Rand ist selbst die Skala. Ein Band aus abwechselnd hellen und dunklen
+ * Abschnitten, je einer eine runde Gradzahl breit, dazu die Zahlen am oberen
+ * und linken Rand. Das ist die Gradleiter, die Kartenblätter seit dem 17.
+ * Jahrhundert tragen: Sie sieht nicht nur nach Karte aus, sie sagt auch etwas
+ * – wie weit das Feld reicht und wo auf der Erde es liegt.
+ */
+const BAND = 13;
+/** Dieselbe Auszeichnungsschrift wie die Kartusche der Hauptseite. */
+const BLATT_SCHRIFT = '"Iowan Old Style", "Palatino Linotype", Palatino, '
+  + '"Book Antiqua", Georgia, "Times New Roman", serif';
+const GRAD_STUFEN = [10, 5, 2, 1, .5, .25, 1 / 6, 1 / 12, 1 / 30, 1 / 60,
+  1 / 120, 1 / 300, 1 / 600, 1 / 1800, 1 / 3600];
+
+/** Die größte runde Gradstufe, die noch mindestens vier Abschnitte ergibt. */
+function gradStufe(spanne) {
+  for (const s of GRAD_STUFEN) if (spanne / s >= 4) return s;
+  return GRAD_STUFEN.at(-1);
+}
+
+/**
+ * Gradzahl in der Schreibweise des Blattes: Grad, Minuten, Sekunden – aber
+ * nur so fein, wie die Stufe es verlangt. „4° 25′“ statt „4,4167°“.
+ */
+function gradText(wert, stufe, achse) {
+  const himmel = achse === 'lon'
+    ? (wert < 0 ? 'W' : 'O')
+    : (wert < 0 ? 'S' : 'N');
+  const a = Math.abs(wert);
+  const g = Math.floor(a + 1e-9);
+  const restMin = (a - g) * 60;
+  if (stufe >= 1) return `${Math.round(a)}° ${himmel}`;
+  if (stufe >= 1 / 60) return `${g}° ${Math.round(restMin)}′ ${himmel}`;
+  const m = Math.floor(restMin + 1e-9);
+  return `${g}° ${m}′ ${Math.round((restMin - m) * 60)}″`;
+}
+
 /* ------------------------------------------------------------- Zeichenwerk */
 
 /**
@@ -538,6 +582,21 @@ const SchlachtLeinwand = L.Layer.extend({
     this._grund(ctx, groesse, inhalt);
     this._buehne(ctx, groesse, inhalt);
     if (inhalt.ziel) { this._zielmarke(ctx, inhalt.ziel); return; }
+
+    /* Alles Gezeichnete endet an der Fassung – wie ein Stich, der am
+       Blattrand aufhört. Ohne den Beschnitt ragten Geländezüge und
+       Beschriftungen über das Blatt hinaus in den Bereich, der gerade als
+       „nicht mehr Karte“ ausgewiesen wird. */
+    const masse = this._blattMasse(groesse, inhalt);
+    ctx.save();
+    if (masse) {
+      ctx.beginPath();
+      ctx.rect(
+        masse.x0 + BAND, masse.y0 + BAND,
+        masse.x1 - masse.x0 - BAND * 2, masse.y1 - masse.y0 - BAND * 2,
+      );
+      ctx.clip();
+    }
     for (const g of inhalt.gelaende ?? []) this._gelaende(ctx, g);
     // Die Bildschirmlage einmal je Körper und Bild: Körper und Fähnchen
     // müssen dieselbe Größe sehen, sonst legt sich die Beschriftung auf einen
@@ -548,11 +607,184 @@ const SchlachtLeinwand = L.Layer.extend({
     for (const p of inhalt.pfeile ?? []) this._pfeil(ctx, p);
     // Erst die Verbände beschriften, dann das Gelände: Wo beides um denselben
     // Platz streitet, gewinnt die Truppe – sie ist die Aussage, der Flurname
-    // ist der Hintergrund.
+    // ist der Hintergrund. Die Kartusche zählt dabei als besetzt, sonst
+    // schriebe ein Fähnchen quer über den Titel des Blattes.
     const belegt = this._beschriftungen(
-      ctx, inhalt.koerper ?? [], [...(this._pfeilPlaetze ?? []), ...(inhalt.sperren ?? [])],
+      ctx, inhalt.koerper ?? [],
+      [...(this._pfeilPlaetze ?? []), ...(inhalt.sperren ?? []),
+        ...(masse?.kartusche ? [masse.kartusche] : [])],
     );
     for (const g of inhalt.gelaende ?? []) this._gelaendeName(ctx, g, belegt);
+    ctx.restore();
+    this._blattrand(ctx, masse, inhalt);
+  },
+
+  /**
+   * Maße des Blattes: das freie Feld zwischen Tafel, Zeichenerklärung,
+   * Kopfleiste und Zeitleiste – also das, was tatsächlich Karte ist.
+   *
+   * Bleibt zu wenig übrig, gibt es keinen Rahmen: Ein Blattrand um ein Feld
+   * von zweihundert Bildpunkten ist kein Blattrand, sondern ein Kasten.
+   */
+  _blattMasse(groesse, inhalt) {
+    const r = inhalt.blatt;
+    if (!r) return null;
+    const x0 = Math.max(r.l, 6);
+    const y0 = Math.max(r.o, 6);
+    const x1 = groesse.x - Math.max(r.r, 6);
+    const y1 = groesse.y - Math.max(r.u, 6);
+    if (x1 - x0 < 260 || y1 - y0 < 200) return null;
+    const titel = inhalt.titel ?? '';
+    const datum = inhalt.datum ?? '';
+    const ctx = this._ctx;
+    ctx.save();
+    ctx.font = '500 14px ' + BLATT_SCHRIFT;
+    const wt = ctx.measureText(titel).width;
+    ctx.font = '500 10.5px ui-sans-serif, system-ui, sans-serif';
+    const wd = ctx.measureText(datum).width;
+    ctx.restore();
+    const kw = Math.min(Math.max(wt, wd) + 26, (x1 - x0) * .6);
+    const kh = datum ? 44 : 30;
+    return {
+      x0, y0, x1, y1, titel, datum,
+      kartusche: titel
+        ? { x: x0 + BAND + 12 + kw / 2, y: y0 + BAND + 12 + kh / 2, w: kw + 12, h: kh + 10 }
+        : null,
+      kw,
+      kh,
+    };
+  },
+
+  /**
+   * Die Gradleiter am Rand und die Kartusche mit Titel und Datum.
+   *
+   * Gezeichnet ganz zuletzt: Der Rahmen liegt über allem, auch über einer
+   * Stellung, die über das Blatt hinausragt – genau wie auf Papier, wo der
+   * Stich an der Fassung endet.
+   */
+  _blattrand(ctx, b, inhalt) {
+    const a = inhalt.buehne ?? 1;
+    if (!b || a <= .02) return;
+    const karte = this._map;
+    const { x0, y0, x1, y1 } = b;
+
+    ctx.save();
+    ctx.globalAlpha = a;
+
+    // Der Streifen zwischen äußerer und innerer Linie.
+    ctx.beginPath();
+    ctx.rect(x0, y0, x1 - x0, y1 - y0);
+    ctx.rect(x0 + BAND, y0 + BAND, x1 - x0 - BAND * 2, y1 - y0 - BAND * 2);
+    ctx.fillStyle = 'rgba(12,17,26,.82)';
+    ctx.fill('evenodd');
+
+    // Die Abschnitte der Leiter: je einer eine runde Gradstufe breit.
+    const nw = karte.containerPointToLatLng([x0 + BAND, y0 + BAND]);
+    const se = karte.containerPointToLatLng([x1 - BAND, y1 - BAND]);
+    const stufeX = gradStufe(Math.abs(se.lng - nw.lng));
+    const stufeY = gradStufe(Math.abs(nw.lat - se.lat));
+
+    const hell = 'rgba(226,232,240,.72)';
+    const dunkel = 'rgba(16,22,32,.9)';
+    const strichX = [];
+    const strichY = [];
+    for (let g = Math.ceil(nw.lng / stufeX) * stufeX; g <= se.lng + 1e-12; g += stufeX) {
+      strichX.push({ g, x: karte.latLngToContainerPoint([nw.lat, g]).x });
+    }
+    for (let g = Math.ceil(se.lat / stufeY) * stufeY; g <= nw.lat + 1e-12; g += stufeY) {
+      strichY.push({ g, y: karte.latLngToContainerPoint([g, nw.lng]).y });
+    }
+
+    const balken = (x, y, w, h, i) => {
+      if (w <= .5 || h <= .5) return;
+      ctx.fillStyle = i % 2 ? hell : dunkel;
+      ctx.fillRect(x, y, w, h);
+    };
+    // Waagerecht: oben und unten dieselbe Teilung.
+    let vorher = x0 + BAND;
+    strichX.forEach((s, i) => {
+      const x = klemm(s.x, x0 + BAND, x1 - BAND);
+      balken(vorher, y0, x - vorher, BAND, i);
+      balken(vorher, y1 - BAND, x - vorher, BAND, i);
+      vorher = x;
+    });
+    balken(vorher, y0, x1 - BAND - vorher, BAND, strichX.length);
+    balken(vorher, y1 - BAND, x1 - BAND - vorher, BAND, strichX.length);
+    // Senkrecht: von unten nach oben, damit die Zählung mit der Breite läuft.
+    vorher = y1 - BAND;
+    strichY.forEach((s, i) => {
+      const y = klemm(s.y, y0 + BAND, y1 - BAND);
+      balken(x0, y, BAND, vorher - y, i);
+      balken(x1 - BAND, y, BAND, vorher - y, i);
+      vorher = y;
+    });
+    balken(x0, y0 + BAND, BAND, vorher - y0 - BAND, strichY.length);
+    balken(x1 - BAND, y0 + BAND, BAND, vorher - y0 - BAND, strichY.length);
+
+    // Die Ecken bleiben leer: Dort stößt waagerechte auf senkrechte Teilung,
+    // und eine Ecke, die zu beiden gehört, gehört zu keiner.
+    ctx.fillStyle = 'rgba(12,17,26,.92)';
+    ctx.fillRect(x0, y0, BAND, BAND);
+    ctx.fillRect(x1 - BAND, y0, BAND, BAND);
+    ctx.fillRect(x0, y1 - BAND, BAND, BAND);
+    ctx.fillRect(x1 - BAND, y1 - BAND, BAND, BAND);
+
+    ctx.strokeStyle = 'rgba(196,214,232,.5)';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(x0 + .5, y0 + .5, x1 - x0 - 1, y1 - y0 - 1);
+    ctx.strokeStyle = 'rgba(196,214,232,.72)';
+    ctx.strokeRect(x0 + BAND + .5, y0 + BAND + .5, x1 - x0 - BAND * 2 - 1, y1 - y0 - BAND * 2 - 1);
+
+    // Die Zahlen: innen an der Fassung, nicht auf der Leiter. Auf dem Band
+    // stünden sie zwischen den Abschnitten und wären auf jedem zweiten
+    // unlesbar.
+    ctx.font = '500 9px ui-sans-serif, system-ui, sans-serif';
+    ctx.fillStyle = 'rgba(210,222,236,.72)';
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'center';
+    let letzte = -Infinity;
+    for (const s of strichX) {
+      if (s.x < x0 + BAND + 20 || s.x > x1 - BAND - 20 || s.x - letzte < 74) continue;
+      letzte = s.x;
+      ctx.fillText(gradText(s.g, stufeX, 'lon'), s.x, y0 + BAND + 4);
+    }
+    ctx.textAlign = 'left';
+    letzte = -Infinity;
+    for (const s of strichY) {
+      if (s.y < y0 + BAND + 22 || s.y > y1 - BAND - 16 || Math.abs(s.y - letzte) < 46) continue;
+      letzte = s.y;
+      ctx.fillText(gradText(s.g, stufeY, 'lat'), x0 + BAND + 5, s.y + 3);
+    }
+
+    // Die Kartusche. Das Blatt nennt selbst, was es zeigt – wer ein Bild
+    // davon macht, hat den Titel mit im Bild.
+    if (b.kartusche && b.titel) {
+      const kx = x0 + BAND + 12;
+      const ky = y0 + BAND + 12;
+      ctx.beginPath();
+      ctx.roundRect(kx, ky, b.kw, b.kh, 3);
+      ctx.fillStyle = 'rgba(10,14,22,.88)';
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(233,196,106,.55)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(kx + 9, ky + b.kh - 15.5);
+      ctx.lineTo(kx + b.kw - 9, ky + b.kh - 15.5);
+      ctx.strokeStyle = 'rgba(233,196,106,.3)';
+      ctx.stroke();
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.font = '500 14px ' + BLATT_SCHRIFT;
+      ctx.fillStyle = '#f2f5fa';
+      ctx.fillText(b.titel, kx + b.kw / 2, ky + (b.datum ? 15 : b.kh / 2));
+      if (b.datum) {
+        ctx.font = '500 10.5px ui-sans-serif, system-ui, sans-serif';
+        ctx.fillStyle = 'rgba(233,196,106,.9)';
+        ctx.fillText(b.datum, kx + b.kw / 2, ky + b.kh - 8);
+      }
+    }
+    ctx.restore();
   },
 
   /**
@@ -1874,6 +2106,11 @@ export class BattlePlayer {
       grund: auf,
       see: !!b.see,
       feldMitte,
+      // Das Blatt liegt um das freie Feld – dieselbe Messung, mit der auch
+      // der Ausschnitt je Station gelegt wird.
+      blatt: this._randHolen(),
+      titel: b.name,
+      datum: b.datum,
       sperren: this.sperren,
       // Während des Anflugs steht nur eine Zielmarke im Bild: Die Stellungen
       // wären auf Regionalmaßstab ohnehin Flecken, und sie würden die Frage
