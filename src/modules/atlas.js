@@ -16,7 +16,7 @@
  * jeder Zeitschnitt die Küstenpunkte selbst mitschleppen müsste.
  */
 import L from 'leaflet';
-import { createLabelLayer } from './labels.js';
+import { createLabelLayer, breiteVon } from './labels.js';
 import {
   paletteFor, assignColorIndices, PRECISION_COLORS, withAlpha, shade,
 } from './palette.js';
@@ -864,10 +864,17 @@ export class AtlasMap {
     const wanted = this.map.getZoom() >= COAST_HD_FROM_ZOOM && this.coast.hi ? 'hi' : 'lo';
     if (wanted === this.coast.level) return;
     if (sofort) { this._applyCoast(wanted); return; }
+    /* Der Wechsel selbst kostet gemessen 40 ms – die feine Küstenlinie ist
+       ein Vielfaches der groben. Er läuft deshalb nicht nur nach der
+       Zoom-Animation, sondern auch erst nach der nächsten Bildausgabe: Das
+       eingeschachtelte `setTimeout` im `requestAnimationFrame` kommt dran,
+       wenn das Bild beim Betrachter ist, nicht während es entsteht. */
     clearTimeout(this._coastTimer);
     this._coastTimer = window.setTimeout(() => {
-      const now = this.map.getZoom() >= COAST_HD_FROM_ZOOM && this.coast.hi ? 'hi' : 'lo';
-      if (now !== this.coast.level) this._applyCoast(now);
+      requestAnimationFrame(() => setTimeout(() => {
+        const now = this.map.getZoom() >= COAST_HD_FROM_ZOOM && this.coast.hi ? 'hi' : 'lo';
+        if (now !== this.coast.level) this._applyCoast(now);
+      }, 0));
     }, 140);
   }
 
@@ -882,7 +889,7 @@ export class AtlasMap {
 
   applyTheme(theme) {
     this.theme = theme;
-    if (this.placeCanvas) requestAnimationFrame(() => this._drawPlaces());
+    if (this.placeCanvas) this._planeOrte();
     this.palette = paletteFor(theme);
     this._styleBase();
     if (this.epoch) {
@@ -893,9 +900,29 @@ export class AtlasMap {
     this._styleLabels();
   }
 
+  /**
+   * Wert aus dem Stilblatt – gemerkt statt jedes Mal erfragt.
+   *
+   * `getComputedStyle` ist kein Nachschlagen, sondern eine Frage an den
+   * Browser, die er unter Umständen mit einer Neuberechnung des Stilbaums
+   * beantwortet. Das Einfärben einer Epoche fragte zweimal je Fläche – bei
+   * 170 Gemeinwesen also 340-mal je Jahressprung nach zwei Werten, die sich
+   * zwischendurch gar nicht ändern können.
+   *
+   * Der Speicher hängt am Farbwelt-Merkmal der Wurzel. Wechselt die Farbwelt,
+   * ist der alte Stand von selbst ungültig – man kann nicht vergessen,
+   * ihn zu verwerfen.
+   */
   _cssVar(name, fallback) {
-    const value = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
-    return value || fallback;
+    const welt = document.documentElement.dataset.theme ?? '';
+    if (this._cssWelt !== welt || !this._cssMerker) {
+      this._cssWelt = welt;
+      this._cssMerker = new Map();
+    }
+    if (this._cssMerker.has(name)) return this._cssMerker.get(name) ?? fallback;
+    const wert = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+    this._cssMerker.set(name, wert || null);
+    return wert || fallback;
   }
 
   _styleBase() {
@@ -1155,21 +1182,41 @@ export class AtlasMap {
       },
     }).addTo(this.map);
 
-    // Besetztes Gebiet: zuletzt hinzugefügt, damit die Schraffur über der
-    // Füllung liegt. Ohne Zeigerereignisse – der Klick soll die Fläche
-    // darunter treffen, nicht die Schraffur.
+    /* Besetztes Gebiet: zuletzt hinzugefügt, damit die Schraffur über der
+       Füllung liegt. Ohne Zeigerereignisse – der Klick soll die Fläche
+       darunter treffen, nicht die Schraffur.
+
+       Und ein Bild später als die Flächen. Ein Jahressprung baut zwei
+       vollständige Ebenen aus Geometrie auf; zusammen blockierten sie den
+       Hauptstrang gemessen 50 bis 90 ms am Stück, und alles über 50 ms sieht
+       man als Ruckler. Getrennt sind es zwei kürzere Blockaden mit einem
+       ausgelieferten Bild dazwischen – dieselbe Arbeit, aber die Karte steht
+       nicht mehr.
+
+       Der Zähler schützt vor der Überholung: Wer schnell durch die Jahre
+       fährt, löst den nächsten Sprung aus, bevor der vorige seine Schraffur
+       gebaut hat. Ohne ihn legte sich die Besatzung des vorletzten Jahres
+       über die Flächen des letzten. */
     const besetzte = data.geojson.features.filter((f) => f.properties.o);
+    const stand = (this._epochenZaehler = (this._epochenZaehler ?? 0) + 1);
     if (besetzte.length) {
-      to.occupation = L.geoJSON(
-        { type: 'FeatureCollection', features: besetzte },
-        {
-          pane: to.pane,
-          renderer: to.renderer,
-          interactive: false,
-          smoothFactor: .5,
-          style: (f) => this._occupationStyle(f),
-        },
-      ).addTo(this.map);
+      // Nach der Bildausgabe, nicht in ihr: `requestAnimationFrame` allein
+      // legte die Arbeit auf dasselbe Bild wie alles andere Gezeichnete und
+      // machte aus zwei kurzen Blockaden eine lange. Das eingeschachtelte
+      // `setTimeout` läuft erst, wenn das Bild beim Betrachter ist.
+      requestAnimationFrame(() => setTimeout(() => {
+        if (stand !== this._epochenZaehler || !to.layer) return;
+        to.occupation = L.geoJSON(
+          { type: 'FeatureCollection', features: besetzte },
+          {
+            pane: to.pane,
+            renderer: to.renderer,
+            interactive: false,
+            smoothFactor: .5,
+            style: (f) => this._occupationStyle(f),
+          },
+        ).addTo(this.map);
+      }, 0));
     }
 
     from.el.style.pointerEvents = 'none';
@@ -1319,27 +1366,27 @@ export class AtlasMap {
   setPlaces(orte) {
     this.places = orte ?? [];
     this._buildPlaceCanvas();
-    this._drawPlaces();
+    this._planeOrte();
   }
 
   /** Landschaftsnamen: Gebirge, Wüsten, Hochebenen. */
   setPhysical(stellen) {
     this.physical = stellen ?? [];
     this._buildPlaceCanvas();
-    this._drawPlaces();
+    this._planeOrte();
   }
 
   setShowPhysical(on) {
     this.showPhysical = !!on;
     this._buildPlaceCanvas();
-    this._drawPlaces();
+    this._planeOrte();
   }
 
   setShowPlaces(on) {
     this.showPlaces = !!on;
     if (on && this.places?.length) this.placeLayer.addTo(this.map);
     else this.placeLayer.remove();
-    this._drawPlaces();
+    this._planeOrte();
   }
 
   _buildPlaceCanvas() {
@@ -1354,8 +1401,24 @@ export class AtlasMap {
     // Wie bei den Beschriftungen: Während einer Bewegung reitet die
     // Zeichenfläche mit der Karte mit, statt bei jedem Bild neu gesetzt und
     // neu beschriftet zu werden.
-    this.map.on('moveend zoomend viewreset resize', () => this._drawPlaces());
+    this.map.on('moveend zoomend viewreset resize', () => this._planeOrte());
     this.map.on('zoomstart', () => { canvas.style.visibility = 'hidden'; });
+  }
+
+  /**
+   * Ortsnamen zeichnen – höchstens einmal je Bild.
+   *
+   * `moveend` und `zoomend` feuern bei jedem Zoomschritt beide; gemessen 24
+   * Zeichnungen für zwölf Schritte, jede über alle zweitausend Orte samt
+   * Kollisionsprüfung. Die zweite hat nie jemand gesehen: Sie überschrieb die
+   * erste im selben Bild.
+   */
+  _planeOrte() {
+    if (this._orteRahmen) return;
+    this._orteRahmen = requestAnimationFrame(() => {
+      this._orteRahmen = 0;
+      this._drawPlaces();
+    });
   }
 
   _drawPlaces() {
@@ -1406,7 +1469,7 @@ export class AtlasMap {
         if (pt.x < 0 || pt.y < 0 || pt.x > size.x || pt.y > size.y) continue;
         const grad = s.rang <= 2 ? 12 : 11;
         ctx.font = `italic 500 ${grad}px ${font}`;
-        const breite = ctx.measureText(s.name).width;
+        const breite = breiteVon(ctx, s.name);
         if (!frei(pt.x - breite / 2 - 4, pt.y - grad, breite + 8, grad * 2)) continue;
         belegt.push([pt.x - breite / 2 - 4, pt.y - grad, pt.x + breite / 2 + 4, pt.y + grad]);
         ctx.textAlign = 'center';
@@ -1429,7 +1492,7 @@ export class AtlasMap {
 
       const grad = ort.rang <= 1 ? 12.5 : ort.rang <= 3 ? 11.5 : 10.5;
       ctx.font = `500 ${grad}px ${font}`;
-      const breite = ctx.measureText(ort.name).width;
+      const breite = breiteVon(ctx, ort.name);
       const x = pt.x + 6;
       const y = pt.y;
       if (!frei(pt.x - 4, y - grad, breite + 14, grad * 2)) continue;

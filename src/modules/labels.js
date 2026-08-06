@@ -11,6 +11,32 @@ import L from 'leaflet';
 const PAD_X = 5;
 const PAD_Y = 3;
 
+/**
+ * Textbreite – gemessen, dann gemerkt.
+ *
+ * `measureText` ist der größte einzelne Posten der Seite: In jeder Messung
+ * stand es an erster Stelle der Selbstzeiten. Der Grund ist nicht, dass
+ * Messen teuer wäre, sondern dass wir dieselbe Frage unablässig wiederholen.
+ * Die Namen auf der Karte ändern sich nicht, die Schriftgrade sind aus einer
+ * Handvoll Stufen – aber jedes Neuzeichnen misst alles noch einmal.
+ *
+ * Der Schlüssel enthält den Schriftschnitt, denn dieselbe Zeichenkette ist in
+ * anderer Schrift anders breit. Bei Überlauf wird der Speicher ganz geleert
+ * statt einzeln aufgeräumt: Das kommt selten vor, und ein halb geräumter
+ * Speicher wäre schwerer zu beurteilen als ein leerer.
+ */
+const massSpeicher = new Map();
+
+export function breiteVon(ctx, text) {
+  const schluessel = `${ctx.font}\u001f${ctx.letterSpacing ?? ''}\u001f${text}`;
+  const bekannt = massSpeicher.get(schluessel);
+  if (bekannt !== undefined) return bekannt;
+  const breite = ctx.measureText(text).width;
+  if (massSpeicher.size > 4000) massSpeicher.clear();
+  massSpeicher.set(schluessel, breite);
+  return breite;
+}
+
 export const LabelLayer = L.Layer.extend({
   options: {
     pane: 'labelPane',
@@ -160,8 +186,8 @@ export const LabelLayer = L.Layer.extend({
       setFont(ctx, fontSize, this._style);
 
       const maxWidth = Math.max(84, w * 1.35);
-      let metrics = ctx.measureText(text);
-      if (metrics.width > maxWidth && text.includes(' ')) {
+      let breite = breiteVon(ctx, text);
+      if (breite > maxWidth && text.includes(' ')) {
         // Mehrzeilig setzen statt abschneiden – bis zu drei Zeilen
         const parts = wrap(ctx, text, maxWidth);
         if (parts.length <= 3) {
@@ -169,15 +195,15 @@ export const LabelLayer = L.Layer.extend({
           continue;
         }
       }
-      if (metrics.width > size.x * 0.42) {
+      if (breite > size.x * 0.42) {
         text = `${text.slice(0, 26).trimEnd()}…`;
-        metrics = ctx.measureText(text);
+        breite = breiteVon(ctx, text);
       }
 
       const box = {
-        x: pt.x - metrics.width / 2 - PAD_X,
+        x: pt.x - breite / 2 - PAD_X,
         y: pt.y - fontSize * 0.62 - PAD_Y,
-        w: metrics.width + PAD_X * 2,
+        w: breite + PAD_X * 2,
         h: fontSize * 1.24 + PAD_Y * 2,
       };
       if (!isFocus && collides(box, placed)) continue;
@@ -215,7 +241,7 @@ function wrap(ctx, text, maxWidth) {
   let current = '';
   for (const word of words) {
     const candidate = current ? `${current} ${word}` : word;
-    if (ctx.measureText(candidate).width > maxWidth && current) {
+    if (breiteVon(ctx, candidate) > maxWidth && current) {
       lines.push(current);
       current = word;
     } else {
@@ -229,7 +255,7 @@ function wrap(ctx, text, maxWidth) {
 function drawMultiline(ctx, lines, pt, fontSize, style, isFocus, item, placed) {
   setFont(ctx, fontSize, style);
   const lineHeight = fontSize * 1.18;
-  const widths = lines.map((l) => ctx.measureText(l).width);
+  const widths = lines.map((l) => breiteVon(ctx, l));
   const width = Math.max(...widths);
   const top = pt.y - ((lines.length - 1) * lineHeight) / 2;
 

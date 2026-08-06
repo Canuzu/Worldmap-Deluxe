@@ -1308,6 +1308,71 @@ weniger. Eine höhere Vereinfachungstoleranz brächte noch einmal ein Viertel,
 kappt aber sichtbar Buchten und Landzungen; sauber wäre das nur über
 abgestufte Auflösungen je Zoomstufe zu lösen.
 
+### Was diesmal noch drin war
+
+Eine zweite Runde, mit einem eigenen Messwerkzeug: `npm run check:leistung`
+fährt fünf Bewegungen ab – Ruhe, Zeitreise, Schwenken, Zoomen,
+Schlachtverlauf – und zählt für jede die Bildrate sowie jede Blockade des
+Hauptstrangs. Für die Jahressprünge zählt es die **Blockadezeit über 50 ms**:
+Von einem Task ist nur der Teil störend, der über der Wahrnehmungsschwelle
+liegt. Dieses Maß bewertet auch richtig, was hier geändert wurde – eine
+Blockade von 90 ms in zwei von 45 zu zerlegen ist ein Gewinn, obwohl es die
+Zahl der Blockaden erhöht.
+
+Das Ergebnis der Messung war zuerst eine Enttäuschung: **JavaScript ist zu
+92 % nicht das Problem.** Im Schlachtverlauf steckten 63 % der Zeit in
+„(program)“ – der Rasterung des Browsers –, 30 % im Leerlauf. Bei der
+Zeitreise waren es 85 % Leerlauf. Vier Verdächtige wurden nacheinander
+ausgeschlossen, jeder durch Abschalten zur Laufzeit: Canvas-Schatten (23,1 →
+22,7 B/s), Schnittmasken (22,8), Füllmuster (22,5), Kachelebene (21,8) – alles
+im Rauschen.
+
+Was übrig blieb, waren vier echte Posten:
+
+| Fundstelle | Vorher | Nachher |
+|---|---|---|
+| `_styleFeature` – Stilabfragen je Fläche | 16 ms | **2 ms** |
+| `_styleBase` – dasselbe beim Zoomen | 14 ms | **2 ms** |
+| `_drawPlaces` – Ortsnamen je Zoomschritt | 24 Zeichnungen | **12** |
+| Schlacht-Leinwand je Bild | 2,8 Zeichnungen | **1** |
+
+Der erste ist der lehrreichste. `getComputedStyle` sieht wie ein Nachschlagen
+aus, ist aber eine Frage an den Browser, die er unter Umständen mit einer
+Neuberechnung des Stilbaums beantwortet – und das Einfärben einer Epoche
+stellte sie zweimal je Gemeinwesen, also 340-mal je Jahressprung, für zwei
+Werte, die sich zwischendurch gar nicht ändern können. Der Speicher hängt am
+Farbwelt-Merkmal der Wurzel: Wechselt die Farbwelt, ist der alte Stand von
+selbst ungültig, und man kann nicht vergessen, ihn zu verwerfen.
+
+Die beiden Doppelzeichnungen sind derselbe Fehler in zwei Gewändern.
+`moveend` und `zoomend` feuern bei jedem Zoomschritt beide; während einer
+Kamerafahrt feuert Leaflet zusätzlich `zoomanim`, `zoom` und `move`
+nacheinander, und der Abspieler setzt in seinem eigenen Bildtakt noch einmal
+neuen Inhalt. Der Bildschirm zeigt aber nur den letzten Stand – 1,8 von 2,8
+Zeichnungen hat nie jemand gesehen. Beides sammelt sich jetzt in einem
+`requestAnimationFrame`.
+
+Dazu zwei Blockaden, die nicht kleiner, sondern **später** wurden: der Aufbau
+der Besatzungsschraffur und der Wechsel der Küstenauflösung laufen in einem
+`setTimeout` innerhalb eines `requestAnimationFrame` – also erst, wenn das
+Bild beim Betrachter ist, statt während es entsteht. Ein `requestAnimation­frame`
+allein genügt dafür nicht: Es legt die Arbeit auf dasselbe Bild wie alles
+andere Gezeichnete und macht aus zwei kurzen Blockaden eine lange. Das war
+messbar der falsche Weg, bevor es der richtige wurde.
+
+Unterm Strich: **Blockadezeit über zwanzig Jahressprünge von 342 auf 273 ms,
+längste Einzelblockade von 113 auf 79 ms.** Die Bildraten selbst bewegen sich
+kaum – sie hängen in diesem Testbrowser an der Rasterung ohne
+Grafikbeschleunigung, nicht am Code. Auf einem Gerät mit Grafikkarte zählt
+genau der Teil, der hier gesunken ist.
+
+Zwei Dinge wurden gemessen und wieder verworfen, weil sie nichts brachten:
+ein Vermerk für die Projektionen der Beschriftungen (3,1 ms vorher wie
+nachher – die Liste ist kürzer, als sie aussieht) und eine höhere
+Vereinfachungstoleranz der Epochendaten (27 % weniger Stützpunkte, zu wenig
+für einen Eingriff in die Datenpipeline). Ungeprüfte Komplexität bleibt
+draußen, auch wenn die Begründung gut klingt.
+
 ### Barrierefreiheit
 
 Die Karte ist eine Zeichenfläche – für Vorlesesoftware existiert sie nicht.
