@@ -17,6 +17,9 @@
   "Aufbau je Schlacht:",
   "  mitte, zoom   Ausschnitt, auf den die Karte springt",
   "  see           true, wenn die Stellungen auf dem Wasser liegen",
+  "  grund         'relief' oder 'blatt': ob unter der Schlacht eine",
+  "                Gelaendeschummerung liegen darf oder nur die gezeichnete",
+  "                Struktur - dort, wo der Mensch die Landschaft umgebaut hat",
   "  gelaende      was die Schlacht entschieden hat, mit Namen: fluss, see,",
   "                sumpf, wald, hoehe, stadt, mauer, weg, furt",
   "  parteien      id, Name, Farbe, Führung, Stärke als Text, zahl für den",
@@ -50,6 +53,7 @@
     38.15
    ],
    "zoom": 12.9,
+   "grund": "relief",
    "worum": "Der erste Perserzug gegen Griechenland. Ein athenisches Bürgerheer greift ein weit überlegenes Landungsheer im Sturmschritt an, hält die Mitte bewusst dünn und umfasst beide Flügel – die erste Umfassungsschlacht, von der wir eine Beschreibung haben.",
    "parteien": [
     {
@@ -3294,6 +3298,7 @@
     36.4
    ],
    "zoom": 11.4,
+   "grund": "relief",
    "worum": "Die letzte Feldschlacht des Perserreichs. Dareios hat den Boden selbst gewählt und einebnen lassen, damit seine Sichelwagen und seine Reiterei wirken können. Alexander macht daraus eine Falle: Er zieht die persische Linie durch einen Schrägmarsch auseinander und stößt in die Lücke, die dabei entsteht.",
    "parteien": [
     {
@@ -7810,6 +7815,7 @@
     41.3
    ],
    "zoom": 12.6,
+   "grund": "relief",
    "worum": "Hannibals Meisterstück und die schwerste Niederlage der römischen Geschichte. Eine absichtlich nachgebende Mitte zieht das doppelt so starke römische Heer in einen Sack, den Reiterei und afrikanische Veteranen von allen Seiten schließen. Das Wort „Cannae“ ist seither in jeder Generalstabsakademie der Name für die vollkommene Vernichtungsschlacht.",
    "parteien": [
     {
@@ -11595,6 +11601,7 @@
     50.9128
    ],
    "zoom": 14.2,
+   "grund": "relief",
    "worum": "Ein Tag entscheidet, wer England regiert. Harolds Schildwall auf dem Höhenrücken ist eine Mauer, gegen die weder Pfeile noch Reiterei ankommen – bis Wilhelm sie nicht mehr angreift, sondern sie dazu bringt, sich selbst zu öffnen.",
    "parteien": [
     {
@@ -16031,6 +16038,7 @@
     50.463
    ],
    "zoom": 13.9,
+   "grund": "relief",
    "worum": "Ein erschöpftes, von der Ruhr geschwächtes englisches Heer schlägt eine dreifache Übermacht des französischen Adels. Entscheidend ist nicht der Langbogen allein, sondern das Gelände: ein frisch gepflügter, vom Regen grundloser Acker, der sich zwischen zwei Wäldern auf tausend Meter verengt.",
    "parteien": [
     {
@@ -21185,6 +21193,7 @@
     41.012
    ],
    "zoom": 12.8,
+   "grund": "relief",
    "worum": "Das Ende des Oströmischen Reiches. Eine Mauer, die tausend Jahre gehalten hat, trifft zum ersten Mal auf Geschütze, die sie brechen können – und auf einen Gegner, der seine Flotte über einen Hügel trägt, um die Hafensperre zu umgehen.",
    "parteien": [
     {
@@ -25922,6 +25931,7 @@
     38.22
    ],
    "zoom": 10.6,
+   "grund": "blatt",
    "see": true,
    "worum": "Die letzte große Schlacht von Ruderflotten – und die letzte, in der eine Seeschlacht wie eine Landschlacht geführt wird: Man fährt aneinander, entert und kämpft Mann gegen Mann. In vier Stunden wird die osmanische Flotte fast vollständig vernichtet.",
    "parteien": [
@@ -29511,6 +29521,7 @@
     36.29
    ],
    "zoom": 10.9,
+   "grund": "blatt",
    "see": true,
    "worum": "Nelson bricht mit der Regel, dass Linie gegen Linie fährt. Er läuft in zwei Kolonnen quer auf die feindliche Linie zu, zerschneidet sie in drei Teile und macht aus der Schlacht ein Gemenge, in dem die bessere Seemannschaft entscheidet. Der Preis: Beim Anlauf kann er nicht antworten.",
    "parteien": [
@@ -32201,6 +32212,7 @@
     50.676
    ],
    "zoom": 13.1,
+   "grund": "relief",
    "worum": "Napoleons letzte Schlacht. Er muss Wellington schlagen, bevor Blüchers Preußen eintreffen – und verliert das Rennen um wenige Stunden. Entscheidend sind drei Dinge: ein Höhenzug, hinter dem Wellington seine Truppen verbirgt; drei Gehöfte, die als Wellenbrecher vor seiner Linie liegen; und ein Regen, der den Boden so aufweicht, dass Napoleon den Angriff um fünf Stunden verschiebt.",
    "parteien": [
     {
@@ -41470,6 +41482,7 @@
     53.45
    ],
    "zoom": 8.8,
+   "grund": "relief",
    "worum": "Zwei russische Armeen marschieren getrennt in Ostpreußen ein, durch die Masurischen Seen voneinander getrennt, und funken ihre Befehle unverschlüsselt. Die deutsche 8. Armee lässt vor der einen eine Kavalleriedivision stehen, wirft alles andere per Bahn gegen die andere – und schließt sie in vier Tagen ein.",
    "parteien": [
     {
@@ -45083,6 +45096,7 @@
     48.6
    ],
    "zoom": 7.6,
+   "grund": "blatt",
    "worum": "Die Wende des Zweiten Weltkriegs. Die 6. Armee kämpft sich Haus um Haus zur Wolga vor – und wird dann von einer Zangenoperation eingeschlossen, die nicht die Stadt angreift, sondern die schwach besetzten Flanken der Verbündeten hundert Kilometer davon entfernt.",
    "parteien": [
     {
@@ -48247,6 +48261,7 @@
     49.4
    ],
    "zoom": 9.1,
+   "grund": "blatt",
    "worum": "Die größte Landungsunternehmung der Geschichte. In einer Nacht und einem Tag setzen 156.000 Mann an fünf Abschnitten über – gegen einen Gegner, der die Landung erwartet, aber am falschen Ort, und dessen Panzerreserven ohne Hitlers persönlichen Befehl nicht anrollen dürfen.",
    "parteien": [
     {

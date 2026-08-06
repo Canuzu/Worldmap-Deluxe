@@ -200,6 +200,17 @@ for (const b of SCHLACHTEN) {
     if (!(p.zahl > 0)) meldung(b.id, `Partei "${p.id}" ohne Zahl für den Kräftebalken`);
     if (!p.fuehrung || !p.staerke) meldung(b.id, `Partei "${p.id}" ohne Führung oder Stärke`);
   }
+  /* Der Untergrund. „relief“ heißt: Unter die Schlacht darf eine
+     Geländeschummerung nach heutigen Daten. Das ist nur dort ehrlich, wo die
+     Landform dieselbe geblieben ist – bei einer Seeschlacht gäbe es nichts zu
+     schummern, und wo der Mensch die Landschaft umgebaut hat, zeigte sie die
+     falsche. Deshalb geprüft und nicht stillschweigend vorausgesetzt. */
+  if (!['relief', 'blatt'].includes(b.grund)) {
+    meldung(b.id, `unbekannter Untergrund "${b.grund}"`);
+  } else if (b.see && b.grund === 'relief') {
+    meldung(b.id, 'Seeschlacht mit Geländeschummerung');
+  }
+
   for (const g of b.gelaende ?? []) {
     if (!ARTEN.has(g.art)) meldung(b.id, `Gelände mit unbekannter Art "${g.art}"`);
     if (!g.name) meldung(b.id, `Gelände (${g.art}) ohne Namen`);

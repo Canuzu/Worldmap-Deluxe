@@ -384,6 +384,87 @@ function musterFuer(ctx, farbe, gattung) {
   return muster;
 }
 
+/**
+ * Der Untergrund des Schlachtfelds.
+ *
+ * Bei Zoomstufe 13 liegt unter den Truppen eine einzige tote Fläche – die
+ * Staatenfarbe bis zum Bildrand. Das war die eigentliche Klage: Es sieht nicht
+ * nach einem Ort aus, an dem etwas geschieht, sondern nach einem Formular.
+ *
+ * Zwei Lagen übereinander. Unten die Geländeschummerung des Atlas, die es
+ * ohnehin gibt – echtes Gelände, der Höhenzug von Mont-Saint-Jean ist dann
+ * wirklich da und nicht behauptet. Sie wird nur dort zugeschaltet, wo sie
+ * nichts verfälscht: nicht auf See, und nicht dort, wo der Mensch die
+ * Landschaft umgebaut hat (Stalingrad, die Normandie). Darüber diese
+ * gezeichnete Struktur, die das Fremdbild in die Bildsprache des Atlas holt
+ * und seine Schwächen abfedert – Unschärfe über der letzten Kachelstufe,
+ * harte Kachelkanten.
+ *
+ * Die Kachel wird einmal gebaut und an der Karte verankert, nicht am Fenster:
+ * Sonst schwämme die Struktur beim Schwenken über den Boden.
+ */
+const GRUND_KACHEL = 72;
+const GRUND = new Map();
+function grundMuster(ctx, see) {
+  const schluessel = see ? 'see' : 'land';
+  if (GRUND.has(schluessel)) return GRUND.get(schluessel);
+  const d = GRUND_KACHEL;
+  const k = document.createElement('canvas');
+  k.width = d;
+  k.height = d;
+  const c = k.getContext('2d');
+  // Fester Zufall: Dieselbe Kachel bei jedem Aufruf, sonst flimmerte der
+  // Boden bei jedem Neuaufbau anders.
+  let saat = see ? 9176 : 4211;
+  const wurf = () => {
+    saat = (saat * 1103515245 + 12345) & 0x7fffffff;
+    return saat / 0x7fffffff;
+  };
+  if (see) {
+    // Wasser: kurze, flache Wellenstriche in lockeren Reihen.
+    c.strokeStyle = 'rgba(150,196,226,.16)';
+    c.lineWidth = 1;
+    for (let i = 0; i < 9; i++) {
+      const x = wurf() * d;
+      const y = wurf() * d;
+      const w = 7 + wurf() * 9;
+      c.beginPath();
+      c.moveTo(x, y);
+      c.quadraticCurveTo(x + w / 2, y - 2.2, x + w, y);
+      c.stroke();
+    }
+  } else {
+    // Land: ein paar Flecken und kurze Striche – angedeutete Flur, keine
+    // gezeichneten Äcker. Wer Muster erkennt, sieht ein Raster; wer nichts
+    // erkennt, sieht Boden.
+    for (let i = 0; i < 7; i++) {
+      const x = wurf() * d;
+      const y = wurf() * d;
+      const r = 6 + wurf() * 13;
+      const hell = wurf() > .5;
+      c.fillStyle = hell ? 'rgba(196,186,158,.05)' : 'rgba(28,34,26,.07)';
+      c.beginPath();
+      c.ellipse(x, y, r, r * (.5 + wurf() * .5), wurf() * Math.PI, 0, Math.PI * 2);
+      c.fill();
+    }
+    c.strokeStyle = 'rgba(168,164,134,.09)';
+    c.lineWidth = 1;
+    for (let i = 0; i < 11; i++) {
+      const x = wurf() * d;
+      const y = wurf() * d;
+      const l = 4 + wurf() * 7;
+      const w = wurf() * Math.PI;
+      c.beginPath();
+      c.moveTo(x, y);
+      c.lineTo(x + Math.cos(w) * l, y + Math.sin(w) * l);
+      c.stroke();
+    }
+  }
+  const muster = ctx.createPattern(k, 'repeat');
+  GRUND.set(schluessel, muster);
+  return muster;
+}
+
 /* ------------------------------------------------------------- Zeichenwerk */
 
 /**
@@ -454,6 +535,7 @@ const SchlachtLeinwand = L.Layer.extend({
     if (!inhalt) return;
     const groesse = this._map.getSize();
 
+    this._grund(ctx, groesse, inhalt);
     this._buehne(ctx, groesse, inhalt);
     if (inhalt.ziel) { this._zielmarke(ctx, inhalt.ziel); return; }
     for (const g of inhalt.gelaende ?? []) this._gelaende(ctx, g);
@@ -482,13 +564,68 @@ const SchlachtLeinwand = L.Layer.extend({
    * außen nach innen setzt das Feld in einen Rahmen – dasselbe, was ein
    * Kartograf mit einem angedeuteten Blattrand macht.
    */
+  /** Mitte des Schlachtfelds auf dem Bildschirm – Bezug für Grund und Bühne. */
+  _feldMitte(inhalt, groesse) {
+    if (!inhalt.feldMitte) return [groesse.x / 2, groesse.y / 2];
+    const [x, y] = this._punkt(inhalt.feldMitte);
+    // Liegt das Feld weit außerhalb (während eines Flugs), bleibt die Mitte
+    // die Bildmitte: Sonst zöge die Vignette am Bildrand zusammen.
+    if (!Number.isFinite(x) || Math.abs(x - groesse.x / 2) > groesse.x
+      || Math.abs(y - groesse.y / 2) > groesse.y) {
+      return [groesse.x / 2, groesse.y / 2];
+    }
+    return [x, y];
+  },
+
+  /**
+   * Der gezeichnete Untergrund: ein warmer Wasch über dem Feld, darauf eine
+   * feine Struktur. Nach außen läuft beides aus – der Blick wird ohne Rahmen
+   * und ohne Linie auf das Feld gezogen.
+   */
+  _grund(ctx, groesse, inhalt) {
+    const a = inhalt.grund ?? 0;
+    if (a <= 0) return;
+    const [cx, cy] = this._feldMitte(inhalt, groesse);
+    const r = Math.hypot(groesse.x, groesse.y) * .52;
+    ctx.save();
+
+    const ton = inhalt.see ? '78,116,150' : '124,112,80';
+    const g = ctx.createRadialGradient(cx, cy, r * .06, cx, cy, r);
+    g.addColorStop(0, `rgba(${ton},${(.26 * a).toFixed(3)})`);
+    g.addColorStop(.55, `rgba(${ton},${(.13 * a).toFixed(3)})`);
+    g.addColorStop(1, `rgba(${ton},0)`);
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, groesse.x, groesse.y);
+
+    const muster = grundMuster(ctx, inhalt.see);
+    if (muster) {
+      // An der Karte verankert: Der Ursprung der Weltkarte in
+      // Fensterkoordinaten, auf die Kachelgröße gefaltet.
+      const o = this._map.getPixelOrigin();
+      const dx = ((-o.x % GRUND_KACHEL) + GRUND_KACHEL) % GRUND_KACHEL;
+      const dy = ((-o.y % GRUND_KACHEL) + GRUND_KACHEL) % GRUND_KACHEL;
+      /* Bewusst ohne eigene Vignette: Ein Ausblenden der Struktur bräuchte
+         eine zweite Leinwand je Bild. Sie ist so schwach angelegt, dass der
+         Schatten der Bühne, der gleich darüberkommt, sie am Rand von selbst
+         verschluckt. */
+      ctx.save();
+      ctx.globalAlpha = a;
+      ctx.translate(dx - GRUND_KACHEL, dy - GRUND_KACHEL);
+      ctx.fillStyle = muster;
+      ctx.fillRect(0, 0, groesse.x + GRUND_KACHEL * 2, groesse.y + GRUND_KACHEL * 2);
+      ctx.restore();
+    }
+    ctx.restore();
+  },
+
   _buehne(ctx, groesse, inhalt) {
     const a = inhalt.buehne ?? 1;
     if (a <= 0) return;
+    const [cx, cy] = this._feldMitte(inhalt, groesse);
     const r = Math.hypot(groesse.x, groesse.y) / 2;
     const g = ctx.createRadialGradient(
-      groesse.x / 2, groesse.y / 2, r * .34,
-      groesse.x / 2, groesse.y / 2, r,
+      cx, cy, r * .34,
+      cx, cy, r,
     );
     g.addColorStop(0, 'rgba(6,9,15,0)');
     g.addColorStop(.55, `rgba(6,9,15,${(.26 * a).toFixed(3)})`);
@@ -1722,10 +1859,21 @@ export class BattlePlayer {
     }
 
     const auf = klemm((performance.now() - this._auf) / 900, 0, 1);
+    // Die Mitte des Feldes, nicht die des Fensters: Seit die Karte den
+    // Ausschnitt je Station legt, sitzt das Feld im freien Raum neben der
+    // Tafel. Eine Vignette auf die Fenstermitte zöge daneben zusammen.
+    const rahmen = this._rahmenFuer(this._station);
+    const feldMitte = rahmen
+      ? [(rahmen[0][0] + rahmen[1][0]) / 2, (rahmen[0][1] + rahmen[1][1]) / 2]
+      : b.mitte;
+
     this.leinwand.setInhalt({
       gelaende: b.gelaende ?? [],
       gelaendeDeckung: auf,
       buehne: auf,
+      grund: auf,
+      see: !!b.see,
+      feldMitte,
       sperren: this.sperren,
       // Während des Anflugs steht nur eine Zielmarke im Bild: Die Stellungen
       // wären auf Regionalmaßstab ohnehin Flecken, und sie würden die Frage

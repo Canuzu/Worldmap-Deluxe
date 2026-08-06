@@ -1316,9 +1316,14 @@
 /* Waehrend einer Schlacht tritt die Staatenkarte zurueck. Bei diesem Massstab
    ist sie nur noch eine grosse einfarbige Flaeche; gedaempft laesst sie den
    Stellungen die Buehne, bleibt aber als Orientierung erhalten. */
+/* Nicht mehr ueber die Deckkraft der ganzen Ebene: Damit gingen die
+   Grenzlinien mit unter, und die sind auf Schlachtfeldmassstab oft das
+   Einzige, was die Staatenkarte noch beizutragen hat. Die Fuellung nimmt
+   jetzt der Atlas selbst zurueck (setSchlachtmodus), hier bleibt nur ein
+   leichter Schleier. */
 .app.is-battle .leaflet-polityA-pane,
-.app.is-battle .leaflet-polityB-pane { opacity: .38 !important; }
-.app.is-battle .leaflet-ocean-pane { opacity: .55; }
+.app.is-battle .leaflet-polityB-pane { opacity: .88 !important; }
+.app.is-battle .leaflet-ocean-pane { opacity: .62; }
 .app.is-battle .leaflet-polityA-pane,
 .app.is-battle .leaflet-polityB-pane,
 .app.is-battle .leaflet-ocean-pane { transition: opacity 400ms var(--ease); }

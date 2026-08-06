@@ -751,6 +751,42 @@ Fassungen desselben Fähnchens. Erst fällt die Stärkeangabe, dann der Beiname
 („II. Korps · Reille“ wird zu „II. Korps“); erst wenn auch das nirgends
 hinpasst, entfällt er.
 
+**Der Untergrund.** Bei Zoomstufe 13 lag unter den Truppen eine einzige tote
+Fläche – die Staatenfarbe bis zum Bildrand. Das war die eigentliche Klage: Es
+sah nicht nach einem Ort aus, an dem etwas geschieht, sondern nach einem
+Formular. Jetzt liegen dort zwei Lagen übereinander.
+
+Unten die **Geländeschummerung**, die der Atlas ohnehin anbietet. Sie wird für
+die Dauer der Schlacht zugeschaltet und danach zurückgegeben – die Wahl der
+Kartengrundlage gehört dem Betrachter, nicht der Schlacht. Zugeschaltet wird
+sie nur, wo sie nichts verfälscht: In den Daten trägt jede Schlacht ein Feld
+`grund`. Auf See gäbe es nichts zu schummern (Lepanto, Trafalgar), und wo der
+Mensch die Landschaft umgebaut hat (Stalingrad, die Normandie), zeigte sie die
+falsche; dort bleibt es bei der gezeichneten Struktur allein.
+`npm run check:schlachten` schlägt an, wenn eine Seeschlacht Schummerung
+verlangt.
+
+Darüber die **gezeichnete Struktur**: ein warmer Wasch über dem Feld und eine
+feine Kachel aus Flecken und kurzen Strichen – angedeutete Flur, keine
+gezeichneten Äcker. Wer Muster erkennt, sieht ein Raster; wer nichts erkennt,
+sieht Boden. Bei Seeschlachten stattdessen flache Wellenstriche in einem
+kühlen Ton. Sie holt das Fremdbild in die Bildsprache des Atlas und federt
+dessen Schwächen ab – Unschärfe über der letzten Kachelstufe, harte
+Kachelkanten. Die Kachel wird einmal gebaut, mit festem Zufall, und an der
+**Karte** verankert, nicht am Fenster: Sonst schwämme die Struktur beim
+Schwenken über den Boden.
+
+Beides läuft nach außen aus, und zwar um die Mitte des **Schlachtfelds**, nicht
+um die des Fensters – seit der Ausschnitt je Station gelegt wird, sitzt das
+Feld im freien Raum neben der Tafel. Der Blick wird ohne Rahmen und ohne Linie
+auf das Feld gezogen, wie bei der Vignette eines gestochenen Schlachtplans.
+
+Die Staatenfläche tritt dabei weiter zurück als bisher, aber nicht mehr über
+die Deckkraft der ganzen Ebene: Damit gingen die Grenzlinien mit unter, und die
+sind auf diesem Maßstab oft das Einzige, was die Staatenkarte noch beizutragen
+hat – bei Tannenberg läuft die deutsch-russische Grenze mitten durchs Bild.
+Zurückgenommen wird jetzt nur die **Füllung** (`atlas.setSchlachtmodus`).
+
 Dabei kam heraus, dass die Zoomgrenze der Weltkarte bei Stufe 10 liegt und die
 Schlachten ihre Stufe 13 nur deshalb erreichten, weil Leaflets `flyTo` die
 Grenze nicht anwendet – ein eigener Zoomschritt riss die Karte über drei Stufen

@@ -576,6 +576,40 @@ await check('Eigenes Zoomen übernimmt die Führung, der Hinweis gibt sie zurüc
   if (await page.locator('#battleKamera').isVisible()) throw new Error('Hinweis bleibt stehen');
 });
 
+await check('Untergrund kommt nur, wo er nichts verfälscht', async () => {
+  const stand = () => page.evaluate(() => ({
+    grund: window.__atlas.basemapId,
+    schlacht: !!window.__atlas._schlacht,
+    gezeichnet: window.__battles.leinwand?._inhalt?.grund ?? 0,
+    see: !!window.__battles.leinwand?._inhalt?.see,
+  }));
+  const oeffne = async (id) => {
+    await page.click('[data-act="back"]');
+    await page.waitForTimeout(500);
+    await page.evaluate((v) => document.querySelector(`[data-verlauf="${v}"]`)?.click(), id);
+    await gelandet();
+    return stand();
+  };
+
+  // Landschlacht auf unverändertem Gelände: Schummerung darunter.
+  const land = await oeffne('waterloo');
+  if (land.grund !== 'relief') throw new Error(`Waterloo ohne Schummerung: ${land.grund}`);
+  if (!land.schlacht) throw new Error('Staatenfläche tritt nicht zurück');
+  if (!(land.gezeichnet > 0)) throw new Error('keine gezeichnete Struktur');
+
+  // Seeschlacht: Eine Geländeschummerung hätte auf dem Wasser nichts zu zeigen.
+  const see = await oeffne('trafalgar');
+  if (see.grund) throw new Error(`Seeschlacht mit Schummerung: ${see.grund}`);
+  if (!see.see) throw new Error('Seeschlacht nicht als solche gezeichnet');
+
+  // Und die Wahl des Betrachters kommt zurück.
+  await page.click('[data-act="back"]');
+  await page.waitForTimeout(700);
+  const danach = await stand();
+  if (danach.schlacht) throw new Error('Staatenfläche bleibt zurückgenommen');
+  if (danach.grund !== 'relief') throw new Error(`Grundlage nicht zurückgegeben: ${danach.grund}`);
+});
+
 await check('Schlacht räumt ihre Ebene wieder ab', async () => {
   await page.click('#battlesClose');
   await page.waitForTimeout(500);

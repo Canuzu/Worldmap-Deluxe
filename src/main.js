@@ -982,8 +982,15 @@ async function main() {
     }
   }
 
+  /** Was eine Schlacht an der Karte verstellt hat, wieder zurückstellen. */
+  function raeumeSchlachtAb() {
+    atlas.setSchlachtmodus(false);
+    if (grundVorher !== null) { setBasemap(grundVorher, { fluechtig: true }); grundVorher = null; }
+  }
+
   function closeBattles() {
     battles.close();
+    raeumeSchlachtAb();
     renderBattleLegend(null);
     zeigeBeiblatt(null);
     battlesBox.hidden = true;
@@ -1015,6 +1022,18 @@ async function main() {
     // ueberstrahlen. Beschriftungen aus, damit keine Laendernamen dazwischenstehen.
     $('app').classList.add('is-battle');
     atlas.setShowLabels(false);
+    /* Der Untergrund. Unter den Truppen lag bisher eine einzige tote Fläche.
+     * Wo die Landform dieselbe geblieben ist, kommt die Geländeschummerung
+     * darunter – der Höhenzug von Mont-Saint-Jean ist dann wirklich da und
+     * nicht behauptet. Wo der Mensch die Landschaft umgebaut hat und auf See
+     * bleibt es bei der gezeichneten Struktur; eine Schummerung zeigte dort
+     * die falsche Landschaft oder gar keine.
+     *
+     * Die Wahl des Betrachters wird gemerkt und beim Schließen
+     * zurückgegeben – sie gehört ihm, nicht der Schlacht. */
+    grundVorher = prefs.basemap;
+    setBasemap(meta.grund === 'relief' ? 'relief' : '', { fluechtig: true });
+    atlas.setSchlachtmodus(true);
     // Auch Kriegsregister und Ereignisse treten zurueck: Deren Marken laegen
     // mitten in den Stellungen, und ihre Namen stuenden quer ueber dem Feld.
     konflikte.setSichtbar(false);
@@ -1055,6 +1074,8 @@ async function main() {
    * sonst ist der Punkt in beiden Fällen gleich nichtssagend.
    */
   let beiblatt = null;
+  /** Kartengrundlage vor der Schlacht – sie wird danach zurückgegeben. */
+  let grundVorher = null;
   function zeigeBeiblatt(b) {
     const box = $('battleInset');
     if (!b) { box.hidden = true; return; }
@@ -1332,6 +1353,7 @@ async function main() {
     else if (act === 'play') battles.toggle();
     else if (act === 'back') {
       battles.close();
+      raeumeSchlachtAb();
       renderBattleLegend(null);
       zeigeBeiblatt(null);
       window.removeEventListener('resize', meldeSperren);
@@ -1359,11 +1381,20 @@ async function main() {
 
   const basemapButtons = [...$('basemaps').querySelectorAll('[data-basemap]')];
 
-  function setBasemap(id) {
+  /**
+   * @param {string} id Kennung aus BASEMAPS, sonst keine Grundlage.
+   * @param {{fluechtig?: boolean}} wie `fluechtig` für den Wechsel während
+   *   einer Schlacht: Er wird nicht gespeichert und die Auswahl im Menü
+   *   bleibt beim Gewählten stehen. Die Wahl gehört dem Betrachter, nicht
+   *   der Schlacht – sie wird beim Schließen zurückgegeben.
+   */
+  function setBasemap(id, { fluechtig = false } = {}) {
     const gewaehlt = id in BASEMAPS ? id : '';
-    prefs.basemap = gewaehlt;
-    savePrefs();
-    basemapButtons.forEach((b) => b.setAttribute('aria-checked', String(b.dataset.basemap === gewaehlt)));
+    if (!fluechtig) {
+      prefs.basemap = gewaehlt;
+      savePrefs();
+      basemapButtons.forEach((b) => b.setAttribute('aria-checked', String(b.dataset.basemap === gewaehlt)));
+    }
     atlas.setBasemap(gewaehlt || null);
     beschreibeGrundlage();
   }
@@ -1375,7 +1406,7 @@ async function main() {
    */
   function beschreibeGrundlage() {
     const el = $('basemapNote');
-    const spec = BASEMAPS[prefs.basemap];
+    const spec = BASEMAPS[atlas.basemapId];
     if (!spec) {
       el.textContent = 'Ohne Grundlage: Der Atlas zeichnet Küsten, Gewässer und Grenzen '
         + 'vollständig selbst und läuft damit auch offline.';

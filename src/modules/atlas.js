@@ -1022,7 +1022,26 @@ export class AtlasMap {
    */
   _fillAlpha() {
     const basis = Number(this._cssVar('--fill-alpha', '.58'));
+    // Während einer Schlacht tritt die Staatenfläche fast ganz zurück: Auf
+    // Schlachtfeldmaßstab ist sie eine einzige Farbfläche bis zum Bildrand
+    // und sagt nichts. Die Grenzlinien bleiben – wo eine Grenze durchs Bild
+    // läuft, wie bei Tannenberg die deutsch-russische, gehört sie zur Lage.
+    if (this._schlacht) return basis * .16;
     return this.hasBasemap ? basis * .62 : basis;
+  }
+
+  /**
+   * Schlachtmodus: Flächen zurück, Grenzen bleiben.
+   *
+   * Vorher hat die Bühne das über die Deckkraft der ganzen Ebene erledigt –
+   * damit gingen aber die Grenzlinien mit unter, und die sind auf diesem
+   * Maßstab oft das Einzige, was die Staatenkarte noch beizutragen hat.
+   */
+  setSchlachtmodus(an) {
+    const neu = !!an;
+    if (neu === !!this._schlacht) return;
+    this._schlacht = neu;
+    this._restyleActive();
   }
 
   _styleFeature(feature) {
