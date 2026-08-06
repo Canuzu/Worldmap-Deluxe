@@ -615,8 +615,39 @@ const SchlachtLeinwand = L.Layer.extend({
         ...(masse?.kartusche ? [masse.kartusche] : [])],
     );
     for (const g of inhalt.gelaende ?? []) this._gelaendeName(ctx, g, belegt);
+    this._feldRahmen(ctx, inhalt);
     ctx.restore();
     this._blattrand(ctx, masse, inhalt);
+  },
+
+  /**
+   * Auf dem Übersichtsblatt: das Rechteck um das Schlachtfeld.
+   *
+   * Der Sprung von hundert Kilometern auf zwei ist der größte Maßstabswechsel
+   * im ganzen Atlas. Ohne Vorwarnung wirkt er wie ein Schnitt; mit dem
+   * Rechteck sieht man vorher, wohin es geht – und nachher, wie klein das
+   * Feld in der Landschaft war, über die die Heere tagelang marschiert sind.
+   */
+  _feldRahmen(ctx, inhalt) {
+    const r = inhalt.feldRahmen;
+    if (!r) return;
+    const [x0, y1] = this._punkt([r[0][0], r[0][1]]);
+    const [x1, y0] = this._punkt([r[1][0], r[1][1]]);
+    const w = Math.max(x1 - x0, 10);
+    const h = Math.max(y1 - y0, 10);
+    ctx.save();
+    ctx.globalAlpha = klemm(inhalt.buehne ?? 1, 0, 1);
+    ctx.strokeStyle = 'rgba(233,196,106,.9)';
+    ctx.lineWidth = 1.4;
+    ctx.setLineDash([5, 4]);
+    ctx.strokeRect(x0, y0, w, h);
+    ctx.setLineDash([]);
+    ctx.font = '500 10px ui-sans-serif, system-ui, sans-serif';
+    ctx.fillStyle = 'rgba(233,196,106,.95)';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'bottom';
+    ctx.fillText('Schlachtfeld', x0 + w / 2, y0 - 4);
+    ctx.restore();
   },
 
   /**
@@ -1822,7 +1853,13 @@ export class BattlePlayer {
     const mProPx = map.distance(grenzen.getNorthWest(), grenzen.getNorthEast()) / breitePx;
     const eng = z0 + Math.log2(Math.max((frei.x * mProPx) / ENGSTE_BREITE, 1e-6));
     const roh = Math.min(map.getScaleZoom(skala, z0), eng);
-    const zoom = klemm(roh, z0 - 2, z0 + (rahmen.hand ? 1.5 : .8));
+    /* Ein von Hand gesetzter Rahmen darf beides weiter: enger, weil wer ihn
+       einträgt weiß, was er will – und vor allem weiter, denn das
+       Übersichtsblatt zeigt den Anmarsch über hundert Kilometer, wo das
+       Schlachtfeld zwei misst. */
+    const zoom = rahmen.hand
+      ? klemm(roh, 2, z0 + 1.5)
+      : klemm(roh, z0 - 2, z0 + .8);
     const p = map.project(grenzen.getCenter(), zoom)
       .add(L.point((kr - kl) / 2, (ku - ko) / 2));
     return { mitte: map.unproject(p, zoom), zoom, frei };
@@ -2046,7 +2083,14 @@ export class BattlePlayer {
           name: s.name ?? '',
           rueckzug: !!s.rueckzug,
           finte: !!s.finte,
-          fortschritt: klemm(teil / PFEIL_BIS, 0, 1),
+          /* Beim Anhalten steht der Pfeil ganz da.
+           *
+           * Er wächst nur, solange der Verlauf läuft - wer anhält, will die
+           * Aussage der Station sehen, nicht den Stand einer Animation. Vorher
+           * war eine angehaltene Station am Anfang ihres Fensters pfeillos,
+           * und das Übersichtsblatt, das aus nichts als Wegen besteht, wäre
+           * ein leeres Blatt gewesen. */
+          fortschritt: this.playing ? klemm(teil / PFEIL_BIS, 0, 1) : 1,
           // Der Pfeil hat seine Aussage gemacht, sobald die Bewegung läuft.
           deckung: 1 - weich(klemm((teil - .72) / .28, 0, 1)) * .85,
         });
@@ -2100,7 +2144,10 @@ export class BattlePlayer {
       : b.mitte;
 
     this.leinwand.setInhalt({
-      gelaende: b.gelaende ?? [],
+      // Auf dem Übersichtsblatt kein Gelände: Der Höhenzug von Mont-Saint-Jean
+      // wäre dort ein Strich von acht Bildpunkten, und acht solcher Striche
+      // übereinander sind ein Fleck. Das Blatt zeigt den Anmarsch.
+      gelaende: st[i].uebersicht ? [] : (b.gelaende ?? []),
       gelaendeDeckung: auf,
       buehne: auf,
       grund: auf,
@@ -2111,6 +2158,10 @@ export class BattlePlayer {
       blatt: this._randHolen(),
       titel: b.name,
       datum: b.datum,
+      // Auf dem Übersichtsblatt liegt ein Rechteck um den Ausschnitt, den der
+      // Verlauf gleich zeigt: Der Maßstabssprung wird dadurch sichtbar statt
+      // überraschend – dasselbe, was das Beiblatt umgekehrt tut.
+      feldRahmen: st[i].uebersicht ? this._rahmenFuer(i + 1) : null,
       sperren: this.sperren,
       // Während des Anflugs steht nur eine Zielmarke im Bild: Die Stellungen
       // wären auf Regionalmaßstab ohnehin Flecken, und sie würden die Frage

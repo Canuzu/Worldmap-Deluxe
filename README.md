@@ -577,9 +577,10 @@ ist aber kein Zustand, sondern eine **Bewegung** – und die fällt aus einer
 Karte heraus, die nur Jahresschnitte kennt.
 
 Zwölf Schlachten haben einen abspielbaren Verlauf, von Marathon bis zur
-Normandie: **138 Stationen, 1.006 Truppenstellungen, 83 Geländezüge.** Jede
-Schlacht ist in zehn bis vierzehn Abschnitte gegliedert, jede Stellung ist ein
-benannter Verband mit Führer, Stärke und Waffengattung.
+Normandie: **150 Stationen, 1.035 Truppenstellungen, 87 Geländezüge.** Jede
+Schlacht beginnt mit einem Übersichtsblatt über den Anmarsch und ist dann in
+zehn bis vierzehn Abschnitte gegliedert; jede Stellung ist ein benannter
+Verband mit Führer, Stärke und Waffengattung.
 
 | | | | |
 |---|---|---|---|
@@ -815,6 +816,43 @@ als unteres Blatt über die ganze Breite läuft: Von links und rechts ragt sie
 gleich weit herein, beides knapp weniger als von unten – und das Blatt blieb
 ein Streifen von elf Bildpunkten. Jetzt gewinnt die Seite, die die **größte
 Restfläche** übrig lässt.
+
+**Das Übersichtsblatt.** Jede Schlacht beginnt jetzt eine Ebene höher, mit
+einer eigenen Station 0: dem Anmarsch. Sie beantwortet die Frage, die vor
+„was geschah dort?“ kommt – **warum dort?** Bei Hastings ist es Harolds
+Gewaltmarsch von Stamford Bridge, fünfhundert Kilometer in zwei Wochen; bei
+Waterloo Napoleons Vorstoß zwischen die beiden Heere und Blüchers Entscheidung,
+nach Wavre statt nach Osten zu weichen; bei Azincourt der Marsch die Somme
+hinauf, den die Franzosen zur Falle machen; bei Tannenberg die zwei russischen
+Armeen beiderseits der Masurischen Seen.
+
+Technisch ist es eine gewöhnliche Station – mit `uebersicht: true`, einem von
+Hand gesetzten `sicht`-Rahmen und Anmarschwegen als Pfeilen. Damit erbt sie
+alles: die Zeitachse, die Stationsliste, das Zeichnen der Pfeile, den Ausschnitt
+je Station und den Blattrand. Sie steht in der Liste und ist über die Zeitachse
+jederzeit wieder erreichbar.
+
+Vier Dinge sind auf diesem Blatt anders:
+
+- **Die Ortsnamen kommen zurück.** Im Verlauf sind sie aus, weil Ländernamen
+  quer über dem Feld stünden – auf hundert Kilometern sind Orte aber genau das,
+  woran man die Gegend wiedererkennt: Brüssel, Wavre, Charleroi.
+- **Kein Gelände.** Der Höhenzug von Mont-Saint-Jean wäre hier ein Strich von
+  acht Bildpunkten, und acht solcher Striche übereinander sind ein Fleck.
+- **Ein gestricheltes Rechteck um das Schlachtfeld**, mit Beschriftung. Der
+  Sprung von hundert Kilometern auf zwei ist der größte Maßstabswechsel im
+  ganzen Atlas; ohne Vorwarnung wirkt er wie ein Schnitt.
+- **Der Ausschnitt darf beliebig weit aufziehen.** Für gerechnete Rahmen gilt
+  der gesetzte Maßstab als Grenze; ein von Hand gesetzter Rahmen hebt sie auf.
+  `npm run check:schlachten` prüft dafür das Gegenstück: Das Schlachtfeld muss
+  auf dem Blatt liegen, und kein Anmarschweg darf darüber hinauslaufen.
+
+Dabei fiel eine ältere Schwäche auf: Ein angehaltener Verlauf zeigte **gar
+keine** Pfeile. Sie wachsen über die erste Hälfte des Stationsfensters, und wer
+anhält, steht meist am Anfang eines – das Übersichtsblatt, das aus nichts als
+Wegen besteht, wäre ein leeres Blatt gewesen. Angehalten steht der Pfeil jetzt
+ganz da: Wer anhält, will die Aussage der Station sehen, nicht den Stand einer
+Animation.
 
 Dabei kam heraus, dass die Zoomgrenze der Weltkarte bei Stufe 10 liegt und die
 Schlachten ihre Stufe 13 nur deshalb erreichten, weil Leaflets `flyTo` die

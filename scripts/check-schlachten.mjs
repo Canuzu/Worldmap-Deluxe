@@ -123,19 +123,38 @@ for (const b of SCHLACHTEN) {
     /* Handkorrektur des Ausschnitts. Sie darf alles – deshalb muss sie
        geprüft werden: Ein vertauschtes Zahlenpaar ergäbe einen Rahmen ohne
        Ausdehnung, und die Karte flöge auf die Zoomgrenze irgendwohin. */
+    let rahmen = null;
     if (s.sicht) {
       const gut = Array.isArray(s.sicht) && s.sicht.length === 2
         && s.sicht.every((q) => Array.isArray(q) && q.length === 2 && q.every(Number.isFinite));
       if (!gut) meldung(b.id, `Station ${i}: "sicht" ist kein Paar aus zwei Punkten`);
       else {
         const [[a, c], [d, e]] = s.sicht;
+        rahmen = [[Math.min(a, d), Math.min(c, e)], [Math.max(a, d), Math.max(c, e)]];
         if (Math.abs(d - a) < 1e-4 || Math.abs(e - c) < 1e-4) {
           meldung(b.id, `Station ${i}: "sicht" hat keine Ausdehnung`);
         }
-        const weg = km(b.mitte, [(a + d) / 2, (c + e) / 2]);
-        if (weg > grenze) {
-          meldung(b.id, `Station ${i}: "sicht" liegt ${weg.toFixed(0)} km vom Schlachtfeld`);
+        // Das Schlachtfeld muss auf dem Blatt liegen – sonst zeigt die
+        // Übersicht eine Gegend, in der die Schlacht nicht stattfindet.
+        const [mx, my] = b.mitte;
+        if (mx < rahmen[0][0] || mx > rahmen[1][0] || my < rahmen[0][1] || my > rahmen[1][1]) {
+          meldung(b.id, `Station ${i}: "sicht" enthält das Schlachtfeld nicht`);
         }
+      }
+    }
+    /* Das Übersichtsblatt zeigt den Anmarsch über hundert Kilometer, wo das
+       Schlachtfeld zwei misst. Der Umkreis des Feldes gilt dort nicht –
+       stattdessen muss jeder Weg auf dem Blatt liegen, das die Station selbst
+       aufspannt. Und ein Übersichtsblatt ohne `sicht` gäbe es nicht: Der
+       gerechnete Rahmen käme aus den Wegen und wäre beliebig. */
+    if (s.uebersicht) {
+      if (i !== 0) meldung(b.id, `Übersichtsblatt steht an Stelle ${i}, nicht am Anfang`);
+      if (!rahmen) meldung(b.id, 'Übersichtsblatt ohne "sicht"');
+      if (!s.stellungen.some((x) => x.form === 'pfeil')) {
+        meldung(b.id, 'Übersichtsblatt ohne Anmarschweg');
+      }
+      if (s.stellungen.some((x) => x.form !== 'pfeil')) {
+        meldung(b.id, 'Übersichtsblatt mit Stellungen – es zeigt Wege, keine Aufstellung');
       }
     }
 
@@ -157,6 +176,17 @@ for (const b of SCHLACHTEN) {
         meldung(b.id, `Station ${i}: "${st.id}" hat die unbekannte Gattung "${st.gattung}"`);
       }
       for (const p of st.punkte) {
+        if (s.uebersicht) {
+          // Auf dem Übersichtsblatt gilt der Rahmen der Station, nicht der
+          // Umkreis des Feldes. Ein Weg, der über das Blatt hinausläuft,
+          // wäre auf der Karte abgeschnitten.
+          const luft = .04;
+          if (rahmen && (p[0] < rahmen[0][0] - luft || p[0] > rahmen[1][0] + luft
+            || p[1] < rahmen[0][1] - luft || p[1] > rahmen[1][1] + luft)) {
+            meldung(b.id, `Anmarsch "${st.id}" läuft über das Übersichtsblatt hinaus`);
+          }
+          continue;
+        }
         const d = km(b.mitte, p);
         if (d > weiteste) weiteste = d;
         if (d > grenze) meldung(b.id, `"${st.id}" liegt ${d.toFixed(0)} km vom Schlachtfeld (Grenze ${grenze.toFixed(0)} km)`);
@@ -166,7 +196,11 @@ for (const b of SCHLACHTEN) {
 
   // Land oder Wasser: geprüft am Schwerpunkt jeder Fläche, nicht an jedem
   // Punkt – eine Landung greift naturgemäß über die Küstenlinie.
-  const mitte = b.stationen[0].stellungen.filter((s) => s.form === 'flaeche');
+  /* Die erste Station **mit Aufstellung**: Seit dem Übersichtsblatt steht an
+     Stelle 0 eine Station, die nur Wege enthält. Auf sie eine Land-oder-
+     Wasser-Prüfung anzuwenden hieße, nichts zu prüfen. */
+  const erste = b.stationen.find((s) => s.stellungen.some((x) => x.form === 'flaeche'));
+  const mitte = (erste?.stellungen ?? []).filter((s) => s.form === 'flaeche');
   let daneben = 0;
   for (const st of mitte) {
     const sx = st.punkte.reduce((a, p) => a + p[0], 0) / st.punkte.length;

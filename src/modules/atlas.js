@@ -1082,7 +1082,10 @@ export class AtlasMap {
     return {
       fill: true,
       fillColor: hatchFor(this.colorOfPolity(besetzer)),
-      fillOpacity: Number(this._cssVar('--hatch-alpha', '.85')),
+      // Während einer Schlacht ebenso zurück wie die Fläche: Eine Schraffur
+      // in Besatzungsfarbe quer über dem Schlachtfeld gehört zur Weltkarte,
+      // nicht zum Blatt.
+      fillOpacity: Number(this._cssVar('--hatch-alpha', '.85')) * (this._schlacht ? .22 : 1),
       stroke: false,
       bubblingMouseEvents: false,
     };

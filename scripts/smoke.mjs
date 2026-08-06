@@ -464,10 +464,12 @@ await check('Stellungen gleiten zwischen zwei Stationen', async () => {
   // deshalb im Bewegungsabschnitt, nicht am Anfang des Fensters.
   const umriss = (teil) => page.evaluate((x) => {
     const p = window.__battles;
+    // Ab Station 1: Station 0 ist das Übersichtsblatt und trägt keine
+    // Stellungen, sondern Anmarschwege.
     const st = p.battle.stationen;
-    const [von, bis] = p.spanne;
-    const fenster = st[1].t - st[0].t;
-    p.setZeit(st[0].t + fenster * x);
+    const a = st.findIndex((s) => !s.uebersicht);
+    const fenster = st[a + 1].t - st[a].t;
+    p.setZeit(st[a].t + fenster * x);
     const k = p.leinwand._inhalt.koerper.filter((q) => q.deckung > .5);
     return k.map((q) => q.punkte[0].map((v) => v.toFixed(4)).join(',')).join('|');
   }, teil);
@@ -477,6 +479,56 @@ await check('Stellungen gleiten zwischen zwei Stationen', async () => {
   if (!ruht) throw new Error('keine Stellungen im Bild');
   if (ruht !== haelt) throw new Error('Stellungen ruhen nicht, solange die Pfeile laufen');
   if (haelt === zieht) throw new Error('Umrisse unverändert – es wird nicht gegliten');
+});
+
+await check('Übersichtsblatt zeigt den Anmarsch, bevor das Feld kommt', async () => {
+  await page.click('[data-act="back"]');
+  await page.waitForTimeout(500);
+  await page.evaluate(() => document.querySelector('[data-verlauf="waterloo"]')?.click());
+  await gelandet();
+  const w = await page.evaluate(async () => {
+    const p = window.__battles;
+    p.stop();
+    p.goTo(0);
+    await new Promise((r) => setTimeout(r, 1800));
+    const i = p.leinwand._inhalt;
+    return {
+      station: p.index,
+      uebersicht: !!p.station?.uebersicht,
+      wege: i.pfeile.length,
+      gezeichnet: i.pfeile.every((x) => x.fortschritt > .99),
+      koerper: i.koerper.filter((x) => x.deckung > .05).length,
+      gelaende: i.gelaende.length,
+      feldRahmen: i.feldRahmen,
+      zoom: +window.__atlasMap.getZoom().toFixed(2),
+      feldZoom: p.battle.zoom,
+      orte: window.__atlas.showLabels ?? null,
+    };
+  });
+  if (!w.uebersicht) throw new Error('keine Übersichtsstation');
+  if (w.wege < 3) throw new Error(`nur ${w.wege} Anmarschwege`);
+  // Angehalten steht der Weg ganz da – sonst wäre das Blatt leer.
+  if (!w.gezeichnet) throw new Error('Anmarschwege bleiben ungezeichnet');
+  if (w.koerper) throw new Error(`${w.koerper} Stellungen auf dem Übersichtsblatt`);
+  if (w.gelaende) throw new Error('Gelände des Schlachtfelds auf dem Übersichtsblatt');
+  if (!w.feldRahmen) throw new Error('kein Rechteck um das Schlachtfeld');
+  // Das Blatt steht mehrere Stufen weiter als das Feld.
+  if (w.zoom > w.feldZoom - 2.5) throw new Error(`Blatt nicht weit genug: ${w.zoom} zu ${w.feldZoom}`);
+
+  // Und danach geht es hinein – die Ortsnamen weichen wieder.
+  const feld = await page.evaluate(async () => {
+    const p = window.__battles;
+    p.goTo(1);
+    await new Promise((r) => setTimeout(r, 2200));
+    return {
+      zoom: +window.__atlasMap.getZoom().toFixed(2),
+      koerper: p.leinwand._inhalt.koerper.length,
+      gelaende: p.leinwand._inhalt.gelaende.length,
+    };
+  });
+  if (feld.zoom < w.zoom + 2) throw new Error(`Karte fährt nicht ins Feld: ${feld.zoom}`);
+  if (!feld.koerper) throw new Error('keine Stellungen nach dem Übersichtsblatt');
+  if (!feld.gelaende) throw new Error('kein Gelände nach dem Übersichtsblatt');
 });
 
 await check('Der Ausschnitt folgt der Schlacht, aber nur wo er muss', async () => {
@@ -491,6 +543,9 @@ await check('Der Ausschnitt folgt der Schlacht, aber nur wo er muss', async () =
     if (!b || b.id !== v) return null;
     const raus = [];
     for (let i = 0; i < b.stationen.length; i++) {
+      // Das Übersichtsblatt steht bewusst mehrere Stufen weiter – es gehört
+      // nicht zu der Frage, ob der Verlauf selbst den Maßstab wechselt.
+      if (b.stationen[i].uebersicht) continue;
       const r = p._rahmenFuer(i);
       raus.push(r ? +p._lageFuer(r).zoom.toFixed(2) : null);
     }
@@ -540,13 +595,13 @@ await check('Kleine Verbände wachsen auf Mindestgröße und werden zum Zeichen'
   }, i);
 
   // Die Aufmarschstellung: alles groß genug, kein Zeichen im Bild.
-  const anfang = await lage(0);
+  const anfang = await lage(1);
   if (!anfang.length) throw new Error('keine Stellungen');
   if (anfang.some((q) => q.zeichen > .5)) throw new Error('Zeichen schon in der Aufmarschstellung');
 
   // Der Höhepunkt: Hougoumont und Papelotte sind Gehöfte von wenigen hundert
   // Mann und auf diesem Maßstab ein Strich.
-  const eng = await lage(5);
+  const eng = await lage(6);
   if (!eng.some((q) => q.zeichen > .5)) throw new Error('kein Verband wird zum Zeichen');
   for (const q of eng) {
     if (Math.max(q.breit, q.hoch) < Math.min(q.mindest, q.quer) - .5) {

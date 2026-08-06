@@ -1021,6 +1021,10 @@
   text-transform: uppercase;
   color: var(--gold);
   font-weight: 600;
+  /* Ein langes Wort wie SONNENAUFGANG sprengte die Spalte und lief quer
+     ueber die Kurzfassung daneben. */
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 .battles__stationen li.is-vorbei .battles__stZeit { color: var(--ink-faint); }
 .battles__stKurz {

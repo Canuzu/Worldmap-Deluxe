@@ -1250,6 +1250,11 @@ async function main() {
     $('battlesTitle').textContent = b.name;
     const box = $('battlesPlayer');
     box.hidden = false;
+    /* Auf dem Übersichtsblatt kommen die Ortsnamen zurück. Im Verlauf sind
+     * sie aus, weil Ländernamen quer über dem Feld stünden – aber auf
+     * hundert Kilometern sind Orte genau das, woran man die Gegend
+     * wiedererkennt: Brüssel, Wavre, Charleroi. */
+    atlas.setShowLabels(!!st?.uebersicht);
     const [von, bis] = player.spanne;
     const lage = (t) => (bis > von ? ((t - von) / (bis - von)) * 100 : 0);
 
