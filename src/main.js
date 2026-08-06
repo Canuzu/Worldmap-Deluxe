@@ -1163,6 +1163,15 @@ async function main() {
       .map((s) => s.gattung)
       .filter(Boolean))];
     const gelaende = [...new Set((b.gelaende ?? []).map((g) => g.art))];
+    /* Das Truppenzeichen steht nur in der Erklärung, wenn es auch vorkommt:
+       Es erscheint für Verbände, die neben den großen Körpern verschwinden –
+       die Gehöfte von Hougoumont und Papelotte, die Ranger am Pointe du Hoc.
+       Gemessen an der stärksten Einheit der Schlacht, nicht absolut. */
+    const staerken = b.stationen
+      .flatMap((s) => s.stellungen)
+      .map((s) => Number(String(s.staerke ?? '').replace(/\./g, '').match(/\d+/)?.[0] ?? 0));
+    const groesste = Math.max(...staerken, 1);
+    const hatZeichen = staerken.some((z) => z > 0 && z / groesste < .06);
     const hatGeschlagen = b.stationen.some((s) => s.stellungen.some((x) => x.geschlagen));
     const hatRueckzug = b.stationen.some((s) => s.stellungen.some((x) => x.rueckzug));
     const hatFinte = b.stationen.some((s) => s.stellungen.some((x) => x.finte));
@@ -1180,6 +1189,7 @@ async function main() {
         ${hatRueckzug ? '<li><i class="blgd__p blgd__p--rueck"></i>Rückzug, Flucht</li>' : ''}
         ${hatFinte ? '<li><i class="blgd__p blgd__p--finte"></i>Scheinbewegung</li>' : ''}
         ${hatGeschlagen ? '<li><i class="blgd__sw blgd__sw--weich"></i>geschlagen, weichend</li>' : ''}
+        ${hatZeichen ? '<li><i class="blgd__z"></i>kleiner Verband als Zeichen</li>' : ''}
       </ul>
       ${gelaende.length ? `<ul class="blgd__l">
         ${gelaende.map((g) => `<li><i class="blgd__g blgd__g--${esc(g)}"></i>${esc(GELAENDENAMEN[g] ?? g)}</li>`).join('')}

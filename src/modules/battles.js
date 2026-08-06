@@ -321,6 +321,42 @@ const GATTUNGEN = {
   gemischt: { strich: null },
 };
 
+/**
+ * Mindestgröße eines Truppenkörpers – und wann aus ihm ein Zeichen wird.
+ *
+ * Der Ausschnitt folgt jetzt der Station, und bei einem Feldzug heißt das
+ * Zoomstufe 8: Eine Division, die auf dem Boden vier Kilometer breit steht,
+ * ist dort zwanzig Bildpunkte groß. Maßstabstreu ist das richtig und
+ * unlesbar zugleich – man sieht einen Strich und weiß nicht, ob dort ein
+ * Korps steht oder eine Brigade.
+ *
+ * Zwei Stufen, weich ineinander:
+ *
+ *   1. Der Umriss wächst auf eine Mindestgröße, behält aber seine Form. Ein
+ *      Keil bleibt ein Keil, eine Linie eine Linie – die Aussage der
+ *      Geometrie geht nicht verloren, sie wird nur lesbar gehalten.
+ *   2. Wird es noch enger, blendet der Umriss in ein Truppenzeichen über:
+ *      ein Rechteck mit dem Zeichen der Waffengattung, wie auf einer
+ *      gedruckten Stabskarte. Kein Bruch in der Bildsprache – es ist
+ *      dasselbe Zeichen wie die Schraffur der Fläche, nur ohne Fläche.
+ *
+ * Die Mindestgröße folgt der Mannschaftszahl: Fläche proportional zur Zahl,
+ * also Durchmesser proportional zu ihrer Wurzel. Ein Korps von 25.000 bleibt
+ * größer als eine Brigade von 3.000, auch wenn beide unter die Schranke
+ * fallen. Das Kräfteverhältnis bleibt sichtbar, statt lesbar zu werden.
+ */
+const MIND_KLEIN = 17;
+const MIND_GROSS = 46;
+const ZEICHEN_OBEN = 30;
+const ZEICHEN_UNTEN = 12;
+
+/** Die erste Zahl aus einer Stärkeangabe: „ca. 24.000“ → 24000. */
+function zahlAus(text) {
+  if (!text) return 0;
+  const m = String(text).replace(/\./g, '').match(/\d+/);
+  return m ? Number(m[0]) : 0;
+}
+
 /** Musterkacheln je Farbe und Gattung – einmal angelegt, dann wiederverwendet. */
 const MUSTER = new Map();
 function musterFuer(ctx, farbe, gattung) {
@@ -421,6 +457,10 @@ const SchlachtLeinwand = L.Layer.extend({
     this._buehne(ctx, groesse, inhalt);
     if (inhalt.ziel) { this._zielmarke(ctx, inhalt.ziel); return; }
     for (const g of inhalt.gelaende ?? []) this._gelaende(ctx, g);
+    // Die Bildschirmlage einmal je Körper und Bild: Körper und Fähnchen
+    // müssen dieselbe Größe sehen, sonst legt sich die Beschriftung auf einen
+    // Verband, den sie für kleiner hält, als er gezeichnet wird.
+    for (const k of inhalt.koerper ?? []) k._lage = this._lage(k);
     for (const k of inhalt.koerper ?? []) this._koerper(ctx, k);
     this._pfeilPlaetze = [];
     for (const p of inhalt.pfeile ?? []) this._pfeil(ctx, p);
@@ -711,11 +751,125 @@ const SchlachtLeinwand = L.Layer.extend({
    * einen Fleck; erst die Schraffur macht daraus etwas, das aussieht, als
    * stünde jemand darin.
    */
-  _koerper(ctx, k) {
-    const p = k.punkte.map((q) => this._punkt(q));
-    if (p.length < 3) return;
+  /**
+   * Die Bildschirmlage eines Körpers: Umriss, Mitte, Ausdehnung – und wie
+   * weit er schon Zeichen statt Fläche ist.
+   *
+   * Gewachsen wird um den Schwerpunkt, damit ein Verband dort stehen bleibt,
+   * wo er steht. Der Anteil `zeichen` hängt an der **wahren** Größe, nicht an
+   * der gewachsenen: Sonst hinge er an seinem eigenen Ergebnis.
+   */
+  _lage(k) {
+    const roh = k.punkte.map((q) => this._punkt(q));
+    let x0 = Infinity;
+    let y0 = Infinity;
+    let x1 = -Infinity;
+    let y1 = -Infinity;
+    let sx = 0;
+    let sy = 0;
+    for (const [x, y] of roh) {
+      sx += x;
+      sy += y;
+      if (x < x0) x0 = x;
+      if (x > x1) x1 = x;
+      if (y < y0) y0 = y;
+      if (y > y1) y1 = y;
+    }
+    const cx = sx / roh.length;
+    const cy = sy / roh.length;
+    const quer = Math.max(x1 - x0, y1 - y0);
+    const mind = k.mindest ?? MIND_KLEIN;
+    const wuchs = quer > 1e-6 && quer < mind ? mind / quer : 1;
+    const p = wuchs === 1 ? roh
+      : roh.map(([x, y]) => [cx + (x - cx) * wuchs, cy + (y - cy) * wuchs]);
+    const zeichen = weich(
+      1 - klemm((quer - ZEICHEN_UNTEN) / (ZEICHEN_OBEN - ZEICHEN_UNTEN), 0, 1),
+    );
+    return {
+      p,
+      cx,
+      cy,
+      quer,
+      zeichen,
+      breite: mind,
+      hoehe: mind * .62,
+      rx: Math.max((x1 - x0) * wuchs, zeichen > .5 ? mind : 0) / 2,
+      ry: Math.max((y1 - y0) * wuchs, zeichen > .5 ? mind * .62 : 0) / 2,
+    };
+  },
+
+  /**
+   * Das Truppenzeichen: ein Rechteck mit dem Zeichen der Waffengattung.
+   *
+   * Bewusst dasselbe Zeichen wie die Schraffur der Fläche – Kreuz für Bogen,
+   * Schrägstrich für Reiterei, Punkt für Geschütze. Wer die Zeichenerklärung
+   * einmal gelesen hat, liest beides ohne zweites Nachschlagen.
+   */
+  _zeichen(ctx, k, l) {
+    const w = l.breite;
+    const h = l.hoehe;
+    const x = l.cx - w / 2;
+    const y = l.cy - h / 2;
     ctx.save();
-    ctx.globalAlpha = k.deckung;
+    ctx.globalAlpha = k.deckung * l.zeichen;
+    ctx.beginPath();
+    ctx.roundRect(x, y, w, h, 2);
+    ctx.shadowColor = 'rgba(0,0,0,.5)';
+    ctx.shadowBlur = 8;
+    ctx.shadowOffsetY = 2;
+    ctx.fillStyle = mitAlpha(k.farbe, k.geschlagen ? .24 : .4);
+    ctx.fill();
+    ctx.shadowBlur = 0;
+    ctx.shadowOffsetY = 0;
+    ctx.strokeStyle = mitAlpha(k.farbe, k.geschlagen ? .7 : 1);
+    ctx.lineWidth = k.geschlagen ? 1.2 : 1.8;
+    if (k.geschlagen) ctx.setLineDash([4, 3]);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    const strich = (GATTUNGEN[k.gattung] ?? GATTUNGEN.gemischt).strich;
+    const ix = x + w * .18;
+    const iy = y + h * .2;
+    const iw = w * .64;
+    const ih = h * .6;
+    ctx.strokeStyle = mitAlpha(k.farbe, .95);
+    ctx.fillStyle = mitAlpha(k.farbe, .95);
+    ctx.lineWidth = 1.3;
+    ctx.beginPath();
+    if (strich === 'waagerecht') {
+      ctx.moveTo(ix, iy + ih * .3);
+      ctx.lineTo(ix + iw, iy + ih * .3);
+      ctx.moveTo(ix, iy + ih * .7);
+      ctx.lineTo(ix + iw, iy + ih * .7);
+      ctx.stroke();
+    } else if (strich === 'kreuz') {
+      ctx.moveTo(ix, iy);
+      ctx.lineTo(ix + iw, iy + ih);
+      ctx.moveTo(ix + iw, iy);
+      ctx.lineTo(ix, iy + ih);
+      ctx.stroke();
+    } else if (strich === 'schraeg') {
+      ctx.moveTo(ix, iy + ih);
+      ctx.lineTo(ix + iw, iy);
+      ctx.stroke();
+    } else if (strich === 'welle') {
+      ctx.moveTo(ix, iy + ih * .7);
+      ctx.quadraticCurveTo(ix + iw / 2, iy - ih * .1, ix + iw, iy + ih * .7);
+      ctx.stroke();
+    } else if (strich === 'punkt') {
+      ctx.arc(l.cx, l.cy, Math.min(h, w) * .18, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.restore();
+  },
+
+  _koerper(ctx, k) {
+    const l = k._lage ?? this._lage(k);
+    const p = l.p;
+    if (p.length < 3) return;
+    if (l.zeichen > .995) { this._zeichen(ctx, k, l); return; }
+    ctx.save();
+    ctx.globalAlpha = k.deckung * (1 - l.zeichen);
 
     ctx.beginPath();
     weicherWeg(ctx, p);
@@ -733,11 +887,11 @@ const SchlachtLeinwand = L.Layer.extend({
       ctx.beginPath();
       weicherWeg(ctx, p);
       ctx.clip();
-      ctx.globalAlpha = k.deckung * (k.geschlagen ? .4 : .85);
+      ctx.globalAlpha = k.deckung * (1 - l.zeichen) * (k.geschlagen ? .4 : .85);
       ctx.fillStyle = muster;
       ctx.fill();
       ctx.restore();
-      ctx.globalAlpha = k.deckung;
+      ctx.globalAlpha = k.deckung * (1 - l.zeichen);
     }
 
     ctx.beginPath();
@@ -748,6 +902,9 @@ const SchlachtLeinwand = L.Layer.extend({
     if (k.geschlagen) ctx.setLineDash([5, 4]);
     ctx.stroke();
     ctx.restore();
+    // Der Übergang: Beides liegt übereinander, das eine kommt, das andere
+    // geht. Ein harter Wechsel wäre ein Zucken beim Zoomen.
+    if (l.zeichen > .005) this._zeichen(ctx, k, l);
   },
 
   /**
@@ -891,24 +1048,9 @@ const SchlachtLeinwand = L.Layer.extend({
     const mit = koerper
       .filter((k) => k.name && k.deckung >= .4)
       .map((k) => {
-        const p = k.punkte.map((q) => this._punkt(q));
-        let x = 0;
-        let y = 0;
-        let x0 = Infinity;
-        let x1 = -Infinity;
-        let y0 = Infinity;
-        let y1 = -Infinity;
-        for (const q of p) {
-          x += q[0];
-          y += q[1];
-          if (q[0] < x0) x0 = q[0];
-          if (q[0] > x1) x1 = q[0];
-          if (q[1] < y0) y0 = q[1];
-          if (q[1] > y1) y1 = q[1];
-        }
+        const l = k._lage ?? this._lage(k);
         return {
-          k, x: x / p.length, y: y / p.length,
-          rx: (x1 - x0) / 2, ry: (y1 - y0) / 2, gross: (x1 - x0) * (y1 - y0),
+          k, x: l.cx, y: l.cy, rx: l.rx, ry: l.ry, gross: l.rx * l.ry,
         };
       })
       .sort((a, b) => b.gross - a.gross);
@@ -917,24 +1059,43 @@ const SchlachtLeinwand = L.Layer.extend({
     ctx.textBaseline = 'middle';
     ctx.lineJoin = 'round';
     for (const { k, x, y, rx, ry } of mit) {
-      ctx.font = '600 11.5px ui-sans-serif, system-ui, sans-serif';
-      const wName = ctx.measureText(k.name).width;
-      ctx.font = '500 10px ui-sans-serif, system-ui, sans-serif';
-      const wZahl = k.staerke ? ctx.measureText(k.staerke).width : 0;
-      const w = Math.max(wName, wZahl) + 14;
-      const h = k.staerke ? 30 : 19;
-
-      // Erst innen, dann in vier Richtungen nach außen ausweichen.
-      const ax = Math.max(rx + w / 2 + 6, 26);
-      const ay = Math.max(ry + h / 2 + 6, 20);
-      const plaetze = [
-        [x, y, false], [x, y - ay, true], [x, y + ay, true],
-        [x + ax, y, true], [x - ax, y, true],
-        [x + ax * .8, y - ay * .8, true], [x - ax * .8, y + ay * .8, true],
+      /* Drei Fassungen desselben Fähnchens, von voll bis knapp.
+       *
+       * Vorher entfiel ein Name, sobald kein Platz mehr war – und ein
+       * unbeschrifteter Verband sieht nicht nach fehlendem Platz aus, sondern
+       * nach einem Verband, den niemand für nennenswert hielt. Jetzt fällt
+       * erst die Stärkeangabe, dann der Beiname („II. Korps · Reille“ wird zu
+       * „II. Korps“); erst wenn auch das nirgends hinpasst, entfällt er. */
+      const kurz = k.name.split('·')[0].trim();
+      const fassungen = [
+        { name: k.name, staerke: k.staerke },
+        { name: k.name, staerke: '' },
       ];
-      const platz = plaetze.find(([px, py]) => frei(px, py, w, h));
-      if (!platz) { this._entfallen = (this._entfallen ?? 0) + 1; continue; }
-      const [px, py, zeiger] = platz;
+      if (kurz && kurz !== k.name) fassungen.push({ name: kurz, staerke: '' });
+
+      let gewaehlt = null;
+      for (const f of fassungen) {
+        ctx.font = '600 11.5px ui-sans-serif, system-ui, sans-serif';
+        const wName = ctx.measureText(f.name).width;
+        ctx.font = '500 10px ui-sans-serif, system-ui, sans-serif';
+        const wZahl = f.staerke ? ctx.measureText(f.staerke).width : 0;
+        const w = Math.max(wName, wZahl) + 14;
+        const h = f.staerke ? 30 : 19;
+
+        // Erst innen, dann in vier Richtungen nach außen ausweichen.
+        const ax = Math.max(rx + w / 2 + 6, 26);
+        const ay = Math.max(ry + h / 2 + 6, 20);
+        const plaetze = [
+          [x, y, false], [x, y - ay, true], [x, y + ay, true],
+          [x + ax, y, true], [x - ax, y, true],
+          [x + ax * .8, y - ay * .8, true], [x - ax * .8, y + ay * .8, true],
+        ];
+        const platz = plaetze.find(([px, py]) => frei(px, py, w, h));
+        if (platz) { gewaehlt = { ...f, w, h, platz }; break; }
+      }
+      if (!gewaehlt) { this._entfallen = (this._entfallen ?? 0) + 1; continue; }
+      const { w, h } = gewaehlt;
+      const [px, py, zeiger] = gewaehlt.platz;
       belegt.push({ x: px, y: py, w, h });
 
       ctx.globalAlpha = klemm((k.deckung - .3) / .5, 0, 1);
@@ -969,11 +1130,11 @@ const SchlachtLeinwand = L.Layer.extend({
       ctx.textAlign = 'center';
       ctx.font = '600 11.5px ui-sans-serif, system-ui, sans-serif';
       ctx.fillStyle = '#f0f4fa';
-      ctx.fillText(k.name, px + 1.5, k.staerke ? o + 11 : py);
-      if (k.staerke) {
+      ctx.fillText(gewaehlt.name, px + 1.5, gewaehlt.staerke ? o + 11 : py);
+      if (gewaehlt.staerke) {
         ctx.font = '500 10px ui-sans-serif, system-ui, sans-serif';
         ctx.fillStyle = mitAlpha(k.farbe, .95);
-        ctx.fillText(k.staerke, px + 1.5, o + 22);
+        ctx.fillText(gewaehlt.staerke, px + 1.5, o + 22);
       }
     }
     ctx.restore();
@@ -1067,6 +1228,16 @@ export class BattlePlayer {
     if (!battle) return null;
     this.battle = battle;
     this.farben = new Map(battle.parteien.map((p) => [p.id, p.farbe]));
+    /* Der stärkste Verband der Schlacht gibt den Bezug für die Mindestgröße.
+       Absolut ginge nicht: 25.000 Mann sind bei Waterloo ein Korps und bei
+       Hastings die ganze Armee. */
+    this._bezug = 1;
+    for (const s of battle.stationen) {
+      for (const st of s.stellungen) {
+        const z = zahlAus(st.staerke);
+        if (z > this._bezug) this._bezug = z;
+      }
+    }
     this._vorrat = new Map();
     this.zeit = battle.stationen[0].t;
     this._station = 0;
@@ -1438,6 +1609,20 @@ export class BattlePlayer {
     });
   }
 
+  /**
+   * Mindestgröße eines Verbands in Bildpunkten, aus seiner Mannschaftszahl.
+   *
+   * Fläche proportional zur Zahl heißt Durchmesser proportional zu ihrer
+   * Wurzel – sonst wüchse ein doppelt so starkes Korps auf die vierfache
+   * Fläche und träte alles andere aus dem Bild.
+   */
+  _mindest(text) {
+    const z = zahlAus(text);
+    if (!z || !this._bezug) return MIND_KLEIN;
+    const anteil = Math.sqrt(klemm(z / this._bezug, 0, 1));
+    return MIND_KLEIN + (MIND_GROSS - MIND_KLEIN) * anteil;
+  }
+
   /** Anteil innerhalb des laufenden Stationsfensters, 0 bis 1. */
   _teil() {
     const st = this.battle?.stationen;
@@ -1510,6 +1695,7 @@ export class BattlePlayer {
         staerke: s.staerke ?? '',
         gattung: s.gattung ?? 'gemischt',
         geschlagen: !!s.geschlagen,
+        mindest: this._mindest(s.staerke),
         // Wer in der nächsten Station fehlt, ist geschlagen oder abgezogen –
         // er verblasst, statt zu verschwinden.
         deckung: ziel || !naechste ? 1 : 1 - zug * .9,
@@ -1529,6 +1715,7 @@ export class BattlePlayer {
           staerke: s.staerke ?? '',
           gattung: s.gattung ?? 'gemischt',
           geschlagen: !!s.geschlagen,
+          mindest: this._mindest(s.staerke),
           deckung: zug,
         });
       }

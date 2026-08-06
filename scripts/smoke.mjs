@@ -519,6 +519,45 @@ await check('Der Ausschnitt folgt der Schlacht, aber nur wo er muss', async () =
   }
 });
 
+await check('Kleine Verbände wachsen auf Mindestgröße und werden zum Zeichen', async () => {
+  await page.click('[data-act="back"]');
+  await page.waitForTimeout(500);
+  await page.evaluate(() => document.querySelector('[data-verlauf="waterloo"]')?.click());
+  await gelandet();
+
+  const lage = (i) => page.evaluate(async (k) => {
+    window.__battles.stop();
+    window.__battles.goTo(k);
+    await new Promise((r) => setTimeout(r, 1600));
+    const koerper = window.__battles.leinwand._inhalt.koerper.filter((q) => q.deckung > .6);
+    return koerper.map((q) => ({
+      quer: q._lage?.quer ?? 0,
+      mindest: q.mindest ?? 0,
+      zeichen: q._lage?.zeichen ?? 0,
+      breit: Math.max(...q._lage.p.map((p) => p[0])) - Math.min(...q._lage.p.map((p) => p[0])),
+      hoch: Math.max(...q._lage.p.map((p) => p[1])) - Math.min(...q._lage.p.map((p) => p[1])),
+    }));
+  }, i);
+
+  // Die Aufmarschstellung: alles groß genug, kein Zeichen im Bild.
+  const anfang = await lage(0);
+  if (!anfang.length) throw new Error('keine Stellungen');
+  if (anfang.some((q) => q.zeichen > .5)) throw new Error('Zeichen schon in der Aufmarschstellung');
+
+  // Der Höhepunkt: Hougoumont und Papelotte sind Gehöfte von wenigen hundert
+  // Mann und auf diesem Maßstab ein Strich.
+  const eng = await lage(5);
+  if (!eng.some((q) => q.zeichen > .5)) throw new Error('kein Verband wird zum Zeichen');
+  for (const q of eng) {
+    if (Math.max(q.breit, q.hoch) < Math.min(q.mindest, q.quer) - .5) {
+      throw new Error(`Verband bleibt unter der Mindestgröße: ${q.breit.toFixed(0)}×${q.hoch.toFixed(0)}`);
+    }
+  }
+  // Die Mindestgröße folgt der Zahl: nicht alle Verbände gleich groß.
+  const mindeste = new Set(eng.map((q) => Math.round(q.mindest)));
+  if (mindeste.size < 2) throw new Error('Mindestgröße hängt nicht an der Stärke');
+});
+
 await check('Eigenes Zoomen übernimmt die Führung, der Hinweis gibt sie zurück', async () => {
   if (await page.evaluate(() => window.__battles.kameraFrei)) {
     throw new Error('Karte gibt die Führung schon vor dem ersten Eingriff ab');

@@ -720,6 +720,37 @@ die Karte einem den Ausschnitt unter der Hand weg. Ein Knopf über der
 Zeitleiste sagt es und gibt die Führung zurück; ein Sprung auf eine Station
 oder ein neuer Start tut dasselbe.
 
+**Verbände, die zu klein werden.** Der Ausschnitt folgt jetzt der Station, und
+bei einem Feldzug heißt das Zoomstufe 8: Eine Division, die auf dem Boden vier
+Kilometer breit steht, ist dort zwanzig Bildpunkte groß; die Ranger am Pointe
+du Hoc – 225 Mann – sind sieben. Maßstabstreu ist das richtig und unlesbar
+zugleich. Zwei Stufen, weich ineinander:
+
+1. **Der Umriss wächst auf eine Mindestgröße**, behält aber seine Form. Ein
+   Keil bleibt ein Keil, eine Linie eine Linie – die Aussage der Geometrie geht
+   nicht verloren, sie wird nur lesbar gehalten. Gewachsen wird um den
+   Schwerpunkt, damit ein Verband dort stehen bleibt, wo er steht.
+2. **Wird es noch enger, blendet der Umriss in ein Truppenzeichen über:** ein
+   Rechteck mit dem Zeichen der Waffengattung. Bewusst dasselbe Zeichen wie die
+   Schraffur der Fläche – Kreuz für Bogen, Schrägstrich für Reiterei, Punkt für
+   Geschütze –, also kein Bruch in der Bildsprache, sondern dieselbe ohne
+   Fläche. Die Zeichenerklärung nennt es nur, wo es auch vorkommt.
+
+Die Mindestgröße folgt der Mannschaftszahl: Fläche proportional zur Zahl, also
+Durchmesser proportional zu ihrer Wurzel, bezogen auf den stärksten Verband
+**dieser** Schlacht – 25.000 Mann sind bei Waterloo ein Korps und bei Hastings
+die ganze Armee. Das Kräfteverhältnis bleibt damit sichtbar, statt lesbar zu
+werden. Gemessen greift die Regel selten und gezielt: Bei Azincourt, Cannae und
+Trafalgar ändert sich nichts, bei Waterloo werden Hougoumont und Papelotte zu
+Zeichen, bei der Normandie die Ranger am Pointe du Hoc.
+
+Dazu die Beschriftung: Vorher entfiel ein Name, sobald kein Platz mehr war –
+und ein unbeschrifteter Verband sieht nicht nach fehlendem Platz aus, sondern
+nach einem Verband, den niemand für nennenswert hielt. Jetzt gibt es drei
+Fassungen desselben Fähnchens. Erst fällt die Stärkeangabe, dann der Beiname
+(„II. Korps · Reille“ wird zu „II. Korps“); erst wenn auch das nirgends
+hinpasst, entfällt er.
+
 Dabei kam heraus, dass die Zoomgrenze der Weltkarte bei Stufe 10 liegt und die
 Schlachten ihre Stufe 13 nur deshalb erreichten, weil Leaflets `flyTo` die
 Grenze nicht anwendet – ein eigener Zoomschritt riss die Karte über drei Stufen

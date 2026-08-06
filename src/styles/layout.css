@@ -1193,6 +1193,17 @@
   border: 1.5px solid var(--c, #8a94a6);
 }
 .blgd__sw--weich { border-style: dashed; opacity: .7; }
+/* Das Truppenzeichen: kleiner als ein Körper und mit dem Gattungsstrich
+   darin - dasselbe Zeichen wie die Schraffur der Flaeche, nur ohne Flaeche. */
+.blgd__z {
+  flex: none;
+  width: 13px; height: 8px;
+  border-radius: 1px;
+  border: 1.5px solid var(--ink-muted);
+  background:
+    linear-gradient(to bottom, transparent 42%, var(--ink-muted) 42%, var(--ink-muted) 58%, transparent 58%),
+    color-mix(in srgb, var(--ink-muted) 26%, transparent);
+}
 .blgd__m {
   flex: none;
   width: 16px; height: 10px;
