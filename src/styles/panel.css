@@ -501,3 +501,16 @@
   .brand { width: calc(100vw - 5rem); }
   .brand__text span { display: none; }
 }
+
+/* Gütevermerk in einer Steckbrief-Kachel.
+   Eine Religionsangabe aus einer Regel darf nicht aussehen wie eine aus einer
+   Quelle – dieselbe Unterscheidung, die die Karte bei den Grenzen trifft. */
+.fact__guete {
+  display: block;
+  margin-top: .18rem;
+  font-style: normal;
+  font-size: .64rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}

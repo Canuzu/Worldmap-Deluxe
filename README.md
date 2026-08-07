@@ -1373,6 +1373,104 @@ Vereinfachungstoleranz der Epochendaten (27 % weniger Stützpunkte, zu wenig
 für einen Eingriff in die Datenpipeline). Ungeprüfte Komplexität bleibt
 draußen, auch wenn die Begründung gut klingt.
 
+## Kartenmodi
+
+Die Karte kennt fünf Sichten auf denselben Zeitschnitt. Sie standen bisher in
+einem Menü, das man erst aufklappen musste – vier Antworten auf dieselbe
+Karte, die kaum jemand fand. Jetzt liegen sie offen über der Zeitleiste: Zeit
+und Sicht sind die beiden Regler, mit denen man die Karte befragt, und stehen
+beieinander.
+
+| Modus | Frage |
+|---|---|
+| **Politisch** | Wer herrscht wo? |
+| **Oberhoheit** | Wer hat tatsächlich das Sagen – auch über Besetztes? |
+| **Kulturraum** | Was gehört zusammen? |
+| **Religion** | Was wird geglaubt? |
+| **Grenzgüte** | Wie sicher ist der Verlauf? |
+
+Ein Modus färbt nicht nur die Flächen um, er bestimmt auch, wonach die
+Detailtafel gefragt wird. Wer die Religionskarte offen hat und auf das
+Mogulreich klickt, will nicht zuerst die Hauptstadt lesen.
+
+### Religion: Fläche das Volk, Streifen die Herrschaft
+
+Die Ebene führt **zwei** Angaben je Gemeinwesen: was die Bevölkerung
+überwiegend glaubt, und wozu sich die Herrschaft bekennt. Die Fläche trägt das
+Volk, die Schraffur die Herrschaft – und liegt nur dort, wo beide
+auseinanderfallen. Das sind 10 Prozent aller Angaben, und sie sind der Grund,
+warum es die Ebene gibt:
+
+- **Das Mogulreich 1600** – hinduistisches Orange mit sunnitisch grünen
+  Streifen. Akbars Steckbrief erklärt in derselben Tafel, warum er die
+  Kopfsteuer für Nichtmuslime aufhob.
+- **Der osmanische Balkan** – orthodoxes Petrol unter denselben Streifen, vier
+  Jahrhunderte lang.
+- **Das Sassanidenreich** – eine christliche Kirche des Ostens unter
+  zoroastrischer Krone.
+- **Das Fatimidenkalifat** – sunnitische Bevölkerung, schiitischer Hof.
+- **Irland 1601–1921** – katholisches Land, anglikanische Staatskirche.
+- **Sowjetrussland** – orthodoxe Bevölkerung, staatsatheistische Herrschaft.
+
+Fiele beides in eine Farbe, wäre genau das unsichtbar – und mit ihm der Grund
+für einen Gutteil der Aufstände, Sonderrechte und Vertreibungen der
+Weltgeschichte.
+
+**35 Klassen, nach Farbfamilien geordnet:** alles Christliche in Blautönen,
+alles Islamische in Grün, indische Religionen in Ocker, ostasiatische in
+Violett, antike in Terrakotta, traditionelle in Oliv. So liest man auf
+Weltmaßstab die große Gliederung und beim Hineinzoomen die Konfession, ohne
+fünfunddreißig Farben lernen zu müssen. Anders als bei den Gemeinwesen, wo
+Nachbarn absichtlich verschiedene Farben bekommen, tragen hier zwei
+katholische Länder dieselbe – nur daran erkennt man, wo eine
+Konfessionsgrenze verläuft und wo keine ist.
+
+**Woher die Angaben kommen.** Drei Quellen, in dieser Reihenfolge:
+
+1. **Handkorrekturen** – dort, wo ein Rechteck auf der Landkarte etwas nicht
+   wissen kann.
+2. **Die Steckbriefe.** Die Wissensbasis führt für alle 311 Zeitabschnitte ein
+   Feld `religion` als Fließtext; ein Parser liest daraus die Klasse. Güte 3.
+3. **Raum-Zeit-Regeln** – 104 Regeln der Form „Iran ab 1501 schiitisch",
+   „Skandinavien ab 1537 protestantisch", von speziell nach allgemein
+   sortiert. Güte 2 oder 1.
+
+Ein Steckbrief beschreibt ein Gemeinwesen, also seine **Herrschaft**. Was die
+Leute auf dem Land glauben, ist dagegen eine Frage des **Raums** – dafür ist
+die Regel zuständig. Diese Trennung ist nicht Feinheit, sondern der Kern:
+Ließe man den Steckbrief beides bestimmen, wäre das Mogulreich auf der Karte
+sunnitisch. Und wer unter fremder Oberhoheit steht, übernimmt die
+Herrschaftsreligion des Oberherrn – das steht in den Daten, nicht in einem
+Rechteck. Vorher hatte ich es über Regionsregeln versucht; auf der Karte war
+dann ganz Nordamerika 1600 gestreift, weil eine Regel behauptete, über den
+Naskapi-Innu herrsche eine protestantische Krone.
+
+**Jede Angabe trägt eine Gütestufe**, und die Tafel nennt sie: *in Quellen
+belegt* · *aus regionaler Regel* · *grobe Schätzung*. Von 11.536 Angaben sind
+4.067 belegt, 6.896 aus solider Regel, 573 grob geschätzt. Das ist dasselbe
+Verfahren, das die Karte bei den Grenzen anwendet – eine Religionskarte ist
+dabei heikler als eine Staatenkarte: Wo eine Grenze falsch liegt, sieht man
+es; wo eine Religion falsch liegt, glaubt man es.
+
+**Was `npm run check:religion` prüft.** Vollständigkeit, bekannte Klassen,
+Gütestufen – und vor allem **Anachronismen**: Jede Klasse trägt ein
+Zeitfenster. Anglikanisch gibt es nicht vor 1534, Sikhismus nicht vor 1500,
+Manichäismus nicht nach 1400. Beim ersten Lauf schlug die Prüfung 137-mal an,
+darunter ein lutherisches Dänemark fünfundzwanzig Jahre vor Luther und ein
+jüdisches Deutschland 1940 – letzteres, weil im Steckbrief „Verfolgung der
+jüdischen Bevölkerung" steht und die Wortmarke recht hatte, während die
+Aussage das Gegenteil war. Die Prüfung findet außerdem Gemeinwesen, deren
+Bekenntnis zwischen zwei Zeitschnitten hin und her springt – meist ein
+Zeichen dafür, dass der Schwerpunkt einer Fläche über eine Regelgrenze
+gewandert ist.
+
+**Ein Vorbehalt, offen ausgesprochen.** Für die Zeit vor 1200 v. Chr. trägt
+die ganze Karte eine einzige Klasse, „Prähistorische Glaubensformen". Für die
+Steinzeit gibt es keine Quellen, die eine bestimmte Religion auf einer
+Kartenfläche rechtfertigen; eine feinere Aufteilung wäre erfundene
+Genauigkeit. Ab 1200 v. Chr. wird unterschieden, und ab da trägt jede Angabe
+ihre Gütestufe.
+
 ### Barrierefreiheit
 
 Die Karte ist eine Zeichenfläche – für Vorlesesoftware existiert sie nicht.
@@ -1461,7 +1559,7 @@ falls aktiviert, einen Wikipedia-Auszug.
 | `/` | Suche |
 | `K` oder `S` | Kriege & Schlachten |
 | `T` | Farbwelt wechseln |
-| `E` | Ebenen und Einfärbung |
+| `E` | Ebenen |
 | `L` | Legende |
 | `V` | Vollbild ein und aus |
 | `F` | nur die Karte – Bedienelemente ausblenden |

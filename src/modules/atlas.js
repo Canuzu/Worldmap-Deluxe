@@ -17,6 +17,7 @@
  */
 import L from 'leaflet';
 import { createLabelLayer, breiteVon } from './labels.js';
+import RELIGION from '../data/religion/vokabular.json';
 import {
   paletteFor, assignColorIndices, PRECISION_COLORS, withAlpha, shade,
 } from './palette.js';
@@ -1002,6 +1003,10 @@ export class AtlasMap {
       case 'sovereign': return props.o || props.s || props.n;
       case 'culture': return props.p || props.n;
       case 'precision': return `p${props.b ?? 0}`;
+      // Die Fläche trägt, was die Bevölkerung glaubt. Wozu sich die
+      // Herrschaft bekennt, liegt als Schraffur darüber – siehe
+      // _religionsSchraffur.
+      case 'religion': return props.rv ? `r${props.rv}` : null;
       default: return props.n;
     }
   }
@@ -1013,6 +1018,21 @@ export class AtlasMap {
     if (this.colorMode === 'precision') {
       const table = PRECISION_COLORS[this.theme] ?? PRECISION_COLORS.night;
       for (const [k, v] of Object.entries(table)) this.colors.set(`p${k}`, v);
+      return;
+    }
+
+    /* Religion bekommt eine feste Tabelle statt der Nachbarschaftsfärbung.
+     *
+     * Bei den Gemeinwesen wird die Farbe so vergeben, dass Nachbarn sich
+     * unterscheiden – dort ist die Farbe nur ein Merkzeichen. Hier bedeutet
+     * sie etwas: Zwei katholische Länder müssen dieselbe Farbe tragen, auch
+     * wenn sie aneinandergrenzen. Genau daran erkennt man auf einen Blick,
+     * wo eine Konfessionsgrenze verläuft und wo keine ist. */
+    if (this.colorMode === 'religion') {
+      const hell = this.theme !== 'night';
+      for (const [k, m] of Object.entries(RELIGION.klassen)) {
+        this.colors.set(`r${k}`, hell ? (m.hell ?? m.farbe) : m.farbe);
+      }
       return;
     }
 
@@ -1131,12 +1151,59 @@ export class AtlasMap {
     slot.occupation?.setStyle((f) => this._occupationStyle(f));
   }
 
+  /**
+   * Schraffur für die Religion der Herrschaft.
+   *
+   * Sie liegt nur dort, wo Herrschaft und Bevölkerung auseinanderfallen –
+   * über den 12 Prozent der Flächen, für die es diese Ebene überhaupt gibt.
+   * Das Mogulreich trägt dann hinduistisches Orange mit sunnitisch grünen
+   * Streifen, der osmanische Balkan orthodoxes Petrol mit denselben Streifen,
+   * Sowjetrussland orthodoxes Petrol mit grauen. Wo nichts liegt, sind sich
+   * Hof und Land einig.
+   *
+   * Gebaut wird sie nur, solange der Modus läuft: Sie ist eine zweite
+   * Geometrieebene über allen Flächen, und die kostet bei jedem Jahressprung.
+   * Wer die Religionskarte nie öffnet, soll dafür nicht zahlen.
+   */
+  _religionsSchraffur() {
+    const slot = this.slots[this.activeSlot];
+    if (slot.religion) {
+      slot.religion.remove();
+      slot.religion = null;
+    }
+    if (this.colorMode !== 'religion' || !this.epoch) return;
+
+    const geteilt = this.epoch.geojson.features.filter((f) => {
+      const p = f.properties;
+      return p.rv && p.rs && p.rv !== p.rs;
+    });
+    if (!geteilt.length) return;
+
+    slot.religion = L.geoJSON(
+      { type: 'FeatureCollection', features: geteilt },
+      {
+        pane: slot.pane,
+        renderer: slot.renderer,
+        interactive: false,
+        smoothFactor: .5,
+        style: (f) => ({
+          fill: true,
+          fillColor: hatchFor(this.colors.get(`r${f.properties.rs}`) ?? '#888'),
+          fillOpacity: Number(this._cssVar('--hatch-alpha', '.85')),
+          stroke: false,
+          bubblingMouseEvents: false,
+        }),
+      },
+    ).addTo(this.map);
+  }
+
   setColorMode(mode) {
     if (this.colorMode === mode) return;
     this.colorMode = mode;
     if (!this.epoch) return;
     this._computeColors();
     this._restyleActive();
+    this._religionsSchraffur();
     this._updateLabels();
     this._refreshHighlight();
   }
@@ -1160,6 +1227,10 @@ export class AtlasMap {
     if (to.occupation) {
       to.occupation.remove();
       to.occupation = null;
+    }
+    if (to.religion) {
+      to.religion.remove();
+      to.religion = null;
     }
 
     // Saum in der eigenen Füllfarbe, nur als Linie. Er weitet jede Fläche um
@@ -1235,8 +1306,11 @@ export class AtlasMap {
       if (this.activeSlot === this.slots.indexOf(from)) return;
       from.layer?.remove();
       from.layer = null;
+      from.religion?.remove();
+      from.religion = null;
     }, animate ? 340 : 0);
 
+    this._religionsSchraffur();
     this._updateLabels();
     this._refreshHighlight();
   }

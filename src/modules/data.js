@@ -75,7 +75,7 @@ function buildAdjacency(topo, keyOf) {
 }
 
 /** Zeitschnitt in die Form bringen, mit der Karte und Tafel arbeiten. */
-function prepareEpoch(meta, topo) {
+function prepareEpoch(meta, topo, religion) {
   const geojson = toFeatures(topo);
 
   const byName = new Map();
@@ -122,6 +122,20 @@ function prepareEpoch(meta, topo) {
       entry.labelArea = p.pa ?? 0;
     }
     f.properties.key = name;
+
+    /* Religion an die Fläche heften.
+     *
+     * Zwei Angaben je Gemeinwesen: `rv` was die Bevölkerung glaubt, `rs`
+     * wozu sich die Herrschaft bekennt. Beide getrennt zu führen ist der
+     * Sinn der Ebene – wo sie auseinanderfallen, wird Geschichte erklärbar.
+     * `rg` ist die Güte der Angabe, damit eine grobe Schätzung nicht
+     * aussieht wie ein Beleg.
+     */
+    const r = religion?.[name];
+    if (r) {
+      [p.rv, p.rs, p.rg] = r;
+      entry.religion = { volk: r[0], staat: r[1], guete: r[2] };
+    }
   }
 
   const adjacency = buildAdjacency(topo, (p) => p.n || null);
@@ -289,9 +303,18 @@ export class AtlasData {
     }
     if (this._inflight.has(meta.key)) return this._inflight.get(meta.key);
 
-    const task = getJSON(meta.file)
-      .then((topo) => {
-        const prepared = prepareEpoch(meta, topo);
+    /* Die Religionsangaben liegen in einer eigenen Datei je Zeitschnitt –
+       rund 9 kB gegen 300 kB Geometrie. Sie getrennt zu halten heißt: Wer die
+       Ebene nie einschaltet, lädt sie trotzdem mit, aber sie fällt nicht ins
+       Gewicht; und wer die Religionsdaten ändert, muss nicht die Geometrie
+       aller 62 Zeitschnitte neu bauen. Fehlt die Datei, bleibt die Karte
+       ohne Religionsangaben – die Ebene ist dann leer, aber nichts bricht. */
+    const task = Promise.all([
+      getJSON(meta.file),
+      getJSON(`data/religion/${meta.key}.json`).then((d) => d.klassen).catch(() => null),
+    ])
+      .then(([topo, religion]) => {
+        const prepared = prepareEpoch(meta, topo, religion);
         this._cache.set(meta.key, prepared);
         while (this._cache.size > this._maxCache) {
           this._cache.delete(this._cache.keys().next().value);

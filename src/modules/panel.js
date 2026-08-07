@@ -8,6 +8,7 @@
  *   3. Wikipedia-Auszug (optional, nachgeladen)
  */
 import { esc, areaText, rangeText, yearShort, initials, num } from './format.js';
+import RELIGION from '../data/religion/vokabular.json';
 import { PRECISION_LABELS } from './palette.js';
 import { lookupArticle } from './wikipedia.js';
 
@@ -274,6 +275,29 @@ export class DetailPanel {
       tiles.push(`<div class="fact${opts.wide ? ' fact--wide' : ''}">
         <dt>${esc(label)}</dt><dd>${opts.raw ? value : esc(value)}</dd></div>`);
     };
+
+    /* Im Religionsmodus wird zuerst gefragt, was die Karte gerade zeigt.
+     *
+     * Das ist der eigentliche Sinn eines Kartenmodus: Er bestimmt nicht nur
+     * die Farbe der Flächen, sondern die Frage, die man an ein Land stellt.
+     * Wer die Religionskarte offen hat und auf das Mogulreich klickt, will
+     * nicht zuerst die Hauptstadt lesen. */
+    if (this.atlas?.colorMode === 'religion' && entry.religion) {
+      const r = entry.religion;
+      const nameVon = (k) => RELIGION.klassen[k]?.name ?? k;
+      const guete = { 3: 'in Quellen belegt', 2: 'aus regionaler Regel', 1: 'grobe Schätzung' }[r.guete];
+      if (r.staat === r.volk) {
+        add('Religion', `${nameVon(r.volk)} <i class="fact__guete">${esc(guete)}</i>`,
+          { raw: true, wide: true });
+      } else {
+        // Der Fall, für den es die Ebene gibt – deshalb steht er auch als
+        // eigene Kachel da und nicht als Nebensatz.
+        add('Bevölkerung glaubt', `${nameVon(r.volk)}`, { raw: false });
+        add('Herrschaft bekennt sich zu', `${nameVon(r.staat)}`, { raw: false });
+        add('Verhältnis', `Hof und Land gehören verschiedenen Religionen an. `
+          + `<i class="fact__guete">${esc(guete)}</i>`, { raw: true, wide: true });
+      }
+    }
 
     add('Hauptstadt', period?.capital);
     add('Regierungsform', period?.government);

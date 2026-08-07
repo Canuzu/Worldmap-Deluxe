@@ -331,6 +331,19 @@
 }
 .dock [data-label]::after { left: calc(100% + .45rem); }
 .tools [data-label]::after { right: calc(100% + .45rem); }
+/* Die Kartenmodi tragen Text im Knopf; ihre Sprechblase gehört darüber,
+   nicht daneben – seitlich stand sie sonst im Knopf des Nachbarn. */
+.mapmodes [data-label]::after {
+  top: auto;
+  bottom: calc(100% + .5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: normal;
+  width: max-content;
+  max-width: 15rem;
+  text-align: center;
+  line-height: 1.35;
+}
 .timeline [data-label]::after { right: calc(100% + .45rem); }
 [data-label]:hover::after,
 [data-label]:focus-visible::after { opacity: 1; }
@@ -1543,3 +1556,105 @@
 .dock__btn--back { flex: none; }
 /* Ohne diese Zeile schlägt display:flex des Knopfes das hidden-Attribut. */
 .dock__btn[hidden] { display: none; }
+
+/* ------------------------------------------------------- Kartenmodus-Leiste
+
+   Fünf Sichten auf dieselbe Karte, offen nebeneinander statt in einem Menü
+   versteckt. Sie sitzt über der Zeitleiste, und das aus zwei Gründen: Oben
+   ist kein Platz – links die Kopfzeile, rechts die Werkzeuge, dazwischen zu
+   wenig, sodass die Leiste bei 1024 Bildpunkten die Knöpfe der Kopfzeile
+   verdeckte und unklickbar machte. Und inhaltlich gehört sie hierher: Zeit
+   und Sicht sind die beiden Regler, mit denen man die Karte befragt.
+
+   Der Abstand nach unten ist gemessen, nicht geschätzt: Die Zeitleiste ist
+   137 Bildpunkte hoch und liegt mit höherem z-index darüber. Bei zu knappem
+   Abstand war die Leiste zu sehen, aber nicht zu treffen – die Zeitleiste
+   fing die Klicks ab, ohne dass man ihr das ansah.
+
+   Auf schmalen Geräten wird sie zu einem waagerecht schiebbaren Band. Das
+   ist besser als sie zu verstecken: Wer sie einmal gesehen hat, sucht sie
+   dort wieder. */
+.mapmodes {
+  position: absolute;
+  z-index: 500;
+  bottom: calc(10.6rem + var(--safe-b));
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: .15rem;
+  padding: .25rem;
+  max-width: min(46rem, calc(100vw - 2rem));
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-radius: var(--r-lg);
+  background: color-mix(in srgb, var(--surface-solid) 82%, transparent);
+  border: 1px solid var(--hairline);
+  box-shadow:
+    var(--shadow-1),
+    inset 0 1px 0 color-mix(in srgb, var(--gold) 16%, transparent);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+}
+.mapmodes::-webkit-scrollbar { display: none; }
+
+.mapmodes button {
+  display: flex;
+  align-items: center;
+  gap: .38rem;
+  flex: 0 0 auto;
+  padding: .34rem .6rem;
+  border: 0;
+  border-radius: var(--r-sm);
+  background: transparent;
+  color: var(--ink-soft, var(--ink));
+  font: inherit;
+  font-size: .74rem;
+  letter-spacing: .01em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 140ms ease, color 140ms ease;
+}
+.mapmodes button svg { opacity: .75; }
+.mapmodes button:hover { background: var(--surface-2); color: var(--ink); }
+.mapmodes button[aria-checked="true"] {
+  background: color-mix(in srgb, var(--gold) 18%, transparent);
+  color: var(--gold);
+  font-weight: 600;
+}
+.mapmodes button[aria-checked="true"] svg { opacity: 1; }
+.mapmodes button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: -2px;
+}
+
+/* Im Kartenfokus („nur die Karte", Taste F) tritt sie ab – und während einer
+   Schlacht ebenso. Dort steht die Staatenfläche auf 16 Prozent Deckung, eine
+   Einfärbung nach Kulturraum oder Religion sagt auf zwei Kilometern
+   Schlachtfeld nichts, und die Leiste läge genau über dem Hinweis, mit dem
+   man der Karte die Führung zurückgibt. */
+.app.is-focus .mapmodes,
+.app.is-battle .mapmodes {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.mapmodes { transition: opacity var(--dur) var(--ease), visibility 0s linear var(--dur); }
+
+@media (max-width: 900px) {
+  .mapmodes { font-size: .7rem; bottom: calc(11rem + var(--safe-b)); }
+  .mapmodes button { padding: .3rem .45rem; gap: .3rem; }
+}
+@media (max-width: 520px) {
+  .mapmodes button span { display: none; }
+  .mapmodes button { padding: .38rem .5rem; }
+}
+
+/* Legendenzeile, die keine Zahl trägt, sondern eine Erklärung. */
+.legend__note { align-items: flex-start; opacity: .82; }
+.legend__note .nm { font-size: .7rem; line-height: 1.35; white-space: normal; }
+.sw--hatch {
+  background:
+    repeating-linear-gradient(45deg,
+      var(--ink-faint) 0 2px, transparent 2px 5px),
+    var(--surface-3);
+}

@@ -10,6 +10,7 @@ import './styles/timeline.css';
 import './styles/panel.css';
 import './styles/map.css';
 
+import RELIGION from './data/religion/vokabular.json';
 import { atlasData } from './modules/data.js';
 import { AtlasMap, BASEMAPS } from './modules/atlas.js';
 import { Timeline } from './modules/timeline.js';
@@ -474,6 +475,42 @@ async function main() {
           <span class="nm">${esc({ 3: 'völkerrechtlich fixiert', 2: 'mittlere Genauigkeit', 1: 'grobe Annäherung' }[level] ?? 'ohne Angabe')}</span>
           <span class="va">${num(count)}</span>
         </li>`).join('');
+      return;
+    }
+
+    /* Religionsmodus: Die Legende zählt auf, was auf der Karte liegt – nach
+       Fläche geordnet, damit oben steht, was das Bild bestimmt. Farben nach
+       Familie: alles Christliche in Blau, alles Islamische in Grün. So liest
+       man auf Weltmaßstab die große Gliederung, ohne 35 Farben zu lernen. */
+    if (atlas.colorMode === 'religion') {
+      $('legendTitle').textContent = `Religionen · ${epoch.meta.label}`;
+      const nachFlaeche = new Map();
+      let geteilt = 0;
+      for (const p of epoch.polities) {
+        const r = p.religion;
+        if (!r) continue;
+        nachFlaeche.set(r.volk, (nachFlaeche.get(r.volk) ?? 0) + (p.area || 0));
+        if (r.staat !== r.volk) geteilt++;
+      }
+      const gesamt = [...nachFlaeche.values()].reduce((a, b) => a + b, 0) || 1;
+      list.innerHTML = [...nachFlaeche.entries()]
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 14)
+        .map(([k, flaeche]) => `
+          <li>
+            <span class="sw" style="background:${esc(atlas.colorOf(`r${k}`))}"></span>
+            <span class="nm">${esc(RELIGION.klassen[k]?.name ?? k)}</span>
+            <span class="va">${Math.round(100 * flaeche / gesamt)} %</span>
+          </li>`).join('');
+      if (geteilt) {
+        list.insertAdjacentHTML('beforeend', `
+          <li class="legend__note">
+            <span class="sw sw--hatch"></span>
+            <span class="nm">Streifen: die Herrschaft bekennt sich zu einer anderen
+              Religion als die Bevölkerung – ${num(geteilt)} Gemeinwesen in diesem
+              Zeitschnitt.</span>
+          </li>`);
+      }
       return;
     }
 
@@ -1545,6 +1582,14 @@ async function main() {
     modeButtons.forEach((b) => b.setAttribute('aria-checked', String(b.dataset.mode === mode)));
     atlas.setColorMode(mode);
     renderLegend();
+    /* Die offene Tafel neu zeichnen.
+     *
+     * Ein Kartenmodus bestimmt nicht nur die Farbe der Flächen, sondern die
+     * Frage, die man an ein Land stellt: Im Religionsmodus steht oben, was
+     * dort geglaubt wurde und wozu sich der Hof bekannte. Ohne das
+     * Nachzeichnen behielt eine schon offene Tafel ihre alte Reihenfolge –
+     * man schaltete die Religionskarte ein und las weiter die Hauptstadt. */
+    if (state.selected && panel.isOpen) panel.show(state.selected, state.epoch, state.year);
     savePrefs();
   }
   modeButtons.forEach((btn) => btn.addEventListener('click', () => setColorMode(btn.dataset.mode)));

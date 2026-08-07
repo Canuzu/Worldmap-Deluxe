@@ -141,15 +141,80 @@ await check('Farbwelt wechselt', async () => {
   await page.keyboard.press('t');
 });
 
-await check('Ebenen-Menü und Einfärbungswechsel', async () => {
+await check('Ebenen-Menü öffnet', async () => {
   await page.click('#btnLayers');
   await visible('#layersMenu');
+  await page.keyboard.press('Escape');
+});
+
+await check('Kartenmodus-Leiste schaltet die Sicht um', async () => {
+  // Die Einfärbungen lagen früher im Ebenen-Menü. Jetzt stehen sie offen auf
+  // der Karte – der Test klickt sie dort, ohne vorher etwas aufzuklappen.
+  await visible('.mapmodes');
   await page.click('[data-mode="sovereign"]');
   await page.waitForTimeout(500);
-  const checked = await page.getAttribute('[data-mode="sovereign"]', 'aria-checked');
-  if (checked !== 'true') throw new Error('Modus nicht aktiv');
+  if (await page.getAttribute('[data-mode="sovereign"]', 'aria-checked') !== 'true') {
+    throw new Error('Modus nicht aktiv');
+  }
   await page.click('[data-mode="polity"]');
+  await page.waitForTimeout(300);
+});
+
+await check('Religionsmodus färbt nach Glauben und streift die Herrschaft', async () => {
+  await page.evaluate(() => { location.hash = 'position=3/30/40&year=1600'; });
+  await page.waitForTimeout(1600);
+  await page.click('[data-mode="religion"]');
+  await page.waitForTimeout(1600);
+  const stand = await page.evaluate(() => {
+    const a = window.__atlas;
+    const slot = a.slots[a.activeSlot];
+    const merkmale = a.epoch.geojson.features.map((f) => f.properties);
+    return {
+      modus: a.colorMode,
+      mitAngabe: merkmale.filter((p) => p.rv).length,
+      gesamt: merkmale.length,
+      geteilt: merkmale.filter((p) => p.rv && p.rs && p.rv !== p.rs).length,
+      schraffuren: slot.religion ? Object.keys(slot.religion._layers).length : 0,
+      // Gleiche Religion, gleiche Farbe – anders als bei den Gemeinwesen, wo
+      // Nachbarn sich absichtlich unterscheiden.
+      farbeKath: a.colorOf('rkath'),
+      farbeSunn: a.colorOf('rsunn'),
+    };
+  });
+  if (stand.modus !== 'religion') throw new Error('Modus nicht gesetzt');
+  if (stand.mitAngabe < stand.gesamt * .95) {
+    throw new Error(`nur ${stand.mitAngabe} von ${stand.gesamt} Flächen mit Religionsangabe`);
+  }
+  if (!stand.geteilt) throw new Error('keine Fläche mit abweichender Herrschaft');
+  if (stand.schraffuren !== stand.geteilt) {
+    throw new Error(`${stand.schraffuren} Schraffuren für ${stand.geteilt} geteilte Flächen`);
+  }
+  if (!stand.farbeKath || stand.farbeKath === stand.farbeSunn) {
+    throw new Error('Religionsfarben fehlen oder sind gleich');
+  }
+
+  // Die Legende zählt auf, was auf der Karte liegt.
+  await page.click('#btnLegend');
+  await page.waitForTimeout(500);
+  const titel = await page.textContent('#legendTitle');
+  if (!/Religionen/.test(titel)) throw new Error(`Legende zeigt „${titel}"`);
   await page.keyboard.press('Escape');
+
+  // Und die Tafel wird nach Religion gefragt, nicht nach der Hauptstadt.
+  // Über die Adresszeile, weil das der Weg ist, den die Seite selbst geht –
+  // `atlas.select` färbt nur die Karte ein und öffnet keine Tafel.
+  await page.evaluate(() => {
+    location.hash = 'position=4/25/78&year=1600&ort=Mughal%20Empire';
+  });
+  await page.waitForSelector('#panel:not([hidden])', { timeout: 6000 });
+  await page.waitForTimeout(900);
+  const tafel = await page.textContent('#panel');
+  if (!/Bevölkerung glaubt|Herrschaft bekennt/.test(tafel)) {
+    throw new Error('Tafel zeigt im Religionsmodus keine Religionsangaben');
+  }
+  await page.keyboard.press('Escape');
+  await page.click('[data-mode="polity"]');
+  await page.waitForTimeout(400);
 });
 
 await check('Legende zeigt Einträge', async () => {

@@ -1,0 +1,76 @@
+{
+  "about": "Handkorrekturen der Religionsebene. Sie schlagen Steckbrief und Regel – hier steht, was ein Rechteck auf der Landkarte nicht wissen kann.",
+  "hinweis": "»von«/»bis« sind Jahre; fehlen sie, gilt die Korrektur für alle Zeitschnitte, in denen das Gemeinwesen vorkommt.",
+  "korrekturen": [
+    {
+      "name": "Venice",
+      "volk": "kath",
+      "warum": "Der Schwerpunkt wandert 1279 auf die Levantebesitzungen und fiel damit unter die Islamregel."
+    },
+    {
+      "name": "United Kingdom",
+      "volk": "prot",
+      "staat": "angl",
+      "warum": "Schwerpunkt zeitweise in katholischen Kolonien; das Mutterland blieb anglikanisch."
+    },
+    {
+      "name": "Romania",
+      "volk": "orth",
+      "warum": "Schwerpunkt zeitweise in Siebenbürgen, das unter die Mitteleuropa-Regel fällt."
+    },
+    {
+      "name": "Ethiopia",
+      "volk": "orient",
+      "warum": "Christlich seit 340, auch als ringsum islamische Sultanate lagen."
+    },
+    {
+      "name": "Armenia",
+      "volk": "orient",
+      "warum": "Erste christliche Staatskirche der Welt, 301 – davor zoroastrisch geprägt.",
+      "von": 301
+    },
+    {
+      "name": "Thule",
+      "volk": "tradAm",
+      "warum": "Inuit-Kultur; die Regel für Grönland griff auf die norwegische Kirche zu."
+    },
+    {
+      "name": "Laos",
+      "volk": "buddTh",
+      "von": 1200,
+      "warum": "Theravada seit dem Reich Lan Xang, nicht konfuzianisch."
+    },
+    {
+      "name": "Lombardy",
+      "volk": "kath",
+      "warum": "Schwerpunkt zeitweise in den reformierten Bündner Tälern."
+    },
+    {
+      "name": "Somalia",
+      "volk": "sunn",
+      "von": 1100,
+      "warum": "Islamisiert über die Küstenstädte, nicht erst im 20. Jahrhundert."
+    },
+    {
+      "name": "Chagatai Khanate",
+      "volk": "sunn",
+      "von": 1350,
+      "warum": "Islamisierung unter Tarmaschirin; davor tengristisch."
+    },
+    {
+      "name": "central Asian khanates",
+      "volk": "sunn",
+      "warum": "Buchara, Chiwa und Kokand waren sunnitisch, nicht schamanistisch."
+    },
+    {
+      "name": "Finno-Ugric taiga hunter-gatherers",
+      "volk": "schaman",
+      "warum": "Nordasiatischer Schamanismus, nicht europäisches Heidentum."
+    },
+    {
+      "name": "Yugoslavia",
+      "volk": "orth",
+      "warum": "Vielvölkerstaat; der Schwerpunkt wanderte zwischen Bosnien und Kroatien. Serbisch-orthodox war die größte Gruppe."
+    }
+  ]
+}
