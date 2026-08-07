@@ -160,6 +160,40 @@ await check('Kartenmodus-Leiste schaltet die Sicht um', async () => {
   await page.waitForTimeout(300);
 });
 
+await check('Jeder Moduswechsel lässt die Flächen stehen', async () => {
+  /* Gemeldet war: „wenn man von Religion zu Politisch wechselt verschwindet
+     auch alles". Ursache war eine Fassung des Religionsmodus, die die Füllung
+     der Staatsflächen abschaltete und durch eine eigene Ebene ersetzte – beim
+     Zurückschalten kam sie nicht wieder. Diese Prüfung geht alle fünf Modi
+     durch und misst nach jedem, ob auf einem Landpunkt noch Farbe steht. */
+  await page.evaluate(() => { location.hash = 'position=3/40/20&year=1600'; });
+  await page.waitForTimeout(1600);
+  const farbeAn = () => page.evaluate(() => {
+    const pt = window.__atlasMap.latLngToContainerPoint([48.1, 11.6]); // München
+    let deckung = 0;
+    for (const el of document.querySelectorAll('.leaflet-pane canvas')) {
+      const r = el.getBoundingClientRect();
+      const ctx = el.getContext('2d');
+      if (!ctx || !r.width) continue;
+      const d = el.width / r.width;
+      try {
+        const px = ctx.getImageData(Math.round((pt.x - r.left) * d),
+          Math.round((pt.y - r.top) * d), 1, 1).data;
+        deckung = Math.max(deckung, px[3]);
+      } catch { /* fremde Ebene, nicht auslesbar */ }
+    }
+    return deckung;
+  });
+  for (const modus of ['religion', 'polity', 'sovereign', 'religion', 'culture', 'polity']) {
+    await page.click(`[data-mode="${modus}"]`);
+    await page.waitForTimeout(1100);
+    const gesetzt = await page.evaluate(() => window.__atlas.colorMode);
+    if (gesetzt !== modus) throw new Error(`Modus ${modus} nicht gesetzt (${gesetzt})`);
+    const deckung = await farbeAn();
+    if (deckung < 40) throw new Error(`nach „${modus}" steht keine Fläche mehr (Deckung ${deckung})`);
+  }
+});
+
 await check('Religionsmodus färbt nach Glauben und streift die Herrschaft', async () => {
   await page.evaluate(() => { location.hash = 'position=3/30/40&year=1600'; });
   await page.waitForTimeout(1600);
@@ -167,28 +201,14 @@ await check('Religionsmodus färbt nach Glauben und streift die Herrschaft', asy
   await page.waitForTimeout(1600);
   const stand = await page.evaluate(() => {
     const a = window.__atlas;
-    const bild = a.raster?._bild;
-    let gefuellt = 0;
-    let farben = 0;
-    if (bild) {
-      // Stichprobe aus dem gebauten Rasterbild: Wie viel davon trägt Farbe,
-      // und wie viele verschiedene sind es? Ein Bild aus einer einzigen Farbe
-      // wäre technisch heil und inhaltlich wertlos.
-      const ctx = bild.getContext('2d');
-      const d = ctx.getImageData(0, 0, bild.width, bild.height).data;
-      const gesehen = new Set();
-      for (let i = 0; i < d.length; i += 4 * 97) {
-        if (d[i + 3] < 200) continue;
-        gefuellt++;
-        gesehen.add((d[i] << 16) | (d[i + 1] << 8) | d[i + 2]);
-      }
-      farben = gesehen.size;
-    }
+    const slot = a.slots[a.activeSlot];
+    const merkmale = a.epoch.geojson.features.map((f) => f.properties);
     return {
       modus: a.colorMode,
-      hatBild: !!bild,
-      gefuellt,
-      farben,
+      mitAngabe: merkmale.filter((p) => p.rv).length,
+      gesamt: merkmale.length,
+      geteilt: merkmale.filter((p) => p.rv && p.rs && p.rs !== 'lokal' && p.rv !== p.rs).length,
+      schraffuren: slot.religion ? Object.keys(slot.religion._layers).length : 0,
       // Gleiche Religion, gleiche Farbe – anders als bei den Gemeinwesen, wo
       // Nachbarn sich absichtlich unterscheiden.
       farbeKath: a.colorOf('rkath'),
@@ -196,11 +216,13 @@ await check('Religionsmodus färbt nach Glauben und streift die Herrschaft', asy
     };
   });
   if (stand.modus !== 'religion') throw new Error('Modus nicht gesetzt');
-  if (!stand.hatBild) throw new Error('kein Rasterbild gebaut');
-  if (stand.gefuellt < 500) throw new Error(`Raster fast leer (${stand.gefuellt} Proben)`);
-  // Ein Zeitschnitt der frühen Neuzeit hat Dutzende Religionen im Bild; hier
-  // wird nur geprüft, dass es nicht eine einzige Fläche ist.
-  if (stand.farben < 8) throw new Error(`nur ${stand.farben} Farben im Raster`);
+  if (stand.mitAngabe < stand.gesamt * .95) {
+    throw new Error(`nur ${stand.mitAngabe} von ${stand.gesamt} Flächen mit Religionsangabe`);
+  }
+  if (!stand.geteilt) throw new Error('keine Fläche mit abweichender Herrschaft');
+  if (stand.schraffuren !== stand.geteilt) {
+    throw new Error(`${stand.schraffuren} Schraffuren für ${stand.geteilt} geteilte Flächen`);
+  }
   if (!stand.farbeKath || stand.farbeKath === stand.farbeSunn) {
     throw new Error('Religionsfarben fehlen oder sind gleich');
   }

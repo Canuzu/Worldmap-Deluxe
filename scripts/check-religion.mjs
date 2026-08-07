@@ -122,7 +122,7 @@ for (const [name, punkte] of verlauf) {
    Diese Prüfung macht daraus eine Zahl. Achtzig Orte mit Jahr und erwarteter
    Religion, von Persepolis 500 v. Chr. bis Kinshasa heute. */
 const STICHPROBEN = lies('src/data/religion/stichproben.json').punkte;
-const RASTER = path.join(ROOT, 'public/data/religion/raster');
+const RASTER = path.join(ROOT, 'build/religion-raster');
 
 function entpacken(laeufe, laenge) {
   const aus = new Uint8Array(laenge);

@@ -1393,46 +1393,17 @@ Ein Modus färbt nicht nur die Flächen um, er bestimmt auch, wonach die
 Detailtafel gefragt wird. Wer die Religionskarte offen hat und auf das
 Mogulreich klickt, will nicht zuerst die Hauptstadt lesen.
 
-### Religion: Glaube je Ort, nicht je Land
+### Religion: Fläche das Volk, Streifen die Herrschaft
 
-Die erste Fassung gab jedem Gemeinwesen **eine** Farbe. Damit war das
-Osmanische Reich einfarbig – ein Reich, das von Ungarn bis Ägypten reichte und
-dessen Konfessionsgrenzen quer hindurchliefen. Genau die waren nicht zu sehen,
-und genau um sie ging es.
-
-Jetzt liegt unter der Karte ein **Gitter von einem Viertelgrad**, 1440 mal 720
-Zellen, rund 28 km Kantenlänge. Jede Landzelle trägt zwei Angaben: was die
-Bevölkerung dort glaubt, und wozu sich die Herrschaft bekennt. Die Zellen
-wissen nichts von Staatsgrenzen – der Glaube einer Landschaft hört nicht an
-einer Grenze auf –, und die Grenzen liegen als dünne Linien darüber. Erst im
-Zusammenspiel wird die Aussage sichtbar: dass eine Konfessionsgrenze mitten
-durch ein Reich läuft und nicht an seinem Rand.
-
-**Die Küsten bleiben scharf**, ohne dass das Raster sie kennt: Die
-Meeresfläche liegt als deckende Ebene darüber und schneidet an der echten
-Uferlinie ab.
-
-**Im Landesinneren wird die Kante weich, sobald man hineinzoomt.** Auf
-Weltmaßstab ist eine Zelle kleiner als ein Bildpunkt – da sind harte Kanten
-richtig. Bei Zoomstufe 6 ist dieselbe Zelle ein Quadrat von dreißig
-Bildpunkten, und eine harte Kante behauptet dort eine Grenze, wo eine
-Schätzung von 28 Kilometern steht. Der Übergang ist die ehrlichere Auskunft:
-Er zeigt, dass die Karte nicht mehr weiß, wo genau die Linie läuft.
-
-**Die Schraffur liegt im Bildschirmmaß, nicht im Datenmaß.** Anfangs stand sie
-im Rasterbild selbst – jede vierte Diagonale der Zellen. Damit wuchs sie beim
-Zoomen mit und wurde aus feinen Streifen ein Schachbrett aus dreißig
-Bildpunkten. Jetzt wird die Farbe der Herrschaft auf eine Zwischenfläche
-gezeichnet, dort mit `destination-in` auf ein Streifenmuster von sechs
-Bildpunkten beschnitten und als Ganzes aufgelegt. Eine Schraffur ist ein
-Zeichen, kein Gelände: Sie darf nicht mitwachsen.
-
-Zwei Kunstgriffe machen das Zeichnen billig. Das Bild wird gleich in
-**Mercator-Höhe** gebaut statt in Breitengraden – dann ist die Abbildung auf
-den Bildschirm eine reine Streckung und ein einziger `drawImage` je Bild
-genügt, statt 720 zeilenweiser Aufrufe. Und die Daten liegen als
-**Lauflängen**: Ein Raster von einer Million Zellen schrumpft so auf 34 kB je
-Zeitschnitt, geholt nur, wenn der Modus läuft.
+Die Ebene führt **zwei** Angaben je Gemeinwesen: was die Bevölkerung
+überwiegend glaubt, und wozu sich die Herrschaft bekennt. Die Fläche trägt das
+Volk, die Schraffur die Herrschaft – und liegt nur dort, wo beide
+auseinanderfallen. Das sind sieben Prozent aller Angaben, und sie sind der
+Grund, warum es die Ebene gibt: das Mogulreich mit muslimischem Hof über
+hinduistischer Mehrheit, der osmanische Balkan, das Sassanidenreich mit einer
+christlichen Kirche des Ostens unter zoroastrischer Krone, das
+Fatimidenkalifat mit sunnitischem Volk und schiitischem Hof, Sowjetrussland
+mit Staatsatheismus über orthodoxer Bevölkerung.
 
 **35 Klassen, nach Farbfamilien geordnet:** Christliches in Blau, Islamisches
 in Grün, indische Religionen in Ocker, ostasiatische in Violett, antike in
@@ -1441,11 +1412,20 @@ absichtlich verschiedene Farben bekommen, tragen hier zwei katholische Länder
 dieselbe – nur daran erkennt man, wo eine Konfessionsgrenze verläuft und wo
 keine ist.
 
-**Wo Hof und Land verschieden glauben, liegt eine Schraffur.** Das Mogulreich,
-der osmanische Balkan, das Sassanidenreich mit einer christlichen Kirche des
-Ostens unter zoroastrischer Krone, das Fatimidenkalifat mit sunnitischem Volk
-und schiitischem Hof, Sowjetrussland mit Staatsatheismus über orthodoxer
-Bevölkerung, Sibirien mit orthodoxer Herrschaft über schamanistischen Völkern.
+**Ein Raster als Prüfwerkzeug, nicht als Kartenbild.** Neben der Karte wird
+dieselbe Frage Ort für Ort beantwortet: ein Gitter von einem Viertelgrad,
+1440 mal 720 Zellen, aus denselben Raumregeln gebaut. Es wird nicht
+ausgeliefert, sondern erfüllt zwei Zwecke im Bauen. Es rechnet zurück, welche
+Religion in einem Gemeinwesen die vorherrschende ist – die Tafel sagt dann
+„Hinduismus, 74 % der Fläche" statt eines Wortes vom Schwerpunkt. Und es macht
+die Regeln prüfbar.
+
+Ein Versuch, dieses Raster auch zu *zeichnen*, wurde wieder zurückgenommen: Es
+brachte zwei Fehler mit, die es vorher nicht gab – eine Schraffur, die beim
+Zoomen zum Schachbrett wuchs, weil sie im Datenmaß statt im Bildschirmmaß lag,
+und einen Moduswechsel, nach dem die Flächen nicht wiederkamen. Die Karte
+zeichnet wieder je Gemeinwesen, und eine Rauchprüfung geht jetzt alle fünf
+Modi durch und misst nach jedem, ob auf einem Landpunkt noch Farbe steht.
 
 #### Was die Stichprobenprüfung gefunden hat
 

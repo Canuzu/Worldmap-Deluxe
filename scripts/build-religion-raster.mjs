@@ -1,6 +1,17 @@
 #!/usr/bin/env node
 /**
- * Rastert die Religionsebene: Religion je Ort, nicht je Land.
+ * Rastert die Religionsebene – als Prüfwerkzeug, nicht als Kartenbild.
+ *
+ * Die Karte zeichnet die Religion je Gemeinwesen. Dieses Raster daneben
+ * beantwortet dieselbe Frage Ort für Ort und dient zweierlei: Es rechnet
+ * zurück, welche Religion in einem Gemeinwesen die vorherrschende ist – die
+ * Tafel sagt dann „Hinduismus, 74 % der Fläche" statt eines Wortes vom
+ * Schwerpunkt –, und es macht die Raumregeln prüfbar. Gegen 93 feste
+ * Bezugspunkte gehalten hat es einen Haufen Fehler aufgedeckt, die auf einer
+ * Karte je Land unsichtbar blieben: ein Tibet-Rechteck bis Delhi, ein
+ * Britisch-Indien im Persischen Golf, ein afrikanisches Damaskus.
+ *
+ * Es wird deshalb nach `build/` geschrieben und nicht ausgeliefert.
  *
  * Die erste Fassung gab jedem Gemeinwesen eine Farbe. Damit war das Osmanische
  * Reich einfarbig – ein Reich, das von Ungarn bis Ägypten reichte und dessen
@@ -177,7 +188,7 @@ const MEER = (() => {
 
 /* --------------------------------------------------------------- Bauen */
 
-const ZIEL = path.join(ROOT, 'public/data/religion/raster');
+const ZIEL = path.join(ROOT, 'build/religion-raster');
 fs.mkdirSync(ZIEL, { recursive: true });
 
 let bytes = 0;

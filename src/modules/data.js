@@ -293,24 +293,6 @@ export class AtlasData {
   }
 
   /** Zeitschnitt laden (mit Cache und Mehrfachanfragen-Schutz). */
-  /**
-   * Religionsraster eines Zeitschnitts – 1440×720 Zellen, gepackt rund 23 kB.
-   *
-   * Wird nur geholt, wenn der Religionsmodus läuft. Wer die Ebene nie öffnet,
-   * lädt sie nie: Das ist der Unterschied zwischen einer Karte, die 23 kB je
-   * Jahressprung nachlädt, und einer, die es für alle 62 Zeitschnitte auf
-   * Verdacht tut.
-   */
-  async religionsRaster(key) {
-    this._raster ??= new Map();
-    if (this._raster.has(key)) return this._raster.get(key);
-    const task = getJSON(`data/religion/raster/${key}.json`).catch(() => null);
-    this._raster.set(key, task);
-    // Drei Zeitschnitte im Gedächtnis reichen: der aktuelle und seine Nachbarn.
-    if (this._raster.size > 3) this._raster.delete(this._raster.keys().next().value);
-    return task;
-  }
-
   async load(index) {
     const meta = this.epochAt(index);
     if (this._cache.has(meta.key)) {

@@ -18,18 +18,12 @@
 import L from 'leaflet';
 import { createLabelLayer, breiteVon } from './labels.js';
 import RELIGION from '../data/religion/vokabular.json';
-import { religionsRaster } from './religion.js';
 import {
   paletteFor, assignColorIndices, PRECISION_COLORS, withAlpha, shade,
 } from './palette.js';
 
 const PANES = {
   basemap: 200,
-  // Unter den Staatsflächen: Im Religionsmodus zeichnen die ihre Füllung nicht
-  // mehr, sondern nur noch ihre Grenzen – und die sollen über dem Raster
-  // liegen. Erst dadurch sieht man, dass eine Konfessionsgrenze quer durch ein
-  // Reich läuft und nicht an seinem Rand.
-  religion: 210,
   polityA: 220,
   polityB: 230,
   ocean: 240,
@@ -603,8 +597,7 @@ function graticule(step = 15) {
 }
 
 export class AtlasMap {
-  constructor(el, { theme = 'night', holeRaster = null } = {}) {
-    this.options = { holeRaster };
+  constructor(el, { theme = 'night' } = {}) {
     this.el = el;
     this.theme = theme;
     this.basemapId = null;
@@ -664,9 +657,6 @@ export class AtlasMap {
 
     this._initBaseLayers();
     this._initPolityLayers();
-
-    this.raster = religionsRaster({ pane: 'religion' });
-    this.raster.addTo(this.map);
 
     this.labelLayer = createLabelLayer({ pane: 'label' });
     this.labelLayer.addTo(this.map);
@@ -906,9 +896,6 @@ export class AtlasMap {
     if (this.epoch) {
       this._computeColors();
       this._restyleActive();
-      // Das Raster trägt seine Farben im Bild; bei einem Farbweltwechsel muss
-      // es neu gebaut werden.
-      this._religionsSchraffur();
       this._refreshHighlight();
     }
     this._styleLabels();
@@ -1111,28 +1098,6 @@ export class AtlasMap {
     const line = this._cssVar('--border-line-soft', 'rgba(255,255,255,.22)');
     const precision = props.b ?? 0;
 
-    /* Im Religionsmodus färbt das Raster darunter, nicht die Staatsfläche.
-     *
-     * Die Fläche zeichnet dann nur noch ihre Grenze – und zwar kräftiger als
-     * sonst, weil sie jetzt die einzige Aussage der Ebene ist: Hier verläuft
-     * eine Staatsgrenze, dort eine Konfessionsgrenze, und dass beide selten
-     * zusammenfallen, ist der Inhalt der Karte. */
-    if (this.colorMode === 'religion') {
-      return {
-        fill: false,
-        saumFarbe: null,
-        stroke: this.showBorders,
-        color: this.showBorders
-          ? this._cssVar('--border-line', 'rgba(255,255,255,.42)') : 'transparent',
-        weight: precision >= 3 ? 1 : precision === 2 ? .85 : .7,
-        dashArray: precision === 1 ? '2.5 2.5' : null,
-        lineJoin: 'round',
-        lineCap: 'round',
-        opacity: precision === 1 ? .6 : .9,
-        bubblingMouseEvents: false,
-      };
-    }
-
     return {
       fillColor: color,
       fillOpacity: alpha,
@@ -1200,21 +1165,39 @@ export class AtlasMap {
    * Geometrieebene über allen Flächen, und die kostet bei jedem Jahressprung.
    * Wer die Religionskarte nie öffnet, soll dafür nicht zahlen.
    */
-  async _religionsSchraffur() {
-    const an = this.colorMode === 'religion' && !!this.epoch;
-    this.raster.setDeckung(this._schlacht ? .18 : .92);
-    if (!an) { this.raster.setDaten(null); return; }
+  _religionsSchraffur() {
+    const slot = this.slots[this.activeSlot];
+    if (slot.religion) {
+      slot.religion.remove();
+      slot.religion = null;
+    }
+    if (this.colorMode !== 'religion' || !this.epoch) return;
 
-    /* Das Raster kommt aus einer eigenen Datei und wird erst geholt, wenn der
-       Modus läuft. Bis es da ist, steht die Karte ohne Füllung da – das ist
-       ein Bruchteil einer Sekunde und ehrlicher als eine Zwischenfarbe, die
-       gleich wieder wechselt. */
-    const key = this.epoch.meta.key;
-    this._rasterSchluessel = key;
-    const daten = await this.options?.holeRaster?.(key);
-    // Ein neuer Jahressprung kann überholt haben, während die Datei kam.
-    if (this._rasterSchluessel !== key || this.colorMode !== 'religion') return;
-    this.raster.setDaten(daten, RELIGION, this.theme !== 'night');
+    const geteilt = this.epoch.geojson.features.filter((f) => {
+      const p = f.properties;
+      // „lokal" heißt: kein Bekenntnis der Herrschaft – ab 1920 der Regelfall.
+      // Das ist keine Abweichung, sondern ihr Gegenteil, und trägt deshalb
+      // auch keine Schraffur.
+      return p.rv && p.rs && p.rs !== 'lokal' && p.rv !== p.rs;
+    });
+    if (!geteilt.length) return;
+
+    slot.religion = L.geoJSON(
+      { type: 'FeatureCollection', features: geteilt },
+      {
+        pane: slot.pane,
+        renderer: slot.renderer,
+        interactive: false,
+        smoothFactor: .5,
+        style: (f) => ({
+          fill: true,
+          fillColor: hatchFor(this.colors.get(`r${f.properties.rs}`) ?? '#888'),
+          fillOpacity: Number(this._cssVar('--hatch-alpha', '.85')),
+          stroke: false,
+          bubblingMouseEvents: false,
+        }),
+      },
+    ).addTo(this.map);
   }
 
   setColorMode(mode) {
@@ -1247,6 +1230,10 @@ export class AtlasMap {
     if (to.occupation) {
       to.occupation.remove();
       to.occupation = null;
+    }
+    if (to.religion) {
+      to.religion.remove();
+      to.religion = null;
     }
 
     // Saum in der eigenen Füllfarbe, nur als Linie. Er weitet jede Fläche um
@@ -1322,6 +1309,8 @@ export class AtlasMap {
       if (this.activeSlot === this.slots.indexOf(from)) return;
       from.layer?.remove();
       from.layer = null;
+      from.religion?.remove();
+      from.religion = null;
     }, animate ? 340 : 0);
 
     this._religionsSchraffur();
