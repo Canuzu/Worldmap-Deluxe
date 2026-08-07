@@ -1602,6 +1602,72 @@ falls aktiviert, einen Wikipedia-Auszug.
 | `Esc` | Tafel, Fenster oder Vollbild schließen |
 | `?` | Übersicht der Tastenkürzel |
 
+### Am Telefon
+
+Der Atlas ist auf dem Telefon nicht die verkleinerte Schreibtischfassung,
+sondern eine eigene Bedienführung. Zwei Wege tragen dort alles: **ein Land
+antippen und lesen**, und **den Kartenmodus durchschalten**. Danach ist die
+Anordnung gebaut.
+
+**Hochkant** fährt die Detailtafel als **Bodenblatt** von unten ein und steht
+auf halber Bildhöhe. Name, Herrscher und Fläche sind sofort da – und die Karte
+darüber bleibt sichtbar und antippbar. Das ist der ganze Punkt: Wer einen
+Steckbrief liest und dabei nicht mehr sieht, wo das Land liegt, liest über eine
+Karte hinweg statt in ihr. Am Griff oben lässt sich das Blatt auf volle Höhe
+ziehen oder nach unten wegwischen. Beim nächsten Land steht es wieder auf
+halber Höhe: Wer einmal hochgezogen hat, hat kein Vollbild für alles Weitere
+bestellt.
+
+**Quer** gibt es nichts zu ziehen – bei 390 Punkten Höhe fehlt der Weg dafür.
+Dort steht die Tafel als Spalte am rechten Rand, die Karte bleibt links daneben
+sichtbar, und Zeitleiste, Werkzeuge und Modusleiste rücken vor ihre Kante statt
+darunter zu verschwinden. Die Modusleiste tauscht dabei Namen gegen Sinnbilder:
+Fünf Namen brauchen 420 Punkte, fünf Sinnbilder 220, und mehr ist neben der
+Tafel nicht frei.
+
+Weiter gilt am Telefon:
+
+- **Jede Fingerfläche mindestens 44 Punkte.** Apple und Google verlangen beide
+  dieses Maß. Gemessen wurden vorher 36 zu kleine Flächen – Zoomknöpfe von 31
+  Punkten, Abspieltasten von 30. Das sieht man einer Bildschirmaufnahme nicht
+  an, man merkt es erst beim Danebentippen. `npm run check:layout` zählt sie
+  auf drei Telefonformaten mit.
+- **Die Werkzeugsäule nahm ein Drittel der Bildhöhe.** Vergrößern, Verkleinern
+  und Vollbild fallen weg – gezoomt wird mit zwei Fingern, und Vollbild ist auf
+  einem Telefon der Normalzustand.
+- **Weniger Beschriftung, größer gesetzt.** Höchstens 34 Ländernamen statt 130
+  und 70 Orte statt 220; die kleinste Schrift steigt von 9,5 auf 9 Punkte bei
+  gleichzeitig strengerer Auswahl. Auf 390 Punkten Breite ist die Grenze nicht
+  der Platz auf der Karte, sondern was man im Gehen lesen kann.
+- **Die Namen neben den Ereignismarken bleiben weg.** „Die erste moderne
+  Eisenbahnlinie“ ist auf einem Telefon ein Drittel der Bildbreite; im Test
+  lagen zwei solche Zeilen übereinander und über halb Europa. Die Marke
+  genügt – angetippt erscheint die Kartusche mit dem vollen Text.
+- **Zeichenflächen mit 1,5 statt 2 Bildpunkten je Punkt.** Ein Telefon hat
+  nicht weniger Bildpunkte zu füllen als ein Schreibtischschirm, sondern
+  weniger Rechenzeit dafür: 390×844 bei Dichte 2 sind 1,32 Millionen
+  Bildpunkte – so viel wie 1440×900. 1,5 sind 44 Prozent weniger, und bei
+  Flächen und Linien sieht man den Unterschied nicht. Schrift behält volle
+  Dichte, denn dort liest man jede Stufe (`src/modules/dichte.js`).
+
+Geprüft wird das nicht von Hand:
+
+```bash
+npm run check:layout          # 7 Fenstergrößen × 6 Zustände, davon 3 Telefonformate
+npm run check:leistung:handy  # dieselbe Messung mit viermal gedrosseltem Hauptstrang
+npm test                      # enthält Bodenblatt und Querformat als eigene Prüfungen
+```
+
+Was die Telefonmessung in dieser Umgebung **nicht** hergibt, sei dazugesagt:
+Der Behälter, in dem gemessen wurde, hat keine Grafikeinheit. Ein Profillauf
+über den Schlachtverlauf zeigt 87 Prozent der Zeit in browserinternem
+Zeichnen und weniger als ein Prozent im eigenen Code – gemessen wird dort also
+ein Software-Rasterer, nicht ein Telefon. Die absoluten Bildraten sind
+entsprechend pessimistisch. Aussagekräftig bleibt der Vergleich: Die
+Dichteabsenkung hob den Schlachtverlauf von 3,1 auf 4,7 Bilder je Sekunde,
+also um 52 Prozent – genau der Betrag, den 44 Prozent weniger Bildpunkte
+erwarten lassen.
+
 ## Datenquellen
 
 - **Historische Grenzen:** [historical-basemaps](https://github.com/aourednik/historical-basemaps)

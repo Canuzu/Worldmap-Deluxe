@@ -29,12 +29,40 @@ const GROESSEN = [
   ['normal', 1440, 900],
   ['klein', 1280, 720],
   ['schmal', 1024, 700],
+  // Drei Telefonformate statt eines: 360 ist das schmalste, was verbreitet
+  // vorkommt (Galaxy A, älteres Android), 390 ein heutiges iPhone, und quer
+  // bleibt von 844 Punkten Breite nur 390 Höhe – der engste Fall überhaupt.
   ['handy', 390, 844],
+  ['handy-schmal', 360, 640],
+  ['handy-quer', 844, 390],
 ];
+
+/**
+ * Fingerflächen. Apple und Google verlangen beide 44 Punkte als kleinste
+ * Fläche, die man sicher trifft; darunter tippt man daneben. Gemessen wurde
+ * hier einmal 36 zu kleine Flächen auf einem Telefon – Zoomknöpfe von 31
+ * Punkten, Abspieltasten von 30. Das sieht man einer Bildschirmaufnahme nicht
+ * an, man merkt es erst beim Danebentippen.
+ */
+const FINGER = `(() => {
+  const klein = [];
+  for (const el of document.querySelectorAll('button,[role="radio"],a,[data-goto],[data-focus]')) {
+    if (el.offsetParent === null) continue;
+    const r = el.getBoundingClientRect();
+    if (!r.width || !r.height) continue;
+    const cs = getComputedStyle(el);
+    if (cs.visibility === 'hidden' || Number(cs.opacity) < .05) continue;
+    if (r.width < 44 || r.height < 44) {
+      klein.push((el.id || el.className || el.tagName) + ' ' + Math.round(r.width) + '×' + Math.round(r.height));
+    }
+  }
+  return klein;
+})()`;
 
 /** Überlappungen zwischen Bedienelementen finden – das Auge übersieht sie. */
 const RECHTECKE = `(() => {
   const namen = ['.dock', '.tools', '.timeline', '.credits', '.rose', '.panel',
+                 '#colorModes',
                  '#layersMenu', '#legendBox', '#battlesBox'];
   const out = {};
   for (const s of namen) {
@@ -85,6 +113,8 @@ for (const [name, w, h] of GROESSEN) {
   await page.waitForSelector('#app:not([hidden])', { timeout: 20000 });
   await page.waitForTimeout(2800);
 
+  const istHandy = w < 560 || h < 480;
+
   const zustaende = [
     ['ruhe', async () => {}],
     ['tafel', async () => {
@@ -119,6 +149,11 @@ for (const [name, w, h] of GROESSEN) {
     const info = await page.evaluate(RECHTECKE);
     const probleme = kollisionen(info.boxes, info.vw, info.vh);
     if (info.ueberlauf) probleme.push('waagerechter Überlauf der Seite');
+    if (istHandy) {
+      const klein = await page.evaluate(FINGER);
+      for (const k of klein.slice(0, 4)) probleme.push(`Fingerfläche zu klein: ${k}`);
+      if (klein.length > 4) probleme.push(`… und ${klein.length - 4} weitere zu kleine Flächen`);
+    }
     fehlerGesamt += probleme.length;
     const marke = probleme.length ? '✗' : '✓';
     console.log(`${marke} ${name.padEnd(7)} ${zname.padEnd(11)} ${w}×${h}`);

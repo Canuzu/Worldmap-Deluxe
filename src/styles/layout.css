@@ -1577,7 +1577,14 @@
 .mapmodes {
   position: absolute;
   z-index: 500;
-  bottom: calc(10.6rem + var(--safe-b));
+  /* Eine Zeile über der Quellenzeile, nicht daneben. Beide standen bisher auf
+     derselben Höhe: die Quellenzeile links, die Modusleiste mittig – das ging
+     gut, solange dazwischen Platz war. Er verschwindet zweimal: bei schmalen
+     Fenstern (bei 1024 gemessen 37 Punkte Überdeckung) und sobald die
+     Detailtafel aufgeht, denn dann wird die Kartenfläche schmaler und die
+     Leiste rückt mit ihrer Mitte nach links. Übereinander gestapelt können
+     sie sich in keiner Kombination mehr treffen. */
+  bottom: calc(var(--console-h, 9rem) + 4rem + var(--safe-b));
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -1657,4 +1664,131 @@
     repeating-linear-gradient(45deg,
       var(--ink-faint) 0 2px, transparent 2px 5px),
     var(--surface-3);
+}
+
+/* ============================================================
+   Telefon: eigene Bedienführung, nicht nur kleiner
+   ============================================================
+
+   Gemessen wurde vorher: 36 anklickbare Flächen unter 40 Bildpunkten, eine
+   Werkzeugsäule über 300 Punkte hoch bei 844 Punkten Bildhöhe, und eine
+   Modusleiste, die auf dem Maßstab saß. Das ist keine Frage des Geschmacks –
+   Apple und Google verlangen beide 44 Punkte als kleinste Fingerfläche, und
+   darunter trifft man daneben.
+
+   Der Schwerpunkt liegt auf zwei Dingen: ein Land antippen und lesen, und
+   zwischen den Kartenmodi wechseln. Alles andere darf weichen. */
+
+/* Die Fingerflächen gelten in beiden Lagen: Wer das Telefon dreht, bekommt
+   keine kleineren Knöpfe. Deshalb eine eigene Regel, die auch im Querformat
+   greift, wo die Breite über 560 liegt. */
+@media (max-width: 560px), (max-height: 480px) and (orientation: landscape) {
+  /* Jede Fingerfläche mindestens 44 Punkte. Das Symbol darin bleibt klein –
+     die Fläche wächst, nicht das Bild. */
+  .tool,
+  .dock__btn,
+  .dock__mark,
+  .mapmodes button,
+  .tbtn,
+  .popover button,
+  .panel__close,
+  .legend button,
+  [data-goto],
+  [data-focus] {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  /* Der Abspielknopf ist der größte von allen – er wird am häufigsten
+     getroffen und ist rund, verliert also an den Ecken Fläche. */
+  .tbtn--play { min-width: 52px; min-height: 52px; }
+  /* Zwei Textmarken, die keine Schaltflächen werden sollen: die Quellenzeile
+     und der Herkunftsvermerk in der Zeitleiste („korrigiert", „ergänzt").
+     Sie bekommen nur den Griffabstand, den ein Finger braucht – als
+     inline-block, sonst greift die Mindesthöhe an einem Inline-Element
+     nicht. */
+  .credits__link, .herkunft {
+    display: inline-block;
+    padding: .7rem .45rem;
+    min-height: 44px;
+  }
+  /* Die Quellenverweise im Fuß der Detailtafel (Wikipedia, Datensatz) stehen
+     als Fließtext nebeneinander und waren nur vierzehn Punkte hoch. inline-flex
+     statt inline-block, damit die Mindesthöhe greift und der Text dabei
+     mittig bleibt; der Trennpunkt zwischen ihnen behält seinen Platz. */
+  .pnl__foot a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 .3rem;
+  }
+}
+
+@media (max-width: 560px) {
+
+  /* Die Werkzeugsäule nahm ein Drittel der Bildhöhe. Auf dem Telefon bleiben
+     die vier, die man dort wirklich braucht: Ebenen, Legende, Farbwelt und
+     „nur die Karte". Vergrößern und Verkleinern geht mit zwei Fingern, und
+     Vollbild ist auf einem Telefon ohnehin der Normalzustand. */
+  #btnZoomIn, #btnZoomOut, #btnFull, .tools__sep { display: none; }
+  .tools { gap: .15rem; padding: .25rem; }
+
+  /* Die Modusleiste behält ihre Namen. Sie ist einer der beiden Gründe, warum
+     jemand die Karte auf dem Telefon öffnet – als Reihe namenloser Symbole
+     wäre sie zwar schmaler, aber niemand wüsste, was sie tut. */
+  .mapmodes {
+    left: .5rem;
+    right: .5rem;
+    transform: none;
+    max-width: none;
+    bottom: calc(11.4rem + var(--safe-b));
+    justify-content: flex-start;
+    scroll-snap-type: x proximity;
+  }
+  .mapmodes button {
+    scroll-snap-align: start;
+    padding: .4rem .62rem;
+    font-size: .74rem;
+  }
+  .mapmodes button span { display: inline; }
+
+  /* Der Maßstab lag unter der Modusleiste. Er wandert nach oben links, unter
+     die Kopfzeile – dort ist auf einem Telefon Platz. */
+  .credits { bottom: auto; top: calc(4.2rem + env(safe-area-inset-top, 0px)); }
+}
+
+/* Querformat: Es bleiben 390 Punkte Höhe, davon fraß die Zeitleiste ein
+   Drittel. Wer das Telefon dreht, will mehr Karte sehen – also bekommt er
+   sie: Die Zeitleiste schrumpft auf eine Zeile, die Modusleiste rückt an den
+   linken Rand, und die Werkzeuge stehen enger. */
+@media (max-height: 480px) and (orientation: landscape) {
+  /* Die Zeitleiste selbst wird in timeline.css gekürzt – dort stehen ihre
+     Grundregeln, und bei gleicher Spezifität gewinnt die spätere Datei. */
+
+  /* Die Modusleiste kann nicht mehr unten stehen – dort ist die Zeitleiste –
+     und als linke Spalte reichte die Höhe für fünf fingergroße Felder nicht
+     aus. Sie legt sich als Zeile in den freien Streifen rechts neben den
+     Titel, oberhalb der Karte. */
+  .mapmodes {
+    /* Der Streifen zwischen Kopfzeile und Werkzeugsäule: Die Kopfzeile endet
+       bei 351, die Säule beginnt bei 779 Punkten. Die Leiste rollt waagerecht,
+       falls einmal ein Modus dazukommt. */
+    left: 22.5rem;
+    right: 4.8rem;
+    bottom: auto;
+    top: .55rem;
+    transform: none;
+    max-width: none;
+    justify-content: flex-start;
+    scroll-snap-type: x proximity;
+  }
+  /* Ohne Sinnbild, dafür alle fünf Namen nebeneinander: In 428 Punkten Streifen
+     passen Symbol und Name nicht fünfmal. Ein abgeschnittener fünfter Modus
+     wäre schlechter als ein fehlendes Bildchen – gesucht wird nach dem Namen. */
+  .mapmodes { gap: .1rem; padding: .2rem; }
+  .mapmodes button { scroll-snap-align: start; padding: .38rem .5rem; font-size: .7rem; }
+  .mapmodes button span { display: inline; }
+  .mapmodes button svg { display: none; }
+
+  .tools { top: .5rem; gap: 0; padding: .15rem; }
+  .credits { display: none; }
 }

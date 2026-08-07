@@ -17,6 +17,7 @@
  */
 import L from 'leaflet';
 import { createLabelLayer, breiteVon } from './labels.js';
+import { schriftdichte } from './dichte.js';
 import RELIGION from '../data/religion/vokabular.json';
 import {
   paletteFor, assignColorIndices, PRECISION_COLORS, withAlpha, shade,
@@ -1578,7 +1579,7 @@ export class AtlasMap {
       this._relText = c;
     }
     const groesse = this.map.getSize();
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const dpr = schriftdichte();
     const c = this._relText;
     if (c.width !== Math.round(groesse.x * dpr)) {
       c.width = Math.round(groesse.x * dpr);
@@ -1594,7 +1595,7 @@ export class AtlasMap {
     if (!canvas) return;
     const map = this.map;
     const size = map.getSize();
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const dpr = schriftdichte();
     if (canvas.width !== Math.round(size.x * dpr) || canvas.height !== Math.round(size.y * dpr)) {
       canvas.width = Math.round(size.x * dpr);
       canvas.height = Math.round(size.y * dpr);
@@ -1613,6 +1614,11 @@ export class AtlasMap {
     if (!(this.showPlaces && this.places?.length) && !(this.showPhysical && this.physical?.length)) return;
 
     const zoom = map.getZoom();
+    /* Dieselbe Rechnung wie bei den Ländernamen: Auf einem schmalen Bildschirm
+       sind Ortsnamen kleiner und weniger. Zweihundert Punkte mit Namen auf
+       390 Bildpunkten Breite wären ein Gitter, keine Karte. */
+    const eng = size.x < 560;
+    const hoechstOrte = eng ? 70 : 220;
     const ink = this._cssVar('--label-ink', '#fff');
     const halo = this._cssVar('--label-halo', 'rgba(0,0,0,.9)');
     const font = this._cssVar('--font-ui', 'sans-serif');
@@ -1653,10 +1659,10 @@ export class AtlasMap {
         if (!klasse) continue;
         // Kantenlänge des Gebiets in Bildpunkten, grob aus seiner Zellenzahl.
         const seite = Math.sqrt(g.n) * .25 * (256 * 2 ** zoom) / 360;
-        if (seite < 72) continue;
+        if (seite < (eng ? 100 : 72)) continue;
         const pt = map.latLngToContainerPoint([g.p[1], g.p[0]]);
         if (pt.x < 0 || pt.y < 0 || pt.x > size.x || pt.y > size.y) continue;
-        const grad = Math.min(14, Math.max(9.5, seite / 12));
+        const grad = Math.min(eng ? 11.5 : 14, Math.max(eng ? 8.5 : 9.5, seite / 12));
         rctx.font = `600 ${grad.toFixed(1)}px ${font}`;
         const breite = breiteVon(rctx, klasse.name);
         if (breite > seite * 1.1) continue;
@@ -1681,7 +1687,7 @@ export class AtlasMap {
         if (zoom < 3 + s.rang * .55) continue;
         const pt = map.latLngToContainerPoint([s.lat, s.lon]);
         if (pt.x < 0 || pt.y < 0 || pt.x > size.x || pt.y > size.y) continue;
-        const grad = s.rang <= 2 ? 12 : 11;
+        const grad = (s.rang <= 2 ? 12 : 11) - (eng ? 1.5 : 0);
         ctx.font = `italic 500 ${grad}px ${font}`;
         const breite = breiteVon(ctx, s.name);
         if (!frei(pt.x - breite / 2 - 4, pt.y - grad, breite + 8, grad * 2)) continue;
@@ -1699,12 +1705,12 @@ export class AtlasMap {
     let gezeichnet = 0;
     if (!this.showPlaces) return;
     for (const ort of this.places) {
-      if (gezeichnet > 220) break;
+      if (gezeichnet > hoechstOrte) break;
       if (zoom < (PLACE_FROM_ZOOM[ort.rang] ?? 9)) continue;
       const pt = map.latLngToContainerPoint([ort.lat, ort.lon]);
       if (pt.x < -40 || pt.y < -20 || pt.x > size.x + 40 || pt.y > size.y + 20) continue;
 
-      const grad = ort.rang <= 1 ? 12.5 : ort.rang <= 3 ? 11.5 : 10.5;
+      const grad = (ort.rang <= 1 ? 12.5 : ort.rang <= 3 ? 11.5 : 10.5) - (eng ? 1.5 : 0);
       ctx.font = `500 ${grad}px ${font}`;
       const breite = breiteVon(ctx, ort.name);
       const x = pt.x + 6;

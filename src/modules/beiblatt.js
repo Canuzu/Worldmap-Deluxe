@@ -13,6 +13,8 @@
  * jedes Loch die Landfarbe gelegt.
  */
 
+import { zeichendichte } from './dichte.js';
+
 const BREITE = 168;
 const HOEHE = 132;
 
@@ -61,7 +63,7 @@ export class Beiblatt {
     this.leinwand = document.createElement('canvas');
     this.leinwand.className = 'beiblatt__blatt';
     this.ctx = this.leinwand.getContext('2d');
-    this.dichte = Math.min(window.devicePixelRatio || 1, 2);
+    this.dichte = zeichendichte();
     this.leinwand.width = Math.round(BREITE * this.dichte);
     this.leinwand.height = Math.round(HOEHE * this.dichte);
     this.leinwand.style.width = `${BREITE}px`;

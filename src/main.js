@@ -336,7 +336,7 @@ async function main() {
       state.selected = null;
       atlas.select(null);
       const warOffen = panel.isOpen;
-      panel.dom.root.hidden = true;
+      panel.verbergen();
       if (warOffen) buehneGeaendert();
     }
   }
@@ -364,7 +364,7 @@ async function main() {
     atlas.select(name, { zoom });
     const warOffen = panel.isOpen;
     if (name && open) panel.show(name, state.epoch, state.year);
-    if (!name) panel.dom.root.hidden = true;
+    if (!name) panel.verbergen();
     if (panel.isOpen !== warOffen) buehneGeaendert();
     updateHash();
     announce();

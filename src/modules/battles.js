@@ -26,6 +26,7 @@
  * sie verschwinden restlos, sobald man die Schlacht schließt.
  */
 import L from 'leaflet';
+import { zeichendichte } from './dichte.js';
 
 /**
  * Die Verläufe kommen erst, wenn jemand sie sehen will.
@@ -579,7 +580,7 @@ const SchlachtLeinwand = L.Layer.extend({
     if (!map) return;
     const groesse = map.getSize();
     const c = this._leinwand;
-    const dichte = Math.min(window.devicePixelRatio || 1, 2);
+    const dichte = zeichendichte();
     if (c.width !== Math.round(groesse.x * dichte) || c.height !== Math.round(groesse.y * dichte)) {
       c.width = Math.round(groesse.x * dichte);
       c.height = Math.round(groesse.y * dichte);

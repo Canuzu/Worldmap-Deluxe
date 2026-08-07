@@ -7,6 +7,7 @@
  * ergibt ein ruhiges Kartenbild, das beim Zoomen immer mehr Details freigibt.
  */
 import L from 'leaflet';
+import { schriftdichte } from './dichte.js';
 
 const PAD_X = 5;
 const PAD_Y = 3;
@@ -132,7 +133,7 @@ export const LabelLayer = L.Layer.extend({
     if (!map) return;
 
     const size = map.getSize();
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const dpr = schriftdichte();
     const canvas = this._canvas;
 
     if (canvas.width !== Math.round(size.x * dpr) || canvas.height !== Math.round(size.y * dpr)) {
@@ -157,8 +158,23 @@ export const LabelLayer = L.Layer.extend({
     const placed = [];
     let drawn = 0;
 
+    /* Auf dem Telefon eine eigene Rechnung, nicht dieselbe kleiner.
+     *
+     * „Osmanisches Reich" nahm bei 390 Bildpunkten Breite 74 Prozent davon
+     * ein – die Schrift war für einen Bildschirm gerechnet, der viermal so
+     * breit ist. Ein Name, der über das halbe Bild läuft, ist keine
+     * Beschriftung mehr, sondern ein Hindernis.
+     *
+     * Zugleich weniger Namen: Auf einem Telefon ist die Karte ein Ausschnitt,
+     * und dreißig Namen darauf sind mehr, als man lesen will. Was wegfällt,
+     * sind die kleinsten – die großen Reiche bleiben. */
+    const eng = size.x < 560;
+    const grenzGrad = eng ? 15 : 21;
+    const mindestGroesse = this.options.minPixelSize * (eng ? 1.5 : 1);
+    const hoechstZahl = eng ? 34 : this.options.maxLabels;
+
     for (const item of this._items) {
-      if (drawn >= this.options.maxLabels) break;
+      if (drawn >= hoechstZahl) break;
 
       const nePt = map.latLngToContainerPoint(item.bounds.getNorthEast());
       const swPt = map.latLngToContainerPoint(item.bounds.getSouthWest());
@@ -167,13 +183,14 @@ export const LabelLayer = L.Layer.extend({
       const extent = Math.min(Math.max(w, h), Math.max(Math.min(w, h) * 3.2, 20));
 
       const isFocus = item.key === this._selected || item.key === this._hover;
-      if (!isFocus && extent < this.options.minPixelSize) continue;
+      if (!isFocus && extent < mindestGroesse) continue;
 
       const pt = map.latLngToContainerPoint(item.latlng);
       if (pt.x < -120 || pt.y < -60 || pt.x > size.x + 120 || pt.y > size.y + 60) continue;
 
       // Schriftgrad aus Bildschirmausdehnung und Zoomstufe
-      let fontSize = Math.min(21, Math.max(9.5, 6.2 + Math.sqrt(extent) * 0.72 + zoom * 0.28));
+      let fontSize = Math.min(grenzGrad, Math.max(eng ? 9 : 9.5,
+        6.2 + Math.sqrt(extent) * 0.72 + zoom * 0.28));
       if (isFocus) fontSize = Math.max(fontSize, 12.5);
 
       // Sammelbezeichnungen wie „Jäger und Sammler des östlichen Nordamerika“
@@ -195,7 +212,7 @@ export const LabelLayer = L.Layer.extend({
           continue;
         }
       }
-      if (breite > size.x * 0.42) {
+      if (breite > size.x * (eng ? .5 : .42)) {
         text = `${text.slice(0, 26).trimEnd()}…`;
         breite = breiteVon(ctx, text);
       }

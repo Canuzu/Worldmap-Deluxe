@@ -368,6 +368,25 @@
   .year { font-size: 1.45rem; }
 }
 
+/* Querformat am Telefon: 390 Punkte Höhe, davon nahm die Zeitleiste 142 – gut
+   ein Drittel. Wer das Telefon dreht, will mehr Karte sehen. Es bleiben Jahr,
+   die drei Knöpfe und der Regler; die Kennzahlenspalte („313 Gemeinwesen“,
+   „107,3 Mio. km²“) und die Jahreszahlenreihe unter dem Regler fallen weg.
+   Beides ist Beiwerk, das im Hochformat gern gelesen wird – hier kostet es
+   vierzig Punkte Karte.
+
+   Die Breite ist mit 844 Punkten größer als die 720 der Regel darüber, deshalb
+   eine eigene Regel statt einer erweiterten Breitengrenze. */
+@media (max-height: 480px) and (orientation: landscape) {
+  .timeline { padding: .4rem .9rem .3rem; }
+  .timeline__head { margin-bottom: .25rem; }
+  .timeline__stats { display: none; }
+  .track__scale { display: none; }
+  .year { font-size: 1.45rem; }
+  .year__era { font-size: .56rem; letter-spacing: .12em; }
+  .year__title { font-size: .72rem; }
+}
+
 /* Herkunftszeichen: markiert Zeitschnitte, die nicht unverändert aus dem
    Ursprungsdatensatz stammen. Anklickbar, weil die Begründung dazugehört. */
 .herkunft {

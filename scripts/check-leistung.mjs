@@ -14,15 +14,53 @@
  * längste Blockade des Hauptstrangs („langer Task“) festgehalten. Ein einzelner
  * Task über 50 ms ist das, was man als Ruckeln wahrnimmt.
  *
+ * Mit HANDY=1 läuft dieselbe Messung als Telefon: 390×844 mit doppelter
+ * Bildpunktdichte, Fingerbedienung statt Maus und ein viermal langsamer
+ * gerechneter Hauptstrang. Der Faktor vier ist die übliche Annäherung an ein
+ * Mittelklassetelefon gegenüber einem Schreibtischrechner. Die Latte liegt
+ * entsprechend tiefer – 30 Bilder je Sekunde sind auf einem Telefon in
+ * Bewegung ein guter Wert, keine Notlösung.
+ *
  * Aufruf: node scripts/check-leistung.mjs [http://127.0.0.1:4173]
+ *         HANDY=1 node scripts/check-leistung.mjs
  */
 import { chromium } from 'playwright';
 
 const BASE = process.argv[2] ?? 'http://127.0.0.1:4173';
+const HANDY = Boolean(process.env.HANDY);
 const browser = await chromium.launch({
   executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome',
 });
-const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+const page = await browser.newPage(HANDY
+  ? { viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true }
+  : { viewport: { width: 1440, height: 900 } });
+
+/* Der gedrosselte Hauptstrang ist der Kern der Telefonmessung: Ein Telefon hat
+   nicht weniger Bildpunkte zu füllen, sondern weniger Rechenzeit dafür. */
+if (HANDY) {
+  const cdp = await page.context().newCDPSession(page);
+  await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 });
+}
+
+/* Auf dem Telefon zieht ein Finger, kein Mauszeiger – Leaflet nimmt dafür
+   andere Ereignisse, und nur die gemessene Bahn sagt etwas über die
+   tatsächliche Bedienung. */
+const ziehen = async (bahn) => {
+  if (HANDY) {
+    const cdp = await page.context().newCDPSession(page);
+    const senden = (type, x, y) => cdp.send('Input.dispatchTouchEvent', {
+      type, touchPoints: type === 'touchEnd' ? [] : [{ x, y }],
+    });
+    await senden('touchStart', bahn[0][0], bahn[0][1]);
+    for (const [x, y] of bahn.slice(1)) { await senden('touchMove', x, y); await page.waitForTimeout(16); }
+    await senden('touchEnd', 0, 0);
+    return;
+  }
+  await page.mouse.move(bahn[0][0], bahn[0][1]);
+  await page.mouse.down();
+  for (const [x, y] of bahn.slice(1)) { await page.mouse.move(x, y); await page.waitForTimeout(16); }
+  await page.mouse.up();
+};
 
 /* Bildraten und lange Tasks aufzeichnen. Beides läuft in der Seite, weil nur
    dort die Zeitpunkte stimmen, die der Benutzer erlebt. */
@@ -70,31 +108,61 @@ await page.waitForSelector('#app:not([hidden])', { timeout: 20000 });
 await page.waitForFunction(() => document.getElementById('boot').hidden, null, { timeout: 15000 });
 await page.waitForTimeout(2000);
 
-/* 1. Ruhe. Die Latte: Eine Seite, auf der nichts passiert, darf auch nichts tun. */
-await messe('Ruhezustand', async () => { await page.waitForTimeout(2000); }, 55);
+/* Die Latte. Auf dem Telefon liegt sie tiefer, weil dort viermal weniger
+   Rechenzeit je Bild zur Verfügung steht; 30 Bilder je Sekunde in Bewegung
+   sind dort ein guter Wert. Im Ruhezustand gilt dieselbe Forderung wie überall:
+   Wo nichts passiert, darf auch nichts gerechnet werden. */
+const LATTE = HANDY ? { ruhe: 50, bewegung: 30 } : { ruhe: 55, bewegung: 45 };
+const mitte = { x: HANDY ? 195 : 720, y: HANDY ? 420 : 450 };
+
+/* 1. Ruhe. */
+await messe('Ruhezustand', async () => { await page.waitForTimeout(2000); }, LATTE.ruhe);
 
 /* 2. Zeitreise über mehrere Jahresschnitte. */
 await messe('Zeitreise', async () => {
   await page.click('#btnPlay');
   await page.waitForTimeout(6000);
   await page.click('#btnPlay');
-}, 45);
+}, LATTE.bewegung);
 
-/* 3. Schwenken. Gezogen wird mit der Maus, damit Leaflet dieselben
-      Bewegungsereignisse bekommt wie bei einem Menschen. */
+/* 3. Schwenken. Gezogen wird wie von Hand – mit der Maus am Schreibtisch, mit
+      dem Finger am Telefon –, damit Leaflet dieselben Bewegungsereignisse
+      bekommt wie bei einem Menschen. */
 await messe('Schwenken', async () => {
-  await page.mouse.move(720, 450);
-  await page.mouse.down();
-  for (let i = 0; i < 40; i++) {
-    await page.mouse.move(720 - i * 8, 450 + Math.sin(i / 4) * 40);
-    await page.waitForTimeout(16);
+  const bahn = [[mitte.x, mitte.y]];
+  for (let i = 1; i < 40; i++) {
+    bahn.push([mitte.x - i * (HANDY ? 3 : 8), mitte.y + Math.sin(i / 4) * (HANDY ? 20 : 40)]);
   }
-  await page.mouse.up();
+  await ziehen(bahn);
   await page.waitForTimeout(600);
-}, 45);
+}, LATTE.bewegung);
 
-/* 4. Zoomen. */
+/* 4. Zoomen. Am Telefon führt kein Mausrad, sondern die Kneifgeste mit zwei
+      Fingern. Ein Doppeltipp täte es auch, wählt aber unterwegs das Land unter
+      dem Finger aus – gemessen würde dann das Aufziehen der Tafel und nicht
+      das Zoomen. */
 await messe('Zoomen', async () => {
+  if (HANDY) {
+    const cdp = await page.context().newCDPSession(page);
+    const punkte = (d) => [
+      { x: mitte.x - d, y: mitte.y - d },
+      { x: mitte.x + d, y: mitte.y + d },
+    ];
+    for (let runde = 0; runde < 3; runde++) {
+      const weiten = runde % 2 ? [110, 30] : [30, 110];
+      const [von, bis] = weiten;
+      await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: punkte(von) });
+      for (let i = 1; i <= 14; i++) {
+        await cdp.send('Input.dispatchTouchEvent', {
+          type: 'touchMove', touchPoints: punkte(von + ((bis - von) * i) / 14),
+        });
+        await page.waitForTimeout(16);
+      }
+      await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+      await page.waitForTimeout(700);
+    }
+    return;
+  }
   for (let i = 0; i < 4; i++) {
     await page.mouse.wheel(0, -240);
     await page.waitForTimeout(500);
@@ -103,7 +171,7 @@ await messe('Zoomen', async () => {
     await page.mouse.wheel(0, 240);
     await page.waitForTimeout(500);
   }
-}, 45);
+}, LATTE.bewegung);
 
 /* 5. Jahressprünge – gemessen als Blockadezeit, nicht als Bildrate.
  *
@@ -161,7 +229,7 @@ await messe('Schlachtverlauf', async () => {
   await page.evaluate(() => window.__battles.play());
   await page.waitForTimeout(6000);
   await page.evaluate(() => window.__battles.stop());
-}, 45);
+}, LATTE.bewegung);
 
 await browser.close();
 

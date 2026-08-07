@@ -1165,11 +1165,107 @@ await check('Ereignisebene lässt sich abschalten', async () => {
 
 await check('Mobiles Format bleibt bedienbar', async () => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.waitForTimeout(800);
-  await visible('#timeline');
+  // Frisch laden: Die Prüfung davor lässt womöglich eine Tafel offen, und im
+  // Hochformat tritt die Zeitleiste dann bewusst ab. Geprüft werden soll der
+  // Ruhezustand.
+  await page.goto(`${BASE}/#position=3.2/40/16&year=1815`, { waitUntil: 'networkidle' });
+  await page.waitForTimeout(1200);
+  if (!(await page.locator('#timeline').isVisible())) {
+    const wo = await page.evaluate(() => {
+      const t = document.getElementById('timeline'); const cs = getComputedStyle(t);
+      const r = t.getBoundingClientRect();
+      return `app="${document.getElementById('app').className}" body="${document.body.className}" `
+        + `${cs.display}/${cs.visibility}/${cs.opacity} ${Math.round(r.width)}×${Math.round(r.height)}`;
+    });
+    throw new Error(`Zeitleiste nicht sichtbar: ${wo}`);
+  }
   await visible('#track');
+  await visible('#colorModes');
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   if (overflow > 2) throw new Error(`waagerechter Überlauf: ${overflow}px`);
+  await page.setViewportSize({ width: 1440, height: 900 });
+});
+
+/* Das Bodenblatt ist die Bedienung am Telefon: antippen, auf halber Höhe
+   lesen, hochziehen, wegwischen. Geht eine dieser vier Stufen verloren,
+   bleibt die Karte zwar sichtbar, aber der Weg durch sie ist zu. */
+await check('Bodenblatt am Telefon: halbe Höhe, hochziehen, wegwischen', async () => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(`${BASE}/#position=3.2/40/16&year=1815&ort=Austrian%20Empire`,
+    { waitUntil: 'networkidle' });
+  await page.waitForSelector('#panel:not([hidden])', { timeout: 8000 });
+  await page.waitForTimeout(900);
+
+  const anteil = async () => page.evaluate(() =>
+    document.getElementById('panel').getBoundingClientRect().height / window.innerHeight);
+
+  const halb = await anteil();
+  if (halb < .42 || halb > .62) throw new Error(`Blatt steht auf ${Math.round(halb * 100)} % statt rund 52 %`);
+  // Die Karte muss darüber sichtbar bleiben – das ist der ganze Grund für das
+  // Blatt statt einer Vollbildtafel.
+  const kartenrand = await page.evaluate(() =>
+    document.getElementById('panel').getBoundingClientRect().top);
+  if (kartenrand < 120) throw new Error(`über dem Blatt bleiben nur ${Math.round(kartenrand)}px Karte`);
+
+  // Am Griff hochziehen.
+  const griff = await page.evaluate(() => {
+    const r = document.getElementById('panel').getBoundingClientRect();
+    return { x: r.left + r.width / 2, y: r.top + 20 };
+  });
+  await page.mouse.move(griff.x, griff.y);
+  await page.mouse.down();
+  await page.mouse.move(griff.x, 80, { steps: 8 });
+  await page.mouse.up();
+  await page.waitForTimeout(500);
+  const hoch = await anteil();
+  if (hoch < .8) throw new Error(`Hochziehen bleibt bei ${Math.round(hoch * 100)} %`);
+
+  // Und wieder herunterwischen schließt.
+  const griff2 = await page.evaluate(() => {
+    const r = document.getElementById('panel').getBoundingClientRect();
+    return { x: r.left + r.width / 2, y: r.top + 20 };
+  });
+  await page.mouse.move(griff2.x, griff2.y);
+  await page.mouse.down();
+  await page.mouse.move(griff2.x, 830, { steps: 10 });
+  await page.mouse.up();
+  await page.waitForTimeout(600);
+  if (!(await page.locator('#panel').isHidden())) throw new Error('Runterwischen schließt nicht');
+  await page.setViewportSize({ width: 1440, height: 900 });
+});
+
+/* Quer gedreht ist die Anordnung eine andere: Die Tafel steht als Spalte
+   rechts, damit die Karte daneben sichtbar bleibt, und die Modusleiste muss
+   erreichbar bleiben – sie ist der zweite Hauptweg am Telefon. */
+await check('Querformat am Telefon: Tafel als Spalte, Modi bleiben erreichbar', async () => {
+  await page.setViewportSize({ width: 844, height: 390 });
+  await page.goto(`${BASE}/#position=3.2/40/16&year=1815&ort=Austrian%20Empire`,
+    { waitUntil: 'networkidle' });
+  await page.waitForSelector('#panel:not([hidden])', { timeout: 8000 });
+  await page.waitForTimeout(900);
+
+  const masse = await page.evaluate(() => {
+    const p = document.getElementById('panel').getBoundingClientRect();
+    const m = document.getElementById('colorModes');
+    const mr = m.getBoundingClientRect();
+    const cs = getComputedStyle(m);
+    return {
+      panel: { l: p.left, r: p.right, h: p.height },
+      modi: { l: mr.left, r: mr.right, w: mr.width, sicht: cs.visibility, deck: Number(cs.opacity) },
+      vh: window.innerHeight, vw: window.innerWidth,
+    };
+  });
+  if (masse.panel.h < masse.vh - 2) throw new Error('Tafel steht nicht über die volle Höhe');
+  if (masse.panel.l < masse.vw * .35) throw new Error('Tafel nimmt mehr als zwei Drittel der Breite');
+  if (masse.modi.sicht === 'hidden' || masse.modi.deck < .5) throw new Error('Modusleiste verschwindet');
+  if (masse.modi.r > masse.panel.l + 1) throw new Error('Modusleiste liegt unter der Tafel');
+  if (masse.modi.w < 150) throw new Error(`Modusleiste auf ${Math.round(masse.modi.w)}px zusammengedrückt`);
+
+  // Und ein Modus lässt sich in dieser Lage auch wirklich wechseln.
+  await page.click('#colorModes button[data-mode="culture"]');
+  await page.waitForTimeout(700);
+  const gewaehlt = await page.getAttribute('#colorModes button[data-mode="culture"]', 'aria-checked');
+  if (gewaehlt !== 'true') throw new Error('Moduswechsel im Querformat greift nicht');
   await page.setViewportSize({ width: 1440, height: 900 });
 });
 

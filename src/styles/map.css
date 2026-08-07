@@ -237,7 +237,23 @@
    Karte selbst, sonst schiebt Leaflet sie über den Rand. */
 @media (max-width: 560px) {
   .evpop .leaflet-popup-content { margin: .7rem .8rem .65rem; width: min(17rem, 72vw) !important; }
-  .ev__name { display: none; }
+}
+
+/* Und die Namen neben den Ereignismarken bleiben am Telefon ganz weg.
+   „Die erste moderne Eisenbahnlinie“ ist auf 390 Punkten Breite ein Drittel
+   des Bildschirms; zwei solche Zeilen lagen im Test übereinander und über
+   halb Europa, und der Anfang stand links außerhalb des Bildes. Die Marke
+   allein genügt – angetippt erscheint die Kartusche mit dem vollen Text, und
+   genau so wird am Telefon gelesen.
+
+   Die Regel muss so genau treffen wie die, die die Namen einblendet
+   (.ev--benannt .ev__name): Eine kürzere Auswahl verliert gegen sie, egal wie
+   weit hinten sie steht. Genau daran ist die frühere Fassung gescheitert. */
+@media (max-width: 560px), (max-height: 480px) and (orientation: landscape) {
+  .ev__name,
+  .ev--benannt .ev__name,
+  .ev:hover .ev__name,
+  .leaflet-marker-icon:focus-visible .ev__name { display: none; }
 }
 
 /* ============================================== Kriege & Schlachten

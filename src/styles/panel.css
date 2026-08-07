@@ -487,30 +487,128 @@
   }
 }
 
-@media (max-width: 560px) {
-  /* Ganzflächig statt als Bodenblatt: Ein Blatt über 68 % der Höhe verdeckte
-     Zeitleiste und Maßstab, ließ aber die Werkzeugsäule halb sichtbar
-     darüberstehen – das sah nach Fehler aus, nicht nach Absicht. */
+/* Nur hochkant. Ein gedrehtes Telefon kann durchaus schmaler als 560 Punkte
+   sein (640×360 ist verbreitet) – dort gilt die Querformat-Anordnung weiter
+   unten, und ein Bodenblatt hätte auf 360 Punkten Höhe keinen Weg zum
+   Hochziehen. */
+@media (max-width: 560px) and (orientation: portrait) {
+  /* ------------------------------------------------ Die Tafel als Bodenblatt
+
+     Vorher deckte sie den ganzen Bildschirm. Das ist einfach zu bauen und
+     kostet genau das, was auf einem Telefon am meisten zählt: den Bezug. Wer
+     einen Steckbrief liest und dabei nicht mehr sieht, wo das Land liegt,
+     liest über eine Karte hinweg statt in ihr.
+
+     Jetzt fährt sie von unten ein und steht zunächst auf halber Höhe: Name,
+     Herrscher und Fläche sind sofort da, die Karte bleibt darüber sichtbar
+     und anklickbar. Mit dem Finger geht sie weiter hoch oder wieder weg.
+
+     Die Höhe steht in --blatt-h und wird beim Ziehen von der Bedienung
+     gesetzt; ohne Javascript bleibt der Ausgangswert stehen, und das Blatt
+     ist trotzdem benutzbar. */
   .panel {
-    inset: 0;
+    inset: auto 0 0 0;
     width: 100%;
-    border-left: 0;
-    animation: slideUp 260ms var(--ease);
+    height: var(--blatt-h, 52vh);
+    max-height: 92vh;
+    border: 0;
+    border-top: 1px solid var(--hairline-strong);
+    border-radius: var(--r-xl) var(--r-xl) 0 0;
+    box-shadow: 0 -18px 48px rgba(0, 0, 0, .46);
+    /* Deckend, nicht durchscheinend. Am Bildschirmrand ist ein Hauch Karte
+       hinter dem Glas reizvoll; über der halben Bildhöhe eines Telefons liest
+       man dann Ortsnamen durch den Steckbrief hindurch. Der Weichzeichner
+       bleibt für den oberen Rand, wo das Blatt die Karte überlappt. */
+    background: var(--surface-solid);
+    animation: blattRein 280ms var(--ease);
+    /* Beim Ziehen ohne Übergang, sonst zuckelt es hinter dem Finger her.
+       Die Klasse setzt die Bedienung. */
+    transition: height 260ms var(--ease);
+    touch-action: none;
   }
-  @keyframes slideUp { from { transform: translateY(2rem); opacity: 0; } }
-  .brand { width: calc(100vw - 5rem); }
-  .brand__text span { display: none; }
+  .panel.is-ziehend { transition: none; }
+  @keyframes blattRein { from { transform: translateY(100%); } }
+
+  /* Der Griff: eine Leiste, an der man sieht, dass man ziehen kann. Vier
+     Millimeter hoch, aber die Grifffläche darum herum ist fingergroß. */
+  .panel::before {
+    content: "";
+    position: absolute;
+    top: .55rem; left: 50%;
+    transform: translateX(-50%);
+    width: 2.6rem; height: .28rem;
+    border-radius: 999px;
+    background: var(--ink-faint);
+    opacity: .5;
+    pointer-events: none;
+    z-index: 2;
+  }
+  /* Der Kopf rückt nach, damit die Griffleiste nicht in der Überschrift
+     liegt. Der Steckbrief beginnt mit .pnl__hero – das ist der Kopf. */
+  .pnl__hero { padding-top: 1.9rem; }
+
+  /* Solange das Blatt offen ist, treten Zeitleiste und Werkzeuge ab: Sie
+     lägen ohnehin darunter, und halb sichtbar sähen sie nach Fehler aus. */
+  body.hat-blatt .timeline,
+  body.hat-blatt .tools,
+  body.hat-blatt .mapmodes { opacity: 0; visibility: hidden; pointer-events: none; }
 }
 
-/* Gütevermerk in einer Steckbrief-Kachel.
-   Eine Religionsangabe aus einer Regel darf nicht aussehen wie eine aus einer
-   Quelle – dieselbe Unterscheidung, die die Karte bei den Grenzen trifft. */
-.fact__guete {
-  display: block;
-  margin-top: .18rem;
-  font-style: normal;
-  font-size: .64rem;
-  letter-spacing: .04em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
+/* --------------------------------------------- Die Tafel im Querformat
+
+   Hochgezogen wird hier nichts: Bei 390 Punkten Höhe gäbe es keinen Weg, den
+   man ziehen könnte. Stattdessen legt sich die Tafel als volle Spalte an den
+   rechten Rand. Die Karte bleibt links daneben sichtbar und bedienbar – und
+   das ist der Grund, warum jemand das Telefon überhaupt dreht.
+
+   Diese Regeln stehen bewusst in panel.css und nicht in layout.css: Die
+   Grundform der Tafel wird weiter oben in dieser Datei gesetzt, und bei
+   gleicher Spezifität gewinnt, was zuletzt kommt. */
+@media (max-height: 480px) and (orientation: landscape) {
+  .panel {
+    inset: 0 0 0 auto;
+    width: min(24rem, 56vw);
+    height: 100%;
+    max-height: 100%;
+    border: 0;
+    border-left: 1px solid var(--hairline-strong);
+    border-radius: var(--r-xl) 0 0 var(--r-xl);
+    box-shadow: -18px 0 48px rgba(0, 0, 0, .46);
+    background: var(--surface-solid);
+    animation: blattQuer 240ms var(--ease);
+    /* Senkrecht scrollen soll die Tafel weiterhin – nur die Karte darunter
+       darf den Finger nicht bekommen. */
+    touch-action: pan-y;
+  }
+  .panel::before { display: none; }
+  .pnl__hero { padding-top: 1.1rem; }
+  @keyframes blattQuer { from { transform: translateX(100%); } }
+
+  /* Anders als hochkant bleibt alles bedienbar, während die Tafel offen ist –
+     sie deckt ja nur die rechte Hälfte. Zeitleiste und Werkzeuge rücken vor
+     ihre Kante, statt darunter zu verschwinden. */
+  body.hat-blatt .timeline,
+  body.hat-blatt .tools,
+  body.hat-blatt .mapmodes { opacity: 1; visibility: visible; pointer-events: auto; }
+  body.hat-blatt .timeline { right: min(24rem, 56vw); }
+  body.hat-blatt .tools { right: calc(min(24rem, 56vw) + .5rem); }
+  /* Die Modusleiste hat in dem verbliebenen Streifen keinen Platz mehr: Links
+     steht die Kopfzeile, rechts die Werkzeugsäule, dazwischen blieben zwanzig
+     Punkte. Sie wandert unter die Kopfzeile und legt die Namen ab – fünf
+     Sinnbilder nebeneinander sind gut zweihundert Punkte breit und passen
+     dorthin. Verschwinden soll sie nicht: Modus wechseln ist am Telefon einer
+     der beiden Hauptwege, und ihn erst nach dem Schließen der Tafel wieder
+     anzubieten wäre eine Sackgasse. */
+  body.hat-blatt .mapmodes {
+    top: 4.6rem;
+    left: .5rem;
+    right: auto;
+    max-width: calc(56vw - 1rem);
+  }
+  /* Umgekehrt zur geschlossenen Tafel: dort die Namen ohne Sinnbild, hier die
+     Sinnbilder ohne Namen. Fünf Namen brauchen 420 Punkte, fünf Sinnbilder
+     220 – und mehr als 220 sind links neben der Tafel nicht frei. */
+  body.hat-blatt .mapmodes button span { display: none; }
+  body.hat-blatt .mapmodes button svg { display: block; }
+  body.hat-blatt .mapmodes button { padding: .35rem; }
 }
