@@ -1393,83 +1393,102 @@ Ein Modus färbt nicht nur die Flächen um, er bestimmt auch, wonach die
 Detailtafel gefragt wird. Wer die Religionskarte offen hat und auf das
 Mogulreich klickt, will nicht zuerst die Hauptstadt lesen.
 
-### Religion: Fläche das Volk, Streifen die Herrschaft
+### Religion: Glaube je Ort, nicht je Land
 
-Die Ebene führt **zwei** Angaben je Gemeinwesen: was die Bevölkerung
-überwiegend glaubt, und wozu sich die Herrschaft bekennt. Die Fläche trägt das
-Volk, die Schraffur die Herrschaft – und liegt nur dort, wo beide
-auseinanderfallen. Das sind 10 Prozent aller Angaben, und sie sind der Grund,
-warum es die Ebene gibt:
+Die erste Fassung gab jedem Gemeinwesen **eine** Farbe. Damit war das
+Osmanische Reich einfarbig – ein Reich, das von Ungarn bis Ägypten reichte und
+dessen Konfessionsgrenzen quer hindurchliefen. Genau die waren nicht zu sehen,
+und genau um sie ging es.
 
-- **Das Mogulreich 1600** – hinduistisches Orange mit sunnitisch grünen
-  Streifen. Akbars Steckbrief erklärt in derselben Tafel, warum er die
-  Kopfsteuer für Nichtmuslime aufhob.
-- **Der osmanische Balkan** – orthodoxes Petrol unter denselben Streifen, vier
-  Jahrhunderte lang.
-- **Das Sassanidenreich** – eine christliche Kirche des Ostens unter
-  zoroastrischer Krone.
-- **Das Fatimidenkalifat** – sunnitische Bevölkerung, schiitischer Hof.
-- **Irland 1601–1921** – katholisches Land, anglikanische Staatskirche.
-- **Sowjetrussland** – orthodoxe Bevölkerung, staatsatheistische Herrschaft.
+Jetzt liegt unter der Karte ein **Gitter von einem Viertelgrad**, 1440 mal 720
+Zellen, rund 28 km Kantenlänge. Jede Landzelle trägt zwei Angaben: was die
+Bevölkerung dort glaubt, und wozu sich die Herrschaft bekennt. Die Zellen
+wissen nichts von Staatsgrenzen – der Glaube einer Landschaft hört nicht an
+einer Grenze auf –, und die Grenzen liegen als dünne Linien darüber. Erst im
+Zusammenspiel wird die Aussage sichtbar: dass eine Konfessionsgrenze mitten
+durch ein Reich läuft und nicht an seinem Rand.
 
-Fiele beides in eine Farbe, wäre genau das unsichtbar – und mit ihm der Grund
-für einen Gutteil der Aufstände, Sonderrechte und Vertreibungen der
-Weltgeschichte.
+**Die Treppenstufen des Gitters sieht man nur im Landesinneren.** An den Küsten
+nicht: Dort liegt die Meeresfläche darüber, eine deckende Ebene mit einem Loch
+je Landmasse, und schneidet das Raster an der echten Uferlinie ab. Im
+Landesinneren ist eine Konfessionsgrenze ohnehin ein Übergang und keine Linie.
 
-**35 Klassen, nach Farbfamilien geordnet:** alles Christliche in Blautönen,
-alles Islamische in Grün, indische Religionen in Ocker, ostasiatische in
-Violett, antike in Terrakotta, traditionelle in Oliv. So liest man auf
-Weltmaßstab die große Gliederung und beim Hineinzoomen die Konfession, ohne
-fünfunddreißig Farben lernen zu müssen. Anders als bei den Gemeinwesen, wo
-Nachbarn absichtlich verschiedene Farben bekommen, tragen hier zwei
-katholische Länder dieselbe – nur daran erkennt man, wo eine
-Konfessionsgrenze verläuft und wo keine ist.
+Zwei Kunstgriffe machen das Zeichnen billig. Das Bild wird gleich in
+**Mercator-Höhe** gebaut statt in Breitengraden – dann ist die Abbildung auf
+den Bildschirm eine reine Streckung und ein einziger `drawImage` je Bild
+genügt, statt 720 zeilenweiser Aufrufe. Und die Daten liegen als
+**Lauflängen**: Ein Raster von einer Million Zellen schrumpft so auf 34 kB je
+Zeitschnitt, geholt nur, wenn der Modus läuft.
 
-**Woher die Angaben kommen.** Drei Quellen, in dieser Reihenfolge:
+**35 Klassen, nach Farbfamilien geordnet:** Christliches in Blau, Islamisches
+in Grün, indische Religionen in Ocker, ostasiatische in Violett, antike in
+Terrakotta, traditionelle in Oliv. Anders als bei den Gemeinwesen, wo Nachbarn
+absichtlich verschiedene Farben bekommen, tragen hier zwei katholische Länder
+dieselbe – nur daran erkennt man, wo eine Konfessionsgrenze verläuft und wo
+keine ist.
 
-1. **Handkorrekturen** – dort, wo ein Rechteck auf der Landkarte etwas nicht
-   wissen kann.
-2. **Die Steckbriefe.** Die Wissensbasis führt für alle 311 Zeitabschnitte ein
-   Feld `religion` als Fließtext; ein Parser liest daraus die Klasse. Güte 3.
-3. **Raum-Zeit-Regeln** – 104 Regeln der Form „Iran ab 1501 schiitisch",
-   „Skandinavien ab 1537 protestantisch", von speziell nach allgemein
-   sortiert. Güte 2 oder 1.
+**Wo Hof und Land verschieden glauben, liegt eine Schraffur.** Das Mogulreich,
+der osmanische Balkan, das Sassanidenreich mit einer christlichen Kirche des
+Ostens unter zoroastrischer Krone, das Fatimidenkalifat mit sunnitischem Volk
+und schiitischem Hof, Sowjetrussland mit Staatsatheismus über orthodoxer
+Bevölkerung, Sibirien mit orthodoxer Herrschaft über schamanistischen Völkern.
 
-Ein Steckbrief beschreibt ein Gemeinwesen, also seine **Herrschaft**. Was die
-Leute auf dem Land glauben, ist dagegen eine Frage des **Raums** – dafür ist
-die Regel zuständig. Diese Trennung ist nicht Feinheit, sondern der Kern:
-Ließe man den Steckbrief beides bestimmen, wäre das Mogulreich auf der Karte
-sunnitisch. Und wer unter fremder Oberhoheit steht, übernimmt die
-Herrschaftsreligion des Oberherrn – das steht in den Daten, nicht in einem
-Rechteck. Vorher hatte ich es über Regionsregeln versucht; auf der Karte war
-dann ganz Nordamerika 1600 gestreift, weil eine Regel behauptete, über den
-Naskapi-Innu herrsche eine protestantische Krone.
+#### Was die Stichprobenprüfung gefunden hat
 
-**Jede Angabe trägt eine Gütestufe**, und die Tafel nennt sie: *in Quellen
-belegt* · *aus regionaler Regel* · *grobe Schätzung*. Von 11.536 Angaben sind
-4.067 belegt, 6.896 aus solider Regel, 573 grob geschätzt. Das ist dasselbe
-Verfahren, das die Karte bei den Grenzen anwendet – eine Religionskarte ist
-dabei heikler als eine Staatenkarte: Wo eine Grenze falsch liegt, sieht man
-es; wo eine Religion falsch liegt, glaubt man es.
+Ein Raster deckt auf, was eine Karte je Gemeinwesen verbirgt – auch die Fehler
+der eigenen Regeln. Solange nur Schwerpunkte eingefärbt wurden, fiel ein
+Tibet-Rechteck, das bis nach Delhi reichte, nicht auf: Indiens Schwerpunkt lag
+weiter südlich. Im Raster ist Delhi buddhistisch, und man sieht es sofort.
 
-**Was `npm run check:religion` prüft.** Vollständigkeit, bekannte Klassen,
-Gütestufen – und vor allem **Anachronismen**: Jede Klasse trägt ein
-Zeitfenster. Anglikanisch gibt es nicht vor 1534, Sikhismus nicht vor 1500,
-Manichäismus nicht nach 1400. Beim ersten Lauf schlug die Prüfung 137-mal an,
-darunter ein lutherisches Dänemark fünfundzwanzig Jahre vor Luther und ein
-jüdisches Deutschland 1940 – letzteres, weil im Steckbrief „Verfolgung der
-jüdischen Bevölkerung" steht und die Wortmarke recht hatte, während die
-Aussage das Gegenteil war. Die Prüfung findet außerdem Gemeinwesen, deren
-Bekenntnis zwischen zwei Zeitschnitten hin und her springt – meist ein
-Zeichen dafür, dass der Schwerpunkt einer Fläche über eine Regelgrenze
-gewandert ist.
+`npm run check:religion` prüft deshalb **93 feste Bezugspunkte** – Ort, Jahr,
+erwartete Religion, von Persepolis 500 v. Chr. bis Kinshasa heute. Der erste
+Lauf traf 58 Prozent. Was dabei herauskam:
 
-**Ein Vorbehalt, offen ausgesprochen.** Für die Zeit vor 1200 v. Chr. trägt
-die ganze Karte eine einzige Klasse, „Prähistorische Glaubensformen". Für die
-Steinzeit gibt es keine Quellen, die eine bestimmte Religion auf einer
-Kartenfläche rechtfertigen; eine feinere Aufteilung wäre erfundene
-Genauigkeit. Ab 1200 v. Chr. wird unterschieden, und ab da trägt jede Angabe
-ihre Gütestufe.
+- **Britisch-Indien lag im Persischen Golf.** Der Schwerpunkt eines
+  Gemeinwesens war der des *ersten* Teilstücks, nicht des größten – und das
+  war eine Insel vor Musandam. Indien war 1940 schiitisch.
+- **Ganz Nordamerika war 1600 gestreift**, weil eine Regionsregel behauptete,
+  über den Naskapi-Innu herrsche eine protestantische Krone. Oberhoheit steht
+  in den Daten, nicht in einem Rechteck.
+- **Nach 1917 klaffte im Nahen Osten ein Loch.** Das Osmanische Reich endete,
+  und keine Regel folgte: Damaskus und Bagdad fielen bis zur Welt-Auffangregel
+  durch und wurden afrikanisch.
+- **Afrika war fast ganz traditionell.** Tatsächlich war der halbe Kontinent um
+  1600 muslimisch – Maghreb, Sahara, Sahel mit Songhai und Kanem-Bornu, Sudan,
+  Horn, Swahili-Küste –, und Äthiopien seit 340 christlich mitten darin.
+- **Besatzung ist keine Bekehrung.** Der Aufbau übertrug die Religion des
+  Besatzers auf das besetzte Land: Syrien wurde jüdisch, weil Israel den Golan
+  hält. Ein Vasall folgt seiner Krone, ein besetztes Land nicht seinem
+  Besatzer. Jetzt zählt nur die Oberhoheit.
+- **Nicht jeder Staat hat eine Staatsreligion.** Das Zeitalter der
+  Staatsreligionen endet im 20. Jahrhundert; wer jedem heutigen Staat eine
+  unterstellt, malt Streifen über Nigeria, Indonesien und Indien. Ab 1920 gilt
+  deshalb: kein Bekenntnis der Herrschaft, außer bei namentlich genannten
+  Ausnahmen – Saudi-Arabien, Iran, Israel, der Vatikan, die skandinavischen
+  Staatskirchen, und der Staatsatheismus der sozialistischen Staaten.
+- **Das Heilige Römische Reich hatte nach 1555 gar kein Bekenntnis mehr.**
+  *Cuius regio, eius religio*: Ein katholischer Kaiser über einem lutherischen
+  Hamburg wäre eine Behauptung, die die Reichsverfassung ausdrücklich aufhob.
+  Die Herrschaft folgt dort dem Ort.
+
+Ein Teil der Fehlschläge waren dabei **meine Erwartungen, nicht die Karte**:
+Dass Ägypten 500 v. Chr. unter zoroastrischer Herrschaft stand, zeigt die Ebene
+richtig an – es war persische Provinz. Solche Fälle stehen jetzt mit
+Begründung in der Stichprobenliste.
+
+**Woher die Angaben kommen.** Drei Quellen: Handkorrekturen, die Steckbriefe
+der Wissensbasis (die für alle 311 Zeitabschnitte ein Feld `religion` als
+Fließtext führen) und **126 Raum-Zeit-Regeln**. Dabei gilt die Trennung, die
+den Kern ausmacht: Ein Steckbrief beschreibt ein Gemeinwesen, also seine
+Herrschaft; was die Leute auf dem Land glauben, ist eine Frage des Raums. Jede
+Angabe trägt eine Gütestufe, und die Tafel nennt sie – 4.286 belegt, 6.761 aus
+solider Regel, 489 grob geschätzt.
+
+**Ein Vorbehalt, offen ausgesprochen.** Für die Zeit vor 1200 v. Chr. trägt die
+ganze Karte eine einzige Klasse. Für die Steinzeit gibt es keine Quellen, die
+eine bestimmte Religion auf einer Kartenfläche rechtfertigen; eine feinere
+Aufteilung wäre erfundene Genauigkeit. Und auch danach gilt: Das Raster ist so
+genau wie die Regeln dahinter. 126 Regeln sind ein Anfang, kein Konfessionsatlas.
 
 ### Barrierefreiheit
 

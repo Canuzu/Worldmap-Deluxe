@@ -43,6 +43,7 @@ const WISSEN = lies('public/data/knowledge/polities.de.json').entries;
 const SCHNITTE = lies('public/data/epochs.json').epochs;
 
 const KLASSEN = new Set(Object.keys(VOKABULAR.klassen));
+const BEKENNTNIS = new Set(KORREKTUREN.bekenntnisstaaten?.namen ?? []);
 
 /* ------------------------------------------------- Aus dem Fließtext lesen */
 
@@ -214,6 +215,7 @@ for (const meta of SCHNITTE) {
 
   const jahr = meta.year;
   const tabelle = {};
+  const vonHand = new Set();
 
   /* Der Schwerpunkt des größten Teilstücks, nicht des ersten.
    *
@@ -245,6 +247,7 @@ for (const meta of SCHNITTE) {
       .find((k) => k.name === name && jahr >= (k.von ?? -Infinity) && jahr <= (k.bis ?? Infinity));
     if (hand) {
       tabelle[name] = [hand.volk, hand.staat ?? hand.volk, 3];
+      vonHand.add(name);
       zaehler.korrektur++;
       continue;
     }
@@ -302,7 +305,21 @@ for (const meta of SCHNITTE) {
       guete = Math.min(guete, regel.guete);
     }
 
-    tabelle[name] = [volk, staat, guete];
+    /* Ab 1920 gilt: kein Bekenntnis der Herrschaft, außer es ist eines.
+     *
+     * Das Zeitalter der Staatsreligionen endet im 20. Jahrhundert. Wer jedem
+     * heutigen Staat eine unterstellt, malt Streifen über Nigeria, Indonesien
+     * und Indien – Länder, deren Verfassung ausdrücklich keine Religion
+     * bevorzugt. Es gibt sie weiter, aber als Ausnahme und namentlich:
+     * Saudi-Arabien, Iran, Israel, der Vatikan, die skandinavischen
+     * Staatskirchen – und der Staatsatheismus der sozialistischen Länder. */
+    const bekenntnis = jahr < 1920 || BEKENNTNIS.has(name);
+    // „lokal" heißt: Die Herrschaft folgt dem Ort, Zelle für Zelle. Sie auf
+    // die vorherrschende Religion des ganzen Landes zu setzen wäre etwas
+    // anderes – Tokio bekäme dann die Religion der Mandschurei, weil das
+    // Kaiserreich Japan 1940 mehr konfuzianisches als shintoistisches Land
+    // hielt.
+    tabelle[name] = [volk, bekenntnis ? staat : 'lokal', guete];
     if (steckbrief) zaehler.steckbrief++; else zaehler.regel++;
   }
 
@@ -321,14 +338,27 @@ for (const meta of SCHNITTE) {
   const oberhoheit = new Map();
   for (const f of flaechen) {
     const p = f.properties ?? {};
-    if (p.n && (p.o || p.s)) oberhoheit.set(p.n, p.o || p.s);
+    /* Nur die Oberhoheit zählt, nicht die Besatzung.
+     *
+     * Ein Vasall oder eine Kolonie folgt der Krone, unter der er steht – das
+     * spanische Peru war katholisch regiert. Ein besetztes Land folgt seinem
+     * Besatzer nicht: Syrien wird nicht jüdisch, weil Israel den Golan hält,
+     * und Frankreich wurde 1940 nicht protestantisch. Besatzung ist eine
+     * militärische Lage, keine Bekehrung – sie steht als Schraffur in der
+     * politischen Karte und hat in der Religionskarte nichts verloren. */
+    if (p.n && p.s) oberhoheit.set(p.n, p.s);
   }
   let uebertragen = 0;
   for (const [name, herr] of oberhoheit) {
     const eigen = tabelle[name];
     const oben = tabelle[herr];
     if (!eigen || !oben || herr === name) continue;
-    // Die Herrschaft bekennt sich zu dem, wozu sich der Oberherr bekennt.
+    // Eine Handkorrektur ist das letzte Wort und wird auch von einem
+    // Oberherrn nicht überschrieben. Polen 1940 war zugleich deutsch und
+    // sowjetisch besetzt; welcher der beiden hier ankam, entschied sonst die
+    // Reihenfolge in der Datei.
+    if (vonHand.has(name)) continue;
+    if (jahr >= 1920 && !BEKENNTNIS.has(name)) continue;
     if (oben[1] !== eigen[1]) { eigen[1] = oben[1]; uebertragen++; }
   }
   zaehler.oberhoheit += uebertragen;

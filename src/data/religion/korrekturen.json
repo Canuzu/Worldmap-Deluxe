@@ -71,6 +71,102 @@
       "name": "Yugoslavia",
       "volk": "orth",
       "warum": "Vielvölkerstaat; der Schwerpunkt wanderte zwischen Bosnien und Kroatien. Serbisch-orthodox war die größte Gruppe."
+    },
+    {
+      "name": "Holy Roman Empire",
+      "volk": "kath",
+      "staat": "lokal",
+      "warum": "Nach dem Augsburger Religionsfrieden von 1555 hatte das Reich kein einheitliches Bekenntnis mehr: cuius regio, eius religio. Die Herrschaft folgt deshalb dem Ort – ein katholischer Kaiser über einem lutherischen Hamburg wäre eine Behauptung, die die Reichsverfassung ausdrücklich aufhob."
+    },
+    {
+      "name": "Poland-Llituania",
+      "volk": "kath",
+      "staat": "kath",
+      "warum": "Die Krone war katholisch; die orthodoxe Bevölkerung der ruthenischen Länder steht im Raster, nicht in der Herrschaft."
+    },
+    {
+      "name": "Sikh Empire",
+      "volk": "sikh",
+      "staat": "sikh",
+      "warum": "Ranjit Singhs Reich war das einzige Sikh-Staatswesen der Geschichte."
+    },
+    {
+      "name": "Poland",
+      "volk": "kath",
+      "staat": "kath",
+      "warum": "Katholisch über alle Zeitschnitte; die Sowjetregel griff sonst auf Warschau über."
+    },
+    {
+      "name": "Swiss Confederation",
+      "volk": "ref",
+      "staat": "lokal",
+      "warum": "Die Eidgenossenschaft war konfessionell geteilt; Zürich und Genf reformiert, die Innerschweiz katholisch.",
+      "von": 1523
+    },
+    {
+      "name": "England and Ireland",
+      "volk": "angl",
+      "staat": "angl",
+      "von": 1559,
+      "warum": "Das elisabethanische Kirchenwesen war anglikanisch; der Steckbrief nennt daneben reformierte Prägung, was sonst eine Schraffur über ganz England ergab."
+    },
+    {
+      "name": "USSR",
+      "volk": "orth",
+      "staat": "athe",
+      "von": 1918,
+      "bis": 1991,
+      "warum": "Staatsatheismus über einer orthodox geprägten Bevölkerung – der Fall, für den es die Schraffur gibt."
     }
-  ]
+  ],
+  "bekenntnisstaaten": {
+    "about": "Staaten, die ab 1920 noch ein Bekenntnis der Herrschaft führen. Alle übrigen gelten als weltanschaulich neutral: Die Herrschaft folgt dem Ort, und es liegt keine Schraffur.",
+    "warum": "Das Zeitalter der Staatsreligionen endet im 20. Jahrhundert. Wer jedem heutigen Staat eine unterstellt, malt Streifen über Nigeria, Indonesien und Indien – Länder, deren Verfassung ausdrücklich keine Religion bevorzugt. Umgekehrt gibt es sie weiterhin: in Saudi-Arabien, im Iran, in Israel, im Vatikan, in Dänemark und England als Staatskirche, und als Staatsatheismus in den sozialistischen Staaten.",
+    "namen": [
+      "Saudi Arabia",
+      "Iran",
+      "Israel",
+      "Vatican City",
+      "Oman",
+      "Yemen",
+      "Jordan",
+      "Morocco",
+      "Mauritania",
+      "Maldives",
+      "Pakistan",
+      "Bangladesh",
+      "Afghanistan",
+      "Malaysia",
+      "Brunei",
+      "Kuwait",
+      "Qatar",
+      "Bahrain",
+      "United Arab Emirates",
+      "Libya",
+      "Egypt",
+      "Algeria",
+      "Tunisia",
+      "Denmark",
+      "Denmark-Norway",
+      "Norway",
+      "Greece",
+      "Iceland",
+      "England",
+      "United Kingdom",
+      "Thailand",
+      "Cambodia",
+      "Bhutan",
+      "Myanmar",
+      "Sri Lanka",
+      "Soviet Union",
+      "China",
+      "North Korea",
+      "Vietnam",
+      "Laos",
+      "Cuba",
+      "Mongolia",
+      "Albania",
+      "USSR"
+    ]
+  }
 }

@@ -167,14 +167,28 @@ await check('Religionsmodus färbt nach Glauben und streift die Herrschaft', asy
   await page.waitForTimeout(1600);
   const stand = await page.evaluate(() => {
     const a = window.__atlas;
-    const slot = a.slots[a.activeSlot];
-    const merkmale = a.epoch.geojson.features.map((f) => f.properties);
+    const bild = a.raster?._bild;
+    let gefuellt = 0;
+    let farben = 0;
+    if (bild) {
+      // Stichprobe aus dem gebauten Rasterbild: Wie viel davon trägt Farbe,
+      // und wie viele verschiedene sind es? Ein Bild aus einer einzigen Farbe
+      // wäre technisch heil und inhaltlich wertlos.
+      const ctx = bild.getContext('2d');
+      const d = ctx.getImageData(0, 0, bild.width, bild.height).data;
+      const gesehen = new Set();
+      for (let i = 0; i < d.length; i += 4 * 97) {
+        if (d[i + 3] < 200) continue;
+        gefuellt++;
+        gesehen.add((d[i] << 16) | (d[i + 1] << 8) | d[i + 2]);
+      }
+      farben = gesehen.size;
+    }
     return {
       modus: a.colorMode,
-      mitAngabe: merkmale.filter((p) => p.rv).length,
-      gesamt: merkmale.length,
-      geteilt: merkmale.filter((p) => p.rv && p.rs && p.rv !== p.rs).length,
-      schraffuren: slot.religion ? Object.keys(slot.religion._layers).length : 0,
+      hatBild: !!bild,
+      gefuellt,
+      farben,
       // Gleiche Religion, gleiche Farbe – anders als bei den Gemeinwesen, wo
       // Nachbarn sich absichtlich unterscheiden.
       farbeKath: a.colorOf('rkath'),
@@ -182,13 +196,11 @@ await check('Religionsmodus färbt nach Glauben und streift die Herrschaft', asy
     };
   });
   if (stand.modus !== 'religion') throw new Error('Modus nicht gesetzt');
-  if (stand.mitAngabe < stand.gesamt * .95) {
-    throw new Error(`nur ${stand.mitAngabe} von ${stand.gesamt} Flächen mit Religionsangabe`);
-  }
-  if (!stand.geteilt) throw new Error('keine Fläche mit abweichender Herrschaft');
-  if (stand.schraffuren !== stand.geteilt) {
-    throw new Error(`${stand.schraffuren} Schraffuren für ${stand.geteilt} geteilte Flächen`);
-  }
+  if (!stand.hatBild) throw new Error('kein Rasterbild gebaut');
+  if (stand.gefuellt < 500) throw new Error(`Raster fast leer (${stand.gefuellt} Proben)`);
+  // Ein Zeitschnitt der frühen Neuzeit hat Dutzende Religionen im Bild; hier
+  // wird nur geprüft, dass es nicht eine einzige Fläche ist.
+  if (stand.farben < 8) throw new Error(`nur ${stand.farben} Farben im Raster`);
   if (!stand.farbeKath || stand.farbeKath === stand.farbeSunn) {
     throw new Error('Religionsfarben fehlen oder sind gleich');
   }
@@ -209,7 +221,9 @@ await check('Religionsmodus färbt nach Glauben und streift die Herrschaft', asy
   await page.waitForSelector('#panel:not([hidden])', { timeout: 6000 });
   await page.waitForTimeout(900);
   const tafel = await page.textContent('#panel');
-  if (!/Bevölkerung glaubt|Herrschaft bekennt/.test(tafel)) {
+  // Je nachdem, ob Hof und Land dasselbe glauben, steht dort eine Kachel oder
+  // drei – beides ist richtig, nur fehlen darf es nicht.
+  if (!/Bevölkerung glaubt|Herrschaft bekennt|% der Fläche/.test(tafel)) {
     throw new Error('Tafel zeigt im Religionsmodus keine Religionsangaben');
   }
   await page.keyboard.press('Escape');

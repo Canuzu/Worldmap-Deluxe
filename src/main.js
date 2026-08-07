@@ -112,7 +112,12 @@ async function main() {
 
   $('app').hidden = false;
 
-  const atlas = new AtlasMap($('map'), { theme: prefs.theme });
+  const atlas = new AtlasMap($('map'), {
+    theme: prefs.theme,
+    // Das Religionsraster holt sich die Karte selbst – aber nur, wenn der
+    // Modus läuft. Wer die Ebene nie öffnet, lädt sie nie.
+    holeRaster: (key) => atlasData.religionsRaster(key),
+  });
   atlas.setBaseData(atlasData.base);
   // Messhilfen für scripts/smoke.mjs und scripts/perf
   window.__atlasMap = atlas.map;

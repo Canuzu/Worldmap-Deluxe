@@ -1,0 +1,677 @@
+{
+  "about": "Feste Bezugspunkte für die Religionsebene: Ort, Jahr, erwartete Religion.",
+  "warum": "Ein Raster deckt auf, was eine Karte je Gemeinwesen verbirgt – aber es deckt auch die eigenen Regeln auf. Ein Rechteck, das ganz Tibet abdecken sollte, verschluckte Delhi; auf der Karte je Land war das unsichtbar, weil Indiens Schwerpunkt weiter südlich lag. Diese Liste macht solche Fehler zu einer Zahl statt zu einem Zufallsfund.",
+  "felder": "ort · lon · lat · jahr · volk (erwartet) · staat (erwartet, wenn abweichend)",
+  "punkte": [
+    {
+      "ort": "Rom",
+      "lon": 12.5,
+      "lat": 41.9,
+      "jahr": -500,
+      "volk": "graeco"
+    },
+    {
+      "ort": "Athen",
+      "lon": 23.7,
+      "lat": 38.0,
+      "jahr": -500,
+      "volk": "graeco"
+    },
+    {
+      "ort": "Babylon",
+      "lon": 44.4,
+      "lat": 32.5,
+      "jahr": -500,
+      "volk": "mesop",
+      "staat": "zoro"
+    },
+    {
+      "ort": "Persepolis",
+      "lon": 52.9,
+      "lat": 29.9,
+      "jahr": -500,
+      "volk": "zoro"
+    },
+    {
+      "ort": "Theben am Nil",
+      "lon": 32.6,
+      "lat": 25.7,
+      "jahr": -500,
+      "volk": "aegypt",
+      "staat": "zoro"
+    },
+    {
+      "ort": "Jerusalem",
+      "lon": 35.2,
+      "lat": 31.8,
+      "jahr": -500,
+      "volk": "jud",
+      "staat": "zoro"
+    },
+    {
+      "ort": "Luoyang",
+      "lon": 112.5,
+      "lat": 34.6,
+      "jahr": -500,
+      "volk": "konf"
+    },
+    {
+      "ort": "Varanasi",
+      "lon": 83.0,
+      "lat": 25.3,
+      "jahr": -500,
+      "volk": "veda"
+    },
+    {
+      "ort": "Rom",
+      "lon": 12.5,
+      "lat": 41.9,
+      "jahr": 100,
+      "volk": "graeco"
+    },
+    {
+      "ort": "Alexandria",
+      "lon": 29.9,
+      "lat": 31.2,
+      "jahr": 100,
+      "volk": "aegypt",
+      "staat": "graeco"
+    },
+    {
+      "ort": "Ktesiphon",
+      "lon": 44.6,
+      "lat": 33.1,
+      "jahr": 100,
+      "volk": "mesop",
+      "staat": "zoro"
+    },
+    {
+      "ort": "Pataliputra",
+      "lon": 85.1,
+      "lat": 25.6,
+      "jahr": 100,
+      "volk": "hindu"
+    },
+    {
+      "ort": "Xi'an",
+      "lon": 108.9,
+      "lat": 34.3,
+      "jahr": 100,
+      "volk": "konf"
+    },
+    {
+      "ort": "Konstantinopel",
+      "lon": 28.9,
+      "lat": 41.0,
+      "jahr": 1000,
+      "volk": "orth"
+    },
+    {
+      "ort": "Rom",
+      "lon": 12.5,
+      "lat": 41.9,
+      "jahr": 1000,
+      "volk": "kath"
+    },
+    {
+      "ort": "Paris",
+      "lon": 2.35,
+      "lat": 48.85,
+      "jahr": 1000,
+      "volk": "kath"
+    },
+    {
+      "ort": "Kiew",
+      "lon": 30.5,
+      "lat": 50.45,
+      "jahr": 1000,
+      "volk": "orth"
+    },
+    {
+      "ort": "Uppsala",
+      "lon": 17.6,
+      "lat": 59.9,
+      "jahr": 1000,
+      "volk": "heidn"
+    },
+    {
+      "ort": "Bagdad",
+      "lon": 44.4,
+      "lat": 33.3,
+      "jahr": 1000,
+      "volk": "sunn"
+    },
+    {
+      "ort": "Córdoba",
+      "lon": -4.8,
+      "lat": 37.9,
+      "jahr": 1000,
+      "volk": "sunn"
+    },
+    {
+      "ort": "Kairo",
+      "lon": 31.2,
+      "lat": 30.0,
+      "jahr": 1000,
+      "volk": "sunn",
+      "staat": "schii"
+    },
+    {
+      "ort": "Lhasa",
+      "lon": 91.1,
+      "lat": 29.7,
+      "jahr": 1000,
+      "volk": "buddVa"
+    },
+    {
+      "ort": "Kaifeng",
+      "lon": 114.3,
+      "lat": 34.8,
+      "jahr": 1000,
+      "volk": "konf",
+      "staat": "buddMa"
+    },
+    {
+      "ort": "Kyoto",
+      "lon": 135.8,
+      "lat": 35.0,
+      "jahr": 1000,
+      "volk": "shinto"
+    },
+    {
+      "ort": "Delhi",
+      "lon": 77.2,
+      "lat": 28.6,
+      "jahr": 1000,
+      "volk": "hindu"
+    },
+    {
+      "ort": "Anuradhapura",
+      "lon": 80.4,
+      "lat": 8.3,
+      "jahr": 1000,
+      "volk": "buddTh",
+      "staat": "hindu"
+    },
+    {
+      "ort": "Timbuktu",
+      "lon": -3.0,
+      "lat": 16.8,
+      "jahr": 1000,
+      "volk": "tradAf"
+    },
+    {
+      "ort": "Aksum",
+      "lon": 38.7,
+      "lat": 14.1,
+      "jahr": 1000,
+      "volk": "orient"
+    },
+    {
+      "ort": "Tenochtitlán",
+      "lon": -99.1,
+      "lat": 19.4,
+      "jahr": 1000,
+      "volk": "tradAm"
+    },
+    {
+      "ort": "Cusco",
+      "lon": -71.98,
+      "lat": -13.5,
+      "jahr": 1000,
+      "volk": "tradAm"
+    },
+    {
+      "ort": "Bagan",
+      "lon": 94.9,
+      "lat": 21.2,
+      "jahr": 1279,
+      "volk": "buddTh"
+    },
+    {
+      "ort": "Angkor",
+      "lon": 103.9,
+      "lat": 13.4,
+      "jahr": 1279,
+      "volk": "buddTh",
+      "staat": "hindu"
+    },
+    {
+      "ort": "Karakorum",
+      "lon": 102.8,
+      "lat": 47.2,
+      "jahr": 1279,
+      "volk": "tengri"
+    },
+    {
+      "ort": "Nowgorod",
+      "lon": 31.3,
+      "lat": 58.5,
+      "jahr": 1279,
+      "volk": "orth"
+    },
+    {
+      "ort": "Toledo",
+      "lon": -4.0,
+      "lat": 39.9,
+      "jahr": 1279,
+      "volk": "kath"
+    },
+    {
+      "ort": "Granada",
+      "lon": -3.6,
+      "lat": 37.2,
+      "jahr": 1279,
+      "volk": "sunn"
+    },
+    {
+      "ort": "Hamburg",
+      "lon": 10.0,
+      "lat": 53.55,
+      "jahr": 1600,
+      "volk": "prot"
+    },
+    {
+      "ort": "München",
+      "lon": 11.6,
+      "lat": 48.14,
+      "jahr": 1600,
+      "volk": "kath"
+    },
+    {
+      "ort": "Genf",
+      "lon": 6.15,
+      "lat": 46.2,
+      "jahr": 1600,
+      "volk": "ref",
+      "staatEgal": true,
+      "warum": "Die Stadtrepublik Genf fehlt im Ursprungsdatensatz; die Zelle gehört dort Savoyen."
+    },
+    {
+      "ort": "Amsterdam",
+      "lon": 4.9,
+      "lat": 52.37,
+      "jahr": 1600,
+      "volk": "ref"
+    },
+    {
+      "ort": "London",
+      "lon": -0.13,
+      "lat": 51.5,
+      "jahr": 1600,
+      "volk": "angl"
+    },
+    {
+      "ort": "Dublin",
+      "lon": -6.26,
+      "lat": 53.35,
+      "jahr": 1600,
+      "volk": "kath",
+      "staat": "angl"
+    },
+    {
+      "ort": "Madrid",
+      "lon": -3.7,
+      "lat": 40.4,
+      "jahr": 1600,
+      "volk": "kath"
+    },
+    {
+      "ort": "Rom",
+      "lon": 12.5,
+      "lat": 41.9,
+      "jahr": 1600,
+      "volk": "kath"
+    },
+    {
+      "ort": "Krakau",
+      "lon": 19.9,
+      "lat": 50.06,
+      "jahr": 1600,
+      "volk": "kath"
+    },
+    {
+      "ort": "Stockholm",
+      "lon": 18.07,
+      "lat": 59.33,
+      "jahr": 1600,
+      "volk": "prot"
+    },
+    {
+      "ort": "Moskau",
+      "lon": 37.6,
+      "lat": 55.75,
+      "jahr": 1600,
+      "volk": "orth"
+    },
+    {
+      "ort": "Athen",
+      "lon": 23.7,
+      "lat": 38.0,
+      "jahr": 1600,
+      "volk": "orth",
+      "staat": "sunn"
+    },
+    {
+      "ort": "Istanbul",
+      "lon": 28.9,
+      "lat": 41.0,
+      "jahr": 1600,
+      "volk": "sunn"
+    },
+    {
+      "ort": "Kairo",
+      "lon": 31.2,
+      "lat": 30.0,
+      "jahr": 1600,
+      "volk": "sunn"
+    },
+    {
+      "ort": "Mekka",
+      "lon": 39.8,
+      "lat": 21.4,
+      "jahr": 1600,
+      "volk": "sunn"
+    },
+    {
+      "ort": "Isfahan",
+      "lon": 51.7,
+      "lat": 32.65,
+      "jahr": 1600,
+      "volk": "schii"
+    },
+    {
+      "ort": "Delhi",
+      "lon": 77.2,
+      "lat": 28.6,
+      "jahr": 1600,
+      "volk": "hindu",
+      "staat": "sunn"
+    },
+    {
+      "ort": "Lhasa",
+      "lon": 91.1,
+      "lat": 29.7,
+      "jahr": 1600,
+      "volk": "buddVa"
+    },
+    {
+      "ort": "Peking",
+      "lon": 116.4,
+      "lat": 39.9,
+      "jahr": 1600,
+      "volk": "konf"
+    },
+    {
+      "ort": "Kyoto",
+      "lon": 135.8,
+      "lat": 35.0,
+      "jahr": 1600,
+      "volk": "shinto"
+    },
+    {
+      "ort": "Ayutthaya",
+      "lon": 100.6,
+      "lat": 14.35,
+      "jahr": 1600,
+      "volk": "buddTh"
+    },
+    {
+      "ort": "Malakka",
+      "lon": 102.25,
+      "lat": 2.2,
+      "jahr": 1600,
+      "volk": "sunn"
+    },
+    {
+      "ort": "Manila",
+      "lon": 121.0,
+      "lat": 14.6,
+      "jahr": 1600,
+      "volk": "kath"
+    },
+    {
+      "ort": "Timbuktu",
+      "lon": -3.0,
+      "lat": 16.8,
+      "jahr": 1600,
+      "volk": "sunn"
+    },
+    {
+      "ort": "Lima",
+      "lon": -77.0,
+      "lat": -12.05,
+      "jahr": 1600,
+      "volk": "kath"
+    },
+    {
+      "ort": "Gondar",
+      "lon": 37.5,
+      "lat": 12.6,
+      "jahr": 1600,
+      "volk": "orient"
+    },
+    {
+      "ort": "Boston",
+      "lon": -71.06,
+      "lat": 42.36,
+      "jahr": 1815,
+      "volk": "prot"
+    },
+    {
+      "ort": "Mexiko-Stadt",
+      "lon": -99.1,
+      "lat": 19.4,
+      "jahr": 1815,
+      "volk": "kath"
+    },
+    {
+      "ort": "Kalkutta",
+      "lon": 88.36,
+      "lat": 22.57,
+      "jahr": 1815,
+      "volk": "hindu"
+    },
+    {
+      "ort": "Lahore",
+      "lon": 74.35,
+      "lat": 31.55,
+      "jahr": 1815,
+      "volk": "sunn",
+      "staatEgal": true,
+      "warum": "Das Sikh-Reich fehlt im Ursprungsdatensatz; die Herrschaft ist dort nicht zu prüfen."
+    },
+    {
+      "ort": "Kapstadt",
+      "lon": 18.4,
+      "lat": -33.9,
+      "jahr": 1815,
+      "volk": "tradAf"
+    },
+    {
+      "ort": "Sydney",
+      "lon": 151.2,
+      "lat": -33.87,
+      "jahr": 1815,
+      "volk": "tradOz",
+      "staat": "angl"
+    },
+    {
+      "ort": "Warschau",
+      "lon": 21.0,
+      "lat": 52.23,
+      "jahr": 1940,
+      "volk": "kath"
+    },
+    {
+      "ort": "Moskau",
+      "lon": 37.6,
+      "lat": 55.75,
+      "jahr": 1940,
+      "volk": "orth",
+      "staat": "athe"
+    },
+    {
+      "ort": "Ankara",
+      "lon": 32.85,
+      "lat": 39.93,
+      "jahr": 1940,
+      "volk": "sunn"
+    },
+    {
+      "ort": "Tokio",
+      "lon": 139.7,
+      "lat": 35.7,
+      "jahr": 1940,
+      "volk": "shinto"
+    },
+    {
+      "ort": "Rio de Janeiro",
+      "lon": -43.2,
+      "lat": -22.9,
+      "jahr": 1940,
+      "volk": "kath"
+    },
+    {
+      "ort": "Teheran",
+      "lon": 51.4,
+      "lat": 35.7,
+      "jahr": 1940,
+      "volk": "schii"
+    },
+    {
+      "ort": "Jerusalem",
+      "lon": 35.2,
+      "lat": 31.8,
+      "jahr": 2026,
+      "volk": "jud"
+    },
+    {
+      "ort": "Neu-Delhi",
+      "lon": 77.2,
+      "lat": 28.6,
+      "jahr": 2026,
+      "volk": "hindu"
+    },
+    {
+      "ort": "Karatschi",
+      "lon": 67.0,
+      "lat": 24.9,
+      "jahr": 2026,
+      "volk": "sunn"
+    },
+    {
+      "ort": "Bangkok",
+      "lon": 100.5,
+      "lat": 13.75,
+      "jahr": 2026,
+      "volk": "buddTh"
+    },
+    {
+      "ort": "Kinshasa",
+      "lon": 15.3,
+      "lat": -4.3,
+      "jahr": 2026,
+      "volk": "kath"
+    },
+    {
+      "ort": "Damaskus",
+      "lon": 36.3,
+      "lat": 33.5,
+      "jahr": 2026,
+      "volk": "sunn",
+      "warum": "Besatzung ist keine Bekehrung: Der Golan ändert nichts an der Religion Syriens."
+    },
+    {
+      "ort": "Kano",
+      "lon": 8.5,
+      "lat": 12.0,
+      "jahr": 1600,
+      "volk": "sunn"
+    },
+    {
+      "ort": "Mogadischu",
+      "lon": 45.3,
+      "lat": 2.05,
+      "jahr": 1600,
+      "volk": "sunn"
+    },
+    {
+      "ort": "Khartum",
+      "lon": 32.5,
+      "lat": 15.6,
+      "jahr": 1600,
+      "volk": "sunn"
+    },
+    {
+      "ort": "Sansibar",
+      "lon": 39.2,
+      "lat": -6.16,
+      "jahr": 1600,
+      "volk": "sunn"
+    },
+    {
+      "ort": "Dakar",
+      "lon": -17.4,
+      "lat": 14.7,
+      "jahr": 1815,
+      "volk": "sunn"
+    },
+    {
+      "ort": "Kairo",
+      "lon": 31.2,
+      "lat": 30.0,
+      "jahr": 2026,
+      "volk": "sunn"
+    },
+    {
+      "ort": "Lagos",
+      "lon": 3.4,
+      "lat": 6.5,
+      "jahr": 2026,
+      "volk": "kath"
+    },
+    {
+      "ort": "Addis Abeba",
+      "lon": 38.7,
+      "lat": 9.0,
+      "jahr": 2026,
+      "volk": "orient"
+    },
+    {
+      "ort": "Bagdad",
+      "lon": 44.4,
+      "lat": 33.3,
+      "jahr": 2026,
+      "volk": "schii"
+    },
+    {
+      "ort": "Baku",
+      "lon": 49.9,
+      "lat": 40.4,
+      "jahr": 2026,
+      "volk": "schii"
+    },
+    {
+      "ort": "Sarajevo",
+      "lon": 18.4,
+      "lat": 43.85,
+      "jahr": 2026,
+      "volk": "sunn"
+    },
+    {
+      "ort": "Denpasar",
+      "lon": 115.2,
+      "lat": -8.65,
+      "jahr": 2026,
+      "volk": "hindu"
+    },
+    {
+      "ort": "Kaschgar",
+      "lon": 75.99,
+      "lat": 39.47,
+      "jahr": 1600,
+      "volk": "sunn"
+    }
+  ]
+}

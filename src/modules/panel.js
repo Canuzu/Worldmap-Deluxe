@@ -286,13 +286,25 @@ export class DetailPanel {
       const r = entry.religion;
       const nameVon = (k) => RELIGION.klassen[k]?.name ?? k;
       const guete = { 3: 'in Quellen belegt', 2: 'aus regionaler Regel', 1: 'grobe Schätzung' }[r.guete];
-      if (r.staat === r.volk) {
-        add('Religion', `${nameVon(r.volk)} <i class="fact__guete">${esc(guete)}</i>`,
-          { raw: true, wide: true });
+      // Der Anteil sagt mit, wie eindeutig der Fall ist: 98 Prozent ist eine
+      // andere Auskunft als 51, auch wenn beide dieselbe Farbe tragen.
+      const anteil = r.anteil ? ` · ${r.anteil} % der Fläche` : '';
+      if (r.staat === 'lokal') {
+        /* Kein Bekenntnis der Herrschaft. Das ist für die Gegenwart der
+         * Regelfall und eine eigene Aussage wert: Ein Staat, der keine
+         * Religion bevorzugt, ist historisch die Ausnahme – erst im 20.
+         * Jahrhundert wird er zur Regel. */
+        add('Religion', `${nameVon(r.volk)}${esc(anteil)} `
+          + `<i class="fact__guete">${esc(guete)}</i>`, { raw: true, wide: true });
+        add('Staat und Religion', 'Keine Staatsreligion – die Verfassung bevorzugt kein Bekenntnis.',
+          { wide: true });
+      } else if (r.staat === r.volk) {
+        add('Religion', `${nameVon(r.volk)}${esc(anteil)} `
+          + `<i class="fact__guete">${esc(guete)}</i>`, { raw: true, wide: true });
       } else {
         // Der Fall, für den es die Ebene gibt – deshalb steht er auch als
         // eigene Kachel da und nicht als Nebensatz.
-        add('Bevölkerung glaubt', `${nameVon(r.volk)}`, { raw: false });
+        add('Bevölkerung glaubt', `${nameVon(r.volk)}${anteil}`, { raw: false });
         add('Herrschaft bekennt sich zu', `${nameVon(r.staat)}`, { raw: false });
         add('Verhältnis', `Hof und Land gehören verschiedenen Religionen an. `
           + `<i class="fact__guete">${esc(guete)}</i>`, { raw: true, wide: true });
