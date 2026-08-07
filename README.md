@@ -1408,10 +1408,24 @@ einer Grenze auf –, und die Grenzen liegen als dünne Linien darüber. Erst im
 Zusammenspiel wird die Aussage sichtbar: dass eine Konfessionsgrenze mitten
 durch ein Reich läuft und nicht an seinem Rand.
 
-**Die Treppenstufen des Gitters sieht man nur im Landesinneren.** An den Küsten
-nicht: Dort liegt die Meeresfläche darüber, eine deckende Ebene mit einem Loch
-je Landmasse, und schneidet das Raster an der echten Uferlinie ab. Im
-Landesinneren ist eine Konfessionsgrenze ohnehin ein Übergang und keine Linie.
+**Die Küsten bleiben scharf**, ohne dass das Raster sie kennt: Die
+Meeresfläche liegt als deckende Ebene darüber und schneidet an der echten
+Uferlinie ab.
+
+**Im Landesinneren wird die Kante weich, sobald man hineinzoomt.** Auf
+Weltmaßstab ist eine Zelle kleiner als ein Bildpunkt – da sind harte Kanten
+richtig. Bei Zoomstufe 6 ist dieselbe Zelle ein Quadrat von dreißig
+Bildpunkten, und eine harte Kante behauptet dort eine Grenze, wo eine
+Schätzung von 28 Kilometern steht. Der Übergang ist die ehrlichere Auskunft:
+Er zeigt, dass die Karte nicht mehr weiß, wo genau die Linie läuft.
+
+**Die Schraffur liegt im Bildschirmmaß, nicht im Datenmaß.** Anfangs stand sie
+im Rasterbild selbst – jede vierte Diagonale der Zellen. Damit wuchs sie beim
+Zoomen mit und wurde aus feinen Streifen ein Schachbrett aus dreißig
+Bildpunkten. Jetzt wird die Farbe der Herrschaft auf eine Zwischenfläche
+gezeichnet, dort mit `destination-in` auf ein Streifenmuster von sechs
+Bildpunkten beschnitten und als Ganzes aufgelegt. Eine Schraffur ist ein
+Zeichen, kein Gelände: Sie darf nicht mitwachsen.
 
 Zwei Kunstgriffe machen das Zeichnen billig. Das Bild wird gleich in
 **Mercator-Höhe** gebaut statt in Breitengraden – dann ist die Abbildung auf

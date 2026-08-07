@@ -54,9 +54,6 @@ export const ReligionsRaster = L.Layer.extend({
     const c = this._leinwand = L.DomUtil.create('canvas', 'religion-canvas');
     c.style.pointerEvents = 'none';
     this._ctx = c.getContext('2d');
-    // Harte Kanten statt Weichzeichnung: Eine Zellgrenze ist eine Aussage,
-    // kein Verlauf. Weichgezeichnet sähe das Raster nach Wetterkarte aus.
-    this._ctx.imageSmoothingEnabled = false;
     map.getPane(this.options.pane).appendChild(c);
     map.on('move zoom viewreset resize zoomanim', this._planen, this);
     this._planen();
@@ -78,7 +75,9 @@ export const ReligionsRaster = L.Layer.extend({
    */
   setDaten(daten, vokabular, hell) {
     this._daten = daten;
-    this._bild = daten ? this._baueBild(daten, vokabular, hell) : null;
+    const bilder = daten ? this._baueBild(daten, vokabular, hell) : null;
+    this._bild = bilder?.volk ?? null;
+    this._staatBild = bilder?.staat ?? null;
     this._planen();
   },
 
@@ -119,6 +118,13 @@ export const ReligionsRaster = L.Layer.extend({
     const bild = ctx.createImageData(WELT, WELT);
     const px = bild.data;
 
+    const leinwandS = document.createElement('canvas');
+    leinwandS.width = WELT;
+    leinwandS.height = WELT;
+    const ctxS = leinwandS.getContext('2d');
+    const bildS = ctxS.createImageData(WELT, WELT);
+    const pxS = bildS.data;
+
     for (let y = 0; y < WELT; y++) {
       // Rückrechnung Mercator → Breitengrad
       const n = Math.PI * (1 - 2 * (y + .5) / WELT);
@@ -139,22 +145,51 @@ export const ReligionsRaster = L.Layer.extend({
         px[ziel + 2] = tafel[v * 3 + 2];
         px[ziel + 3] = 255;
 
-        /* Wo die Herrschaft anders glaubt als die Leute, legt sich eine
-           Schraffur darüber – dieselbe Aussage wie bei den besetzten
-           Gebieten, und dieselbe Bildsprache. Sie entsteht hier als Muster
-           im Bild selbst: jede dritte Diagonale trägt die Farbe der
-           Herrschaft. Ein zweites Bild darüberzulegen wäre teurer und würde
-           beim Zoomen mitwachsen, was eine Schraffur nicht tun soll. */
+        /* Die Farbe der Herrschaft kommt in ein zweites Bild – dort, wo sie
+           von der des Volkes abweicht, und sonst durchsichtig.
+           Zusammengelegt werden beide erst beim Zeichnen, mit einem
+           Streifenmuster im Bildschirmmaß.
+
+           Vorher stand die Schraffur in diesem Bild: jede vierte Diagonale
+           der Zellen. Damit hatte sie die Auflösung der Daten und nicht die
+           des Bildschirms – beim Hineinzoomen wurde aus feinen Streifen ein
+           Schachbrett aus 30 Bildpunkten. Eine Schraffur ist ein Zeichen,
+           kein Gelände: Sie darf nicht mitwachsen. */
         const s = staat[i];
-        if (s && s !== v && (x + y) % 4 === 0) {
-          px[ziel] = tafel[s * 3];
-          px[ziel + 1] = tafel[s * 3 + 1];
-          px[ziel + 2] = tafel[s * 3 + 2];
+        if (s && s !== v) {
+          pxS[ziel] = tafel[s * 3];
+          pxS[ziel + 1] = tafel[s * 3 + 1];
+          pxS[ziel + 2] = tafel[s * 3 + 2];
+          pxS[ziel + 3] = 255;
         }
       }
     }
     ctx.putImageData(bild, 0, 0);
-    return leinwand;
+    ctxS.putImageData(bildS, 0, 0);
+    return { volk: leinwand, staat: leinwandS };
+  },
+
+  /**
+   * Streifenmuster im Bildschirmmaß.
+   *
+   * Sechs Bildpunkte Abstand, unabhängig vom Zoom – dieselbe Feinheit wie bei
+   * der Schraffur der besetzten Gebiete. Einmal gebaut und behalten: Ein
+   * Muster je Bild neu anzulegen kostet mehr als alles andere am Zeichnen.
+   */
+  _streifen(ctx) {
+    if (this._muster) return this._muster;
+    const kachel = document.createElement('canvas');
+    kachel.width = 6;
+    kachel.height = 6;
+    const k = kachel.getContext('2d');
+    k.strokeStyle = '#000';
+    k.lineWidth = 2;
+    k.beginPath();
+    k.moveTo(-1, 7);
+    k.lineTo(7, -1);
+    k.stroke();
+    this._muster = ctx.createPattern(kachel, 'repeat');
+    return this._muster;
   },
 
   _planen() {
@@ -177,9 +212,21 @@ export const ReligionsRaster = L.Layer.extend({
       c.height = Math.round(groesse.y * dichte);
       c.style.width = `${groesse.x}px`;
       c.style.height = `${groesse.y}px`;
-      ctx.imageSmoothingEnabled = false;
     }
     L.DomUtil.setPosition(c, map.containerPointToLayerPoint([0, 0]));
+
+    /* Weiche Kanten, sobald eine Zelle größer als ein paar Bildpunkte wird.
+     *
+     * Auf Weltmaßstab ist eine Zelle kleiner als ein Bildpunkt – da ist
+     * Glättung wirkungslos und harte Kanten sind richtig. Beim Hineinzoomen
+     * wird aus derselben Zelle ein Quadrat von dreißig Bildpunkten, und eine
+     * harte Kante behauptet dann eine Grenze, wo eine Schätzung von 28
+     * Kilometern steht. Der Übergang ist die ehrlichere Darstellung: Er zeigt,
+     * dass die Karte hier nicht mehr weiß, wo genau die Linie läuft. */
+    const zellePx = (256 * 2 ** map.getZoom()) * (this._daten?.schritt ?? .25) / 360;
+    this._weich = zellePx > 3;
+    ctx.imageSmoothingEnabled = this._weich;
+    ctx.imageSmoothingQuality = 'high';
     ctx.setTransform(dichte, 0, 0, dichte, 0, 0);
     ctx.clearRect(0, 0, groesse.x, groesse.y);
     if (!this._bild) return;
@@ -201,10 +248,40 @@ export const ReligionsRaster = L.Layer.extend({
     /* Bei weit herausgezoomter Karte liegt die Welt mehrfach nebeneinander.
        Ohne die Nachbarkopien bliebe links und rechts eine leere Fläche, sobald
        man über den Datumswechsel hinausschiebt. */
+    const kopien = [];
     for (const versatz of [-WELT, 0, WELT]) {
       const sx = wx + versatz;
       if (sx + ww < 0 || sx > WELT) continue;
+      kopien.push(sx);
+    }
+    for (const sx of kopien) {
       ctx.drawImage(this._bild, sx, wy, ww, wh, 0, 0, groesse.x, groesse.y);
+    }
+
+    /* Die Herrschaft als Schraffur darüber – in zwei Schritten, weil das
+       Streifenmuster im Bildschirmmaß liegen muss und nicht im Datenmaß.
+       Erst wird die Farbe der Herrschaft auf eine Zwischenfläche gezeichnet,
+       dann mit `destination-in` auf die Streifen beschnitten, dann als Ganzes
+       aufgelegt. Anders herum – die Streifen ins Datenbild zu malen – wuchsen
+       sie beim Zoomen mit und wurden zum Schachbrett. */
+    if (this._staatBild) {
+      const zwischen = this._zwischen ??= document.createElement('canvas');
+      if (zwischen.width !== c.width || zwischen.height !== c.height) {
+        zwischen.width = c.width;
+        zwischen.height = c.height;
+      }
+      const z = zwischen.getContext('2d');
+      z.setTransform(dichte, 0, 0, dichte, 0, 0);
+      z.imageSmoothingEnabled = this._weich;
+      z.clearRect(0, 0, groesse.x, groesse.y);
+      for (const sx of kopien) {
+        z.drawImage(this._staatBild, sx, wy, ww, wh, 0, 0, groesse.x, groesse.y);
+      }
+      z.globalCompositeOperation = 'destination-in';
+      z.fillStyle = this._streifen(z);
+      z.fillRect(0, 0, groesse.x, groesse.y);
+      z.globalCompositeOperation = 'source-over';
+      ctx.drawImage(zwischen, 0, 0, c.width, c.height, 0, 0, groesse.x, groesse.y);
     }
     ctx.globalAlpha = 1;
   },
