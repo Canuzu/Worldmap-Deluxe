@@ -527,7 +527,6 @@
     touch-action: none;
   }
   .panel.is-ziehend { transition: none; }
-  @keyframes blattRein { from { transform: translateY(100%); } }
 
   /* Der Griff: eine Leiste, an der man sieht, dass man ziehen kann. Vier
      Millimeter hoch, aber die Grifffläche darum herum ist fingergroß. */
@@ -590,7 +589,16 @@
   body.hat-blatt .timeline,
   body.hat-blatt .tools,
   body.hat-blatt .mapmodes { opacity: 1; visibility: visible; pointer-events: auto; }
-  body.hat-blatt .timeline { right: min(24rem, 56vw); }
+  /* `width` und `margin-inline: auto` müssen mit weg, sonst rechnet die
+     Zeitleiste ihre Breite weiter aus der vollen Fensterbreite und läuft mit
+     einem negativen rechten Rand unter der Spalte durch. Sichtbar war das
+     nicht – die Spalte ist deckend und liegt darüber –, aber der Regler
+     reichte unter sie und nahm dort Berührungen an. */
+  body.hat-blatt .timeline {
+    right: min(24rem, 56vw);
+    width: auto;
+    margin-inline: 0;
+  }
   body.hat-blatt .tools { right: calc(min(24rem, 56vw) + .5rem); }
   /* Die Modusleiste hat in dem verbliebenen Streifen keinen Platz mehr: Links
      steht die Kopfzeile, rechts die Werkzeugsäule, dazwischen blieben zwanzig

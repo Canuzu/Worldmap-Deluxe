@@ -11,6 +11,7 @@ import { esc, areaText, rangeText, yearShort, initials, num } from './format.js'
 import RELIGION from '../data/religion/vokabular.json';
 import { PRECISION_LABELS } from './palette.js';
 import { lookupArticle } from './wikipedia.js';
+import { bodenblatt } from './blatt.js';
 
 /**
  * Kurzform eines Herrschernamens für die Regierungsfolge.
@@ -75,66 +76,14 @@ export class DetailPanel {
     this._blattEinrichten();
   }
 
-  /* ------------------------------------------------- Bodenblatt am Telefon
-
-     Auf einem Telefon fährt die Tafel von unten ein und steht zunächst auf
-     halber Höhe: Name, Herrscher und Fläche sind sofort da, die Karte bleibt
-     darüber sichtbar und anklickbar. Das ist der Kern der Bedienung auf dem
-     Telefon – antippen, lesen, das nächste antippen –, und sie geht verloren,
-     sobald die Tafel den ganzen Bildschirm nimmt.
-
-     Drei Stellungen, dazwischen wird gezogen und dann eingerastet. Nach unten
-     über die kleinste hinaus heißt: schließen. */
+  /* Bodenblatt am Telefon – die Mechanik steht in blatt.js, weil das
+     Schlachtenblatt dieselbe braucht. */
   _blattEinrichten() {
-    const STELLUNGEN = [.52, .92];
-    const wurzel = this.dom.root;
-    let start = null;
-
-    const hoeheSetzen = (anteil) => {
-      this._blattAnteil = anteil;
-      wurzel.style.setProperty('--blatt-h', `${Math.round(anteil * 100)}vh`);
-    };
-    this._blattZuruecksetzen = () => hoeheSetzen(STELLUNGEN[0]);
-
-    const amGriff = (e) => {
-      // Der obere Rand samt Kopfzeile ist der Griff. Weiter unten soll der
-      // Finger den Text rollen und nicht das Blatt verschieben.
-      const r = wurzel.getBoundingClientRect();
-      return e.clientY - r.top < 74;
-    };
-
-    wurzel.addEventListener('pointerdown', (e) => {
-      // Genau die Bedingung, unter der das Blatt in panel.css als Bodenblatt
-      // steht. Im Querformat ist es eine Spalte am rechten Rand – dort gibt es
-      // nichts zu ziehen, und ein Griff, der nichts tut, ist schlimmer als
-      // keiner.
-      if (!matchMedia('(max-width: 560px) and (orientation: portrait)').matches) return;
-      if (e.pointerType === 'mouse' && e.button !== 0) return;
-      if (!amGriff(e)) return;
-      start = { y: e.clientY, anteil: this._blattAnteil ?? STELLUNGEN[0] };
-      wurzel.classList.add('is-ziehend');
-      wurzel.setPointerCapture(e.pointerId);
+    const { zuruecksetzen } = bodenblatt(this.dom.root, {
+      stellungen: [.52, .92],
+      schliessen: () => this.close(),
     });
-
-    wurzel.addEventListener('pointermove', (e) => {
-      if (!start) return;
-      const anteil = start.anteil + (start.y - e.clientY) / window.innerHeight;
-      hoeheSetzen(Math.max(.12, Math.min(STELLUNGEN[1], anteil)));
-    });
-
-    const loslassen = () => {
-      if (!start) return;
-      start = null;
-      wurzel.classList.remove('is-ziehend');
-      const jetzt = this._blattAnteil ?? STELLUNGEN[0];
-      // Unter der Hälfte der kleinsten Stellung: weg damit.
-      if (jetzt < STELLUNGEN[0] * .62) { this.close(); return; }
-      const naechste = STELLUNGEN
-        .reduce((a, b) => (Math.abs(b - jetzt) < Math.abs(a - jetzt) ? b : a));
-      hoeheSetzen(naechste);
-    };
-    wurzel.addEventListener('pointerup', loslassen);
-    wurzel.addEventListener('pointercancel', loslassen);
+    this._blattZuruecksetzen = zuruecksetzen;
   }
 
   /**

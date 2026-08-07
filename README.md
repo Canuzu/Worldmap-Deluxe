@@ -1625,6 +1625,29 @@ darunter zu verschwinden. Die Modusleiste tauscht dabei Namen gegen Sinnbilder:
 Fünf Namen brauchen 420 Punkte, fünf Sinnbilder 220, und mehr ist neben der
 Tafel nicht frei.
 
+**Alles, was aufgeht, ist ein Bodenblatt** – nicht nur der Steckbrief. Das
+Schlachtenfenster stand vorher als Kasten mitten im Bild: 368 × 490 Punkte auf
+einem 390 × 844 großen Schirm, also 58 Prozent der Bildhöhe, und darunter noch
+die Zeitleiste. Vom Schlachtfeld blieb nichts übrig – ausgerechnet bei der
+einen Ansicht, in der sich auf der Karte etwas bewegt. Ebenenmenü und Legende
+schwebten ebenso darüber und ließen auf einem 360 × 640 großen Schirm
+13 Prozent Karte frei.
+
+Alle drei liegen jetzt unten auf. Das Schlachtenblatt beginnt eine Stufe tiefer
+als der Steckbrief (44 statt 52 Prozent) und lässt sich genauso ziehen; die
+Mechanik dazu steht einmal in `src/modules/blatt.js` statt zweimal. Im Verlauf
+steht dabei zuerst der Augenblick, dann die Achse, dann die Knöpfe – am
+Schreibtisch liest man von Datum und Parteien abwärts, aber auf 44 Prozent
+Bildhöhe sähe man davon nur das, was sich *nicht* ändert. Alles Übrige rollt
+darunter weiter.
+
+Wie viel Karte frei bleibt, ist keine Ansichtssache mehr: `check:layout` misst
+es. Der Überschneidungstest allein fand den Fehler nicht – er lässt eine höher
+liegende, deckende Fläche bewusst verdecken, das ist ihr Zweck. Gefordert sind
+jetzt ein Drittel der Bildhöhe über einer Tafel (quer: ein Drittel der Breite
+daneben) und 28 Prozent bei einem Menü, das man öffnet, einstellt und wieder
+schließt.
+
 Weiter gilt am Telefon:
 
 - **Jede Fingerfläche mindestens 44 Punkte.** Apple und Google verlangen beide
@@ -1639,6 +1662,13 @@ Weiter gilt am Telefon:
   und 70 Orte statt 220; die kleinste Schrift steigt von 9,5 auf 9 Punkte bei
   gleichzeitig strengerer Auswahl. Auf 390 Punkten Breite ist die Grenze nicht
   der Platz auf der Karte, sondern was man im Gehen lesen kann.
+- **Der Maßstab ist eine Zeile, kein Kasten.** Er stand als gepolsterte Kapsel
+  mit Weichzeichner oben links – 221 × 54 Punkte quer über Nordeuropa. Jetzt
+  steht er dort, wo der Maßstab auf einer gestochenen Karte immer steht: in
+  der unteren linken Ecke, unmittelbar über der Modusleiste, ohne Kapsel, mit
+  halb so langem Balken und .58 statt .7 Schriftgrad. Die Quellenzeile behält
+  ihre 44 Punkte Fingerfläche, aber unsichtbar – ein Rechtsnachweis darf klein
+  sein, unerreichbar darf er nicht sein.
 - **Die Namen neben den Ereignismarken bleiben weg.** „Die erste moderne
   Eisenbahnlinie“ ist auf einem Telefon ein Drittel der Bildbreite; im Test
   lagen zwei solche Zeilen übereinander und über halb Europa. Die Marke

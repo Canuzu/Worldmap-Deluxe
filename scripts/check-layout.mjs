@@ -59,6 +59,42 @@ const FINGER = `(() => {
   return klein;
 })()`;
 
+/**
+ * Freie Karte am Telefon.
+ *
+ * Der Überschneidungstest lässt eine höher liegende, deckende Fläche bewusst
+ * verdecken – das ist ihr Zweck. Damit rutscht aber genau der Fehler durch,
+ * der am Telefon am meisten stört: eine Tafel, die die Karte ganz zudeckt.
+ * Gemeldet wurde das für das Schlachtenfenster, das 490 von 844 Punkten nahm
+ * und darunter noch die Zeitleiste stehen ließ – vom Schlachtfeld blieb
+ * nichts.
+ *
+ * Geprüft wird deshalb, wie viel Karte über beziehungsweise neben der
+ * obersten Tafel frei bleibt: hochkant mindestens ein Drittel der Bildhöhe,
+ * quer mindestens ein Drittel der Breite. Weniger heißt: Man liest über eine
+ * Karte hinweg statt in ihr.
+ */
+const FREIE_KARTE = `(() => {
+  const quer = innerWidth > innerHeight;
+  let engste = 1;
+  let wer = null;
+  let latte = 33;
+  for (const s of ['.panel', '.battles', '.popover']) {
+    const el = document.querySelector(s);
+    if (!el || el.hidden || el.offsetParent === null) continue;
+    const cs = getComputedStyle(el);
+    if (cs.visibility === 'hidden' || Number(cs.opacity) < .5) continue;
+    const r = el.getBoundingClientRect();
+    if (r.width < 4 || r.height < 4) continue;
+    // Frei ist, was oberhalb (hochkant) bzw. links (quer) der Tafel liegt.
+    const anteil = quer ? r.left / innerWidth : r.top / innerHeight;
+    // Ein Menü darf mehr nehmen als eine Tafel, die man neben der Karte liest:
+    // Man öffnet es, stellt etwas ein und schließt es wieder.
+    if (anteil < engste) { engste = anteil; wer = s; latte = s === '.popover' ? 28 : 33; }
+  }
+  return { anteil: Math.round(engste * 100), wer, latte, quer };
+})()`;
+
 /** Überlappungen zwischen Bedienelementen finden – das Auge übersieht sie. */
 const RECHTECKE = `(() => {
   const namen = ['.dock', '.tools', '.timeline', '.credits', '.rose', '.panel',
@@ -153,6 +189,11 @@ for (const [name, w, h] of GROESSEN) {
       const klein = await page.evaluate(FINGER);
       for (const k of klein.slice(0, 4)) probleme.push(`Fingerfläche zu klein: ${k}`);
       if (klein.length > 4) probleme.push(`… und ${klein.length - 4} weitere zu kleine Flächen`);
+      const frei = await page.evaluate(FREIE_KARTE);
+      if (frei.wer && frei.anteil < frei.latte) {
+        probleme.push(`${frei.wer} lässt nur ${frei.anteil} % Karte frei `
+          + `(${frei.quer ? 'daneben' : 'darüber'}, gefordert ${frei.latte} %)`);
+      }
     }
     fehlerGesamt += probleme.length;
     const marke = probleme.length ? '✗' : '✓';

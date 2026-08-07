@@ -1269,6 +1269,66 @@ await check('Querformat am Telefon: Tafel als Spalte, Modi bleiben erreichbar', 
   await page.setViewportSize({ width: 1440, height: 900 });
 });
 
+/* Das Schlachtenblatt nahm am Telefon 490 von 844 Punkten und ließ darunter
+   noch die Zeitleiste stehen – vom Schlachtfeld blieb nichts. Bei einer
+   Schlacht ist aber gerade die Karte das, worauf sich etwas bewegt. Geprüft
+   wird deshalb, was frei bleibt, nicht nur, dass sich etwas öffnet. */
+await check('Schlachtenblatt am Telefon liegt unten und lässt die Karte frei', async () => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(`${BASE}/#position=4/48/12&year=1815`, { waitUntil: 'networkidle' });
+  await page.waitForTimeout(1200);
+  await page.click('#btnBattles');
+  await page.waitForSelector('#battlesBox:not([hidden])', { timeout: 8000 });
+  await page.waitForTimeout(900);
+
+  const masse = await page.evaluate(() => {
+    const r = document.getElementById('battlesBox').getBoundingClientRect();
+    return { oben: r.top, unten: r.bottom, breite: r.width, vh: window.innerHeight, vw: window.innerWidth };
+  });
+  if (masse.oben < masse.vh * .33) {
+    throw new Error(`nur ${Math.round((masse.oben / masse.vh) * 100)} % Karte über dem Blatt`);
+  }
+  if (masse.unten < masse.vh - 2) throw new Error('Blatt liegt nicht am unteren Rand auf');
+  if (masse.breite < masse.vw - 2) throw new Error('Blatt geht nicht über die volle Breite');
+
+  // Herunterwischen schließt – dieselbe Geste wie beim Steckbrief.
+  const griff = await page.evaluate(() => {
+    const r = document.getElementById('battlesBox').getBoundingClientRect();
+    return { x: r.left + r.width / 2, y: r.top + 18 };
+  });
+  await page.mouse.move(griff.x, griff.y);
+  await page.mouse.down();
+  await page.mouse.move(griff.x, 830, { steps: 10 });
+  await page.mouse.up();
+  await page.waitForTimeout(600);
+  if (!(await page.locator('#battlesBox').isHidden())) throw new Error('Runterwischen schließt nicht');
+  await page.setViewportSize({ width: 1440, height: 900 });
+});
+
+/* Der Maßstab stand als gepolsterte Kapsel oben links mitten im Bild. Er
+   gehört in die Ecke und muss klein sein – aber die Quellenzeile darin bleibt
+   ein Rechtsnachweis und muss mit dem Finger zu treffen sein. */
+await check('Maßstab am Telefon: klein, in der Ecke, Quellen trotzdem greifbar', async () => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(`${BASE}/#position=4/48/12&year=1815`, { waitUntil: 'networkidle' });
+  await page.waitForTimeout(1400);
+  const m = await page.evaluate(() => {
+    const c = document.querySelector('.credits').getBoundingClientRect();
+    const l = document.getElementById('btnCredits').getBoundingClientRect();
+    const cs = getComputedStyle(document.querySelector('.credits'));
+    return {
+      oben: c.top, links: c.left, breite: c.width, schrift: parseFloat(cs.fontSize),
+      link: { w: l.width, h: l.height }, vh: window.innerHeight, vw: window.innerWidth,
+    };
+  });
+  if (m.oben < m.vh * .5) throw new Error(`Maßstab steht bei ${Math.round((m.oben / m.vh) * 100)} % der Bildhöhe – zu weit oben`);
+  if (m.links > m.vw * .1) throw new Error('Maßstab klebt nicht am linken Rand');
+  if (m.breite > m.vw * .6) throw new Error(`Maßstab ${Math.round(m.breite)}px breit – zu groß`);
+  if (m.schrift > 10) throw new Error(`Schrift ${m.schrift}px – zu groß`);
+  if (m.link.h < 44) throw new Error(`Quellenzeile nur ${Math.round(m.link.h)}px hoch`);
+  await page.setViewportSize({ width: 1440, height: 900 });
+});
+
 console.log(checks.join('\n'));
 const failed = checks.filter((c) => c.includes('✗')).length;
 console.log(`\n${checks.length - failed}/${checks.length} Prüfungen bestanden`);

@@ -1751,9 +1751,199 @@
   }
   .mapmodes button span { display: inline; }
 
-  /* Der Maßstab lag unter der Modusleiste. Er wandert nach oben links, unter
-     die Kopfzeile – dort ist auf einem Telefon Platz. */
-  .credits { bottom: auto; top: calc(4.2rem + env(safe-area-inset-top, 0px)); }
+  /* ------------------------------------------------------ Maßstab am Telefon
+
+     Er stand oben links unter der Kopfzeile: eine gepolsterte Kapsel mit
+     Weichzeichner, 221 mal 54 Punkte, mitten im Bild. Auf einem Schreibtisch
+     ist das eine Randnotiz am unteren Bildrand; auf 390 Punkten Breite ist es
+     ein Kasten quer über Nordeuropa.
+
+     Jetzt steht er dort, wo der Maßstab auf einer gestochenen Karte immer
+     steht: in der unteren linken Ecke, unmittelbar über der Modusleiste, als
+     dünne Zeile ohne Kapsel und ohne Hintergrund. Der Balken schrumpft von
+     vier auf zwei Zentimeter, die Schrift von .7 auf .58 – lesbar bleibt er,
+     denn gelesen wird er ohnehin nur, wenn man ihn sucht.
+
+     Die Quellenzeile behält ihre 44 Punkte Fingerfläche, aber unsichtbar: Das
+     Polster ist durchsichtig, gesehen wird nur die Schrift. Ein Rechtsnachweis
+     darf klein sein, unerreichbar darf er nicht sein. */
+  .credits {
+    top: auto;
+    left: calc(.6rem + var(--safe-l));
+    bottom: calc(14.6rem + var(--safe-b));
+    gap: .5rem;
+    padding: 0;
+    font-size: .58rem;
+    border-radius: 0;
+    background: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    /* Ohne Kapsel braucht die Schrift über hellen Kartenflächen einen eigenen
+       Halo, sonst verschwindet sie über der Sahara. */
+    text-shadow: 0 0 3px var(--surface-solid), 0 0 3px var(--surface-solid);
+  }
+  .scalebar i { width: 2rem; }
+  .credits__link { padding: .7rem .2rem; }
+}
+
+/* Wie ein Bodenblatt einfährt. Steht ausserhalb jeder Bedingung, weil zwei
+   Dateien es brauchen – der Steckbrief in panel.css und das Schlachtenblatt
+   hier – und ein Bewegungsablauf nicht zweimal dasselbe heissen sollte. */
+@keyframes blattRein { from { transform: translateY(100%); } }
+
+/* ------------------------------------------ Das Schlachtenblatt am Telefon
+
+   Es stand als Kasten mitten im Bild: 368 mal 490 Punkte auf einem 390 mal
+   844 großen Schirm, also 58 Prozent der Bildhöhe, und darunter noch die
+   Zeitleiste. Vom Schlachtfeld blieb nichts übrig – ausgerechnet bei der
+   einen Ansicht, in der sich auf der Karte etwas bewegt.
+
+   Es wird deshalb zum Bodenblatt wie der Steckbrief: von unten eingefahren,
+   am Griff zu ziehen, nach unten wegzuwischen. Es beginnt eine Stufe tiefer
+   als der Steckbrief – 44 statt 52 Prozent –, weil über ihm eine Karte
+   steht, auf der etwas passiert.
+
+   Die Mechanik dazu steht in blatt.js und ist dieselbe, die auch der
+   Steckbrief benutzt. */
+@media (max-width: 560px) and (orientation: portrait) {
+  /* Ebenenmenü und Legende bekommen dieselbe Form. Sie schwebten als Kästen
+     über der Karte und ließen auf einem 360 mal 640 großen Schirm 13 Prozent
+     Karte übrig – schlechter als ein Blatt, das unten aufliegt, und dabei
+     obendrein niedriger. Am Bildrand angeschlagen haben sie mehr Platz für
+     ihren Inhalt und lassen mehr Karte frei. Gezogen wird an ihnen nichts:
+     Ein Menü öffnet man, stellt etwas ein und schließt es wieder. */
+  .popover {
+    left: 0;
+    right: 0;
+    top: auto;
+    bottom: 0;
+    width: 100%;
+    max-height: 62vh;
+    border-radius: var(--r-xl) var(--r-xl) 0 0;
+    border: 0;
+    border-top: 1px solid var(--hairline-strong);
+    box-shadow: 0 -18px 48px rgba(0, 0, 0, .46);
+    background: var(--surface-solid);
+    padding: 1rem 1.1rem calc(1.2rem + var(--safe-b));
+    transform-origin: bottom center;
+    animation: blattRein 240ms var(--ease);
+  }
+  /* Sie decken die Konsole zu; halb sichtbar darunter sähe sie nach Fehler
+     aus – dieselbe Begründung wie bei den übrigen Blättern. */
+  body:has(.popover:not([hidden])) .timeline,
+  body:has(.popover:not([hidden])) .mapmodes {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .battles {
+    left: 0;
+    right: 0;
+    top: auto;
+    bottom: 0;
+    width: 100%;
+    height: var(--blatt-h, 44vh);
+    max-height: 92vh;
+    border: 0;
+    border-top: 1px solid var(--hairline-strong);
+    border-radius: var(--r-xl) var(--r-xl) 0 0;
+    box-shadow: 0 -18px 48px rgba(0, 0, 0, .46);
+    /* Deckend: Über der halben Bildhöhe eines Telefons läse man sonst
+       Ortsnamen durch den Schlachtbericht hindurch. */
+    background: var(--surface-solid);
+    padding: 1.5rem .9rem .9rem;
+    animation: blattRein 280ms var(--ease);
+    transition: height 260ms var(--ease);
+    touch-action: none;
+  }
+  .battles.is-ziehend { transition: none; }
+
+  /* Griffleiste wie am Steckbrief – dieselbe Geste braucht dasselbe Zeichen. */
+  .battles::before {
+    content: "";
+    position: absolute;
+    top: .55rem; left: 50%;
+    transform: translateX(-50%);
+    width: 2.6rem; height: .28rem;
+    border-radius: 999px;
+    background: var(--ink-faint);
+    opacity: .5;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Solange das Blatt liegt, treten Zeitleiste, Werkzeuge und Modusleiste ab.
+     Sie lägen ohnehin darunter, und halb sichtbar sähen sie nach Fehler aus –
+     dieselbe Begründung wie beim Steckbrief. */
+  body:has(.battles:not([hidden])) .timeline,
+  body:has(.battles:not([hidden])) .tools,
+  body:has(.battles:not([hidden])) .mapmodes {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  /* Reihenfolge im Verlauf. Am Schreibtisch liest man von oben nach unten:
+     Datum, Parteien, Kräfteverhältnis, dann der Augenblick, dann die
+     Steuerung. Auf 44 Prozent Bildhöhe sieht man davon die ersten drei – also
+     genau das, was sich während des Abspielens nicht ändert, und nicht das,
+     was sich ändert.
+
+     Deshalb kommt am Telefon zuerst der Augenblick, dann die Achse, dann die
+     Knöpfe. Alles Übrige rollt darunter weiter. Ohne Scrollen sieht man damit,
+     was gerade geschieht, und kann es anhalten – mehr braucht es nicht. */
+  .battles__player { display: flex; flex-direction: column; }
+  .battles__player > * { flex: 0 0 auto; }
+  .battles__stage { order: 1; margin-top: 0; }
+  .battles__achse { order: 2; }
+  .battles__controls { order: 3; }
+  .battles__meta { order: 4; margin-top: .8rem; }
+  .battles__sides { order: 5; }
+  .battles__kraft { order: 6; }
+  .battles__kraftText { order: 7; }
+  .battles__stationen { order: 8; }
+  .battles__ausgang { order: 9; }
+}
+
+/* Quer liegt das Schlachtenblatt wie die Detailtafel als Spalte rechts – die
+   Karte bleibt links daneben sichtbar. Gezogen wird auch hier nichts: Bei 390
+   Punkten Höhe fehlt der Weg dafür. */
+@media (max-height: 480px) and (orientation: landscape) {
+  .battles {
+    left: auto;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: min(24rem, 56vw);
+    height: 100%;
+    max-height: 100%;
+    border: 0;
+    border-left: 1px solid var(--hairline-strong);
+    border-radius: var(--r-xl) 0 0 var(--r-xl);
+    box-shadow: -18px 0 48px rgba(0, 0, 0, .46);
+    background: var(--surface-solid);
+    padding: .8rem .9rem .9rem;
+  }
+  .battles::before { display: none; }
+  /* Anders als hochkant bleiben Zeitleiste und Werkzeuge bedienbar; sie rücken
+     nur vor die Kante der Spalte. Die Modusleiste tritt ab: Sie liefe sonst
+     unter der Spalte weiter, und wer eine Schlacht ansieht, wechselt in dem
+     Moment keine Einfärbung – während des Verlaufs ist sie ohnehin aus. */
+  body:has(.battles:not([hidden])) .timeline {
+    right: min(24rem, 56vw);
+    /* Ohne `width: auto` rechnet die Zeitleiste ihre Breite weiter aus der
+       vollen Fensterbreite und läuft mit negativem rechten Rand unter der
+       Spalte durch – unsichtbar, aber berührungsempfindlich. */
+    width: auto;
+    margin-inline: 0;
+  }
+  body:has(.battles:not([hidden])) .tools { right: calc(min(24rem, 56vw) + .5rem); }
+  body:has(.battles:not([hidden])) .mapmodes {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
 }
 
 /* Querformat: Es bleiben 390 Punkte Höhe, davon fraß die Zeitleiste ein

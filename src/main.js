@@ -20,6 +20,7 @@ import { esc, fold, highlight, areaText, distanceText, num } from './modules/for
 import { ERA_COLORS } from './modules/palette.js';
 import { BattlePlayer, BATTLES, ladeBattles } from './modules/battles.js';
 import { Beiblatt } from './modules/beiblatt.js';
+import { bodenblatt } from './modules/blatt.js';
 import { EventLayer, ARTEN, zeitfenster } from './modules/ereignisse.js';
 import {
   KonfliktLayer, KONFLIKT_ARTEN, SEITENFARBEN, spanneText, fortschritt,
@@ -1007,10 +1008,21 @@ async function main() {
     box.innerHTML = abschnitte.join('');
   }
 
+  /* Am Telefon ist das Schlachtenfenster ein Bodenblatt wie der Steckbrief.
+     Vorher stand es als Kasten mitten im Bild und nahm 58 Prozent der
+     Bildhöhe – bei einer Schlacht ist aber gerade das Schlachtfeld das, was
+     man sehen will. Es beginnt tiefer als der Steckbrief (44 statt 52
+     Prozent), weil über ihm eine Karte steht, auf der sich etwas bewegt. */
+  const kampfblatt = bodenblatt(battlesBox, {
+    stellungen: [.44, .92],
+    schliessen: () => closeBattles(),
+  });
+
   async function openBattles() {
     legendBox.hidden = true;
     layersMenu.hidden = true;
     battlesBox.hidden = false;
+    kampfblatt.zuruecksetzen();
     renderRegister();
     // Die Verläufe sind ein eigener Brocken und kommen erst hier nach.
     if (!BATTLES.length) { await ladeBattles(); renderRegister(); }
