@@ -346,3 +346,9 @@ a {
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+/* Religionsgrenzen: gestrichelt, weil es Übergänge sind und keine Grenzen im
+   Rechtssinne. Heller als eine Staatsgrenze, damit sie sich nicht mit ihr
+   verwechseln lässt. */
+:root { --rel-grenze: rgba(255, 255, 255, .58); }
+[data-theme="parchment"] { --rel-grenze: rgba(60, 40, 20, .5); }

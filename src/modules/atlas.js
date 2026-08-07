@@ -26,6 +26,9 @@ const PANES = {
   basemap: 200,
   polityA: 220,
   polityB: 230,
+  // Über den Staatsflächen, unter dem Meer: Die Religionsgrenzen sollen auf
+  // der Fläche liegen, aber an der Küste enden wie alles andere auch.
+  relGrenze: 235,
   ocean: 240,
   // Der Küstensaum liegt ÜBER dem Meer, nicht darunter: Das Meer ist eine
   // deckende Fläche mit einem Loch je Landmasse und würde alles Tiefere
@@ -42,6 +45,10 @@ const PANES = {
   highlight: 256,
   places: 262,
   label: 270,
+  // Über den Ländernamen: Im Religionsmodus ist der Gebietsname die Aussage
+  // der Karte. Vorher lag er auf der Ortsnamen-Ebene und verschwand unter
+  // „Osmanisches Reich" – genau dort, wo er gebraucht wird.
+  relName: 274,
 };
 
 /**
@@ -597,7 +604,8 @@ function graticule(step = 15) {
 }
 
 export class AtlasMap {
-  constructor(el, { theme = 'night' } = {}) {
+  constructor(el, { theme = 'night', holeGrenzen = null } = {}) {
+    this.hole = { grenzen: holeGrenzen };
     this.el = el;
     this.theme = theme;
     this.basemapId = null;
@@ -1200,6 +1208,53 @@ export class AtlasMap {
     ).addTo(this.map);
   }
 
+  /**
+   * Religionsgrenzen: gestrichelte Linien quer durch die Länder.
+   *
+   * Die Fläche eines Gemeinwesens trägt die Religion seiner Mehrheit – für ein
+   * Reich von der Größe des osmanischen ist das zu wenig. Serbien war
+   * christlich, auch als es osmanisch war, und auf einer einfarbigen Fläche
+   * sieht man davon nichts. Diese Linien tragen es nach.
+   *
+   * Gestrichelt, weil es keine Grenzen im Rechtssinne sind, sondern Übergänge:
+   * Wo eine Konfession aufhört und die nächste anfängt, ist eine Landschaft
+   * und keine Linie. Deshalb liegen sie auch über der Fläche und nicht als
+   * deren Rand – ein Rand behauptete, dort sei etwas zu Ende.
+   *
+   * Die Ebene wird nur hinzugefügt und wieder entfernt. An den Staatsflächen
+   * ändert sie nichts: Ein Moduswechsel kann so nichts abschalten, was nicht
+   * von selbst wiederkäme.
+   */
+  async _religionsGrenzen() {
+    if (this._relLinien) { this._relLinien.remove(); this._relLinien = null; }
+    this._relGebiete = null;
+    if (this.colorMode !== 'religion' || !this.epoch) { this._planeOrte(); return; }
+
+    const key = this.epoch.meta.key;
+    this._relSchluessel = key;
+    const daten = await this.hole?.grenzen?.(key);
+    if (this._relSchluessel !== key || this.colorMode !== 'religion' || !daten) return;
+
+    this._relGebiete = daten.gebiete ?? null;
+    const farbe = this._cssVar('--rel-grenze', 'rgba(255,255,255,.55)');
+    this._relLinien = L.polyline(
+      (daten.zuege ?? []).map((zug) => zug.map(([x, y]) => [y, x])),
+      {
+        pane: 'relGrenze',
+        renderer: plainCanvas({ pane: 'relGrenze', padding: RAND_ZUG }),
+        interactive: false,
+        color: farbe,
+        weight: 1.3,
+        opacity: 1,
+        dashArray: '6 5',
+        lineCap: 'butt',
+        lineJoin: 'round',
+        fill: false,
+      },
+    ).addTo(this.map);
+    this._planeOrte();
+  }
+
   setColorMode(mode) {
     if (this.colorMode === mode) return;
     this.colorMode = mode;
@@ -1207,6 +1262,7 @@ export class AtlasMap {
     this._computeColors();
     this._restyleActive();
     this._religionsSchraffur();
+    this._religionsGrenzen();
     this._updateLabels();
     this._refreshHighlight();
   }
@@ -1314,6 +1370,7 @@ export class AtlasMap {
     }, animate ? 340 : 0);
 
     this._religionsSchraffur();
+    this._religionsGrenzen();
     this._updateLabels();
     this._refreshHighlight();
   }
@@ -1498,6 +1555,40 @@ export class AtlasMap {
     });
   }
 
+  /**
+   * Zeichenfläche für die Gebietsnamen der Religionsebene.
+   *
+   * Eine eigene, weil sie über den Ländernamen liegen muss: Im Religionsmodus
+   * ist „Orthodox" mitten im Osmanischen Reich die Aussage der Karte, und auf
+   * der Ortsnamen-Ebene verschwand sie unter dem Namen des Reiches.
+   *
+   * @param {boolean} nurLeeren Nur wegwischen, nichts anlegen
+   */
+  _relLeinwand(nurLeeren = false) {
+    if (nurLeeren) {
+      const c = this._relText;
+      if (c) c.getContext('2d').clearRect(0, 0, c.width, c.height);
+      return c;
+    }
+    if (!this._relText) {
+      const c = L.DomUtil.create('canvas', 'religion-namen');
+      c.style.position = 'absolute';
+      c.style.pointerEvents = 'none';
+      this.map.getPane('relName').appendChild(c);
+      this._relText = c;
+    }
+    const groesse = this.map.getSize();
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const c = this._relText;
+    if (c.width !== Math.round(groesse.x * dpr)) {
+      c.width = Math.round(groesse.x * dpr);
+      c.height = Math.round(groesse.y * dpr);
+      c.style.width = `${groesse.x}px`;
+      c.style.height = `${groesse.y}px`;
+    }
+    return c;
+  }
+
   _drawPlaces() {
     const canvas = this.placeCanvas;
     if (!canvas) return;
@@ -1535,6 +1626,52 @@ export class AtlasMap {
       }
       return true;
     };
+
+    /* Im Religionsmodus zuerst die Gebietsnamen.
+     *
+     * Sie haben Vorrang vor Orten und Landschaften, weil sie in diesem Modus
+     * die Aussage der Karte sind: Ohne sie sagt eine gestrichelte Linie nur,
+     * dass hier etwas anderes anfängt, nicht was. Erst „Orthodox" im
+     * serbischen Landesinneren macht sichtbar, was das osmanische Reich
+     * einfarbig verschweigt.
+     *
+     * Gezeigt wird ein Gebiet erst, wenn es auf dem Schirm groß genug ist,
+     * dass die Schrift hineinpasst – sonst überschriebe die halbe Karte sich
+     * selbst. Die Zahl der Zellen steht in den Daten, den Rest rechnet die
+     * Zoomstufe. */
+    if (this.colorMode === 'religion' && this._relGebiete) {
+      const rc = this._relLeinwand();
+      const rctx = rc.getContext('2d');
+      rctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      rctx.clearRect(0, 0, size.x, size.y);
+      L.DomUtil.setPosition(rc, pos);
+      rctx.textBaseline = 'middle';
+      rctx.lineJoin = 'round';
+      rctx.textAlign = 'center';
+      for (const g of this._relGebiete) {
+        const klasse = RELIGION.klassen[g.k];
+        if (!klasse) continue;
+        // Kantenlänge des Gebiets in Bildpunkten, grob aus seiner Zellenzahl.
+        const seite = Math.sqrt(g.n) * .25 * (256 * 2 ** zoom) / 360;
+        if (seite < 72) continue;
+        const pt = map.latLngToContainerPoint([g.p[1], g.p[0]]);
+        if (pt.x < 0 || pt.y < 0 || pt.x > size.x || pt.y > size.y) continue;
+        const grad = Math.min(14, Math.max(9.5, seite / 12));
+        rctx.font = `600 ${grad.toFixed(1)}px ${font}`;
+        const breite = breiteVon(rctx, klasse.name);
+        if (breite > seite * 1.1) continue;
+        if (!frei(pt.x - breite / 2 - 5, pt.y - grad, breite + 10, grad * 2)) continue;
+        belegt.push([pt.x - breite / 2 - 5, pt.y - grad, pt.x + breite / 2 + 5, pt.y + grad]);
+        rctx.strokeStyle = halo;
+        rctx.lineWidth = 3.4;
+        rctx.strokeText(klasse.name, pt.x, pt.y);
+        rctx.fillStyle = this.theme === 'night' ? klasse.farbe : (klasse.hell ?? klasse.farbe);
+        rctx.fillText(klasse.name, pt.x, pt.y);
+      }
+      ctx.textAlign = 'left';
+    } else {
+      this._relLeinwand(true);
+    }
 
     // Landschaftsnamen zuerst: Sie sind großräumig und sollen den Vorrang
     // haben, wenn sich Beschriftungen ins Gehege kommen.

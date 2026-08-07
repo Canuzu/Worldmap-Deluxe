@@ -241,6 +241,10 @@ for (const meta of SCHNITTE) {
       // ist. Unbeanspruchtes Land bekommt seine Religion aus der Raumregel und
       // keine Herrschaft.
       if (!wem && MEER[i]) continue;
+      /* Die Antarktis bleibt leer. Sie ist Land, aber niemand lebt dort –
+         die Auffangregel machte daraus das größte „traditionell afrikanische"
+         Gebiet der Karte, mit Beschriftung am Südpol. */
+      if (lat < -60) continue;
       land++;
       const lon = -180 + (x + .5) * SCHRITT;
       const eintrag = wem ? tabelle[namen[wem]] : null;

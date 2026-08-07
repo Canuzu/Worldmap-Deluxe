@@ -293,6 +293,21 @@ export class AtlasData {
   }
 
   /** Zeitschnitt laden (mit Cache und Mehrfachanfragen-Schutz). */
+  /**
+   * Religionsgrenzen eines Zeitschnitts – gestrichelte Linien und die Marken
+   * für ihre Beschriftung. Rund 2 kB gepackt, geholt nur im Religionsmodus.
+   */
+  async religionsGrenzen(key) {
+    this._relGrenzen ??= new Map();
+    if (this._relGrenzen.has(key)) return this._relGrenzen.get(key);
+    const task = getJSON(`data/religion/grenzen/${key}.json`).catch(() => null);
+    this._relGrenzen.set(key, task);
+    if (this._relGrenzen.size > 4) {
+      this._relGrenzen.delete(this._relGrenzen.keys().next().value);
+    }
+    return task;
+  }
+
   async load(index) {
     const meta = this.epochAt(index);
     if (this._cache.has(meta.key)) {

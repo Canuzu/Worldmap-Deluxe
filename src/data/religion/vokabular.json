@@ -35,251 +35,251 @@
     "kath": {
       "name": "Katholisch",
       "familie": "christlich",
-      "farbe": "#3d6fb4",
-      "hell": "#4a7cc4",
+      "farbe": "#2f6fd0",
+      "hell": "#1c57b0",
       "seit": 33
     },
     "orth": {
       "name": "Orthodox",
       "familie": "christlich",
-      "farbe": "#2f8f9d",
-      "hell": "#3a9dab",
+      "farbe": "#19b9c4",
+      "hell": "#0a9da7",
       "seit": 33
     },
     "prot": {
       "name": "Protestantisch",
       "familie": "christlich",
-      "farbe": "#7fa8dc",
-      "hell": "#6d97cd",
+      "farbe": "#93cdf7",
+      "hell": "#3dadfe",
       "seit": 1517
     },
     "ref": {
       "name": "Reformiert",
       "familie": "christlich",
-      "farbe": "#5b8ecb",
-      "hell": "#5386c4",
+      "farbe": "#6a4fd4",
+      "hell": "#4423c6",
       "seit": 1523
     },
     "angl": {
       "name": "Anglikanisch",
       "familie": "christlich",
-      "farbe": "#9dc0e6",
-      "hell": "#7fa8d8",
+      "farbe": "#c6e4ff",
+      "hell": "#6bb9ff",
       "seit": 1534
     },
     "orient": {
       "name": "Altorientalische Kirchen",
       "familie": "christlich",
-      "farbe": "#2b5f8a",
-      "hell": "#356c99",
+      "farbe": "#0e3357",
+      "hell": "#07294a",
       "seit": 33
     },
     "nest": {
       "name": "Kirche des Ostens",
       "familie": "christlich",
-      "farbe": "#4a7f9e",
-      "hell": "#548ba9",
+      "farbe": "#2f97a8",
+      "hell": "#1e7e8e",
       "seit": 410,
       "bis": 1500
     },
     "arian": {
       "name": "Arianisch",
       "familie": "christlich",
-      "farbe": "#6b93a8",
-      "hell": "#75a0b5",
+      "farbe": "#6d9cc4",
+      "hell": "#3e7fb6",
       "seit": 320,
       "bis": 700
     },
     "sunn": {
       "name": "Sunnitischer Islam",
       "familie": "islamisch",
-      "farbe": "#3f8a5c",
-      "hell": "#47966a",
+      "farbe": "#37a05e",
+      "hell": "#26864a",
       "seit": 622
     },
     "schii": {
       "name": "Schiitischer Islam",
       "familie": "islamisch",
-      "farbe": "#2c6b46",
-      "hell": "#357a52",
+      "farbe": "#0f5c33",
+      "hell": "#074e29",
       "seit": 660
     },
     "ibad": {
       "name": "Ibaditischer Islam",
       "familie": "islamisch",
-      "farbe": "#6ba883",
-      "hell": "#74b28d",
+      "farbe": "#96e0ad",
+      "hell": "#54d87d",
       "seit": 690
     },
     "veda": {
       "name": "Vedische Religion",
       "familie": "indisch",
-      "farbe": "#c98a3c",
-      "hell": "#c08033",
+      "farbe": "#bd9740",
+      "hell": "#9f7c2c",
       "seit": -1500,
       "bis": -200
     },
     "hindu": {
       "name": "Hinduismus",
       "familie": "indisch",
-      "farbe": "#d9873a",
-      "hell": "#cf7d31",
+      "farbe": "#f5a623",
+      "hell": "#e08c00",
       "seit": -300
     },
     "buddTh": {
       "name": "Theravada-Buddhismus",
       "familie": "indisch",
-      "farbe": "#e0a95c",
-      "hell": "#d09a4f",
+      "farbe": "#f7cf7a",
+      "hell": "#ffba28",
       "seit": -250
     },
     "buddMa": {
       "name": "Mahayana-Buddhismus",
       "familie": "indisch",
-      "farbe": "#c67a4e",
-      "hell": "#bd7245",
+      "farbe": "#d98324",
+      "hell": "#b86912",
       "seit": 100
     },
     "buddVa": {
       "name": "Vajrayana-Buddhismus",
       "familie": "indisch",
-      "farbe": "#a86234",
-      "hell": "#b06b3c",
+      "farbe": "#a85a12",
+      "hell": "#8f4805",
       "seit": 750
     },
     "jain": {
       "name": "Jainismus",
       "familie": "indisch",
-      "farbe": "#eec177",
-      "hell": "#dcae63",
+      "farbe": "#fff0c4",
+      "hell": "#ffd96a",
       "seit": -500
     },
     "sikh": {
       "name": "Sikhismus",
       "familie": "indisch",
-      "farbe": "#b8913f",
-      "hell": "#ad8736",
+      "farbe": "#ecc510",
+      "hell": "#caa600",
       "seit": 1500
     },
     "konf": {
       "name": "Konfuzianismus und Daoismus",
       "familie": "ostasiatisch",
-      "farbe": "#8b6ba8",
-      "hell": "#8163a0",
+      "farbe": "#9160c9",
+      "hell": "#7233ba",
       "seit": -1200
     },
     "shinto": {
       "name": "Shinto",
       "familie": "ostasiatisch",
-      "farbe": "#a98cc4",
-      "hell": "#9a7bb8",
+      "farbe": "#cfa8ea",
+      "hell": "#ad5fe3",
       "seit": -300
     },
     "tengri": {
       "name": "Tengrismus",
       "familie": "ostasiatisch",
-      "farbe": "#6f5590",
-      "hell": "#7a5f9c",
+      "farbe": "#4f2f87",
+      "hell": "#3e2071",
       "seit": -700,
       "bis": 1700
     },
     "jud": {
       "name": "Judentum",
       "familie": "antik",
-      "farbe": "#9c5a63",
-      "hell": "#a4626b",
+      "farbe": "#7a2b5c",
+      "hell": "#661e4b",
       "seit": -1200
     },
     "zoro": {
       "name": "Zoroastrismus",
       "familie": "antik",
-      "farbe": "#c25f4a",
-      "hell": "#b85641",
+      "farbe": "#c9243f",
+      "hell": "#ab132c",
       "seit": -1000
     },
     "manich": {
       "name": "Manichäismus",
       "familie": "antik",
-      "farbe": "#a4705f",
-      "hell": "#ad7968",
+      "farbe": "#c081a2",
+      "hell": "#b15083",
       "seit": 240,
       "bis": 1400
     },
     "aegypt": {
       "name": "Altägyptische Religion",
       "familie": "antik",
-      "farbe": "#c98b6a",
-      "hell": "#c08361",
+      "farbe": "#f2ab80",
+      "hell": "#f87b30",
       "seit": -3500,
       "bis": 400
     },
     "mesop": {
       "name": "Mesopotamische Religion",
       "familie": "antik",
-      "farbe": "#b06a52",
-      "hell": "#b8735b",
+      "farbe": "#7a2e1c",
+      "hell": "#672111",
       "seit": -3500,
       "bis": 300
     },
     "graeco": {
       "name": "Griechisch-römische Religion",
       "familie": "antik",
-      "farbe": "#d1795e",
-      "hell": "#c77055",
+      "farbe": "#e0603c",
+      "hell": "#d03c13",
       "seit": -1200,
       "bis": 500
     },
     "semit": {
       "name": "Altsemitische Religionen",
       "familie": "antik",
-      "farbe": "#b5836b",
-      "hell": "#bd8c74",
+      "farbe": "#a87050",
+      "hell": "#8c583b",
       "seit": -3000,
       "bis": 700
     },
     "heidn": {
       "name": "Vorchristliche Religionen Europas",
       "familie": "antik",
-      "farbe": "#8f6a55",
-      "hell": "#98735e",
+      "farbe": "#8a7038",
+      "hell": "#735b28",
       "bis": 1400
     },
     "tradAf": {
       "name": "Traditionelle Religionen Afrikas",
       "familie": "traditionell",
-      "farbe": "#7d7a4e",
-      "hell": "#868357"
+      "farbe": "#a3a02c",
+      "hell": "#8a871c"
     },
     "tradAm": {
       "name": "Indigene Religionen Amerikas",
       "familie": "traditionell",
-      "farbe": "#6e7f5c",
-      "hell": "#778865"
+      "farbe": "#6f9152",
+      "hell": "#59783e"
     },
     "tradOz": {
       "name": "Religionen Ozeaniens",
       "familie": "traditionell",
-      "farbe": "#8d8a63",
-      "hell": "#96936c"
+      "farbe": "#cbb97a",
+      "hell": "#c1a543"
     },
     "schaman": {
       "name": "Schamanismus Nordasiens",
       "familie": "traditionell",
-      "farbe": "#5f6b62",
-      "hell": "#68746b"
+      "farbe": "#3f6b58",
+      "hell": "#305847"
     },
     "praeh": {
       "name": "Prähistorische Glaubensformen",
       "familie": "traditionell",
-      "farbe": "#6b6459",
-      "hell": "#746d62",
+      "farbe": "#6e6a66",
+      "hell": "#585551",
       "bis": -1200
     },
     "athe": {
       "name": "Konfessionslos und Staatsatheismus",
       "familie": "ohne",
-      "farbe": "#7a7d82",
-      "hell": "#83868b",
+      "farbe": "#9aa0a8",
+      "hell": "#767f8c",
       "seit": 1789
     }
   }

@@ -5,18 +5,34 @@
   "trennung": "Steht »staat« abweichend von »volk«, ist das der historisch interessante Fall: Herrschaft und Beherrschte glauben Verschiedenes.",
   "regeln": [
     {
-      "id": "vorgeschichte",
-      "bis": -3000,
+      "id": "bali-hindu",
+      "von": 1400,
       "felder": [
         [
-          -180,
-          -60,
-          180,
-          85
+          114.5,
+          -9,
+          116,
+          -8
         ]
       ],
-      "volk": "praeh",
-      "guete": 1
+      "volk": "hindu",
+      "guete": 3
+    },
+    {
+      "id": "granada-emirat",
+      "von": 1238,
+      "bis": 1491,
+      "felder": [
+        [
+          -5.6,
+          36.6,
+          -2.1,
+          37.6
+        ]
+      ],
+      "volk": "sunn",
+      "guete": 3,
+      "warum": "Das Emirat von Granada hielt sich bis 1492 – der letzte muslimische Staat auf der Halbinsel."
     },
     {
       "id": "judaea",
@@ -48,173 +64,59 @@
       "guete": 3
     },
     {
-      "id": "aethiopien-hochland",
-      "von": 340,
+      "id": "schweiz-reformiert",
+      "von": 1530,
       "felder": [
         [
-          35,
-          6,
-          42,
-          15
+          5.9,
+          45.8,
+          10.6,
+          47.9
         ]
       ],
-      "volk": "orient",
-      "guete": 3,
-      "warum": "Christlich seit 340 – die Hochländer blieben es, als ringsum Sultanate lagen."
-    },
-    {
-      "id": "nordafrika-sahara-islam",
-      "von": 700,
-      "felder": [
-        [
-          -18,
-          19,
-          36,
-          33
-        ]
-      ],
-      "volk": "sunn",
-      "guete": 3
-    },
-    {
-      "id": "horn-islam",
-      "von": 900,
-      "felder": [
-        [
-          41,
-          -2,
-          52,
-          13
-        ]
-      ],
-      "volk": "sunn",
-      "guete": 3
-    },
-    {
-      "id": "swahili-kueste",
-      "von": 1000,
-      "felder": [
-        [
-          38,
-          -12,
-          52,
-          4
-        ]
-      ],
-      "volk": "sunn",
+      "volk": "ref",
       "guete": 2
     },
     {
-      "id": "komoren-sansibar",
-      "von": 1000,
+      "id": "preussen-lutherisch",
+      "von": 1525,
       "felder": [
         [
-          38,
-          -13,
-          45,
-          -5
+          18,
+          53.5,
+          23,
+          55.5
         ]
       ],
-      "volk": "sunn",
-      "guete": 2
-    },
-    {
-      "id": "sahel-islam",
-      "von": 1100,
-      "felder": [
-        [
-          -18,
-          12,
-          25,
-          20
-        ]
-      ],
-      "volk": "sunn",
-      "guete": 3,
-      "warum": "Ghana, Mali, Songhai und Kanem-Bornu waren muslimische Reiche; Timbuktu war eine Gelehrtenstadt."
-    },
-    {
-      "id": "sudan-islam",
-      "von": 1350,
-      "felder": [
-        [
-          22,
-          9,
-          39,
-          20
-        ]
-      ],
-      "volk": "sunn",
+      "volk": "prot",
       "guete": 3
     },
     {
-      "id": "hausa-sokoto",
-      "von": 1400,
+      "id": "bosnien-muslimisch",
+      "von": 1500,
       "felder": [
         [
-          2,
-          9,
-          15,
-          14
-        ]
-      ],
-      "volk": "sunn",
-      "guete": 2
-    },
-    {
-      "id": "jemen-zaiditisch",
-      "von": 900,
-      "felder": [
-        [
+          16,
           42.5,
-          12.5,
-          47,
-          18
+          20,
+          45.3
         ]
       ],
-      "volk": "schii",
+      "volk": "sunn",
       "guete": 2
     },
     {
-      "id": "suedirak-schiitisch",
-      "von": 1600,
+      "id": "niederlande-reformiert",
+      "von": 1580,
       "felder": [
         [
-          43.5,
-          29,
-          48.5,
-          34
+          3,
+          50.7,
+          7.3,
+          53.7
         ]
       ],
-      "volk": "schii",
-      "guete": 3
-    },
-    {
-      "id": "kaukasus-christlich",
-      "von": 330,
-      "felder": [
-        [
-          41.5,
-          40,
-          47,
-          44
-        ]
-      ],
-      "volk": "orth",
-      "guete": 3
-    },
-    {
-      "id": "aserbaidschan-schiitisch",
-      "von": 1501,
-      "felder": [
-        [
-          45,
-          38,
-          51,
-          42
-        ]
-      ],
-      "volk": "schii",
+      "volk": "ref",
       "guete": 3
     },
     {
@@ -222,184 +124,19 @@
       "von": 1550,
       "felder": [
         [
-          17.5,
-          39.5,
-          21.5,
-          45.5
+          19.0,
+          39.6,
+          21.1,
+          42.6
+        ],
+        [
+          16.8,
+          42.6,
+          19.4,
+          45.2
         ]
       ],
       "volk": "sunn",
-      "guete": 2
-    },
-    {
-      "id": "bali-hindu",
-      "von": 1400,
-      "felder": [
-        [
-          114.5,
-          -9,
-          116,
-          -8
-        ]
-      ],
-      "volk": "hindu",
-      "guete": 3
-    },
-    {
-      "id": "xinjiang-islam",
-      "von": 1000,
-      "felder": [
-        [
-          73,
-          35,
-          96,
-          49
-        ]
-      ],
-      "volk": "sunn",
-      "guete": 2
-    },
-    {
-      "id": "mesopotamien-sassanidisch",
-      "von": 226,
-      "bis": 639,
-      "felder": [
-        [
-          40,
-          29,
-          50,
-          38
-        ]
-      ],
-      "volk": "nest",
-      "staat": "zoro",
-      "guete": 2
-    },
-    {
-      "id": "mesopotamien-antik",
-      "bis": 225,
-      "felder": [
-        [
-          38,
-          28,
-          50,
-          38
-        ]
-      ],
-      "volk": "mesop",
-      "guete": 2
-    },
-    {
-      "id": "sri-lanka",
-      "von": -240,
-      "felder": [
-        [
-          79,
-          5,
-          82.5,
-          10
-        ]
-      ],
-      "volk": "buddTh",
-      "guete": 3
-    },
-    {
-      "id": "sindh-islam",
-      "von": 750,
-      "felder": [
-        [
-          66,
-          23,
-          71.5,
-          28.5
-        ]
-      ],
-      "volk": "sunn",
-      "guete": 3
-    },
-    {
-      "id": "westpunjab-islam",
-      "von": 1200,
-      "felder": [
-        [
-          70,
-          28,
-          75,
-          33.5
-        ]
-      ],
-      "volk": "sunn",
-      "guete": 3
-    },
-    {
-      "id": "kaschmir-islam",
-      "von": 1350,
-      "felder": [
-        [
-          73,
-          32,
-          78,
-          36.5
-        ]
-      ],
-      "volk": "sunn",
-      "guete": 3
-    },
-    {
-      "id": "belutschistan-islam",
-      "von": 700,
-      "felder": [
-        [
-          60,
-          24,
-          70,
-          32
-        ]
-      ],
-      "volk": "sunn",
-      "guete": 3
-    },
-    {
-      "id": "punjab-sikh",
-      "von": 1750,
-      "bis": 1946,
-      "felder": [
-        [
-          73,
-          29,
-          77,
-          33
-        ]
-      ],
-      "volk": "sikh",
-      "guete": 2
-    },
-    {
-      "id": "bengalen-islam",
-      "von": 1300,
-      "felder": [
-        [
-          88.8,
-          21,
-          93,
-          27
-        ]
-      ],
-      "volk": "sunn",
-      "guete": 3
-    },
-    {
-      "id": "nepal-hindu",
-      "von": -200,
-      "felder": [
-        [
-          80,
-          26,
-          89,
-          31
-        ]
-      ],
-      "volk": "hindu",
       "guete": 2
     },
     {
@@ -417,319 +154,73 @@
       "guete": 2
     },
     {
-      "id": "golf-arabische-seite",
-      "von": 632,
+      "id": "sri-lanka",
+      "von": -240,
       "felder": [
         [
-          48,
-          22,
-          57,
-          27.5
+          79,
+          5,
+          82.5,
+          10
+        ]
+      ],
+      "volk": "buddTh",
+      "guete": 3
+    },
+    {
+      "id": "kaukasus-christlich",
+      "von": 330,
+      "felder": [
+        [
+          41.5,
+          40,
+          47,
+          44
+        ]
+      ],
+      "volk": "orth",
+      "guete": 3
+    },
+    {
+      "id": "kaschmir-islam",
+      "von": 1350,
+      "felder": [
+        [
+          73,
+          32,
+          78,
+          36.5
         ]
       ],
       "volk": "sunn",
-      "guete": 2
+      "guete": 3
     },
     {
-      "id": "iran-safawiden",
+      "id": "aserbaidschan-schiitisch",
       "von": 1501,
       "felder": [
         [
-          46.5,
-          25,
-          66,
-          40
+          45,
+          38,
+          51,
+          42
         ]
       ],
       "volk": "schii",
       "guete": 3
     },
     {
-      "id": "iran-islam",
-      "von": 651,
-      "bis": 1500,
+      "id": "jemen-zaiditisch",
+      "von": 900,
       "felder": [
         [
-          46.5,
-          25,
-          66,
-          40
+          42.5,
+          12.5,
+          47,
+          18
         ]
       ],
-      "volk": "sunn",
-      "guete": 2
-    },
-    {
-      "id": "iran-zoroastrisch",
-      "von": -700,
-      "bis": 650,
-      "felder": [
-        [
-          46.5,
-          25,
-          68,
-          42
-        ]
-      ],
-      "volk": "zoro",
-      "guete": 3
-    },
-    {
-      "id": "oman-ibaditisch",
-      "von": 750,
-      "felder": [
-        [
-          54,
-          16,
-          60,
-          27
-        ]
-      ],
-      "volk": "ibad",
-      "guete": 3
-    },
-    {
-      "id": "arabien-islam",
-      "von": 632,
-      "felder": [
-        [
-          34,
-          12,
-          60,
-          33
-        ]
-      ],
-      "volk": "sunn",
-      "guete": 3
-    },
-    {
-      "id": "arabien-vorislamisch",
-      "bis": 631,
-      "felder": [
-        [
-          34,
-          12,
-          60,
-          33
-        ]
-      ],
-      "volk": "semit",
-      "guete": 2
-    },
-    {
-      "id": "levante-modern",
-      "von": 1918,
-      "felder": [
-        [
-          32,
-          29,
-          42,
-          38
-        ]
-      ],
-      "volk": "sunn",
-      "guete": 3
-    },
-    {
-      "id": "mesopotamien-modern",
-      "von": 1918,
-      "felder": [
-        [
-          38,
-          29,
-          50,
-          38
-        ]
-      ],
-      "volk": "sunn",
-      "guete": 3
-    },
-    {
-      "id": "levante-osmanisch",
-      "von": 1517,
-      "bis": 1917,
-      "felder": [
-        [
-          32,
-          29,
-          46,
-          38
-        ]
-      ],
-      "volk": "sunn",
-      "guete": 3
-    },
-    {
-      "id": "levante-islam",
-      "von": 640,
-      "bis": 1516,
-      "felder": [
-        [
-          32,
-          29,
-          50,
-          38
-        ]
-      ],
-      "volk": "sunn",
-      "guete": 3
-    },
-    {
-      "id": "levante-byzantinisch",
-      "von": 380,
-      "bis": 639,
-      "felder": [
-        [
-          32,
-          29,
-          42,
-          38
-        ]
-      ],
-      "volk": "orth",
-      "guete": 2
-    },
-    {
-      "id": "levante-antik",
-      "bis": 379,
-      "felder": [
-        [
-          32,
-          29,
-          38,
-          38
-        ]
-      ],
-      "volk": "semit",
-      "guete": 2
-    },
-    {
-      "id": "aegypten-islam",
-      "von": 700,
-      "felder": [
-        [
-          24,
-          20,
-          37,
-          32
-        ]
-      ],
-      "volk": "sunn",
-      "guete": 3
-    },
-    {
-      "id": "aegypten-koptisch",
-      "von": 300,
-      "bis": 699,
-      "felder": [
-        [
-          24,
-          20,
-          37,
-          32
-        ]
-      ],
-      "volk": "orient",
-      "guete": 3
-    },
-    {
-      "id": "aegypten-alt",
-      "bis": 299,
-      "felder": [
-        [
-          24,
-          20,
-          37,
-          32
-        ]
-      ],
-      "volk": "aegypt",
-      "guete": 3
-    },
-    {
-      "id": "maghreb-islam",
-      "von": 700,
-      "felder": [
-        [
-          -18,
-          26,
-          25,
-          38
-        ]
-      ],
-      "volk": "sunn",
-      "guete": 3
-    },
-    {
-      "id": "maghreb-roemisch",
-      "von": 313,
-      "bis": 699,
-      "felder": [
-        [
-          -18,
-          26,
-          25,
-          38
-        ]
-      ],
-      "volk": "kath",
-      "guete": 2
-    },
-    {
-      "id": "maghreb-punisch",
-      "bis": 312,
-      "felder": [
-        [
-          -18,
-          26,
-          25,
-          38
-        ]
-      ],
-      "volk": "semit",
-      "guete": 2
-    },
-    {
-      "id": "skandinavien-reformiert",
-      "von": 1537,
-      "felder": [
-        [
-          4,
-          54,
-          31,
-          72
-        ]
-      ],
-      "volk": "prot",
-      "guete": 3
-    },
-    {
-      "id": "skandinavien-katholisch",
-      "von": 1050,
-      "bis": 1536,
-      "felder": [
-        [
-          4,
-          54,
-          31,
-          72
-        ]
-      ],
-      "volk": "kath",
-      "guete": 3
-    },
-    {
-      "id": "skandinavien-heidnisch",
-      "bis": 1049,
-      "felder": [
-        [
-          4,
-          54,
-          31,
-          72
-        ]
-      ],
-      "volk": "heidn",
+      "volk": "schii",
       "guete": 2
     },
     {
@@ -763,6 +254,105 @@
       "guete": 3
     },
     {
+      "id": "suedirak-schiitisch",
+      "von": 1600,
+      "felder": [
+        [
+          43.5,
+          29,
+          48.5,
+          34
+        ]
+      ],
+      "volk": "schii",
+      "guete": 3
+    },
+    {
+      "id": "bengalen-islam",
+      "von": 1300,
+      "felder": [
+        [
+          88.8,
+          21,
+          93,
+          27
+        ]
+      ],
+      "volk": "sunn",
+      "guete": 3
+    },
+    {
+      "id": "westpunjab-islam",
+      "von": 1200,
+      "felder": [
+        [
+          70,
+          28,
+          75,
+          33.5
+        ]
+      ],
+      "volk": "sunn",
+      "guete": 3
+    },
+    {
+      "id": "sindh-islam",
+      "von": 750,
+      "felder": [
+        [
+          66,
+          23,
+          71.5,
+          28.5
+        ]
+      ],
+      "volk": "sunn",
+      "guete": 3
+    },
+    {
+      "id": "armenien",
+      "von": 301,
+      "bis": 1070,
+      "felder": [
+        [
+          41,
+          37.5,
+          48,
+          42
+        ]
+      ],
+      "volk": "orient",
+      "guete": 3
+    },
+    {
+      "id": "ungarn",
+      "von": 1001,
+      "felder": [
+        [
+          16,
+          45,
+          23.5,
+          49.6
+        ]
+      ],
+      "volk": "kath",
+      "guete": 3
+    },
+    {
+      "id": "bangladesch",
+      "von": 1947,
+      "felder": [
+        [
+          88,
+          20,
+          93,
+          27
+        ]
+      ],
+      "volk": "sunn",
+      "guete": 3
+    },
+    {
       "id": "schottland-reformiert",
       "von": 1560,
       "felder": [
@@ -777,75 +367,32 @@
       "guete": 3
     },
     {
-      "id": "england-anglikanisch",
-      "von": 1534,
+      "id": "nepal-hindu",
+      "von": -200,
       "felder": [
         [
-          -6,
-          49,
-          2,
-          56
+          80,
+          26,
+          89,
+          31
         ]
       ],
-      "volk": "angl",
-      "guete": 3
+      "volk": "hindu",
+      "guete": 2
     },
     {
-      "id": "britannien-katholisch",
-      "von": 600,
-      "bis": 1533,
+      "id": "sueddeutschland-katholisch",
+      "von": 1530,
       "felder": [
         [
-          -11,
-          49,
-          2,
-          61
+          5.5,
+          46.3,
+          17,
+          50.3
         ]
       ],
       "volk": "kath",
       "guete": 3
-    },
-    {
-      "id": "britannien-heidnisch",
-      "bis": 599,
-      "felder": [
-        [
-          -11,
-          49,
-          2,
-          61
-        ]
-      ],
-      "volk": "heidn",
-      "guete": 2
-    },
-    {
-      "id": "niederlande-reformiert",
-      "von": 1580,
-      "felder": [
-        [
-          3,
-          50.7,
-          7.3,
-          53.7
-        ]
-      ],
-      "volk": "ref",
-      "guete": 3
-    },
-    {
-      "id": "schweiz-reformiert",
-      "von": 1530,
-      "felder": [
-        [
-          5.9,
-          45.8,
-          10.6,
-          47.9
-        ]
-      ],
-      "volk": "ref",
-      "guete": 2
     },
     {
       "id": "norddeutschland-lutherisch",
@@ -862,18 +409,220 @@
       "guete": 3
     },
     {
-      "id": "sueddeutschland-katholisch",
-      "von": 1530,
+      "id": "iberien-nord-christlich",
+      "von": 711,
+      "bis": 1249,
       "felder": [
         [
-          5.5,
-          46.3,
-          17,
-          50.3
+          -10,
+          40.5,
+          3.5,
+          44
         ]
       ],
       "volk": "kath",
       "guete": 3
+    },
+    {
+      "id": "al-andalus",
+      "von": 711,
+      "bis": 1249,
+      "felder": [
+        [
+          -10,
+          35.8,
+          0.5,
+          40.5
+        ]
+      ],
+      "volk": "sunn",
+      "guete": 3
+    },
+    {
+      "id": "golf-arabische-seite",
+      "von": 632,
+      "felder": [
+        [
+          48,
+          22,
+          57,
+          27.5
+        ]
+      ],
+      "volk": "sunn",
+      "guete": 2
+    },
+    {
+      "id": "levante-antik",
+      "bis": 379,
+      "felder": [
+        [
+          32,
+          29,
+          38,
+          38
+        ]
+      ],
+      "volk": "semit",
+      "guete": 2
+    },
+    {
+      "id": "baltikum-heidnisch",
+      "bis": 1386,
+      "felder": [
+        [
+          20,
+          53.5,
+          29,
+          59.5
+        ]
+      ],
+      "volk": "heidn",
+      "guete": 2
+    },
+    {
+      "id": "komoren-sansibar",
+      "von": 1000,
+      "felder": [
+        [
+          38,
+          -13,
+          45,
+          -5
+        ]
+      ],
+      "volk": "sunn",
+      "guete": 2
+    },
+    {
+      "id": "england-anglikanisch",
+      "von": 1534,
+      "felder": [
+        [
+          -6,
+          49,
+          2,
+          56
+        ]
+      ],
+      "volk": "angl",
+      "guete": 3
+    },
+    {
+      "id": "aethiopien-hochland",
+      "von": 340,
+      "felder": [
+        [
+          35,
+          6,
+          42,
+          15
+        ]
+      ],
+      "volk": "orient",
+      "guete": 3,
+      "warum": "Christlich seit 340 – die Hochländer blieben es, als ringsum Sultanate lagen."
+    },
+    {
+      "id": "hausa-sokoto",
+      "von": 1400,
+      "felder": [
+        [
+          2,
+          9,
+          15,
+          14
+        ]
+      ],
+      "volk": "sunn",
+      "guete": 2
+    },
+    {
+      "id": "oman-ibaditisch",
+      "von": 750,
+      "felder": [
+        [
+          54,
+          16,
+          60,
+          27
+        ]
+      ],
+      "volk": "ibad",
+      "guete": 3
+    },
+    {
+      "id": "belutschistan-islam",
+      "von": 700,
+      "felder": [
+        [
+          60,
+          24,
+          70,
+          32
+        ]
+      ],
+      "volk": "sunn",
+      "guete": 3
+    },
+    {
+      "id": "korea",
+      "von": -300,
+      "felder": [
+        [
+          124,
+          33,
+          132,
+          43.5
+        ]
+      ],
+      "volk": "konf",
+      "guete": 3
+    },
+    {
+      "id": "mesopotamien-sassanidisch",
+      "von": 226,
+      "bis": 639,
+      "felder": [
+        [
+          40,
+          29,
+          50,
+          38
+        ]
+      ],
+      "volk": "nest",
+      "staat": "zoro",
+      "guete": 2
+    },
+    {
+      "id": "levante-modern",
+      "von": 1918,
+      "felder": [
+        [
+          32,
+          29,
+          42,
+          38
+        ]
+      ],
+      "volk": "sunn",
+      "guete": 3
+    },
+    {
+      "id": "levante-byzantinisch",
+      "von": 380,
+      "bis": 639,
+      "felder": [
+        [
+          32,
+          29,
+          42,
+          38
+        ]
+      ],
+      "volk": "orth",
+      "guete": 2
     },
     {
       "id": "mitteleuropa-katholisch",
@@ -903,6 +652,93 @@
       ],
       "volk": "heidn",
       "guete": 2
+    },
+    {
+      "id": "mesopotamien-modern",
+      "von": 1918,
+      "felder": [
+        [
+          38,
+          29,
+          50,
+          38
+        ]
+      ],
+      "volk": "sunn",
+      "guete": 3
+    },
+    {
+      "id": "iberien-reconquista",
+      "von": 1250,
+      "felder": [
+        [
+          -10,
+          35.8,
+          3.5,
+          44
+        ]
+      ],
+      "volk": "kath",
+      "guete": 3
+    },
+    {
+      "id": "iberien-westgotisch",
+      "von": 380,
+      "bis": 710,
+      "felder": [
+        [
+          -10,
+          35.8,
+          3.5,
+          44
+        ]
+      ],
+      "volk": "kath",
+      "staat": "arian",
+      "guete": 2
+    },
+    {
+      "id": "iberien-antik",
+      "bis": 379,
+      "felder": [
+        [
+          -10,
+          35.8,
+          3.5,
+          44
+        ]
+      ],
+      "volk": "graeco",
+      "guete": 2
+    },
+    {
+      "id": "mesopotamien-antik",
+      "bis": 225,
+      "felder": [
+        [
+          38,
+          28,
+          50,
+          38
+        ]
+      ],
+      "volk": "mesop",
+      "guete": 2
+    },
+    {
+      "id": "levante-osmanisch",
+      "von": 1517,
+      "bis": 1917,
+      "felder": [
+        [
+          32,
+          29,
+          46,
+          38
+        ]
+      ],
+      "volk": "sunn",
+      "guete": 3
     },
     {
       "id": "frankreich-katholisch",
@@ -948,105 +784,17 @@
       "guete": 2
     },
     {
-      "id": "iberien-reconquista",
-      "von": 1250,
+      "id": "polen-litauen",
+      "von": 966,
       "felder": [
         [
-          -10,
-          35.8,
-          3.5,
-          44
+          13.5,
+          47.5,
+          27,
+          57.5
         ]
       ],
       "volk": "kath",
-      "guete": 3
-    },
-    {
-      "id": "al-andalus",
-      "von": 711,
-      "bis": 1249,
-      "felder": [
-        [
-          -10,
-          35.8,
-          0.5,
-          40.5
-        ]
-      ],
-      "volk": "sunn",
-      "guete": 3
-    },
-    {
-      "id": "iberien-nord-christlich",
-      "von": 711,
-      "bis": 1249,
-      "felder": [
-        [
-          -10,
-          40.5,
-          3.5,
-          44
-        ]
-      ],
-      "volk": "kath",
-      "guete": 3
-    },
-    {
-      "id": "iberien-westgotisch",
-      "von": 380,
-      "bis": 710,
-      "felder": [
-        [
-          -10,
-          35.8,
-          3.5,
-          44
-        ]
-      ],
-      "volk": "kath",
-      "staat": "arian",
-      "guete": 2
-    },
-    {
-      "id": "iberien-antik",
-      "bis": 379,
-      "felder": [
-        [
-          -10,
-          35.8,
-          3.5,
-          44
-        ]
-      ],
-      "volk": "graeco",
-      "guete": 2
-    },
-    {
-      "id": "italien-katholisch",
-      "von": 400,
-      "felder": [
-        [
-          6,
-          35.5,
-          19,
-          47.2
-        ]
-      ],
-      "volk": "kath",
-      "guete": 3
-    },
-    {
-      "id": "italien-antik",
-      "bis": 399,
-      "felder": [
-        [
-          6,
-          35.5,
-          19,
-          47.2
-        ]
-      ],
-      "volk": "graeco",
       "guete": 3
     },
     {
@@ -1125,18 +873,133 @@
       "guete": 3
     },
     {
-      "id": "bosnien-muslimisch",
-      "von": 1500,
+      "id": "italien-katholisch",
+      "von": 400,
       "felder": [
         [
-          16,
-          42.5,
+          6,
+          35.5,
+          19,
+          47.2
+        ]
+      ],
+      "volk": "kath",
+      "guete": 3
+    },
+    {
+      "id": "italien-antik",
+      "bis": 399,
+      "felder": [
+        [
+          6,
+          35.5,
+          19,
+          47.2
+        ]
+      ],
+      "volk": "graeco",
+      "guete": 3
+    },
+    {
+      "id": "aegypten-islam",
+      "von": 700,
+      "felder": [
+        [
+          24,
           20,
-          45.3
+          37,
+          32
         ]
       ],
       "volk": "sunn",
+      "guete": 3
+    },
+    {
+      "id": "aegypten-koptisch",
+      "von": 300,
+      "bis": 699,
+      "felder": [
+        [
+          24,
+          20,
+          37,
+          32
+        ]
+      ],
+      "volk": "orient",
+      "guete": 3
+    },
+    {
+      "id": "aegypten-alt",
+      "bis": 299,
+      "felder": [
+        [
+          24,
+          20,
+          37,
+          32
+        ]
+      ],
+      "volk": "aegypt",
+      "guete": 3
+    },
+    {
+      "id": "britannien-katholisch",
+      "von": 600,
+      "bis": 1533,
+      "felder": [
+        [
+          -11,
+          49,
+          2,
+          61
+        ]
+      ],
+      "volk": "kath",
+      "guete": 3
+    },
+    {
+      "id": "britannien-heidnisch",
+      "bis": 599,
+      "felder": [
+        [
+          -11,
+          49,
+          2,
+          61
+        ]
+      ],
+      "volk": "heidn",
       "guete": 2
+    },
+    {
+      "id": "levante-islam",
+      "von": 640,
+      "bis": 1516,
+      "felder": [
+        [
+          32,
+          29,
+          50,
+          38
+        ]
+      ],
+      "volk": "sunn",
+      "guete": 3
+    },
+    {
+      "id": "horn-islam",
+      "von": 900,
+      "felder": [
+        [
+          41,
+          -2,
+          52,
+          13
+        ]
+      ],
+      "volk": "sunn",
+      "guete": 3
     },
     {
       "id": "balkan-orthodox",
@@ -1154,6 +1017,34 @@
       "guete": 3
     },
     {
+      "id": "sudan-islam",
+      "von": 1350,
+      "felder": [
+        [
+          22,
+          9,
+          39,
+          20
+        ]
+      ],
+      "volk": "sunn",
+      "guete": 3
+    },
+    {
+      "id": "philippinen-katholisch",
+      "von": 1565,
+      "felder": [
+        [
+          116,
+          4,
+          128,
+          20
+        ]
+      ],
+      "volk": "kath",
+      "guete": 3
+    },
+    {
       "id": "balkan-antik",
       "bis": 399,
       "felder": [
@@ -1168,18 +1059,74 @@
       "guete": 3
     },
     {
-      "id": "preussen-lutherisch",
-      "von": 1525,
+      "id": "pakistan",
+      "von": 1947,
       "felder": [
         [
-          18,
-          53.5,
+          60,
           23,
-          55.5
+          75.5,
+          37
         ]
       ],
-      "volk": "prot",
+      "volk": "sunn",
       "guete": 3
+    },
+    {
+      "id": "swahili-kueste",
+      "von": 1000,
+      "felder": [
+        [
+          38,
+          -12,
+          52,
+          4
+        ]
+      ],
+      "volk": "sunn",
+      "guete": 2
+    },
+    {
+      "id": "afrika-west-christlich",
+      "von": 1920,
+      "felder": [
+        [
+          -18,
+          4,
+          15,
+          11
+        ]
+      ],
+      "volk": "kath",
+      "guete": 2
+    },
+    {
+      "id": "tibet-buddhistisch",
+      "von": 750,
+      "felder": [
+        [
+          78.5,
+          27.5,
+          103,
+          37.5
+        ]
+      ],
+      "volk": "buddVa",
+      "guete": 3
+    },
+    {
+      "id": "tibet-frueh",
+      "bis": 749,
+      "felder": [
+        [
+          78.5,
+          27.5,
+          103,
+          37.5
+        ]
+      ],
+      "volk": "schaman",
+      "guete": 1
     },
     {
       "id": "mandschurei-japanisch",
@@ -1198,102 +1145,133 @@
       "guete": 3
     },
     {
-      "id": "polen-litauen",
-      "von": 966,
+      "id": "indus-fruehzeit",
+      "bis": -1501,
       "felder": [
         [
-          13.5,
-          47.5,
-          27,
-          57.5
-        ]
-      ],
-      "volk": "kath",
-      "guete": 3
-    },
-    {
-      "id": "ungarn",
-      "von": 1001,
-      "felder": [
-        [
-          16,
-          45,
-          23.5,
-          49.6
-        ]
-      ],
-      "volk": "kath",
-      "guete": 3
-    },
-    {
-      "id": "baltikum-heidnisch",
-      "bis": 1386,
-      "felder": [
-        [
+          60,
           20,
-          53.5,
-          29,
-          59.5
+          80,
+          33
         ]
       ],
-      "volk": "heidn",
+      "volk": "praeh",
+      "guete": 1
+    },
+    {
+      "id": "iran-safawiden",
+      "von": 1501,
+      "felder": [
+        [
+          46.5,
+          25,
+          66,
+          40
+        ]
+      ],
+      "volk": "schii",
+      "guete": 3
+    },
+    {
+      "id": "iran-islam",
+      "von": 651,
+      "bis": 1500,
+      "felder": [
+        [
+          46.5,
+          25,
+          66,
+          40
+        ]
+      ],
+      "volk": "sunn",
       "guete": 2
     },
     {
-      "id": "tibet-buddhistisch",
+      "id": "xinjiang-islam",
+      "von": 1000,
+      "felder": [
+        [
+          73,
+          35,
+          96,
+          49
+        ]
+      ],
+      "volk": "sunn",
+      "guete": 2
+    },
+    {
+      "id": "festland-suedostasien-theravada",
+      "von": 1200,
+      "felder": [
+        [
+          92,
+          5,
+          110,
+          24
+        ]
+      ],
+      "volk": "buddTh",
+      "guete": 3
+    },
+    {
+      "id": "sahel-islam",
+      "von": 1100,
+      "felder": [
+        [
+          -18,
+          12,
+          25,
+          20
+        ]
+      ],
+      "volk": "sunn",
+      "guete": 3,
+      "warum": "Ghana, Mali, Songhai und Kanem-Bornu waren muslimische Reiche; Timbuktu war eine Gelehrtenstadt."
+    },
+    {
+      "id": "iran-zoroastrisch",
+      "von": -700,
+      "bis": 650,
+      "felder": [
+        [
+          46.5,
+          25,
+          68,
+          42
+        ]
+      ],
+      "volk": "zoro",
+      "guete": 3
+    },
+    {
+      "id": "zentralasien-islam",
       "von": 750,
       "felder": [
         [
-          78.5,
-          27.5,
-          103,
-          37.5
-        ]
-      ],
-      "volk": "buddVa",
-      "guete": 3
-    },
-    {
-      "id": "mongolei-buddhistisch",
-      "von": 1578,
-      "felder": [
-        [
-          87,
-          40,
-          122,
-          54
-        ]
-      ],
-      "volk": "buddVa",
-      "guete": 3
-    },
-    {
-      "id": "china",
-      "von": -1200,
-      "felder": [
-        [
-          97,
-          18,
-          126,
-          45
-        ]
-      ],
-      "volk": "konf",
-      "guete": 3
-    },
-    {
-      "id": "korea",
-      "von": -300,
-      "felder": [
-        [
-          124,
+          52,
           33,
-          132,
-          43.5
+          82,
+          48
         ]
       ],
-      "volk": "konf",
+      "volk": "sunn",
       "guete": 3
+    },
+    {
+      "id": "zentralasien-vorislamisch",
+      "bis": 749,
+      "felder": [
+        [
+          52,
+          33,
+          82,
+          48
+        ]
+      ],
+      "volk": "zoro",
+      "guete": 1
     },
     {
       "id": "japan",
@@ -1310,43 +1288,85 @@
       "guete": 3
     },
     {
-      "id": "russland-sowjetisch",
-      "von": 1918,
-      "bis": 1990,
+      "id": "maghreb-islam",
+      "von": 700,
       "felder": [
         [
-          23.5,
-          45,
-          190,
-          78
+          -18,
+          26,
+          25,
+          37.3
         ]
       ],
-      "volk": "orth",
-      "staat": "athe",
+      "volk": "sunn",
       "guete": 3
     },
     {
-      "id": "russland-orthodox",
-      "von": 988,
+      "id": "maghreb-roemisch",
+      "von": 313,
+      "bis": 699,
       "felder": [
         [
-          27,
-          43,
-          60,
+          -18,
+          26,
+          25,
+          37.3
+        ]
+      ],
+      "volk": "kath",
+      "guete": 2
+    },
+    {
+      "id": "maghreb-punisch",
+      "bis": 312,
+      "felder": [
+        [
+          -18,
+          26,
+          25,
+          37.3
+        ]
+      ],
+      "volk": "semit",
+      "guete": 2
+    },
+    {
+      "id": "skandinavien-reformiert",
+      "von": 1537,
+      "felder": [
+        [
+          4,
+          54,
+          31,
           72
         ]
       ],
-      "volk": "orth",
+      "volk": "prot",
       "guete": 3
     },
     {
-      "id": "osteuropa-heidnisch",
-      "bis": 987,
+      "id": "skandinavien-katholisch",
+      "von": 1050,
+      "bis": 1536,
       "felder": [
         [
-          24,
-          43,
-          60,
+          4,
+          54,
+          31,
+          72
+        ]
+      ],
+      "volk": "kath",
+      "guete": 3
+    },
+    {
+      "id": "skandinavien-heidnisch",
+      "bis": 1049,
+      "felder": [
+        [
+          4,
+          54,
+          31,
           72
         ]
       ],
@@ -1354,47 +1374,46 @@
       "guete": 2
     },
     {
-      "id": "armenien",
-      "von": 301,
-      "bis": 1070,
+      "id": "mongolei-buddhistisch",
+      "von": 1578,
       "felder": [
         [
-          41,
-          37.5,
-          48,
-          42
+          87,
+          40,
+          122,
+          54
         ]
       ],
-      "volk": "orient",
+      "volk": "buddVa",
       "guete": 3
     },
     {
-      "id": "pakistan",
-      "von": 1947,
+      "id": "arabien-islam",
+      "von": 632,
       "felder": [
         [
+          34,
+          12,
           60,
-          23,
-          75.5,
-          37
+          33
         ]
       ],
       "volk": "sunn",
       "guete": 3
     },
     {
-      "id": "bangladesch",
-      "von": 1947,
+      "id": "arabien-vorislamisch",
+      "bis": 631,
       "felder": [
         [
-          88,
-          20,
-          93,
-          27
+          34,
+          12,
+          60,
+          33
         ]
       ],
-      "volk": "sunn",
-      "guete": 3
+      "volk": "semit",
+      "guete": 2
     },
     {
       "id": "indien-islamische-herrschaft",
@@ -1442,88 +1461,31 @@
       "guete": 3
     },
     {
-      "id": "indus-fruehzeit",
-      "bis": -1501,
+      "id": "nordafrika-sahara-islam",
+      "von": 700,
       "felder": [
         [
-          60,
-          20,
-          80,
+          -18,
+          19,
+          36,
           33
-        ]
-      ],
-      "volk": "praeh",
-      "guete": 1
-    },
-    {
-      "id": "tibet-frueh",
-      "bis": 749,
-      "felder": [
-        [
-          78.5,
-          27.5,
-          103,
-          37.5
-        ]
-      ],
-      "volk": "schaman",
-      "guete": 1
-    },
-    {
-      "id": "steppe-tengristisch",
-      "von": -700,
-      "bis": 1577,
-      "felder": [
-        [
-          50,
-          40,
-          122,
-          56
-        ]
-      ],
-      "volk": "tengri",
-      "guete": 2
-    },
-    {
-      "id": "zentralasien-islam",
-      "von": 750,
-      "felder": [
-        [
-          52,
-          33,
-          82,
-          48
         ]
       ],
       "volk": "sunn",
       "guete": 3
     },
     {
-      "id": "zentralasien-vorislamisch",
-      "bis": 749,
+      "id": "china",
+      "von": -1200,
       "felder": [
         [
-          52,
-          33,
-          82,
-          48
+          97,
+          18,
+          126,
+          45
         ]
       ],
-      "volk": "zoro",
-      "guete": 1
-    },
-    {
-      "id": "philippinen-katholisch",
-      "von": 1565,
-      "felder": [
-        [
-          116,
-          4,
-          128,
-          20
-        ]
-      ],
-      "volk": "kath",
+      "volk": "konf",
       "guete": 3
     },
     {
@@ -1541,18 +1503,61 @@
       "guete": 3
     },
     {
-      "id": "festland-suedostasien-theravada",
-      "von": 1200,
+      "id": "russland-orthodox",
+      "von": 988,
       "felder": [
         [
-          92,
-          5,
-          110,
-          24
+          27,
+          43,
+          60,
+          72
         ]
       ],
-      "volk": "buddTh",
+      "volk": "orth",
       "guete": 3
+    },
+    {
+      "id": "afrika-sued-christlich",
+      "von": 1900,
+      "felder": [
+        [
+          10,
+          -36,
+          42,
+          -4
+        ]
+      ],
+      "volk": "kath",
+      "guete": 2
+    },
+    {
+      "id": "osteuropa-heidnisch",
+      "bis": 987,
+      "felder": [
+        [
+          24,
+          43,
+          60,
+          72
+        ]
+      ],
+      "volk": "heidn",
+      "guete": 2
+    },
+    {
+      "id": "steppe-tengristisch",
+      "von": -700,
+      "bis": 1577,
+      "felder": [
+        [
+          50,
+          40,
+          122,
+          56
+        ]
+      ],
+      "volk": "tengri",
+      "guete": 2
     },
     {
       "id": "suedostasien-indisiert",
@@ -1584,75 +1589,44 @@
       "guete": 1
     },
     {
-      "id": "lateinamerika-katholisch",
-      "von": 1550,
+      "id": "europa-rest-christlich",
+      "von": 500,
       "felder": [
         [
-          -118,
-          -56,
-          -34,
-          26
+          -25,
+          34,
+          40,
+          85
         ]
       ],
       "volk": "kath",
-      "guete": 3
+      "guete": 1
     },
     {
-      "id": "lateinamerika-eroberung",
-      "von": 1500,
-      "bis": 1549,
+      "id": "europa-rest-vorchristlich",
+      "bis": 499,
       "felder": [
         [
-          -118,
-          -56,
-          -34,
-          26
+          -25,
+          34,
+          40,
+          85
         ]
       ],
-      "volk": "tradAm",
-      "guete": 3
+      "volk": "heidn",
+      "guete": 1
     },
     {
-      "id": "nordamerika-siedler",
-      "von": 1780,
+      "id": "afrika-traditionell",
       "felder": [
         [
-          -170,
-          24,
-          -52,
-          73
+          -20,
+          -36,
+          52,
+          20
         ]
       ],
-      "volk": "prot",
-      "guete": 3
-    },
-    {
-      "id": "nordamerika-kolonial",
-      "von": 1600,
-      "bis": 1779,
-      "felder": [
-        [
-          -170,
-          24,
-          -52,
-          73
-        ]
-      ],
-      "volk": "tradAm",
-      "guete": 2
-    },
-    {
-      "id": "amerika-indigen",
-      "bis": 1599,
-      "felder": [
-        [
-          -180,
-          -56,
-          -30,
-          84
-        ]
-      ],
-      "volk": "tradAm",
+      "volk": "tradAf",
       "guete": 2
     },
     {
@@ -1711,44 +1685,104 @@
       "guete": 2
     },
     {
-      "id": "afrika-sued-christlich",
-      "von": 1900,
+      "id": "russland-sowjetisch",
+      "von": 1918,
+      "bis": 1990,
       "felder": [
         [
-          10,
-          -36,
-          42,
-          -4
+          23.5,
+          45,
+          190,
+          78
         ]
       ],
-      "volk": "kath",
+      "volk": "orth",
+      "staat": "athe",
+      "guete": 3
+    },
+    {
+      "id": "nordamerika-siedler",
+      "von": 1780,
+      "felder": [
+        [
+          -170,
+          24,
+          -52,
+          73
+        ]
+      ],
+      "volk": "prot",
+      "guete": 3
+    },
+    {
+      "id": "nordamerika-kolonial",
+      "von": 1600,
+      "bis": 1779,
+      "felder": [
+        [
+          -170,
+          24,
+          -52,
+          73
+        ]
+      ],
+      "volk": "tradAm",
       "guete": 2
     },
     {
-      "id": "afrika-west-christlich",
-      "von": 1920,
+      "id": "lateinamerika-katholisch",
+      "von": 1550,
       "felder": [
         [
-          -18,
-          4,
-          15,
-          11
+          -118,
+          -56,
+          -34,
+          26
         ]
       ],
       "volk": "kath",
-      "guete": 2
+      "guete": 3
     },
     {
-      "id": "afrika-traditionell",
+      "id": "lateinamerika-eroberung",
+      "von": 1500,
+      "bis": 1549,
       "felder": [
         [
-          -20,
-          -36,
-          52,
-          20
+          -118,
+          -56,
+          -34,
+          26
         ]
       ],
-      "volk": "tradAf",
+      "volk": "tradAm",
+      "guete": 3
+    },
+    {
+      "id": "asien-rest",
+      "felder": [
+        [
+          40,
+          -12,
+          190,
+          85
+        ]
+      ],
+      "volk": "schaman",
+      "guete": 1
+    },
+    {
+      "id": "amerika-indigen",
+      "bis": 1599,
+      "felder": [
+        [
+          -180,
+          -56,
+          -30,
+          84
+        ]
+      ],
+      "volk": "tradAm",
       "guete": 2
     },
     {
@@ -1765,44 +1799,17 @@
       "guete": 1
     },
     {
-      "id": "asien-rest",
+      "id": "vorgeschichte",
+      "bis": -3000,
       "felder": [
         [
-          40,
-          -12,
-          190,
+          -180,
+          -60,
+          180,
           85
         ]
       ],
-      "volk": "schaman",
-      "guete": 1
-    },
-    {
-      "id": "europa-rest-christlich",
-      "von": 500,
-      "felder": [
-        [
-          -25,
-          34,
-          40,
-          85
-        ]
-      ],
-      "volk": "kath",
-      "guete": 1
-    },
-    {
-      "id": "europa-rest-vorchristlich",
-      "bis": 499,
-      "felder": [
-        [
-          -25,
-          34,
-          40,
-          85
-        ]
-      ],
-      "volk": "heidn",
+      "volk": "praeh",
       "guete": 1
     },
     {
@@ -1832,5 +1839,6 @@
       "volk": "tradAf",
       "guete": 1
     }
-  ]
+  ],
+  "reihenfolge": "Nach Fläche aufsteigend sortiert: Die erste passende Regel gewinnt, und das ist damit immer die kleinste - also die speziellste. Wer eine Regel einfügt, muss sich um ihre Stelle nicht kümmern."
 }

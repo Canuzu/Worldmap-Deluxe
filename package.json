@@ -9,7 +9,7 @@
     "fetch:data": "node scripts/fetch-sources.mjs",
     "build:krieg": "node scripts/build-fronts.mjs",
     "build:data": "node scripts/build-data.mjs && node scripts/thin-coast.mjs",
-    "build:religion": "node scripts/build-religion.mjs && node scripts/build-religion-raster.mjs",
+    "build:religion": "node scripts/build-religion.mjs && node scripts/build-religion-raster.mjs && node scripts/build-religion-grenzen.mjs",
     "build:knowledge": "node scripts/build-knowledge.mjs",
     "build:kueste": "node scripts/thin-coast.mjs",
     "format:rulers": "node scripts/format-rulers.mjs",

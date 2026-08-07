@@ -1406,11 +1406,33 @@ Fatimidenkalifat mit sunnitischem Volk und schiitischem Hof, Sowjetrussland
 mit Staatsatheismus über orthodoxer Bevölkerung.
 
 **35 Klassen, nach Farbfamilien geordnet:** Christliches in Blau, Islamisches
-in Grün, indische Religionen in Ocker, ostasiatische in Violett, antike in
-Terrakotta, traditionelle in Oliv. Anders als bei den Gemeinwesen, wo Nachbarn
-absichtlich verschiedene Farben bekommen, tragen hier zwei katholische Länder
-dieselbe – nur daran erkennt man, wo eine Konfessionsgrenze verläuft und wo
-keine ist.
+in Grün, indische Religionen in Gold und Orange, ostasiatische in Violett,
+antike in Terrakotta, traditionelle in Oliv. Innerhalb jeder Familie sind die
+Klassen weit auseinandergezogen – von Nachtblau bis Himmel, von Tanne bis
+Minze –, damit man sie auch nebeneinander sicher trennt; der geringste Abstand
+zwischen zwei Farben ist gemessen und liegt bei 34 von 255 im Farbwürfel.
+Anders als bei den Gemeinwesen, wo Nachbarn absichtlich verschiedene Farben
+bekommen, tragen hier zwei katholische Länder dieselbe – nur daran erkennt man,
+wo eine Konfessionsgrenze verläuft und wo keine ist.
+
+**Gestrichelte Linien quer durch die Länder.** Die Fläche eines Gemeinwesens
+trägt die Religion seiner Mehrheit, und für ein Reich von der Größe des
+osmanischen ist das zu wenig: Serbien war christlich, auch als es osmanisch
+war. Über der Fläche liegen deshalb Linien dort, wo im Prüfraster zwei Zellen
+mit verschiedenem Glauben aneinanderstoßen – quer durch Länder hindurch, wenn
+es sein muss. Gestrichelt, weil es keine Grenzen im Rechtssinne sind, sondern
+Übergänge: Wo eine Konfession aufhört und die nächste anfängt, ist eine
+Landschaft und keine Linie.
+
+Dazu je Gebiet ein Name, und bei großen Gebieten mehrere. Das orthodoxe Gebiet
+reicht 1600 von Serbien bis zum Ural; mit einer einzigen Beschriftung stünde
+sie irgendwo in Russland, und der Balkan bliebe stumm – genau dort aber ist die
+Aussage. Die Namen liegen in einer eigenen Ebene über den Ländernamen: Darunter
+verschwand „Orthodox" unter „Osmanisches Reich", also an der Stelle, an der es
+gebraucht wird.
+
+Beides zusammen kostet 2 kB je Zeitschnitt und wird nur geholt, wenn der Modus
+läuft.
 
 **Ein Raster als Prüfwerkzeug, nicht als Kartenbild.** Neben der Karte wird
 dieselbe Frage Ort für Ort beantwortet: ein Gitter von einem Viertelgrad,

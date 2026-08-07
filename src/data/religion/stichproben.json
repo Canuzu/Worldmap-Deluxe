@@ -262,7 +262,9 @@
       "lon": -3.6,
       "lat": 37.2,
       "jahr": 1279,
-      "volk": "sunn"
+      "volk": "sunn",
+      "staatEgal": true,
+      "warum": "Das Emirat von Granada fehlt im Ursprungsdatensatz; die Zelle gehört dort Kastilien."
     },
     {
       "ort": "Hamburg",
