@@ -1,0 +1,1409 @@
+{
+ "id": "tours",
+ "name": "Tours und Poitiers",
+ "ort": "Zwischen Poitiers und Tours",
+ "datum": "Oktober 732",
+ "jahr": 700,
+ "mitte": [
+  0.515,
+  46.755
+ ],
+ "zoom": 12.2,
+ "grund": "relief",
+ "worum": "Fußvolk gegen Reiterei – und die Frage, ob eine geschlossene Front auf einer bewaldeten Höhe hält. Sieben Tage lang geschieht nichts, weil beide Seiten gute Gründe zu warten haben. Entschieden wird die Schlacht nicht an der Front, sondern am Beutetross.",
+ "parteien": [
+  {
+   "id": "fra",
+   "name": "Franken und Burgunder",
+   "farbe": "#6f9fe0",
+   "fuehrung": "Karl Martell, Eudo von Aquitanien",
+   "staerke": "15.000 bis 20.000, fast nur Fußvolk",
+   "zahl": 18000
+  },
+  {
+   "id": "umy",
+   "name": "Umayyaden",
+   "farbe": "#7fbf7f",
+   "fuehrung": "Abd ar-Rahman al-Ghafiqi",
+   "staerke": "20.000 bis 25.000, überwiegend Reiterei",
+   "zahl": 22000
+  }
+ ],
+ "gelaende": [
+  {
+   "art": "wald",
+   "name": "Wald",
+   "punkte": [
+    [
+     0.5331,
+     46.77393
+    ],
+    [
+     0.52824,
+     46.76331
+    ],
+    [
+     0.52095,
+     46.75446
+    ],
+    [
+     0.50518,
+     46.74801
+    ],
+    [
+     0.49369,
+     46.75398
+    ],
+    [
+     0.48258,
+     46.75954
+    ],
+    [
+     0.48788,
+     46.76988
+    ],
+    [
+     0.50316,
+     46.77478
+    ],
+    [
+     0.51989,
+     46.77988
+    ]
+   ]
+  },
+  {
+   "art": "hoehe",
+   "name": "Höhenrücken",
+   "punkte": [
+    [
+     0.52464,
+     46.77061
+    ],
+    [
+     0.52246,
+     46.77452
+    ],
+    [
+     0.51574,
+     46.77533
+    ],
+    [
+     0.51173,
+     46.77217
+    ],
+    [
+     0.50536,
+     46.74739
+    ],
+    [
+     0.50754,
+     46.74348
+    ],
+    [
+     0.51426,
+     46.74267
+    ],
+    [
+     0.51827,
+     46.74583
+    ]
+   ]
+  },
+  {
+   "art": "fluss",
+   "name": "Clain",
+   "punkte": [
+    [
+     0.46,
+     46.71
+    ],
+    [
+     0.475,
+     46.75
+    ],
+    [
+     0.49,
+     46.795
+    ]
+   ]
+  },
+  {
+   "art": "fluss",
+   "name": "Vienne",
+   "punkte": [
+    [
+     0.59,
+     46.7
+    ],
+    [
+     0.57,
+     46.75
+    ],
+    [
+     0.55,
+     46.81
+    ]
+   ]
+  },
+  {
+   "art": "weg",
+   "name": "Römerstraße nach Tours",
+   "punkte": [
+    [
+     0.525,
+     46.71
+    ],
+    [
+     0.518,
+     46.755
+    ],
+    [
+     0.51,
+     46.81
+    ]
+   ]
+  }
+ ],
+ "stationen": [
+  {
+   "zeit": "Frühjahr 732",
+   "t": 0,
+   "kurz": "Ein Zug, der bis an die Loire reicht.",
+   "text": "Der Statthalter von al-Andalus führt einen großen Beutezug über die Pyrenäen. Bordeaux fällt, Eudo von Aquitanien wird an der Garonne geschlagen und flieht nach Norden zu Karl Martell – demselben Karl, gegen den er sich jahrelang gewehrt hat. Das Ziel des Zuges ist der Schatz von Saint-Martin in Tours, die reichste Kirche des Frankenreichs.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     -2.4,
+     42.8
+    ],
+    [
+     3.4,
+     49.3
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "anm-umy",
+     "partei": "umy",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       -1.55,
+       43.3
+      ],
+      [
+       -0.58,
+       44.84
+      ],
+      [
+       0.15,
+       45.65
+      ],
+      [
+       0.52,
+       46.58
+      ]
+     ],
+     "name": "von Pamplona über Bordeaux"
+    },
+    {
+     "id": "anm-fra",
+     "partei": "fra",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       2.35,
+       48.86
+      ],
+      [
+       1.4,
+       48.1
+      ],
+      [
+       0.68,
+       47.39
+      ],
+      [
+       0.52,
+       46.85
+      ]
+     ],
+     "name": "Karl von Norden"
+    }
+   ]
+  },
+  {
+   "zeit": "Oktober · Tag 1",
+   "t": 120,
+   "kurz": "Karl stellt sich in den Weg – und wählt den Boden.",
+   "text": "Karl ist in Eilmärschen gekommen und stellt sich zwischen die Reiterei und Tours, auf eine bewaldete Höhe. Der Boden ist der ganze Plan: Vor ihm steigt das Gelände an, seine Flanken lehnen an Wald, und die Bäume nehmen der Reiterei den Schwung. Abd ar-Rahman findet ein Heer vor, wo er keines erwartet hat.",
+   "stellungen": [
+    {
+     "id": "f-karree",
+     "partei": "fra",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       0.52674,
+       46.75193
+      ],
+      [
+       0.53131,
+       46.75313
+      ],
+      [
+       0.53226,
+       46.75681
+      ],
+      [
+       0.52857,
+       46.75901
+      ],
+      [
+       0.50326,
+       46.76207
+      ],
+      [
+       0.49869,
+       46.76087
+      ],
+      [
+       0.49774,
+       46.75719
+      ],
+      [
+       0.50143,
+       46.75499
+      ]
+     ],
+     "name": "Fußvolk in geschlossener Front",
+     "staerke": "18.000"
+    },
+    {
+     "id": "u-lager",
+     "partei": "umy",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       0.52,
+       46.73788
+      ],
+      [
+       0.5271,
+       46.7338
+      ],
+      [
+       0.53199,
+       46.72945
+      ],
+      [
+       0.53216,
+       46.72319
+      ],
+      [
+       0.52357,
+       46.72128
+      ],
+      [
+       0.51543,
+       46.71939
+      ],
+      [
+       0.50869,
+       46.72352
+      ],
+      [
+       0.50963,
+       46.72925
+      ],
+      [
+       0.51086,
+       46.73546
+      ]
+     ],
+     "name": "Umayyadisches Lager",
+     "staerke": "22.000"
+    }
+   ]
+  },
+  {
+   "zeit": "Tage 2 bis 6",
+   "t": 300,
+   "kurz": "Sechs Tage Stillstand – und beide haben Gründe dafür.",
+   "text": "Sechs Tage lang geschieht nichts als Geplänkel. Karl wartet, weil die Zeit für ihn arbeitet: Es wird kälter, und ein Reiterheer im Feindesland muss sein Futter finden. Abd ar-Rahman wartet, weil seine Verbände noch verstreut plündern und weil er den Hang hinauf nicht angreifen will. Vor allem aber hängt ihm die Beute von Bordeaux nach – ein Tross, den er nicht im Stich lassen kann und der ihn unbeweglich macht.",
+   "stellungen": [
+    {
+     "id": "f-karree",
+     "partei": "fra",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       0.52674,
+       46.75193
+      ],
+      [
+       0.53131,
+       46.75313
+      ],
+      [
+       0.53226,
+       46.75681
+      ],
+      [
+       0.52857,
+       46.75901
+      ],
+      [
+       0.50326,
+       46.76207
+      ],
+      [
+       0.49869,
+       46.76087
+      ],
+      [
+       0.49774,
+       46.75719
+      ],
+      [
+       0.50143,
+       46.75499
+      ]
+     ],
+     "name": "rührt sich nicht",
+     "staerke": "18.000"
+    },
+    {
+     "id": "u-lager",
+     "partei": "umy",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       0.52,
+       46.73788
+      ],
+      [
+       0.5271,
+       46.7338
+      ],
+      [
+       0.53199,
+       46.72945
+      ],
+      [
+       0.53216,
+       46.72319
+      ],
+      [
+       0.52357,
+       46.72128
+      ],
+      [
+       0.51543,
+       46.71939
+      ],
+      [
+       0.50869,
+       46.72352
+      ],
+      [
+       0.50963,
+       46.72925
+      ],
+      [
+       0.51086,
+       46.73546
+      ]
+     ],
+     "name": "sammelt seine Verbände",
+     "staerke": "22.000"
+    },
+    {
+     "id": "u-tross",
+     "partei": "umy",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       0.532,
+       46.72219
+      ],
+      [
+       0.53717,
+       46.71922
+      ],
+      [
+       0.54072,
+       46.71605
+      ],
+      [
+       0.54084,
+       46.7115
+      ],
+      [
+       0.53459,
+       46.71011
+      ],
+      [
+       0.52867,
+       46.70874
+      ],
+      [
+       0.52377,
+       46.71174
+      ],
+      [
+       0.52446,
+       46.71591
+      ],
+      [
+       0.52536,
+       46.72043
+      ]
+     ],
+     "name": "Beutetross aus Bordeaux",
+     "staerke": "Tross"
+    },
+    {
+     "id": "u-spaeh",
+     "partei": "umy",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       0.523,
+       46.735
+      ],
+      [
+       0.52,
+       46.747
+      ]
+     ],
+     "name": "Geplänkel",
+     "finte": true
+    }
+   ]
+  },
+  {
+   "zeit": "Tag 7 · Morgen",
+   "t": 480,
+   "kurz": "Die Reiterei greift an.",
+   "text": "Am siebten Tag lässt Abd ar-Rahman angreifen – bergauf, gegen eine geschlossene Front. Die arabische Reiterei ist die beste der Zeit, und sie reitet immer wieder an. Aber ein Fußvolk, das nicht ausweicht, ist gegen Reiterei fast nicht zu brechen: Pferde laufen nicht in eine Mauer aus Menschen, sie weichen aus.",
+   "stellungen": [
+    {
+     "id": "f-karree",
+     "partei": "fra",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       0.52674,
+       46.75193
+      ],
+      [
+       0.53131,
+       46.75313
+      ],
+      [
+       0.53226,
+       46.75681
+      ],
+      [
+       0.52857,
+       46.75901
+      ],
+      [
+       0.50326,
+       46.76207
+      ],
+      [
+       0.49869,
+       46.76087
+      ],
+      [
+       0.49774,
+       46.75719
+      ],
+      [
+       0.50143,
+       46.75499
+      ]
+     ],
+     "name": "Karree hält",
+     "staerke": "18.000"
+    },
+    {
+     "id": "u-reiterM",
+     "partei": "umy",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       0.50329,
+       46.74815
+      ],
+      [
+       0.49986,
+       46.74725
+      ],
+      [
+       0.49915,
+       46.74449
+      ],
+      [
+       0.50192,
+       46.74284
+      ],
+      [
+       0.52671,
+       46.73985
+      ],
+      [
+       0.53014,
+       46.74075
+      ],
+      [
+       0.53085,
+       46.74351
+      ],
+      [
+       0.52808,
+       46.74516
+      ]
+     ],
+     "name": "Erster Anritt",
+     "staerke": "10.000"
+    },
+    {
+     "id": "u-stoss1",
+     "partei": "umy",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       0.515,
+       46.742
+      ],
+      [
+       0.515,
+       46.753
+      ]
+     ]
+    },
+    {
+     "id": "u-reiterL",
+     "partei": "umy",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       0.4888,
+       46.74544
+      ],
+      [
+       0.48628,
+       46.7451
+      ],
+      [
+       0.48494,
+       46.74258
+      ],
+      [
+       0.48656,
+       46.74122
+      ],
+      [
+       0.4972,
+       46.73856
+      ],
+      [
+       0.49972,
+       46.7389
+      ],
+      [
+       0.50106,
+       46.74142
+      ],
+      [
+       0.49944,
+       46.74278
+      ]
+     ],
+     "name": "linker Flügel",
+     "staerke": "5.000"
+    },
+    {
+     "id": "u-reiterR",
+     "partei": "umy",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       0.53234,
+       46.74425
+      ],
+      [
+       0.53013,
+       46.74334
+      ],
+      [
+       0.53013,
+       46.74066
+      ],
+      [
+       0.53234,
+       46.73975
+      ],
+      [
+       0.54366,
+       46.73975
+      ],
+      [
+       0.54587,
+       46.74066
+      ],
+      [
+       0.54587,
+       46.74334
+      ],
+      [
+       0.54366,
+       46.74425
+      ]
+     ],
+     "name": "rechter Flügel",
+     "staerke": "5.000"
+    }
+   ]
+  },
+  {
+   "zeit": "Tag 7 · Mittag",
+   "t": 540,
+   "kurz": "„Wie eine Mauer aus Eis.“",
+   "text": "Die fränkischen Reihen halten Stunde um Stunde. Ein späterer Chronist schreibt, sie hätten dagestanden „wie eine Mauer, wie ein Wall aus Eis“ – ein Bild, das hängen geblieben ist, weil es genau das beschreibt, worauf Karl gesetzt hat. An einer Stelle brechen Reiter bis in die Mitte durch, werden aber eingeschlossen.",
+   "stellungen": [
+    {
+     "id": "f-karree",
+     "partei": "fra",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       0.52611,
+       46.75155
+      ],
+      [
+       0.53125,
+       46.7529
+      ],
+      [
+       0.53232,
+       46.75704
+      ],
+      [
+       0.52816,
+       46.75951
+      ],
+      [
+       0.50389,
+       46.76245
+      ],
+      [
+       0.49875,
+       46.7611
+      ],
+      [
+       0.49768,
+       46.75696
+      ],
+      [
+       0.50184,
+       46.75449
+      ]
+     ],
+     "name": "hält",
+     "staerke": "17.000"
+    },
+    {
+     "id": "u-reiterM",
+     "partei": "umy",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       0.50521,
+       46.75438
+      ],
+      [
+       0.50121,
+       46.75333
+      ],
+      [
+       0.50038,
+       46.75011
+      ],
+      [
+       0.50362,
+       46.74818
+      ],
+      [
+       0.52479,
+       46.74562
+      ],
+      [
+       0.52879,
+       46.74667
+      ],
+      [
+       0.52962,
+       46.74989
+      ],
+      [
+       0.52638,
+       46.75182
+      ]
+     ],
+     "name": "immer neue Anritte",
+     "staerke": "9.000"
+    },
+    {
+     "id": "u-einbruch",
+     "partei": "umy",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       0.515,
+       46.749
+      ],
+      [
+       0.515,
+       46.756
+      ],
+      [
+       0.514,
+       46.759
+      ]
+     ],
+     "name": "Einbruch in die Mitte"
+    },
+    {
+     "id": "u-reiterL",
+     "partei": "umy",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       0.4898,
+       46.74944
+      ],
+      [
+       0.48728,
+       46.7491
+      ],
+      [
+       0.48594,
+       46.74658
+      ],
+      [
+       0.48756,
+       46.74522
+      ],
+      [
+       0.4982,
+       46.74256
+      ],
+      [
+       0.50072,
+       46.7429
+      ],
+      [
+       0.50206,
+       46.74542
+      ],
+      [
+       0.50044,
+       46.74678
+      ]
+     ],
+     "name": "linker Flügel",
+     "staerke": "4.500"
+    },
+    {
+     "id": "u-reiterR",
+     "partei": "umy",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       0.53134,
+       46.74825
+      ],
+      [
+       0.52913,
+       46.74734
+      ],
+      [
+       0.52913,
+       46.74466
+      ],
+      [
+       0.53134,
+       46.74375
+      ],
+      [
+       0.54266,
+       46.74375
+      ],
+      [
+       0.54487,
+       46.74466
+      ],
+      [
+       0.54487,
+       46.74734
+      ],
+      [
+       0.54266,
+       46.74825
+      ]
+     ],
+     "name": "rechter Flügel",
+     "staerke": "4.500"
+    }
+   ]
+  },
+  {
+   "zeit": "Tag 7 · Nachmittag",
+   "t": 600,
+   "kurz": "Eudos Reiter gehen um den Wald herum – auf das Lager.",
+   "text": "Eudo von Aquitanien führt seine Reiter außen um den Wald herum und fällt über das umayyadische Lager her, in dem die Beute liegt. Das Gerücht, der Tross werde geplündert, läuft durch die Reihen. Ganze Verbände brechen den Kampf ab und reiten zurück – nicht aus Furcht vor den Franken, sondern aus Sorge um das, wofür sie gekommen sind.",
+   "stellungen": [
+    {
+     "id": "f-eudo",
+     "partei": "fra",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       0.488,
+       46.762
+      ],
+      [
+       0.49,
+       46.735
+      ],
+      [
+       0.514,
+       46.718
+      ],
+      [
+       0.53,
+       46.716
+      ]
+     ],
+     "name": "Eudo auf das Lager"
+    },
+    {
+     "id": "u-tross",
+     "partei": "umy",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       0.532,
+       46.72219
+      ],
+      [
+       0.53717,
+       46.71922
+      ],
+      [
+       0.54072,
+       46.71605
+      ],
+      [
+       0.54084,
+       46.7115
+      ],
+      [
+       0.53459,
+       46.71011
+      ],
+      [
+       0.52867,
+       46.70874
+      ],
+      [
+       0.52377,
+       46.71174
+      ],
+      [
+       0.52446,
+       46.71591
+      ],
+      [
+       0.52536,
+       46.72043
+      ]
+     ],
+     "name": "Tross unter Angriff",
+     "staerke": "Tross",
+     "geschlagen": true
+    },
+    {
+     "id": "u-rueckstrom",
+     "partei": "umy",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       0.515,
+       46.75
+      ],
+      [
+       0.52,
+       46.73
+      ],
+      [
+       0.529,
+       46.718
+      ]
+     ],
+     "name": "zurück zum Lager",
+     "rueckzug": true
+    },
+    {
+     "id": "f-karree",
+     "partei": "fra",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       0.52611,
+       46.75155
+      ],
+      [
+       0.53125,
+       46.7529
+      ],
+      [
+       0.53232,
+       46.75704
+      ],
+      [
+       0.52816,
+       46.75951
+      ],
+      [
+       0.50389,
+       46.76245
+      ],
+      [
+       0.49875,
+       46.7611
+      ],
+      [
+       0.49768,
+       46.75696
+      ],
+      [
+       0.50184,
+       46.75449
+      ]
+     ],
+     "name": "hält weiter",
+     "staerke": "17.000"
+    },
+    {
+     "id": "u-reiterM",
+     "partei": "umy",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       0.50825,
+       46.75155
+      ],
+      [
+       0.50505,
+       46.75071
+      ],
+      [
+       0.50429,
+       46.74778
+      ],
+      [
+       0.50688,
+       46.74624
+      ],
+      [
+       0.52175,
+       46.74445
+      ],
+      [
+       0.52495,
+       46.74529
+      ],
+      [
+       0.52571,
+       46.74822
+      ],
+      [
+       0.52312,
+       46.74976
+      ]
+     ],
+     "name": "löst sich auf",
+     "staerke": "5.000",
+     "geschlagen": true
+    }
+   ]
+  },
+  {
+   "zeit": "Tag 7 · Abend",
+   "t": 660,
+   "kurz": "Abd ar-Rahman fällt beim Versuch, die Ordnung zu halten.",
+   "text": "Der Statthalter reitet in den Rückstrom hinein, um die Verbände zurückzuholen, und wird dabei umringt und getötet. Damit ist die Führung weg. Die Franken machen keine Verfolgung – Karl vermutet eine Falle und lässt seine Leute in Reih und Glied auf dem Feld stehen.",
+   "stellungen": [
+    {
+     "id": "u-fuehrung",
+     "partei": "umy",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       0.518,
+       46.73959
+      ],
+      [
+       0.52058,
+       46.73811
+      ],
+      [
+       0.52236,
+       46.73653
+      ],
+      [
+       0.52242,
+       46.73425
+      ],
+      [
+       0.5193,
+       46.73356
+      ],
+      [
+       0.51634,
+       46.73287
+      ],
+      [
+       0.51388,
+       46.73437
+      ],
+      [
+       0.51423,
+       46.73646
+      ],
+      [
+       0.51468,
+       46.73871
+      ]
+     ],
+     "name": "Abd ar-Rahman fällt",
+     "staerke": "Gefolge",
+     "geschlagen": true
+    },
+    {
+     "id": "f-karree",
+     "partei": "fra",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       0.52611,
+       46.75155
+      ],
+      [
+       0.53125,
+       46.7529
+      ],
+      [
+       0.53232,
+       46.75704
+      ],
+      [
+       0.52816,
+       46.75951
+      ],
+      [
+       0.50389,
+       46.76245
+      ],
+      [
+       0.49875,
+       46.7611
+      ],
+      [
+       0.49768,
+       46.75696
+      ],
+      [
+       0.50184,
+       46.75449
+      ]
+     ],
+     "name": "bleibt stehen",
+     "staerke": "17.000"
+    },
+    {
+     "id": "u-rueckstrom",
+     "partei": "umy",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       0.515,
+       46.745
+      ],
+      [
+       0.523,
+       46.725
+      ],
+      [
+       0.532,
+       46.713
+      ]
+     ],
+     "name": "ins Lager zurück",
+     "rueckzug": true
+    }
+   ]
+  },
+  {
+   "zeit": "Am nächsten Morgen",
+   "t": 780,
+   "kurz": "Die Zelte stehen noch – das Heer ist weg.",
+   "text": "Am Morgen stellen sich die Franken erneut in Schlachtordnung auf und warten. Als nichts geschieht, schicken sie Späher vor: Das Lager steht voll mit Zelten und Beute, aber es ist leer. Die Umayyaden sind in der Nacht nach Süden abgezogen. Karl lässt sie ziehen und macht keinen Feldzug daraus.",
+   "stellungen": [
+    {
+     "id": "f-karree",
+     "partei": "fra",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       0.52611,
+       46.74455
+      ],
+      [
+       0.53125,
+       46.7459
+      ],
+      [
+       0.53232,
+       46.75004
+      ],
+      [
+       0.52816,
+       46.75251
+      ],
+      [
+       0.50389,
+       46.75545
+      ],
+      [
+       0.49875,
+       46.7541
+      ],
+      [
+       0.49768,
+       46.74996
+      ],
+      [
+       0.50184,
+       46.74749
+      ]
+     ],
+     "name": "in Schlachtordnung",
+     "staerke": "17.000"
+    },
+    {
+     "id": "u-abzug",
+     "partei": "umy",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       0.53,
+       46.715
+      ],
+      [
+       0.52,
+       46.67
+      ],
+      [
+       0.5,
+       46.6
+      ]
+     ],
+     "name": "nachts nach Süden abgezogen",
+     "rueckzug": true
+    },
+    {
+     "id": "u-tross",
+     "partei": "umy",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       0.532,
+       46.72129
+      ],
+      [
+       0.53652,
+       46.71869
+      ],
+      [
+       0.53963,
+       46.71592
+      ],
+      [
+       0.53974,
+       46.71194
+      ],
+      [
+       0.53427,
+       46.71072
+      ],
+      [
+       0.52909,
+       46.70952
+      ],
+      [
+       0.5248,
+       46.71215
+      ],
+      [
+       0.5254,
+       46.7158
+      ],
+      [
+       0.52619,
+       46.71975
+      ]
+     ],
+     "name": "zurückgelassenes Lager",
+     "staerke": "leer",
+     "geschlagen": true
+    }
+   ]
+  },
+  {
+   "zeit": "Bis 759",
+   "t": 960,
+   "kurz": "Was die Schlacht war – und was nicht.",
+   "text": "Der Zug nach Norden endet, und weitere in dieser Größe gibt es nicht mehr. Die umayyadische Herrschaft nördlich der Pyrenäen hält aber noch ein Vierteljahrhundert: Narbonne fällt erst 759. Das Bild vom „Kampf um Europa“ stammt aus dem 18. und 19. Jahrhundert; Zeitgenossen sahen einen abgewehrten Beutezug unter vielen. Für das Frankenreich zählte etwas anderes – Karl war jetzt der Mann, der die Reiterei geschlagen hatte, und begann, sich ein eigenes Reiterheer zu bauen. Sein Enkel heißt Karl der Große.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     -4,
+     41.5
+    ],
+    [
+     5.5,
+     49.5
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "u-rueck",
+     "partei": "umy",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       0.52,
+       46.7
+      ],
+      [
+       0.1,
+       45.2
+      ],
+      [
+       -0.3,
+       43.6
+      ],
+      [
+       -1.2,
+       42.6
+      ]
+     ],
+     "name": "zurück über die Pyrenäen",
+     "rueckzug": true
+    },
+    {
+     "id": "u-narbonne",
+     "partei": "umy",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       3,
+       43.18
+      ],
+      [
+       2.6,
+       43.1
+      ],
+      [
+       2.2,
+       42.9
+      ]
+     ],
+     "name": "Narbonne bleibt bis 759"
+    },
+    {
+     "id": "f-reich",
+     "partei": "fra",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       0.52,
+       46.8
+      ],
+      [
+       2,
+       48.2
+      ],
+      [
+       3.4,
+       49.1
+      ]
+     ],
+     "name": "Karls Macht im Norden"
+    }
+   ]
+  }
+ ],
+ "ausgang": "Abd ar-Rahman fällt, das umayyadische Heer zieht nachts ab und lässt sein Lager stehen. Der Vorstoß bis an die Loire wird nicht wiederholt.",
+ "verluste": [
+  {
+   "partei": "umy",
+   "text": "nach fränkischen Quellen sehr hoch, nach arabischen mäßig – belastbare Zahlen fehlen"
+  },
+  {
+   "partei": "fra",
+   "text": "gering; die Quellen nennen keine Zahl"
+  }
+ ],
+ "folgen": "Karl Martell gilt fortan als der Mann, der die Reiterei geschlagen hat, und baut das fränkische Reiterheer auf, das seine Nachfolger tragen wird. Sein Sohn setzt die Merowinger ab, sein Enkel ist Karl der Große. Die umayyadische Herrschaft nördlich der Pyrenäen endet erst 759 mit dem Fall von Narbonne.",
+ "streit": "Der Ort steht nicht fest; Moussais nördlich von Poitiers ist die verbreitetste Annahme. Die Zahlen sind in allen Quellen unbrauchbar. Vor allem aber ist die Bedeutung umstritten: Die Vorstellung vom „Kampf um das christliche Europa“ ist eine Zuschreibung des 18. und 19. Jahrhunderts – arabische Chroniken behandeln das Ereignis als eine gescheiterte Unternehmung unter vielen und nennen es „die Straße der Märtyrer“."
+}

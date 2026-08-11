@@ -998,7 +998,8 @@
    "rang": 1,
    "sieger": "Heilige Liga",
    "text": "Zwei Monate Belagerung, dann kommt vom Kahlenberg der größte Kavallerieangriff der Geschichte – über zwanzigtausend Reiter unter dem polnischen König den Hang hinunter. Danach dreht sich die Richtung der Kriege an der Donau.",
-   "wiki": "Schlacht am Kahlenberg"
+   "wiki": "Schlacht am Kahlenberg",
+   "verlauf": "wien1683"
   },
   {
    "id": "zenta",
@@ -1078,7 +1079,8 @@
    "rang": 1,
    "sieger": "Russland und Verbündete",
    "text": "Nach einem Winter im offenen Land, ohne Nachschub und mit verwundetem König, läuft das schwedische Heer gegen russische Feldschanzen an. In wenigen Stunden endet Schwedens Großmachtzeit und beginnt Russlands.",
-   "wiki": "Schlacht bei Poltawa"
+   "wiki": "Schlacht bei Poltawa",
+   "verlauf": "poltawa"
   },
   {
    "id": "mollwitz",

@@ -988,7 +988,8 @@
    "rang": 1,
    "sieger": "Frankreich und seine Verbündeten",
    "text": "Napoleon gibt absichtlich eine Anhöhe preis, um den Gegner zum Angriff auf seine Flanke zu verleiten – und stößt dann durch die entblößte Mitte. Die Dreikaiserschlacht gilt als sein Meisterstück.",
-   "wiki": "Schlacht bei Austerlitz"
+   "wiki": "Schlacht bei Austerlitz",
+   "verlauf": "austerlitz"
   },
   {
    "id": "trafalgar",
@@ -1359,7 +1360,8 @@
    "rang": 1,
    "sieger": "Japan",
    "text": "Die Baltische Flotte, achtzehntausend Seemeilen unterwegs, wird in zwei Tagen fast vollständig versenkt. Japan verliert drei Torpedoboote. Zum ersten Mal seit Jahrhunderten schlägt eine nichteuropäische Marine eine europäische.",
-   "wiki": "Seeschlacht bei Tsushima"
+   "wiki": "Seeschlacht bei Tsushima",
+   "verlauf": "tsushima"
   },
   {
    "id": "marne1914",
@@ -1568,7 +1570,8 @@
    "rang": 1,
    "sieger": "Die Alliierten",
    "text": "Amerikanische Codebrecher wissen, wohin die japanische Flotte fährt. In sechs Minuten gehen drei Flugzeugträger verloren, ein vierter am Nachmittag. Der Krieg im Pazifik dreht sich an einem einzigen Vormittag.",
-   "wiki": "Schlacht um Midway"
+   "wiki": "Schlacht um Midway",
+   "verlauf": "midway"
   },
   {
    "id": "stalingrad",

@@ -576,19 +576,32 @@ Der Atlas zeigt sonst Zustände: So sah die Welt im Jahr X aus. Eine Schlacht
 ist aber kein Zustand, sondern eine **Bewegung** – und die fällt aus einer
 Karte heraus, die nur Jahresschnitte kennt.
 
-Vierzehn Schlachten haben einen abspielbaren Verlauf, von Marathon bis zur
-Normandie: **174 Stationen, 1.166 Truppenstellungen, 104 Geländezüge.** Jede
+Vierundzwanzig Schlachten haben einen abspielbaren Verlauf, von Marathon bis
+Midway: **272 Stationen, 1.582 Truppenstellungen, 151 Geländezüge.** Jede
 Schlacht beginnt mit einem Übersichtsblatt über den Anmarsch – und darf mit
-einem über den Rückzug enden – und ist dazwischen in zehn bis vierzehn
+einem über den Rückzug enden – und ist dazwischen in neun bis fünfzehn
 Abschnitte gegliedert; jede Stellung ist ein benannter Verband mit Führer,
 Stärke und Waffengattung.
 
-Das Kriegsregister führt 177 Schlachten. Der Abstand zwischen 14 und 177 ist
+Bis Sommer 2026 lagen zwölf davon vor, alle in Europa und am Mittelmeer, mit
+Gaugamela als einziger Ausnahme. Die zwölf neuen sind bewusst nach Lücken
+gewählt: **Zama** und **Actium** schließen die antiken Bögen, die mit Cannae
+und dem Bürgerkrieg begonnen hatten; **Tours**, **Hattin** und **Muhi** decken
+Frankenreich, Kreuzzüge und den Mongolensturm ab; **Sekigahara** ist das erste
+Schlachtfeld in Ostasien überhaupt, **Gettysburg** das erste in Amerika;
+**Wien 1683**, **Poltawa** und **Austerlitz** stehen für die drei
+Entscheidungen, an denen sich die Karte Mitteleuropas dreht; **Tsushima** und
+**Midway** sind die beiden Seeschlachten, in denen sich das 20. Jahrhundert
+entscheidet.
+
+Das Kriegsregister führt 177 Schlachten. Der Abstand zwischen 24 und 177 ist
 der offene Teil, und er ist reine Verfassungsarbeit: Ein Verlauf besteht aus
-rund vierhundert von Hand gesetzten Koordinatenpaaren, die zu einem Gelände
+mehreren hundert von Hand gesetzten Koordinatenpaaren, die zu einem Gelände
 passen müssen, das es wirklich gibt. Erfinden lässt er sich nicht – der
 Datensatz sagt selbst, dass hier Truppenstellungen stehen und keine
-Staatsgrenzen.
+Staatsgrenzen. Wo die Forschung streitet, sagt das Feld `streit` es dazu: bei
+Zama ist schon der Ort offen, bei Actium die Frage, ob Kleopatras Abfahrt
+Plan oder Flucht war, bei Midway die Legende von den fünf Minuten.
 
 **Eine Datei je Schlacht.** Vorher lagen alle Verläufe in einer einzigen Datei
 von 852 kB. Wer das Kriegsregister öffnete, um nachzusehen, welche Kriege 1815
@@ -607,6 +620,23 @@ Koordinatenpaaren ist es nicht. Der Unterschied ist nicht theoretisch – bei
 Gettysburg lag die Unionslinie im ersten Anlauf quer über beide Höhenrücken,
 weil ich die Achse des Rückens eingesetzt hatte statt der Front. Auf dem Bild
 sah man es sofort, in den Zahlen nicht.
+
+Die zugehörigen Skripte liegen in `scripts/verlaeufe/`. Sie haben die
+JSON-Dateien je einmal erzeugt; **gültig ist danach die JSON-Datei**, denn die
+zwölf älteren Verläufe sind von Hand geschrieben, und zwei Quellen für
+dieselbe Sache wären eine Falle. Die Skripte bleiben trotzdem im Bestand, weil
+sie zeigen, woher die Geometrie kommt.
+
+**Was die Prüfung gefunden hat.** Von den zwölf neuen Verläufen war keiner im
+ersten Anlauf sauber – `check:schlachten` hat 21 Beanstandungen gemeldet, alle
+berechtigt: Anmarschwege, die über den Rand ihres eigenen Übersichtsblatts
+hinausliefen; ein Rückzugsweg über 966 km in einer Station, die auf dem
+Schlachtfeld spielt; ein Übersichtsblatt bei Midway, dessen Rahmen die
+Datumsgrenze überschritt und damit rechnerisch leer war; zu lange
+Kurzfassungen; und bei Sekigahara eine Kennung, die mitten in der Schlacht die
+Partei wechselt – Kobayakawas Übertritt. Letzteres ist eine Zeichenbeschränkung
+und wurde in den Daten gelöst, nicht in der Regel: Eine Kennung mit wechselnder
+Partei ließe den Zeichner die Fläche gleiten, während die Farbe umspringt.
 
 | | | | |
 |---|---|---|---|

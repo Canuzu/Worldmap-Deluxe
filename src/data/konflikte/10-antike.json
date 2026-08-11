@@ -1129,7 +1129,8 @@
    "rang": 2,
    "sieger": "Römische Republik",
    "text": "Scipio hat von Hannibal gelernt und stellt seine Reihen so, dass die Kriegselefanten hindurchlaufen statt aufzuprallen. Hannibals einzige verlorene Schlacht ist die, die den Krieg entscheidet.",
-   "wiki": "Schlacht bei Zama"
+   "wiki": "Schlacht bei Zama",
+   "verlauf": "zama"
   },
   {
    "id": "karthago146",
@@ -1209,7 +1210,8 @@
    "rang": 1,
    "sieger": "Caesar und die Popularen",
    "text": "Die Seeschlacht, aus der das Kaiserreich hervorgeht: Octavian gegen Antonius und Kleopatra. Kleopatras Geschwader dreht ab, Antonius folgt, und mit ihm endet das hellenistische Ägypten.",
-   "wiki": "Schlacht bei Actium"
+   "wiki": "Schlacht bei Actium",
+   "verlauf": "actium"
   },
   {
    "id": "teutoburg",

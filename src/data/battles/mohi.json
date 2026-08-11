@@ -1,0 +1,1280 @@
+{
+ "id": "mohi",
+ "name": "Muhi",
+ "ort": "Am Sajó bei Muhi",
+ "datum": "11. April 1241",
+ "jahr": 1279,
+ "mitte": [
+  20.925,
+  47.98
+ ],
+ "zoom": 12.1,
+ "grund": "relief",
+ "worum": "Die Mongolen in Mitteleuropa – und ein Lehrstück darüber, was eine Wagenburg wert ist, wenn der Gegner sie nicht stürmen muss. Subutai beschießt sie und lässt eine Lücke offen: Wer eingeschlossen ist und einen Ausweg sieht, kämpft nicht weiter, sondern läuft.",
+ "parteien": [
+  {
+   "id": "ung",
+   "name": "Ungarn und Verbündete",
+   "farbe": "#6f9fe0",
+   "fuehrung": "Béla IV., Koloman von Slawonien",
+   "staerke": "25.000 bis 30.000",
+   "zahl": 27000
+  },
+  {
+   "id": "mon",
+   "name": "Mongolen",
+   "farbe": "#d4737c",
+   "fuehrung": "Batu Khan, Subutai",
+   "staerke": "20.000 bis 30.000, dazu Wurfmaschinen",
+   "zahl": 25000
+  }
+ ],
+ "gelaende": [
+  {
+   "art": "fluss",
+   "name": "Sajó",
+   "punkte": [
+    [
+     20.926,
+     48.05
+    ],
+    [
+     20.916,
+     48.01
+    ],
+    [
+     20.908,
+     47.97
+    ],
+    [
+     20.9,
+     47.925
+    ]
+   ]
+  },
+  {
+   "art": "sumpf",
+   "name": "Sumpfige Niederung",
+   "punkte": [
+    [
+     20.87377,
+     47.98786
+    ],
+    [
+     20.86558,
+     47.98576
+    ],
+    [
+     20.86156,
+     47.97048
+    ],
+    [
+     20.86817,
+     47.96663
+    ],
+    [
+     20.90623,
+     47.96214
+    ],
+    [
+     20.91442,
+     47.96424
+    ],
+    [
+     20.91844,
+     47.97952
+    ],
+    [
+     20.91183,
+     47.98337
+    ]
+   ]
+  },
+  {
+   "art": "weg",
+   "name": "Brücke über den Sajó",
+   "punkte": [
+    [
+     20.91,
+     48.006
+    ],
+    [
+     20.926,
+     48.006
+    ]
+   ]
+  },
+  {
+   "art": "stadt",
+   "name": "Muhi",
+   "punkte": [
+    [
+     20.942,
+     47.96404
+    ],
+    [
+     20.94498,
+     47.96237
+    ],
+    [
+     20.94702,
+     47.96059
+    ],
+    [
+     20.94709,
+     47.95803
+    ],
+    [
+     20.94349,
+     47.95725
+    ],
+    [
+     20.94008,
+     47.95648
+    ],
+    [
+     20.93726,
+     47.95817
+    ],
+    [
+     20.93766,
+     47.96051
+    ],
+    [
+     20.93817,
+     47.96305
+    ]
+   ]
+  }
+ ],
+ "stationen": [
+  {
+   "zeit": "Winter 1240/41",
+   "t": 0,
+   "kurz": "Ein Angriff auf zwei Reiche zugleich.",
+   "text": "Nach der Zerstörung der Rus rückt das mongolische Heer nach Westen – und teilt sich: Ein Flügel geht nach Polen und schlägt am 9. April bei Liegnitz ein schlesisch-deutsches Aufgebot, der Hauptteil geht über die Karpaten nach Ungarn. Zwei Schlachten in zwei Tagen, sechshundert Kilometer auseinander, beide gewonnen – das ist keine Ansammlung von Reitern, sondern ein geführter Feldzug.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     14,
+     44.5
+    ],
+    [
+     28,
+     52.5
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "anm-mon",
+     "partei": "mon",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       26.2,
+       50.6
+      ],
+      [
+       23.8,
+       49.2
+      ],
+      [
+       21.6,
+       48.6
+      ],
+      [
+       20.95,
+       48
+      ]
+     ],
+     "name": "Batu über die Karpaten"
+    },
+    {
+     "id": "anm-liegnitz",
+     "partei": "mon",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       24.2,
+       50.9
+      ],
+      [
+       20.2,
+       51.2
+      ],
+      [
+       16.2,
+       51.2
+      ]
+     ],
+     "name": "Nebenflügel nach Liegnitz"
+    },
+    {
+     "id": "anm-ung",
+     "partei": "ung",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       19.04,
+       47.5
+      ],
+      [
+       20.1,
+       47.8
+      ],
+      [
+       20.9,
+       47.98
+      ]
+     ],
+     "name": "Béla von Pest"
+    }
+   ]
+  },
+  {
+   "zeit": "10. April",
+   "t": 180,
+   "kurz": "Die Wagenburg am Ostufer.",
+   "text": "Béla folgt dem sich zurückziehenden Gegner bis an den Sajó und lässt am Ostufer lagern – die Wagen dicht an dicht zu einer Burg gekettet, das Heer darin. Gegen Reiterei ist das eine gute Stellung. Sie hat nur einen Fehler, den man auf der Karte sofort sieht: Sie ist eng. Fünfundzwanzigtausend Mann stehen dort, wo sie einander im Weg sind.",
+   "stellungen": [
+    {
+     "id": "u-lager",
+     "partei": "ung",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       20.935,
+       47.98719
+      ],
+      [
+       20.94029,
+       47.98422
+      ],
+      [
+       20.94393,
+       47.98105
+      ],
+      [
+       20.94406,
+       47.9765
+      ],
+      [
+       20.93766,
+       47.97511
+      ],
+      [
+       20.93159,
+       47.97374
+      ],
+      [
+       20.92657,
+       47.97674
+      ],
+      [
+       20.92728,
+       47.98091
+      ],
+      [
+       20.9282,
+       47.98543
+      ]
+     ],
+     "name": "Wagenburg",
+     "staerke": "27.000"
+    },
+    {
+     "id": "u-bruecke",
+     "partei": "ung",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       20.91531,
+       48.00341
+      ],
+      [
+       20.91622,
+       48.00241
+      ],
+      [
+       20.91978,
+       48.00241
+      ],
+      [
+       20.92069,
+       48.00341
+      ],
+      [
+       20.92069,
+       48.00859
+      ],
+      [
+       20.91978,
+       48.00959
+      ],
+      [
+       20.91622,
+       48.00959
+      ],
+      [
+       20.91531,
+       48.00859
+      ]
+     ],
+     "name": "Wache an der Brücke",
+     "staerke": "1.000"
+    },
+    {
+     "id": "m-lager",
+     "partei": "mon",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       20.87,
+       48.03347
+      ],
+      [
+       20.87993,
+       48.02791
+      ],
+      [
+       20.88675,
+       48.02198
+      ],
+      [
+       20.887,
+       48.01344
+      ],
+      [
+       20.87499,
+       48.01084
+      ],
+      [
+       20.86361,
+       48.00825
+      ],
+      [
+       20.85419,
+       48.01389
+      ],
+      [
+       20.8555,
+       48.02171
+      ],
+      [
+       20.85723,
+       48.03018
+      ]
+     ],
+     "name": "Mongolen am Westufer",
+     "staerke": "25.000"
+    }
+   ]
+  },
+  {
+   "zeit": "11. April, 4 Uhr",
+   "t": 240,
+   "kurz": "Steinschleudern räumen die Brücke.",
+   "text": "Vor Tagesanbruch beschießen die Mongolen die Brückenwache mit Wurfmaschinen und Brandsätzen – Belagerungsgerät, mitten in einer Feldschlacht, mitgeführt über zweitausend Kilometer und bedient von chinesischen Fachleuten. Die Wache weicht, die Brücke ist offen.",
+   "stellungen": [
+    {
+     "id": "m-wurf",
+     "partei": "mon",
+     "form": "flaeche",
+     "gattung": "geschuetz",
+     "punkte": [
+      [
+       20.90869,
+       48.01091
+      ],
+      [
+       20.90767,
+       48.01204
+      ],
+      [
+       20.90433,
+       48.01204
+      ],
+      [
+       20.90331,
+       48.01091
+      ],
+      [
+       20.90331,
+       48.00509
+      ],
+      [
+       20.90433,
+       48.00396
+      ],
+      [
+       20.90767,
+       48.00396
+      ],
+      [
+       20.90869,
+       48.00509
+      ]
+     ],
+     "name": "Wurfmaschinen",
+     "staerke": "7"
+    },
+    {
+     "id": "u-bruecke",
+     "partei": "ung",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       20.91531,
+       48.00374
+      ],
+      [
+       20.9161,
+       48.00286
+      ],
+      [
+       20.9199,
+       48.00286
+      ],
+      [
+       20.92069,
+       48.00374
+      ],
+      [
+       20.92069,
+       48.00826
+      ],
+      [
+       20.9199,
+       48.00914
+      ],
+      [
+       20.9161,
+       48.00914
+      ],
+      [
+       20.91531,
+       48.00826
+      ]
+     ],
+     "name": "Brückenwache weicht",
+     "staerke": "800",
+     "geschlagen": true
+    },
+    {
+     "id": "m-bruecke",
+     "partei": "mon",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       20.902,
+       48.006
+      ],
+      [
+       20.924,
+       48.006
+      ]
+     ],
+     "name": "über die Brücke"
+    },
+    {
+     "id": "u-lager",
+     "partei": "ung",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       20.935,
+       47.98719
+      ],
+      [
+       20.94029,
+       47.98422
+      ],
+      [
+       20.94393,
+       47.98105
+      ],
+      [
+       20.94406,
+       47.9765
+      ],
+      [
+       20.93766,
+       47.97511
+      ],
+      [
+       20.93159,
+       47.97374
+      ],
+      [
+       20.92657,
+       47.97674
+      ],
+      [
+       20.92728,
+       47.98091
+      ],
+      [
+       20.9282,
+       47.98543
+      ]
+     ],
+     "name": "Wagenburg",
+     "staerke": "26.000"
+    }
+   ]
+  },
+  {
+   "zeit": "11. April, 6 Uhr",
+   "t": 300,
+   "kurz": "Koloman wirft sie zurück – und glaubt zu siegen.",
+   "text": "Herzog Koloman und der Templermeister führen einen Gegenstoß, werfen die übergesetzten Mongolen zurück und kehren ins Lager zurück, überzeugt, den Angriff abgewehrt zu haben. Was sie nicht wissen: Der Stoß über die Brücke war nur die eine Hälfte.",
+   "stellungen": [
+    {
+     "id": "u-koloman",
+     "partei": "ung",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       20.933,
+       48
+      ],
+      [
+       20.926,
+       48.005
+      ],
+      [
+       20.918,
+       48.006
+      ]
+     ],
+     "name": "Kolomans Gegenstoß"
+    },
+    {
+     "id": "m-bruecke",
+     "partei": "mon",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       20.91836,
+       48.00923
+      ],
+      [
+       20.91723,
+       48.01049
+      ],
+      [
+       20.91277,
+       48.01049
+      ],
+      [
+       20.91164,
+       48.00923
+      ],
+      [
+       20.91164,
+       48.00277
+      ],
+      [
+       20.91277,
+       48.00151
+      ],
+      [
+       20.91723,
+       48.00151
+      ],
+      [
+       20.91836,
+       48.00277
+      ]
+     ],
+     "name": "zurückgeworfen",
+     "staerke": "3.000",
+     "geschlagen": true
+    },
+    {
+     "id": "u-lager",
+     "partei": "ung",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       20.935,
+       47.98719
+      ],
+      [
+       20.94029,
+       47.98422
+      ],
+      [
+       20.94393,
+       47.98105
+      ],
+      [
+       20.94406,
+       47.9765
+      ],
+      [
+       20.93766,
+       47.97511
+      ],
+      [
+       20.93159,
+       47.97374
+      ],
+      [
+       20.92657,
+       47.97674
+      ],
+      [
+       20.92728,
+       47.98091
+      ],
+      [
+       20.9282,
+       47.98543
+      ]
+     ],
+     "name": "Wagenburg",
+     "staerke": "26.000"
+    },
+    {
+     "id": "m-sued",
+     "partei": "mon",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       20.88,
+       47.93
+      ],
+      [
+       20.905,
+       47.942
+      ],
+      [
+       20.935,
+       47.95
+      ]
+     ],
+     "name": "Subutai durch die Furt im Süden",
+     "finte": true
+    }
+   ]
+  },
+  {
+   "zeit": "11. April, 8 Uhr",
+   "t": 360,
+   "kurz": "Die zweite Hälfte kommt aus dem Süden.",
+   "text": "Während der Kampf an der Brücke lief, hat Subutai weiter südlich eine Furt gefunden und den Fluss überschritten. Jetzt steht er hinter dem Lager. Als die Ungarn ausrücken wollen, um den Brückenkopf endgültig zu räumen, haben sie Reiterei auf beiden Seiten und ziehen sich in die Wagenburg zurück.",
+   "stellungen": [
+    {
+     "id": "m-sued",
+     "partei": "mon",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       20.92903,
+       47.95666
+      ],
+      [
+       20.92572,
+       47.95474
+      ],
+      [
+       20.92657,
+       47.95152
+      ],
+      [
+       20.93066,
+       47.95047
+      ],
+      [
+       20.95497,
+       47.95334
+      ],
+      [
+       20.95828,
+       47.95526
+      ],
+      [
+       20.95743,
+       47.95848
+      ],
+      [
+       20.95334,
+       47.95953
+      ]
+     ],
+     "name": "Subutai im Rücken",
+     "staerke": "10.000"
+    },
+    {
+     "id": "m-nord",
+     "partei": "mon",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       20.94798,
+       48.00434
+      ],
+      [
+       20.95129,
+       48.00626
+      ],
+      [
+       20.95044,
+       48.00948
+      ],
+      [
+       20.94635,
+       48.01053
+      ],
+      [
+       20.92202,
+       48.00766
+      ],
+      [
+       20.91871,
+       48.00574
+      ],
+      [
+       20.91956,
+       48.00252
+      ],
+      [
+       20.92365,
+       48.00147
+      ]
+     ],
+     "name": "Batu von Norden",
+     "staerke": "12.000"
+    },
+    {
+     "id": "u-lager",
+     "partei": "ung",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       20.935,
+       47.98719
+      ],
+      [
+       20.94029,
+       47.98422
+      ],
+      [
+       20.94393,
+       47.98105
+      ],
+      [
+       20.94406,
+       47.9765
+      ],
+      [
+       20.93766,
+       47.97511
+      ],
+      [
+       20.93159,
+       47.97374
+      ],
+      [
+       20.92657,
+       47.97674
+      ],
+      [
+       20.92728,
+       47.98091
+      ],
+      [
+       20.9282,
+       47.98543
+      ]
+     ],
+     "name": "zieht sich zurück",
+     "staerke": "26.000"
+    }
+   ]
+  },
+  {
+   "zeit": "11. April, 10 Uhr",
+   "t": 420,
+   "kurz": "Pfeile und Brandsätze in eine dichte Menge.",
+   "text": "Der Ring schließt sich. Die Mongolen stürmen nicht – sie schießen. In eine Wagenburg, in der 26.000 Menschen und ihre Pferde auf engem Raum stehen, trifft jeder Pfeil etwas. Dazu Brandsätze aus den Wurfmaschinen. Nach zwei Stunden ist das Lager ein Chaos, in dem niemand mehr einen Befehl weitergibt.",
+   "stellungen": [
+    {
+     "id": "m-ring",
+     "partei": "mon",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       20.9451,
+       47.99857
+      ],
+      [
+       20.95336,
+       47.98788
+      ],
+      [
+       20.95745,
+       47.97761
+      ],
+      [
+       20.95136,
+       47.96577
+      ],
+      [
+       20.93438,
+       47.96585
+      ],
+      [
+       20.9182,
+       47.96576
+      ],
+      [
+       20.91063,
+       47.97641
+      ],
+      [
+       20.91813,
+       47.98678
+      ],
+      [
+       20.92664,
+       47.99792
+      ]
+     ],
+     "name": "Ring um die Wagenburg",
+     "staerke": "22.000"
+    },
+    {
+     "id": "m-beschuss",
+     "partei": "mon",
+     "form": "pfeil",
+     "gattung": "bogen",
+     "punkte": [
+      [
+       20.96,
+       47.99
+      ],
+      [
+       20.942,
+       47.983
+      ]
+     ],
+     "name": "Pfeile und Brandsätze"
+    },
+    {
+     "id": "u-lager",
+     "partei": "ung",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       20.935,
+       47.98674
+      ],
+      [
+       20.93996,
+       47.98396
+      ],
+      [
+       20.94337,
+       47.98099
+      ],
+      [
+       20.94349,
+       47.97672
+      ],
+      [
+       20.93749,
+       47.97542
+      ],
+      [
+       20.93181,
+       47.97413
+      ],
+      [
+       20.9271,
+       47.97695
+      ],
+      [
+       20.92776,
+       47.98085
+      ],
+      [
+       20.92862,
+       47.98509
+      ]
+     ],
+     "name": "unter Beschuss",
+     "staerke": "24.000",
+     "geschlagen": true
+    }
+   ]
+  },
+  {
+   "zeit": "11. April, 12 Uhr",
+   "t": 480,
+   "kurz": "Die Lücke, die offen bleibt.",
+   "text": "Im Westen des Rings bleibt eine Stelle unbesetzt, in Richtung der sumpfigen Niederung. Die Quellen sind sich einig, dass das Absicht war: Ein eingeschlossener Gegner, der keinen Ausweg sieht, kämpft bis zuletzt; einer, der eine Lücke sieht, läuft. Und wer läuft, zieht sich auseinander und lässt seine Waffen fallen.",
+   "stellungen": [
+    {
+     "id": "m-ring",
+     "partei": "mon",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       20.9551,
+       48.00057
+      ],
+      [
+       20.96336,
+       47.98988
+      ],
+      [
+       20.96745,
+       47.97961
+      ],
+      [
+       20.96136,
+       47.96777
+      ],
+      [
+       20.94438,
+       47.96785
+      ],
+      [
+       20.92819,
+       47.96776
+      ],
+      [
+       20.92063,
+       47.97841
+      ],
+      [
+       20.92813,
+       47.98878
+      ],
+      [
+       20.93664,
+       47.99992
+      ]
+     ],
+     "name": "Ring mit offener Westseite",
+     "staerke": "22.000"
+    },
+    {
+     "id": "m-luecke",
+     "partei": "mon",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       20.9,
+       47.99
+      ],
+      [
+       20.885,
+       47.986
+      ]
+     ],
+     "name": "Die offene Stelle",
+     "finte": true
+    },
+    {
+     "id": "u-lager",
+     "partei": "ung",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       20.935,
+       47.98629
+      ],
+      [
+       20.93963,
+       47.98369
+      ],
+      [
+       20.94281,
+       47.98092
+      ],
+      [
+       20.94293,
+       47.97694
+      ],
+      [
+       20.93732,
+       47.97572
+      ],
+      [
+       20.93202,
+       47.97452
+      ],
+      [
+       20.92763,
+       47.97715
+      ],
+      [
+       20.92824,
+       47.9808
+      ],
+      [
+       20.92905,
+       47.98475
+      ]
+     ],
+     "name": "löst sich auf",
+     "staerke": "20.000",
+     "geschlagen": true
+    },
+    {
+     "id": "u-ausbruch",
+     "partei": "ung",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       20.928,
+       47.982
+      ],
+      [
+       20.902,
+       47.986
+      ],
+      [
+       20.87,
+       47.988
+      ]
+     ],
+     "name": "durch die Lücke",
+     "rueckzug": true
+    }
+   ]
+  },
+  {
+   "zeit": "11. und 12. April",
+   "t": 600,
+   "kurz": "Dreißig Kilometer Verfolgung durch den Sumpf.",
+   "text": "Was aus der Lücke kommt, läuft in die Niederung – schweres Gerät bleibt im Morast, die Ordnung ist weg. Die mongolische Reiterei folgt in aller Ruhe und tötet zwei Tage lang. Ein Augenzeuge schreibt, der Weg sei auf dreißig Kilometer mit Leichen bedeckt gewesen. Béla entkommt mit wenigen Begleitern, sein Bruder Koloman stirbt an seinen Wunden.",
+   "stellungen": [
+    {
+     "id": "u-flucht",
+     "partei": "ung",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       20.88,
+       47.988
+      ],
+      [
+       20.74,
+       47.96
+      ],
+      [
+       20.56,
+       47.92
+      ],
+      [
+       20.32,
+       47.88
+      ]
+     ],
+     "name": "Flucht nach Westen",
+     "rueckzug": true
+    },
+    {
+     "id": "m-verfolgung",
+     "partei": "mon",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       20.9,
+       47.99
+      ],
+      [
+       20.75,
+       47.965
+      ],
+      [
+       20.54,
+       47.925
+      ]
+     ],
+     "name": "Verfolgung über zwei Tage"
+    },
+    {
+     "id": "u-lager",
+     "partei": "ung",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       20.935,
+       47.98539
+      ],
+      [
+       20.93897,
+       47.98317
+      ],
+      [
+       20.94169,
+       47.98079
+      ],
+      [
+       20.94179,
+       47.97737
+      ],
+      [
+       20.93699,
+       47.97634
+      ],
+      [
+       20.93245,
+       47.9753
+      ],
+      [
+       20.92868,
+       47.97756
+      ],
+      [
+       20.92921,
+       47.98068
+      ],
+      [
+       20.9299,
+       47.98407
+      ]
+     ],
+     "name": "Lager genommen",
+     "staerke": "Reste",
+     "geschlagen": true
+    }
+   ]
+  },
+  {
+   "zeit": "Sommer 1241 bis 1285",
+   "t": 780,
+   "kurz": "Ein Jahr Besetzung, dann Burgen aus Stein.",
+   "text": "Ungarn östlich der Donau wird verwüstet; Schätzungen reichen von einem Viertel bis zur Hälfte der Bevölkerung. Im Winter frieren die Flüsse zu, und die Mongolen gehen auch nach Westen über die Donau. Im März 1242 brechen sie ab – warum, ist bis heute umstritten: der Tod des Großkhans, die Nachfolgefrage, oder erschöpfte Weiden, die ein Heer aus mehreren Pferden je Reiter nicht mehr trugen. Béla IV. kehrt zurück und zieht die Lehre: steinerne Burgen statt Erdwällen, Mauern und Privilegien für die Städte, schwere Reiterei nach westlichem Muster. Als 1285 ein zweiter Zug kommt, scheitert er genau daran. Béla heißt seither „zweiter Staatsgründer“ – ein Titel, den man nur bekommt, wenn vorher alles zerstört war.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     15,
+     43
+    ],
+    [
+     30,
+     51.5
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "m-besetzung",
+     "partei": "mon",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       20.94,
+       47.98
+      ],
+      [
+       19.04,
+       47.5
+      ],
+      [
+       17.6,
+       47.2
+      ],
+      [
+       16.37,
+       48.21
+      ]
+     ],
+     "name": "bis vor Wien"
+    },
+    {
+     "id": "m-abzug",
+     "partei": "mon",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       19.5,
+       47.6
+      ],
+      [
+       22.5,
+       47.2
+      ],
+      [
+       26.5,
+       47.6
+      ],
+      [
+       29.5,
+       47
+      ]
+     ],
+     "name": "März 1242: Abzug nach Osten",
+     "rueckzug": true
+    },
+    {
+     "id": "u-koenig",
+     "partei": "ung",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       20.3,
+       47.88
+      ],
+      [
+       17.6,
+       46.2
+      ],
+      [
+       16.3,
+       43.5
+      ]
+     ],
+     "name": "Béla flieht bis an die Adria",
+     "rueckzug": true
+    }
+   ]
+  }
+ ],
+ "ausgang": "Das ungarische Heer wird beim Ausbruch und auf der Flucht aufgerieben. König Béla IV. entkommt und flieht bis an die dalmatinische Küste.",
+ "verluste": [
+  {
+   "partei": "ung",
+   "text": "schätzungsweise 10.000 bis 25.000 – ein großer Teil des Heeres und des Adels"
+  },
+  {
+   "partei": "mon",
+   "text": "nach den Quellen mäßig, genaue Zahlen fehlen"
+  }
+ ],
+ "folgen": "Ungarn wird ein Jahr lang verwüstet; die Bevölkerungsverluste werden auf ein Viertel bis die Hälfte geschätzt. Im März 1242 ziehen die Mongolen ab. Béla IV. baut das Land mit steinernen Burgen und befestigten Städten wieder auf – 1285 scheitert daran ein zweiter Zug.",
+ "streit": "Warum die Mongolen 1242 abzogen, ist die große offene Frage: der Tod des Großkhans Ögedei und die Nachfolgeregelung, oder – so eine neuere Deutung – ein nasser Winter und erschöpfte Weiden, die ein Heer aus mehreren Pferden je Reiter nicht mehr trugen. Auch ob die Lücke im Ring bewusst gelassen wurde, steht nur in einem Teil der Quellen."
+}

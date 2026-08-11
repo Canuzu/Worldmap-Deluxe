@@ -1,0 +1,2337 @@
+{
+ "id": "actium",
+ "name": "Actium",
+ "ort": "Vor der Mündung des Ambrakischen Golfs",
+ "datum": "2. September 31 v. Chr.",
+ "jahr": -1,
+ "mitte": [
+  20.72,
+  38.942
+ ],
+ "zoom": 11.6,
+ "grund": "blatt",
+ "see": true,
+ "worum": "Eine Seeschlacht, die der Sommer vorher entschieden hat. Antonius’ Flotte liegt im Golf, die Ausfahrt ist 700 Meter breit und von außen gesperrt; Malaria und Hunger fressen die Ruderer. Als er ausläuft, hat er die Segel an Bord – und das verrät, dass er nicht siegen, sondern wegkommen will.",
+ "parteien": [
+  {
+   "id": "oct",
+   "name": "Octavian",
+   "farbe": "#6f9fe0",
+   "fuehrung": "Marcus Vipsanius Agrippa, Octavian",
+   "staerke": "400 Schiffe, meist leichte Liburnen",
+   "zahl": 400
+  },
+  {
+   "id": "ant",
+   "name": "Antonius und Kleopatra",
+   "farbe": "#d4737c",
+   "fuehrung": "Marcus Antonius, Kleopatra VII.",
+   "staerke": "230 schwere Schiffe, 60 ägyptische",
+   "zahl": 290
+  }
+ ],
+ "gelaende": [
+  {
+   "art": "stadt",
+   "name": "Aktion",
+   "punkte": [
+    [
+     20.765,
+     38.93804
+    ],
+    [
+     20.76756,
+     38.93637
+    ],
+    [
+     20.76932,
+     38.93459
+    ],
+    [
+     20.76938,
+     38.93203
+    ],
+    [
+     20.76629,
+     38.93125
+    ],
+    [
+     20.76335,
+     38.93048
+    ],
+    [
+     20.76092,
+     38.93217
+    ],
+    [
+     20.76126,
+     38.93451
+    ],
+    [
+     20.76171,
+     38.93705
+    ]
+   ]
+  },
+  {
+   "art": "stadt",
+   "name": "Lager Octavians",
+   "punkte": [
+    [
+     20.755,
+     38.97829
+    ],
+    [
+     20.75899,
+     38.97569
+    ],
+    [
+     20.76173,
+     38.97292
+    ],
+    [
+     20.76182,
+     38.96894
+    ],
+    [
+     20.757,
+     38.96772
+    ],
+    [
+     20.75243,
+     38.96652
+    ],
+    [
+     20.74865,
+     38.96915
+    ],
+    [
+     20.74918,
+     38.9728
+    ],
+    [
+     20.74987,
+     38.97675
+    ]
+   ]
+  },
+  {
+   "art": "hoehe",
+   "name": "Halbinsel Preveza",
+   "punkte": [
+    [
+     20.7557,
+     38.97246
+    ],
+    [
+     20.75948,
+     38.9637
+    ],
+    [
+     20.76086,
+     38.95509
+    ],
+    [
+     20.75615,
+     38.94461
+    ],
+    [
+     20.74625,
+     38.94382
+    ],
+    [
+     20.73681,
+     38.94292
+    ],
+    [
+     20.73343,
+     38.95168
+    ],
+    [
+     20.73882,
+     38.96096
+    ],
+    [
+     20.74488,
+     38.97097
+    ]
+   ]
+  },
+  {
+   "art": "hoehe",
+   "name": "Südufer der Enge",
+   "punkte": [
+    [
+     20.7894,
+     38.926
+    ],
+    [
+     20.78139,
+     38.92069
+    ],
+    [
+     20.77284,
+     38.91704
+    ],
+    [
+     20.76055,
+     38.91691
+    ],
+    [
+     20.75681,
+     38.92333
+    ],
+    [
+     20.75309,
+     38.92942
+    ],
+    [
+     20.76121,
+     38.93446
+    ],
+    [
+     20.77246,
+     38.93376
+    ],
+    [
+     20.78465,
+     38.93283
+    ]
+   ]
+  }
+ ],
+ "stationen": [
+  {
+   "zeit": "Winter 32/31",
+   "t": 0,
+   "kurz": "Zwei Machtblöcke, ein Reich.",
+   "text": "Nach dem Zerfall des Triumvirats steht Antonius mit den östlichen Provinzen und Ägypten gegen Octavian mit Italien und dem Westen. Rom erklärt förmlich Kleopatra den Krieg, nicht Antonius – so ist es kein Bürgerkrieg. Antonius sammelt Heer und Flotte an der Westküste Griechenlands, um Italien zu bedrohen.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     13.5,
+     29.5
+    ],
+    [
+     33,
+     43
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "anm-ant",
+     "partei": "ant",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       29.92,
+       31.2
+      ],
+      [
+       26.5,
+       34.8
+      ],
+      [
+       23.2,
+       37.5
+      ],
+      [
+       20.8,
+       38.9
+      ]
+     ],
+     "name": "Antonius und Kleopatra aus Ägypten"
+    },
+    {
+     "id": "anm-oct",
+     "partei": "oct",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       18.5,
+       40.15
+      ],
+      [
+       19.6,
+       39.8
+      ],
+      [
+       20.7,
+       39.1
+      ]
+     ],
+     "name": "Agrippa von Brundisium"
+    }
+   ]
+  },
+  {
+   "zeit": "Frühjahr 31",
+   "t": 120,
+   "kurz": "Agrippa schneidet den Nachschub ab.",
+   "text": "Statt frontal anzugreifen, nimmt Agrippa die Stützpunkte: Methone im Süden, dann Korkyra im Norden. Damit ist der Seeweg nach Ägypten unterbrochen, über den Antonius sein Getreide bekommt. Octavian landet mit dem Heer nördlich der Meerenge und schlägt ein Lager auf. Die Falle ist zu, ohne dass ein Schiff gekämpft hat.",
+   "stellungen": [
+    {
+     "id": "o-flotte",
+     "partei": "oct",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.67286,
+       38.98049
+      ],
+      [
+       20.67016,
+       38.98597
+      ],
+      [
+       20.66188,
+       38.98711
+      ],
+      [
+       20.65693,
+       38.98268
+      ],
+      [
+       20.64714,
+       38.93951
+      ],
+      [
+       20.64984,
+       38.93403
+      ],
+      [
+       20.65812,
+       38.93289
+      ],
+      [
+       20.66307,
+       38.93732
+      ]
+     ],
+     "name": "Agrippas Flotte sperrt die Ausfahrt",
+     "staerke": "400 Schiffe"
+    },
+    {
+     "id": "o-lager",
+     "partei": "oct",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       20.755,
+       38.97829
+      ],
+      [
+       20.75899,
+       38.97569
+      ],
+      [
+       20.76173,
+       38.97292
+      ],
+      [
+       20.76182,
+       38.96894
+      ],
+      [
+       20.757,
+       38.96772
+      ],
+      [
+       20.75243,
+       38.96652
+      ],
+      [
+       20.74865,
+       38.96915
+      ],
+      [
+       20.74918,
+       38.9728
+      ],
+      [
+       20.74987,
+       38.97675
+      ]
+     ],
+     "name": "Octavians Landlager",
+     "staerke": "19 Legionen"
+    },
+    {
+     "id": "a-flotte",
+     "partei": "ant",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.84425,
+       38.935
+      ],
+      [
+       20.83424,
+       38.92836
+      ],
+      [
+       20.82356,
+       38.9238
+      ],
+      [
+       20.80819,
+       38.92363
+      ],
+      [
+       20.80351,
+       38.93167
+      ],
+      [
+       20.79886,
+       38.93928
+      ],
+      [
+       20.80901,
+       38.94558
+      ],
+      [
+       20.82308,
+       38.9447
+      ],
+      [
+       20.83832,
+       38.94354
+      ]
+     ],
+     "name": "Antonius im Golf",
+     "staerke": "290 Schiffe"
+    },
+    {
+     "id": "a-lager",
+     "partei": "ant",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       20.77,
+       38.92719
+      ],
+      [
+       20.77455,
+       38.92422
+      ],
+      [
+       20.77768,
+       38.92105
+      ],
+      [
+       20.77779,
+       38.9165
+      ],
+      [
+       20.77229,
+       38.91511
+      ],
+      [
+       20.76707,
+       38.91374
+      ],
+      [
+       20.76275,
+       38.91674
+      ],
+      [
+       20.76335,
+       38.92091
+      ],
+      [
+       20.76415,
+       38.92543
+      ]
+     ],
+     "name": "Antonius’ Lager",
+     "staerke": "19 Legionen"
+    }
+   ]
+  },
+  {
+   "zeit": "Juli und August",
+   "t": 240,
+   "kurz": "Die Schlacht, die der Sommer schlägt.",
+   "text": "Vier Monate liegt das Heer im sumpfigen Uferland. Malaria und Ruhr fressen die Ruderer; ein Drittel der Schiffe kann nicht mehr besetzt werden, und Antonius lässt sie verbrennen, damit sie nicht in die Hände des Gegners fallen. Verbündete Könige laufen über. Am Ende steht die Frage nicht mehr, ob man siegt, sondern ob man wegkommt.",
+   "stellungen": [
+    {
+     "id": "a-flotte",
+     "partei": "ant",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.84102,
+       38.935
+      ],
+      [
+       20.83234,
+       38.92924
+      ],
+      [
+       20.82308,
+       38.92529
+      ],
+      [
+       20.80976,
+       38.92515
+      ],
+      [
+       20.80571,
+       38.93211
+      ],
+      [
+       20.80168,
+       38.93871
+      ],
+      [
+       20.81048,
+       38.94417
+      ],
+      [
+       20.82267,
+       38.9434
+      ],
+      [
+       20.83588,
+       38.9424
+      ]
+     ],
+     "name": "ausgezehrt",
+     "staerke": "230 Schiffe",
+     "geschlagen": true
+    },
+    {
+     "id": "a-lager",
+     "partei": "ant",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       20.77,
+       38.92674
+      ],
+      [
+       20.77427,
+       38.92396
+      ],
+      [
+       20.7772,
+       38.92099
+      ],
+      [
+       20.77731,
+       38.91672
+      ],
+      [
+       20.77214,
+       38.91542
+      ],
+      [
+       20.76725,
+       38.91413
+      ],
+      [
+       20.7632,
+       38.91695
+      ],
+      [
+       20.76377,
+       38.92085
+      ],
+      [
+       20.76451,
+       38.92509
+      ]
+     ],
+     "name": "Fieber im Lager",
+     "staerke": "schwindend",
+     "geschlagen": true
+    },
+    {
+     "id": "o-flotte",
+     "partei": "oct",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.67286,
+       38.98049
+      ],
+      [
+       20.67016,
+       38.98597
+      ],
+      [
+       20.66188,
+       38.98711
+      ],
+      [
+       20.65693,
+       38.98268
+      ],
+      [
+       20.64714,
+       38.93951
+      ],
+      [
+       20.64984,
+       38.93403
+      ],
+      [
+       20.65812,
+       38.93289
+      ],
+      [
+       20.66307,
+       38.93732
+      ]
+     ],
+     "name": "wartet draußen",
+     "staerke": "400 Schiffe"
+    },
+    {
+     "id": "o-lager",
+     "partei": "oct",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       20.755,
+       38.97829
+      ],
+      [
+       20.75899,
+       38.97569
+      ],
+      [
+       20.76173,
+       38.97292
+      ],
+      [
+       20.76182,
+       38.96894
+      ],
+      [
+       20.757,
+       38.96772
+      ],
+      [
+       20.75243,
+       38.96652
+      ],
+      [
+       20.74865,
+       38.96915
+      ],
+      [
+       20.74918,
+       38.9728
+      ],
+      [
+       20.74987,
+       38.97675
+      ]
+     ],
+     "name": "Octavian",
+     "staerke": "19 Legionen"
+    }
+   ]
+  },
+  {
+   "zeit": "2. September, Morgen",
+   "t": 360,
+   "kurz": "Die Segel an Bord – das verrät den Plan.",
+   "text": "Antonius lässt ausfahren und befiehlt, die Segel mitzunehmen. Im antiken Seegefecht bleiben die Segel an Land: Gerudert wird gekämpft, Segel sind Ballast und im Weg. Wer sie an Bord nimmt, rechnet damit, wegzufahren. Antonius’ Offiziere verstehen das, und mancher läuft noch in der Nacht über.",
+   "stellungen": [
+    {
+     "id": "a-links",
+     "partei": "ant",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.74168,
+       38.94884
+      ],
+      [
+       20.74323,
+       38.94571
+      ],
+      [
+       20.74796,
+       38.94506
+      ],
+      [
+       20.75079,
+       38.94759
+      ],
+      [
+       20.75432,
+       38.96316
+      ],
+      [
+       20.75277,
+       38.96629
+      ],
+      [
+       20.74804,
+       38.96694
+      ],
+      [
+       20.74521,
+       38.96441
+      ]
+     ],
+     "name": "Linker Flügel",
+     "staerke": "80 Schiffe"
+    },
+    {
+     "id": "a-mitte",
+     "partei": "ant",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.74569,
+       38.93084
+      ],
+      [
+       20.74723,
+       38.92771
+      ],
+      [
+       20.75196,
+       38.92706
+      ],
+      [
+       20.75478,
+       38.92959
+      ],
+      [
+       20.75831,
+       38.94516
+      ],
+      [
+       20.75677,
+       38.94829
+      ],
+      [
+       20.75204,
+       38.94894
+      ],
+      [
+       20.74922,
+       38.94641
+      ]
+     ],
+     "name": "Mitte",
+     "staerke": "80 Schiffe"
+    },
+    {
+     "id": "a-rechts",
+     "partei": "ant",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.74969,
+       38.91284
+      ],
+      [
+       20.75123,
+       38.90971
+      ],
+      [
+       20.75596,
+       38.90906
+      ],
+      [
+       20.75878,
+       38.91159
+      ],
+      [
+       20.76231,
+       38.92716
+      ],
+      [
+       20.76077,
+       38.93029
+      ],
+      [
+       20.75604,
+       38.93094
+      ],
+      [
+       20.75322,
+       38.92841
+      ]
+     ],
+     "name": "Rechter Flügel · Antonius",
+     "staerke": "70 Schiffe"
+    },
+    {
+     "id": "a-kleo",
+     "partei": "ant",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.80586,
+       38.937
+      ],
+      [
+       20.80014,
+       38.93257
+      ],
+      [
+       20.79403,
+       38.92953
+      ],
+      [
+       20.78525,
+       38.92942
+      ],
+      [
+       20.78258,
+       38.93478
+      ],
+      [
+       20.77992,
+       38.93985
+      ],
+      [
+       20.78572,
+       38.94405
+      ],
+      [
+       20.79376,
+       38.94346
+      ],
+      [
+       20.80247,
+       38.94269
+      ]
+     ],
+     "name": "Kleopatras Geschwader mit der Kasse",
+     "staerke": "60 Schiffe"
+    },
+    {
+     "id": "o-links",
+     "partei": "oct",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.68152,
+       38.97205
+      ],
+      [
+       20.67997,
+       38.97518
+      ],
+      [
+       20.67524,
+       38.97583
+      ],
+      [
+       20.67241,
+       38.97329
+      ],
+      [
+       20.66848,
+       38.95595
+      ],
+      [
+       20.67003,
+       38.95282
+      ],
+      [
+       20.67476,
+       38.95217
+      ],
+      [
+       20.67759,
+       38.95471
+      ]
+     ],
+     "name": "Agrippa · linker Flügel",
+     "staerke": "150 Schiffe"
+    },
+    {
+     "id": "o-mitte",
+     "partei": "oct",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.67652,
+       38.95005
+      ],
+      [
+       20.67497,
+       38.95318
+      ],
+      [
+       20.67024,
+       38.95383
+      ],
+      [
+       20.66742,
+       38.95129
+      ],
+      [
+       20.66348,
+       38.93395
+      ],
+      [
+       20.66503,
+       38.93082
+      ],
+      [
+       20.66976,
+       38.93017
+      ],
+      [
+       20.67258,
+       38.93271
+      ]
+     ],
+     "name": "Mitte",
+     "staerke": "130 Schiffe"
+    },
+    {
+     "id": "o-rechts",
+     "partei": "oct",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.67151,
+       38.92805
+      ],
+      [
+       20.66997,
+       38.93118
+      ],
+      [
+       20.66524,
+       38.93183
+      ],
+      [
+       20.66242,
+       38.92929
+      ],
+      [
+       20.65849,
+       38.91195
+      ],
+      [
+       20.66003,
+       38.90882
+      ],
+      [
+       20.66476,
+       38.90817
+      ],
+      [
+       20.66758,
+       38.91071
+      ]
+     ],
+     "name": "Rechter Flügel",
+     "staerke": "120 Schiffe"
+    }
+   ]
+  },
+  {
+   "zeit": "Mittag",
+   "t": 420,
+   "kurz": "Vier Stunden Stillstand auf dem Wasser.",
+   "text": "Beide Linien stehen sich gegenüber und rühren sich nicht. Antonius wartet auf den Nordwestwind, der am Nachmittag regelmäßig auffrischt und ihn nach Süden tragen kann. Agrippa wartet, weil er nichts erzwingen muss – die Zeit steht auf seiner Seite, solange der Gegner im Golf bleibt.",
+   "stellungen": [
+    {
+     "id": "a-links",
+     "partei": "ant",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.73168,
+       38.94884
+      ],
+      [
+       20.73323,
+       38.94571
+      ],
+      [
+       20.73796,
+       38.94506
+      ],
+      [
+       20.74079,
+       38.94759
+      ],
+      [
+       20.74432,
+       38.96316
+      ],
+      [
+       20.74277,
+       38.96629
+      ],
+      [
+       20.73804,
+       38.96694
+      ],
+      [
+       20.73521,
+       38.96441
+      ]
+     ],
+     "name": "wartet",
+     "staerke": "80 Schiffe"
+    },
+    {
+     "id": "a-mitte",
+     "partei": "ant",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.73569,
+       38.93084
+      ],
+      [
+       20.73723,
+       38.92771
+      ],
+      [
+       20.74196,
+       38.92706
+      ],
+      [
+       20.74478,
+       38.92959
+      ],
+      [
+       20.74831,
+       38.94516
+      ],
+      [
+       20.74677,
+       38.94829
+      ],
+      [
+       20.74204,
+       38.94894
+      ],
+      [
+       20.73922,
+       38.94641
+      ]
+     ],
+     "name": "wartet",
+     "staerke": "80 Schiffe"
+    },
+    {
+     "id": "a-rechts",
+     "partei": "ant",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.73969,
+       38.91284
+      ],
+      [
+       20.74123,
+       38.90971
+      ],
+      [
+       20.74596,
+       38.90906
+      ],
+      [
+       20.74878,
+       38.91159
+      ],
+      [
+       20.75231,
+       38.92716
+      ],
+      [
+       20.75077,
+       38.93029
+      ],
+      [
+       20.74604,
+       38.93094
+      ],
+      [
+       20.74322,
+       38.92841
+      ]
+     ],
+     "name": "Antonius",
+     "staerke": "70 Schiffe"
+    },
+    {
+     "id": "a-kleo",
+     "partei": "ant",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.79386,
+       38.937
+      ],
+      [
+       20.78814,
+       38.93257
+      ],
+      [
+       20.78203,
+       38.92953
+      ],
+      [
+       20.77325,
+       38.92942
+      ],
+      [
+       20.77058,
+       38.93478
+      ],
+      [
+       20.76792,
+       38.93985
+      ],
+      [
+       20.77372,
+       38.94405
+      ],
+      [
+       20.78176,
+       38.94346
+      ],
+      [
+       20.79047,
+       38.94269
+      ]
+     ],
+     "name": "Kleopatra dahinter",
+     "staerke": "60 Schiffe"
+    },
+    {
+     "id": "o-links",
+     "partei": "oct",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.68652,
+       38.97205
+      ],
+      [
+       20.68497,
+       38.97518
+      ],
+      [
+       20.68024,
+       38.97583
+      ],
+      [
+       20.67741,
+       38.97329
+      ],
+      [
+       20.67348,
+       38.95595
+      ],
+      [
+       20.67503,
+       38.95282
+      ],
+      [
+       20.67976,
+       38.95217
+      ],
+      [
+       20.68259,
+       38.95471
+      ]
+     ],
+     "name": "Agrippa",
+     "staerke": "150 Schiffe"
+    },
+    {
+     "id": "o-mitte",
+     "partei": "oct",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.68152,
+       38.95005
+      ],
+      [
+       20.67997,
+       38.95318
+      ],
+      [
+       20.67524,
+       38.95383
+      ],
+      [
+       20.67242,
+       38.95129
+      ],
+      [
+       20.66848,
+       38.93395
+      ],
+      [
+       20.67003,
+       38.93082
+      ],
+      [
+       20.67476,
+       38.93017
+      ],
+      [
+       20.67758,
+       38.93271
+      ]
+     ],
+     "name": "Mitte",
+     "staerke": "130 Schiffe"
+    },
+    {
+     "id": "o-rechts",
+     "partei": "oct",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.67651,
+       38.92805
+      ],
+      [
+       20.67497,
+       38.93118
+      ],
+      [
+       20.67024,
+       38.93183
+      ],
+      [
+       20.66742,
+       38.92929
+      ],
+      [
+       20.66349,
+       38.91195
+      ],
+      [
+       20.66503,
+       38.90882
+      ],
+      [
+       20.66976,
+       38.90817
+      ],
+      [
+       20.67258,
+       38.91071
+      ]
+     ],
+     "name": "Rechter Flügel",
+     "staerke": "120 Schiffe"
+    }
+   ]
+  },
+  {
+   "zeit": "Früher Nachmittag",
+   "t": 480,
+   "kurz": "Agrippa zieht den Nordflügel nach außen.",
+   "text": "Agrippa lässt seinen linken Flügel nach Norden ausschwenken, um zu umfassen. Antonius muss folgen, sonst wird er von der Seite gefasst. Damit dehnt sich seine Linie – und in der Mitte entsteht eine Lücke. Genau darauf hat jemand gewartet.",
+   "stellungen": [
+    {
+     "id": "o-links",
+     "partei": "oct",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.70156,
+       38.98112
+      ],
+      [
+       20.70224,
+       38.98443
+      ],
+      [
+       20.69856,
+       38.98684
+      ],
+      [
+       20.69448,
+       38.98574
+      ],
+      [
+       20.67844,
+       38.97088
+      ],
+      [
+       20.67776,
+       38.96757
+      ],
+      [
+       20.68144,
+       38.96516
+      ],
+      [
+       20.68552,
+       38.96626
+      ]
+     ],
+     "name": "Agrippa schwenkt aus",
+     "staerke": "150 Schiffe"
+    },
+    {
+     "id": "o-schwenk",
+     "partei": "oct",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.682,
+       38.964
+      ],
+      [
+       20.7,
+       38.976
+      ],
+      [
+       20.725,
+       38.98
+      ]
+     ]
+    },
+    {
+     "id": "a-links",
+     "partei": "ant",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.71591,
+       38.96295
+      ],
+      [
+       20.71599,
+       38.9596
+      ],
+      [
+       20.72015,
+       38.95773
+      ],
+      [
+       20.72392,
+       38.95936
+      ],
+      [
+       20.73409,
+       38.97305
+      ],
+      [
+       20.73401,
+       38.9764
+      ],
+      [
+       20.72985,
+       38.97827
+      ],
+      [
+       20.72608,
+       38.97664
+      ]
+     ],
+     "name": "muss folgen",
+     "staerke": "80 Schiffe"
+    },
+    {
+     "id": "a-mitte",
+     "partei": "ant",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.72437,
+       38.93529
+      ],
+      [
+       20.72572,
+       38.93255
+      ],
+      [
+       20.72986,
+       38.93198
+      ],
+      [
+       20.73234,
+       38.9342
+      ],
+      [
+       20.73563,
+       38.94871
+      ],
+      [
+       20.73428,
+       38.95145
+      ],
+      [
+       20.73014,
+       38.95202
+      ],
+      [
+       20.72766,
+       38.9498
+      ]
+     ],
+     "name": "Mitte dünnt aus",
+     "staerke": "80 Schiffe"
+    },
+    {
+     "id": "a-rechts",
+     "partei": "ant",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.73169,
+       38.91084
+      ],
+      [
+       20.73323,
+       38.90771
+      ],
+      [
+       20.73796,
+       38.90706
+      ],
+      [
+       20.74078,
+       38.90959
+      ],
+      [
+       20.74431,
+       38.92516
+      ],
+      [
+       20.74277,
+       38.92829
+      ],
+      [
+       20.73804,
+       38.92894
+      ],
+      [
+       20.73522,
+       38.92641
+      ]
+     ],
+     "name": "Antonius",
+     "staerke": "70 Schiffe"
+    },
+    {
+     "id": "a-kleo",
+     "partei": "ant",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.78386,
+       38.936
+      ],
+      [
+       20.77814,
+       38.93157
+      ],
+      [
+       20.77203,
+       38.92853
+      ],
+      [
+       20.76325,
+       38.92842
+      ],
+      [
+       20.76058,
+       38.93378
+      ],
+      [
+       20.75792,
+       38.93885
+      ],
+      [
+       20.76372,
+       38.94305
+      ],
+      [
+       20.77176,
+       38.94246
+      ],
+      [
+       20.78047,
+       38.94169
+      ]
+     ],
+     "name": "Kleopatra",
+     "staerke": "60 Schiffe"
+    },
+    {
+     "id": "o-mitte",
+     "partei": "oct",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.69152,
+       38.95005
+      ],
+      [
+       20.68997,
+       38.95318
+      ],
+      [
+       20.68524,
+       38.95383
+      ],
+      [
+       20.68242,
+       38.95129
+      ],
+      [
+       20.67848,
+       38.93395
+      ],
+      [
+       20.68003,
+       38.93082
+      ],
+      [
+       20.68476,
+       38.93017
+      ],
+      [
+       20.68758,
+       38.93271
+      ]
+     ],
+     "name": "Mitte",
+     "staerke": "130 Schiffe"
+    },
+    {
+     "id": "o-rechts",
+     "partei": "oct",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.68651,
+       38.92605
+      ],
+      [
+       20.68497,
+       38.92918
+      ],
+      [
+       20.68024,
+       38.92983
+      ],
+      [
+       20.67742,
+       38.92729
+      ],
+      [
+       20.67349,
+       38.90995
+      ],
+      [
+       20.67503,
+       38.90682
+      ],
+      [
+       20.67976,
+       38.90617
+      ],
+      [
+       20.68258,
+       38.90871
+      ]
+     ],
+     "name": "Rechter Flügel",
+     "staerke": "120 Schiffe"
+    }
+   ]
+  },
+  {
+   "zeit": "Nachmittag",
+   "t": 540,
+   "kurz": "Kleopatra setzt die Segel und fährt hindurch.",
+   "text": "Als der Wind auffrischt, setzt das ägyptische Geschwader die Segel, fährt durch die Lücke in der eigenen Mitte und nach Süden davon. Sechzig Schiffe mit der Kriegskasse. Ob das der abgesprochene Plan war oder eine Flucht, streiten die Quellen seit zweitausend Jahren – die römische Überlieferung, die Octavian schreiben ließ, hatte gute Gründe für die zweite Lesart.",
+   "stellungen": [
+    {
+     "id": "a-kleo",
+     "partei": "ant",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.77,
+       38.936
+      ],
+      [
+       20.73,
+       38.92
+      ],
+      [
+       20.69,
+       38.87
+      ],
+      [
+       20.65,
+       38.8
+      ]
+     ],
+     "name": "Kleopatra durch die Lücke nach Süden"
+    },
+    {
+     "id": "a-mitte",
+     "partei": "ant",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.72457,
+       38.93818
+      ],
+      [
+       20.72592,
+       38.93544
+      ],
+      [
+       20.73006,
+       38.93487
+      ],
+      [
+       20.73254,
+       38.93708
+      ],
+      [
+       20.73543,
+       38.94982
+      ],
+      [
+       20.73408,
+       38.95256
+      ],
+      [
+       20.72994,
+       38.95313
+      ],
+      [
+       20.72746,
+       38.95092
+      ]
+     ],
+     "name": "Lücke in der Mitte",
+     "staerke": "70 Schiffe"
+    },
+    {
+     "id": "a-links",
+     "partei": "ant",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.71591,
+       38.96495
+      ],
+      [
+       20.71599,
+       38.9616
+      ],
+      [
+       20.72015,
+       38.95973
+      ],
+      [
+       20.72392,
+       38.96136
+      ],
+      [
+       20.73409,
+       38.97505
+      ],
+      [
+       20.73401,
+       38.9784
+      ],
+      [
+       20.72985,
+       38.98027
+      ],
+      [
+       20.72608,
+       38.97864
+      ]
+     ],
+     "name": "im Kampf gebunden",
+     "staerke": "80 Schiffe"
+    },
+    {
+     "id": "a-rechts",
+     "partei": "ant",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.72869,
+       38.90884
+      ],
+      [
+       20.73023,
+       38.90571
+      ],
+      [
+       20.73496,
+       38.90506
+      ],
+      [
+       20.73778,
+       38.90759
+      ],
+      [
+       20.74131,
+       38.92316
+      ],
+      [
+       20.73977,
+       38.92629
+      ],
+      [
+       20.73504,
+       38.92694
+      ],
+      [
+       20.73222,
+       38.92441
+      ]
+     ],
+     "name": "Antonius",
+     "staerke": "70 Schiffe"
+    },
+    {
+     "id": "o-links",
+     "partei": "oct",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.70656,
+       38.98112
+      ],
+      [
+       20.70724,
+       38.98443
+      ],
+      [
+       20.70356,
+       38.98684
+      ],
+      [
+       20.69948,
+       38.98574
+      ],
+      [
+       20.68344,
+       38.97088
+      ],
+      [
+       20.68276,
+       38.96757
+      ],
+      [
+       20.68644,
+       38.96516
+      ],
+      [
+       20.69052,
+       38.96626
+      ]
+     ],
+     "name": "Agrippa",
+     "staerke": "150 Schiffe"
+    },
+    {
+     "id": "o-mitte",
+     "partei": "oct",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.70152,
+       38.95005
+      ],
+      [
+       20.69997,
+       38.95318
+      ],
+      [
+       20.69524,
+       38.95383
+      ],
+      [
+       20.69242,
+       38.95129
+      ],
+      [
+       20.68848,
+       38.93395
+      ],
+      [
+       20.69003,
+       38.93082
+      ],
+      [
+       20.69476,
+       38.93017
+      ],
+      [
+       20.69758,
+       38.93271
+      ]
+     ],
+     "name": "Mitte",
+     "staerke": "130 Schiffe"
+    }
+   ]
+  },
+  {
+   "zeit": "Später Nachmittag",
+   "t": 600,
+   "kurz": "Antonius verlässt sein Flaggschiff und fährt hinterher.",
+   "text": "Antonius steigt auf ein leichteres Schiff um und folgt dem ägyptischen Geschwader. Er lässt damit seine Flotte und sein Heer zurück, mitten im Gefecht. Plutarch nennt das den Augenblick, in dem er aufhörte, ein Feldherr zu sein. Rund vierzig Schiffe kommen mit ihm durch.",
+   "stellungen": [
+    {
+     "id": "a-antonius",
+     "partei": "ant",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.735,
+       38.916
+      ],
+      [
+       20.7,
+       38.88
+      ],
+      [
+       20.66,
+       38.81
+      ]
+     ],
+     "name": "Antonius folgt",
+     "rueckzug": true
+    },
+    {
+     "id": "a-links",
+     "partei": "ant",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.71942,
+       38.96564
+      ],
+      [
+       20.71949,
+       38.96241
+      ],
+      [
+       20.7238,
+       38.96048
+      ],
+      [
+       20.72743,
+       38.96204
+      ],
+      [
+       20.73658,
+       38.97436
+      ],
+      [
+       20.73651,
+       38.97759
+      ],
+      [
+       20.7322,
+       38.97952
+      ],
+      [
+       20.72857,
+       38.97796
+      ]
+     ],
+     "name": "zurückgelassen",
+     "staerke": "80 Schiffe",
+     "geschlagen": true
+    },
+    {
+     "id": "a-mitte",
+     "partei": "ant",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.72657,
+       38.93818
+      ],
+      [
+       20.72792,
+       38.93544
+      ],
+      [
+       20.73206,
+       38.93487
+      ],
+      [
+       20.73454,
+       38.93708
+      ],
+      [
+       20.73743,
+       38.94982
+      ],
+      [
+       20.73608,
+       38.95256
+      ],
+      [
+       20.73194,
+       38.95313
+      ],
+      [
+       20.72946,
+       38.95092
+      ]
+     ],
+     "name": "zurückgelassen",
+     "staerke": "70 Schiffe",
+     "geschlagen": true
+    },
+    {
+     "id": "o-links",
+     "partei": "oct",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.71671,
+       38.97656
+      ],
+      [
+       20.71747,
+       38.98028
+      ],
+      [
+       20.71333,
+       38.98299
+      ],
+      [
+       20.70874,
+       38.98176
+      ],
+      [
+       20.69329,
+       38.96744
+      ],
+      [
+       20.69253,
+       38.96372
+      ],
+      [
+       20.69667,
+       38.96101
+      ],
+      [
+       20.70126,
+       38.96224
+      ]
+     ],
+     "name": "Agrippa schließt auf",
+     "staerke": "150 Schiffe"
+    },
+    {
+     "id": "o-mitte",
+     "partei": "oct",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.7122,
+       38.9505
+      ],
+      [
+       20.71047,
+       38.95402
+      ],
+      [
+       20.70515,
+       38.95475
+      ],
+      [
+       20.70197,
+       38.9519
+      ],
+      [
+       20.6978,
+       38.9335
+      ],
+      [
+       20.69953,
+       38.92998
+      ],
+      [
+       20.70485,
+       38.92925
+      ],
+      [
+       20.70803,
+       38.9321
+      ]
+     ],
+     "name": "Mitte",
+     "staerke": "130 Schiffe"
+    },
+    {
+     "id": "o-rechts",
+     "partei": "oct",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.70651,
+       38.92605
+      ],
+      [
+       20.70497,
+       38.92918
+      ],
+      [
+       20.70024,
+       38.92983
+      ],
+      [
+       20.69742,
+       38.92729
+      ],
+      [
+       20.69349,
+       38.90995
+      ],
+      [
+       20.69503,
+       38.90682
+      ],
+      [
+       20.69976,
+       38.90617
+      ],
+      [
+       20.70258,
+       38.90871
+      ]
+     ],
+     "name": "Rechter Flügel",
+     "staerke": "120 Schiffe"
+    }
+   ]
+  },
+  {
+   "zeit": "Abend",
+   "t": 660,
+   "kurz": "Brandpfeile auf die schweren Schiffe.",
+   "text": "Die zurückgelassenen Schiffe sind zu schwer, um zu entkommen, und zu wenige, um die Linie zu halten. Agrippas leichte Liburnen umfahren sie und schießen Brandpfeile. Was nicht brennt, ergibt sich. Das Landheer wartet noch eine Woche auf Antonius, dann geht es geschlossen zu Octavian über.",
+   "stellungen": [
+    {
+     "id": "a-links",
+     "partei": "ant",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.72225,
+       38.96276
+      ],
+      [
+       20.72231,
+       38.96012
+      ],
+      [
+       20.72729,
+       38.95788
+      ],
+      [
+       20.73026,
+       38.95916
+      ],
+      [
+       20.73775,
+       38.96924
+      ],
+      [
+       20.73769,
+       38.97188
+      ],
+      [
+       20.73271,
+       38.97412
+      ],
+      [
+       20.72974,
+       38.97284
+      ]
+     ],
+     "name": "brennt oder ergibt sich",
+     "staerke": "Rest",
+     "geschlagen": true
+    },
+    {
+     "id": "a-mitte",
+     "partei": "ant",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.72886,
+       38.93745
+      ],
+      [
+       20.72994,
+       38.93526
+      ],
+      [
+       20.73485,
+       38.93459
+      ],
+      [
+       20.73683,
+       38.93636
+      ],
+      [
+       20.73914,
+       38.94655
+      ],
+      [
+       20.73806,
+       38.94874
+      ],
+      [
+       20.73315,
+       38.94941
+      ],
+      [
+       20.73117,
+       38.94764
+      ]
+     ],
+     "name": "ergibt sich",
+     "staerke": "Rest",
+     "geschlagen": true
+    },
+    {
+     "id": "o-links",
+     "partei": "oct",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.7276,
+       38.97468
+      ],
+      [
+       20.72844,
+       38.97882
+      ],
+      [
+       20.72384,
+       38.98182
+      ],
+      [
+       20.71874,
+       38.98046
+      ],
+      [
+       20.7024,
+       38.96532
+      ],
+      [
+       20.70156,
+       38.96118
+      ],
+      [
+       20.70616,
+       38.95818
+      ],
+      [
+       20.71126,
+       38.95954
+      ]
+     ],
+     "name": "Agrippa umfährt",
+     "staerke": "400 Schiffe"
+    },
+    {
+     "id": "a-lager",
+     "partei": "ant",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       20.77,
+       38.92674
+      ],
+      [
+       20.77427,
+       38.92396
+      ],
+      [
+       20.7772,
+       38.92099
+      ],
+      [
+       20.77731,
+       38.91672
+      ],
+      [
+       20.77214,
+       38.91542
+      ],
+      [
+       20.76725,
+       38.91413
+      ],
+      [
+       20.7632,
+       38.91695
+      ],
+      [
+       20.76377,
+       38.92085
+      ],
+      [
+       20.76451,
+       38.92509
+      ]
+     ],
+     "name": "Landheer läuft über",
+     "staerke": "19 Legionen",
+     "geschlagen": true
+    }
+   ]
+  },
+  {
+   "zeit": "August 30 v. Chr.",
+   "t": 840,
+   "kurz": "Alexandria, und danach hat Rom einen Herrn.",
+   "text": "Antonius und Kleopatra erreichen Alexandria und halten sich noch ein Jahr. Als Octavian im Sommer 30 vor der Stadt steht, laufen die letzten Truppen über; beide nehmen sich das Leben. Ägypten wird römisch – und zwar nicht Provinz des Senats, sondern persönlicher Besitz Octavians. Vier Jahre später heißt er Augustus. Die Republik ist zu Ende, ohne dass jemand sie abgeschafft hätte.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     18,
+     29.5
+    ],
+    [
+     34,
+     41
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "a-flucht",
+     "partei": "ant",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       20.7,
+       38.85
+      ],
+      [
+       23.5,
+       35.6
+      ],
+      [
+       27.2,
+       32.6
+      ],
+      [
+       29.92,
+       31.2
+      ]
+     ],
+     "name": "nach Alexandria",
+     "rueckzug": true
+    },
+    {
+     "id": "o-nach",
+     "partei": "oct",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       20.75,
+       38.95
+      ],
+      [
+       24.5,
+       36.2
+      ],
+      [
+       28,
+       32.2
+      ],
+      [
+       29.92,
+       31.2
+      ]
+     ],
+     "name": "Octavian folgt 30 v. Chr."
+    }
+   ]
+  }
+ ],
+ "ausgang": "Kleopatras Geschwader und rund vierzig Schiffe des Antonius brechen nach Süden durch; der Rest der Flotte wird verbrannt oder ergibt sich. Das Landheer läuft eine Woche später über.",
+ "verluste": [
+  {
+   "partei": "ant",
+   "text": "rund 200 Schiffe, 5.000 Gefallene, 19 Legionen übergelaufen"
+  },
+  {
+   "partei": "oct",
+   "text": "nach Plutarch rund 2.500 Gefallene"
+  }
+ ],
+ "folgen": "Octavian nimmt 30 v. Chr. Alexandria; Antonius und Kleopatra nehmen sich das Leben. Ägypten wird nicht Senatsprovinz, sondern persönlicher Besitz des Siegers. 27 v. Chr. erhält Octavian den Ehrennamen Augustus – die römische Republik endet ohne förmliche Abschaffung.",
+ "streit": "Ob Kleopatras Abfahrt der abgesprochene Durchbruchsplan war oder eine Flucht, ist die älteste offene Frage dieser Schlacht. Die erhaltene Überlieferung stammt aus dem Umfeld des Siegers und hatte Grund, sie als Flucht darzustellen; die Segel an Bord sprechen für einen von vornherein geplanten Ausbruch. Auch die Schiffszahlen schwanken erheblich."
+}

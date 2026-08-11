@@ -1,0 +1,1403 @@
+{
+ "id": "midway",
+ "name": "Midway",
+ "ort": "Nordwestlich von Midway",
+ "datum": "4.–7. Juni 1942",
+ "jahr": 1942,
+ "mitte": [
+  -177.4,
+  30.2
+ ],
+ "zoom": 7.4,
+ "grund": "blatt",
+ "see": true,
+ "worum": "Die erste Seeschlacht, in der die Flotten einander nie sehen: dreihundert Kilometer zwischen den Trägern, und wer zuerst weiß, wo der andere steht, gewinnt. Die eigentliche Waffe ist die gebrochene Funkverschlüsselung – und dann fünf Minuten, in denen drei Träger brennen.",
+ "parteien": [
+  {
+   "id": "usa",
+   "name": "Vereinigte Staaten",
+   "farbe": "#6f9fe0",
+   "fuehrung": "Chester W. Nimitz, Raymond Spruance, Frank Fletcher",
+   "staerke": "3 Träger, 233 Trägerflugzeuge, 127 auf Midway",
+   "zahl": 3
+  },
+  {
+   "id": "jap",
+   "name": "Japan",
+   "farbe": "#d4737c",
+   "fuehrung": "Yamamoto Isoroku, Nagumo Chūichi",
+   "staerke": "4 Träger, 248 Flugzeuge – dazu eine weit entfernte Hauptmacht",
+   "zahl": 4
+  }
+ ],
+ "gelaende": [
+  {
+   "art": "stadt",
+   "name": "Midway",
+   "punkte": [
+    [
+     -177.38,
+     28.25042
+    ],
+    [
+     -177.35739,
+     28.23374
+    ],
+    [
+     -177.34186,
+     28.21593
+    ],
+    [
+     -177.3413,
+     28.19031
+    ],
+    [
+     -177.36865,
+     28.18252
+    ],
+    [
+     -177.39455,
+     28.17476
+    ],
+    [
+     -177.41601,
+     28.19168
+    ],
+    [
+     -177.41301,
+     28.21513
+    ],
+    [
+     -177.40908,
+     28.24054
+    ]
+   ]
+  }
+ ],
+ "stationen": [
+  {
+   "zeit": "Mai 1942",
+   "t": 0,
+   "kurz": "Ein Plan in fünf Teilen – und ein gebrochener Code.",
+   "text": "Yamamoto will die amerikanischen Träger zur Entscheidungsschlacht zwingen und teilt seine Flotte in fünf weit auseinanderliegende Verbände, darunter eine Ablenkung gegen die Aleuten. Der Plan setzt darauf, dass der Gegner nichts weiß. Der Gegner weiß fast alles: Die Funkaufklärung in Pearl Harbor hat den Flottencode weitgehend gebrochen und Ort und Termin bestimmt.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     -180,
+     15
+    ],
+    [
+     -150,
+     40
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "anm-jap",
+     "partei": "jap",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -172,
+       33.5
+      ],
+      [
+       -176,
+       32
+      ],
+      [
+       -178.4,
+       30.5
+      ]
+     ],
+     "name": "Nagumos Trägerverband"
+    },
+    {
+     "id": "anm-usa",
+     "partei": "usa",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -157.9,
+       21.3
+      ],
+      [
+       -165,
+       26
+      ],
+      [
+       -176.2,
+       31.7
+      ]
+     ],
+     "name": "aus Pearl Harbor in den Hinterhalt"
+    }
+   ]
+  },
+  {
+   "zeit": "4. Juni, 4:30 Uhr",
+   "t": 240,
+   "kurz": "Der erste Schlag gegen die Insel.",
+   "text": "Nagumo lässt 108 Flugzeuge gegen Midway starten. Sie treffen die Anlagen, aber die Startbahn bleibt benutzbar – und die Flugzeuge der Insel sind längst in der Luft. Der Führer des Angriffs funkt zurück: Ein zweiter Schlag ist nötig. Dieser Satz setzt alles Weitere in Gang.",
+   "stellungen": [
+    {
+     "id": "j-traeger",
+     "partei": "jap",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -178.22576,
+       30.67892
+      ],
+      [
+       -178.21894,
+       30.54817
+      ],
+      [
+       -178.24164,
+       30.43021
+      ],
+      [
+       -178.35011,
+       30.31542
+      ],
+      [
+       -178.47894,
+       30.34978
+      ],
+      [
+       -178.60257,
+       30.38067
+      ],
+      [
+       -178.60433,
+       30.50956
+      ],
+      [
+       -178.49282,
+       30.60579
+      ],
+      [
+       -178.36963,
+       30.70835
+      ]
+     ],
+     "name": "Akagi, Kaga, Sōryū, Hiryū",
+     "staerke": "4 Träger"
+    },
+    {
+     "id": "j-angriff1",
+     "partei": "jap",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -178.3,
+       30.3
+      ],
+      [
+       -177.9,
+       29.4
+      ],
+      [
+       -177.45,
+       28.35
+      ]
+     ],
+     "name": "108 Flugzeuge gegen Midway"
+    },
+    {
+     "id": "u-midway",
+     "partei": "usa",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -177.38,
+       28.25042
+      ],
+      [
+       -177.35739,
+       28.23374
+      ],
+      [
+       -177.34186,
+       28.21593
+      ],
+      [
+       -177.3413,
+       28.19031
+      ],
+      [
+       -177.36865,
+       28.18252
+      ],
+      [
+       -177.39455,
+       28.17476
+      ],
+      [
+       -177.41601,
+       28.19168
+      ],
+      [
+       -177.41301,
+       28.21513
+      ],
+      [
+       -177.40908,
+       28.24054
+      ]
+     ],
+     "name": "Midway",
+     "staerke": "127 Flugzeuge"
+    },
+    {
+     "id": "u-traeger",
+     "partei": "usa",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -175.96226,
+       31.81678
+      ],
+      [
+       -176.00833,
+       31.69191
+      ],
+      [
+       -176.07736,
+       31.58775
+      ],
+      [
+       -176.22672,
+       31.51185
+      ],
+      [
+       -176.33551,
+       31.5821
+      ],
+      [
+       -176.44074,
+       31.64757
+      ],
+      [
+       -176.3906,
+       31.7692
+      ],
+      [
+       -176.24581,
+       31.82677
+      ],
+      [
+       -176.08734,
+       31.88684
+      ]
+     ],
+     "name": "Enterprise, Hornet, Yorktown",
+     "staerke": "3 Träger"
+    }
+   ]
+  },
+  {
+   "zeit": "7:00 Uhr",
+   "t": 300,
+   "kurz": "Der Befehl zum Umrüsten.",
+   "text": "Nagumo lässt die Reservestaffeln, die mit Torpedos gegen Schiffe bereitstehen, auf Bomben für einen zweiten Inselangriff umrüsten. In den Hangars liegen daraufhin Torpedos und Bomben nebeneinander auf dem Deck – der gefährlichste Zustand, in dem ein Träger sein kann.",
+   "stellungen": [
+    {
+     "id": "j-traeger",
+     "partei": "jap",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -178.12594,
+       30.57892
+      ],
+      [
+       -178.11913,
+       30.44817
+      ],
+      [
+       -178.1418,
+       30.33021
+      ],
+      [
+       -178.25016,
+       30.21542
+      ],
+      [
+       -178.37886,
+       30.24978
+      ],
+      [
+       -178.50236,
+       30.28067
+      ],
+      [
+       -178.50412,
+       30.40956
+      ],
+      [
+       -178.39273,
+       30.50579
+      ],
+      [
+       -178.26966,
+       30.60835
+      ]
+     ],
+     "name": "rüstet um",
+     "staerke": "4 Träger"
+    },
+    {
+     "id": "u-midwayang",
+     "partei": "usa",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -177.4,
+       28.3
+      ],
+      [
+       -177.9,
+       29.4
+      ],
+      [
+       -178.25,
+       30.3
+      ]
+     ],
+     "name": "Flugzeuge von Midway greifen an"
+    },
+    {
+     "id": "u-traeger",
+     "partei": "usa",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -176.16277,
+       31.61678
+      ],
+      [
+       -176.20874,
+       31.49191
+      ],
+      [
+       -176.27762,
+       31.38775
+      ],
+      [
+       -176.42667,
+       31.31185
+      ],
+      [
+       -176.53522,
+       31.3821
+      ],
+      [
+       -176.64022,
+       31.44757
+      ],
+      [
+       -176.59019,
+       31.5692
+      ],
+      [
+       -176.44571,
+       31.62677
+      ],
+      [
+       -176.28758,
+       31.68684
+      ]
+     ],
+     "name": "noch unentdeckt",
+     "staerke": "3 Träger"
+    }
+   ]
+  },
+  {
+   "zeit": "7:40 Uhr",
+   "t": 340,
+   "kurz": "Ein Aufklärer meldet – und ergänzt zu spät.",
+   "text": "Ein japanischer Aufklärer, der wegen eines Katapultschadens verspätet gestartet ist, meldet zehn amerikanische Schiffe. Erst zwanzig Minuten später fügt er hinzu, dass ein Träger dabei ist. Nagumo lässt daraufhin ein zweites Mal umrüsten, jetzt wieder auf Torpedos. In den Hangars herrscht Chaos.",
+   "stellungen": [
+    {
+     "id": "j-aufklaerer",
+     "partei": "jap",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -178.1,
+       30.6
+      ],
+      [
+       -177.2,
+       31.2
+      ],
+      [
+       -176.5,
+       31.5
+      ]
+     ],
+     "name": "Aufklärer meldet verspätet"
+    },
+    {
+     "id": "j-traeger",
+     "partei": "jap",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -178.02594,
+       30.57892
+      ],
+      [
+       -178.01913,
+       30.44817
+      ],
+      [
+       -178.0418,
+       30.33021
+      ],
+      [
+       -178.15016,
+       30.21542
+      ],
+      [
+       -178.27886,
+       30.24978
+      ],
+      [
+       -178.40236,
+       30.28067
+      ],
+      [
+       -178.40412,
+       30.40956
+      ],
+      [
+       -178.29273,
+       30.50579
+      ],
+      [
+       -178.16966,
+       30.60835
+      ]
+     ],
+     "name": "rüstet ein zweites Mal um",
+     "staerke": "4 Träger"
+    },
+    {
+     "id": "u-traeger",
+     "partei": "usa",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -176.16303,
+       31.51678
+      ],
+      [
+       -176.20895,
+       31.39191
+      ],
+      [
+       -176.27775,
+       31.28775
+      ],
+      [
+       -176.42664,
+       31.21185
+      ],
+      [
+       -176.53507,
+       31.2821
+      ],
+      [
+       -176.63997,
+       31.34757
+      ],
+      [
+       -176.58999,
+       31.4692
+      ],
+      [
+       -176.44566,
+       31.52677
+      ],
+      [
+       -176.2877,
+       31.58684
+      ]
+     ],
+     "name": "entdeckt – aber ungenau",
+     "staerke": "3 Träger"
+    }
+   ]
+  },
+  {
+   "zeit": "9:20 Uhr",
+   "t": 400,
+   "kurz": "Die Torpedostaffeln – 35 von 41 kommen nicht zurück.",
+   "text": "Die amerikanischen Torpedoflugzeuge sind langsam, fliegen tief und treffen ohne Jagdschutz ein. Sie erzielen keinen einzigen Treffer; von 41 Maschinen der drei Staffeln kehren sechs zurück, eine Staffel wird vollständig abgeschossen. Aber sie zwingen die japanische Jagdabwehr, in geringe Höhe hinunterzugehen – und dort bleibt sie.",
+   "stellungen": [
+    {
+     "id": "u-torpedo",
+     "partei": "usa",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -176.6,
+       31.3
+      ],
+      [
+       -177.4,
+       30.9
+      ],
+      [
+       -178.1,
+       30.5
+      ]
+     ],
+     "name": "Torpedostaffeln ohne Jagdschutz",
+     "geschlagen": true
+    },
+    {
+     "id": "j-jaeger",
+     "partei": "jap",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -178.04558,
+       30.48735
+      ],
+      [
+       -178.03757,
+       30.40606
+      ],
+      [
+       -178.04847,
+       30.33332
+      ],
+      [
+       -178.11337,
+       30.26438
+      ],
+      [
+       -178.19533,
+       30.28844
+      ],
+      [
+       -178.27392,
+       30.31024
+      ],
+      [
+       -178.27871,
+       30.39027
+      ],
+      [
+       -178.21137,
+       30.44763
+      ],
+      [
+       -178.13685,
+       30.50867
+      ]
+     ],
+     "name": "Jagdabwehr geht tief",
+     "staerke": "Zeros"
+    },
+    {
+     "id": "j-traeger",
+     "partei": "jap",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -177.93473,
+       30.51997
+      ],
+      [
+       -177.92826,
+       30.39576
+      ],
+      [
+       -177.94979,
+       30.2837
+      ],
+      [
+       -178.05268,
+       30.17465
+      ],
+      [
+       -178.17487,
+       30.20729
+      ],
+      [
+       -178.29214,
+       30.23664
+      ],
+      [
+       -178.29382,
+       30.35909
+      ],
+      [
+       -178.18805,
+       30.4505
+      ],
+      [
+       -178.07119,
+       30.54793
+      ]
+     ],
+     "name": "4 Träger",
+     "staerke": "4 Träger"
+    },
+    {
+     "id": "u-traeger",
+     "partei": "usa",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -176.26328,
+       31.41678
+      ],
+      [
+       -176.30915,
+       31.29191
+      ],
+      [
+       -176.37788,
+       31.18775
+      ],
+      [
+       -176.52661,
+       31.11185
+      ],
+      [
+       -176.63493,
+       31.1821
+      ],
+      [
+       -176.73971,
+       31.24757
+      ],
+      [
+       -176.68979,
+       31.3692
+      ],
+      [
+       -176.54561,
+       31.42677
+      ],
+      [
+       -176.38782,
+       31.48684
+      ]
+     ],
+     "name": "3 Träger",
+     "staerke": "3 Träger"
+    }
+   ]
+  },
+  {
+   "zeit": "10:22 Uhr",
+   "t": 430,
+   "kurz": "Fünf Minuten, die den Pazifikkrieg drehen.",
+   "text": "Zwei Verbände Sturzkampfbomber, die sich verflogen hatten und einem japanischen Zerstörer nachgeflogen sind, kommen gleichzeitig aus großer Höhe – dort, wo keine Jagdabwehr mehr steht, weil sie unten die Torpedostaffeln jagt. In fünf Minuten treffen sie Akagi, Kaga und Sōryū. Auf allen dreien liegen Munition und betankte Flugzeuge offen an Deck.",
+   "stellungen": [
+    {
+     "id": "u-sturz",
+     "partei": "usa",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -176.8,
+       31.6
+      ],
+      [
+       -177.6,
+       31
+      ],
+      [
+       -178.1,
+       30.45
+      ]
+     ],
+     "name": "Sturzkampfbomber aus großer Höhe"
+    },
+    {
+     "id": "j-traeger",
+     "partei": "jap",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -177.95212,
+       30.50208
+      ],
+      [
+       -177.94634,
+       30.39095
+      ],
+      [
+       -177.9656,
+       30.29068
+      ],
+      [
+       -178.05766,
+       30.1931
+      ],
+      [
+       -178.16699,
+       30.22231
+      ],
+      [
+       -178.27192,
+       30.24857
+      ],
+      [
+       -178.27341,
+       30.35813
+      ],
+      [
+       -178.17878,
+       30.43992
+      ],
+      [
+       -178.07422,
+       30.5271
+      ]
+     ],
+     "name": "Akagi, Kaga, Sōryū brennen",
+     "staerke": "3 Träger",
+     "geschlagen": true
+    },
+    {
+     "id": "j-hiryu",
+     "partei": "jap",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -178.39362,
+       30.7078
+      ],
+      [
+       -178.38929,
+       30.66403
+      ],
+      [
+       -178.39518,
+       30.62487
+      ],
+      [
+       -178.43022,
+       30.58774
+      ],
+      [
+       -178.47448,
+       30.6007
+      ],
+      [
+       -178.51691,
+       30.61244
+      ],
+      [
+       -178.5195,
+       30.65553
+      ],
+      [
+       -178.48313,
+       30.68642
+      ],
+      [
+       -178.4429,
+       30.71928
+      ]
+     ],
+     "name": "Hiryū · abgesetzt und unversehrt",
+     "staerke": "1 Träger"
+    },
+    {
+     "id": "u-traeger",
+     "partei": "usa",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -176.26328,
+       31.41678
+      ],
+      [
+       -176.30915,
+       31.29191
+      ],
+      [
+       -176.37788,
+       31.18775
+      ],
+      [
+       -176.52661,
+       31.11185
+      ],
+      [
+       -176.63493,
+       31.1821
+      ],
+      [
+       -176.73971,
+       31.24757
+      ],
+      [
+       -176.68979,
+       31.3692
+      ],
+      [
+       -176.54561,
+       31.42677
+      ],
+      [
+       -176.38782,
+       31.48684
+      ]
+     ],
+     "name": "3 Träger",
+     "staerke": "3 Träger"
+    }
+   ]
+  },
+  {
+   "zeit": "12 bis 14 Uhr",
+   "t": 480,
+   "kurz": "Die Hiryū schlägt zurück und trifft die Yorktown.",
+   "text": "Der vierte Träger stand weiter nördlich und ist unbeschädigt. Er schickt zwei Wellen und trifft die Yorktown zweimal – nach der ersten wird sie so schnell repariert, dass die zweite Welle sie für einen anderen, unbeschädigten Träger hält. Am Nachmittag liegt sie manövrierunfähig.",
+   "stellungen": [
+    {
+     "id": "j-hiryu",
+     "partei": "jap",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -178.24359,
+       30.7578
+      ],
+      [
+       -178.23926,
+       30.71403
+      ],
+      [
+       -178.24515,
+       30.67487
+      ],
+      [
+       -178.28021,
+       30.63774
+      ],
+      [
+       -178.32449,
+       30.6507
+      ],
+      [
+       -178.36695,
+       30.66244
+      ],
+      [
+       -178.36953,
+       30.70553
+      ],
+      [
+       -178.33315,
+       30.73642
+      ],
+      [
+       -178.2929,
+       30.76928
+      ]
+     ],
+     "name": "Hiryū greift an",
+     "staerke": "1 Träger"
+    },
+    {
+     "id": "j-gegen",
+     "partei": "jap",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -178.1,
+       30.75
+      ],
+      [
+       -177.3,
+       31.1
+      ],
+      [
+       -176.6,
+       31.35
+      ]
+     ],
+     "name": "zwei Wellen gegen die Yorktown"
+    },
+    {
+     "id": "u-yorktown",
+     "partei": "usa",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -176.48441,
+       31.38234
+      ],
+      [
+       -176.49592,
+       31.34599
+      ],
+      [
+       -176.51415,
+       31.31593
+      ],
+      [
+       -176.55532,
+       31.29487
+      ],
+      [
+       -176.58678,
+       31.31646
+      ],
+      [
+       -176.61719,
+       31.33662
+      ],
+      [
+       -176.60449,
+       31.37198
+      ],
+      [
+       -176.56438,
+       31.38769
+      ],
+      [
+       -176.52046,
+       31.40402
+      ]
+     ],
+     "name": "Yorktown getroffen",
+     "staerke": "1 Träger",
+     "geschlagen": true
+    },
+    {
+     "id": "u-traeger",
+     "partei": "usa",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -176.14572,
+       31.62591
+      ],
+      [
+       -176.17562,
+       31.54474
+      ],
+      [
+       -176.22041,
+       31.47704
+      ],
+      [
+       -176.31734,
+       31.4277
+      ],
+      [
+       -176.38794,
+       31.47336
+      ],
+      [
+       -176.45623,
+       31.51592
+      ],
+      [
+       -176.42369,
+       31.59498
+      ],
+      [
+       -176.32973,
+       31.6324
+      ],
+      [
+       -176.22689,
+       31.67144
+      ]
+     ],
+     "name": "Enterprise und Hornet",
+     "staerke": "2 Träger"
+    }
+   ]
+  },
+  {
+   "zeit": "17 Uhr",
+   "t": 540,
+   "kurz": "Und dann die Hiryū.",
+   "text": "Am späten Nachmittag findet ein Aufklärer den vierten Träger. Vierundzwanzig Sturzkampfbomber von der Enterprise – darunter Maschinen der Yorktown, die dort gelandet waren – treffen ihn viermal. Damit sind alle vier Träger, die Pearl Harbor angegriffen hatten, an einem Tag verloren.",
+   "stellungen": [
+    {
+     "id": "u-sturz2",
+     "partei": "usa",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -176.4,
+       31.55
+      ],
+      [
+       -177.4,
+       31.1
+      ],
+      [
+       -178.2,
+       30.75
+      ]
+     ],
+     "name": "24 Sturzkampfbomber"
+    },
+    {
+     "id": "j-hiryu",
+     "partei": "jap",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -178.25165,
+       30.74955
+      ],
+      [
+       -178.24794,
+       30.71203
+      ],
+      [
+       -178.25299,
+       30.67846
+      ],
+      [
+       -178.28304,
+       30.64664
+      ],
+      [
+       -178.32099,
+       30.65774
+      ],
+      [
+       -178.35738,
+       30.6678
+      ],
+      [
+       -178.3596,
+       30.70474
+      ],
+      [
+       -178.32842,
+       30.73121
+      ],
+      [
+       -178.29391,
+       30.75939
+      ]
+     ],
+     "name": "Hiryū brennt",
+     "staerke": "1 Träger",
+     "geschlagen": true
+    },
+    {
+     "id": "j-traeger",
+     "partei": "jap",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -177.96952,
+       30.48419
+      ],
+      [
+       -177.96441,
+       30.38613
+      ],
+      [
+       -177.98141,
+       30.29766
+      ],
+      [
+       -178.06264,
+       30.21156
+      ],
+      [
+       -178.15911,
+       30.23733
+      ],
+      [
+       -178.25169,
+       30.26051
+      ],
+      [
+       -178.25301,
+       30.35717
+      ],
+      [
+       -178.16951,
+       30.42934
+      ],
+      [
+       -178.07725,
+       30.50626
+      ]
+     ],
+     "name": "drei Wracks",
+     "staerke": "versenkt",
+     "geschlagen": true
+    },
+    {
+     "id": "u-traeger",
+     "partei": "usa",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -176.14572,
+       31.62591
+      ],
+      [
+       -176.17562,
+       31.54474
+      ],
+      [
+       -176.22041,
+       31.47704
+      ],
+      [
+       -176.31734,
+       31.4277
+      ],
+      [
+       -176.38794,
+       31.47336
+      ],
+      [
+       -176.45623,
+       31.51592
+      ],
+      [
+       -176.42369,
+       31.59498
+      ],
+      [
+       -176.32973,
+       31.6324
+      ],
+      [
+       -176.22689,
+       31.67144
+      ]
+     ],
+     "name": "Enterprise und Hornet",
+     "staerke": "2 Träger"
+    }
+   ]
+  },
+  {
+   "zeit": "5. bis 7. Juni",
+   "t": 660,
+   "kurz": "Yamamoto bricht ab; ein U-Boot holt die Yorktown.",
+   "text": "Yamamoto erwägt noch, mit seinen Schlachtschiffen ein Nachtgefecht zu erzwingen – seine Hauptmacht steht 500 Kilometer hinter Nagumo und hat den ganzen Tag über nichts tun können. Spruance weicht nach Osten aus, statt nachzusetzen: eine Vorsicht, die ihm später vorgeworfen und heute überwiegend gelobt wird. Am 7. Juni versenkt ein U-Boot die abgeschleppte Yorktown.",
+   "stellungen": [
+    {
+     "id": "j-abbruch",
+     "partei": "jap",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -178.2,
+       30.5
+      ],
+      [
+       -176,
+       32.6
+      ],
+      [
+       -172,
+       34.5
+      ]
+     ],
+     "name": "Abbruch nach Westen",
+     "rueckzug": true
+    },
+    {
+     "id": "u-ausweichen",
+     "partei": "usa",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -176.3,
+       31.55
+      ],
+      [
+       -174.5,
+       30.8
+      ],
+      [
+       -172.5,
+       30.2
+      ]
+     ],
+     "name": "Spruance weicht nach Osten aus"
+    },
+    {
+     "id": "u-yorktown",
+     "partei": "usa",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -176.54543,
+       31.22695
+      ],
+      [
+       -176.55501,
+       31.19666
+      ],
+      [
+       -176.57017,
+       31.17161
+      ],
+      [
+       -176.60443,
+       31.15406
+      ],
+      [
+       -176.6306,
+       31.17205
+      ],
+      [
+       -176.6559,
+       31.18885
+      ],
+      [
+       -176.64534,
+       31.21832
+      ],
+      [
+       -176.61197,
+       31.23141
+      ],
+      [
+       -176.57542,
+       31.24501
+      ]
+     ],
+     "name": "Yorktown geht am 7. Juni verloren",
+     "staerke": "1 Träger",
+     "geschlagen": true
+    }
+   ]
+  },
+  {
+   "zeit": "Nach Midway",
+   "t": 840,
+   "kurz": "Vier Träger, und die Richtung des Krieges kehrt sich um.",
+   "text": "Japan verliert vier Flottenträger und – schwerer wiegend – einen großen Teil seiner erfahrenen Flugzeugbesatzungen und Deckmechaniker, die nicht zu ersetzen sind. Die Vereinigten Staaten laufen im selben Zeitraum zwei Dutzend neue Träger vom Stapel. Zwei Monate später beginnt bei Guadalcanal die erste amerikanische Offensive; von da an läuft der Krieg in eine Richtung.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     -180,
+     -14
+    ],
+    [
+     -141,
+     42
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "u-offensive",
+     "partei": "usa",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -157.9,
+       21.3
+      ],
+      [
+       -168,
+       25.5
+      ],
+      [
+       -177.4,
+       28.2
+      ],
+      [
+       -179.6,
+       6
+      ],
+      [
+       -179.9,
+       -10
+      ]
+     ],
+     "name": "ab August: Richtung Guadalcanal"
+    },
+    {
+     "id": "j-rueck",
+     "partei": "jap",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -178.2,
+       30.5
+      ],
+      [
+       -179.5,
+       29
+      ],
+      [
+       -179.95,
+       27
+      ]
+     ],
+     "name": "Rückzug der Trägerflotte nach Westen",
+     "rueckzug": true
+    }
+   ]
+  }
+ ],
+ "ausgang": "Japan verliert alle vier eingesetzten Flottenträger und rund 250 Flugzeuge. Die Vereinigten Staaten verlieren die Yorktown und einen Zerstörer.",
+ "verluste": [
+  {
+   "partei": "jap",
+   "text": "4 Träger, 1 Schwerer Kreuzer, rund 3.000 Gefallene – darunter viele erfahrene Mechaniker"
+  },
+  {
+   "partei": "usa",
+   "text": "1 Träger, 1 Zerstörer, 145 Flugzeuge, 307 Gefallene"
+  }
+ ],
+ "folgen": "Die japanische Trägerflotte verliert ihren Kern und den nicht ersetzbaren Stamm erfahrener Besatzungen. Zwei Monate später beginnt mit Guadalcanal die erste amerikanische Offensive; die Initiative im Pazifik wechselt endgültig.",
+ "streit": "Die Erzählung von den „fünf schicksalhaften Minuten“, in denen die japanischen Decks angeblich voll startbereiter Flugzeuge standen, gilt seit den Arbeiten von Parshall und Tully als überholt – die Maschinen befanden sich noch in den Hangars. Auch ob Spruances Ausweichen nach Osten die richtige Entscheidung war, wurde jahrzehntelang diskutiert."
+}

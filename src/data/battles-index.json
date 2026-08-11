@@ -45,6 +45,52 @@
   "stationen": 11
  },
  {
+  "id": "zama",
+  "name": "Zama",
+  "ort": "Ebene südwestlich von Karthago",
+  "datum": "19. Oktober 202 v. Chr.",
+  "jahr": -200,
+  "mitte": [
+   9.05,
+   36.155
+  ],
+  "zoom": 12.4,
+  "grund": "relief",
+  "worum": "Das Ende des Zweiten Punischen Krieges – und die Umkehrung von Cannae, angerichtet an dem Mann, der Cannae erfunden hat. Zum ersten Mal in diesem Krieg hat Rom die bessere Reiterei, weil Masinissa übergelaufen ist. Alles Weitere folgt daraus.",
+  "stationen": 10
+ },
+ {
+  "id": "actium",
+  "name": "Actium",
+  "ort": "Vor der Mündung des Ambrakischen Golfs",
+  "datum": "2. September 31 v. Chr.",
+  "jahr": -1,
+  "mitte": [
+   20.72,
+   38.942
+  ],
+  "zoom": 11.6,
+  "grund": "blatt",
+  "see": true,
+  "worum": "Eine Seeschlacht, die der Sommer vorher entschieden hat. Antonius’ Flotte liegt im Golf, die Ausfahrt ist 700 Meter breit und von außen gesperrt; Malaria und Hunger fressen die Ruderer. Als er ausläuft, hat er die Segel an Bord – und das verrät, dass er nicht siegen, sondern wegkommen will.",
+  "stationen": 10
+ },
+ {
+  "id": "tours",
+  "name": "Tours und Poitiers",
+  "ort": "Zwischen Poitiers und Tours",
+  "datum": "Oktober 732",
+  "jahr": 700,
+  "mitte": [
+   0.515,
+   46.755
+  ],
+  "zoom": 12.2,
+  "grund": "relief",
+  "worum": "Fußvolk gegen Reiterei – und die Frage, ob eine geschlossene Front auf einer bewaldeten Höhe hält. Sieben Tage lang geschieht nichts, weil beide Seiten gute Gründe zu warten haben. Entschieden wird die Schlacht nicht an der Front, sondern am Beutetross.",
+  "stationen": 9
+ },
+ {
   "id": "hastings",
   "name": "Schlacht bei Hastings",
   "ort": "Senlac Hill, Sussex",
@@ -58,6 +104,36 @@
   "grund": "relief",
   "worum": "Ein Tag entscheidet, wer England regiert. Harolds Schildwall auf dem Höhenrücken ist eine Mauer, gegen die weder Pfeile noch Reiterei ankommen – bis Wilhelm sie nicht mehr angreift, sondern sie dazu bringt, sich selbst zu öffnen.",
   "stationen": 13
+ },
+ {
+  "id": "hattin",
+  "name": "Hattin",
+  "ort": "Hörner von Hattin, Galiläa",
+  "datum": "4. Juli 1187",
+  "jahr": 1200,
+  "mitte": [
+   35.43,
+   32.792
+  ],
+  "zoom": 12,
+  "grund": "relief",
+  "worum": "Eine Schlacht, die das Wasser entscheidet. Zwischen dem Lager der Kreuzfahrer und dem belagerten Tiberias liegen dreißig Kilometer wasserlose Hochebene im Juli. Wer aufbricht, marschiert einen Tag ohne Quelle, mit berittenen Bogenschützen an beiden Flanken.",
+  "stationen": 10
+ },
+ {
+  "id": "mohi",
+  "name": "Muhi",
+  "ort": "Am Sajó bei Muhi",
+  "datum": "11. April 1241",
+  "jahr": 1279,
+  "mitte": [
+   20.925,
+   47.98
+  ],
+  "zoom": 12.1,
+  "grund": "relief",
+  "worum": "Die Mongolen in Mitteleuropa – und ein Lehrstück darüber, was eine Wagenburg wert ist, wenn der Gegner sie nicht stürmen muss. Subutai beschießt sie und lässt eine Lücke offen: Wer eingeschlossen ist und einen Ausweg sieht, kämpft nicht weiter, sondern läuft.",
+  "stationen": 9
  },
  {
   "id": "azincourt",
@@ -121,6 +197,51 @@
   "stationen": 11
  },
  {
+  "id": "poltawa",
+  "name": "Poltawa",
+  "ort": "Nordwestlich von Poltawa",
+  "datum": "8. Juli 1709",
+  "jahr": 1715,
+  "mitte": [
+   34.49,
+   49.63
+  ],
+  "zoom": 12.1,
+  "grund": "relief",
+  "worum": "Das Ende Schwedens als Großmacht. Zwischen zwei Wäldern liegt eine Lücke von anderthalb Kilometern – der einzige Weg zum russischen Lager –, und Peter baut zehn Schanzen hinein. Hinter dem schwedischen Heer liegt der Dnjepr, 130 Kilometer entfernt und ohne Brücke.",
+  "stationen": 10
+ },
+ {
+  "id": "wien1683",
+  "name": "Der Entsatz von Wien",
+  "ort": "Kahlenberg und Wienerwald",
+  "datum": "12. September 1683",
+  "jahr": 1715,
+  "mitte": [
+   16.34,
+   48.235
+  ],
+  "zoom": 11.9,
+  "grund": "relief",
+  "worum": "Zwei Monate Belagerung, ein Tag Schlacht. Das Entsatzheer kommt über den Wienerwald, den der Großwesir für unpassierbar hielt – und trifft am Nachmittag nicht auf die Front, sondern auf das ungedeckte Lager.",
+  "stationen": 10
+ },
+ {
+  "id": "austerlitz",
+  "name": "Austerlitz",
+  "ort": "Pratzener Höhen bei Brünn",
+  "datum": "2. Dezember 1805",
+  "jahr": 1815,
+  "mitte": [
+   16.765,
+   49.125
+  ],
+  "zoom": 12,
+  "grund": "relief",
+  "worum": "Die Schlacht, in der die entscheidende Bewegung darin besteht, eine Höhe freiwillig zu räumen. Napoleon gibt die beherrschende Stellung auf und lässt seinen rechten Flügel schwach aussehen – die Verbündeten schieben daraufhin die Hälfte ihres Heeres von der Höhe herunter, und die Mitte steht leer.",
+  "stationen": 10
+ },
+ {
   "id": "trafalgar",
   "name": "Seeschlacht von Trafalgar",
   "ort": "Atlantik vor Kap Trafalgar",
@@ -167,6 +288,22 @@
   "stationen": 13
  },
  {
+  "id": "tsushima",
+  "name": "Tsushima",
+  "ort": "Straße von Tsushima",
+  "datum": "27./28. Mai 1905",
+  "jahr": 1900,
+  "mitte": [
+   129.5,
+   34.62
+  ],
+  "zoom": 9.6,
+  "grund": "blatt",
+  "see": true,
+  "worum": "Die vollständigste Seeschlacht der Geschichte: Von 38 russischen Schiffen erreichen drei ihr Ziel. Entschieden wird sie durch eine Wende, die alle für einen Fehler halten – fünfzehn Minuten lang fährt jedes japanische Schiff durch denselben Punkt, auf den die ganze gegnerische Flotte schießen kann.",
+  "stationen": 10
+ },
+ {
   "id": "tannenberg",
   "name": "Schlacht bei Tannenberg",
   "ort": "Ostpreußen, südlich von Allenstein",
@@ -180,6 +317,22 @@
   "grund": "relief",
   "worum": "Zwei russische Armeen marschieren getrennt in Ostpreußen ein, durch die Masurischen Seen voneinander getrennt, und funken ihre Befehle unverschlüsselt. Die deutsche 8. Armee lässt vor der einen eine Kavalleriedivision stehen, wirft alles andere per Bahn gegen die andere – und schließt sie in vier Tagen ein.",
   "stationen": 13
+ },
+ {
+  "id": "midway",
+  "name": "Midway",
+  "ort": "Nordwestlich von Midway",
+  "datum": "4.–7. Juni 1942",
+  "jahr": 1942,
+  "mitte": [
+   -177.4,
+   30.2
+  ],
+  "zoom": 7.4,
+  "grund": "blatt",
+  "see": true,
+  "worum": "Die erste Seeschlacht, in der die Flotten einander nie sehen: dreihundert Kilometer zwischen den Trägern, und wer zuerst weiß, wo der andere steht, gewinnt. Die eigentliche Waffe ist die gebrochene Funkverschlüsselung – und dann fünf Minuten, in denen drei Träger brennen.",
+  "stationen": 10
  },
  {
   "id": "stalingrad",

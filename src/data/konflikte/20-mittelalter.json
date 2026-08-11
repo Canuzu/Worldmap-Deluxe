@@ -660,7 +660,8 @@
    "rang": 1,
    "sieger": "Byzanz, Persien und die Westgoten",
    "text": "Karl Martell stellt sein Fußvolk in einem Karree auf und lässt die andalusische Reiterei sich daran totlaufen. Ob die Schlacht Europa gerettet hat, ist umstritten; dass sie die Karolinger an die Macht brachte, nicht.",
-   "wiki": "Schlacht von Tours und Poitiers"
+   "wiki": "Schlacht von Tours und Poitiers",
+   "verlauf": "tours"
   },
   {
    "id": "verden",
@@ -805,7 +806,8 @@
    "rang": 1,
    "sieger": "Ayyubiden unter Saladin",
    "text": "Saladin lockt das Kreuzfahrerheer über eine wasserlose Hochebene und zündet das trockene Gras an. Nach zwei Tagen ohne Wasser ist es kampfunfähig; drei Monate später fällt Jerusalem.",
-   "wiki": "Schlacht bei Hattin"
+   "wiki": "Schlacht bei Hattin",
+   "verlauf": "hattin"
   },
   {
    "id": "arsuf",
@@ -885,7 +887,8 @@
    "rang": 2,
    "sieger": "Mongolisches Reich",
    "text": "Zwei Tage nach Liegnitz wird auch das ungarische Heer vernichtet. Mitteleuropa liegt offen – und dann stirbt der Großkhan, und die Heere kehren zur Wahl nach Karakorum zurück.",
-   "wiki": "Schlacht bei Muhi"
+   "wiki": "Schlacht bei Muhi",
+   "verlauf": "mohi"
   },
   {
    "id": "bagdad1258",
