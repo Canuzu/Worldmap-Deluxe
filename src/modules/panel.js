@@ -9,7 +9,7 @@
  */
 import { esc, areaText, rangeText, yearShort, yearText, initials, num } from './format.js';
 import RELIGION from '../data/religion/vokabular.json';
-import { precisionLabel } from './palette.js';
+import { precisionLabel, religionName } from './palette.js';
 import { lookupArticle } from './wikipedia.js';
 import { bodenblatt } from './blatt.js';
 import { txt, sprache, wikiSprache } from './sprache.js';
@@ -328,7 +328,7 @@ export class DetailPanel {
      * nicht zuerst die Hauptstadt lesen. */
     if (this.atlas?.colorMode === 'religion' && entry.religion) {
       const r = entry.religion;
-      const nameVon = (k) => RELIGION.klassen[k]?.name ?? k;
+      const nameVon = (k) => religionName(k, RELIGION.klassen[k]?.name);
       const guete = txt(`tafel.rel.guete.${r.guete}`);
       // Der Anteil sagt mit, wie eindeutig der Fall ist: 98 Prozent ist eine
       // andere Auskunft als 51, auch wenn beide dieselbe Farbe tragen.

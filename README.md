@@ -1,6 +1,6 @@
 # Worldmap Deluxe
 
-**→ [canuzu.github.io/Worldmap-Deluxe](https://canuzu.github.io/Worldmap-Deluxe/)**
+**→ [canuzu.github.io/Worldmap-Deluxe](https://canuzu.github.io/Worldmap-Deluxe/)** · [English](https://canuzu.github.io/Worldmap-Deluxe/?lang=en)
 
 Ein interaktiver historischer Weltatlas: **62 Zeitschnitte von 123.000 v. Chr. bis 2026**.
 Der Regler unten schiebt die Weltkarte durch die Jahrtausende – Reiche wachsen,
@@ -1582,6 +1582,97 @@ außerhalb der belegten Zeit zeigt.
 Für Gebiete ohne Steckbrief zeigt die Tafel weiterhin die Angaben des
 Kartendatensatzes (Fläche, Oberhoheit, Kulturraum, Grenzgüte, Nachbarn) und,
 falls aktiviert, einen Wikipedia-Auszug.
+
+## Sprachen
+
+Der Atlas gibt es auf Deutsch und Englisch. Gewählt wird in dieser Reihenfolge:
+was in der Adresse steht (`?lang=en`), dann die zuletzt getroffene Wahl, dann
+was der Browser meldet, sonst Deutsch. Die Adresse steht vorn, damit ein
+geteilter Verweis in der Sprache aufgeht, in der er geteilt wurde. Umgeschaltet
+wird oben rechts in der Werkzeugsäule; das Kürzel dort zeigt die laufende
+Sprache, weil ein Globus oder eine Fahne das gerade nicht tut – eine Fahne
+steht ohnehin für ein Land, nicht für eine Sprache.
+
+Gewechselt wird mit einem Neuladen. Das klingt grob, ist hier aber das
+Richtige: Der gesamte Zustand – Ausschnitt, Jahr, Kartenmodus, ausgewähltes
+Gemeinwesen – steht in der Adresse, ein Neuladen verliert also nichts. Die
+Alternative hieße, jede Zeichenfläche, jede Tafel und jede Beschriftung zur
+Laufzeit neu aufzubauen, für einen Vorgang, den man einmal pro Besuch auslöst.
+
+### Was übersetzt ist – und was nicht
+
+**Vollständig englisch ist die Oberfläche:** Kartenmodi, Werkzeuge, Ebenenmenü,
+Legende, Zeitleiste samt Herkunftsvermerken, Maßstab, Suche, alle drei
+Textfenster (Über, Datenquellen, Tastaturkürzel), die Meldung an
+Vorlesesoftware – und die Detailtafel mit sämtlichen Überschriften, Kacheln
+und Merkmalen. Dazu die Epochennamen, die 35 Religionsklassen und die
+Ereignis- und Konfliktarten.
+
+**Noch deutsch ist die redaktionelle Wissensbasis:** die 242 Steckbriefe mit
+ihren Herrscherlisten, die 174 Ereignisse, die 88 Kriege und 177 Schlachten –
+zusammen rund 415.000 Zeichen kuratierter Fließtext. Sie fallen bewusst auf
+Deutsch zurück statt zu verschwinden: Ein deutscher Absatz ist mehr als eine
+leere Tafel. Aber die Tafel sagt es dazu (*„available in German only“*), statt
+den Leser über den Sprachwechsel mitten im Text rätseln zu lassen. Der Weg
+dahin ist gebahnt – `data.js` sucht `polities.en.json` und nimmt erst dann die
+deutsche Datei; es fehlt nur der Inhalt.
+
+Für englische Leser schließt die Lücke einstweilen die Wikipedia: Der Abruf
+folgt jetzt der Oberflächensprache statt fest auf `de.wikipedia.org` zu zeigen.
+Zu jedem Gemeinwesen ohne redaktionellen Text leistet die englische Ausgabe
+dasselbe, was die deutsche für deutsche Leser leistet.
+
+### Die Namen kosten fast nichts
+
+Das ist kein Glück, sondern folgt aus der Herkunft der Daten: Der
+Ursprungsdatensatz *historical-basemaps* ist englisch beschriftet. „Achaemenid
+Empire“ steht dort schon so, wie ein englischer Leser es erwartet – die
+deutsche Datei ist die Übersetzung, nicht das Original. Geprüft wurden alle
+925 Namen; keiner trägt eine fremdsprachige Konstruktion, 230 schreibt das
+Deutsche unverändert ab. `names.en.json` enthält deshalb genau **einen**
+Eintrag, alles andere fällt richtig auf den Datensatznamen zurück.
+
+### Drei Fallen, die dabei sichtbar wurden
+
+- **`t` war ein schlechter Name.** Die Übersetzungsfunktion hieß zuerst `t`. In
+  diesem Programm ist `t` seit jeher die Interpolationsvariable – Reglerstellung,
+  Fortschritt einer Schlacht, Mischanteil einer Farbe. Jedes dieser Locals
+  verdeckt ein importiertes `t` lautlos, und zwar bis zur Laufzeit. Sie heißt
+  jetzt `txt`.
+- **Text hat eine Länge, und Länge bricht Anordnungen.** „Boundary confidence“
+  ist acht Zeichen länger als „Grenzgüte“ und hat die Modusleiste bei 1024
+  Punkten aus dem Bild geschoben. Der Fehler steckte schon vorher in der Zeile:
+  Sie maß ihre Breite am Fenster statt an der Kartenfläche. `check:layout`
+  vermisst deshalb jetzt **beide** Sprachen – 84 Kombinationen statt 42.
+- **Ein Prüfbrowser meldet `en-US`.** Nachdem die Spracherkennung stand, lief
+  die ganze Testreihe plötzlich auf Englisch und sieben Prüfungen fielen um –
+  ein Befund über die Prüfumgebung, nicht über den Atlas. Die Reihe legt die
+  Sprache jetzt ausdrücklich fest.
+
+### Geprüft
+
+```bash
+npm run check:sprache   # fehlende und überzählige Schlüssel, abweichende
+                        # Platzhalter, unübersetzt gebliebene Texte, tote
+                        # Namenseinträge – 338/338 Texte, 100 %
+npm run check:layout    # 7 Fenstergrößen × 6 Zustände × 2 Sprachen = 84
+npm test                # darunter: englische Fassung kommt englisch hoch und
+                        # lässt keinen Schlüssel im Bild stehen; der Umschalter
+                        # schaltet und die Wahl überdauert das Neuladen
+```
+
+Dass `txt()` bei einem fehlenden Text den *Schlüssel* durchreicht statt leer zu
+bleiben, ist Absicht: Ein sichtbares `tafel.steckbrief` mitten im Bild führt
+beim Prüfen sofort zur Fundstelle, ein leeres Feld bleibt unbemerkt. Die
+Testreihe sucht ausdrücklich nach solchen Schlüsseln in der Detailtafel.
+
+### Eine dritte Sprache
+
+Sie kostet eine Datei und eine Zeile: `src/i18n/xx.js` nach dem Muster von
+`en.js`, dann den Eintrag in `SPRACHEN` und `WOERTER` in
+`src/modules/sprache.js`. Der Umschalter, die Erkennung, `check:sprache` und
+die Layoutprüfung ziehen von selbst nach. Ob die Sprache eine eigene Wikipedia
+bekommt, entscheidet `wikiSprache()`.
 
 ## Bedienung
 

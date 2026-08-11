@@ -46,6 +46,9 @@ const DARF_GLEICH_SEIN = new Set([
   'grund.relief.name',
   'tafel.fach.religion',
   'zeit.regler.wert',
+  // Diese Namen sind im Englischen identisch – Fachbegriffe, keine Übersetzungslücke.
+  'rel.orth', 'rel.shinto', 'relfam.islamisch',
+  'kf.revolution.kurz',
 ]);
 
 const platzhalter = (text) => [...String(text).matchAll(/\{(\w+)\}/g)].map((m) => m[1]).sort();

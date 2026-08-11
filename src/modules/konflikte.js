@@ -24,15 +24,21 @@
  */
 import L from 'leaflet';
 import { esc } from './format.js';
+import { txt } from './sprache.js';
 
 /** Die fünf Arten. Mehr wären an einer Zeile im Register nicht zu unterscheiden. */
 export const KONFLIKT_ARTEN = {
-  krieg: { kurz: 'Krieg', label: 'Kriege zwischen Staaten' },
-  eroberung: { kurz: 'Eroberung', label: 'Eroberungszüge' },
-  buergerkrieg: { kurz: 'Bürgerkrieg', label: 'Bürgerkriege' },
-  aufstand: { kurz: 'Aufstand', label: 'Aufstände & Erhebungen' },
-  revolution: { kurz: 'Revolution', label: 'Revolutionen' },
+  krieg: { kurz: 'kf.krieg.kurz', label: 'kf.krieg' },
+  eroberung: { kurz: 'kf.eroberung.kurz', label: 'kf.eroberung' },
+  buergerkrieg: { kurz: 'kf.buergerkrieg.kurz', label: 'kf.buergerkrieg' },
+  aufstand: { kurz: 'kf.aufstand.kurz', label: 'kf.aufstand' },
+  revolution: { kurz: 'kf.revolution.kurz', label: 'kf.revolution' },
 };
+
+/** Kurzform einer Konfliktart in der laufenden Sprache. */
+export const konfliktKurz = (id) => txt(KONFLIKT_ARTEN[id]?.kurz ?? id);
+/** Ihre ausgeschriebene Beschriftung. */
+export const konfliktLabel = (id) => txt(KONFLIKT_ARTEN[id]?.label ?? id);
 
 /**
  * Zwei Farben für zwei Lager.

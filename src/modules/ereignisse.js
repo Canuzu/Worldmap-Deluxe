@@ -18,6 +18,7 @@
  */
 import L from 'leaflet';
 import { esc } from './format.js';
+import { txt } from './sprache.js';
 
 /*
  * Die Ereignisse selbst werden nicht mitgebündelt, sondern nachgeladen.
@@ -34,10 +35,12 @@ import { esc } from './format.js';
  * gemeinsam –, mehr wären an einem 15 Bildpunkte großen Zeichen nicht mehr
  * auseinanderzuhalten.
  */
+/* Kurzform und Beschriftung stehen als Schlüssel da, das Sinnbild daneben als
+   Pfad. Aufgelöst wird erst beim Anzeigen – über artKurz() und artLabel(). */
 export const ARTEN = {
   vertrag: {
-    kurz: 'Vertrag',
-    label: 'Verträge & Friedensschlüsse',
+    kurz: 'ev.umbruch.kurz',
+    label: 'ev.umbruch',
     // Siegel an zwei Bändern: das Zeichen für eine besiegelte Abmachung.
     glyph: 'M12 2a5.5 5.5 0 100 11 5.5 5.5 0 000-11zm0 2.2a3.3 3.3 0 110 6.6 3.3 3.3 0 010-6.6zM8 13.6L6.2 22 12 19.1 17.8 22 16 13.6l-1.9 1.2.9 4.1-3-1.5-3 1.5.9-4.1z',
   },
@@ -221,7 +224,7 @@ export class EventLayer {
     return `
       <div class="evpop__kicker">
         <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="${art.glyph}" fill="currentColor"/></svg>
-        ${esc(art.kurz)} · ${esc(jahrText(e))}
+        ${esc(txt(art.kurz))} · ${esc(jahrText(e))}
       </div>
       <h4 class="evpop__title">${esc(e.name)}</h4>
       ${e.wo ? `<p class="evpop__wo">${esc(e.wo)}</p>` : ''}
@@ -317,3 +320,8 @@ export class EventLayer {
     }
   }
 }
+
+/** Kurzform einer Ereignisart in der laufenden Sprache. */
+export const artKurz = (id) => txt(ARTEN[id]?.kurz ?? id);
+/** Ihre ausgeschriebene Beschriftung, wie sie in der Legende steht. */
+export const artLabel = (id) => txt(ARTEN[id]?.label ?? id);

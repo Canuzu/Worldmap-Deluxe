@@ -21,7 +21,7 @@ import { txt } from './sprache.js';
 import { schriftdichte } from './dichte.js';
 import RELIGION from '../data/religion/vokabular.json';
 import {
-  paletteFor, assignColorIndices, PRECISION_COLORS, withAlpha, shade,
+  paletteFor, assignColorIndices, PRECISION_COLORS, withAlpha, shade, religionName,
 } from './palette.js';
 
 const PANES = {
@@ -1666,6 +1666,9 @@ export class AtlasMap {
       for (const g of this._relGebiete) {
         const klasse = RELIGION.klassen[g.k];
         if (!klasse) continue;
+        // Der Name kommt aus dem Wörterbuch, Farbe und Zeitfenster aus dem
+        // Vokabular – auf der Karte steht er in der Sprache der Oberfläche.
+        const relName = religionName(g.k, klasse.name);
         // Kantenlänge des Gebiets in Bildpunkten, grob aus seiner Zellenzahl.
         const seite = Math.sqrt(g.n) * .25 * (256 * 2 ** zoom) / 360;
         if (seite < (eng ? 100 : 72)) continue;
@@ -1673,15 +1676,15 @@ export class AtlasMap {
         if (pt.x < 0 || pt.y < 0 || pt.x > size.x || pt.y > size.y) continue;
         const grad = Math.min(eng ? 11.5 : 14, Math.max(eng ? 8.5 : 9.5, seite / 12));
         rctx.font = `600 ${grad.toFixed(1)}px ${font}`;
-        const breite = breiteVon(rctx, klasse.name);
+        const breite = breiteVon(rctx, relName);
         if (breite > seite * 1.1) continue;
         if (!frei(pt.x - breite / 2 - 5, pt.y - grad, breite + 10, grad * 2)) continue;
         belegt.push([pt.x - breite / 2 - 5, pt.y - grad, pt.x + breite / 2 + 5, pt.y + grad]);
         rctx.strokeStyle = halo;
         rctx.lineWidth = 3.4;
-        rctx.strokeText(klasse.name, pt.x, pt.y);
+        rctx.strokeText(relName, pt.x, pt.y);
         rctx.fillStyle = this.theme === 'night' ? klasse.farbe : (klasse.hell ?? klasse.farbe);
-        rctx.fillText(klasse.name, pt.x, pt.y);
+        rctx.fillText(relName, pt.x, pt.y);
       }
       ctx.textAlign = 'left';
     } else {

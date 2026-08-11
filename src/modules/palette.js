@@ -118,6 +118,24 @@ export function assignColorIndices(keys, adjacency, size) {
   return result;
 }
 
+/**
+ * Name einer Religionsklasse bzw. -familie in der laufenden Sprache.
+ *
+ * Die Namen standen in src/data/religion/vokabular.json neben Farbe und
+ * Zeitfenster. Farbe und Zeitfenster sind sprachunabhängig und bleiben dort;
+ * der Name ist Oberflächentext und gehört ins Wörterbuch – sonst stünde die
+ * Datei je Sprache noch einmal da, obwohl sich 35 von 38 Feldern nicht ändern.
+ */
+export function religionName(schluessel, ersatz) {
+  return txt(`rel.${schluessel}`) === `rel.${schluessel}` ? (ersatz ?? schluessel) : txt(`rel.${schluessel}`);
+}
+
+/** Dasselbe für die sieben Familien (Christentum, Islam, …). */
+export function religionFamilie(schluessel, ersatz) {
+  const k = `relfam.${schluessel}`;
+  return txt(k) === k ? (ersatz ?? schluessel) : txt(k);
+}
+
 /** Direkte, nachbarschaftsfreie Farbe – für Listen, Chips und Legenden. */
 export function stableIndex(key, size) {
   return hash(String(key)) % size;

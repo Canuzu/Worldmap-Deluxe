@@ -20,13 +20,14 @@ import { esc, fold, highlight, areaText, distanceText, num, yearText } from './m
 import {
   txt, sprache, SPRACHEN, spracheEinrichten, spracheWechseln, markupBeschriften,
 } from './modules/sprache.js';
-import { ERA_COLORS } from './modules/palette.js';
+import { ERA_COLORS, religionName } from './modules/palette.js';
 import { BattlePlayer, BATTLES, ladeBattles } from './modules/battles.js';
 import { Beiblatt } from './modules/beiblatt.js';
 import { bodenblatt } from './modules/blatt.js';
-import { EventLayer, ARTEN, zeitfenster } from './modules/ereignisse.js';
+import { EventLayer, ARTEN, artKurz, artLabel, zeitfenster } from './modules/ereignisse.js';
 import {
-  KonfliktLayer, KONFLIKT_ARTEN, SEITENFARBEN, spanneText, fortschritt,
+  KonfliktLayer, KONFLIKT_ARTEN, konfliktKurz, konfliktLabel,
+  SEITENFARBEN, spanneText, fortschritt,
 } from './modules/konflikte.js';
 
 const $ = (id) => document.getElementById(id);
@@ -391,20 +392,20 @@ async function main() {
     const el = $('mapState');
     if (!el || !state.epoch) return;
     const m = state.epoch.meta;
-    const teile = [`Jahr ${state.year}`];
-    if (m.year !== state.year) teile.push(`gezeigt wird der Kartenstand ${m.label}`);
-    if (m.stand) teile.push(`Stand ${m.stand}`);
+    const teile = [txt('sr.jahr', { jahr: state.year })];
+    if (m.year !== state.year) teile.push(txt('sr.kartenstand', { stand: yearText(m.year) }));
+    if (m.stand) teile.push(txt('sr.stand', { stand: m.stand }));
     if (m.title) teile.push(m.title);
-    teile.push(`${state.epoch.polities.length} Gemeinwesen`);
+    teile.push(txt('sr.gemeinwesen', { zahl: state.epoch.polities.length }));
     if (state.selected) {
       const e = state.epoch.byName.get(state.selected);
       const name = atlasData.anzeigeName(state.selected);
       const zusatz = [];
       if (e?.occupiers?.length) {
-        zusatz.push(`besetzt durch ${e.occupiers.map((b) => atlasData.anzeigeName(b.name)).join(' und ')}`);
+        zusatz.push(txt('sr.besetzt', { namen: e.occupiers.map((b) => atlasData.anzeigeName(b.name)).join(', ') }));
       }
       if (e?.area) zusatz.push(areaText(e.area));
-      teile.push(`Gewählt: ${name}${zusatz.length ? `, ${zusatz.join(', ')}` : ''}`);
+      teile.push(txt('sr.gewaehlt', { name, zusatz: zusatz.length ? `, ${zusatz.join(', ')}` : '' }));
     }
     el.textContent = `${teile.join('. ')}.`;
   }
@@ -516,7 +517,7 @@ async function main() {
         .map(([k, flaeche]) => `
           <li>
             <span class="sw" style="background:${esc(atlas.colorOf(`r${k}`))}"></span>
-            <span class="nm">${esc(RELIGION.klassen[k]?.name ?? k)}</span>
+            <span class="nm">${esc(religionName(k, RELIGION.klassen[k]?.name))}</span>
             <span class="va">${Math.round(100 * flaeche / gesamt)} %</span>
           </li>`).join('');
       if (geteilt) {
@@ -551,7 +552,7 @@ async function main() {
     }
     if (besetzer.size) {
       list.insertAdjacentHTML('beforeend', `
-        <li class="legend__note">Schraffiert = besetztes Gebiet, in der Farbe der Besatzungsmacht.</li>
+        <li class="legend__note">${esc(txt('legende.schraffiert'))}</li>
         ${[...besetzer.entries()].sort((a, b) => b[1] - a[1]).map(([name, count]) => `
           <li><button type="button" data-name="${esc(name)}">
             <span class="sw sw--hatch" style="--occ:${esc(atlas.colorOfPolity(name))}"></span>
@@ -577,10 +578,10 @@ async function main() {
 
     const jahr = (e) => (e.jahr < 0 ? `${-e.jahr} v.` : String(e.jahr));
     list.insertAdjacentHTML('beforeend', `
-      <li class="legend__head">Was in dieser Zeit geschah</li>
+      <li class="legend__head">${esc(txt('legende.geschehen'))}</li>
       ${liste.map((e) => {
         const art = ARTEN[e.art] ?? ARTEN.umbruch;
-        return `<li><button type="button" data-ereignis="${esc(e.id)}" title="${esc(art.label)}">
+        return `<li><button type="button" data-ereignis="${esc(e.id)}" title="${esc(artLabel(e.art))}">
           <span class="sw sw--ev"><svg viewBox="0 0 24 24" width="11" height="11" aria-hidden="true"><path d="${art.glyph}" fill="currentColor"/></svg></span>
           <span class="nm">${esc(e.name)}</span>
           <span class="va">${esc(jahr(e))}</span>
@@ -762,7 +763,7 @@ async function main() {
     matches = matches.slice(0, 8);
 
     if (!matches.length) {
-      suggest.innerHTML = '<li class="is-empty" aria-disabled="true"><span class="nm">Nichts gefunden in diesem Zeitschnitt</span></li>';
+      suggest.innerHTML = `<li class="is-empty" aria-disabled="true"><span class="nm">${esc(txt('suche.leerzeit'))}</span></li>`;
       suggest.hidden = false;
       cursor = -1;
       return;
@@ -945,7 +946,7 @@ async function main() {
     const art = KONFLIKT_ARTEN[k.art] ?? KONFLIKT_ARTEN.krieg;
     return `
       <div class="kreg__tafel">
-        <p class="kreg__kicker">${esc(art.kurz)} · ${esc(spanneText(k.von, k.bis))}</p>
+        <p class="kreg__kicker">${esc(konfliktKurz(k.art))} · ${esc(spanneText(k.von, k.bis))}</p>
         <p class="kreg__wo">${esc(k.wo)}</p>
         <ul class="battles__sides">${k.seiten.map((s, i) => `
           <li><span class="sw" style="background:${esc(SEITENFARBEN[i % SEITENFARBEN.length])}"></span>
@@ -1541,7 +1542,7 @@ async function main() {
     app.classList.toggle('is-focus', on);
     const btn = $('btnFocus');
     btn.setAttribute('aria-pressed', String(on));
-    btn.dataset.label = on ? 'Bedienelemente zeigen (F)' : 'Nur die Karte (F)';
+    btn.dataset.label = txt(on ? 'werkzeug.nurkarte.zurueck' : 'werkzeug.nurkarte');
     if (on) { alleZu(); closeSearch(); }
     prefs.focus = on;
     savePrefs();
@@ -1579,7 +1580,7 @@ async function main() {
     const on = istVollbild();
     const btn = $('btnFull');
     btn.setAttribute('aria-pressed', String(on));
-    btn.dataset.label = on ? 'Vollbild verlassen (V)' : 'Vollbild (V)';
+    btn.dataset.label = txt(on ? 'werkzeug.vollbild.zurueck' : 'werkzeug.vollbild');
     $('app').classList.toggle('is-vollbild', on);
     // Die Fensterhöhe ändert sich beim Wechsel; Leaflet muss davon erfahren.
     window.setTimeout(() => atlas.map.invalidateSize(), 120);
@@ -1599,7 +1600,7 @@ async function main() {
     $('timeline').classList.toggle('is-compact', on);
     const btn = $('btnFold');
     btn.setAttribute('aria-expanded', String(!on));
-    btn.dataset.label = on ? 'Zeitleiste ausklappen' : 'Zeitleiste einklappen';
+    btn.dataset.label = txt(on ? 'zeit.ausklappen' : 'zeit.einklappen');
     prefs.compactTimeline = on;
     savePrefs();
     timeline.render();
@@ -1681,7 +1682,7 @@ async function main() {
     if (event.target.closest('[data-close]')) modal.hidden = true;
   });
 
-  $('btnAbout').addEventListener('click', () => openModal('Über diesen Atlas', aboutHtml()));
+  $('btnAbout').addEventListener('click', () => openModal(txt('modal.ueber'), aboutHtml()));
 
   // Herkunftszeichen in der Zeitleiste: erklärt, was an diesem Zeitschnitt
   // nicht aus dem Ursprungsdatensatz stammt.
@@ -1691,7 +1692,7 @@ async function main() {
     const e = state.epoch?.meta;
     if (!e) return;
     const k = e.korrigiert;
-    openModal(`Herkunft · ${e.label}`, `
+    openModal(txt('modal.herkunft', { was: yearText(e.year) }), `
       ${e.eiszeitKueste ? `<p><strong>Für diesen Zeitschnitt gilt eine eigene Küstenlinie.</strong>
         Beim letzten glazialen Maximum lag der Meeresspiegel rund 120 bis 130 m
         tiefer: Doggerland verband England mit dem Festland, Beringia Sibirien
@@ -1720,7 +1721,7 @@ async function main() {
       gegen die Gründungs- und Auflösungsjahre der Wissensbasis; aufgenommen wird
       nur, was fachlich unstrittig ist.</p>`);
   });
-  $('btnCredits').addEventListener('click', () => openModal('Datenquellen & Lizenzen', creditsHtml()));
+  $('btnCredits').addEventListener('click', () => openModal(txt('modal.quellen'), creditsHtml()));
 
   /* ------------------------------------------------------------ Tastatur */
 
@@ -1769,7 +1770,7 @@ async function main() {
       case 'e': togglePopover(layersMenu, $('btnLayers')); break;
       case 'l': togglePopover(legendBox, $('btnLegend')); break;
       case '0': atlas.home(); break;
-      case '?': openModal('Tastaturkürzel', shortcutsHtml()); break;
+      case '?': openModal(txt('modal.tastatur'), shortcutsHtml()); break;
       default: break;
     }
   });
@@ -1816,53 +1817,25 @@ async function main() {
 function aboutHtml() {
   const eras = atlasData.eras.map((e) => `
     <li><span style="color:${ERA_COLORS[e.id]}">■</span> ${esc(e.name)}</li>`).join('');
+  const bedienung = ['regler', 'reise', 'klick', 'nachbarn', 'farbe', 'schlachten', 'nurkarte', 'adresse']
+    .map((k) => `<li>${txt(`ueber.b.${k}`)}</li>`).join('');
   return `
-    <p>Ein interaktiver historischer Weltatlas: ${num(atlasData.epochs.length)} Zeitschnitte
-    von 123.000 v. Chr. bis heute. Ziehen Sie den Regler unten, um die politische
-    Landkarte durch die Jahrtausende wandern zu sehen. Ein Klick auf ein Gebiet
-    öffnet den Steckbrief – mit Herrscher, Hauptstadt, Regierungsform und
-    Einordnung für genau dieses Jahr.</p>
+    <p>${txt('ueber.einleitung', { zahl: num(atlasData.epochs.length) })}</p>
 
-    <h3>So bedienen Sie den Atlas</h3>
-    <ul>
-      <li><strong>Zeitregler:</strong> ziehen, klicken oder mit ← → springen.</li>
-      <li><strong>Zeitreise:</strong> die Wiedergabetaste läuft alle Epochen durch.</li>
-      <li><strong>Gebiet anklicken:</strong> öffnet die Detailtafel.</li>
-      <li><strong>Nachbarn:</strong> in der Tafel anklickbar – so lässt sich eine Region erwandern.</li>
-      <li><strong>Einfärbung:</strong> nach Gemeinwesen, Oberhoheit, Kulturraum oder Grenzgüte.</li>
-      <li><strong>Berühmte Schlachten:</strong> das Fahnensymbol oben links spielt
-      den Verlauf Station für Station ab – die Stellungen verschieben sich mit.</li>
-      <li><strong>Nur die Karte:</strong> <kbd>F</kbd> blendet alle Bedienelemente aus.</li>
-      <li><strong>Adresszeile:</strong> Ausschnitt, Jahr und Auswahl stehen im Link – teilbar.</li>
-    </ul>
+    <h3>${esc(txt('ueber.bedienung'))}</h3>
+    <ul>${bedienung}</ul>
 
-    <h3>Epochen</h3>
+    <h3>${esc(txt('ueber.epochen'))}</h3>
     <ul style="columns:2">${eras}</ul>
 
-    <h3>Wie belastbar sind die Grenzen?</h3>
-    <p>Historische Grenzen sind Rekonstruktionen. Vor dem Westfälischen Frieden
-    war die Vorstellung einer durchgezogenen Staatsgrenze in Europa unüblich;
-    Herrschaft war abgestuft, überlappend und an Orte statt an Flächen gebunden.
-    Der Datensatz verzeichnet deshalb eine Grenzgüte – in der Einfärbung
-    „Grenzgüte“ sichtbar, gestrichelte Linien markieren grobe Annäherungen.</p>
+    <h3>${esc(txt('ueber.grenzen'))}</h3>
+    <p>${txt('ueber.grenzen.text')}</p>
 
-    <h3>Was hier über den Ursprungsdatensatz hinausgeht</h3>
-    <p>Der zugrunde liegende Datensatz springt von 1938 auf 1945 und kennt keine
-    Besatzung, nur völkerrechtliche Zugehörigkeit. Die Kriegsjahre 1916/1918 und
-    1940 bis 1944 sind deshalb eigens angelegt: Besetztes Land behält die Farbe
-    des Landes und trägt darüber eine Schraffur in der Farbe der Besatzungsmacht.
-    Ebenso ergänzt sind belegbare Lücken – etwa die Arabische Halbinsel, die im
-    Jahr 700 vollständig umayyadisch war, im Datensatz aber offen blieb.</p>
+    <h3>${esc(txt('ueber.darueber'))}</h3>
+    <p>${txt('ueber.darueber.text')}</p>
+    <p>${txt('ueber.gegenwart.text')}</p>
 
-    <p>Derselbe Datensatz endet 2010. Die Zeitschnitte <strong>2015</strong> und
-    <strong>2026</strong> führen ihn bis heute fort: Südsudan, Kosovo, die Krim
-    und der Krieg in der Ukraine. Besetztes Gebiet behält dabei den Namen des
-    Landes, dem es völkerrechtlich zugerechnet wird – die von Russland
-    gehaltenen Teile der Ukraine sind hier <em>Ukraine, besetzt durch
-    Russland</em>. Frontverläufe sind Momentaufnahmen zum genannten Stichtag,
-    keine Grenzen.</p>
-
-    <p style="margin-top:1rem"><kbd>?</kbd> zeigt alle Tastaturkürzel.</p>`;
+    <p style="margin-top:1rem">${txt('ueber.tasten')}</p>`;
 }
 
 function creditsHtml() {
@@ -1871,61 +1844,54 @@ function creditsHtml() {
     .map((b) => `<li><strong>${esc(grundName(b.schluessel))}</strong> – ${esc(grundText(b.schluessel))}. ${esc(b.quelle)}</li>`)
     .join('');
   return `
-    <h3>Historische Grenzen</h3>
-    <p><strong>${esc(src.name ?? 'Historical Basemaps')}</strong> von ${esc(src.author ?? 'André Ourednik u. a.')} –
-    ${num(atlasData.epochs.length)} Zeitschnitte, lizenziert unter ${esc(src.license ?? 'GPL-3.0')}.<br>
+    <h3>${esc(txt('quellen.grenzen'))}</h3>
+    <p>${txt('quellen.grenzen.text', {
+      name: esc(src.name ?? 'Historical Basemaps'),
+      autor: esc(src.author ?? 'André Ourednik u. a.'),
+      zahl: num(atlasData.epochs.length),
+      lizenz: esc(src.license ?? 'GPL-3.0'),
+    })}<br>
     <a href="${esc(src.url ?? '')}" target="_blank" rel="noopener">github.com/aourednik/historical-basemaps</a></p>
 
-    <h3>Küstenlinien, Seen und Flüsse</h3>
-    <p><strong>Natural Earth</strong> (1:50 Mio.) – gemeinfrei.<br>
+    <h3>${esc(txt('quellen.kuesten'))}</h3>
+    <p>${txt('quellen.kuesten.text')}<br>
     <a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener">naturalearthdata.com</a></p>
 
-    <h3>Kurztexte und Bilder</h3>
-    <p>Die redaktionellen Steckbriefe wurden für diesen Atlas verfasst.
-    Ergänzende Auszüge und Bilder stammen aus der deutschsprachigen
-    <strong>Wikipedia</strong> (CC BY-SA 4.0) und werden erst beim Öffnen einer
-    Tafel geladen. Diese Anreicherung lässt sich unter „Ebenen“ abschalten.</p>
+    <h3>${esc(txt('quellen.texte'))}</h3>
+    <p>${txt('quellen.texte.text', { wiki: esc(txt('quellen.wikisprache')) })}</p>
 
-    <h3>Kartengrundlage</h3>
-    <p>Unter den historischen Grenzen liegt wahlweise eine Geländekarte –
-    bewusst nur Relief, ohne heutige Straßen, Städte oder Staatsgrenzen: Auf
-    einer Karte des Jahres 700 wäre eine Autobahn ein Fehler, ein Gebirge
-    nicht.</p>
+    <h3>${esc(txt('quellen.grundlage'))}</h3>
+    <p>${txt('quellen.grundlage.text')}</p>
     <ul>${grundlagen}</ul>
-    <p>Über „Ebenen → Kartengrundlage → Ohne“ lässt sie sich abschalten. Dann
-    zeichnet der Atlas Küsten, Gewässer und Grenzen wieder vollständig selbst
-    und läuft auch ohne Netzverbindung.</p>
+    <p>${txt('quellen.grundlage.aus')}</p>
 
-    <h3>Kartentechnik</h3>
-    <p>Leaflet zur Navigation, TopoJSON für die Geometrien. Küstenlinien,
-    Grenzen und Beschriftungen zeichnet der Atlas selbst als Vektoren; nur die
-    Geländeschummerung kommt als Kacheln von außen.</p>
+    <h3>${esc(txt('quellen.technik'))}</h3>
+    <p>${txt('quellen.technik.text')}</p>
 
-    <h3>Hinweis</h3>
-    <p>Der Datensatz ist ausdrücklich als „work in progress“ gekennzeichnet.
-    Für wissenschaftliche Arbeiten sollten die Grenzverläufe mit Fachliteratur
-    abgeglichen werden.</p>`;
+    <h3>${esc(txt('quellen.hinweis'))}</h3>
+    <p>${txt('quellen.hinweis.text')}</p>`;
 }
 
 function shortcutsHtml() {
   const rows = [
-    ['← →', 'ein Jahr zurück / vor'],
-    ['⇧ + ← →', 'zum nächsten Kartenstand springen'],
-    ['Bild ↑ ↓', 'zehn Jahre'],
-    ['Leertaste', 'Zeitreise starten und anhalten'],
-    ['/', 'Suche öffnen'],
-    ['S', 'Kriege &amp; Schlachten'],
-    ['F', 'Nur die Karte – alles andere ausblenden'],
-    ['T', 'Nachtatlas ⇄ Pergament'],
-    ['E', 'Ebenen und Einfärbung'],
-    ['L', 'Legende'],
-    ['0', 'Ansicht zurücksetzen'],
-    ['V', 'Vollbild ein und aus'],
-    ['K', 'Kriege &amp; Schlachten'],
-    ['Esc', 'Tafel, Fenster oder Vollbild schließen'],
-    ['?', 'diese Übersicht'],
+    ['← →', 'taste.jahr'],
+    ['⇧ + ← →', 'taste.stand'],
+    ['Bild ↑ ↓', 'taste.zehn'],
+    ['Leertaste', 'taste.reise'],
+    ['/', 'taste.suche'],
+    ['S', 'taste.schlachten'],
+    ['F', 'taste.nurkarte'],
+    ['T', 'taste.farbwelt'],
+    ['E', 'taste.ebenen'],
+    ['L', 'taste.legende'],
+    ['0', 'taste.zurueck'],
+    ['V', 'taste.vollbild'],
+    ['K', 'taste.schlachten'],
+    ['Esc', 'taste.esc'],
+    ['?', 'modal.uebersicht'],
   ];
-  return `<div class="keys">${rows.map(([k, v]) => `<kbd>${esc(k)}</kbd><span>${esc(v)}</span>`).join('')}</div>`;
+  return `<div class="keys">${rows
+    .map(([k, v]) => `<kbd>${esc(k)}</kbd><span>${esc(txt(v))}</span>`).join('')}</div>`;
 }
 
 main();

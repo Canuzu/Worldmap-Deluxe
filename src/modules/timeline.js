@@ -169,7 +169,7 @@ export class Timeline {
     this._tickEls = this.epochs.map((epoch, i) => {
       const el = document.createElement('i');
       el.style.left = `${(this.fraction(i) * 100).toFixed(4)}%`;
-      el.title = epoch.label;
+      el.title = yearText(epoch.year);
       // „runde“ Jahre bekommen einen längeren Strich
       if (epoch.year % 500 === 0 || [1492, 1815, 1914, 1945].includes(epoch.year)) {
         el.classList.add('is-major');
