@@ -1,0 +1,214 @@
+[
+ {
+  "id": "marathon",
+  "name": "Schlacht bei Marathon",
+  "ort": "Ebene von Marathon, Attika",
+  "datum": "12. September 490 v. Chr.",
+  "jahr": -500,
+  "mitte": [
+   24.018,
+   38.15
+  ],
+  "zoom": 12.9,
+  "grund": "relief",
+  "worum": "Der erste Perserzug gegen Griechenland. Ein athenisches Bürgerheer greift ein weit überlegenes Landungsheer im Sturmschritt an, hält die Mitte bewusst dünn und umfasst beide Flügel – die erste Umfassungsschlacht, von der wir eine Beschreibung haben.",
+  "stationen": 12
+ },
+ {
+  "id": "gaugamela",
+  "name": "Schlacht von Gaugamela",
+  "ort": "Nordirak, östlich von Ninive",
+  "datum": "1. Oktober 331 v. Chr.",
+  "jahr": -323,
+  "mitte": [
+   43.63,
+   36.4
+  ],
+  "zoom": 11.4,
+  "grund": "relief",
+  "worum": "Die letzte Feldschlacht des Perserreichs. Dareios hat den Boden selbst gewählt und einebnen lassen, damit seine Sichelwagen und seine Reiterei wirken können. Alexander macht daraus eine Falle: Er zieht die persische Linie durch einen Schrägmarsch auseinander und stößt in die Lücke, die dabei entsteht.",
+  "stationen": 12
+ },
+ {
+  "id": "cannae",
+  "name": "Schlacht von Cannae",
+  "ort": "Apulien, am Aufidus",
+  "datum": "2. August 216 v. Chr.",
+  "jahr": -200,
+  "mitte": [
+   16.138,
+   41.3
+  ],
+  "zoom": 12.6,
+  "grund": "relief",
+  "worum": "Hannibals Meisterstück und die schwerste Niederlage der römischen Geschichte. Eine absichtlich nachgebende Mitte zieht das doppelt so starke römische Heer in einen Sack, den Reiterei und afrikanische Veteranen von allen Seiten schließen. Das Wort „Cannae“ ist seither in jeder Generalstabsakademie der Name für die vollkommene Vernichtungsschlacht.",
+  "stationen": 11
+ },
+ {
+  "id": "hastings",
+  "name": "Schlacht bei Hastings",
+  "ort": "Senlac Hill, Sussex",
+  "datum": "14. Oktober 1066",
+  "jahr": 1100,
+  "mitte": [
+   0.4873,
+   50.9128
+  ],
+  "zoom": 14.2,
+  "grund": "relief",
+  "worum": "Ein Tag entscheidet, wer England regiert. Harolds Schildwall auf dem Höhenrücken ist eine Mauer, gegen die weder Pfeile noch Reiterei ankommen – bis Wilhelm sie nicht mehr angreift, sondern sie dazu bringt, sich selbst zu öffnen.",
+  "stationen": 13
+ },
+ {
+  "id": "azincourt",
+  "name": "Schlacht von Azincourt",
+  "ort": "Artois, zwischen Azincourt und Tramecourt",
+  "datum": "25. Oktober 1415",
+  "jahr": 1400,
+  "mitte": [
+   2.137,
+   50.463
+  ],
+  "zoom": 13.9,
+  "grund": "relief",
+  "worum": "Ein erschöpftes, von der Ruhr geschwächtes englisches Heer schlägt eine dreifache Übermacht des französischen Adels. Entscheidend ist nicht der Langbogen allein, sondern das Gelände: ein frisch gepflügter, vom Regen grundloser Acker, der sich zwischen zwei Wäldern auf tausend Meter verengt.",
+  "stationen": 12
+ },
+ {
+  "id": "konstantinopel",
+  "name": "Fall von Konstantinopel",
+  "ort": "Theodosianische Mauer und Goldenes Horn",
+  "datum": "6. April bis 29. Mai 1453",
+  "jahr": 1400,
+  "mitte": [
+   28.945,
+   41.012
+  ],
+  "zoom": 12.8,
+  "grund": "relief",
+  "worum": "Das Ende des Oströmischen Reiches. Eine Mauer, die tausend Jahre gehalten hat, trifft zum ersten Mal auf Geschütze, die sie brechen können – und auf einen Gegner, der seine Flotte über einen Hügel trägt, um die Hafensperre zu umgehen.",
+  "stationen": 13
+ },
+ {
+  "id": "lepanto",
+  "name": "Seeschlacht von Lepanto",
+  "ort": "Golf von Patras, vor den Echinaden",
+  "datum": "7. Oktober 1571",
+  "jahr": 1600,
+  "mitte": [
+   21.19,
+   38.22
+  ],
+  "zoom": 10.6,
+  "grund": "blatt",
+  "see": true,
+  "worum": "Die letzte große Schlacht von Ruderflotten – und die letzte, in der eine Seeschlacht wie eine Landschlacht geführt wird: Man fährt aneinander, entert und kämpft Mann gegen Mann. In vier Stunden wird die osmanische Flotte fast vollständig vernichtet.",
+  "stationen": 12
+ },
+ {
+  "id": "sekigahara",
+  "name": "Sekigahara",
+  "ort": "Sekigahara, Provinz Mino",
+  "datum": "21. Oktober 1600",
+  "jahr": 1600,
+  "mitte": [
+   136.468,
+   35.364
+  ],
+  "zoom": 12.9,
+  "grund": "relief",
+  "worum": "Die Entscheidung über die Nachfolge Hideyoshis. Achtzigtausend gegen fünfundsiebzigtausend in einem Talkessel von drei Kilometern – und ein Drittel der Westarmee sitzt auf den Bergen und greift nie ein. Am Mittag wechselt einer dieser Berge die Seite.",
+  "stationen": 11
+ },
+ {
+  "id": "trafalgar",
+  "name": "Seeschlacht von Trafalgar",
+  "ort": "Atlantik vor Kap Trafalgar",
+  "datum": "21. Oktober 1805",
+  "jahr": 1815,
+  "mitte": [
+   -6.3,
+   36.29
+  ],
+  "zoom": 10.9,
+  "grund": "blatt",
+  "see": true,
+  "worum": "Nelson bricht mit der Regel, dass Linie gegen Linie fährt. Er läuft in zwei Kolonnen quer auf die feindliche Linie zu, zerschneidet sie in drei Teile und macht aus der Schlacht ein Gemenge, in dem die bessere Seemannschaft entscheidet. Der Preis: Beim Anlauf kann er nicht antworten.",
+  "stationen": 12
+ },
+ {
+  "id": "waterloo",
+  "name": "Schlacht bei Waterloo",
+  "ort": "Mont-Saint-Jean, südlich von Brüssel",
+  "datum": "18. Juni 1815",
+  "jahr": 1815,
+  "mitte": [
+   4.412,
+   50.676
+  ],
+  "zoom": 13.1,
+  "grund": "relief",
+  "worum": "Napoleons letzte Schlacht. Er muss Wellington schlagen, bevor Blüchers Preußen eintreffen – und verliert das Rennen um wenige Stunden. Entscheidend sind drei Dinge: ein Höhenzug, hinter dem Wellington seine Truppen verbirgt; drei Gehöfte, die als Wellenbrecher vor seiner Linie liegen; und ein Regen, der den Boden so aufweicht, dass Napoleon den Angriff um fünf Stunden verschiebt.",
+  "stationen": 15
+ },
+ {
+  "id": "gettysburg",
+  "name": "Gettysburg",
+  "ort": "Gettysburg, Pennsylvania",
+  "datum": "1.–3. Juli 1863",
+  "jahr": 1860,
+  "mitte": [
+   -77.236,
+   39.809
+  ],
+  "zoom": 12.6,
+  "grund": "relief",
+  "worum": "Lees zweiter Vorstoß in den Norden. Drei Tage um einen Höhenrücken, der die Form eines Angelhakens hat – und weil die Union innen steht, kann sie Reserven schneller verschieben, als der Angreifer außen herum marschieren kann. Am dritten Tag setzt Lee alles auf einen Stoß über anderthalb Kilometer offenes Feld.",
+  "stationen": 13
+ },
+ {
+  "id": "tannenberg",
+  "name": "Schlacht bei Tannenberg",
+  "ort": "Ostpreußen, südlich von Allenstein",
+  "datum": "23. bis 30. August 1914",
+  "jahr": 1914,
+  "mitte": [
+   20.35,
+   53.45
+  ],
+  "zoom": 8.8,
+  "grund": "relief",
+  "worum": "Zwei russische Armeen marschieren getrennt in Ostpreußen ein, durch die Masurischen Seen voneinander getrennt, und funken ihre Befehle unverschlüsselt. Die deutsche 8. Armee lässt vor der einen eine Kavalleriedivision stehen, wirft alles andere per Bahn gegen die andere – und schließt sie in vier Tagen ein.",
+  "stationen": 13
+ },
+ {
+  "id": "stalingrad",
+  "name": "Schlacht von Stalingrad",
+  "ort": "Wolgabogen",
+  "datum": "23. August 1942 bis 2. Februar 1943",
+  "jahr": 1942,
+  "mitte": [
+   43.6,
+   48.6
+  ],
+  "zoom": 7.6,
+  "grund": "blatt",
+  "worum": "Die Wende des Zweiten Weltkriegs. Die 6. Armee kämpft sich Haus um Haus zur Wolga vor – und wird dann von einer Zangenoperation eingeschlossen, die nicht die Stadt angreift, sondern die schwach besetzten Flanken der Verbündeten hundert Kilometer davon entfernt.",
+  "stationen": 13
+ },
+ {
+  "id": "normandie",
+  "name": "Landung in der Normandie",
+  "ort": "Küste der Normandie, Calvados und Cotentin",
+  "datum": "6. Juni 1944",
+  "jahr": 1944,
+  "mitte": [
+   -0.62,
+   49.4
+  ],
+  "zoom": 9.1,
+  "grund": "blatt",
+  "worum": "Die größte Landungsunternehmung der Geschichte. In einer Nacht und einem Tag setzen 156.000 Mann an fünf Abschnitten über – gegen einen Gegner, der die Landung erwartet, aber am falschen Ort, und dessen Panzerreserven ohne Hitlers persönlichen Befehl nicht anrollen dürfen.",
+  "stationen": 12
+ }
+]

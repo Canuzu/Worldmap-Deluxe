@@ -1,0 +1,2964 @@
+{
+ "id": "gettysburg",
+ "name": "Gettysburg",
+ "ort": "Gettysburg, Pennsylvania",
+ "datum": "1.–3. Juli 1863",
+ "jahr": 1860,
+ "mitte": [
+  -77.236,
+  39.809
+ ],
+ "zoom": 12.6,
+ "grund": "relief",
+ "worum": "Lees zweiter Vorstoß in den Norden. Drei Tage um einen Höhenrücken, der die Form eines Angelhakens hat – und weil die Union innen steht, kann sie Reserven schneller verschieben, als der Angreifer außen herum marschieren kann. Am dritten Tag setzt Lee alles auf einen Stoß über anderthalb Kilometer offenes Feld.",
+ "parteien": [
+  {
+   "id": "union",
+   "name": "Unionsarmee",
+   "farbe": "#6f9fe0",
+   "fuehrung": "George G. Meade",
+   "staerke": "93.000 Mann, 372 Geschütze",
+   "zahl": 93000
+  },
+  {
+   "id": "csa",
+   "name": "Nordvirginia-Armee",
+   "farbe": "#d4737c",
+   "fuehrung": "Robert E. Lee",
+   "staerke": "71.000 Mann, 283 Geschütze",
+   "zahl": 71000
+  }
+ ],
+ "gelaende": [
+  {
+   "art": "hoehe",
+   "name": "Cemetery Ridge",
+   "punkte": [
+    [
+     -77.22532,
+     39.82714
+    ],
+    [
+     -77.22723,
+     39.83062
+    ],
+    [
+     -77.23265,
+     39.8312
+    ],
+    [
+     -77.23574,
+     39.82827
+    ],
+    [
+     -77.24368,
+     39.78486
+    ],
+    [
+     -77.24177,
+     39.78138
+    ],
+    [
+     -77.23635,
+     39.7808
+    ],
+    [
+     -77.23326,
+     39.78373
+    ]
+   ]
+  },
+  {
+   "art": "hoehe",
+   "name": "Seminary Ridge",
+   "punkte": [
+    [
+     -77.24217,
+     39.8387
+    ],
+    [
+     -77.24408,
+     39.84217
+    ],
+    [
+     -77.2495,
+     39.84276
+    ],
+    [
+     -77.25259,
+     39.83983
+    ],
+    [
+     -77.26183,
+     39.7893
+    ],
+    [
+     -77.25992,
+     39.78583
+    ],
+    [
+     -77.2545,
+     39.78524
+    ],
+    [
+     -77.25141,
+     39.78817
+    ]
+   ]
+  },
+  {
+   "art": "hoehe",
+   "name": "Culp’s Hill",
+   "punkte": [
+    [
+     -77.2186,
+     39.82773
+    ],
+    [
+     -77.21615,
+     39.8232
+    ],
+    [
+     -77.21507,
+     39.81879
+    ],
+    [
+     -77.21745,
+     39.81355
+    ],
+    [
+     -77.22311,
+     39.81333
+    ],
+    [
+     -77.22852,
+     39.81306
+    ],
+    [
+     -77.23074,
+     39.81758
+    ],
+    [
+     -77.22794,
+     39.8222
+    ],
+    [
+     -77.22478,
+     39.82718
+    ]
+   ]
+  },
+  {
+   "art": "hoehe",
+   "name": "Little Round Top",
+   "punkte": [
+    [
+     -77.23566,
+     39.79788
+    ],
+    [
+     -77.23285,
+     39.79462
+    ],
+    [
+     -77.23105,
+     39.79122
+    ],
+    [
+     -77.23151,
+     39.78654
+    ],
+    [
+     -77.23549,
+     39.78537
+    ],
+    [
+     -77.23927,
+     39.7842
+    ],
+    [
+     -77.24191,
+     39.78749
+    ],
+    [
+     -77.241,
+     39.79175
+    ],
+    [
+     -77.23993,
+     39.79635
+    ]
+   ]
+  },
+  {
+   "art": "hoehe",
+   "name": "Big Round Top",
+   "punkte": [
+    [
+     -77.23658,
+     39.79155
+    ],
+    [
+     -77.23266,
+     39.78794
+    ],
+    [
+     -77.2301,
+     39.78419
+    ],
+    [
+     -77.23058,
+     39.77908
+    ],
+    [
+     -77.23596,
+     39.77788
+    ],
+    [
+     -77.24107,
+     39.77667
+    ],
+    [
+     -77.24477,
+     39.78031
+    ],
+    [
+     -77.24367,
+     39.78494
+    ],
+    [
+     -77.24234,
+     39.78996
+    ]
+   ]
+  },
+  {
+   "art": "stadt",
+   "name": "Gettysburg",
+   "punkte": [
+    [
+     -77.2311,
+     39.83809
+    ],
+    [
+     -77.22649,
+     39.83512
+    ],
+    [
+     -77.22332,
+     39.83195
+    ],
+    [
+     -77.2232,
+     39.8274
+    ],
+    [
+     -77.22878,
+     39.82601
+    ],
+    [
+     -77.23407,
+     39.82464
+    ],
+    [
+     -77.23845,
+     39.82764
+    ],
+    [
+     -77.23783,
+     39.83181
+    ],
+    [
+     -77.23703,
+     39.83633
+    ]
+   ]
+  },
+  {
+   "art": "wald",
+   "name": "Rose Woods",
+   "punkte": [
+    [
+     -77.24244,
+     39.79907
+    ],
+    [
+     -77.24108,
+     39.79513
+    ],
+    [
+     -77.24086,
+     39.79146
+    ],
+    [
+     -77.24367,
+     39.78758
+    ],
+    [
+     -77.24847,
+     39.78815
+    ],
+    [
+     -77.25306,
+     39.78864
+    ],
+    [
+     -77.25423,
+     39.79254
+    ],
+    [
+     -77.25116,
+     39.79587
+    ],
+    [
+     -77.24773,
+     39.79943
+    ]
+   ]
+  },
+  {
+   "art": "weg",
+   "name": "Emmitsburg Road",
+   "punkte": [
+    [
+     -77.227,
+     39.836
+    ],
+    [
+     -77.242,
+     39.809
+    ],
+    [
+     -77.253,
+     39.793
+    ]
+   ]
+  },
+  {
+   "art": "weg",
+   "name": "Chambersburg Pike",
+   "punkte": [
+    [
+     -77.286,
+     39.842
+    ],
+    [
+     -77.25,
+     39.835
+    ],
+    [
+     -77.232,
+     39.832
+    ]
+   ]
+  }
+ ],
+ "stationen": [
+  {
+   "zeit": "1. Juli, 8 Uhr",
+   "t": 0,
+   "kurz": "Eine Begegnung, die keiner geplant hat.",
+   "text": "Lee steht mit drei Korps verstreut in Pennsylvania und weiß nicht, wo die Unionsarmee ist – seine Reiterei unter Stuart reitet seit Tagen einen weiten Bogen und meldet nichts. Westlich von Gettysburg stößt eine Division auf abgesessene Unionsreiter unter Buford, die den Höhenrücken am Chambersburg Pike halten. Buford weiß, was hinter ihm liegt: die Höhen südlich der Stadt. Er kämpft um Zeit, nicht um Boden.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     -77.8,
+     39.5
+    ],
+    [
+     -76.9,
+     40.1
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "anm-csa",
+     "partei": "csa",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -77.62,
+       39.94
+      ],
+      [
+       -77.44,
+       39.9
+      ],
+      [
+       -77.3,
+       39.85
+      ]
+     ],
+     "name": "Lee aus dem Cumberland Valley"
+    },
+    {
+     "id": "anm-union",
+     "partei": "union",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -77.15,
+       39.62
+      ],
+      [
+       -77.2,
+       39.72
+      ],
+      [
+       -77.23,
+       39.8
+      ]
+     ],
+     "name": "Meade aus Maryland"
+    }
+   ]
+  },
+  {
+   "zeit": "1. Juli, 10 Uhr",
+   "t": 120,
+   "kurz": "Buford hält den Höhenrücken westlich der Stadt.",
+   "text": "Zwei Brigaden Reiterei, abgesessen, mit Hinterladern gegen eine anrückende Division: Buford hält den McPherson Ridge zweieinhalb Stunden. Als das I. Korps eintrifft, fällt dessen Befehlshaber Reynolds binnen Minuten. Die Union hat den Kampf angenommen, wo sie ihn nicht gesucht hat – aber am richtigen Ort.",
+   "stellungen": [
+    {
+     "id": "u-1korps",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.26963,
+       39.82943
+      ],
+      [
+       -77.26843,
+       39.82755
+      ],
+      [
+       -77.2654,
+       39.82734
+      ],
+      [
+       -77.2638,
+       39.82904
+      ],
+      [
+       -77.26237,
+       39.84157
+      ],
+      [
+       -77.26357,
+       39.84345
+      ],
+      [
+       -77.2666,
+       39.84366
+      ],
+      [
+       -77.2682,
+       39.84196
+      ]
+     ],
+     "name": "I. Korps · Reynolds",
+     "staerke": "9.000"
+    },
+    {
+     "id": "u-buford",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       -77.27688,
+       39.83282
+      ],
+      [
+       -77.27593,
+       39.83132
+      ],
+      [
+       -77.2735,
+       39.83115
+      ],
+      [
+       -77.27222,
+       39.83251
+      ],
+      [
+       -77.27112,
+       39.84218
+      ],
+      [
+       -77.27207,
+       39.84368
+      ],
+      [
+       -77.2745,
+       39.84385
+      ],
+      [
+       -77.27578,
+       39.84249
+      ]
+     ],
+     "name": "Buford",
+     "staerke": "2.700"
+    },
+    {
+     "id": "c-heth",
+     "partei": "csa",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.28573,
+       39.84507
+      ],
+      [
+       -77.28716,
+       39.84733
+      ],
+      [
+       -77.2908,
+       39.84757
+      ],
+      [
+       -77.29272,
+       39.84554
+      ],
+      [
+       -77.29427,
+       39.83193
+      ],
+      [
+       -77.29284,
+       39.82967
+      ],
+      [
+       -77.2892,
+       39.82943
+      ],
+      [
+       -77.28728,
+       39.83146
+      ]
+     ],
+     "name": "Heth",
+     "staerke": "7.500"
+    },
+    {
+     "id": "c-stoss1",
+     "partei": "csa",
+     "form": "pfeil",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.296,
+       39.838
+      ],
+      [
+       -77.276,
+       39.837
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "zeit": "1. Juli, 14 Uhr",
+   "t": 360,
+   "kurz": "Ewell trifft im Norden ein und rollt die Flanke auf.",
+   "text": "Das XI. Korps stellt sich nördlich der Stadt in die offene Ebene – ohne Anlehnung an beiden Flügeln. Genau dort trifft Ewell aus Norden ein. Die Unionslinie wird von der Seite gefasst und bricht; was übrig bleibt, flutet durch die Straßen von Gettysburg nach Süden.",
+   "stellungen": [
+    {
+     "id": "u-1korps",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.25963,
+       39.82793
+      ],
+      [
+       -77.25843,
+       39.82605
+      ],
+      [
+       -77.2554,
+       39.82584
+      ],
+      [
+       -77.2538,
+       39.82754
+      ],
+      [
+       -77.25237,
+       39.84007
+      ],
+      [
+       -77.25357,
+       39.84195
+      ],
+      [
+       -77.2566,
+       39.84216
+      ],
+      [
+       -77.2582,
+       39.84046
+      ]
+     ],
+     "name": "I. Korps",
+     "staerke": "8.000"
+    },
+    {
+     "id": "u-11korps",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.24388,
+       39.84281
+      ],
+      [
+       -77.24594,
+       39.84143
+      ],
+      [
+       -77.24541,
+       39.83913
+      ],
+      [
+       -77.24286,
+       39.83838
+      ],
+      [
+       -77.22212,
+       39.84119
+      ],
+      [
+       -77.22006,
+       39.84257
+      ],
+      [
+       -77.22059,
+       39.84487
+      ],
+      [
+       -77.22314,
+       39.84562
+      ]
+     ],
+     "name": "XI. Korps · Howard",
+     "staerke": "9.000"
+    },
+    {
+     "id": "c-heth",
+     "partei": "csa",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.26698,
+       39.84396
+      ],
+      [
+       -77.26866,
+       39.8466
+      ],
+      [
+       -77.2729,
+       39.84688
+      ],
+      [
+       -77.27514,
+       39.84451
+      ],
+      [
+       -77.27702,
+       39.82804
+      ],
+      [
+       -77.27534,
+       39.8254
+      ],
+      [
+       -77.2711,
+       39.82512
+      ],
+      [
+       -77.26886,
+       39.82749
+      ]
+     ],
+     "name": "Hill",
+     "staerke": "12.000"
+    },
+    {
+     "id": "c-ewell",
+     "partei": "csa",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.21542,
+       39.85482
+      ],
+      [
+       -77.21233,
+       39.85655
+      ],
+      [
+       -77.2127,
+       39.8598
+      ],
+      [
+       -77.21613,
+       39.86109
+      ],
+      [
+       -77.24458,
+       39.85918
+      ],
+      [
+       -77.24767,
+       39.85745
+      ],
+      [
+       -77.2473,
+       39.8542
+      ],
+      [
+       -77.24387,
+       39.85291
+      ]
+     ],
+     "name": "Ewell",
+     "staerke": "14.000"
+    },
+    {
+     "id": "c-stoss2",
+     "partei": "csa",
+     "form": "pfeil",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.231,
+       39.854
+      ],
+      [
+       -77.232,
+       39.84
+      ],
+      [
+       -77.233,
+       39.833
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "zeit": "1. Juli, 17 Uhr",
+   "t": 540,
+   "kurz": "Der Befehl, der die Schlacht offenlässt.",
+   "text": "Die Union sammelt sich auf dem Cemetery Hill südlich der Stadt – erschöpft, aber auf einer Höhe. Lee lässt Ewell wissen, er solle den Hügel nehmen, „wenn es praktikabel erscheint“. Ewell hält es nicht für praktikabel. Über keinen anderen Satz dieses Krieges ist mehr geschrieben worden: Am Abend des 1. Juli ist der Hügel noch schwach besetzt, am Morgen des 2. Juli ist er eine Festung.",
+   "stellungen": [
+    {
+     "id": "u-cemetery",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.23079,
+       39.82893
+      ],
+      [
+       -77.22752,
+       39.82533
+      ],
+      [
+       -77.22555,
+       39.82168
+      ],
+      [
+       -77.22653,
+       39.81696
+      ],
+      [
+       -77.23166,
+       39.81618
+      ],
+      [
+       -77.23655,
+       39.81537
+      ],
+      [
+       -77.2396,
+       39.81899
+      ],
+      [
+       -77.23808,
+       39.82323
+      ],
+      [
+       -77.23632,
+       39.82781
+      ]
+     ],
+     "name": "Reste des I. und XI. Korps",
+     "staerke": "12.000",
+     "geschlagen": true
+    },
+    {
+     "id": "u-culps",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.2225,
+       39.82399
+      ],
+      [
+       -77.21962,
+       39.82214
+      ],
+      [
+       -77.21764,
+       39.82016
+      ],
+      [
+       -77.21757,
+       39.81731
+      ],
+      [
+       -77.22105,
+       39.81645
+      ],
+      [
+       -77.22436,
+       39.81558
+      ],
+      [
+       -77.22709,
+       39.81746
+      ],
+      [
+       -77.22671,
+       39.82007
+      ],
+      [
+       -77.22621,
+       39.82289
+      ]
+     ],
+     "name": "Culp’s Hill",
+     "staerke": "3.000"
+    },
+    {
+     "id": "c-ewell",
+     "partei": "csa",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.21754,
+       39.83041
+      ],
+      [
+       -77.21379,
+       39.83213
+      ],
+      [
+       -77.21379,
+       39.83587
+      ],
+      [
+       -77.21754,
+       39.83759
+      ],
+      [
+       -77.24046,
+       39.83759
+      ],
+      [
+       -77.24421,
+       39.83587
+      ],
+      [
+       -77.24421,
+       39.83213
+      ],
+      [
+       -77.24046,
+       39.83041
+      ]
+     ],
+     "name": "Ewell vor der Stadt",
+     "staerke": "14.000"
+    },
+    {
+     "id": "c-hill",
+     "partei": "csa",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.2454,
+       39.83305
+      ],
+      [
+       -77.24696,
+       39.83618
+      ],
+      [
+       -77.25176,
+       39.83683
+      ],
+      [
+       -77.25462,
+       39.83429
+      ],
+      [
+       -77.2586,
+       39.81695
+      ],
+      [
+       -77.25704,
+       39.81382
+      ],
+      [
+       -77.25224,
+       39.81317
+      ],
+      [
+       -77.24938,
+       39.81571
+      ]
+     ],
+     "name": "Hill auf dem Seminary Ridge",
+     "staerke": "15.000"
+    },
+    {
+     "id": "c-nichtstoss",
+     "partei": "csa",
+     "form": "pfeil",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.2295,
+       39.83
+      ],
+      [
+       -77.232,
+       39.824
+      ]
+     ],
+     "name": "Der Stoß, der ausblieb",
+     "finte": true
+    }
+   ]
+  },
+  {
+   "zeit": "2. Juli, 4 Uhr",
+   "t": 660,
+   "kurz": "Der Angelhaken steht.",
+   "text": "Über Nacht marschiert die ganze Unionsarmee heran und bezieht die Höhen: Culp’s Hill als Widerhaken, Cemetery Hill als Biegung, von dort der Rücken nach Süden. Die Linie ist gut fünf Kilometer lang, aber innen herum sind es zwei – Meade kann eine Division in einer Stunde von einem Ende zum anderen schieben. Lees Linie ist doppelt so lang und außen herum.",
+   "stellungen": [
+    {
+     "id": "u-culps",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.21912,
+       39.82663
+      ],
+      [
+       -77.21699,
+       39.82271
+      ],
+      [
+       -77.21606,
+       39.81889
+      ],
+      [
+       -77.21812,
+       39.81434
+      ],
+      [
+       -77.22303,
+       39.81416
+      ],
+      [
+       -77.22771,
+       39.81392
+      ],
+      [
+       -77.22964,
+       39.81784
+      ],
+      [
+       -77.22721,
+       39.82184
+      ],
+      [
+       -77.22447,
+       39.82615
+      ]
+     ],
+     "name": "XII. Korps · Culp’s Hill",
+     "staerke": "9.000"
+    },
+    {
+     "id": "u-cemetery",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.23092,
+       39.8284
+      ],
+      [
+       -77.22788,
+       39.82505
+      ],
+      [
+       -77.22604,
+       39.82167
+      ],
+      [
+       -77.22696,
+       39.81728
+      ],
+      [
+       -77.23172,
+       39.81656
+      ],
+      [
+       -77.23626,
+       39.81581
+      ],
+      [
+       -77.23909,
+       39.81917
+      ],
+      [
+       -77.23769,
+       39.82311
+      ],
+      [
+       -77.23605,
+       39.82736
+      ]
+     ],
+     "name": "XI. Korps",
+     "staerke": "9.000"
+    },
+    {
+     "id": "u-ridge",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.24084,
+       39.79347
+      ],
+      [
+       -77.23977,
+       39.79154
+      ],
+      [
+       -77.23676,
+       39.79121
+      ],
+      [
+       -77.23505,
+       39.79284
+      ],
+      [
+       -77.23016,
+       39.81953
+      ],
+      [
+       -77.23123,
+       39.82146
+      ],
+      [
+       -77.23424,
+       39.82179
+      ],
+      [
+       -77.23595,
+       39.82016
+      ]
+     ],
+     "name": "II. Korps · Hancock",
+     "staerke": "11.000"
+    },
+    {
+     "id": "u-links",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.24087,
+       39.79098
+      ],
+      [
+       -77.23981,
+       39.78905
+      ],
+      [
+       -77.2368,
+       39.78872
+      ],
+      [
+       -77.23508,
+       39.79035
+      ],
+      [
+       -77.23313,
+       39.80102
+      ],
+      [
+       -77.23419,
+       39.80295
+      ],
+      [
+       -77.2372,
+       39.80328
+      ],
+      [
+       -77.23892,
+       39.80165
+      ]
+     ],
+     "name": "III. Korps · Sickles",
+     "staerke": "10.000"
+    },
+    {
+     "id": "u-artillerie",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "geschuetz",
+     "punkte": [
+      [
+       -77.23653,
+       39.81084
+      ],
+      [
+       -77.23568,
+       39.80929
+      ],
+      [
+       -77.23327,
+       39.80903
+      ],
+      [
+       -77.2319,
+       39.81034
+      ],
+      [
+       -77.23047,
+       39.81816
+      ],
+      [
+       -77.23132,
+       39.81971
+      ],
+      [
+       -77.23373,
+       39.81997
+      ],
+      [
+       -77.2351,
+       39.81866
+      ]
+     ],
+     "name": "Artilleriereserve",
+     "staerke": "372 Geschütze"
+    },
+    {
+     "id": "c-hill",
+     "partei": "csa",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.24439,
+       39.83047
+      ],
+      [
+       -77.24595,
+       39.8336
+      ],
+      [
+       -77.25074,
+       39.83425
+      ],
+      [
+       -77.2536,
+       39.83172
+      ],
+      [
+       -77.25961,
+       39.80553
+      ],
+      [
+       -77.25805,
+       39.8024
+      ],
+      [
+       -77.25326,
+       39.80175
+      ],
+      [
+       -77.2504,
+       39.80428
+      ]
+     ],
+     "name": "Hill",
+     "staerke": "20.000"
+    },
+    {
+     "id": "c-ewell",
+     "partei": "csa",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.21452,
+       39.83093
+      ],
+      [
+       -77.21045,
+       39.83213
+      ],
+      [
+       -77.2096,
+       39.83581
+      ],
+      [
+       -77.2129,
+       39.83801
+      ],
+      [
+       -77.23548,
+       39.84107
+      ],
+      [
+       -77.23955,
+       39.83987
+      ],
+      [
+       -77.2404,
+       39.83619
+      ],
+      [
+       -77.2371,
+       39.83399
+      ]
+     ],
+     "name": "Ewell",
+     "staerke": "20.000"
+    },
+    {
+     "id": "c-longstreet",
+     "partei": "csa",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.25361,
+       39.80816
+      ],
+      [
+       -77.25517,
+       39.81129
+      ],
+      [
+       -77.25996,
+       39.81194
+      ],
+      [
+       -77.26282,
+       39.80941
+      ],
+      [
+       -77.26639,
+       39.79384
+      ],
+      [
+       -77.26483,
+       39.79071
+      ],
+      [
+       -77.26004,
+       39.79006
+      ],
+      [
+       -77.25718,
+       39.79259
+      ]
+     ],
+     "name": "Longstreet",
+     "staerke": "15.000"
+    }
+   ]
+  },
+  {
+   "zeit": "2. Juli, 16 Uhr",
+   "t": 900,
+   "kurz": "Sickles rückt eigenmächtig vor – und hängt in der Luft.",
+   "text": "Sickles gefällt der niedrige Südteil des Rückens nicht. Ohne Befehl schiebt er sein Korps einen Kilometer nach vorn auf den Peach Orchard, weil dort der Boden höher liegt. Damit hat er eine Linie mit zwei Fronten und keiner Anlehnung – und Little Round Top, den Eckpfeiler der ganzen Stellung, hinter sich unbesetzt gelassen.",
+   "stellungen": [
+    {
+     "id": "u-links",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.25381,
+       39.80815
+      ],
+      [
+       -77.2563,
+       39.809
+      ],
+      [
+       -77.25879,
+       39.80766
+      ],
+      [
+       -77.2586,
+       39.80557
+      ],
+      [
+       -77.24519,
+       39.79085
+      ],
+      [
+       -77.2427,
+       39.79
+      ],
+      [
+       -77.24021,
+       39.79134
+      ],
+      [
+       -77.2404,
+       39.79343
+      ]
+     ],
+     "name": "III. Korps · vorgeschoben",
+     "staerke": "10.000"
+    },
+    {
+     "id": "u-ridge",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.24084,
+       39.79347
+      ],
+      [
+       -77.23977,
+       39.79154
+      ],
+      [
+       -77.23676,
+       39.79121
+      ],
+      [
+       -77.23505,
+       39.79284
+      ],
+      [
+       -77.23016,
+       39.81953
+      ],
+      [
+       -77.23123,
+       39.82146
+      ],
+      [
+       -77.23424,
+       39.82179
+      ],
+      [
+       -77.23595,
+       39.82016
+      ]
+     ],
+     "name": "II. Korps",
+     "staerke": "11.000"
+    },
+    {
+     "id": "u-culps",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.21912,
+       39.82663
+      ],
+      [
+       -77.21699,
+       39.82271
+      ],
+      [
+       -77.21606,
+       39.81889
+      ],
+      [
+       -77.21812,
+       39.81434
+      ],
+      [
+       -77.22303,
+       39.81416
+      ],
+      [
+       -77.22771,
+       39.81392
+      ],
+      [
+       -77.22964,
+       39.81784
+      ],
+      [
+       -77.22721,
+       39.82184
+      ],
+      [
+       -77.22447,
+       39.82615
+      ]
+     ],
+     "name": "XII. Korps",
+     "staerke": "9.000"
+    },
+    {
+     "id": "u-cemetery",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.23092,
+       39.8284
+      ],
+      [
+       -77.22788,
+       39.82505
+      ],
+      [
+       -77.22604,
+       39.82167
+      ],
+      [
+       -77.22696,
+       39.81728
+      ],
+      [
+       -77.23172,
+       39.81656
+      ],
+      [
+       -77.23626,
+       39.81581
+      ],
+      [
+       -77.23909,
+       39.81917
+      ],
+      [
+       -77.23769,
+       39.82311
+      ],
+      [
+       -77.23605,
+       39.82736
+      ]
+     ],
+     "name": "XI. Korps",
+     "staerke": "9.000"
+    },
+    {
+     "id": "c-longstreet",
+     "partei": "csa",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.25913,
+       39.80679
+      ],
+      [
+       -77.26235,
+       39.80963
+      ],
+      [
+       -77.26774,
+       39.8089
+      ],
+      [
+       -77.2695,
+       39.80538
+      ],
+      [
+       -77.26487,
+       39.78521
+      ],
+      [
+       -77.26165,
+       39.78237
+      ],
+      [
+       -77.25626,
+       39.7831
+      ],
+      [
+       -77.2545,
+       39.78662
+      ]
+     ],
+     "name": "Longstreet · zum Angriff",
+     "staerke": "15.000"
+    },
+    {
+     "id": "c-stossl",
+     "partei": "csa",
+     "form": "pfeil",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.26,
+       39.793
+      ],
+      [
+       -77.248,
+       39.795
+      ],
+      [
+       -77.24,
+       39.793
+      ]
+     ],
+     "name": "gegen die offene Flanke"
+    }
+   ]
+  },
+  {
+   "zeit": "2. Juli, 17 Uhr",
+   "t": 960,
+   "kurz": "Little Round Top – der Eckpfeiler, fast verloren.",
+   "text": "Der Chefingenieur der Armee reitet zufällig auf Little Round Top und findet ihn leer. Von dort aus könnte Artillerie den ganzen Rücken der Länge nach bestreichen. In letzter Minute wirft er vier Regimenter hinauf; das äußerste, das 20. Maine unter Chamberlain, hält den Südhang, bis ihm die Munition ausgeht, und geht dann mit dem Bajonett vor.",
+   "stellungen": [
+    {
+     "id": "u-lrt",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.23354,
+       39.79305
+      ],
+      [
+       -77.23415,
+       39.79429
+      ],
+      [
+       -77.23702,
+       39.79468
+      ],
+      [
+       -77.23814,
+       39.79368
+      ],
+      [
+       -77.23946,
+       39.78795
+      ],
+      [
+       -77.23885,
+       39.78671
+      ],
+      [
+       -77.23598,
+       39.78632
+      ],
+      [
+       -77.23486,
+       39.78732
+      ]
+     ],
+     "name": "Vincents Brigade · 20. Maine",
+     "staerke": "1.300"
+    },
+    {
+     "id": "u-links",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.2478,
+       39.80294
+      ],
+      [
+       -77.25029,
+       39.80379
+      ],
+      [
+       -77.25278,
+       39.80245
+      ],
+      [
+       -77.25259,
+       39.80036
+      ],
+      [
+       -77.2432,
+       39.79006
+      ],
+      [
+       -77.24071,
+       39.78921
+      ],
+      [
+       -77.23822,
+       39.79055
+      ],
+      [
+       -77.23841,
+       39.79264
+      ]
+     ],
+     "name": "III. Korps · zerschlagen",
+     "staerke": "6.000",
+     "geschlagen": true
+    },
+    {
+     "id": "u-ridge",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.24084,
+       39.79347
+      ],
+      [
+       -77.23977,
+       39.79154
+      ],
+      [
+       -77.23676,
+       39.79121
+      ],
+      [
+       -77.23505,
+       39.79284
+      ],
+      [
+       -77.23016,
+       39.81953
+      ],
+      [
+       -77.23123,
+       39.82146
+      ],
+      [
+       -77.23424,
+       39.82179
+      ],
+      [
+       -77.23595,
+       39.82016
+      ]
+     ],
+     "name": "II. Korps",
+     "staerke": "11.000"
+    },
+    {
+     "id": "c-hood",
+     "partei": "csa",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.24882,
+       39.79507
+      ],
+      [
+       -77.25259,
+       39.79553
+      ],
+      [
+       -77.25532,
+       39.79302
+      ],
+      [
+       -77.25408,
+       39.79025
+      ],
+      [
+       -77.24118,
+       39.78193
+      ],
+      [
+       -77.23741,
+       39.78147
+      ],
+      [
+       -77.23468,
+       39.78398
+      ],
+      [
+       -77.23592,
+       39.78675
+      ]
+     ],
+     "name": "Hood",
+     "staerke": "7.000"
+    },
+    {
+     "id": "c-mclaws",
+     "partei": "csa",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.25134,
+       39.80399
+      ],
+      [
+       -77.25389,
+       39.80558
+      ],
+      [
+       -77.25731,
+       39.80462
+      ],
+      [
+       -77.25794,
+       39.80215
+      ],
+      [
+       -77.25266,
+       39.79101
+      ],
+      [
+       -77.25011,
+       39.78942
+      ],
+      [
+       -77.24669,
+       39.79038
+      ],
+      [
+       -77.24606,
+       39.79285
+      ]
+     ],
+     "name": "McLaws",
+     "staerke": "7.000"
+    },
+    {
+     "id": "c-stossr",
+     "partei": "csa",
+     "form": "pfeil",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.244,
+       39.786
+      ],
+      [
+       -77.24,
+       39.789
+      ],
+      [
+       -77.2375,
+       39.79
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "zeit": "2. Juli, 20 Uhr",
+   "t": 1140,
+   "kurz": "Culp’s Hill: der Widerhaken hält knapp.",
+   "text": "Am anderen Ende greift Ewell endlich an – zu spät und nicht gleichzeitig mit Longstreet. Weil Meade fast das ganze XII. Korps nach Süden geschoben hat, steht auf Culp’s Hill nur eine Brigade. Sie hält, weil sie hinter Verhauen liegt und der Hang steil ist. Der Tag endet, wie er begann: Die Union hält die Höhen, an beiden Enden um Haaresbreite.",
+   "stellungen": [
+    {
+     "id": "u-culps",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.2225,
+       39.82354
+      ],
+      [
+       -77.21991,
+       39.82187
+      ],
+      [
+       -77.21812,
+       39.82009
+      ],
+      [
+       -77.21806,
+       39.81753
+      ],
+      [
+       -77.2212,
+       39.81675
+      ],
+      [
+       -77.22417,
+       39.81598
+      ],
+      [
+       -77.22663,
+       39.81767
+      ],
+      [
+       -77.22629,
+       39.82001
+      ],
+      [
+       -77.22584,
+       39.82255
+      ]
+     ],
+     "name": "Greenes Brigade allein",
+     "staerke": "1.400"
+    },
+    {
+     "id": "u-cemetery",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.23092,
+       39.8284
+      ],
+      [
+       -77.22788,
+       39.82505
+      ],
+      [
+       -77.22604,
+       39.82167
+      ],
+      [
+       -77.22696,
+       39.81728
+      ],
+      [
+       -77.23172,
+       39.81656
+      ],
+      [
+       -77.23626,
+       39.81581
+      ],
+      [
+       -77.23909,
+       39.81917
+      ],
+      [
+       -77.23769,
+       39.82311
+      ],
+      [
+       -77.23605,
+       39.82736
+      ]
+     ],
+     "name": "XI. Korps",
+     "staerke": "8.000"
+    },
+    {
+     "id": "u-lrt",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.23347,
+       39.79337
+      ],
+      [
+       -77.23415,
+       39.79474
+      ],
+      [
+       -77.23682,
+       39.7951
+      ],
+      [
+       -77.23807,
+       39.794
+      ],
+      [
+       -77.23953,
+       39.78763
+      ],
+      [
+       -77.23885,
+       39.78626
+      ],
+      [
+       -77.23618,
+       39.7859
+      ],
+      [
+       -77.23493,
+       39.787
+      ]
+     ],
+     "name": "Little Round Top gehalten",
+     "staerke": "1.100"
+    },
+    {
+     "id": "u-ridge",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.24084,
+       39.79347
+      ],
+      [
+       -77.23977,
+       39.79154
+      ],
+      [
+       -77.23676,
+       39.79121
+      ],
+      [
+       -77.23505,
+       39.79284
+      ],
+      [
+       -77.23016,
+       39.81953
+      ],
+      [
+       -77.23123,
+       39.82146
+      ],
+      [
+       -77.23424,
+       39.82179
+      ],
+      [
+       -77.23595,
+       39.82016
+      ]
+     ],
+     "name": "II. Korps",
+     "staerke": "11.000"
+    },
+    {
+     "id": "c-ewell",
+     "partei": "csa",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.21478,
+       39.82405
+      ],
+      [
+       -77.2114,
+       39.82456
+      ],
+      [
+       -77.20981,
+       39.82791
+      ],
+      [
+       -77.21198,
+       39.82996
+      ],
+      [
+       -77.22622,
+       39.83395
+      ],
+      [
+       -77.2296,
+       39.83344
+      ],
+      [
+       -77.23119,
+       39.83009
+      ],
+      [
+       -77.22902,
+       39.82804
+      ]
+     ],
+     "name": "Johnson gegen Culp’s Hill",
+     "staerke": "6.000"
+    },
+    {
+     "id": "c-stossc",
+     "partei": "csa",
+     "form": "pfeil",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.219,
+       39.8265
+      ],
+      [
+       -77.2215,
+       39.819
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "zeit": "3. Juli, 11 Uhr",
+   "t": 1500,
+   "kurz": "Lee entscheidet sich für die Mitte.",
+   "text": "Beide Flügel sind gescheitert. Lee schließt daraus, Meade habe seine Mitte geschwächt, um die Flügel zu halten – und setzt alles auf einen Stoß gegen den Rücken bei einem Baumgruppenstück, das sie „the copse of trees“ nennen. Longstreet widerspricht offen: Der Weg dorthin ist anderthalb Kilometer offenes, ansteigendes Feld. Lee bleibt dabei.",
+   "stellungen": [
+    {
+     "id": "u-ridge",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.24084,
+       39.79347
+      ],
+      [
+       -77.23977,
+       39.79154
+      ],
+      [
+       -77.23676,
+       39.79121
+      ],
+      [
+       -77.23505,
+       39.79284
+      ],
+      [
+       -77.23016,
+       39.81953
+      ],
+      [
+       -77.23123,
+       39.82146
+      ],
+      [
+       -77.23424,
+       39.82179
+      ],
+      [
+       -77.23595,
+       39.82016
+      ]
+     ],
+     "name": "II. Korps · Hancock",
+     "staerke": "11.000"
+    },
+    {
+     "id": "u-artillerie",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "geschuetz",
+     "punkte": [
+      [
+       -77.23801,
+       39.802
+      ],
+      [
+       -77.23716,
+       39.80046
+      ],
+      [
+       -77.23475,
+       39.8002
+      ],
+      [
+       -77.23338,
+       39.8015
+      ],
+      [
+       -77.22999,
+       39.82
+      ],
+      [
+       -77.23084,
+       39.82154
+      ],
+      [
+       -77.23325,
+       39.8218
+      ],
+      [
+       -77.23462,
+       39.8205
+      ]
+     ],
+     "name": "Artillerie auf dem Rücken",
+     "staerke": "120 Geschütze"
+    },
+    {
+     "id": "u-culps",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.21938,
+       39.82608
+      ],
+      [
+       -77.21742,
+       39.82246
+      ],
+      [
+       -77.21656,
+       39.81893
+      ],
+      [
+       -77.21846,
+       39.81474
+      ],
+      [
+       -77.22299,
+       39.81457
+      ],
+      [
+       -77.22731,
+       39.81435
+      ],
+      [
+       -77.22909,
+       39.81796
+      ],
+      [
+       -77.22685,
+       39.82166
+      ],
+      [
+       -77.22432,
+       39.82564
+      ]
+     ],
+     "name": "Culp’s Hill zurückgewonnen",
+     "staerke": "9.000"
+    },
+    {
+     "id": "u-lrt",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.23347,
+       39.79337
+      ],
+      [
+       -77.23415,
+       39.79474
+      ],
+      [
+       -77.23682,
+       39.7951
+      ],
+      [
+       -77.23807,
+       39.794
+      ],
+      [
+       -77.23953,
+       39.78763
+      ],
+      [
+       -77.23885,
+       39.78626
+      ],
+      [
+       -77.23618,
+       39.7859
+      ],
+      [
+       -77.23493,
+       39.787
+      ]
+     ],
+     "name": "V. Korps",
+     "staerke": "6.000"
+    },
+    {
+     "id": "c-pickett",
+     "partei": "csa",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.24809,
+       39.81556
+      ],
+      [
+       -77.24976,
+       39.8182
+      ],
+      [
+       -77.254,
+       39.81849
+      ],
+      [
+       -77.25624,
+       39.81611
+      ],
+      [
+       -77.25791,
+       39.80144
+      ],
+      [
+       -77.25624,
+       39.7988
+      ],
+      [
+       -77.252,
+       39.79851
+      ],
+      [
+       -77.24976,
+       39.80089
+      ]
+     ],
+     "name": "Pickett, Pettigrew, Trimble",
+     "staerke": "12.500"
+    },
+    {
+     "id": "c-artillerie",
+     "partei": "csa",
+     "form": "flaeche",
+     "gattung": "geschuetz",
+     "punkte": [
+      [
+       -77.2463,
+       39.82383
+      ],
+      [
+       -77.24726,
+       39.82534
+      ],
+      [
+       -77.24968,
+       39.8255
+      ],
+      [
+       -77.25096,
+       39.82415
+      ],
+      [
+       -77.2537,
+       39.80017
+      ],
+      [
+       -77.25274,
+       39.79866
+      ],
+      [
+       -77.25032,
+       39.7985
+      ],
+      [
+       -77.24904,
+       39.79985
+      ]
+     ],
+     "name": "Alexanders Batterien",
+     "staerke": "150 Geschütze"
+    }
+   ]
+  },
+  {
+   "zeit": "3. Juli, 13 Uhr",
+   "t": 1620,
+   "kurz": "Das größte Bombardement des Krieges – und es geht zu hoch.",
+   "text": "Zwei Stunden lang feuern 150 Geschütze auf den Rücken. Der Rauch steht so dicht, dass die Richtkanoniere ihre Treffer nicht sehen; die meisten Granaten gehen über die Höhe hinweg und schlagen hinter der Front ein. Die Unionsartillerie stellt das Feuer nach und nach ein – teils aus Munitionsmangel, teils als Täuschung. Alexander meldet Pickett, jetzt oder nie.",
+   "stellungen": [
+    {
+     "id": "c-artillerie",
+     "partei": "csa",
+     "form": "flaeche",
+     "gattung": "geschuetz",
+     "punkte": [
+      [
+       -77.2462,
+       39.82473
+      ],
+      [
+       -77.24716,
+       39.82624
+      ],
+      [
+       -77.24958,
+       39.8264
+      ],
+      [
+       -77.25086,
+       39.82504
+      ],
+      [
+       -77.2538,
+       39.79927
+      ],
+      [
+       -77.25284,
+       39.79776
+      ],
+      [
+       -77.25042,
+       39.7976
+      ],
+      [
+       -77.24914,
+       39.79896
+      ]
+     ],
+     "name": "Bombardement",
+     "staerke": "150 Geschütze"
+    },
+    {
+     "id": "c-pickett",
+     "partei": "csa",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.24809,
+       39.81556
+      ],
+      [
+       -77.24976,
+       39.8182
+      ],
+      [
+       -77.254,
+       39.81849
+      ],
+      [
+       -77.25624,
+       39.81611
+      ],
+      [
+       -77.25791,
+       39.80144
+      ],
+      [
+       -77.25624,
+       39.7988
+      ],
+      [
+       -77.252,
+       39.79851
+      ],
+      [
+       -77.24976,
+       39.80089
+      ]
+     ],
+     "name": "wartet im Wald",
+     "staerke": "12.500"
+    },
+    {
+     "id": "u-ridge",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.24084,
+       39.79347
+      ],
+      [
+       -77.23977,
+       39.79154
+      ],
+      [
+       -77.23676,
+       39.79121
+      ],
+      [
+       -77.23505,
+       39.79284
+      ],
+      [
+       -77.23016,
+       39.81953
+      ],
+      [
+       -77.23123,
+       39.82146
+      ],
+      [
+       -77.23424,
+       39.82179
+      ],
+      [
+       -77.23595,
+       39.82016
+      ]
+     ],
+     "name": "II. Korps · liegt flach",
+     "staerke": "11.000"
+    },
+    {
+     "id": "u-artillerie",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "geschuetz",
+     "punkte": [
+      [
+       -77.23801,
+       39.802
+      ],
+      [
+       -77.23716,
+       39.80046
+      ],
+      [
+       -77.23475,
+       39.8002
+      ],
+      [
+       -77.23338,
+       39.8015
+      ],
+      [
+       -77.22999,
+       39.82
+      ],
+      [
+       -77.23084,
+       39.82154
+      ],
+      [
+       -77.23325,
+       39.8218
+      ],
+      [
+       -77.23462,
+       39.8205
+      ]
+     ],
+     "name": "schweigt absichtlich",
+     "staerke": "80 Geschütze",
+     "finte": true
+    }
+   ]
+  },
+  {
+   "zeit": "3. Juli, 15 Uhr",
+   "t": 1740,
+   "kurz": "Picketts Angriff: 1.300 Meter offenes Feld.",
+   "text": "Dreizehntausend Mann treten aus dem Wald und gehen in geschlossener Linie über offenes Ackerland. Sie müssen zweimal einen Zaun an der Emmitsburg Road übersteigen – dort bricht die Ordnung, und dort setzt das Kartätschenfeuer ein. Von den Flanken schießen Batterien der Länge nach in die Linie hinein.",
+   "stellungen": [
+    {
+     "id": "c-pickett",
+     "partei": "csa",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.24049,
+       39.81662
+      ],
+      [
+       -77.24218,
+       39.81878
+      ],
+      [
+       -77.24582,
+       39.81878
+      ],
+      [
+       -77.24751,
+       39.81662
+      ],
+      [
+       -77.24751,
+       39.79938
+      ],
+      [
+       -77.24582,
+       39.79722
+      ],
+      [
+       -77.24218,
+       39.79722
+      ],
+      [
+       -77.24049,
+       39.79938
+      ]
+     ],
+     "name": "im offenen Feld",
+     "staerke": "12.500"
+    },
+    {
+     "id": "c-stossm",
+     "partei": "csa",
+     "form": "pfeil",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.251,
+       39.808
+      ],
+      [
+       -77.243,
+       39.8075
+      ],
+      [
+       -77.237,
+       39.807
+      ]
+     ],
+     "name": "auf die Baumgruppe"
+    },
+    {
+     "id": "u-ridge",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.24084,
+       39.79347
+      ],
+      [
+       -77.23977,
+       39.79154
+      ],
+      [
+       -77.23676,
+       39.79121
+      ],
+      [
+       -77.23505,
+       39.79284
+      ],
+      [
+       -77.23016,
+       39.81953
+      ],
+      [
+       -77.23123,
+       39.82146
+      ],
+      [
+       -77.23424,
+       39.82179
+      ],
+      [
+       -77.23595,
+       39.82016
+      ]
+     ],
+     "name": "II. Korps",
+     "staerke": "11.000"
+    },
+    {
+     "id": "u-artillerie",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "geschuetz",
+     "punkte": [
+      [
+       -77.23801,
+       39.802
+      ],
+      [
+       -77.23716,
+       39.80046
+      ],
+      [
+       -77.23475,
+       39.8002
+      ],
+      [
+       -77.23338,
+       39.8015
+      ],
+      [
+       -77.22999,
+       39.82
+      ],
+      [
+       -77.23084,
+       39.82154
+      ],
+      [
+       -77.23325,
+       39.8218
+      ],
+      [
+       -77.23462,
+       39.8205
+      ]
+     ],
+     "name": "Kartätschen",
+     "staerke": "80 Geschütze"
+    },
+    {
+     "id": "u-flanke",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "geschuetz",
+     "punkte": [
+      [
+       -77.24098,
+       39.80017
+      ],
+      [
+       -77.24288,
+       39.80015
+      ],
+      [
+       -77.24424,
+       39.79834
+      ],
+      [
+       -77.24331,
+       39.79706
+      ],
+      [
+       -77.23602,
+       39.79383
+      ],
+      [
+       -77.23412,
+       39.79385
+      ],
+      [
+       -77.23276,
+       39.79566
+      ],
+      [
+       -77.23369,
+       39.79694
+      ]
+     ],
+     "name": "Flankenfeuer von Süden",
+     "staerke": "30 Geschütze"
+    }
+   ]
+  },
+  {
+   "zeit": "3. Juli, 15:30 Uhr",
+   "t": 1770,
+   "kurz": "Der Hochwassermarke-Augenblick.",
+   "text": "Ein paar hundert Mann unter Armistead kommen über die niedrige Steinmauer – die Stelle heißt seither „the Angle“. Sie stehen dort keine zehn Minuten. Von beiden Seiten schließen Unionsregimenter auf, Armistead fällt an einer Batterie. Was zurückgeht, ist weniger als die Hälfte.",
+   "stellungen": [
+    {
+     "id": "c-pickett",
+     "partei": "csa",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.23486,
+       39.81041
+      ],
+      [
+       -77.23575,
+       39.81154
+      ],
+      [
+       -77.23865,
+       39.81154
+      ],
+      [
+       -77.23954,
+       39.81041
+      ],
+      [
+       -77.23954,
+       39.80459
+      ],
+      [
+       -77.23865,
+       39.80346
+      ],
+      [
+       -77.23575,
+       39.80346
+      ],
+      [
+       -77.23486,
+       39.80459
+      ]
+     ],
+     "name": "Armistead an der Mauer",
+     "staerke": "2.000",
+     "geschlagen": true
+    },
+    {
+     "id": "u-ridge",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.24135,
+       39.79389
+      ],
+      [
+       -77.24007,
+       39.79157
+      ],
+      [
+       -77.23646,
+       39.79118
+      ],
+      [
+       -77.2344,
+       39.79314
+      ],
+      [
+       -77.22965,
+       39.81911
+      ],
+      [
+       -77.23093,
+       39.82143
+      ],
+      [
+       -77.23454,
+       39.82182
+      ],
+      [
+       -77.2366,
+       39.81986
+      ]
+     ],
+     "name": "II. Korps schließt auf",
+     "staerke": "10.000"
+    },
+    {
+     "id": "u-nord",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.22984,
+       39.81254
+      ],
+      [
+       -77.2278,
+       39.81314
+      ],
+      [
+       -77.22738,
+       39.81498
+      ],
+      [
+       -77.22903,
+       39.81608
+      ],
+      [
+       -77.23916,
+       39.81746
+      ],
+      [
+       -77.2412,
+       39.81686
+      ],
+      [
+       -77.24162,
+       39.81502
+      ],
+      [
+       -77.23997,
+       39.81392
+      ]
+     ],
+     "name": "von Norden",
+     "staerke": "2.500"
+    },
+    {
+     "id": "u-sued",
+     "partei": "union",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.24066,
+       39.80246
+      ],
+      [
+       -77.2427,
+       39.80186
+      ],
+      [
+       -77.24312,
+       39.80002
+      ],
+      [
+       -77.24147,
+       39.79892
+      ],
+      [
+       -77.23134,
+       39.79754
+      ],
+      [
+       -77.2293,
+       39.79814
+      ],
+      [
+       -77.22888,
+       39.79998
+      ],
+      [
+       -77.23053,
+       39.80108
+      ]
+     ],
+     "name": "von Süden",
+     "staerke": "2.500"
+    },
+    {
+     "id": "c-rueck",
+     "partei": "csa",
+     "form": "pfeil",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -77.2375,
+       39.8072
+      ],
+      [
+       -77.247,
+       39.808
+      ],
+      [
+       -77.253,
+       39.809
+      ]
+     ],
+     "name": "zurück über das Feld",
+     "rueckzug": true
+    }
+   ]
+  },
+  {
+   "zeit": "4.–14. Juli",
+   "t": 2400,
+   "kurz": "Der Rückzug, den niemand aufhält.",
+   "text": "Am 4. Juli, während Vicksburg am Mississippi kapituliert, steht Lee noch auf dem Seminary Ridge und wartet auf einen Gegenangriff, der nicht kommt. In der Nacht setzt er sich ab: ein Zug von 27 Kilometern Länge im Regen nach Süden. Am Potomac steht das Wasser zu hoch; zehn Tage lang liegt die geschlagene Armee mit dem Rücken zum Fluss, und Meade greift nicht an. Lincoln schreibt ihm einen Brief darüber, den er nie abschickt.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     -78.2,
+     39.2
+    ],
+    [
+     -76.8,
+     40.1
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "c-rueckzug",
+     "partei": "csa",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -77.25,
+       39.81
+      ],
+      [
+       -77.45,
+       39.73
+      ],
+      [
+       -77.72,
+       39.62
+      ],
+      [
+       -77.8,
+       39.55
+      ]
+     ],
+     "name": "nach Williamsport",
+     "rueckzug": true
+    },
+    {
+     "id": "u-folgt",
+     "partei": "union",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -77.22,
+       39.8
+      ],
+      [
+       -77.4,
+       39.6
+      ],
+      [
+       -77.68,
+       39.52
+      ]
+     ],
+     "name": "Meade folgt zögernd"
+    }
+   ]
+  }
+ ],
+ "ausgang": "Lee bricht die Schlacht ab und geht nach Virginia zurück. Die Nordvirginia-Armee unternimmt danach keinen Angriffsfeldzug mehr.",
+ "verluste": [
+  {
+   "partei": "union",
+   "text": "rund 23.000 Tote, Verwundete und Vermisste"
+  },
+  {
+   "partei": "csa",
+   "text": "rund 23.000 – bei einer um ein Drittel kleineren Armee"
+  }
+ ],
+ "folgen": "Zusammen mit dem Fall von Vicksburg am selben Tag gilt Gettysburg als Wendepunkt des Krieges: Der Süden verliert die Fähigkeit zur Offensive und die Aussicht auf europäische Anerkennung. Im November weiht Lincoln auf dem Feld einen Soldatenfriedhof ein und hält dabei eine Rede von zwei Minuten.",
+ "streit": "Ob Ewell am Abend des 1. Juli den Cemetery Hill hätte nehmen können, ist die meistdiskutierte Frage des Krieges – Lees Befehl „wenn es praktikabel erscheint“ ließ ihm die Wahl. Umstritten bleibt auch, ob Sickles’ eigenmächtiger Vorstoß die Schlacht beinahe verlor oder Longstreets Angriff so lange aufhielt, dass Little Round Top noch besetzt werden konnte."
+}

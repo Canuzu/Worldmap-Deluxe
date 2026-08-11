@@ -17,7 +17,10 @@ const BASE = import.meta.env.BASE_URL || '/';
 const STAND = typeof __DATENSTAND__ === 'string' ? __DATENSTAND__ : 'dev';
 const url = (p) => `${BASE}${p}`.replace(/([^:])\/{2,}/g, '$1/') + `?v=${STAND}`;
 
-async function getJSON(path) {
+/* Exportiert, weil die Schlachtverläufe denselben Weg gehen müssen: Sie
+   brauchen dieselbe Basisadresse und dieselbe Datenstandsmarke, sonst liefert
+   ein Zwischenspeicher nach einer Veröffentlichung den alten Verlauf. */
+export async function getJSON(path) {
   const res = await fetch(url(path));
   if (!res.ok) throw new Error(`${path}: ${res.status} ${res.statusText}`);
   return res.json();

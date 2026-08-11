@@ -21,7 +21,7 @@ import {
   txt, sprache, SPRACHEN, spracheEinrichten, spracheWechseln, markupBeschriften,
 } from './modules/sprache.js';
 import { ERA_COLORS, religionName } from './modules/palette.js';
-import { BattlePlayer, BATTLES, ladeBattles } from './modules/battles.js';
+import { BattlePlayer, BATTLES, ladeVerlauf } from './modules/battles.js';
 import { Beiblatt } from './modules/beiblatt.js';
 import { bodenblatt } from './modules/blatt.js';
 import { EventLayer, ARTEN, artKurz, artLabel, zeitfenster } from './modules/ereignisse.js';
@@ -1064,8 +1064,6 @@ async function main() {
     battlesBox.hidden = false;
     kampfblatt.zuruecksetzen();
     renderRegister();
-    // Die Verläufe sind ein eigener Brocken und kommen erst hier nach.
-    if (!BATTLES.length) { await ladeBattles(); renderRegister(); }
     if (!konflikte.hatDaten) {
       konflikte.setDaten(await atlasData.loadKonflikte());
       konflikte.setFenster(zeitfenster(epochJahre, state.index));
@@ -1104,6 +1102,12 @@ async function main() {
   async function startBattle(id) {
     const meta = BATTLES.find((b) => b.id === id);
     if (!meta) return;
+    /* Der Verlauf wird jetzt einzeln geholt – rund 30 kB statt aller Verläufe
+       auf einmal. Er muss da sein, bevor die Karte anfliegt: Zeichenerklärung
+       und Beiblatt lesen die Stationen, und ein Anflug auf ein leeres Feld
+       wäre schlimmer als ein Augenblick Wartezeit. */
+    const verlauf = await ladeVerlauf(id);
+    if (!verlauf) return;
     // Erst den passenden Zeitschnitt holen, damit das Umland zur Schlacht passt.
     const index = atlasData.indexForYear(meta.jahr);
     timeline.stop();
@@ -1132,13 +1136,12 @@ async function main() {
     // mitten in den Stellungen, und ihre Namen stuenden quer ueber dem Feld.
     konflikte.setSichtbar(false);
     ereignisse.setSichtbar(false);
-    const meta2 = BATTLES.find((x) => x.id === id);
-    renderBattleLegend(meta2);
-    zeigeBeiblatt(meta2);
+    renderBattleLegend(verlauf);
+    zeigeBeiblatt(verlauf);
     window.addEventListener('resize', meldeSperren);
     // Erst nach dem Anflug losspielen: Sonst laufen die ersten Stationen ab,
     // während die Karte noch unterwegs ist.
-    battles.start(id, { danach: () => battles.play() });
+    battles.start(verlauf, { danach: () => battles.play() });
   }
 
   /**

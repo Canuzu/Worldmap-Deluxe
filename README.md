@@ -576,11 +576,37 @@ Der Atlas zeigt sonst Zustände: So sah die Welt im Jahr X aus. Eine Schlacht
 ist aber kein Zustand, sondern eine **Bewegung** – und die fällt aus einer
 Karte heraus, die nur Jahresschnitte kennt.
 
-Zwölf Schlachten haben einen abspielbaren Verlauf, von Marathon bis zur
-Normandie: **150 Stationen, 1.035 Truppenstellungen, 87 Geländezüge.** Jede
-Schlacht beginnt mit einem Übersichtsblatt über den Anmarsch und ist dann in
-zehn bis vierzehn Abschnitte gegliedert; jede Stellung ist ein benannter
-Verband mit Führer, Stärke und Waffengattung.
+Vierzehn Schlachten haben einen abspielbaren Verlauf, von Marathon bis zur
+Normandie: **174 Stationen, 1.166 Truppenstellungen, 104 Geländezüge.** Jede
+Schlacht beginnt mit einem Übersichtsblatt über den Anmarsch – und darf mit
+einem über den Rückzug enden – und ist dazwischen in zehn bis vierzehn
+Abschnitte gegliedert; jede Stellung ist ein benannter Verband mit Führer,
+Stärke und Waffengattung.
+
+Das Kriegsregister führt 177 Schlachten. Der Abstand zwischen 14 und 177 ist
+der offene Teil, und er ist reine Verfassungsarbeit: Ein Verlauf besteht aus
+rund vierhundert von Hand gesetzten Koordinatenpaaren, die zu einem Gelände
+passen müssen, das es wirklich gibt. Erfinden lässt er sich nicht – der
+Datensatz sagt selbst, dass hier Truppenstellungen stehen und keine
+Staatsgrenzen.
+
+**Eine Datei je Schlacht.** Vorher lagen alle Verläufe in einer einzigen Datei
+von 852 kB. Wer das Kriegsregister öffnete, um nachzusehen, welche Kriege 1815
+liefen, lud alle zwölf vollständig mit; bei dreißig Verläufen wären das zwei
+Megabyte für einen Blick in eine Liste gewesen. Jetzt trägt das Programm nur
+den Index – Name, Ort, Datum, Ausschnitt, sieben Kilobyte für alle –, und die
+Stationen einer Schlacht kommen in dem Augenblick, in dem jemand auf
+„abspielen“ tippt. Gemessen: Registeröffnung **368 kB → 0**, Abspielen einer
+Schlacht **0 → rund 30 kB**. Damit ist die Zahl der Verläufe nach oben offen.
+
+**Geometrie aus Kilometern statt aus Koordinaten.** `scripts/lib/stellung.mjs`
+baut die Stellungen aus Mittelpunkt, Ausdehnung in Kilometern und
+Blickrichtung in Grad. „Zwei Kilometer breit, nach Westen ausgerichtet“ ist
+eine Angabe, die man gegen eine Karte prüfen kann; eine Liste von zwölf
+Koordinatenpaaren ist es nicht. Der Unterschied ist nicht theoretisch – bei
+Gettysburg lag die Unionslinie im ersten Anlauf quer über beide Höhenrücken,
+weil ich die Achse des Rückens eingesetzt hatte statt der Front. Auf dem Bild
+sah man es sofort, in den Zahlen nicht.
 
 | | | | |
 |---|---|---|---|

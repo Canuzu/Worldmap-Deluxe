@@ -31,8 +31,14 @@ import path from 'node:path';
 import { feature as topoFeature } from 'topojson-client';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
-const spec = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/battles.json'), 'utf8'));
-const SCHLACHTEN = spec.schlachten;
+/* Eine Datei je Schlacht statt einer für alle. Gelesen wird das Verzeichnis,
+   nicht eine feste Liste – ein neuer Verlauf wird damit allein dadurch
+   geprüft, dass er dort liegt. */
+const VERZEICHNIS = path.join(ROOT, 'src/data/battles');
+const SCHLACHTEN = fs.readdirSync(VERZEICHNIS)
+  .filter((f) => f.endsWith('.json') && !f.startsWith('_'))
+  .sort()
+  .map((f) => JSON.parse(fs.readFileSync(path.join(VERZEICHNIS, f), 'utf8')));
 
 const register = ['10-antike', '20-mittelalter', '30-neuzeit', '40-moderne']
   .flatMap((f) => JSON.parse(
@@ -148,7 +154,13 @@ for (const b of SCHLACHTEN) {
        aufspannt. Und ein Übersichtsblatt ohne `sicht` gäbe es nicht: Der
        gerechnete Rahmen käme aus den Wegen und wäre beliebig. */
     if (s.uebersicht) {
-      if (i !== 0) meldung(b.id, `Übersichtsblatt steht an Stelle ${i}, nicht am Anfang`);
+      /* Erlaubt am Anfang und am Ende, sonst nirgends. Der Anmarsch war der
+         ursprüngliche Fall; ein Rückzug ist derselbe Fall rückwärts – Lees
+         Zug von Gettysburg zum Potomac misst 90 km, das Schlachtfeld sechs.
+         Mittendrin bleibt es verboten: Dort unterbräche ein Maßstabssprung
+         die Bewegung, um die es gerade geht. */
+      const amRand = i === 0 || i === b.stationen.length - 1;
+      if (!amRand) meldung(b.id, `Übersichtsblatt steht an Stelle ${i}, weder am Anfang noch am Ende`);
       if (!rahmen) meldung(b.id, 'Übersichtsblatt ohne "sicht"');
       if (!s.stellungen.some((x) => x.form === 'pfeil')) {
         meldung(b.id, 'Übersichtsblatt ohne Anmarschweg');

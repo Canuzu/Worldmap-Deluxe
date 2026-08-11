@@ -14,6 +14,7 @@
     "build:kueste": "node scripts/thin-coast.mjs",
     "format:rulers": "node scripts/format-rulers.mjs",
     "format:ereignisse": "node scripts/format-ereignisse.mjs",
+    "build:battles": "node scripts/build-battles.mjs",
     "check:data": "node scripts/check-knowledge.mjs",
     "test": "node scripts/smoke.mjs",
     "check:zeit": "node scripts/check-anachronisms.mjs",

@@ -26,28 +26,54 @@
  * sie verschwinden restlos, sobald man die Schlacht schließt.
  */
 import L from 'leaflet';
+import { getJSON } from './data.js';
 import { zeichendichte } from './dichte.js';
 
 /**
- * Die Verläufe kommen erst, wenn jemand sie sehen will.
+ * Verläufe kommen einzeln – und erst, wenn jemand sie sehen will.
  *
- * Zwölf Schlachten mit 1.006 Stellungen sind rund 350 kB. Fest eingebunden
- * lägen sie in jedem Erstaufruf, obwohl die meisten Besucher nie eine
- * Schlacht öffnen – gemessen wuchs der Erstaufruf dadurch um 366 kB und riss
- * die Grenze von `check:ladelast`. Als eigener Brocken kommt er beim Öffnen
- * des Registers nach, und das dauert keine hundert Millisekunden.
+ * Vorher lagen alle in einer Datei: zwölf Schlachten, 852 kB. Wer das Register
+ * öffnete, um nachzusehen, welche Kriege 1815 liefen, lud alle zwölf
+ * vollständig mit. Bei dreißig Verläufen wären das zwei Megabyte für einen
+ * Blick in eine Liste, und genau daran wäre Punkt 2 der Verbesserungsliste
+ * gescheitert, bevor der erste neue Verlauf geschrieben ist.
  *
- * `BATTLES` ist bewusst ein `let` mit lebendiger Bindung: Wer es einmal
- * importiert hat, sieht die geladene Liste, ohne sie sich reichen zu lassen.
+ * Jetzt zweistufig:
+ *
+ *   BATTLES        die Kopfdaten aller Schlachten – Name, Ort, Datum, Jahr,
+ *                  Ausschnitt. Sieben Kilobyte, fest ins Programm gebündelt,
+ *                  weil das Register sie sofort braucht.
+ *   ladeVerlauf()  die Stationen einer einzelnen Schlacht, rund 30 kB, geholt
+ *                  in dem Augenblick, in dem jemand auf „abspielen“ tippt.
+ *
+ * `BATTLES` ist eine gewöhnliche Konstante geworden: Sie ist immer da. Die
+ * lebendige Bindung von früher brauchte es nur, solange die Liste selbst
+ * nachgeladen wurde.
  */
-export let BATTLES = [];
+import INDEX from '../data/battles-index.json';
 
-export async function ladeBattles() {
-  if (!BATTLES.length) {
-    const spec = (await import('../data/battles.json')).default;
-    BATTLES = spec.schlachten;
+export const BATTLES = INDEX;
+
+/** Bereits geholte Verläufe. Ein zweiter Anlauf auf dieselbe Schlacht ist frei. */
+const verlaeufe = new Map();
+
+/**
+ * Den vollständigen Verlauf einer Schlacht holen.
+ *
+ * Gibt `null` zurück, wenn es ihn nicht gibt – aufrufende Stellen müssen damit
+ * rechnen, denn das Register führt 177 Schlachten und nur ein Teil davon hat
+ * einen Verlauf. Ein Fehlschlag darf die Karte nicht anhalten.
+ */
+export async function ladeVerlauf(id) {
+  if (!verlaeufe.has(id)) {
+    verlaeufe.set(id, getJSON(`data/battles/${id}.json`).catch(() => null));
   }
-  return BATTLES;
+  return verlaeufe.get(id);
+}
+
+/** Hat diese Schlacht einen abspielbaren Verlauf? Beantwortet aus dem Index. */
+export function hatVerlauf(id) {
+  return BATTLES.some((b) => b.id === id);
 }
 
 /* ------------------------------------------------------------ Choreografie */
@@ -1652,9 +1678,10 @@ export class BattlePlayer {
    * Der Verlauf beginnt erst nach der Landung: `danach` wird gerufen, wenn
    * die Karte steht.
    */
-  start(id, { danach } = {}) {
-    const battle = BATTLES.find((b) => b.id === id);
-    if (!battle) return null;
+  start(battle, { danach } = {}) {
+    // Nimmt jetzt den geladenen Verlauf statt einer Kennung: Er wird einzeln
+    // geholt, und wer ihn holt, hat ihn schon in der Hand.
+    if (!battle?.stationen?.length) return null;
     this.battle = battle;
     this.farben = new Map(battle.parteien.map((p) => [p.id, p.farbe]));
     /* Der stärkste Verband der Schlacht gibt den Bezug für die Mindestgröße.
