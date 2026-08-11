@@ -7,11 +7,12 @@
  *   2. kuratierte Wissensbasis (deutsch, epochenbezogen)
  *   3. Wikipedia-Auszug (optional, nachgeladen)
  */
-import { esc, areaText, rangeText, yearShort, initials, num } from './format.js';
+import { esc, areaText, rangeText, yearShort, yearText, initials, num } from './format.js';
 import RELIGION from '../data/religion/vokabular.json';
-import { PRECISION_LABELS } from './palette.js';
+import { precisionLabel } from './palette.js';
 import { lookupArticle } from './wikipedia.js';
 import { bodenblatt } from './blatt.js';
+import { txt, sprache, wikiSprache } from './sprache.js';
 
 /**
  * Kurzform eines Herrschernamens für die Regierungsfolge.
@@ -40,6 +41,18 @@ function jahrKurz(jahr) {
   if (jahr == null) return '';
   return jahr < 0 ? `${-jahr} v.` : String(jahr);
 }
+
+/**
+ * Der Kartenstand als Text: „1815 n. Chr.“ bzw. „1815 AD“.
+ *
+ * In epochs.json steht dafür ein fertiges `label` – aber auf Deutsch, weil es
+ * beim Erzeugen der Datei entsteht. Aus der Jahreszahl gerechnet stimmt es in
+ * jeder Sprache, und die Jahreszahl steht ohnehin daneben.
+ */
+const standText = (epoch) => yearText(epoch?.meta?.year ?? 0);
+
+/** Grenzgüte in Worten – aus dem Wörterbuch, nicht aus einer festen Liste. */
+const guetetext = (stufe) => precisionLabel(stufe);
 
 const ICON_INFO = '<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" fill="currentColor"/></svg>';
 const ICON_LINK = '<svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M14 3h7v7h-2V6.4l-8.3 8.3-1.4-1.4L17.6 5H14V3zM5 5h5v2H7v10h10v-3h2v5H5V5z" fill="currentColor"/></svg>';
@@ -135,7 +148,7 @@ export class DetailPanel {
 
     const year = this.currentYear;
     const info = this.data.lookup(name, year);
-    const german = this.data.germanName(name);
+    const german = this.data.anzeigeName(name);
     const color = this.atlas.colorOfPolity(name);
 
     this.dom.root.hidden = false;
@@ -180,40 +193,40 @@ export class DetailPanel {
     for (const b of entry.occupiers ?? []) {
       if (b.name === name) continue;
       chips.push(`<button class="chip chip--occupied chip--action" data-goto="${esc(b.name)}"
-        title="Das Gebiet blieb ${esc(german)}, stand aber unter fremder Herrschaft.">
+        title="${esc(txt('tafel.besetzt.hilfe', { name: german }))}">
         <span class="sw" style="background:${esc(this.atlas.colorOfPolity(b.name))}"></span>
-        Besetzt durch ${esc(this.data.germanName(b.name))}</button>`);
+        ${esc(txt('tafel.besetztdurch', { name: this.data.anzeigeName(b.name) }))}</button>`);
     }
     if (entry.sovereign && entry.sovereign !== name) {
       chips.push(`<button class="chip chip--action" data-goto="${esc(entry.sovereign)}">
         <span class="sw" style="background:${esc(this.atlas.colorOfPolity(entry.sovereign))}"></span>
-        Oberhoheit: ${esc(this.data.germanName(entry.sovereign))}</button>`);
+        ${esc(txt('tafel.oberhoheit', { name: this.data.anzeigeName(entry.sovereign) }))}</button>`);
     }
     if (entry.partOf && entry.partOf !== name && entry.partOf !== entry.sovereign) {
-      chips.push(`<span class="chip">Kulturraum: ${esc(this.data.germanName(entry.partOf))}</span>`);
+      chips.push(`<span class="chip">${esc(txt('tafel.kulturraum', { name: this.data.anzeigeName(entry.partOf) }))}</span>`);
     }
-    chips.push(`<span class="chip" title="Wie genau ist der Grenzverlauf in den Quellen belegt?">
-      Grenzen: ${esc(PRECISION_LABELS[entry.precision] ?? PRECISION_LABELS[0])}</span>`);
-    chips.push(`<button class="chip chip--action" data-focus="${esc(name)}">Auf der Karte zeigen</button>`);
+    chips.push(`<span class="chip" title="${esc(txt('tafel.grenzen.hilfe'))}">
+      ${esc(txt('tafel.grenzen', { guete: guetetext(entry.precision) }))}</span>`);
+    chips.push(`<button class="chip chip--action" data-focus="${esc(name)}">${esc(txt('tafel.aufkarte'))}</button>`);
 
     return `
       <header class="pnl__hero">
         <div class="pnl__kicker">
           <span class="sw"></span>
-          <b>${esc(kind)}</b> · ${esc(epoch.meta.label)}
+          <b>${esc(kind)}</b> · ${esc(standText(epoch))}
         </div>
         <h2 class="pnl__title">${esc(german)}</h2>
-        ${showOriginal ? `<p class="pnl__alt">im Datensatz: ${esc(name)}</p>` : ''}
+        ${showOriginal ? `<p class="pnl__alt">${esc(txt('tafel.imdatensatz', { name }))}</p>` : ''}
         <div class="chips">${chips.join('')}</div>
       </header>
     `;
   }
 
   _guessKind(entry) {
-    if (entry.occupiers?.length) return 'Besetztes Gebiet';
-    if (entry.sovereign && entry.sovereign !== entry.name) return 'Abhängiges Gebiet';
-    if (entry.precision === 1) return 'Kultur- oder Siedlungsraum';
-    return 'Gemeinwesen';
+    if (entry.occupiers?.length) return txt('tafel.art.besetzt');
+    if (entry.sovereign && entry.sovereign !== entry.name) return txt('tafel.art.abhaengig');
+    if (entry.precision === 1) return txt('tafel.art.siedlung');
+    return txt('tafel.art.gemeinwesen');
   }
 
   /**
@@ -241,15 +254,15 @@ export class DetailPanel {
 
     return `
       <section class="sec">
-        <h3 class="sec__h">Herrschaft ${esc(yearShort(year))}</h3>
+        <h3 class="sec__h">${esc(txt('tafel.herrschaft', { jahr: yearShort(year) }))}</h3>
         <div class="ruler${ruler.nachwirkend || ruler.vorzeitig ? ' ruler--luecke' : ''}">
           <div class="ruler__seal">${seal}</div>
           <div>
-            ${ruler.nachwirkend ? '<div class="ruler__gap">Für dieses Jahr ist niemand verzeichnet – zuletzt regierte</div>' : ''}
-            ${ruler.vorzeitig ? '<div class="ruler__gap">Die Liste beginnt später – der erste verzeichnete Name lautet</div>' : ''}
+            ${ruler.nachwirkend ? `<div class="ruler__gap">${esc(txt('tafel.luecke.nach'))}</div>` : ''}
+            ${ruler.vorzeitig ? `<div class="ruler__gap">${esc(txt('tafel.luecke.vor'))}</div>` : ''}
             <div class="ruler__name">${esc(ruler.name)}</div>
             ${bits.length ? `<div class="ruler__role">${bits.join(' · ')}</div>` : ''}
-            ${reign ? `<div class="ruler__reign">Regierungszeit ${esc(reign)}</div>` : ''}
+            ${reign ? `<div class="ruler__reign">${esc(txt('tafel.regierungszeit', { spanne: reign }))}</div>` : ''}
             ${ruler.note ? `<div class="ruler__note">${esc(ruler.note)}</div>` : ''}
           </div>
         </div>
@@ -290,12 +303,12 @@ export class DetailPanel {
     const mehrDavor = von > 0;
     const mehrDanach = bis < liste.length;
     return `
-      <div class="reigns" role="group" aria-label="Regierungsfolge">
+      <div class="reigns" role="group" aria-label="${esc(txt('tafel.folge.aria'))}">
         ${mehrDavor ? '<span class="reigns__more" aria-hidden="true">…</span>' : ''}
         ${knoepfe}
         ${mehrDanach ? '<span class="reigns__more" aria-hidden="true">…</span>' : ''}
       </div>
-      <p class="reigns__hint">${liste.length} Herrschende hinterlegt – ein Klick springt in ihre Zeit.</p>
+      <p class="reigns__hint">${esc(txt('tafel.folge.hinweis', { zahl: liste.length }))}</p>
     `;
   }
 
@@ -316,41 +329,40 @@ export class DetailPanel {
     if (this.atlas?.colorMode === 'religion' && entry.religion) {
       const r = entry.religion;
       const nameVon = (k) => RELIGION.klassen[k]?.name ?? k;
-      const guete = { 3: 'in Quellen belegt', 2: 'aus regionaler Regel', 1: 'grobe Schätzung' }[r.guete];
+      const guete = txt(`tafel.rel.guete.${r.guete}`);
       // Der Anteil sagt mit, wie eindeutig der Fall ist: 98 Prozent ist eine
       // andere Auskunft als 51, auch wenn beide dieselbe Farbe tragen.
-      const anteil = r.anteil ? ` · ${r.anteil} % der Fläche` : '';
+      const anteil = r.anteil ? txt('tafel.rel.anteil', { anteil: r.anteil }) : '';
       if (r.staat === 'lokal') {
         /* Kein Bekenntnis der Herrschaft. Das ist für die Gegenwart der
          * Regelfall und eine eigene Aussage wert: Ein Staat, der keine
          * Religion bevorzugt, ist historisch die Ausnahme – erst im 20.
          * Jahrhundert wird er zur Regel. */
-        add('Religion', `${nameVon(r.volk)}${esc(anteil)} `
+        add(txt('tafel.fach.religion'), `${nameVon(r.volk)}${esc(anteil)} `
           + `<i class="fact__guete">${esc(guete)}</i>`, { raw: true, wide: true });
-        add('Staat und Religion', 'Keine Staatsreligion – die Verfassung bevorzugt kein Bekenntnis.',
-          { wide: true });
+        add(txt('tafel.rel.staatreligion'), txt('tafel.rel.keine'), { wide: true });
       } else if (r.staat === r.volk) {
-        add('Religion', `${nameVon(r.volk)}${esc(anteil)} `
+        add(txt('tafel.fach.religion'), `${nameVon(r.volk)}${esc(anteil)} `
           + `<i class="fact__guete">${esc(guete)}</i>`, { raw: true, wide: true });
       } else {
         // Der Fall, für den es die Ebene gibt – deshalb steht er auch als
         // eigene Kachel da und nicht als Nebensatz.
-        add('Bevölkerung glaubt', `${nameVon(r.volk)}${anteil}`, { raw: false });
-        add('Herrschaft bekennt sich zu', `${nameVon(r.staat)}`, { raw: false });
-        add('Verhältnis', `Hof und Land gehören verschiedenen Religionen an. `
+        add(txt('tafel.rel.volk'), `${nameVon(r.volk)}${anteil}`, { raw: false });
+        add(txt('tafel.rel.staat'), `${nameVon(r.staat)}`, { raw: false });
+        add(txt('tafel.rel.verhaeltnis'), `${esc(txt('tafel.rel.getrennt'))}`
           + `<i class="fact__guete">${esc(guete)}</i>`, { raw: true, wide: true });
       }
     }
 
-    add('Hauptstadt', period?.capital);
-    add('Regierungsform', period?.government);
-    add('Herrschaftsform', period?.polity);
-    add('Religion', period?.religion);
-    add('Sprachen', period?.languages?.join(', '));
-    add('Bevölkerung', period?.population);
-    add('Wirtschaft', period?.economy, { wide: true });
+    add(txt('tafel.fach.hauptstadt'), period?.capital);
+    add(txt('tafel.fach.regierungsform'), period?.government);
+    add(txt('tafel.fach.herrschaftsform'), period?.polity);
+    add(txt('tafel.fach.religion'), period?.religion);
+    add(txt('tafel.fach.sprachen'), period?.languages?.join(', '));
+    add(txt('tafel.fach.bevoelkerung'), period?.population);
+    add(txt('tafel.fach.wirtschaft'), period?.economy, { wide: true });
 
-    add('Fläche', `<span class="num">${esc(areaText(entry.area))}</span>`, { raw: true });
+    add(txt('tafel.flaeche'), `<span class="num">${esc(areaText(entry.area))}</span>`, { raw: true });
     // Wie viel des Landes fremd besetzt war – die Zahl macht den Unterschied
     // zwischen Randbesetzung und fast vollständiger Fremdherrschaft sichtbar.
     // Bei genau einer Macht, die das ganze Gebiet hält, sagt die Kachel nichts,
@@ -359,17 +371,18 @@ export class DetailPanel {
     for (const b of besetzer) {
       const anteil = entry.area > 0 ? Math.round((b.area / entry.area) * 100) : 0;
       if (besetzer.length === 1 && anteil >= 100) continue;
-      add(`Besetzt durch ${this.data.germanName(b.name)}`,
+      add(txt('tafel.besetztdurch', { name: this.data.anzeigeName(b.name) }),
         `<span class="num">${esc(areaText(b.area))}</span>${anteil ? ` · ${anteil} %` : ''}`,
         { raw: true });
     }
-    add('Größenrang', `Nr. ${num(entry.rank + 1)} von ${num(epoch.polities.length)}`);
+    add(txt('tafel.fach.groessenrang'),
+      txt('tafel.rang', { rang: num(entry.rank + 1), gesamt: num(epoch.polities.length) }));
     if (base?.founded || base?.dissolved) {
-      add('Bestand', rangeText(base.founded ?? null, base.dissolved ?? null));
+      add(txt('tafel.fach.bestand'), rangeText(base.founded ?? null, base.dissolved ?? null));
     }
 
     if (!tiles.length) return '';
-    return `<section class="sec"><h3 class="sec__h">Steckbrief</h3>
+    return `<section class="sec"><h3 class="sec__h">${esc(txt('tafel.steckbrief'))}</h3>
       <dl class="facts">${tiles.join('')}</dl></section>`;
   }
 
@@ -380,7 +393,7 @@ export class DetailPanel {
       .map((p) => `<p>${esc(p)}</p>`).join('');
     const quote = period?.quote
       ? `<blockquote class="pull">${esc(period.quote)}</blockquote>` : '';
-    return `<section class="sec"><h3 class="sec__h">Überblick</h3>
+    return `<section class="sec"><h3 class="sec__h">${esc(txt('tafel.ueberblick'))}</h3>
       <div class="prose">${quote}${paragraphs}</div></section>`;
   }
 
@@ -404,7 +417,7 @@ export class DetailPanel {
         <span>${esc(e.text)}</span>
       </li>`).join('');
 
-    return `<section class="sec"><h3 class="sec__h">Wendepunkte</h3>
+    return `<section class="sec"><h3 class="sec__h">${esc(txt('tafel.wendepunkte'))}</h3>
       <ul class="events">${items}</ul></section>`;
   }
 
@@ -414,33 +427,49 @@ export class DetailPanel {
     const chips = list.map((n) => `
       <button class="chip chip--action" data-goto="${esc(n)}">
         <span class="sw" style="background:${esc(this.atlas.colorOfPolity(n))}"></span>
-        ${esc(this.data.germanName(n))}
+        ${esc(this.data.anzeigeName(n))}
       </button>`).join('');
-    return `<section class="sec"><h3 class="sec__h">Angrenzend ${esc(epoch.meta.label)}</h3>
+    return `<section class="sec"><h3 class="sec__h">${esc(txt('tafel.angrenzend', { stand: standText(epoch) }))}</h3>
       <div class="chips">${chips}</div></section>`;
   }
 
   _foot({ name, german, base, epoch }) {
     const links = [];
     if (base?.wiki) {
-      links.push(`<a href="https://de.wikipedia.org/wiki/${encodeURIComponent(base.wiki)}"
+      links.push(`<a href="https://${wikiSprache()}.wikipedia.org/wiki/${encodeURIComponent(base.wiki)}"
         target="_blank" rel="noopener">Wikipedia ${ICON_LINK}</a>`);
     }
     const curated = Boolean(base);
     return `
       <footer class="pnl__foot">
         ${curated ? '' : `<div class="note">${ICON_INFO}
-          <span>Für <strong>${esc(german)}</strong> liegt noch kein redaktioneller Text vor.
-          Angezeigt werden die Angaben des Kartendatensatzes${this.isWikiEnabled() ? ' und – sofern vorhanden – ein Wikipedia-Auszug' : ''}.</span>
+          <span>${txt('tafel.keintext', {
+            name: `<strong>${esc(german)}</strong>`,
+            wiki: this.isWikiEnabled() ? esc(txt('tafel.keintext.wiki')) : '',
+          })}</span>
         </div>`}
+        ${this._nurDeutsch(base)}
         <p style="margin:.8rem 0 0">
-          Grenzverlauf ${esc(epoch.meta.label)} nach <em>Historical Basemaps</em>.
-          Historische Karten sind Rekonstruktionen: Grenzen waren oft unscharf,
-          umstritten oder gar nicht als Linie gedacht.
+          ${txt('tafel.grenzverlauf', { stand: esc(standText(epoch)) })}
         </p>
         ${links.length ? `<p style="margin:.5rem 0 0">${links.join(' · ')}</p>` : ''}
       </footer>
     `;
+  }
+
+  /**
+   * Der Hinweis, dass ein Steckbrief nur auf Deutsch vorliegt.
+   *
+   * Die redaktionellen Texte – Herrscher, Überblick, Wendepunkte – gibt es
+   * bisher nur deutsch. Ein englischer Besucher bekommt sie trotzdem zu sehen,
+   * weil ein deutscher Absatz mehr ist als eine leere Tafel. Aber er soll
+   * wissen, woran er ist, und nicht rätseln, warum die halbe Seite die Sprache
+   * wechselt. Deshalb dieser Satz – und nur dann, wenn es wirklich so ist.
+   */
+  _nurDeutsch(base) {
+    if (!base || sprache() === 'de' || this.data.wissenSprache === sprache()) return '';
+    return `<div class="note" lang="${esc(sprache())}">${ICON_INFO}
+      <span>${esc(txt('tafel.nurdeutsch'))}</span></div>`;
   }
 
   /* --------------------------------------------------------- Wikipedia */
@@ -454,7 +483,7 @@ export class DetailPanel {
     if (!title && !query) return;
 
     slot.hidden = false;
-    slot.innerHTML = `<h3 class="sec__h">Aus der Wikipedia</h3>
+    slot.innerHTML = `<h3 class="sec__h">${esc(txt('tafel.wikipedia'))}</h3>
       <div class="wiki__skeleton"><i></i><i></i><i></i></div>`;
 
     const signal = this._abort.signal;
@@ -466,7 +495,7 @@ export class DetailPanel {
       return;
     }
     slot.innerHTML = `
-      <h3 class="sec__h">Aus der Wikipedia</h3>
+      <h3 class="sec__h">${esc(txt('tafel.wikipedia'))}</h3>
       <div class="wiki__body">
         ${article.thumbnail
           ? `<div class="wiki__thumb"><img src="${esc(article.thumbnail)}" alt="" loading="lazy"></div>`
@@ -474,7 +503,7 @@ export class DetailPanel {
         <div>
           <div class="wiki__text">${esc(article.extract)}</div>
           <a class="wiki__more" href="${esc(article.url)}" target="_blank" rel="noopener">
-            ${esc(article.title)} lesen ${ICON_LINK}
+            ${esc(txt('tafel.wikipedia.lesen', { titel: article.title }))} ${ICON_LINK}
           </a>
         </div>
       </div>`;

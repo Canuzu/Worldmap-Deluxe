@@ -12,11 +12,14 @@ import './styles/map.css';
 
 import RELIGION from './data/religion/vokabular.json';
 import { atlasData } from './modules/data.js';
-import { AtlasMap, BASEMAPS } from './modules/atlas.js';
+import { AtlasMap, BASEMAPS, grundName, grundText } from './modules/atlas.js';
 import { Timeline } from './modules/timeline.js';
 import { DetailPanel } from './modules/panel.js';
 import { polityAt } from './modules/geo.js';
-import { esc, fold, highlight, areaText, distanceText, num } from './modules/format.js';
+import { esc, fold, highlight, areaText, distanceText, num, yearText } from './modules/format.js';
+import {
+  txt, sprache, SPRACHEN, spracheEinrichten, spracheWechseln, markupBeschriften,
+} from './modules/sprache.js';
 import { ERA_COLORS } from './modules/palette.js';
 import { BattlePlayer, BATTLES, ladeBattles } from './modules/battles.js';
 import { Beiblatt } from './modules/beiblatt.js';
@@ -89,6 +92,14 @@ function writeHash({ map, year, selected }) {
 /* ---------------------------------------------------------------- Boot */
 
 async function main() {
+  /* Zuerst die Sprache, dann alles andere: Der Ladeschirm steht schon im Bild,
+     und jeder Text, der danach entsteht – Zeitleiste, Tafeln, Beschriftungen
+     auf der Karte – fragt das Wörterbuch. Wer das später einrichtet, hat eine
+     Seite, die auf Deutsch startet und mitten im Aufbau umspringt. */
+  spracheEinrichten();
+  markupBeschriften();
+  document.title = txt('doc.titel');
+
   const bootBar = $('bootBar');
   const bootStatus = $('bootStatus');
   const progress = (value, text) => {
@@ -101,7 +112,7 @@ async function main() {
   try {
     await atlasData.boot(progress);
   } catch (err) {
-    bootStatus.innerHTML = `Die Kartendaten konnten nicht geladen werden.<br><small>${esc(err.message)}</small>`;
+    bootStatus.innerHTML = `${esc(txt('start.fehler'))}<br><small>${esc(err.message)}</small>`;
     bootBar.style.background = 'var(--rose)';
     return;
   }
@@ -123,7 +134,7 @@ async function main() {
   // Messhilfen für scripts/smoke.mjs und scripts/perf
   window.__atlasMap = atlas.map;
   window.__atlas = atlas;
-  atlas.setLabelNames((name) => atlasData.germanName(name));
+  atlas.setLabelNames((name) => atlasData.anzeigeName(name));
   atlas.setColorMode(prefs.colorMode);
   atlas.setShowLabels(prefs.labels);
   atlas.setShowBorders(prefs.borders);
@@ -146,7 +157,7 @@ async function main() {
   const ereignisse = new EventLayer(atlas, {
     // Ein aufgeschlagenes Ereignis blendet die Detailtafel nicht weg – man
     // liest oft beides nebeneinander: das Land und was dort geschah.
-    onOpen: () => { layersMenu.hidden = true; },
+    onOpen: () => { alleZu(); },
   });
 
   /**
@@ -158,7 +169,7 @@ async function main() {
    * verschwindet mit ihm.
    */
   const konflikte = new KonfliktLayer(atlas, {
-    onOpen: () => { layersMenu.hidden = true; },
+    onOpen: () => { alleZu(); },
   });
 
   // Für die Prüfwerkzeuge erreichbar, wie Karte und Atlas.
@@ -387,10 +398,10 @@ async function main() {
     teile.push(`${state.epoch.polities.length} Gemeinwesen`);
     if (state.selected) {
       const e = state.epoch.byName.get(state.selected);
-      const name = atlasData.germanName(state.selected);
+      const name = atlasData.anzeigeName(state.selected);
       const zusatz = [];
       if (e?.occupiers?.length) {
-        zusatz.push(`besetzt durch ${e.occupiers.map((b) => atlasData.germanName(b.name)).join(' und ')}`);
+        zusatz.push(`besetzt durch ${e.occupiers.map((b) => atlasData.anzeigeName(b.name)).join(' und ')}`);
       }
       if (e?.area) zusatz.push(areaText(e.area));
       teile.push(`Gewählt: ${name}${zusatz.length ? `, ${zusatz.join(', ')}` : ''}`);
@@ -455,7 +466,7 @@ async function main() {
     mapEl.classList.toggle('is-pointing', Boolean(name));
     if (!name) { hovertip.hidden = true; return; }
     const entry = state.epoch?.byName.get(name);
-    const german = atlasData.germanName(name);
+    const german = atlasData.anzeigeName(name);
     hovertip.innerHTML = `${esc(german)}${entry ? `<small>${esc(areaText(entry.area))}</small>` : ''}`;
     hovertip.hidden = false;
     hovertip.style.left = `${pointer.x}px`;
@@ -489,7 +500,7 @@ async function main() {
        Familie: alles Christliche in Blau, alles Islamische in Grün. So liest
        man auf Weltmaßstab die große Gliederung, ohne 35 Farben zu lernen. */
     if (atlas.colorMode === 'religion') {
-      $('legendTitle').textContent = `Religionen · ${epoch.meta.label}`;
+      $('legendTitle').textContent = txt('legende.religionen', { stand: yearText(epoch.meta.year) });
       const nachFlaeche = new Map();
       let geteilt = 0;
       for (const p of epoch.polities) {
@@ -512,15 +523,13 @@ async function main() {
         list.insertAdjacentHTML('beforeend', `
           <li class="legend__note">
             <span class="sw sw--hatch"></span>
-            <span class="nm">Streifen: die Herrschaft bekennt sich zu einer anderen
-              Religion als die Bevölkerung – ${num(geteilt)} Gemeinwesen in diesem
-              Zeitschnitt.</span>
+            <span class="nm">${esc(txt('legende.streifen', { zahl: num(geteilt) }))}</span>
           </li>`);
       }
       return;
     }
 
-    $('legendTitle').textContent = `Größte Gemeinwesen · ${epoch.meta.label}`;
+    $('legendTitle').textContent = txt('legende.groesste', { stand: yearText(epoch.meta.year) });
     // Mit eingeschalteter Ereignisebene wird die Liste der Gemeinwesen kürzer:
     // Sonst stünde die Überschrift „Was in dieser Zeit geschah“ so weit unten,
     // dass sie niemand findet, der nicht ohnehin scrollt.
@@ -528,8 +537,8 @@ async function main() {
     list.innerHTML = epoch.polities.slice(0, wieViele).map((p) => `
       <li><button type="button" data-name="${esc(p.name)}">
         <span class="sw" style="background:${esc(atlas.colorOfPolity(p.name))}"></span>
-        <span class="nm">${esc(atlasData.germanName(p.name))}${p.occupiers?.length
-          ? ` <i class="occ" title="besetzt durch ${esc(p.occupiers.map((b) => atlasData.germanName(b.name)).join(', '))}">besetzt</i>`
+        <span class="nm">${esc(atlasData.anzeigeName(p.name))}${p.occupiers?.length
+          ? ` <i class="occ" title="${esc(txt('legende.besetztdurch', { namen: p.occupiers.map((b) => atlasData.anzeigeName(b.name)).join(', ') }))}">${esc(txt('legende.besetzt'))}</i>`
           : ''}</span>
         <span class="va">${esc(areaText(p.area))}</span>
       </button></li>`).join('');
@@ -546,7 +555,7 @@ async function main() {
         ${[...besetzer.entries()].sort((a, b) => b[1] - a[1]).map(([name, count]) => `
           <li><button type="button" data-name="${esc(name)}">
             <span class="sw sw--hatch" style="--occ:${esc(atlas.colorOfPolity(name))}"></span>
-            <span class="nm">${esc(atlasData.germanName(name))} als Besatzungsmacht</span>
+            <span class="nm">${esc(txt('legende.besatzungsmacht', { name: atlasData.anzeigeName(name) }))}</span>
             <span class="va">${num(count)} Gebiete</span>
           </button></li>`).join('')}`);
     }
@@ -738,7 +747,7 @@ async function main() {
     const seen = new Set();
     matches = [];
     for (const p of state.epoch.polities) {
-      const german = atlasData.germanName(p.name);
+      const german = atlasData.anzeigeName(p.name);
       const hayGerman = fold(german);
       const hayOriginal = fold(p.name);
       const pos = hayGerman.indexOf(q);
@@ -834,21 +843,52 @@ async function main() {
 
   const layersMenu = $('layersMenu');
   const legendBox = $('legendBox');
+  const langMenu = $('langMenu');
+
+  /* Die Aufklappmenüs schließen einander aus. Früher standen die beiden, die
+     es gab, im Rumpf jeder Funktion, die eines öffnet – beim dritten wäre das
+     der dritte Ort gewesen, an dem man es vergessen kann. Jetzt stehen sie
+     einmal hier. */
+  const POPOVER = [
+    [layersMenu, 'btnLayers'],
+    [legendBox, 'btnLegend'],
+    [langMenu, 'btnLang'],
+  ];
+
+  function alleZu() {
+    for (const [el, knopf] of POPOVER) {
+      el.hidden = true;
+      $(knopf).setAttribute('aria-pressed', 'false');
+      $(knopf).setAttribute('aria-expanded', 'false');
+    }
+  }
 
   function togglePopover(el, button) {
     const open = el.hidden;
-    layersMenu.hidden = true;
-    legendBox.hidden = true;
-    $('btnLayers').setAttribute('aria-pressed', 'false');
-    $('btnLegend').setAttribute('aria-pressed', 'false');
+    alleZu();
     if (open) {
       el.hidden = false;
       button.setAttribute('aria-pressed', 'true');
+      button.setAttribute('aria-expanded', 'true');
     }
   }
 
   $('btnLayers').addEventListener('click', () => togglePopover(layersMenu, $('btnLayers')));
   $('btnLegend').addEventListener('click', () => togglePopover(legendBox, $('btnLegend')));
+
+  /* ------------------------------------------------------------ Sprache
+
+     Der Umschalter baut sich aus der Sprachliste auf, damit eine dritte
+     Sprache nur einen Eintrag in SPRACHEN kostet und keine Zeile hier. */
+  $('langKurz').textContent = SPRACHEN.find((s) => s.code === sprache())?.kurz ?? 'DE';
+  $('langList').innerHTML = SPRACHEN.map((s) => `
+    <button type="button" role="radio" data-lang="${esc(s.code)}"
+            aria-checked="${s.code === sprache()}" lang="${esc(s.code)}">${esc(s.name)}</button>`).join('');
+  $('langList').addEventListener('click', (event) => {
+    const knopf = event.target.closest('[data-lang]');
+    if (knopf) spracheWechseln(knopf.dataset.lang);
+  });
+  $('btnLang').addEventListener('click', () => togglePopover(langMenu, $('btnLang')));
   /* ---------------------------------------------- Kriege & Schlachten
 
      Ein Register statt zweier Listen: Kriege der eingestellten Zeit,
@@ -990,9 +1030,9 @@ async function main() {
         <h4 class="kreg__abschnitt">Besetzte Gebiete</h4>
         <ul class="kreg__liste kreg__liste--besatzung">${besetzt.map(([macht, gebiete]) => `
           <li>
-            <b>${esc(atlasData.germanName(macht))}</b>
+            <b>${esc(atlasData.anzeigeName(macht))}</b>
             <span>hält ${gebiete.length} Gebiet${gebiete.length === 1 ? '' : 'e'}: ${
-  esc(gebiete.slice(0, 6).map((g) => atlasData.germanName(g)).join(', '))}${gebiete.length > 6 ? ' u. a.' : ''}</span>
+  esc(gebiete.slice(0, 6).map((g) => atlasData.anzeigeName(g)).join(', '))}${gebiete.length > 6 ? ' u. a.' : ''}</span>
           </li>`).join('')}</ul>
         <p class="kreg__fuss">Auf der Karte schraffiert, in der Farbe der Besatzungsmacht.</p>`);
     }
@@ -1019,8 +1059,7 @@ async function main() {
   });
 
   async function openBattles() {
-    legendBox.hidden = true;
-    layersMenu.hidden = true;
+    alleZu();
     battlesBox.hidden = false;
     kampfblatt.zuruecksetzen();
     renderRegister();
@@ -1484,13 +1523,12 @@ async function main() {
     const el = $('basemapNote');
     const spec = BASEMAPS[atlas.basemapId];
     if (!spec) {
-      el.textContent = 'Ohne Grundlage: Der Atlas zeichnet Küsten, Gewässer und Grenzen '
-        + 'vollständig selbst und läuft damit auch offline.';
+      el.textContent = txt('grund.ohne');
       return;
     }
-    el.innerHTML = `${esc(spec.beschreibung)} – bewusst ohne heutige Straßen, Städte oder `
-      + `Staatsgrenzen. Quelle: ${esc(spec.quelle)}.`
-      + (atlas.hasBasemap ? '' : ' <b>Noch nicht geladen</b> – bis dahin zeichnet der Atlas wie bisher alles selbst.');
+    el.innerHTML = esc(txt('grund.satz', {
+      text: grundText(spec.schluessel), quelle: spec.quelle,
+    })) + (atlas.hasBasemap ? '' : txt('grund.nichtgeladen'));
   }
 
   basemapButtons.forEach((b) => b.addEventListener('click', () => setBasemap(b.dataset.basemap)));
@@ -1504,7 +1542,7 @@ async function main() {
     const btn = $('btnFocus');
     btn.setAttribute('aria-pressed', String(on));
     btn.dataset.label = on ? 'Bedienelemente zeigen (F)' : 'Nur die Karte (F)';
-    if (on) { layersMenu.hidden = true; legendBox.hidden = true; closeSearch(); }
+    if (on) { alleZu(); closeSearch(); }
     prefs.focus = on;
     savePrefs();
     window.setTimeout(() => atlas.map.invalidateSize(), 320);
@@ -1573,12 +1611,9 @@ async function main() {
   $('btnZoomOut').addEventListener('click', () => atlas.zoomBy(-.7));
 
   document.addEventListener('click', (event) => {
-    if (layersMenu.hidden && legendBox.hidden) return;
+    if (POPOVER.every(([el]) => el.hidden)) return;
     if (event.target.closest('.popover, .tools')) return;
-    layersMenu.hidden = true;
-    legendBox.hidden = true;
-    $('btnLayers').setAttribute('aria-pressed', 'false');
-    $('btnLegend').setAttribute('aria-pressed', 'false');
+    alleZu();
   });
 
   function setTheme(theme) {
@@ -1699,8 +1734,8 @@ async function main() {
       if (searchWrap.classList.contains('is-open')) { closeSearch(); return; }
       if (document.getElementById('app').classList.contains('is-focus')) { setFocusMode(false); return; }
       if (!battlesBox.hidden) { closeBattles(); return; }
-      if (!layersMenu.hidden || !legendBox.hidden) {
-        layersMenu.hidden = legendBox.hidden = true;
+      if (POPOVER.some(([el]) => !el.hidden)) {
+        alleZu();
         return;
       }
       if (panel.isOpen) panel.close();
@@ -1833,7 +1868,7 @@ function aboutHtml() {
 function creditsHtml() {
   const src = atlasData.index?.source ?? {};
   const grundlagen = Object.values(BASEMAPS)
-    .map((b) => `<li><strong>${esc(b.name)}</strong> – ${esc(b.beschreibung)}. ${esc(b.quelle)}</li>`)
+    .map((b) => `<li><strong>${esc(grundName(b.schluessel))}</strong> – ${esc(grundText(b.schluessel))}. ${esc(b.quelle)}</li>`)
     .join('');
   return `
     <h3>Historische Grenzen</h3>

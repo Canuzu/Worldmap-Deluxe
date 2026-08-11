@@ -9,6 +9,7 @@
  */
 import { ERA_COLORS } from './palette.js';
 import { yearParts, yearShort, yearText, num, esc } from './format.js';
+import { txt } from './sprache.js';
 
 export class Timeline {
   constructor(dom, { epochs, eras, onChange, onScrub }) {
@@ -356,25 +357,26 @@ export class Timeline {
     // Monat – zwischen Juli und Dezember 1942 lag die Wende von Stalingrad.
     const exact = this.year === epoch.year;
     const teile = [];
-    if (!exact) teile.push(`Kartenstand <b>${esc(yearText(epoch.year))}</b>`);
-    if (epoch.stand) teile.push(`Stand <b>${esc(epoch.stand)}</b>`);
+    if (!exact) teile.push(txt('zeit.kartenstand', { stand: esc(yearText(epoch.year)) }));
+    if (epoch.stand) teile.push(txt('zeit.standb', { stand: esc(epoch.stand) }));
     if (epoch.title) teile.push(esc(epoch.title));
     // Herkunft offenlegen: Zeitschnitte, die es im Ursprungsdatensatz nicht
     // gibt, und solche mit Korrekturen tragen ein anklickbares Zeichen.
     if (epoch.eiszeitKueste) {
-      teile.push('<button class="herkunft" data-herkunft="eiszeit" '
-        + 'title="Für diesen Zeitschnitt gilt die eiszeitliche Küstenlinie.">Eiszeitküste</button>');
+      teile.push(`<button class="herkunft" data-herkunft="eiszeit" `
+        + `title="${esc(txt('zeit.eiszeitkueste.hilfe'))}">${esc(txt('zeit.eiszeitkueste'))}</button>`);
     }
     if (epoch.ergaenzt) {
-      teile.push('<button class="herkunft" data-herkunft="ergaenzt" '
-        + 'title="Dieser Zeitschnitt fehlt im Ursprungsdatensatz und ist eigens angelegt.">ergänzt</button>');
+      teile.push(`<button class="herkunft" data-herkunft="ergaenzt" `
+        + `title="${esc(txt('zeit.ergaenzt.hilfe'))}">${esc(txt('zeit.ergaenzt'))}</button>`);
     } else if (epoch.korrigiert) {
       const k = epoch.korrigiert;
       const was = [
-        k.umbenannt ? `${k.umbenannt} umbenannt` : null,
-        k.ergaenzt ? `${k.ergaenzt} Gebiet${k.ergaenzt > 1 ? 'e' : ''} ergänzt` : null,
+        k.umbenannt ? txt('zeit.korr.umbenannt', { zahl: k.umbenannt }) : null,
+        k.ergaenzt ? txt('zeit.korr.ergaenzt', { zahl: k.ergaenzt }) : null,
       ].filter(Boolean).join(', ');
-      teile.push(`<button class="herkunft" data-herkunft="korrigiert" title="${esc(was)} – zum Nachlesen anklicken">korrigiert</button>`);
+      teile.push(`<button class="herkunft" data-herkunft="korrigiert" `
+        + `title="${esc(txt('zeit.korrigiert.hilfe', { was }))}">${esc(txt('zeit.korrigiert'))}</button>`);
     }
     this.dom.yearTitle.innerHTML = teile.length ? `· ${teile.join(' · ')}` : '';
     this.dom.yearTitle.classList.toggle('is-approx', !exact);
@@ -382,16 +384,21 @@ export class Timeline {
 
     this.dom.track.setAttribute('aria-valuenow', String(this.year));
     this.dom.track.setAttribute('aria-valuetext',
-      exact ? `${epoch.label}${epoch.title ? `, ${epoch.title}` : ''}`
-            : `${yearText(this.year)}, gezeigt wird der Kartenstand ${epoch.label}`);
+      exact
+        ? txt('zeit.regler.wert', {
+          stand: yearText(epoch.year), titel: epoch.title ? `, ${epoch.title}` : '',
+        })
+        : txt('zeit.regler.naeherung', {
+          jahr: yearText(this.year), stand: yearText(epoch.year),
+        }));
     this.dom.prev.disabled = this.index === 0;
     this.dom.next.disabled = this.index === this.count - 1;
   }
 
   setStats({ polities, area }) {
     this.dom.stats.innerHTML = `
-      <div><b>${num(polities)}</b>Gemeinwesen</div>
-      ${area ? `<div><b>${area}</b>kartiert</div>` : ''}
+      <div><b>${num(polities)}</b>${esc(txt('zeit.gemeinwesen'))}</div>
+      ${area ? `<div><b>${area}</b>${esc(txt('zeit.kartiert'))}</div>` : ''}
     `;
   }
 

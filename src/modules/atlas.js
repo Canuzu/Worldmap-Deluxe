@@ -17,6 +17,7 @@
  */
 import L from 'leaflet';
 import { createLabelLayer, breiteVon } from './labels.js';
+import { txt } from './sprache.js';
 import { schriftdichte } from './dichte.js';
 import RELIGION from '../data/religion/vokabular.json';
 import {
@@ -526,22 +527,30 @@ const HOME = { center: [26, 12], zoom: 2.4 };
  * maxNativeZoom statt maxZoom: Über der letzten vorhandenen Kachelstufe wird
  * hochskaliert, statt dass die Grundlage einfach verschwindet.
  */
+/* Name und Beschreibung stehen als Schlüssel da, nicht als Text: Sie erscheinen
+   im Ebenenmenü und im Quellenfenster, also an zwei Oberflächen, und der Rest
+   dieses Objekts – Adresse, Zoomstufe, Rechteinhaber – ist sprachunabhängig.
+   Der Rechteinhaber wird bewusst nicht übersetzt: „Esri, USGS, NOAA“ ist ein
+   Name, kein Satz. */
 export const BASEMAPS = {
   relief: {
-    name: 'Relief',
-    beschreibung: 'Schummerung des Geländes, ohne Beschriftung',
+    schluessel: 'relief',
     url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}',
     maxNativeZoom: 13,
     quelle: 'Esri, USGS, NOAA',
   },
   physisch: {
-    name: 'Physisch',
-    beschreibung: 'Gelände mit Bewuchs und Höhenfarben',
+    schluessel: 'physisch',
     url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}',
     maxNativeZoom: 8,
     quelle: 'Esri, US National Park Service',
   },
 };
+
+/** Anzeigename einer Kartengrundlage in der laufenden Sprache. */
+export const grundName = (id) => txt(`grund.${id}.name`);
+/** Ihre Beschreibung, ebenfalls übersetzt. */
+export const grundText = (id) => txt(`grund.${id}.text`);
 
 /** Ab dieser Zoomstufe wird die hochaufgelöste Küstenlinie eingeblendet. */
 const COAST_HD_FROM_ZOOM = 4.2;

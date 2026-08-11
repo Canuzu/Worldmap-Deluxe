@@ -22,6 +22,7 @@
     "check:herrscher": "node scripts/check-herrscher.mjs",
     "check:ereignisse": "node scripts/check-ereignisse.mjs",
     "check:layout": "node scripts/check-layout.mjs",
+    "check:sprache": "node scripts/check-sprache.mjs",
     "check:ladelast": "node scripts/check-ladelast.mjs",
     "check:leistung": "node scripts/check-leistung.mjs",
     "check:leistung:handy": "HANDY=1 node scripts/check-leistung.mjs",

@@ -140,12 +140,22 @@ function kollisionen(boxes, vw, vh) {
   return treffer;
 }
 
+/* Beide Sprachen.
+ *
+ * Text ist verschieden lang, und Länge bricht Anordnungen. „Boundary
+ * confidence“ ist acht Zeichen länger als „Grenzgüte“, und genau daran ist die
+ * Modusleiste bei 1024 Punkten aus dem Bild gelaufen – ein Fehler, der in der
+ * deutschen Fassung nie auffiel, weil dort zufällig noch Platz war. Wer zwei
+ * Sprachen ausliefert, muss beide vermessen. */
+const SPRACHEN = ['de', 'en'];
+
 let fehlerGesamt = 0;
 
+for (const lang of SPRACHEN) {
 for (const [name, w, h] of GROESSEN) {
-  const page = await browser.newPage({ viewport: { width: w, height: h }, deviceScaleFactor: 1 });
+  const page = await browser.newPage({ viewport: { width: w, height: h }, deviceScaleFactor: 1, locale: `${lang}-${lang === 'de' ? 'DE' : 'GB'}` });
   page.on('pageerror', (e) => console.log(`  ! PAGEERROR ${e.message}`));
-  await page.goto('http://127.0.0.1:5173/#position=3.2/40/16&year=1815', { waitUntil: 'networkidle' });
+  await page.goto(`http://127.0.0.1:5173/?lang=${lang}#position=3.2/40/16&year=1815`, { waitUntil: 'networkidle' });
   await page.waitForSelector('#app:not([hidden])', { timeout: 20000 });
   await page.waitForTimeout(2800);
 
@@ -197,11 +207,12 @@ for (const [name, w, h] of GROESSEN) {
     }
     fehlerGesamt += probleme.length;
     const marke = probleme.length ? '✗' : '✓';
-    console.log(`${marke} ${name.padEnd(7)} ${zname.padEnd(11)} ${w}×${h}`);
+    console.log(`${marke} ${lang} ${name.padEnd(7)} ${zname.padEnd(11)} ${w}×${h}`);
     for (const p of probleme) console.log(`      ${p}`);
-    await page.screenshot({ path: `${OUT}/${name}-${zname}.png` });
+    await page.screenshot({ path: `${OUT}/${lang}-${name}-${zname}.png` });
   }
   await page.close();
+}
 }
 
 await browser.close();

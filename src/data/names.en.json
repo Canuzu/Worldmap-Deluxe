@@ -1,0 +1,10 @@
+{
+  "about": "Englische Anzeigenamen – ausschließlich Abweichungen vom Ursprungsdatensatz.",
+  "warum": [
+    "Der Ursprungsdatensatz (historical-basemaps) ist englisch beschriftet. Geprüft wurden alle 925 Namen: keiner trägt eine deutsche oder sonst fremdsprachige Konstruktion, 230 davon schreibt das Deutsche unverändert ab. Für Englisch ist der Datensatzname also die richtige Antwort, und der Rückfall in data.js liefert genau ihn.",
+    "Diese Datei ist deshalb fast leer, und das ist kein unfertiger Zustand, sondern das Ergebnis: Eingetragen wird nur, wo der Datensatz einer im Englischen eingebürgerten Schreibung widerspricht. Jeder Eintrag hier muss ein Schlüssel aus names.de.json sein – was nicht vorkommt, wirkt nie und täuscht Pflege vor, die nicht stattfindet. npm run check:sprache prüft das."
+  ],
+  "names": {
+    "Kievan Rus": "Kievan Rus'"
+  }
+}

@@ -7,7 +7,15 @@ import { chromium } from 'playwright';
 
 const BASE = process.argv[2] ?? 'http://127.0.0.1:5173';
 const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
-const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+/* Die Sprache festnageln.
+ *
+ * Der Atlas richtet sich seit der englischen Fassung nach dem Browser, und ein
+ * Prüfbrowser meldet standardmäßig en-US. Ohne diese Zeile lief die ganze
+ * Reihe plötzlich auf Englisch und sieben Prüfungen fielen um, weil sie
+ * deutsche Texte erwarten – ein Befund über die Prüfumgebung, nicht über den
+ * Atlas. Geprüft wird deshalb ausdrücklich die deutsche Fassung; die
+ * englische bekommt weiter unten ihre eigene Prüfung. */
+const page = await browser.newPage({ viewport: { width: 1440, height: 900 }, locale: 'de-DE' });
 
 const errors = [];
 page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
@@ -1327,6 +1335,79 @@ await check('Maßstab am Telefon: klein, in der Ecke, Quellen trotzdem greifbar'
   if (m.schrift > 10) throw new Error(`Schrift ${m.schrift}px – zu groß`);
   if (m.link.h < 44) throw new Error(`Quellenzeile nur ${Math.round(m.link.h)}px hoch`);
   await page.setViewportSize({ width: 1440, height: 900 });
+});
+
+/* ------------------------------------------------------------- Englisch
+
+   Die englische Fassung braucht eigene Prüfungen, und zwar strengere als ein
+   Blick auf die Überschrift. Was leise kaputtgeht, ist nicht der Titel – das
+   sieht man –, sondern ein Schlüssel, der als Schlüssel im Bild steht, weil
+   der Text fehlt, oder eine Jahreszahl, die weiter „v. Chr.“ sagt, weil sie
+   aus einer Datei kommt statt aus dem Wörterbuch. */
+await check('Englische Fassung kommt auf Englisch hoch', async () => {
+  const en = await browser.newPage({ viewport: { width: 1440, height: 900 }, locale: 'en-GB' });
+  try {
+    await en.goto(`${BASE}/?lang=en#position=3.2/40/16&year=1815`, { waitUntil: 'networkidle' });
+    await en.waitForFunction(() => document.getElementById('boot').hidden, null, { timeout: 20000 });
+    await en.waitForTimeout(1800);
+
+    if (await en.getAttribute('html', 'lang') !== 'en') throw new Error('lang steht nicht auf en');
+    if (!/Historical World Atlas/.test(await en.title())) throw new Error(`Titel: ${await en.title()}`);
+
+    const modi = await en.$$eval('#colorModes button span', (e) => e.map((x) => x.textContent));
+    if (!modi.includes('Political')) throw new Error(`Kartenmodi: ${modi.join(', ')}`);
+
+    // Die Jahreszahl kommt aus dem Wörterbuch, nicht aus epochs.json.
+    const jahr = await en.textContent('#yearBig');
+    if (!/AD/.test(jahr) || /Chr/.test(jahr)) throw new Error(`Jahresangabe: ${jahr}`);
+
+    // Die Epochennamen ebenso – sie stehen in epochs.json auf Deutsch.
+    const epoche = await en.textContent('#yearEra');
+    if (/Nationalstaaten|Mittelalter|Neuzeit/.test(epoche)) throw new Error(`Epoche deutsch: ${epoche}`);
+
+    // Kein Schlüssel im Bild: Ein fehlender Text reicht seinen Schlüssel durch,
+    // und der sieht wie „tafel.steckbrief“ aus – auffällig, aber nur, wenn
+    // jemand hinsieht.
+    await en.evaluate(() => { location.hash = 'position=3.2/40/16&year=1815&ort=Austrian%20Empire'; });
+    await en.waitForTimeout(1600);
+    const tafel = await en.textContent('#panelBody');
+    const schluessel = tafel.match(/\b(tafel|zeit|modus|ebenen|legende|guete|epoche|grund)\.[a-z.]+/g);
+    if (schluessel) throw new Error(`unübersetzte Schlüssel im Bild: ${[...new Set(schluessel)].join(', ')}`);
+    if (!/Profile|Rule in|Borders:/.test(tafel)) throw new Error('Tafel zeigt keine englischen Überschriften');
+
+    // Und der Hinweis, dass der redaktionelle Text deutsch ist, muss stehen –
+    // sonst wundert sich der Leser über den Sprachwechsel mitten in der Tafel.
+    if (!/German only/.test(tafel)) throw new Error('Hinweis auf die deutsche Wissensbasis fehlt');
+  } finally {
+    await en.close();
+  }
+});
+
+/* Der Umschalter muss auch wirklich schalten – und die Wahl überdauern. */
+await check('Sprachumschalter wechselt und merkt sich die Wahl', async () => {
+  const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 }, locale: 'de-DE' });
+  const sp = await ctx.newPage();
+  try {
+    await sp.goto(`${BASE}/#position=3.2/40/16&year=1815`, { waitUntil: 'networkidle' });
+    await sp.waitForFunction(() => document.getElementById('boot').hidden, null, { timeout: 20000 });
+    await sp.waitForTimeout(1200);
+    if (await sp.textContent('#langKurz') !== 'DE') throw new Error('startet nicht auf Deutsch');
+
+    await sp.click('#btnLang');
+    await sp.waitForTimeout(300);
+    await sp.click('#langList button[data-lang="en"]');
+    await sp.waitForFunction(() => document.documentElement.lang === 'en', null, { timeout: 15000 });
+    await sp.waitForTimeout(1500);
+    if (!/lang=en/.test(sp.url())) throw new Error(`Sprache steht nicht in der Adresse: ${sp.url()}`);
+
+    // Ohne ?lang= in der Adresse muss die gemerkte Wahl greifen.
+    await sp.goto(`${BASE}/#position=3.2/40/16&year=1815`, { waitUntil: 'networkidle' });
+    await sp.waitForTimeout(1500);
+    if (await sp.getAttribute('html', 'lang') !== 'en')
+      throw new Error('die gewählte Sprache überdauert das Neuladen nicht');
+  } finally {
+    await ctx.close();
+  }
 });
 
 console.log(checks.join('\n'));

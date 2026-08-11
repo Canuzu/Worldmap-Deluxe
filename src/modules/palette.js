@@ -1,3 +1,5 @@
+import { txt } from './sprache.js';
+
 /**
  * Farbvergabe für die Karte.
  *
@@ -34,12 +36,16 @@ export const PRECISION_COLORS = {
   parchment: { 1: '#a5573f', 2: '#9a7f34', 3: '#3f8560', 0: '#6c7a86' },
 };
 
-export const PRECISION_LABELS = {
-  1: 'grobe Annäherung',
-  2: 'mittlere Genauigkeit',
-  3: 'völkerrechtlich fixiert',
-  0: 'ohne Angabe',
-};
+/**
+ * Beschriftung einer Grenzgüte.
+ *
+ * Stand als festes Wörterbuch hier – vier deutsche Zeichenketten mitten in
+ * einer Datei, die sonst nur Farben rechnet. Jetzt eine Funktion, weil die
+ * Antwort von der Sprache abhängt und erst zur Aufrufzeit feststeht.
+ */
+export function precisionLabel(stufe) {
+  return txt(`guete.${stufe === 1 || stufe === 2 || stufe === 3 ? stufe : 0}`);
+}
 
 /** Epochenfarben der Zeitleiste. */
 export const ERA_COLORS = {

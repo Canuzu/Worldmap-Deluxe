@@ -8,6 +8,7 @@
  * als auch die Nachbarliste in der Detailtafel.
  */
 import { feature as topoFeature } from 'topojson-client';
+import { txt, sprache } from './sprache.js';
 
 const BASE = import.meta.env.BASE_URL || '/';
 // __DATENSTAND__ wird beim Bauen eingesetzt (siehe vite.config.js) und hängt
@@ -181,28 +182,58 @@ export class AtlasData {
   }
 
   async boot(onProgress = () => {}) {
-    onProgress(.08, 'Zeitschnitte werden gelesen …');
+    onProgress(.08, txt('start.zeitschnitte'));
     this.index = await getJSON('data/epochs.json');
-    this.eras = this.index.eras;
     this.epochs = this.index.epochs;
+    /* Die Epochennamen stehen in epochs.json auf Deutsch, weil sie dort
+       zusammen mit den Zeitgrenzen erzeugt werden. Übersetzt werden sie hier,
+       nicht in der Datei: Ein Epochenname ist Oberflächentext wie jeder
+       andere, und in der Datei stünde er sonst je Sprache noch einmal. */
+    this.eras = (this.index.eras ?? []).map((e) => ({
+      ...e,
+      name: txt(`epoche.${e.id}`),
+      short: txt(`epoche.${e.id}.kurz`),
+    }));
 
-    onProgress(.24, 'Wissensbasis wird geladen …');
+    onProgress(.24, txt('start.wissen'));
     const [knowledge, names] = await Promise.all([
-      getJSON('data/knowledge/polities.de.json').catch(() => ({ entries: {} })),
-      getJSON('data/knowledge/names.de.json').catch(() => ({ names: {} })),
+      this._wissen('polities', { entries: {} }),
+      this._wissen('names', { names: {} }),
     ]);
     this.knowledge = knowledge.entries ?? {};
     this.knowledgeMeta = knowledge.meta ?? {};
     this.names = names.names ?? {};
     this.aliases = names.aliases ?? {};
+    /* Fiel die Wissensbasis auf die deutsche Fassung zurück, muss die Tafel
+       das sagen dürfen – sonst steht dort unkommentiert Deutsch in einer
+       englischen Oberfläche. */
+    this.wissenSprache = knowledge.meta?.language ?? 'de';
 
-    onProgress(.46, 'Küstenlinien werden gezeichnet …');
+    onProgress(.46, txt('start.kuesten'));
     // Nur die Übersichtsküste blockiert den Start; die hochaufgelöste Fassung
     // und die Gewässer kommen später bzw. erst auf Anforderung.
     this.base = { ocean: await getJSON('data/base/ocean.json').then(toFeatures) };
 
-    onProgress(.72, 'Karte wird aufgebaut …');
+    onProgress(.72, txt('start.aufbau'));
     return this;
+  }
+
+  /**
+   * Eine Wissensdatei in der laufenden Sprache holen, sonst auf Deutsch.
+   *
+   * Das Sprachkürzel steckte von Anfang an im Dateinamen – benutzt wurde es
+   * nie, geladen wurde immer `.de.`. Hier wird es endlich gelesen. Der
+   * Rückfall auf Deutsch ist Absicht und keine Notlösung: Ein englischer
+   * Besucher, der einen deutschen Steckbrief sieht, hat mehr als einer, der
+   * eine leere Tafel sieht. Dass es Deutsch ist, sagt die Tafel dazu.
+   */
+  async _wissen(name, ersatz) {
+    const lang = sprache();
+    if (lang !== 'de') {
+      const eigen = await getJSON(`data/knowledge/${name}.${lang}.json`).catch(() => null);
+      if (eigen) return eigen;
+    }
+    return getJSON(`data/knowledge/${name}.de.json`).catch(() => ersatz);
   }
 
   /** Hochaufgelöste Küstenlinie (Natural Earth 1:10 Mio.) nachladen. */
@@ -219,17 +250,15 @@ export class AtlasData {
    * gebraucht, wenn die Karte schon steht.
    */
   loadEreignisse() {
-    this._ereignisse ??= getJSON('data/knowledge/ereignisse.de.json')
-      .then((d) => d.ereignisse ?? [])
-      .catch(() => []);
+    this._ereignisse ??= this._wissen('ereignisse', { ereignisse: [] })
+      .then((d) => d.ereignisse ?? []);
     return this._ereignisse;
   }
 
   /** Kriege und Schlachten – geholt, wenn das Register zum ersten Mal aufgeht. */
   loadKonflikte() {
-    this._konflikte ??= getJSON('data/knowledge/konflikte.de.json')
-      .then((d) => ({ kriege: d.kriege ?? [], schlachten: d.schlachten ?? [] }))
-      .catch(() => ({ kriege: [], schlachten: [] }));
+    this._konflikte ??= this._wissen('konflikte', { kriege: [], schlachten: [] })
+      .then((d) => ({ kriege: d.kriege ?? [], schlachten: d.schlachten ?? [] }));
     return this._konflikte;
   }
 
@@ -374,8 +403,16 @@ export class AtlasData {
     return this.aliases[name] ?? name;
   }
 
-  /** Deutsche Bezeichnung eines Namens aus dem Datensatz. */
-  germanName(name) {
+  /**
+   * Anzeigename eines Datensatznamens in der laufenden Sprache.
+   *
+   * Hieß `germanName`, solange es nur eine Sprache gab. Der Rückfall auf den
+   * Datensatznamen ist dabei kein Notnagel, sondern der englische Normalfall:
+   * Der Ursprungsdatensatz ist englisch beschriftet, „Achaemenid Empire“ steht
+   * also schon richtig da. Deutsch braucht für jeden dieser Namen einen
+   * Eintrag, Englisch nur für die Fälle, in denen der Datensatz danebenliegt.
+   */
+  anzeigeName(name) {
     if (!name) return '';
     const canon = this.canonical(name);
     return this.names[canon] ?? this.names[name] ?? name;

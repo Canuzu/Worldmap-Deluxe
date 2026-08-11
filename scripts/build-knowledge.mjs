@@ -43,6 +43,36 @@ function main() {
     `${Object.keys(names.aliases).length} Schreibvarianten`,
   );
 
+  /* Englische Namen.
+   *
+   * Hier ist die Übersetzung fast geschenkt, und das ist kein Zufall: Der
+   * Ursprungsdatensatz ist englisch beschriftet. „Achaemenid Empire“ steht
+   * dort schon so, wie es ein englischer Leser erwartet – die deutsche Datei
+   * ist die Übersetzung, nicht das Original. Für Englisch bleibt deshalb nur,
+   * was der Datensatz falsch oder ungebräuchlich schreibt; das steht in
+   * names.en.json unter `names` und ist bewusst kurz.
+   *
+   * Die Schreibvarianten dagegen gehören in jede Sprache: Sie führen
+   * Tippfehler und Alternativschreibungen des Datensatzes auf einen
+   * Schlüssel zusammen und haben mit Sprache nichts zu tun.
+   */
+  const namesEnDatei = path.join(SRC, 'names.en.json');
+  const namesEn = fs.existsSync(namesEnDatei) ? readJSON(namesEnDatei) : { names: {} };
+  const enAus = {
+    meta: {
+      about: 'English display names. Only entries where the source dataset itself is wrong or unidiomatic; everything else falls back to the dataset name.',
+      language: 'en',
+      names: Object.keys(namesEn.names ?? {}).length,
+    },
+    aliases: names.aliases,
+    names: namesEn.names ?? {},
+  };
+  fs.writeFileSync(path.join(OUT, 'names.en.json'), JSON.stringify(enAus));
+  console.log(
+    `› names.en.json      ${Object.keys(enAus.names).length} Abweichungen vom Datensatz, ` +
+    `${Object.keys(enAus.aliases).length} Schreibvarianten`,
+  );
+
   /* ------------------------------------------------------- Ereignisse */
   // Getrennt ausgeliefert statt ins Programm gebündelt: Sie werden erst
   // gebraucht, wenn die Karte schon steht.

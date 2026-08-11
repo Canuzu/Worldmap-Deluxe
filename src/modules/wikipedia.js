@@ -1,13 +1,19 @@
 /**
- * Optionale Anreicherung aus der deutschsprachigen Wikipedia.
+ * Optionale Anreicherung aus der Wikipedia – in der Sprache der Oberfläche.
  *
  * Die kuratierte Wissensbasis deckt die großen Reiche ab; für die vielen
  * kleineren Gemeinwesen liefert die Wikipedia einen Kurzabriss und oft auch
  * ein Bild. Der Abruf ist abschaltbar und scheitert lautlos – der Atlas
  * bleibt ohne Netzverbindung voll benutzbar.
+ *
+ * Der Host stand fest auf de.wikipedia.org. Das ist die eine Stelle, an der
+ * eine zweite Sprache ohne eigene Übersetzungsarbeit sofort gewinnt: Zu jedem
+ * Gemeinwesen, für das es keinen redaktionellen Text gibt, liefert die
+ * englische Wikipedia denselben Dienst wie die deutsche für deutsche Leser.
  */
+import { wikiSprache } from './sprache.js';
 
-const API = 'https://de.wikipedia.org';
+const api = () => `https://${wikiSprache()}.wikipedia.org`;
 const TIMEOUT_MS = 6000;
 const cache = new Map();
 
@@ -25,21 +31,21 @@ async function fetchJSON(url, signal) {
 
 /** Passenden Artikeltitel suchen, wenn die Wissensbasis keinen vorgibt. */
 async function findTitle(query, signal) {
-  const url = `${API}/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(query)}` +
+  const url = `${api()}/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(query)}` +
     '&srlimit=1&srnamespace=0&format=json&origin=*';
   const data = await fetchJSON(url, signal);
   return data?.query?.search?.[0]?.title ?? null;
 }
 
 async function fetchSummary(title, signal) {
-  const url = `${API}/api/rest_v1/page/summary/${encodeURIComponent(title)}?redirect=true`;
+  const url = `${api()}/api/rest_v1/page/summary/${encodeURIComponent(title)}?redirect=true`;
   const data = await fetchJSON(url, signal);
   if (!data || data.type === 'https://mediawiki.org/wiki/HyperSwitch/errors/not_found') return null;
   return {
     title: data.titles?.normalized ?? data.title,
     extract: data.extract ?? '',
     thumbnail: data.thumbnail?.source ?? null,
-    url: data.content_urls?.desktop?.page ?? `${API}/wiki/${encodeURIComponent(title)}`,
+    url: data.content_urls?.desktop?.page ?? `${api()}/wiki/${encodeURIComponent(title)}`,
   };
 }
 
