@@ -1,0 +1,1885 @@
+{
+ "id": "alesia",
+ "name": "Alesia",
+ "ort": "Alise-Sainte-Reine, Burgund",
+ "datum": "September 52 v. Chr.",
+ "jahr": -1,
+ "mitte": [
+  4.493,
+  47.542
+ ],
+ "zoom": 12.3,
+ "grund": "relief",
+ "worum": "Zwei Kreise: fünfzehn Kilometer Wall nach innen gegen die Eingeschlossenen, einundzwanzig nach außen gegen das Entsatzheer – und dazwischen, in einem Streifen von wenigen hundert Metern, das römische Heer. Caesar belagert und wird belagert, gleichzeitig, mit derselben Truppe.",
+ "parteien": [
+  {
+   "id": "rom",
+   "name": "Rom",
+   "farbe": "#6f9fe0",
+   "fuehrung": "Gaius Iulius Caesar, Titus Labienus",
+   "staerke": "12 Legionen, rund 50.000, dazu germanische Reiterei",
+   "zahl": 50000
+  },
+  {
+   "id": "gal",
+   "name": "Gallischer Bund",
+   "farbe": "#d4737c",
+   "fuehrung": "Vercingetorix, Commius",
+   "staerke": "80.000 in der Stadt, Entsatzheer über 100.000",
+   "zahl": 180000
+  }
+ ],
+ "gelaende": [
+  {
+   "art": "hoehe",
+   "name": "Plateau von Alesia",
+   "punkte": [
+    [
+     4.52355,
+     47.53396
+    ],
+    [
+     4.51153,
+     47.52955
+    ],
+    [
+     4.49925,
+     47.52699
+    ],
+    [
+     4.48302,
+     47.52878
+    ],
+    [
+     4.47988,
+     47.53622
+    ],
+    [
+     4.47668,
+     47.5433
+    ],
+    [
+     4.48878,
+     47.54741
+    ],
+    [
+     4.5034,
+     47.54489
+    ],
+    [
+     4.51921,
+     47.54199
+    ]
+   ]
+  },
+  {
+   "art": "hoehe",
+   "name": "Mont Réa",
+   "punkte": [
+    [
+     4.47499,
+     47.55667
+    ],
+    [
+     4.47266,
+     47.55168
+    ],
+    [
+     4.46918,
+     47.54751
+    ],
+    [
+     4.46165,
+     47.54447
+    ],
+    [
+     4.45617,
+     47.54728
+    ],
+    [
+     4.45086,
+     47.5499
+    ],
+    [
+     4.45339,
+     47.55477
+    ],
+    [
+     4.46069,
+     47.55707
+    ],
+    [
+     4.46868,
+     47.55947
+    ]
+   ]
+  },
+  {
+   "art": "fluss",
+   "name": "Ose",
+   "punkte": [
+    [
+     4.455,
+     47.556
+    ],
+    [
+     4.49,
+     47.554
+    ],
+    [
+     4.53,
+     47.548
+    ]
+   ]
+  },
+  {
+   "art": "fluss",
+   "name": "Oserain",
+   "punkte": [
+    [
+     4.46,
+     47.523
+    ],
+    [
+     4.5,
+     47.525
+    ],
+    [
+     4.54,
+     47.53
+    ]
+   ]
+  },
+  {
+   "art": "mauer",
+   "name": "Kontravallation · 15 km",
+   "punkte": [
+    [
+     4.53718,
+     47.53234
+    ],
+    [
+     4.51805,
+     47.52292
+    ],
+    [
+     4.49875,
+     47.51719
+    ],
+    [
+     4.47385,
+     47.51987
+    ],
+    [
+     4.46987,
+     47.53448
+    ],
+    [
+     4.46575,
+     47.54836
+    ],
+    [
+     4.48496,
+     47.55717
+    ],
+    [
+     4.50729,
+     47.55296
+    ],
+    [
+     4.5314,
+     47.54806
+    ]
+   ]
+  },
+  {
+   "art": "mauer",
+   "name": "Circumvallation · 21 km",
+   "punkte": [
+    [
+     4.55526,
+     47.53018
+    ],
+    [
+     4.52731,
+     47.51643
+    ],
+    [
+     4.4991,
+     47.50805
+    ],
+    [
+     4.4627,
+     47.51196
+    ],
+    [
+     4.45689,
+     47.53332
+    ],
+    [
+     4.45087,
+     47.55361
+    ],
+    [
+     4.47894,
+     47.56647
+    ],
+    [
+     4.51158,
+     47.56032
+    ],
+    [
+     4.54682,
+     47.55316
+    ]
+   ]
+  }
+ ],
+ "stationen": [
+  {
+   "zeit": "Sommer 52",
+   "t": 0,
+   "kurz": "Ein Aufstand, der fast ganz Gallien erfasst.",
+   "text": "Vercingetorix hat die Stämme geeint und Caesar bei Gergovia zum ersten Mal geschlagen. Danach macht er den Fehler, mit seiner Reiterei eine römische Marschkolonne anzugreifen – die germanischen Reiter in römischem Sold werfen ihn. Er weicht in die Höhenfestung Alesia aus und hofft, dort das ganze Land zum Entsatz zu rufen.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     -1.5,
+     43.2
+    ],
+    [
+     8.4,
+     50.4
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "anm-gal",
+     "partei": "gal",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       3.09,
+       45.78
+      ],
+      [
+       3.8,
+       46.6
+      ],
+      [
+       4.5,
+       47.53
+      ]
+     ],
+     "name": "Vercingetorix nach Alesia"
+    },
+    {
+     "id": "anm-rom",
+     "partei": "rom",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       5.04,
+       47.32
+      ],
+      [
+       4.75,
+       47.45
+      ],
+      [
+       4.53,
+       47.54
+      ]
+     ],
+     "name": "Caesar folgt"
+    },
+    {
+     "id": "anm-entsatz",
+     "partei": "gal",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       1.9,
+       47.9
+      ],
+      [
+       3.2,
+       47.7
+      ],
+      [
+       4.35,
+       47.56
+      ]
+     ],
+     "name": "Aufgebot aus ganz Gallien"
+    }
+   ]
+  },
+  {
+   "zeit": "Ende Juli",
+   "t": 120,
+   "kurz": "Fünfzehn Kilometer Wall nach innen.",
+   "text": "Statt zu stürmen, gräbt Caesar. In wenigen Wochen entsteht ein geschlossener Ring um das Plateau: Doppelgraben, Wall, Palisade, dreiundzwanzig Kastelle, davor Fallgruben mit angespitzten Pfählen, die die Legionäre nach den Grabsteinen „Lilien“ nennen. Achtzigtausend Menschen auf dem Plateau sind damit eingeschlossen – samt der Bevölkerung der Stadt.",
+   "stellungen": [
+    {
+     "id": "g-plateau",
+     "partei": "gal",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.52001,
+       47.53438
+      ],
+      [
+       4.50956,
+       47.53023
+      ],
+      [
+       4.49892,
+       47.52779
+      ],
+      [
+       4.48494,
+       47.52932
+      ],
+      [
+       4.48235,
+       47.53615
+      ],
+      [
+       4.47969,
+       47.54265
+      ],
+      [
+       4.4902,
+       47.54652
+      ],
+      [
+       4.50279,
+       47.54431
+      ],
+      [
+       4.51639,
+       47.54175
+      ]
+     ],
+     "name": "Vercingetorix auf dem Plateau",
+     "staerke": "80.000"
+    },
+    {
+     "id": "r-ring",
+     "partei": "rom",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       4.53567,
+       47.53252
+      ],
+      [
+       4.51728,
+       47.52347
+      ],
+      [
+       4.49872,
+       47.51795
+      ],
+      [
+       4.47478,
+       47.52053
+      ],
+      [
+       4.47096,
+       47.53458
+      ],
+      [
+       4.46699,
+       47.54793
+      ],
+      [
+       4.48546,
+       47.55639
+      ],
+      [
+       4.50694,
+       47.55234
+      ],
+      [
+       4.53012,
+       47.54763
+      ]
+     ],
+     "name": "Kontravallation · 15 km",
+     "staerke": "12 Legionen"
+    },
+    {
+     "id": "r-lager",
+     "partei": "rom",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.48,
+       47.56539
+      ],
+      [
+       4.48394,
+       47.56317
+      ],
+      [
+       4.48664,
+       47.56079
+      ],
+      [
+       4.48674,
+       47.55737
+      ],
+      [
+       4.48198,
+       47.55634
+      ],
+      [
+       4.47747,
+       47.5553
+      ],
+      [
+       4.47373,
+       47.55756
+      ],
+      [
+       4.47425,
+       47.56068
+      ],
+      [
+       4.47494,
+       47.56407
+      ]
+     ],
+     "name": "Nordlager",
+     "staerke": "2 Legionen"
+    }
+   ]
+  },
+  {
+   "zeit": "August",
+   "t": 240,
+   "kurz": "Und einundzwanzig Kilometer nach außen.",
+   "text": "Vercingetorix’ Reiterei ist vor der Schließung des Rings ausgebrochen und hat die Stämme aufgerufen. Caesar erfährt davon von Überläufern – und baut daraufhin einen zweiten Wall, außen um den ersten. Sein Heer liegt danach in einem Streifen zwischen zwei Befestigungen. Nach innen fünfzehn, nach außen einundzwanzig Kilometer, dazwischen fünfzigtausend Mann.",
+   "stellungen": [
+    {
+     "id": "r-ring",
+     "partei": "rom",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       4.53567,
+       47.53252
+      ],
+      [
+       4.51728,
+       47.52347
+      ],
+      [
+       4.49872,
+       47.51795
+      ],
+      [
+       4.47478,
+       47.52053
+      ],
+      [
+       4.47096,
+       47.53458
+      ],
+      [
+       4.46699,
+       47.54793
+      ],
+      [
+       4.48546,
+       47.55639
+      ],
+      [
+       4.50694,
+       47.55234
+      ],
+      [
+       4.53012,
+       47.54763
+      ]
+     ],
+     "name": "Kontravallation",
+     "staerke": "nach innen"
+    },
+    {
+     "id": "r-aussen",
+     "partei": "rom",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       4.55376,
+       47.53036
+      ],
+      [
+       4.52654,
+       47.51697
+      ],
+      [
+       4.49907,
+       47.50881
+      ],
+      [
+       4.46363,
+       47.51262
+      ],
+      [
+       4.45798,
+       47.53341
+      ],
+      [
+       4.45211,
+       47.55317
+      ],
+      [
+       4.47944,
+       47.5657
+      ],
+      [
+       4.51123,
+       47.55971
+      ],
+      [
+       4.54554,
+       47.55273
+      ]
+     ],
+     "name": "Circumvallation",
+     "staerke": "nach außen"
+    },
+    {
+     "id": "g-plateau",
+     "partei": "gal",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.52001,
+       47.53438
+      ],
+      [
+       4.50956,
+       47.53023
+      ],
+      [
+       4.49892,
+       47.52779
+      ],
+      [
+       4.48494,
+       47.52932
+      ],
+      [
+       4.48235,
+       47.53615
+      ],
+      [
+       4.47969,
+       47.54265
+      ],
+      [
+       4.4902,
+       47.54652
+      ],
+      [
+       4.50279,
+       47.54431
+      ],
+      [
+       4.51639,
+       47.54175
+      ]
+     ],
+     "name": "auf dem Plateau",
+     "staerke": "80.000"
+    },
+    {
+     "id": "r-lager",
+     "partei": "rom",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.48,
+       47.56539
+      ],
+      [
+       4.48394,
+       47.56317
+      ],
+      [
+       4.48664,
+       47.56079
+      ],
+      [
+       4.48674,
+       47.55737
+      ],
+      [
+       4.48198,
+       47.55634
+      ],
+      [
+       4.47747,
+       47.5553
+      ],
+      [
+       4.47373,
+       47.55756
+      ],
+      [
+       4.47425,
+       47.56068
+      ],
+      [
+       4.47494,
+       47.56407
+      ]
+     ],
+     "name": "Nordlager · Mont Réa",
+     "staerke": "2 Legionen"
+    }
+   ]
+  },
+  {
+   "zeit": "Anfang September",
+   "t": 360,
+   "kurz": "In der Stadt wird der Hunger zur Entscheidung.",
+   "text": "Das Getreide geht aus. Der Kriegsrat der Gallier beschließt, die Bevölkerung der Stadt hinauszuschicken – Frauen, Kinder, Alte –, um die Vorräte zu strecken. Caesar lässt sie nicht durch seine Linien. Sie bleiben zwischen Stadtmauer und römischem Wall liegen. Beide Seiten schreiben darüber, keine kommt gut dabei weg.",
+   "stellungen": [
+    {
+     "id": "g-plateau",
+     "partei": "gal",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.51818,
+       47.5346
+      ],
+      [
+       4.5086,
+       47.53079
+      ],
+      [
+       4.49885,
+       47.52856
+      ],
+      [
+       4.48603,
+       47.52996
+      ],
+      [
+       4.48365,
+       47.53623
+      ],
+      [
+       4.48122,
+       47.54218
+      ],
+      [
+       4.49085,
+       47.54573
+      ],
+      [
+       4.50239,
+       47.5437
+      ],
+      [
+       4.51485,
+       47.54135
+      ]
+     ],
+     "name": "Hunger auf dem Plateau",
+     "staerke": "80.000",
+     "geschlagen": true
+    },
+    {
+     "id": "g-vertrieben",
+     "partei": "gal",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       4.51585,
+       47.5292
+      ],
+      [
+       4.51798,
+       47.53007
+      ],
+      [
+       4.51798,
+       47.53193
+      ],
+      [
+       4.51585,
+       47.5328
+      ],
+      [
+       4.50415,
+       47.5328
+      ],
+      [
+       4.50202,
+       47.53193
+      ],
+      [
+       4.50202,
+       47.53007
+      ],
+      [
+       4.50415,
+       47.5292
+      ]
+     ],
+     "name": "Die Hinausgeschickten",
+     "staerke": "Stadtbevölkerung",
+     "geschlagen": true
+    },
+    {
+     "id": "r-ring",
+     "partei": "rom",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       4.53567,
+       47.53252
+      ],
+      [
+       4.51728,
+       47.52347
+      ],
+      [
+       4.49872,
+       47.51795
+      ],
+      [
+       4.47478,
+       47.52053
+      ],
+      [
+       4.47096,
+       47.53458
+      ],
+      [
+       4.46699,
+       47.54793
+      ],
+      [
+       4.48546,
+       47.55639
+      ],
+      [
+       4.50694,
+       47.55234
+      ],
+      [
+       4.53012,
+       47.54763
+      ]
+     ],
+     "name": "lässt niemanden durch",
+     "staerke": "12 Legionen"
+    }
+   ]
+  },
+  {
+   "zeit": "Der Entsatz trifft ein",
+   "t": 420,
+   "kurz": "Von außen ein Heer, das man nicht zählen kann.",
+   "text": "Das gallische Aufgebot erreicht Alesia und lagert auf den Höhen im Westen. Caesar nennt eine Viertelmillion – eine Zahl, die niemand glaubt, die aber den Eindruck wiedergibt. Von diesem Augenblick an steht das römische Heer zwischen zwei Feinden, die nur noch zusammenwirken müssen.",
+   "stellungen": [
+    {
+     "id": "g-entsatz",
+     "partei": "gal",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.44506,
+       47.56366
+      ],
+      [
+       4.45139,
+       47.55338
+      ],
+      [
+       4.45415,
+       47.54339
+      ],
+      [
+       4.44804,
+       47.53151
+      ],
+      [
+       4.43342,
+       47.53102
+      ],
+      [
+       4.41949,
+       47.53039
+      ],
+      [
+       4.41376,
+       47.54065
+      ],
+      [
+       4.42098,
+       47.55112
+      ],
+      [
+       4.42912,
+       47.5624
+      ]
+     ],
+     "name": "Entsatzheer im Westen",
+     "staerke": "über 100.000"
+    },
+    {
+     "id": "r-aussen",
+     "partei": "rom",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       4.55376,
+       47.53036
+      ],
+      [
+       4.52654,
+       47.51697
+      ],
+      [
+       4.49907,
+       47.50881
+      ],
+      [
+       4.46363,
+       47.51262
+      ],
+      [
+       4.45798,
+       47.53341
+      ],
+      [
+       4.45211,
+       47.55317
+      ],
+      [
+       4.47944,
+       47.5657
+      ],
+      [
+       4.51123,
+       47.55971
+      ],
+      [
+       4.54554,
+       47.55273
+      ]
+     ],
+     "name": "Circumvallation",
+     "staerke": "nach außen"
+    },
+    {
+     "id": "r-ring",
+     "partei": "rom",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       4.53567,
+       47.53252
+      ],
+      [
+       4.51728,
+       47.52347
+      ],
+      [
+       4.49872,
+       47.51795
+      ],
+      [
+       4.47478,
+       47.52053
+      ],
+      [
+       4.47096,
+       47.53458
+      ],
+      [
+       4.46699,
+       47.54793
+      ],
+      [
+       4.48546,
+       47.55639
+      ],
+      [
+       4.50694,
+       47.55234
+      ],
+      [
+       4.53012,
+       47.54763
+      ]
+     ],
+     "name": "Kontravallation",
+     "staerke": "nach innen"
+    },
+    {
+     "id": "g-plateau",
+     "partei": "gal",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.51818,
+       47.5346
+      ],
+      [
+       4.5086,
+       47.53079
+      ],
+      [
+       4.49885,
+       47.52856
+      ],
+      [
+       4.48603,
+       47.52996
+      ],
+      [
+       4.48365,
+       47.53623
+      ],
+      [
+       4.48122,
+       47.54218
+      ],
+      [
+       4.49085,
+       47.54573
+      ],
+      [
+       4.50239,
+       47.5437
+      ],
+      [
+       4.51485,
+       47.54135
+      ]
+     ],
+     "name": "auf dem Plateau",
+     "staerke": "80.000"
+    }
+   ]
+  },
+  {
+   "zeit": "Erster Tag",
+   "t": 480,
+   "kurz": "Reitergefecht in der Ebene, von beiden Wällen aus zu sehen.",
+   "text": "Der erste Versuch ist ein Reitergefecht in der Ebene südlich der Werke, mit Zuschauern auf beiden Wällen. Es dauert bis zum Abend und wird von den germanischen Reitern in römischem Sold entschieden – dieselben, die Vercingetorix vor Wochen nach Alesia getrieben hatten.",
+   "stellungen": [
+    {
+     "id": "g-reiter",
+     "partei": "gal",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       4.47084,
+       47.52309
+      ],
+      [
+       4.46658,
+       47.52253
+      ],
+      [
+       4.46492,
+       47.51946
+      ],
+      [
+       4.46766,
+       47.51718
+      ],
+      [
+       4.49316,
+       47.51091
+      ],
+      [
+       4.49742,
+       47.51147
+      ],
+      [
+       4.49908,
+       47.51454
+      ],
+      [
+       4.49634,
+       47.51682
+      ]
+     ],
+     "name": "Gallische Reiterei",
+     "staerke": "15.000"
+    },
+    {
+     "id": "r-germanen",
+     "partei": "rom",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       4.50066,
+       47.50653
+      ],
+      [
+       4.50492,
+       47.50708
+      ],
+      [
+       4.50658,
+       47.51016
+      ],
+      [
+       4.50384,
+       47.51244
+      ],
+      [
+       4.48334,
+       47.51747
+      ],
+      [
+       4.47908,
+       47.51692
+      ],
+      [
+       4.47742,
+       47.51384
+      ],
+      [
+       4.48016,
+       47.51156
+      ]
+     ],
+     "name": "Germanische Reiterei",
+     "staerke": "5.000"
+    },
+    {
+     "id": "r-stossR",
+     "partei": "rom",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       4.49,
+       47.513
+      ],
+      [
+       4.484,
+       47.5175
+      ]
+     ]
+    },
+    {
+     "id": "g-plateau",
+     "partei": "gal",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.51818,
+       47.5346
+      ],
+      [
+       4.5086,
+       47.53079
+      ],
+      [
+       4.49885,
+       47.52856
+      ],
+      [
+       4.48603,
+       47.52996
+      ],
+      [
+       4.48365,
+       47.53623
+      ],
+      [
+       4.48122,
+       47.54218
+      ],
+      [
+       4.49085,
+       47.54573
+      ],
+      [
+       4.50239,
+       47.5437
+      ],
+      [
+       4.51485,
+       47.54135
+      ]
+     ],
+     "name": "sieht zu",
+     "staerke": "80.000"
+    },
+    {
+     "id": "g-entsatz",
+     "partei": "gal",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.44506,
+       47.56366
+      ],
+      [
+       4.45139,
+       47.55338
+      ],
+      [
+       4.45415,
+       47.54339
+      ],
+      [
+       4.44804,
+       47.53151
+      ],
+      [
+       4.43342,
+       47.53102
+      ],
+      [
+       4.41949,
+       47.53039
+      ],
+      [
+       4.41376,
+       47.54065
+      ],
+      [
+       4.42098,
+       47.55112
+      ],
+      [
+       4.42912,
+       47.5624
+      ]
+     ],
+     "name": "Entsatzheer",
+     "staerke": "über 100.000"
+    }
+   ]
+  },
+  {
+   "zeit": "Zweite Nacht",
+   "t": 540,
+   "kurz": "Ein Nachtangriff von beiden Seiten gleichzeitig.",
+   "text": "Um Mitternacht greift das Entsatzheer den Außenwall an, und Vercingetorix stößt gleichzeitig von innen gegen den Innenwall. Genau das ist der Fall, für den zwei Wälle gebaut wurden – und genau der, den ein Heer im Streifen dazwischen am schwersten aushält. Die Legionen halten, aber es wird knapp.",
+   "stellungen": [
+    {
+     "id": "g-entsatz",
+     "partei": "gal",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.44,
+       47.542
+      ],
+      [
+       4.462,
+       47.54
+      ],
+      [
+       4.476,
+       47.539
+      ]
+     ],
+     "name": "Angriff von außen"
+    },
+    {
+     "id": "g-plateau",
+     "partei": "gal",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.5,
+       47.539
+      ],
+      [
+       4.51,
+       47.54
+      ],
+      [
+       4.522,
+       47.541
+      ]
+     ],
+     "name": "Ausfall von innen"
+    },
+    {
+     "id": "r-aussen",
+     "partei": "rom",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       4.55376,
+       47.53036
+      ],
+      [
+       4.52654,
+       47.51697
+      ],
+      [
+       4.49907,
+       47.50881
+      ],
+      [
+       4.46363,
+       47.51262
+      ],
+      [
+       4.45798,
+       47.53341
+      ],
+      [
+       4.45211,
+       47.55317
+      ],
+      [
+       4.47944,
+       47.5657
+      ],
+      [
+       4.51123,
+       47.55971
+      ],
+      [
+       4.54554,
+       47.55273
+      ]
+     ],
+     "name": "Circumvallation hält",
+     "staerke": "nach außen"
+    },
+    {
+     "id": "r-ring",
+     "partei": "rom",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       4.53567,
+       47.53252
+      ],
+      [
+       4.51728,
+       47.52347
+      ],
+      [
+       4.49872,
+       47.51795
+      ],
+      [
+       4.47478,
+       47.52053
+      ],
+      [
+       4.47096,
+       47.53458
+      ],
+      [
+       4.46699,
+       47.54793
+      ],
+      [
+       4.48546,
+       47.55639
+      ],
+      [
+       4.50694,
+       47.55234
+      ],
+      [
+       4.53012,
+       47.54763
+      ]
+     ],
+     "name": "Kontravallation hält",
+     "staerke": "nach innen"
+    }
+   ]
+  },
+  {
+   "zeit": "Dritter Tag, Mittag",
+   "t": 600,
+   "kurz": "Die eine Stelle, an der der Wall nicht schließt.",
+   "text": "Ein gallischer Verwandter des Vercingetorix hat die Werke ausgekundschaftet und die Schwachstelle gefunden: Am Nordhang des Mont Réa ließ sich der Wall wegen des Geländes nicht ganz durchziehen. Dorthin führt Vercassivellaunus sechzigtausend Mann, während der Rest überall sonst angreift, um Caesar zu binden. Das römische Nordlager gerät ins Wanken.",
+   "stellungen": [
+    {
+     "id": "g-vercass",
+     "partei": "gal",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.47666,
+       47.55789
+      ],
+      [
+       4.47836,
+       47.56122
+      ],
+      [
+       4.47411,
+       47.56464
+      ],
+      [
+       4.46896,
+       47.56409
+      ],
+      [
+       4.45134,
+       47.55411
+      ],
+      [
+       4.44964,
+       47.55078
+      ],
+      [
+       4.45389,
+       47.54736
+      ],
+      [
+       4.45904,
+       47.54791
+      ]
+     ],
+     "name": "Vercassivellaunus · 60.000",
+     "staerke": "60.000"
+    },
+    {
+     "id": "g-stossN",
+     "partei": "gal",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.462,
+       47.557
+      ],
+      [
+       4.474,
+       47.554
+      ],
+      [
+       4.48,
+       47.552
+      ]
+     ],
+     "name": "auf die Schwachstelle"
+    },
+    {
+     "id": "r-lager",
+     "partei": "rom",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.48,
+       47.56539
+      ],
+      [
+       4.48394,
+       47.56317
+      ],
+      [
+       4.48664,
+       47.56079
+      ],
+      [
+       4.48674,
+       47.55737
+      ],
+      [
+       4.48198,
+       47.55634
+      ],
+      [
+       4.47747,
+       47.5553
+      ],
+      [
+       4.47373,
+       47.55756
+      ],
+      [
+       4.47425,
+       47.56068
+      ],
+      [
+       4.47494,
+       47.56407
+      ]
+     ],
+     "name": "Nordlager unter Druck",
+     "staerke": "2 Legionen",
+     "geschlagen": true
+    },
+    {
+     "id": "g-plateau",
+     "partei": "gal",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.5,
+       47.54
+      ],
+      [
+       4.513,
+       47.542
+      ]
+     ],
+     "name": "Ausfall von innen"
+    },
+    {
+     "id": "g-entsatz",
+     "partei": "gal",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.44887,
+       47.54646
+      ],
+      [
+       4.45445,
+       47.5374
+      ],
+      [
+       4.45689,
+       47.52858
+      ],
+      [
+       4.4515,
+       47.51809
+      ],
+      [
+       4.43861,
+       47.51767
+      ],
+      [
+       4.42632,
+       47.51711
+      ],
+      [
+       4.42126,
+       47.52616
+      ],
+      [
+       4.42763,
+       47.5354
+      ],
+      [
+       4.43482,
+       47.54536
+      ]
+     ],
+     "name": "bindet überall sonst",
+     "staerke": "50.000"
+    }
+   ]
+  },
+  {
+   "zeit": "Dritter Tag, Nachmittag",
+   "t": 660,
+   "kurz": "Caesar reitet selbst hin – im roten Mantel.",
+   "text": "Caesar schickt erst Labienus mit sechs Kohorten, dann weitere, und reitet schließlich selbst an die bedrohte Stelle. Sein roter Feldherrnmantel ist von beiden Seiten zu sehen; die Legionen wissen, dass er da ist. Gleichzeitig führt er die letzte Reiterei außen um die eigenen Werke herum und fällt Vercassivellaunus in den Rücken. Das entscheidet den Tag.",
+   "stellungen": [
+    {
+     "id": "r-caesar",
+     "partei": "rom",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.49,
+       47.548
+      ],
+      [
+       4.482,
+       47.552
+      ],
+      [
+       4.476,
+       47.554
+      ]
+     ],
+     "name": "Caesar zur Schwachstelle"
+    },
+    {
+     "id": "r-reiterUm",
+     "partei": "rom",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       4.498,
+       47.568
+      ],
+      [
+       4.478,
+       47.57
+      ],
+      [
+       4.462,
+       47.562
+      ]
+     ],
+     "name": "Reiterei außen herum in den Rücken"
+    },
+    {
+     "id": "g-vercass",
+     "partei": "gal",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.47993,
+       47.55648
+      ],
+      [
+       4.48149,
+       47.55953
+      ],
+      [
+       4.47695,
+       47.56318
+      ],
+      [
+       4.47223,
+       47.56267
+      ],
+      [
+       4.45607,
+       47.55352
+      ],
+      [
+       4.45451,
+       47.55047
+      ],
+      [
+       4.45905,
+       47.54682
+      ],
+      [
+       4.46377,
+       47.54733
+      ]
+     ],
+     "name": "zwischen zwei Fronten",
+     "staerke": "60.000",
+     "geschlagen": true
+    },
+    {
+     "id": "r-lager",
+     "partei": "rom",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.48,
+       47.56539
+      ],
+      [
+       4.48394,
+       47.56317
+      ],
+      [
+       4.48664,
+       47.56079
+      ],
+      [
+       4.48674,
+       47.55737
+      ],
+      [
+       4.48198,
+       47.55634
+      ],
+      [
+       4.47747,
+       47.5553
+      ],
+      [
+       4.47373,
+       47.55756
+      ],
+      [
+       4.47425,
+       47.56068
+      ],
+      [
+       4.47494,
+       47.56407
+      ]
+     ],
+     "name": "Nordlager hält",
+     "staerke": "2 Legionen"
+    },
+    {
+     "id": "g-entsatz",
+     "partei": "gal",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.445,
+       47.535
+      ],
+      [
+       4.42,
+       47.53
+      ],
+      [
+       4.39,
+       47.525
+      ]
+     ],
+     "name": "Entsatzheer löst sich",
+     "rueckzug": true
+    }
+   ]
+  },
+  {
+   "zeit": "Am nächsten Tag",
+   "t": 720,
+   "kurz": "Vercingetorix legt die Waffen vor Caesars Sitz nieder.",
+   "text": "Das Entsatzheer zerstreut sich in der Nacht. Am Morgen lässt Vercingetorix seine Führer zusammenrufen und stellt es ihnen frei, ihn zu töten oder auszuliefern. Er reitet dann in vollem Schmuck aus der Stadt, umrundet Caesars Sitz einmal und legt die Waffen nieder. Sechs Jahre später wird er in Rom im Triumphzug mitgeführt und danach erdrosselt.",
+   "stellungen": [
+    {
+     "id": "g-plateau",
+     "partei": "gal",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.51635,
+       47.53482
+      ],
+      [
+       4.50764,
+       47.53136
+      ],
+      [
+       4.49877,
+       47.52932
+      ],
+      [
+       4.48711,
+       47.5306
+      ],
+      [
+       4.48496,
+       47.5363
+      ],
+      [
+       4.48274,
+       47.54171
+      ],
+      [
+       4.4915,
+       47.54493
+      ],
+      [
+       4.50199,
+       47.54309
+      ],
+      [
+       4.51332,
+       47.54096
+      ]
+     ],
+     "name": "Übergabe",
+     "staerke": "80.000",
+     "geschlagen": true
+    },
+    {
+     "id": "r-ring",
+     "partei": "rom",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       4.53567,
+       47.53252
+      ],
+      [
+       4.51728,
+       47.52347
+      ],
+      [
+       4.49872,
+       47.51795
+      ],
+      [
+       4.47478,
+       47.52053
+      ],
+      [
+       4.47096,
+       47.53458
+      ],
+      [
+       4.46699,
+       47.54793
+      ],
+      [
+       4.48546,
+       47.55639
+      ],
+      [
+       4.50694,
+       47.55234
+      ],
+      [
+       4.53012,
+       47.54763
+      ]
+     ],
+     "name": "Kontravallation",
+     "staerke": "12 Legionen"
+    },
+    {
+     "id": "g-abzug",
+     "partei": "gal",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.44,
+       47.54
+      ],
+      [
+       4.38,
+       47.53
+      ],
+      [
+       4.3,
+       47.52
+      ]
+     ],
+     "name": "Reste des Entsatzheers",
+     "rueckzug": true
+    }
+   ]
+  },
+  {
+   "zeit": "Nach 52 v. Chr.",
+   "t": 840,
+   "kurz": "Gallien wird römisch, und Caesar wird zu mächtig.",
+   "text": "Der Aufstand bricht zusammen; Gallien ist erobert und bleibt fünf Jahrhunderte römisch. Für Rom selbst hat der Sieg eine zweite Folge: Caesar hat jetzt ein erprobtes Heer, das ihm persönlich ergeben ist, und Ruhm, mit dem im Senat niemand mithalten kann. Drei Jahre später geht er über den Rubikon.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     -5.5,
+     39.5
+    ],
+    [
+     15.5,
+     51.5
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "r-gallien",
+     "partei": "rom",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.5,
+       47.54
+      ],
+      [
+       2.35,
+       48.86
+      ],
+      [
+       -0.6,
+       44.84
+      ],
+      [
+       4.85,
+       45.75
+      ]
+     ],
+     "name": "Gallien wird Provinz"
+    },
+    {
+     "id": "r-rubikon",
+     "partei": "rom",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.5,
+       47.3
+      ],
+      [
+       7.7,
+       45.07
+      ],
+      [
+       12.25,
+       44.1
+      ],
+      [
+       12.48,
+       41.9
+      ]
+     ],
+     "name": "49 v. Chr.: über den Rubikon nach Rom"
+    }
+   ]
+  }
+ ],
+ "ausgang": "Das Entsatzheer wird geworfen und zerstreut sich; Vercingetorix ergibt sich am folgenden Tag. Der gallische Aufstand bricht zusammen.",
+ "verluste": [
+  {
+   "partei": "gal",
+   "text": "das Heer auf dem Plateau gefangen, das Entsatzheer zerstreut – Zahlen nur bei Caesar selbst"
+  },
+  {
+   "partei": "rom",
+   "text": "nicht überliefert; Caesar nennt keine"
+  }
+ ],
+ "folgen": "Gallien wird römische Provinz und bleibt es fünf Jahrhunderte. Caesar hat danach ein ihm persönlich ergebenes Heer und einen Ruhm, gegen den im Senat niemand ankommt – 49 v. Chr. überschreitet er den Rubikon. Vercingetorix wird 46 v. Chr. im Triumphzug mitgeführt und hingerichtet.",
+ "streit": "Der Ort war bis ins 20. Jahrhundert umstritten; die Ausgrabungen bei Alise-Sainte-Reine gelten heute als gesichert. Die Zahlen stammen sämtlich aus Caesars eigenem Bericht und sind Kriegspropaganda: Ein Entsatzheer von einer Viertelmillion Mann hätte sich in dieser Landschaft nicht ernähren können."
+}

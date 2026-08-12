@@ -15,6 +15,22 @@
   "stationen": 12
  },
  {
+  "id": "salamis",
+  "name": "Salamis",
+  "ort": "Meerenge zwischen Salamis und Attika",
+  "datum": "September 480 v. Chr.",
+  "jahr": -500,
+  "mitte": [
+   23.545,
+   37.945
+  ],
+  "zoom": 12.2,
+  "grund": "blatt",
+  "see": true,
+  "worum": "Eine Seeschlacht, in der die Geografie das Argument ist: In einer Enge von anderthalb Kilometern nützt die dreifache Zahl nichts. Themistokles’ Leistung besteht darin, den Gegner mit einer falschen Nachricht dazu zu bringen, hineinzufahren.",
+  "stationen": 9
+ },
+ {
   "id": "gaugamela",
   "name": "Schlacht von Gaugamela",
   "ort": "Nordirak, östlich von Ninive",
@@ -74,6 +90,36 @@
   "see": true,
   "worum": "Eine Seeschlacht, die der Sommer vorher entschieden hat. Antonius’ Flotte liegt im Golf, die Ausfahrt ist 700 Meter breit und von außen gesperrt; Malaria und Hunger fressen die Ruderer. Als er ausläuft, hat er die Segel an Bord – und das verrät, dass er nicht siegen, sondern wegkommen will.",
   "stationen": 10
+ },
+ {
+  "id": "alesia",
+  "name": "Alesia",
+  "ort": "Alise-Sainte-Reine, Burgund",
+  "datum": "September 52 v. Chr.",
+  "jahr": -1,
+  "mitte": [
+   4.493,
+   47.542
+  ],
+  "zoom": 12.3,
+  "grund": "relief",
+  "worum": "Zwei Kreise: fünfzehn Kilometer Wall nach innen gegen die Eingeschlossenen, einundzwanzig nach außen gegen das Entsatzheer – und dazwischen, in einem Streifen von wenigen hundert Metern, das römische Heer. Caesar belagert und wird belagert, gleichzeitig, mit derselben Truppe.",
+  "stationen": 11
+ },
+ {
+  "id": "teutoburg",
+  "name": "Die Varusschlacht",
+  "ort": "Kalkriese am Wiehengebirge",
+  "datum": "Herbst 9 n. Chr.",
+  "jahr": 9,
+  "mitte": [
+   8.13,
+   52.41
+  ],
+  "zoom": 12.1,
+  "grund": "relief",
+  "worum": "Ein Heer, das nirgends antreten kann: drei Legionen als Marschsäule über Kilometer im nassen Wald, angegriffen von einem Mann, der als römischer Offizier gelernt hat, wie eine Marschsäule aussieht. Am Ende drückt der Kalkrieser Berg sie gegen das Große Moor, und der Weg ist zweihundert Meter breit.",
+  "stationen": 9
  },
  {
   "id": "tours",
@@ -166,6 +212,36 @@
   "stationen": 13
  },
  {
+  "id": "tenochtitlan",
+  "name": "Die Belagerung von Tenochtitlan",
+  "ort": "Hochtal von Mexiko",
+  "datum": "22. Mai bis 13. August 1521",
+  "jahr": 1521,
+  "mitte": [
+   -99.135,
+   19.435
+  ],
+  "zoom": 10.6,
+  "grund": "blatt",
+  "worum": "Eine Stadt auf einer Insel, verbunden mit dem Festland durch drei Dämme, versorgt durch eine Wasserleitung und tausende Kanus. Die Belagerung besteht darin, diese vier Verbindungen nacheinander zu kappen – und jede davon lässt sich einzeichnen und dann durchstreichen. Dreiundneunzig Tage später ist eine der größten Städte der Welt eine planierte Fläche.",
+  "stationen": 11
+ },
+ {
+  "id": "panipat1526",
+  "name": "Panipat",
+  "ort": "Panipat, Nordindien",
+  "datum": "21. April 1526",
+  "jahr": 1526,
+  "mitte": [
+   77.01,
+   29.393
+  ],
+  "zoom": 12,
+  "grund": "relief",
+  "worum": "Zwölftausend gegen ein Vielfaches – ausgeglichen durch zwei Dinge, die man auf der Karte sehen kann: eine Reihe von siebenhundert aneinandergebundenen Ochsenkarren, die die Front unangreifbar macht und ihre Breite festlegt, und eine Reiterei, die außen um beide Flügel herum in den Rücken geht. Dazwischen steht ein Heer, das zu breit angetreten ist und sich selbst im Weg steht.",
+  "stationen": 9
+ },
+ {
   "id": "lepanto",
   "name": "Seeschlacht von Lepanto",
   "ort": "Golf von Patras, vor den Echinaden",
@@ -195,6 +271,21 @@
   "grund": "relief",
   "worum": "Die Entscheidung über die Nachfolge Hideyoshis. Achtzigtausend gegen fünfundsiebzigtausend in einem Talkessel von drei Kilometern – und ein Drittel der Westarmee sitzt auf den Bergen und greift nie ein. Am Mittag wechselt einer dieser Berge die Seite.",
   "stationen": 11
+ },
+ {
+  "id": "shanhaiguan",
+  "name": "Shanhaiguan",
+  "ort": "Wo die Große Mauer ans Meer stößt",
+  "datum": "27. Mai 1644",
+  "jahr": 1644,
+  "mitte": [
+   119.73,
+   40.03
+  ],
+  "zoom": 11,
+  "grund": "relief",
+  "worum": "Drei Heere an einem Pass, von denen zwei den ganzen Vormittag kämpfen und das dritte zusieht. Wu Sangui kann sich nur einer Seite ergeben – dem Bauernheer, das Peking genommen hat, oder den Mandschu, gegen die diese Mauer gebaut wurde. Er wählt die Mandschu, weil sie ihm die Rache versprechen, und öffnet damit das Tor.",
+  "stationen": 9
  },
  {
   "id": "poltawa",
@@ -273,6 +364,21 @@
   "stationen": 15
  },
  {
+  "id": "ayacucho",
+  "name": "Ayacucho",
+  "ort": "Pampa de la Quinua, peruanische Anden",
+  "datum": "9. Dezember 1824",
+  "jahr": 1824,
+  "mitte": [
+   -74.142,
+   -13.053
+  ],
+  "zoom": 13,
+  "grund": "relief",
+  "worum": "Eine Hochebene von anderthalb Kilometern auf 3.300 Metern, darüber ein Bergrücken. Wer vom Rücken herabsteigt, kommt in Kolonnen unten an und muss sich erst entfalten – und genau in diesem Augenblick geht Córdova vor. Was danach unterschrieben wird, beendet dreihundert Jahre spanische Herrschaft auf dem südamerikanischen Festland.",
+  "stationen": 10
+ },
+ {
   "id": "gettysburg",
   "name": "Gettysburg",
   "ort": "Gettysburg, Pennsylvania",
@@ -286,6 +392,21 @@
   "grund": "relief",
   "worum": "Lees zweiter Vorstoß in den Norden. Drei Tage um einen Höhenrücken, der die Form eines Angelhakens hat – und weil die Union innen steht, kann sie Reserven schneller verschieben, als der Angreifer außen herum marschieren kann. Am dritten Tag setzt Lee alles auf einen Stoß über anderthalb Kilometer offenes Feld.",
   "stationen": 13
+ },
+ {
+  "id": "adua",
+  "name": "Adua",
+  "ort": "Tigray, Nordäthiopien",
+  "datum": "1. März 1896",
+  "jahr": 1896,
+  "mitte": [
+   38.88,
+   14.16
+  ],
+  "zoom": 11,
+  "grund": "relief",
+  "worum": "Drei Brigaden marschieren nachts durch unbekanntes Bergland, nach Karten, auf denen zwei verschiedene Höhen denselben Namen tragen. Bei Sonnenaufgang stehen sie nicht nebeneinander, sondern über zehn Kilometer verteilt, mit Schluchten dazwischen – und werden nacheinander erledigt, von einem Heer, das man in Rom für ein Stammesaufgebot gehalten hatte.",
+  "stationen": 10
  },
  {
   "id": "tsushima",
@@ -302,6 +423,21 @@
   "see": true,
   "worum": "Die vollständigste Seeschlacht der Geschichte: Von 38 russischen Schiffen erreichen drei ihr Ziel. Entschieden wird sie durch eine Wende, die alle für einen Fehler halten – fünfzehn Minuten lang fährt jedes japanische Schiff durch denselben Punkt, auf den die ganze gegnerische Flotte schießen kann.",
   "stationen": 10
+ },
+ {
+  "id": "marne1914",
+  "name": "An der Marne",
+  "ort": "Östlich von Paris",
+  "datum": "5. bis 12. September 1914",
+  "jahr": 1914,
+  "mitte": [
+   3.5,
+   48.88
+  ],
+  "zoom": 7.9,
+  "grund": "blatt",
+  "worum": "Die Schlacht besteht aus einer Lücke. Kluck dreht seine Armee nach Westen, um den Angriff aus Paris abzuwehren, und reißt dabei zwischen sich und Bülow einen Raum von fünfzig Kilometern auf, in dem nur Kavallerie steht. Da hinein marschieren die Briten und die 5. französische Armee – langsam, aber ununterbrochen. Die entscheidende Bewegung ist kein Angriff, sondern eine Verschiebung.",
+  "stationen": 11
  },
  {
   "id": "tannenberg",
@@ -363,5 +499,20 @@
   "grund": "blatt",
   "worum": "Die größte Landungsunternehmung der Geschichte. In einer Nacht und einem Tag setzen 156.000 Mann an fünf Abschnitten über – gegen einen Gegner, der die Landung erwartet, aber am falschen Ort, und dessen Panzerreserven ohne Hitlers persönlichen Befehl nicht anrollen dürfen.",
   "stationen": 12
+ },
+ {
+  "id": "dienbienphu",
+  "name": "Dien Bien Phu",
+  "ort": "Talbecken im Nordwesten Vietnams",
+  "datum": "13. März bis 7. Mai 1954",
+  "jahr": 1954,
+  "mitte": [
+   103.01,
+   21.385
+  ],
+  "zoom": 11.6,
+  "grund": "relief",
+  "worum": "Die ganze Anlage folgt aus einer Annahme: dass niemand schwere Artillerie auf die Berge ringsum bekommt. Deshalb steht ein Lager mit 13.000 Mann in einem Becken, dessen Rand überall höher liegt als es selbst – und deshalb ist es verloren, sobald fünfzigtausend Träger die Geschütze in Einzelteilen über sechshundert Kilometer Dschungelpfad hinaufgeschafft haben.",
+  "stationen": 11
  }
 ]

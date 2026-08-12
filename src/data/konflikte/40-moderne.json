@@ -1096,14 +1096,15 @@
    "datum": "9. Dezember 1824",
    "name": "Ayacucho",
    "ort": [
-    -74.2,
-    -13.2
+    -74.14,
+    -13.05
    ],
    "wo": "Peruanische Anden",
    "rang": 3,
    "sieger": "Die Unabhängigen",
    "text": "Auf einer Hochebene in viertausend Metern Höhe endet die spanische Herrschaft über das südamerikanische Festland. Der Vizekönig wird gefangen genommen und unterschreibt die Kapitulation.",
-   "wiki": "Schlacht von Ayacucho"
+   "wiki": "Schlacht von Ayacucho",
+   "verlauf": "ayacucho"
   },
   {
    "id": "kanton1841",
@@ -1296,7 +1297,8 @@
    "rang": 2,
    "sieger": "Afrikanische Reiche und Völker",
    "text": "Menelik II. hat sich jahrelang Gewehre gekauft und schlägt das italienische Expeditionskorps vernichtend. Äthiopien bleibt als einziger afrikanischer Staat unkolonisiert – und wird zum Symbol für den ganzen Kontinent.",
-   "wiki": "Schlacht von Adua"
+   "wiki": "Schlacht von Adua",
+   "verlauf": "adua"
   },
   {
    "id": "omdurman",
@@ -1377,7 +1379,8 @@
    "rang": 1,
    "sieger": "Entente",
    "text": "Die deutsche Rechte biegt vor Paris nach Osten ab und öffnet dabei eine Lücke. Pariser Taxis fahren Reserven an die Front. Der Bewegungskrieg endet nach sechs Wochen, und die Gräben werden ausgehoben.",
-   "wiki": "Erste Schlacht an der Marne"
+   "wiki": "Erste Schlacht an der Marne",
+   "verlauf": "marne1914"
   },
   {
    "id": "tannenberg",
@@ -1701,7 +1704,8 @@
    "rang": 2,
    "sieger": "Viet Minh",
    "text": "Die Franzosen setzen sich in ein Talbecken, überzeugt, der Gegner könne keine Artillerie auf die Höhen bringen. Zehntausende Träger schleppen die Geschütze in Einzelteilen hinauf. Nach 56 Tagen ist Frankreichs Kolonialreich in Asien zu Ende.",
-   "wiki": "Schlacht um Điện Biên Phủ"
+   "wiki": "Schlacht um Điện Biên Phủ",
+   "verlauf": "dienbienphu"
   },
   {
    "id": "algier",

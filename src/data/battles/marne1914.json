@@ -1,0 +1,2408 @@
+{
+ "id": "marne1914",
+ "name": "An der Marne",
+ "ort": "Östlich von Paris",
+ "datum": "5. bis 12. September 1914",
+ "jahr": 1914,
+ "mitte": [
+  3.5,
+  48.88
+ ],
+ "zoom": 7.9,
+ "grund": "blatt",
+ "worum": "Die Schlacht besteht aus einer Lücke. Kluck dreht seine Armee nach Westen, um den Angriff aus Paris abzuwehren, und reißt dabei zwischen sich und Bülow einen Raum von fünfzig Kilometern auf, in dem nur Kavallerie steht. Da hinein marschieren die Briten und die 5. französische Armee – langsam, aber ununterbrochen. Die entscheidende Bewegung ist kein Angriff, sondern eine Verschiebung.",
+ "parteien": [
+  {
+   "id": "ent",
+   "name": "Frankreich und Großbritannien",
+   "farbe": "#6f9fe0",
+   "fuehrung": "Joseph Joffre, Joseph Gallieni, Michel-Joseph Maunoury, John French, Louis Franchet d’Espèrey, Ferdinand Foch",
+   "staerke": "sechs französische Armeen und die britische Expeditionsstreitmacht – rund 1.070.000 Mann",
+   "zahl": 1070000
+  },
+  {
+   "id": "deu",
+   "name": "Deutsches Reich",
+   "farbe": "#d4737c",
+   "fuehrung": "Helmuth von Moltke, Alexander von Kluck, Karl von Bülow, Max von Hausen, Richard Hentsch",
+   "staerke": "fünf Armeen des rechten und mittleren Flügels – rund 1.485.000 Mann",
+   "zahl": 1485000
+  }
+ ],
+ "gelaende": [
+  {
+   "art": "stadt",
+   "name": "Paris",
+   "punkte": [
+    [
+     2.44105,
+     48.89458
+    ],
+    [
+     2.42703,
+     48.85347
+    ],
+    [
+     2.40308,
+     48.81979
+    ],
+    [
+     2.34597,
+     48.79721
+    ],
+    [
+     2.29992,
+     48.82301
+    ],
+    [
+     2.25547,
+     48.84713
+    ],
+    [
+     2.27123,
+     48.88707
+    ],
+    [
+     2.32717,
+     48.90357
+    ],
+    [
+     2.38849,
+     48.92064
+    ]
+   ]
+  },
+  {
+   "art": "fluss",
+   "name": "Die Marne",
+   "punkte": [
+    [
+     2.44,
+     48.81
+    ],
+    [
+     2.89,
+     48.96
+    ],
+    [
+     3.4,
+     49.05
+    ],
+    [
+     3.96,
+     49.04
+    ],
+    [
+     4.58,
+     48.73
+    ],
+    [
+     4.97,
+     48.63
+    ]
+   ]
+  },
+  {
+   "art": "fluss",
+   "name": "Der Ourcq",
+   "punkte": [
+    [
+     3.12,
+     49.26
+    ],
+    [
+     2.95,
+     49.14
+    ],
+    [
+     2.9,
+     49
+    ]
+   ]
+  },
+  {
+   "art": "sumpf",
+   "name": "Die Sümpfe von Saint-Gond",
+   "punkte": [
+    [
+     3.98098,
+     48.82
+    ],
+    [
+     3.92693,
+     48.80672
+    ],
+    [
+     3.8692,
+     48.79759
+    ],
+    [
+     3.7862,
+     48.79726
+    ],
+    [
+     3.76095,
+     48.81333
+    ],
+    [
+     3.73583,
+     48.82855
+    ],
+    [
+     3.79065,
+     48.84115
+    ],
+    [
+     3.86662,
+     48.83939
+    ],
+    [
+     3.94894,
+     48.83708
+    ]
+   ]
+  },
+  {
+   "art": "fluss",
+   "name": "Die Aisne",
+   "punkte": [
+    [
+     5.15,
+     49.42
+    ],
+    [
+     4.03,
+     49.42
+    ],
+    [
+     3.3,
+     49.42
+    ],
+    [
+     2.8,
+     49.47
+    ]
+   ]
+  },
+  {
+   "art": "stadt",
+   "name": "Verdun",
+   "punkte": [
+    [
+     5.38,
+     49.18246
+    ],
+    [
+     5.39692,
+     49.17319
+    ],
+    [
+     5.40855,
+     49.16329
+    ],
+    [
+     5.40897,
+     49.14906
+    ],
+    [
+     5.3885,
+     49.14473
+    ],
+    [
+     5.3691,
+     49.14042
+    ],
+    [
+     5.35305,
+     49.14982
+    ],
+    [
+     5.35529,
+     49.16285
+    ],
+    [
+     5.35823,
+     49.17696
+    ]
+   ]
+  },
+  {
+   "art": "stadt",
+   "name": "Reims",
+   "punkte": [
+    [
+     4.03,
+     49.28695
+    ],
+    [
+     4.05035,
+     49.27583
+    ],
+    [
+     4.06433,
+     49.26395
+    ],
+    [
+     4.06484,
+     49.24687
+    ],
+    [
+     4.04022,
+     49.24168
+    ],
+    [
+     4.0169,
+     49.23651
+    ],
+    [
+     3.99759,
+     49.24779
+    ],
+    [
+     4.00029,
+     49.26342
+    ],
+    [
+     4.00383,
+     49.28036
+    ]
+   ]
+  }
+ ],
+ "stationen": [
+  {
+   "zeit": "August 1914",
+   "t": 0,
+   "kurz": "Ein Plan, der in sechs Wochen fertig sein soll.",
+   "text": "Der deutsche Aufmarsch schwenkt durch Belgien und Nordfrankreich, um die französische Armee von Westen her einzuschließen, bevor Russland aufmarschiert ist. Nach den Grenzschlachten geht das französische Heer zwei Wochen lang zurück, dreihundert Kilometer weit, ohne zu zerbrechen – Joffre setzt unterwegs zwei Armeeführer und Dutzende Generäle ab. Anfang September steht der rechte deutsche Flügel südlich der Marne, fünfzig Kilometer vor Paris, und marschiert seit einem Monat.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     -1.4,
+     46.2
+    ],
+    [
+     9.6,
+     51.6
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "anm-deu",
+     "partei": "deu",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       6.13,
+       50.78
+      ],
+      [
+       4.35,
+       50.85
+      ],
+      [
+       3.06,
+       50.63
+      ],
+      [
+       2.3,
+       49.9
+      ],
+      [
+       2.9,
+       48.95
+      ],
+      [
+       3.6,
+       48.8
+      ]
+     ],
+     "name": "Der rechte Flügel durch Belgien"
+    },
+    {
+     "id": "anm-deu2",
+     "partei": "deu",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       6.63,
+       49.75
+      ],
+      [
+       5.3,
+       49.6
+      ],
+      [
+       4.9,
+       49.1
+      ],
+      [
+       4.7,
+       48.75
+      ]
+     ],
+     "name": "Der mittlere Flügel durch die Ardennen"
+    },
+    {
+     "id": "anm-ent",
+     "partei": "ent",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.35,
+       50.85
+      ],
+      [
+       3.5,
+       50.2
+      ],
+      [
+       2.9,
+       49.5
+      ],
+      [
+       3.2,
+       48.85
+      ]
+     ],
+     "name": "Der große Rückzug, zwei Wochen lang"
+    },
+    {
+     "id": "anm-bahn",
+     "partei": "ent",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       6.18,
+       48.69
+      ],
+      [
+       5,
+       48.6
+      ],
+      [
+       3.7,
+       48.6
+      ],
+      [
+       2.35,
+       48.86
+      ]
+     ],
+     "name": "Joffre verschiebt Truppen mit der Bahn nach Westen"
+    }
+   ]
+  },
+  {
+   "zeit": "3. September",
+   "t": 60,
+   "kurz": "Die deutsche Rechte biegt vor Paris nach Osten ab.",
+   "text": "Der Plan sah vor, Paris westlich zu umgehen. Kluck hat dafür nicht genug Leute – zwei Korps sind nach Ostpreußen abgefahren – und schwenkt stattdessen südöstlich an der Stadt vorbei, um die zurückgehende französische 5. Armee zu fassen. Damit zieht seine Marschkolonne quer vor der Festung Paris entlang und bietet ihr die eigene rechte Flanke an.",
+   "stellungen": [
+    {
+     "id": "d-1",
+     "partei": "deu",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       3.30697,
+       48.93766
+      ],
+      [
+       3.33477,
+       49.01083
+      ],
+      [
+       3.24442,
+       49.07029
+      ],
+      [
+       3.13321,
+       49.05199
+      ],
+      [
+       2.69303,
+       48.76234
+      ],
+      [
+       2.66523,
+       48.68917
+      ],
+      [
+       2.75558,
+       48.62971
+      ],
+      [
+       2.86679,
+       48.64801
+      ]
+     ],
+     "name": "1. Armee · Kluck",
+     "staerke": "schwenkt nach Südosten"
+    },
+    {
+     "id": "d-2",
+     "partei": "deu",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.07712,
+       48.76915
+      ],
+      [
+       4.17542,
+       48.80796
+      ],
+      [
+       4.17542,
+       48.89204
+      ],
+      [
+       4.07712,
+       48.93085
+      ],
+      [
+       3.52288,
+       48.93085
+      ],
+      [
+       3.42458,
+       48.89204
+      ],
+      [
+       3.42458,
+       48.80796
+      ],
+      [
+       3.52288,
+       48.76915
+      ]
+     ],
+     "name": "2. Armee · Bülow"
+    },
+    {
+     "id": "d-3",
+     "partei": "deu",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.72093,
+       48.72814
+      ],
+      [
+       4.80685,
+       48.76209
+      ],
+      [
+       4.80685,
+       48.83791
+      ],
+      [
+       4.72093,
+       48.87186
+      ],
+      [
+       4.27907,
+       48.87186
+      ],
+      [
+       4.19315,
+       48.83791
+      ],
+      [
+       4.19315,
+       48.76209
+      ],
+      [
+       4.27907,
+       48.72814
+      ]
+     ],
+     "name": "3. Armee · Hausen"
+    },
+    {
+     "id": "e-paris",
+     "partei": "ent",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       2.5693,
+       48.98423
+      ],
+      [
+       2.54323,
+       48.90788
+      ],
+      [
+       2.4987,
+       48.84533
+      ],
+      [
+       2.3925,
+       48.80339
+      ],
+      [
+       2.30688,
+       48.8513
+      ],
+      [
+       2.22423,
+       48.8961
+      ],
+      [
+       2.25354,
+       48.97027
+      ],
+      [
+       2.35754,
+       49.00092
+      ],
+      [
+       2.47156,
+       49.03262
+      ]
+     ],
+     "name": "Paris · Gallieni",
+     "staerke": "Festungsbesatzung und 6. Armee"
+    },
+    {
+     "id": "e-5",
+     "partei": "ent",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       3.21367,
+       48.62186
+      ],
+      [
+       3.12682,
+       48.58737
+      ],
+      [
+       3.12682,
+       48.51263
+      ],
+      [
+       3.21367,
+       48.47814
+      ],
+      [
+       3.78633,
+       48.47814
+      ],
+      [
+       3.87318,
+       48.51263
+      ],
+      [
+       3.87318,
+       48.58737
+      ],
+      [
+       3.78633,
+       48.62186
+      ]
+     ],
+     "name": "5. Armee · Franchet d’Espèrey"
+    },
+    {
+     "id": "e-bef",
+     "partei": "ent",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       2.80335,
+       48.64288
+      ],
+      [
+       2.74632,
+       48.62024
+      ],
+      [
+       2.74632,
+       48.53976
+      ],
+      [
+       2.80335,
+       48.51712
+      ],
+      [
+       3.09665,
+       48.51712
+      ],
+      [
+       3.15368,
+       48.53976
+      ],
+      [
+       3.15368,
+       48.62024
+      ],
+      [
+       3.09665,
+       48.64288
+      ]
+     ],
+     "name": "Britische Expeditionsstreitmacht"
+    }
+   ]
+  },
+  {
+   "zeit": "4. September",
+   "t": 120,
+   "kurz": "Aus der Luft gesehen: die Flanke liegt offen.",
+   "text": "Französische Flieger und Kavalleriepatrouillen melden, dass die deutschen Kolonnen nach Südosten ziehen und Paris rechts liegen lassen. Gallieni erkennt sofort, was das heißt, und ruft Joffre an, der zunächst zögert. Am Abend geht der Befehl heraus: Der Rückzug endet, am 6. September wird angegriffen, und der Stoß kommt aus Paris heraus in die deutsche Flanke.",
+   "stellungen": [
+    {
+     "id": "d-1",
+     "partei": "deu",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       3.45678,
+       48.90766
+      ],
+      [
+       3.48457,
+       48.98083
+      ],
+      [
+       3.39427,
+       49.04029
+      ],
+      [
+       3.28313,
+       49.02199
+      ],
+      [
+       2.84322,
+       48.73234
+      ],
+      [
+       2.81543,
+       48.65917
+      ],
+      [
+       2.90573,
+       48.59971
+      ],
+      [
+       3.01687,
+       48.61801
+      ]
+     ],
+     "name": "1. Armee zieht nach Südosten",
+     "staerke": "die Flanke offen"
+    },
+    {
+     "id": "e-6",
+     "partei": "ent",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       2.717,
+       49.14071
+      ],
+      [
+       2.75913,
+       49.07424
+      ],
+      [
+       2.77755,
+       49.0096
+      ],
+      [
+       2.73682,
+       48.93269
+      ],
+      [
+       2.63949,
+       48.92957
+      ],
+      [
+       2.54667,
+       48.9255
+      ],
+      [
+       2.50851,
+       48.99183
+      ],
+      [
+       2.55662,
+       49.05963
+      ],
+      [
+       2.61086,
+       49.13261
+      ]
+     ],
+     "name": "6. Armee · Maunoury sammelt sich",
+     "staerke": "östlich von Paris"
+    },
+    {
+     "id": "e-flieger",
+     "partei": "ent",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       2.45,
+       48.95
+      ],
+      [
+       2.9,
+       49.05
+      ],
+      [
+       3.3,
+       48.95
+      ]
+     ],
+     "name": "Luftaufklärung"
+    },
+    {
+     "id": "d-2",
+     "partei": "deu",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.17696,
+       48.73915
+      ],
+      [
+       4.27519,
+       48.77796
+      ],
+      [
+       4.27519,
+       48.86204
+      ],
+      [
+       4.17696,
+       48.90085
+      ],
+      [
+       3.62304,
+       48.90085
+      ],
+      [
+       3.52481,
+       48.86204
+      ],
+      [
+       3.52481,
+       48.77796
+      ],
+      [
+       3.62304,
+       48.73915
+      ]
+     ],
+     "name": "2. Armee · Bülow"
+    },
+    {
+     "id": "e-5",
+     "partei": "ent",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       3.21367,
+       48.62186
+      ],
+      [
+       3.12682,
+       48.58737
+      ],
+      [
+       3.12682,
+       48.51263
+      ],
+      [
+       3.21367,
+       48.47814
+      ],
+      [
+       3.78633,
+       48.47814
+      ],
+      [
+       3.87318,
+       48.51263
+      ],
+      [
+       3.87318,
+       48.58737
+      ],
+      [
+       3.78633,
+       48.62186
+      ]
+     ],
+     "name": "5. Armee"
+    }
+   ]
+  },
+  {
+   "zeit": "5. September",
+   "t": 180,
+   "kurz": "Maunoury greift über den Ourcq in die Flanke.",
+   "text": "Einen Tag früher als geplant stößt die 6. Armee ostwärts über den Ourcq und trifft auf das deutsche Flankenkorps. Es wird ein zäher Kampf um Dörfer und Höhen, den keine Seite schnell gewinnt. Militärisch ist er unentschieden; seine Wirkung liegt woanders – Kluck kann ihn nicht ignorieren.",
+   "stellungen": [
+    {
+     "id": "e-6",
+     "partei": "ent",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       2.88853,
+       49.14881
+      ],
+      [
+       2.85564,
+       49.18475
+      ],
+      [
+       2.78436,
+       49.18475
+      ],
+      [
+       2.75147,
+       49.14881
+      ],
+      [
+       2.75147,
+       48.95119
+      ],
+      [
+       2.78436,
+       48.91525
+      ],
+      [
+       2.85564,
+       48.91525
+      ],
+      [
+       2.88853,
+       48.95119
+      ]
+     ],
+     "name": "6. Armee greift an",
+     "staerke": "Maunoury"
+    },
+    {
+     "id": "e-stossO",
+     "partei": "ent",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       2.75,
+       49.06
+      ],
+      [
+       2.88,
+       49.06
+      ],
+      [
+       2.96,
+       49.05
+      ]
+     ]
+    },
+    {
+     "id": "d-flanke",
+     "partei": "deu",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       2.97148,
+       48.95592
+      ],
+      [
+       3.00141,
+       48.92322
+      ],
+      [
+       3.07859,
+       48.92322
+      ],
+      [
+       3.10852,
+       48.95592
+      ],
+      [
+       3.10852,
+       49.12408
+      ],
+      [
+       3.07859,
+       49.15678
+      ],
+      [
+       3.00141,
+       49.15678
+      ],
+      [
+       2.97148,
+       49.12408
+      ]
+     ],
+     "name": "IV. Reservekorps · Gronau"
+    },
+    {
+     "id": "d-1",
+     "partei": "deu",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       3.58062,
+       48.88321
+      ],
+      [
+       3.60531,
+       48.94826
+      ],
+      [
+       3.52508,
+       49.0011
+      ],
+      [
+       3.42633,
+       48.98484
+      ],
+      [
+       3.01938,
+       48.71679
+      ],
+      [
+       2.99469,
+       48.65174
+      ],
+      [
+       3.07492,
+       48.5989
+      ],
+      [
+       3.17367,
+       48.61516
+      ]
+     ],
+     "name": "1. Armee südlich der Marne"
+    },
+    {
+     "id": "e-bef",
+     "partei": "ent",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       2.8533,
+       48.66288
+      ],
+      [
+       2.79624,
+       48.64024
+      ],
+      [
+       2.79624,
+       48.55976
+      ],
+      [
+       2.8533,
+       48.53712
+      ],
+      [
+       3.1467,
+       48.53712
+      ],
+      [
+       3.20376,
+       48.55976
+      ],
+      [
+       3.20376,
+       48.64024
+      ],
+      [
+       3.1467,
+       48.66288
+      ]
+     ],
+     "name": "Die Briten"
+    },
+    {
+     "id": "e-5",
+     "partei": "ent",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       3.2635,
+       48.65186
+      ],
+      [
+       3.17659,
+       48.61737
+      ],
+      [
+       3.17659,
+       48.54263
+      ],
+      [
+       3.2635,
+       48.50814
+      ],
+      [
+       3.8365,
+       48.50814
+      ],
+      [
+       3.92341,
+       48.54263
+      ],
+      [
+       3.92341,
+       48.61737
+      ],
+      [
+       3.8365,
+       48.65186
+      ]
+     ],
+     "name": "5. Armee"
+    }
+   ]
+  },
+  {
+   "zeit": "6. bis 7. September",
+   "t": 250,
+   "kurz": "Kluck dreht sich um – und reißt eine Lücke auf.",
+   "text": "Kluck zieht seine Armee Korps für Korps von Süden nach Norden zurück und dreht sie um neunzig Grad nach Westen, gegen Maunoury. Das ist die Entscheidung der Schlacht, und sie ist für sich genommen richtig. Nur entsteht dabei zwischen seinem linken Flügel und Bülows rechtem ein Raum von fünfzig Kilometern, in dem nichts steht als zwei Kavalleriekorps.",
+   "stellungen": [
+    {
+     "id": "d-1",
+     "partei": "deu",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       2.884,
+       48.95064
+      ],
+      [
+       2.93008,
+       48.90034
+      ],
+      [
+       3.02992,
+       48.90034
+      ],
+      [
+       3.076,
+       48.95064
+      ],
+      [
+       3.076,
+       49.20936
+      ],
+      [
+       3.02992,
+       49.25966
+      ],
+      [
+       2.93008,
+       49.25966
+      ],
+      [
+       2.884,
+       49.20936
+      ]
+     ],
+     "name": "1. Armee dreht nach Westen",
+     "staerke": "gegen Maunoury"
+    },
+    {
+     "id": "d-dreh",
+     "partei": "deu",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       3.35,
+       48.82
+      ],
+      [
+       3.2,
+       48.96
+      ],
+      [
+       3.05,
+       49.06
+      ]
+     ],
+     "name": "Der Schwenk nach Norden und Westen"
+    },
+    {
+     "id": "d-luecke",
+     "partei": "deu",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       3.65184,
+       48.69371
+      ],
+      [
+       3.41356,
+       48.76094
+      ],
+      [
+       3.21024,
+       48.85213
+      ],
+      [
+       3.04732,
+       49.03229
+      ],
+      [
+       3.16131,
+       49.14908
+      ],
+      [
+       3.26696,
+       49.26234
+      ],
+      [
+       3.49986,
+       49.19082
+      ],
+      [
+       3.62811,
+       49.01801
+      ],
+      [
+       3.76304,
+       48.82922
+      ]
+     ],
+     "name": "Die Lücke · nur Kavallerie",
+     "staerke": "50 Kilometer"
+    },
+    {
+     "id": "d-2",
+     "partei": "deu",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.22685,
+       48.71915
+      ],
+      [
+       4.32504,
+       48.75796
+      ],
+      [
+       4.32504,
+       48.84204
+      ],
+      [
+       4.22685,
+       48.88085
+      ],
+      [
+       3.67315,
+       48.88085
+      ],
+      [
+       3.57496,
+       48.84204
+      ],
+      [
+       3.57496,
+       48.75796
+      ],
+      [
+       3.67315,
+       48.71915
+      ]
+     ],
+     "name": "2. Armee · Bülow"
+    },
+    {
+     "id": "e-6",
+     "partei": "ent",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       2.86853,
+       49.14881
+      ],
+      [
+       2.83564,
+       49.18475
+      ],
+      [
+       2.76436,
+       49.18475
+      ],
+      [
+       2.73147,
+       49.14881
+      ],
+      [
+       2.73147,
+       48.95119
+      ],
+      [
+       2.76436,
+       48.91525
+      ],
+      [
+       2.83564,
+       48.91525
+      ],
+      [
+       2.86853,
+       48.95119
+      ]
+     ],
+     "name": "6. Armee hält den Ourcq"
+    },
+    {
+     "id": "e-bef",
+     "partei": "ent",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       3.003,
+       48.7539
+      ],
+      [
+       2.94584,
+       48.73126
+      ],
+      [
+       2.94584,
+       48.66874
+      ],
+      [
+       3.003,
+       48.6461
+      ],
+      [
+       3.297,
+       48.6461
+      ],
+      [
+       3.35416,
+       48.66874
+      ],
+      [
+       3.35416,
+       48.73126
+      ],
+      [
+       3.297,
+       48.7539
+      ]
+     ],
+     "name": "Die Briten marschieren nach Norden"
+    }
+   ]
+  },
+  {
+   "zeit": "6. bis 9. September",
+   "t": 320,
+   "kurz": "Foch hält die Sümpfe von Saint-Gond.",
+   "text": "Weiter östlich steht Fochs neu gebildete 9. Armee an den Sümpfen von Saint-Gond gegen Bülow und Hausen, wird auseinandergedrückt und hält trotzdem. Der Satz, den man ihm zuschreibt – Zentrum eingedrückt, rechter Flügel weicht, Lage ausgezeichnet, ich greife an – steht in keiner Meldung, aber er trifft, was dort passiert. Solange Foch hält, kann Bülow die Lücke nach Westen nicht schließen.",
+   "stellungen": [
+    {
+     "id": "e-9",
+     "partei": "ent",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       3.60895,
+       48.7839
+      ],
+      [
+       3.54358,
+       48.75803
+      ],
+      [
+       3.54358,
+       48.70197
+      ],
+      [
+       3.60895,
+       48.6761
+      ],
+      [
+       4.09105,
+       48.6761
+      ],
+      [
+       4.15642,
+       48.70197
+      ],
+      [
+       4.15642,
+       48.75803
+      ],
+      [
+       4.09105,
+       48.7839
+      ]
+     ],
+     "name": "9. Armee · Foch",
+     "staerke": "an den Sümpfen"
+    },
+    {
+     "id": "d-2",
+     "partei": "deu",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.13094,
+       48.83712
+      ],
+      [
+       4.20747,
+       48.8673
+      ],
+      [
+       4.20747,
+       48.9327
+      ],
+      [
+       4.13094,
+       48.96288
+      ],
+      [
+       3.66906,
+       48.96288
+      ],
+      [
+       3.59253,
+       48.9327
+      ],
+      [
+       3.59253,
+       48.8673
+      ],
+      [
+       3.66906,
+       48.83712
+      ]
+     ],
+     "name": "2. Armee drückt"
+    },
+    {
+     "id": "d-3",
+     "partei": "deu",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.74658,
+       48.78712
+      ],
+      [
+       4.82303,
+       48.8173
+      ],
+      [
+       4.82303,
+       48.8827
+      ],
+      [
+       4.74658,
+       48.91288
+      ],
+      [
+       4.35342,
+       48.91288
+      ],
+      [
+       4.27697,
+       48.8827
+      ],
+      [
+       4.27697,
+       48.8173
+      ],
+      [
+       4.35342,
+       48.78712
+      ]
+     ],
+     "name": "3. Armee · Hausen"
+    },
+    {
+     "id": "d-stossG",
+     "partei": "deu",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.05,
+       48.88
+      ],
+      [
+       3.95,
+       48.8
+      ],
+      [
+       3.9,
+       48.74
+      ]
+     ],
+     "name": "Nachtangriff ohne Schuss"
+    },
+    {
+     "id": "e-4",
+     "partei": "ent",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.45933,
+       48.7039
+      ],
+      [
+       4.39406,
+       48.67803
+      ],
+      [
+       4.39406,
+       48.62197
+      ],
+      [
+       4.45933,
+       48.5961
+      ],
+      [
+       4.94067,
+       48.5961
+      ],
+      [
+       5.00594,
+       48.62197
+      ],
+      [
+       5.00594,
+       48.67803
+      ],
+      [
+       4.94067,
+       48.7039
+      ]
+     ],
+     "name": "4. Armee · de Langle de Cary"
+    },
+    {
+     "id": "d-luecke",
+     "partei": "deu",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       3.64089,
+       48.70616
+      ],
+      [
+       3.41297,
+       48.77046
+      ],
+      [
+       3.21849,
+       48.85769
+      ],
+      [
+       3.06265,
+       49.03002
+      ],
+      [
+       3.17169,
+       49.14173
+      ],
+      [
+       3.27275,
+       49.25006
+      ],
+      [
+       3.49552,
+       49.18165
+      ],
+      [
+       3.61819,
+       49.01636
+      ],
+      [
+       3.74726,
+       48.83578
+      ]
+     ],
+     "name": "Die Lücke bleibt offen",
+     "staerke": "50 Kilometer"
+    }
+   ]
+  },
+  {
+   "zeit": "7. September, abends",
+   "t": 380,
+   "kurz": "Sechshundert Pariser Taxis fahren an die Front.",
+   "text": "Gallieni lässt in Paris die Droschken beschlagnahmen: rund sechshundert Wagen, meist Renault AG, jeder mit fünf Mann, zwei Fahrten über sechzig Kilometer. Sie bringen etwa viertausend Soldaten der 7. Division nach Nanteuil. Militärisch ist das eine Kleinigkeit – die Division wäre auch marschiert –, für die Wirkung nach innen ist es alles: eine Hauptstadt, die ihr eigenes Heer an die Front fährt.",
+   "stellungen": [
+    {
+     "id": "e-taxi",
+     "partei": "ent",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       2.35,
+       48.87
+      ],
+      [
+       2.55,
+       48.95
+      ],
+      [
+       2.7,
+       49.08
+      ],
+      [
+       2.8,
+       49.14
+      ]
+     ],
+     "name": "Die Taxis nach Nanteuil"
+    },
+    {
+     "id": "e-6",
+     "partei": "ent",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       2.86857,
+       49.19678
+      ],
+      [
+       2.83566,
+       49.23271
+      ],
+      [
+       2.76434,
+       49.23271
+      ],
+      [
+       2.73143,
+       49.19678
+      ],
+      [
+       2.73143,
+       48.96322
+      ],
+      [
+       2.76434,
+       48.92729
+      ],
+      [
+       2.83566,
+       48.92729
+      ],
+      [
+       2.86857,
+       48.96322
+      ]
+     ],
+     "name": "6. Armee hält",
+     "staerke": "Maunoury"
+    },
+    {
+     "id": "d-1",
+     "partei": "deu",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       2.884,
+       48.95064
+      ],
+      [
+       2.93008,
+       48.90034
+      ],
+      [
+       3.02992,
+       48.90034
+      ],
+      [
+       3.076,
+       48.95064
+      ],
+      [
+       3.076,
+       49.20936
+      ],
+      [
+       3.02992,
+       49.25966
+      ],
+      [
+       2.93008,
+       49.25966
+      ],
+      [
+       2.884,
+       49.20936
+      ]
+     ],
+     "name": "1. Armee am Ourcq"
+    },
+    {
+     "id": "e-bef",
+     "partei": "ent",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       3.10265,
+       48.8739
+      ],
+      [
+       3.04535,
+       48.85126
+      ],
+      [
+       3.04535,
+       48.78874
+      ],
+      [
+       3.10265,
+       48.7661
+      ],
+      [
+       3.39735,
+       48.7661
+      ],
+      [
+       3.45465,
+       48.78874
+      ],
+      [
+       3.45465,
+       48.85126
+      ],
+      [
+       3.39735,
+       48.8739
+      ]
+     ],
+     "name": "Die Briten in der Lücke"
+    },
+    {
+     "id": "e-5",
+     "partei": "ent",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       3.33569,
+       48.81288
+      ],
+      [
+       3.25939,
+       48.7827
+      ],
+      [
+       3.25939,
+       48.7173
+      ],
+      [
+       3.33569,
+       48.68712
+      ],
+      [
+       3.86431,
+       48.68712
+      ],
+      [
+       3.94061,
+       48.7173
+      ],
+      [
+       3.94061,
+       48.7827
+      ],
+      [
+       3.86431,
+       48.81288
+      ]
+     ],
+     "name": "5. Armee rückt nach"
+    }
+   ]
+  },
+  {
+   "zeit": "8. bis 9. September",
+   "t": 440,
+   "kurz": "Nachts über die Marne, in den leeren Raum hinein.",
+   "text": "Die Briten und der linke Flügel der 5. Armee gehen über die Marne, gegen schwache Kavallerie, ohne große Kämpfe – nur langsam, weil niemand weiß, was vorn steht. Genau das genügt: Zwei deutsche Armeen sehen einen Feind zwischen sich einsickern und haben nichts, womit sie ihn hinausdrängen könnten, weil beide gebunden sind.",
+   "stellungen": [
+    {
+     "id": "e-bef",
+     "partei": "ent",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       3.2,
+       48.85
+      ],
+      [
+       3.35,
+       48.96
+      ],
+      [
+       3.45,
+       49.05
+      ]
+     ],
+     "name": "Die Briten über die Marne"
+    },
+    {
+     "id": "e-5",
+     "partei": "ent",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       3.7,
+       48.8
+      ],
+      [
+       3.75,
+       48.92
+      ],
+      [
+       3.8,
+       49.02
+      ]
+     ],
+     "name": "5. Armee gegen Bülows Flanke"
+    },
+    {
+     "id": "d-luecke",
+     "partei": "deu",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       3.66917,
+       48.77105
+      ],
+      [
+       3.4618,
+       48.82951
+      ],
+      [
+       3.28486,
+       48.90881
+      ],
+      [
+       3.14307,
+       49.06547
+      ],
+      [
+       3.24228,
+       49.16703
+      ],
+      [
+       3.33422,
+       49.26551
+      ],
+      [
+       3.5369,
+       49.20332
+      ],
+      [
+       3.64852,
+       49.05305
+      ],
+      [
+       3.76594,
+       48.88889
+      ]
+     ],
+     "name": "Nur Kavallerie",
+     "staerke": "weicht aus",
+     "geschlagen": true
+    },
+    {
+     "id": "d-1",
+     "partei": "deu",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       2.85396,
+       48.97064
+      ],
+      [
+       2.90006,
+       48.92034
+      ],
+      [
+       2.99994,
+       48.92034
+      ],
+      [
+       3.04604,
+       48.97064
+      ],
+      [
+       3.04604,
+       49.22936
+      ],
+      [
+       2.99994,
+       49.27966
+      ],
+      [
+       2.90006,
+       49.27966
+      ],
+      [
+       2.85396,
+       49.22936
+      ]
+     ],
+     "name": "1. Armee, nach Westen gebunden"
+    },
+    {
+     "id": "d-2",
+     "partei": "deu",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.18085,
+       48.81712
+      ],
+      [
+       4.25734,
+       48.8473
+      ],
+      [
+       4.25734,
+       48.9127
+      ],
+      [
+       4.18085,
+       48.94288
+      ],
+      [
+       3.71915,
+       48.94288
+      ],
+      [
+       3.64266,
+       48.9127
+      ],
+      [
+       3.64266,
+       48.8473
+      ],
+      [
+       3.71915,
+       48.81712
+      ]
+     ],
+     "name": "2. Armee, nach Süden gebunden"
+    }
+   ]
+  },
+  {
+   "zeit": "9. September",
+   "t": 500,
+   "kurz": "Ein Oberstleutnant fährt die Front ab und ordnet an.",
+   "text": "Moltke sitzt mit dem Hauptquartier in Luxemburg, zweihundertfünfzig Kilometer entfernt, und hat kaum verlässliche Nachrichten. Er schickt seinen Nachrichtenchef, Oberstleutnant Hentsch, mit weitreichender Vollmacht im Auto zu den Armeen. Hentsch findet Bülow bereits im Zurückgehen, fährt zu Kluck und ordnet auch dort den Rückzug an. Über den Umfang seiner Vollmacht wird noch zwanzig Jahre später gestritten.",
+   "stellungen": [
+    {
+     "id": "d-hentsch",
+     "partei": "deu",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.5,
+       49.4
+      ],
+      [
+       4,
+       49.2
+      ],
+      [
+       3.5,
+       49.05
+      ],
+      [
+       2.95,
+       49.1
+      ]
+     ],
+     "name": "Hentsch fährt von Armee zu Armee"
+    },
+    {
+     "id": "d-2",
+     "partei": "deu",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.18117,
+       48.88712
+      ],
+      [
+       4.25777,
+       48.9173
+      ],
+      [
+       4.25777,
+       48.9827
+      ],
+      [
+       4.18117,
+       49.01288
+      ],
+      [
+       3.71883,
+       49.01288
+      ],
+      [
+       3.64223,
+       48.9827
+      ],
+      [
+       3.64223,
+       48.9173
+      ],
+      [
+       3.71883,
+       48.88712
+      ]
+     ],
+     "name": "2. Armee geht zurück",
+     "geschlagen": true
+    },
+    {
+     "id": "d-1",
+     "partei": "deu",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       2.85392,
+       48.99064
+      ],
+      [
+       2.90004,
+       48.94034
+      ],
+      [
+       2.99996,
+       48.94034
+      ],
+      [
+       3.04608,
+       48.99064
+      ],
+      [
+       3.04608,
+       49.24936
+      ],
+      [
+       2.99996,
+       49.29966
+      ],
+      [
+       2.90004,
+       49.29966
+      ],
+      [
+       2.85392,
+       49.24936
+      ]
+     ],
+     "name": "1. Armee bricht ab"
+    },
+    {
+     "id": "e-bef",
+     "partei": "ent",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       3.25212,
+       49.0539
+      ],
+      [
+       3.19461,
+       49.03126
+      ],
+      [
+       3.19461,
+       48.96874
+      ],
+      [
+       3.25212,
+       48.9461
+      ],
+      [
+       3.54788,
+       48.9461
+      ],
+      [
+       3.60539,
+       48.96874
+      ],
+      [
+       3.60539,
+       49.03126
+      ],
+      [
+       3.54788,
+       49.0539
+      ]
+     ],
+     "name": "Die Briten in der Lücke"
+    },
+    {
+     "id": "e-5",
+     "partei": "ent",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       3.53463,
+       49.01288
+      ],
+      [
+       3.45803,
+       48.9827
+      ],
+      [
+       3.45803,
+       48.9173
+      ],
+      [
+       3.53463,
+       48.88712
+      ],
+      [
+       4.06537,
+       48.88712
+      ],
+      [
+       4.14197,
+       48.9173
+      ],
+      [
+       4.14197,
+       48.9827
+      ],
+      [
+       4.06537,
+       49.01288
+      ]
+     ],
+     "name": "5. Armee"
+    }
+   ]
+  },
+  {
+   "zeit": "10. bis 12. September",
+   "t": 560,
+   "kurz": "Sechzig Kilometer zurück, bis hinter die Aisne.",
+   "text": "Der ganze rechte Flügel geht in geordneten Märschen bis hinter die Aisne zurück – rund sechzig Kilometer, ohne dass die Verfolger nahe genug herankommen, um daraus eine Niederlage zu machen. Dort graben sich die Deutschen auf den Höhen nördlich des Flusses ein. Die alliierten Angriffe vom 13. bis 28. September bleiben stecken. Moltke wird abgelöst; sein Nachfolger heißt Falkenhayn.",
+   "stellungen": [
+    {
+     "id": "d-rueck",
+     "partei": "deu",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       3.1,
+       49.05
+      ],
+      [
+       3.3,
+       49.25
+      ],
+      [
+       3.5,
+       49.42
+      ]
+     ],
+     "name": "Rückzug an die Aisne",
+     "rueckzug": true
+    },
+    {
+     "id": "d-rueck2",
+     "partei": "deu",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4,
+       48.9
+      ],
+      [
+       4.05,
+       49.2
+      ],
+      [
+       4.1,
+       49.4
+      ]
+     ],
+     "name": "Rückzug an die Aisne",
+     "rueckzug": true
+    },
+    {
+     "id": "d-aisne",
+     "partei": "deu",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       4.35548,
+       49.3961
+      ],
+      [
+       4.4218,
+       49.42197
+      ],
+      [
+       4.4218,
+       49.47803
+      ],
+      [
+       4.35548,
+       49.5039
+      ],
+      [
+       3.24452,
+       49.5039
+      ],
+      [
+       3.1782,
+       49.47803
+      ],
+      [
+       3.1782,
+       49.42197
+      ],
+      [
+       3.24452,
+       49.3961
+      ]
+     ],
+     "name": "Eingegraben nördlich der Aisne",
+     "staerke": "auf den Höhen"
+    },
+    {
+     "id": "e-verfolg",
+     "partei": "ent",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       3.22338,
+       49.31288
+      ],
+      [
+       3.14632,
+       49.2827
+      ],
+      [
+       3.14632,
+       49.2173
+      ],
+      [
+       3.22338,
+       49.18712
+      ],
+      [
+       4.37662,
+       49.18712
+      ],
+      [
+       4.45368,
+       49.2173
+      ],
+      [
+       4.45368,
+       49.2827
+      ],
+      [
+       4.37662,
+       49.31288
+      ]
+     ],
+     "name": "Die Verfolgung bleibt stecken",
+     "staerke": "ab 13. September"
+    }
+   ]
+  },
+  {
+   "zeit": "Nach dem 12. September",
+   "t": 640,
+   "kurz": "Vier Jahre Graben statt sechs Wochen Feldzug.",
+   "text": "Beide Seiten versuchen danach, den jeweils anderen Flügel zu umgehen, und schieben die Front dabei in zwei Monaten bis an die Nordsee – der „Wettlauf zum Meer“, der nichts als eine durchgehende Linie erzeugt. Von November 1914 an läuft ein Graben von der Schweizer Grenze bis Nieuwpoort. Er wird sich vier Jahre lang nirgends um mehr als ein paar Dutzend Kilometer verschieben. Die Marne hat den Krieg nicht gewonnen, sondern ihn lang gemacht.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     0.4,
+     45.6
+    ],
+    [
+     9.4,
+     52.4
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "e-wettlauf",
+     "partei": "ent",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       3.5,
+       49.45
+      ],
+      [
+       3,
+       49.9
+      ],
+      [
+       2.7,
+       50.3
+      ],
+      [
+       2.75,
+       50.9
+      ],
+      [
+       2.75,
+       51.13
+      ]
+     ],
+     "name": "Der Wettlauf zum Meer, September bis November"
+    },
+    {
+     "id": "d-wettlauf",
+     "partei": "deu",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       3.9,
+       49.45
+      ],
+      [
+       3.3,
+       50.1
+      ],
+      [
+       3,
+       50.6
+      ],
+      [
+       2.9,
+       51.05
+      ]
+     ],
+     "name": "und die Antwort darauf"
+    },
+    {
+     "id": "d-front",
+     "partei": "deu",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       2.75,
+       51.05
+      ],
+      [
+       2.8,
+       50.2
+      ],
+      [
+       3.1,
+       49.6
+      ],
+      [
+       5,
+       49.3
+      ],
+      [
+       5.9,
+       48.6
+      ],
+      [
+       7.3,
+       47.9
+      ],
+      [
+       7.6,
+       47.55
+      ]
+     ],
+     "name": "Die Front, wie sie vier Jahre bleibt"
+    }
+   ]
+  }
+ ],
+ "ausgang": "Der deutsche rechte Flügel geht auf Befehl bis hinter die Aisne zurück. Der Bewegungskrieg im Westen ist damit beendet.",
+ "verluste": [
+  {
+   "partei": "ent",
+   "text": "rund 263.000, davon etwa 81.000 Tote – Frankreich rund 250.000, die Briten 13.000"
+  },
+  {
+   "partei": "deu",
+   "text": "rund 250.000, davon etwa 67.000 Tote"
+  }
+ ],
+ "folgen": "Der Plan eines kurzen Feldzugs im Westen ist gescheitert; Deutschland führt von nun an einen Zweifrontenkrieg über Jahre. Moltke wird abgelöst. Nach dem „Wettlauf zum Meer“ steht ab November 1914 eine durchgehende Grabenlinie von der Schweiz bis zur Nordsee, die sich vier Jahre lang kaum verschiebt. Verdun, die Somme und Passchendaele sind die Versuche, sie aufzubrechen.",
+ "streit": "Die Rolle Hentschs ist der Dauerstreit: ob ein Oberstleutnant den Rückzug des rechten Flügels befohlen hat oder nur eine bereits laufende Bewegung bestätigte, wurde 1917 in einem Untersuchungsverfahren und danach jahrzehntelang verhandelt. Auch die Wirkung der Pariser Taxis ist eher Symbol als Militärgeschichte – sie brachten rund 4.000 Mann, die Front hielt eine halbe Million. Ob Kluck durch das Schwenken einen Fehler beging oder ob der Plan von Anfang an mehr Truppen gebraucht hätte, als vorhanden waren, ist bis heute offen."
+}

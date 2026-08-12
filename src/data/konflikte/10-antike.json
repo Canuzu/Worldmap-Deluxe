@@ -807,7 +807,8 @@
    "rang": 1,
    "sieger": "Griechische Städte",
    "text": "Themistokles lockt die persische Flotte in eine Meerenge, in der ihre Übermacht zur Falle wird. Xerxes sieht vom Ufer aus zu, wie sein Seeweg nach Griechenland verschwindet.",
-   "wiki": "Schlacht von Salamis"
+   "wiki": "Schlacht von Salamis",
+   "verlauf": "salamis"
   },
   {
    "id": "thermopylen",
@@ -1178,7 +1179,8 @@
    "rang": 2,
    "sieger": "Römische Republik",
    "text": "Caesar baut zwei Ringwälle: einen nach innen gegen die Belagerten, einen nach außen gegen das Entsatzheer. Vercingetorix ergibt sich – und mit ihm die Vorstellung eines freien Galliens.",
-   "wiki": "Schlacht um Alesia"
+   "wiki": "Schlacht um Alesia",
+   "verlauf": "alesia"
   },
   {
    "id": "pharsalos",
@@ -1221,13 +1223,14 @@
    "name": "Die Varusschlacht",
    "ort": [
     8.13,
-    52.18
+    52.41
    ],
    "wo": "Kalkriese am Wiehengebirge",
    "rang": 1,
    "sieger": "Germanische Stämme",
    "text": "Arminius hat als römischer Offizier gedient und weiß genau, wie eine Marschkolonne aussieht, die sich über Kilometer durch nassen Wald zieht. Drei Legionen gehen unter, ihre Nummern werden nie wieder vergeben.",
-   "wiki": "Varusschlacht"
+   "wiki": "Varusschlacht",
+   "verlauf": "teutoburg"
   },
   {
    "id": "jerusalem70",

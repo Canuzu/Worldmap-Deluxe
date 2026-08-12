@@ -1,0 +1,1582 @@
+{
+ "id": "teutoburg",
+ "name": "Die Varusschlacht",
+ "ort": "Kalkriese am Wiehengebirge",
+ "datum": "Herbst 9 n. Chr.",
+ "jahr": 9,
+ "mitte": [
+  8.13,
+  52.41
+ ],
+ "zoom": 12.1,
+ "grund": "relief",
+ "worum": "Ein Heer, das nirgends antreten kann: drei Legionen als Marschsäule über Kilometer im nassen Wald, angegriffen von einem Mann, der als römischer Offizier gelernt hat, wie eine Marschsäule aussieht. Am Ende drückt der Kalkrieser Berg sie gegen das Große Moor, und der Weg ist zweihundert Meter breit.",
+ "parteien": [
+  {
+   "id": "rom",
+   "name": "Rom",
+   "farbe": "#6f9fe0",
+   "fuehrung": "Publius Quinctilius Varus, Numonius Vala, Ceionius, Eggius",
+   "staerke": "Legionen XVII, XVIII und XIX, sechs Kohorten, drei Schwadronen – mit Tross gegen 20.000",
+   "zahl": 20000
+  },
+  {
+   "id": "ger",
+   "name": "Germanische Stämme",
+   "farbe": "#c98a4b",
+   "fuehrung": "Arminius, Segimer",
+   "staerke": "Cherusker, Marser, Brukterer, Chatten, Angrivarier – Zahl unbekannt",
+   "zahl": 17000
+  }
+ ],
+ "gelaende": [
+  {
+   "art": "hoehe",
+   "name": "Kalkrieser Berg",
+   "punkte": [
+    [
+     8.19883,
+     52.41464
+    ],
+    [
+     8.17123,
+     52.41311
+    ],
+    [
+     8.14223,
+     52.41314
+    ],
+    [
+     8.10175,
+     52.41738
+    ],
+    [
+     8.09097,
+     52.42398
+    ],
+    [
+     8.08017,
+     52.43029
+    ],
+    [
+     8.10808,
+     52.43155
+    ],
+    [
+     8.14494,
+     52.42699
+    ],
+    [
+     8.18484,
+     52.42192
+    ]
+   ]
+  },
+  {
+   "art": "sumpf",
+   "name": "Großes Moor",
+   "punkte": [
+    [
+     8.22885,
+     52.37851
+    ],
+    [
+     8.19417,
+     52.3746
+    ],
+    [
+     8.15795,
+     52.37325
+    ],
+    [
+     8.10793,
+     52.37845
+    ],
+    [
+     8.09531,
+     52.38905
+    ],
+    [
+     8.08264,
+     52.39917
+    ],
+    [
+     8.11768,
+     52.40265
+    ],
+    [
+     8.16313,
+     52.39674
+    ],
+    [
+     8.21232,
+     52.39012
+    ]
+   ]
+  },
+  {
+   "art": "weg",
+   "name": "Der Engpass · stellenweise 200 Meter",
+   "punkte": [
+    [
+     8.08903,
+     52.41708
+    ],
+    [
+     8.08582,
+     52.41633
+    ],
+    [
+     8.08516,
+     52.41403
+    ],
+    [
+     8.08775,
+     52.41266
+    ],
+    [
+     8.16897,
+     52.40392
+    ],
+    [
+     8.17218,
+     52.40467
+    ],
+    [
+     8.17284,
+     52.40697
+    ],
+    [
+     8.17025,
+     52.40834
+    ]
+   ]
+  },
+  {
+   "art": "mauer",
+   "name": "Der Wall aus Grassoden",
+   "punkte": [
+    [
+     8.15652,
+     52.41174
+    ],
+    [
+     8.15755,
+     52.41198
+    ],
+    [
+     8.15776,
+     52.41272
+    ],
+    [
+     8.15693,
+     52.41316
+    ],
+    [
+     8.10948,
+     52.41826
+    ],
+    [
+     8.10845,
+     52.41802
+    ],
+    [
+     8.10824,
+     52.41728
+    ],
+    [
+     8.10907,
+     52.41684
+    ]
+   ]
+  },
+  {
+   "art": "wald",
+   "name": "Wiehengebirge",
+   "punkte": [
+    [
+     8.24545,
+     52.42489
+    ],
+    [
+     8.21268,
+     52.42257
+    ],
+    [
+     8.1783,
+     52.42225
+    ],
+    [
+     8.13044,
+     52.42725
+    ],
+    [
+     8.11788,
+     52.43567
+    ],
+    [
+     8.10528,
+     52.44372
+    ],
+    [
+     8.13842,
+     52.4457
+    ],
+    [
+     8.18197,
+     52.44025
+    ],
+    [
+     8.2291,
+     52.43416
+    ]
+   ]
+  }
+ ],
+ "stationen": [
+  {
+   "zeit": "Spätsommer 9",
+   "t": 0,
+   "kurz": "Ein Aufstand, der nur ein Vorwand ist.",
+   "text": "Varus verwaltet seit zwei Jahren das Land zwischen Rhein und Elbe wie eine Provinz: Steuern, Gerichtstage, römisches Recht. Sein bester Mann dabei ist Arminius, Cheruskerfürst, römischer Ritter, Führer der germanischen Hilfsreiterei. Als die Legionen vom Sommerlager an der Weser zu den Winterquartieren am Rhein aufbrechen, meldet Arminius einen Aufstand weiter nördlich. Varus biegt vom Weg ab, um ihn nebenbei zu erledigen.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     5.6,
+     50.6
+    ],
+    [
+     10.8,
+     53.6
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "anm-rom",
+     "partei": "rom",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       9.3,
+       52.1
+      ],
+      [
+       8.8,
+       52.28
+      ],
+      [
+       8.4,
+       52.38
+      ],
+      [
+       8.2,
+       52.41
+      ]
+     ],
+     "name": "Varus biegt nach Norden ab"
+    },
+    {
+     "id": "anm-soll",
+     "partei": "rom",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       9.3,
+       52.1
+      ],
+      [
+       8.2,
+       51.92
+      ],
+      [
+       6.95,
+       51.72
+      ],
+      [
+       6.45,
+       51.66
+      ]
+     ],
+     "name": "Der Weg ins Winterlager, den er nicht nimmt"
+    },
+    {
+     "id": "anm-ger",
+     "partei": "ger",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       9.1,
+       52.7
+      ],
+      [
+       8.6,
+       52.55
+      ],
+      [
+       8.25,
+       52.44
+      ]
+     ],
+     "name": "Arminius’ Aufgebot sammelt sich"
+    }
+   ]
+  },
+  {
+   "zeit": "Erster Tag",
+   "t": 60,
+   "kurz": "Drei Legionen im Regen, über Kilometer gestreckt.",
+   "text": "Die Säule marschiert nicht als Heer, sondern als Zug: Legionen, dazwischen Wagen, Maultiere, Familien, Händler. Im nassen Wald wird daraus eine Reihe von zehn, vielleicht fünfzehn Kilometern Länge. Arminius hat sich mit der Reiterei verabschiedet, angeblich um Verstärkung zu holen. Dann kommen die ersten Speere von den Hängen, und die Säule kann nirgends antreten, weil sie nirgends Platz hat.",
+   "stellungen": [
+    {
+     "id": "r-saeule",
+     "partei": "rom",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       8.30709,
+       52.36667
+      ],
+      [
+       8.3094,
+       52.36707
+      ],
+      [
+       8.31009,
+       52.36865
+      ],
+      [
+       8.30842,
+       52.36971
+      ],
+      [
+       8.21291,
+       52.38533
+      ],
+      [
+       8.2106,
+       52.38493
+      ],
+      [
+       8.20991,
+       52.38335
+      ],
+      [
+       8.21158,
+       52.38229
+      ]
+     ],
+     "name": "Marschsäule · drei Legionen",
+     "staerke": "über Kilometer gestreckt"
+    },
+    {
+     "id": "r-tross",
+     "partei": "rom",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       8.312,
+       52.37184
+      ],
+      [
+       8.31671,
+       52.36943
+      ],
+      [
+       8.31995,
+       52.36686
+      ],
+      [
+       8.32007,
+       52.36316
+      ],
+      [
+       8.31437,
+       52.36203
+      ],
+      [
+       8.30897,
+       52.36091
+      ],
+      [
+       8.30449,
+       52.36335
+      ],
+      [
+       8.30512,
+       52.36674
+      ],
+      [
+       8.30594,
+       52.37041
+      ]
+     ],
+     "name": "Tross, Wagen, Familien"
+    },
+    {
+     "id": "g-hang1",
+     "partei": "ger",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       8.285,
+       52.39494
+      ],
+      [
+       8.28899,
+       52.3929
+      ],
+      [
+       8.29173,
+       52.39072
+      ],
+      [
+       8.29183,
+       52.38759
+      ],
+      [
+       8.287,
+       52.38664
+      ],
+      [
+       8.28243,
+       52.38569
+      ],
+      [
+       8.27865,
+       52.38776
+      ],
+      [
+       8.27917,
+       52.39063
+      ],
+      [
+       8.27987,
+       52.39373
+      ]
+     ],
+     "name": "auf den Hängen"
+    },
+    {
+     "id": "g-hang2",
+     "partei": "ger",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       8.226,
+       52.40094
+      ],
+      [
+       8.22999,
+       52.3989
+      ],
+      [
+       8.23273,
+       52.39672
+      ],
+      [
+       8.23283,
+       52.39359
+      ],
+      [
+       8.228,
+       52.39264
+      ],
+      [
+       8.22343,
+       52.39169
+      ],
+      [
+       8.21964,
+       52.39376
+      ],
+      [
+       8.22017,
+       52.39663
+      ],
+      [
+       8.22087,
+       52.39973
+      ]
+     ],
+     "name": "auf den Hängen"
+    },
+    {
+     "id": "g-wurf",
+     "partei": "ger",
+     "form": "pfeil",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       8.283,
+       52.388
+      ],
+      [
+       8.276,
+       52.38
+      ],
+      [
+       8.27,
+       52.377
+      ]
+     ],
+     "name": "Speere von oben"
+    }
+   ]
+  },
+  {
+   "zeit": "Zweiter Tag",
+   "t": 150,
+   "kurz": "Der Tross brennt, damit die Säule schneller wird.",
+   "text": "Varus lässt in der Nacht ein Marschlager anlegen und am Morgen verbrennen, was die Säule aufhält: Wagen, Gepäck, alles Überflüssige. Es ist die richtige Entscheidung und kommt zwei Tage zu spät. Das Heer schlägt sich nach Nordwesten durch, in offeneres Land – auf den einzigen Weg, der von hier aus zum Rhein führt und den Arminius so gut kennt wie er.",
+   "stellungen": [
+    {
+     "id": "r-lager",
+     "partei": "rom",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       8.228,
+       52.39794
+      ],
+      [
+       8.23199,
+       52.3959
+      ],
+      [
+       8.23473,
+       52.39372
+      ],
+      [
+       8.23483,
+       52.39059
+      ],
+      [
+       8.23,
+       52.38964
+      ],
+      [
+       8.22543,
+       52.38869
+      ],
+      [
+       8.22165,
+       52.39076
+      ],
+      [
+       8.22217,
+       52.39363
+      ],
+      [
+       8.22287,
+       52.39673
+      ]
+     ],
+     "name": "Marschlager, in Brand gesteckt"
+    },
+    {
+     "id": "r-saeule",
+     "partei": "rom",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       8.23397,
+       52.39363
+      ],
+      [
+       8.23608,
+       52.394
+      ],
+      [
+       8.23672,
+       52.39544
+      ],
+      [
+       8.23519,
+       52.39641
+      ],
+      [
+       8.16203,
+       52.40837
+      ],
+      [
+       8.15992,
+       52.408
+      ],
+      [
+       8.15928,
+       52.40656
+      ],
+      [
+       8.16081,
+       52.40559
+      ]
+     ],
+     "name": "Marschsäule, ohne Tross",
+     "staerke": "was noch marschieren kann"
+    },
+    {
+     "id": "g-hang2",
+     "partei": "ger",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       8.216,
+       52.41839
+      ],
+      [
+       8.22035,
+       52.41617
+      ],
+      [
+       8.22335,
+       52.41379
+      ],
+      [
+       8.22346,
+       52.41037
+      ],
+      [
+       8.21819,
+       52.40934
+      ],
+      [
+       8.2132,
+       52.4083
+      ],
+      [
+       8.20906,
+       52.41056
+      ],
+      [
+       8.20964,
+       52.41368
+      ],
+      [
+       8.2104,
+       52.41707
+      ]
+     ],
+     "name": "folgt an der Flanke"
+    },
+    {
+     "id": "g-vor",
+     "partei": "ger",
+     "form": "pfeil",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       8.21,
+       52.418
+      ],
+      [
+       8.17,
+       52.423
+      ],
+      [
+       8.14,
+       52.42
+      ]
+     ],
+     "name": "setzt sich vor die Säule"
+    }
+   ]
+  },
+  {
+   "zeit": "Dritter Tag, Vormittag",
+   "t": 240,
+   "kurz": "Zwischen Berg und Moor wird der Weg zum Schlauch.",
+   "text": "Bei Kalkriese schiebt sich der Kalkrieser Berg von Norden an das Große Moor heran. Was bleibt, ist ein Streifen sandigen Bodens, an der engsten Stelle keine zweihundert Meter breit. Ein Heer, das hier hineingeht, kann sich weder entfalten noch ausweichen; wer den Streifen sperrt, hat es. Genau dort haben die Germanen in den Tagen zuvor einen Wall aus Grassoden aufgeschüttet, hüfthoch, mit Durchlässen.",
+   "stellungen": [
+    {
+     "id": "r-saeule",
+     "partei": "rom",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       8.22213,
+       52.40196
+      ],
+      [
+       8.22405,
+       52.40241
+      ],
+      [
+       8.22445,
+       52.40379
+      ],
+      [
+       8.2229,
+       52.40461
+      ],
+      [
+       8.15387,
+       52.41204
+      ],
+      [
+       8.15195,
+       52.41159
+      ],
+      [
+       8.15155,
+       52.41021
+      ],
+      [
+       8.1531,
+       52.40939
+      ]
+     ],
+     "name": "in den Engpass hinein",
+     "staerke": "drei Legionen"
+    },
+    {
+     "id": "g-wall",
+     "partei": "ger",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       8.15479,
+       52.41154
+      ],
+      [
+       8.15607,
+       52.41184
+      ],
+      [
+       8.15634,
+       52.41276
+      ],
+      [
+       8.1553,
+       52.41331
+      ],
+      [
+       8.11121,
+       52.41806
+      ],
+      [
+       8.10993,
+       52.41776
+      ],
+      [
+       8.10966,
+       52.41684
+      ],
+      [
+       8.1107,
+       52.41629
+      ]
+     ],
+     "name": "Hinter dem Wall",
+     "staerke": "Cherusker"
+    },
+    {
+     "id": "g-sperre",
+     "partei": "ger",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       8.09085,
+       52.41713
+      ],
+      [
+       8.08974,
+       52.41889
+      ],
+      [
+       8.08635,
+       52.41926
+      ],
+      [
+       8.08432,
+       52.41784
+      ],
+      [
+       8.08115,
+       52.40687
+      ],
+      [
+       8.08226,
+       52.40511
+      ],
+      [
+       8.08565,
+       52.40474
+      ],
+      [
+       8.08768,
+       52.40616
+      ]
+     ],
+     "name": "Sperre am Westausgang"
+    },
+    {
+     "id": "g-hang2",
+     "partei": "ger",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       8.175,
+       52.43239
+      ],
+      [
+       8.17936,
+       52.43017
+      ],
+      [
+       8.18235,
+       52.42779
+      ],
+      [
+       8.18246,
+       52.42437
+      ],
+      [
+       8.17719,
+       52.42334
+      ],
+      [
+       8.1722,
+       52.4223
+      ],
+      [
+       8.16806,
+       52.42456
+      ],
+      [
+       8.16864,
+       52.42768
+      ],
+      [
+       8.1694,
+       52.43107
+      ]
+     ],
+     "name": "am Berghang"
+    }
+   ]
+  },
+  {
+   "zeit": "Am Wall",
+   "t": 330,
+   "kurz": "Hinter dem Wall wartet, wer den Weg gebaut hat.",
+   "text": "Als die Säule den Wall entlangzieht, kommt der Angriff von der Seite, aus den Durchlässen heraus, in eine Flanke, die keine Front bilden kann. Wer nach links ausweicht, steht im Moor. Die Legionäre kämpfen nicht als Legion, sondern als das, was gerade beieinandersteht. Im Boden liegen später Schleuderblei und Speerspitzen dicht am Wall und Knochen dahinter – die Reihenfolge des Kampfes ist ausgrabbar.",
+   "stellungen": [
+    {
+     "id": "g-wall",
+     "partei": "ger",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       8.15479,
+       52.41154
+      ],
+      [
+       8.15607,
+       52.41184
+      ],
+      [
+       8.15634,
+       52.41276
+      ],
+      [
+       8.1553,
+       52.41331
+      ],
+      [
+       8.11121,
+       52.41806
+      ],
+      [
+       8.10993,
+       52.41776
+      ],
+      [
+       8.10966,
+       52.41684
+      ],
+      [
+       8.1107,
+       52.41629
+      ]
+     ],
+     "name": "aus den Durchlässen",
+     "staerke": "Cherusker"
+    },
+    {
+     "id": "g-stoss",
+     "partei": "ger",
+     "form": "pfeil",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       8.136,
+       52.4142
+      ],
+      [
+       8.133,
+       52.412
+      ],
+      [
+       8.13,
+       52.4098
+      ]
+     ],
+     "name": "in die Flanke"
+    },
+    {
+     "id": "g-stoss2",
+     "partei": "ger",
+     "form": "pfeil",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       8.16,
+       52.416
+      ],
+      [
+       8.156,
+       52.413
+      ],
+      [
+       8.152,
+       52.4105
+      ]
+     ],
+     "name": "in die Flanke"
+    },
+    {
+     "id": "r-saeule",
+     "partei": "rom",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       8.17047,
+       52.40316
+      ],
+      [
+       8.17227,
+       52.40358
+      ],
+      [
+       8.17264,
+       52.40487
+      ],
+      [
+       8.17119,
+       52.40564
+      ],
+      [
+       8.11353,
+       52.41184
+      ],
+      [
+       8.11173,
+       52.41142
+      ],
+      [
+       8.11136,
+       52.41013
+      ],
+      [
+       8.11281,
+       52.40936
+      ]
+     ],
+     "name": "ohne Front",
+     "staerke": "drei Legionen",
+     "geschlagen": true
+    },
+    {
+     "id": "g-sperre",
+     "partei": "ger",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       8.09285,
+       52.41693
+      ],
+      [
+       8.09174,
+       52.41869
+      ],
+      [
+       8.08835,
+       52.41906
+      ],
+      [
+       8.08632,
+       52.41764
+      ],
+      [
+       8.08315,
+       52.40667
+      ],
+      [
+       8.08426,
+       52.40491
+      ],
+      [
+       8.08765,
+       52.40454
+      ],
+      [
+       8.08968,
+       52.40596
+      ]
+     ],
+     "name": "Der Ausgang ist zu"
+    }
+   ]
+  },
+  {
+   "zeit": "Nachmittag",
+   "t": 400,
+   "kurz": "Die Reiterei reitet davon und lässt das Fußvolk.",
+   "text": "Numonius Vala, Varus’ Legat, sammelt die drei Reiterschwadronen und versucht, sich zum Rhein durchzuschlagen. Ob als Feigheit oder als Versuch, Hilfe zu holen, entscheiden schon die römischen Autoren verschieden – die Wirkung ist dieselbe: Das Fußvolk sieht die Reiter verschwinden. Weit kommen sie nicht. Nördlich des Berges werden sie eingeholt und niedergemacht.",
+   "stellungen": [
+    {
+     "id": "r-reiter",
+     "partei": "rom",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       8.12,
+       52.4085
+      ],
+      [
+       8.095,
+       52.421
+      ],
+      [
+       8.05,
+       52.435
+      ],
+      [
+       8.01,
+       52.443
+      ]
+     ],
+     "name": "Numonius Vala bricht aus",
+     "rueckzug": true
+    },
+    {
+     "id": "g-nach",
+     "partei": "ger",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       8.11,
+       52.426
+      ],
+      [
+       8.07,
+       52.438
+      ],
+      [
+       8.025,
+       52.443
+      ]
+     ],
+     "name": "holt sie ein"
+    },
+    {
+     "id": "r-saeule",
+     "partei": "rom",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       8.15108,
+       52.40336
+      ],
+      [
+       8.153,
+       52.40381
+      ],
+      [
+       8.1534,
+       52.40519
+      ],
+      [
+       8.15185,
+       52.40602
+      ],
+      [
+       8.10892,
+       52.41064
+      ],
+      [
+       8.107,
+       52.41019
+      ],
+      [
+       8.1066,
+       52.40881
+      ],
+      [
+       8.10815,
+       52.40798
+      ]
+     ],
+     "name": "sieht die Reiter gehen",
+     "staerke": "was übrig ist",
+     "geschlagen": true
+    },
+    {
+     "id": "g-wall",
+     "partei": "ger",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       8.15479,
+       52.41154
+      ],
+      [
+       8.15607,
+       52.41184
+      ],
+      [
+       8.15634,
+       52.41276
+      ],
+      [
+       8.1553,
+       52.41331
+      ],
+      [
+       8.11121,
+       52.41806
+      ],
+      [
+       8.10993,
+       52.41776
+      ],
+      [
+       8.10966,
+       52.41684
+      ],
+      [
+       8.1107,
+       52.41629
+      ]
+     ],
+     "name": "drückt nach",
+     "staerke": "Cherusker"
+    }
+   ]
+  },
+  {
+   "zeit": "Gegen Abend",
+   "t": 460,
+   "kurz": "Varus stürzt sich in sein Schwert.",
+   "text": "Varus ist verwundet und tut, was ein römischer Statthalter in dieser Lage tut: Er tötet sich, damit er nicht lebend in die Hände der Germanen fällt. Ein Teil der Offiziere folgt ihm. Der Präfekt Ceionius ergibt sich und wird dafür in den römischen Berichten schlechter behandelt als die Toten. Der Rest schließt sich zu einem Haufen zusammen, der noch eine Weile hält.",
+   "stellungen": [
+    {
+     "id": "r-rest",
+     "partei": "rom",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       8.118,
+       52.41199
+      ],
+      [
+       8.12163,
+       52.41014
+      ],
+      [
+       8.12412,
+       52.40816
+      ],
+      [
+       8.12421,
+       52.40531
+      ],
+      [
+       8.11982,
+       52.40445
+      ],
+      [
+       8.11566,
+       52.40358
+      ],
+      [
+       8.11222,
+       52.40546
+      ],
+      [
+       8.1127,
+       52.40807
+      ],
+      [
+       8.11333,
+       52.41089
+      ]
+     ],
+     "name": "Der letzte Haufen",
+     "staerke": "Reste dreier Legionen",
+     "geschlagen": true
+    },
+    {
+     "id": "g-ring",
+     "partei": "ger",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       8.14439,
+       52.40516
+      ],
+      [
+       8.13186,
+       52.40066
+      ],
+      [
+       8.11911,
+       52.39802
+      ],
+      [
+       8.10234,
+       52.39968
+      ],
+      [
+       8.09923,
+       52.40708
+      ],
+      [
+       8.09605,
+       52.41412
+      ],
+      [
+       8.10865,
+       52.41831
+      ],
+      [
+       8.12374,
+       52.41591
+      ],
+      [
+       8.14004,
+       52.41315
+      ]
+     ],
+     "name": "schließt den Ring"
+    },
+    {
+     "id": "g-sperre",
+     "partei": "ger",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       8.09285,
+       52.41693
+      ],
+      [
+       8.09174,
+       52.41869
+      ],
+      [
+       8.08835,
+       52.41906
+      ],
+      [
+       8.08632,
+       52.41764
+      ],
+      [
+       8.08315,
+       52.40667
+      ],
+      [
+       8.08426,
+       52.40491
+      ],
+      [
+       8.08765,
+       52.40454
+      ],
+      [
+       8.08968,
+       52.40596
+      ]
+     ],
+     "name": "Westausgang"
+    }
+   ]
+  },
+  {
+   "zeit": "Danach",
+   "t": 520,
+   "kurz": "Gefangene werden geopfert, Köpfe an Bäume genagelt.",
+   "text": "Was übrig bleibt, wird erschlagen oder gefangen. Höhere Offiziere werden in Gruben getötet, andere in Kesseln geopfert, Schädel an Baumstämme genagelt; sechs Jahre später findet Germanicus die Stelle so vor und lässt die Knochen begraben. Varus’ Leichnam war vorher notdürftig verbrannt worden; Arminius schickt den Kopf an Marbod, den König der Markomannen, der ihn nach Rom weiterreicht.",
+   "stellungen": [
+    {
+     "id": "g-ring",
+     "partei": "ger",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       8.15245,
+       52.40572
+      ],
+      [
+       8.138,
+       52.40054
+      ],
+      [
+       8.12328,
+       52.39749
+      ],
+      [
+       8.10393,
+       52.3994
+      ],
+      [
+       8.10035,
+       52.40794
+      ],
+      [
+       8.09667,
+       52.41607
+      ],
+      [
+       8.11121,
+       52.4209
+      ],
+      [
+       8.12862,
+       52.41813
+      ],
+      [
+       8.14744,
+       52.41494
+      ]
+     ],
+     "name": "Das Feld"
+    },
+    {
+     "id": "r-rest",
+     "partei": "rom",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       8.116,
+       52.41045
+      ],
+      [
+       8.11781,
+       52.40952
+      ],
+      [
+       8.11906,
+       52.40853
+      ],
+      [
+       8.11911,
+       52.40711
+      ],
+      [
+       8.11691,
+       52.40667
+      ],
+      [
+       8.11483,
+       52.40624
+      ],
+      [
+       8.11311,
+       52.40718
+      ],
+      [
+       8.11335,
+       52.40848
+      ],
+      [
+       8.11367,
+       52.4099
+      ]
+     ],
+     "name": "Gefangene",
+     "staerke": "wenige",
+     "geschlagen": true
+    },
+    {
+     "id": "g-wall",
+     "partei": "ger",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       8.15479,
+       52.41154
+      ],
+      [
+       8.15607,
+       52.41184
+      ],
+      [
+       8.15634,
+       52.41276
+      ],
+      [
+       8.1553,
+       52.41331
+      ],
+      [
+       8.11121,
+       52.41806
+      ],
+      [
+       8.10993,
+       52.41776
+      ],
+      [
+       8.10966,
+       52.41684
+      ],
+      [
+       8.1107,
+       52.41629
+      ]
+     ],
+     "name": "Der Wall bleibt stehen"
+    }
+   ]
+  },
+  {
+   "zeit": "Nach 9 n. Chr.",
+   "t": 620,
+   "kurz": "Die Grenze bleibt am Rhein – und bleibt es.",
+   "text": "Augustus soll sich monatelang den Kopf gegen die Tür geschlagen und nach seinen Legionen gerufen haben. Germanicus führt 14 bis 16 n. Chr. große Feldzüge über den Rhein, gewinnt Schlachten, findet das Schlachtfeld, holt zwei der drei Adler zurück – und wird dann von Tiberius abberufen. Die Grenze bleibt am Rhein. Sie bleibt es, bis das Reich im Westen endet, und trennt bis heute romanisches und germanisches Sprachgebiet.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     4.6,
+     49.4
+    ],
+    [
+     12.8,
+     54.6
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "r-rhein",
+     "partei": "rom",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       8.13,
+       52.41
+      ],
+      [
+       7.3,
+       52
+      ],
+      [
+       6.45,
+       51.66
+      ],
+      [
+       6.95,
+       50.94
+      ],
+      [
+       8.27,
+       50
+      ]
+     ],
+     "name": "Rückzug auf die Rheinlinie"
+    },
+    {
+     "id": "r-germanicus",
+     "partei": "rom",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       6.45,
+       51.66
+      ],
+      [
+       7.6,
+       52.1
+      ],
+      [
+       8.13,
+       52.41
+      ],
+      [
+       9.4,
+       52.35
+      ]
+     ],
+     "name": "15/16 n. Chr.: Germanicus, dann Abbruch"
+    },
+    {
+     "id": "g-frei",
+     "partei": "ger",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       8.6,
+       52.6
+      ],
+      [
+       10.2,
+       52.2
+      ],
+      [
+       11.6,
+       51.2
+      ],
+      [
+       12.3,
+       50.3
+      ]
+     ],
+     "name": "Germanien bleibt außerhalb"
+    }
+   ]
+  }
+ ],
+ "ausgang": "Drei Legionen werden aufgerieben. Varus tötet sich; die Nummern XVII, XVIII und XIX werden nie wieder vergeben.",
+ "verluste": [
+  {
+   "partei": "rom",
+   "text": "drei Legionen, sechs Kohorten, drei Reiterschwadronen – 15.000 bis 20.000 Menschen, samt Tross und Angehörigen"
+  },
+  {
+   "partei": "ger",
+   "text": "unbekannt; alle Quellen sind römisch und schweigen darüber"
+  }
+ ],
+ "folgen": "Rom gibt das Land zwischen Rhein und Elbe auf. Die Grenze bleibt für vier Jahrhunderte am Rhein und an der Donau – und mit ihr die Trennlinie, an der später romanisches und germanisches Sprachgebiet auseinandergehen. Arminius wird 21 n. Chr. von den eigenen Verwandten erschlagen. Ab dem 16. Jahrhundert wird er als „Hermann“ zur Nationalfigur umgebaut, was mit der Schlacht nichts mehr zu tun hat.",
+ "streit": "Der Ort ist der Streitfall schlechthin: Über siebenhundert Vorschläge wurden gemacht, bevor 1987 bei Kalkriese römische Münzen und Schleuderblei auftauchten. Gesichert ist dort ein Kampfplatz aus der richtigen Zeit, nicht die ganze Schlacht – die Tage davor sind ungeortet und hier nach den Schriftquellen gezeichnet. Das Große Moor ist heute entwässert; die Höhenschummerung zeigt die Landform, nicht den Untergrund von damals."
+}

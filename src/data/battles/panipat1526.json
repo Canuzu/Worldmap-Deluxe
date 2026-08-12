@@ -1,0 +1,1633 @@
+{
+ "id": "panipat1526",
+ "name": "Panipat",
+ "ort": "Panipat, Nordindien",
+ "datum": "21. April 1526",
+ "jahr": 1526,
+ "mitte": [
+  77.01,
+  29.393
+ ],
+ "zoom": 12,
+ "grund": "relief",
+ "worum": "Zwölftausend gegen ein Vielfaches – ausgeglichen durch zwei Dinge, die man auf der Karte sehen kann: eine Reihe von siebenhundert aneinandergebundenen Ochsenkarren, die die Front unangreifbar macht und ihre Breite festlegt, und eine Reiterei, die außen um beide Flügel herum in den Rücken geht. Dazwischen steht ein Heer, das zu breit angetreten ist und sich selbst im Weg steht.",
+ "parteien": [
+  {
+   "id": "mog",
+   "name": "Baburs Heer",
+   "farbe": "#6f9fe0",
+   "fuehrung": "Zahir ud-Din Muhammad Babur, Humayun, Ustad Ali Quli, Mustafa Rumi",
+   "staerke": "rund 12.000 mit Tross, davon vielleicht 8.000 im Gefecht; Feldgeschütze und Luntenschlossschützen",
+   "zahl": 12000
+  },
+  {
+   "id": "lodi",
+   "name": "Sultanat von Delhi",
+   "farbe": "#d4737c",
+   "fuehrung": "Ibrahim Lodi",
+   "staerke": "nach Baburs eigener Angabe 100.000 und 1.000 Elefanten; die Schätzungen reichen bis herab auf 40.000",
+   "zahl": 50000
+  }
+ ],
+ "gelaende": [
+  {
+   "art": "stadt",
+   "name": "Panipat",
+   "punkte": [
+    [
+     76.97465,
+     29.40114
+    ],
+    [
+     76.97846,
+     29.39473
+    ],
+    [
+     76.98035,
+     29.38857
+    ],
+    [
+     76.97754,
+     29.38146
+    ],
+    [
+     76.96971,
+     29.38151
+    ],
+    [
+     76.96225,
+     29.38146
+    ],
+    [
+     76.95877,
+     29.38784
+    ],
+    [
+     76.96223,
+     29.39407
+    ],
+    [
+     76.96615,
+     29.40075
+    ]
+   ]
+  },
+  {
+   "art": "mauer",
+   "name": "Die Wagenburg · 700 Karren",
+   "punkte": [
+    [
+     77.05075,
+     29.40246
+    ],
+    [
+     77.05125,
+     29.40272
+    ],
+    [
+     77.05125,
+     29.40328
+    ],
+    [
+     77.05075,
+     29.40354
+    ],
+    [
+     76.96925,
+     29.40354
+    ],
+    [
+     76.96875,
+     29.40328
+    ],
+    [
+     76.96875,
+     29.40272
+    ],
+    [
+     76.96925,
+     29.40246
+    ]
+   ]
+  },
+  {
+   "art": "wald",
+   "name": "Verhau aus gefällten Bäumen",
+   "punkte": [
+    [
+     77.057,
+     29.41189
+    ],
+    [
+     77.05929,
+     29.40822
+    ],
+    [
+     77.06086,
+     29.4043
+    ],
+    [
+     77.06091,
+     29.39867
+    ],
+    [
+     77.05815,
+     29.39695
+    ],
+    [
+     77.05553,
+     29.39525
+    ],
+    [
+     77.05336,
+     29.39897
+    ],
+    [
+     77.05366,
+     29.40413
+    ],
+    [
+     77.05406,
+     29.40972
+    ]
+   ]
+  },
+  {
+   "art": "weg",
+   "name": "Die Straße nach Delhi",
+   "punkte": [
+    [
+     77.015,
+     29.345
+    ],
+    [
+     77.035,
+     29.26
+    ],
+    [
+     77.07,
+     29.15
+    ]
+   ]
+  },
+  {
+   "art": "fluss",
+   "name": "Yamuna",
+   "punkte": [
+    [
+     77.21,
+     29.56
+    ],
+    [
+     77.245,
+     29.43
+    ],
+    [
+     77.28,
+     29.29
+    ]
+   ]
+  }
+ ],
+ "stationen": [
+  {
+   "zeit": "Winter 1525/26",
+   "t": 0,
+   "kurz": "Baburs fünfter Versuch, nach Indien zu kommen.",
+   "text": "Babur ist ein Fürst ohne Land: Aus Ferghana vertrieben, hat er Samarkand dreimal genommen und dreimal verloren und sitzt seit zwanzig Jahren in Kabul. Indien ist der letzte Ausweg, und es ist der vierte oder fünfte Anlauf. Diesmal ruft ihn ein Statthalter des Sultans selbst zu Hilfe. Er zieht über den Chaiber, nimmt Lahore und geht die Straße nach Delhi hinunter.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     64.5,
+     25.5
+    ],
+    [
+     81.5,
+     41.5
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "anm-verlust",
+     "partei": "mog",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       66.97,
+       39.65
+      ],
+      [
+       67.8,
+       37.6
+      ],
+      [
+       69.18,
+       34.53
+      ]
+     ],
+     "name": "Samarkand verloren, Kabul bleibt"
+    },
+    {
+     "id": "anm-mog",
+     "partei": "mog",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       69.18,
+       34.53
+      ],
+      [
+       71.58,
+       34.01
+      ],
+      [
+       74.34,
+       31.55
+      ],
+      [
+       76.2,
+       30.2
+      ],
+      [
+       77.01,
+       29.4
+      ]
+     ],
+     "name": "Über den Chaiber nach Panipat"
+    },
+    {
+     "id": "anm-lodi",
+     "partei": "lodi",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       77.21,
+       28.61
+      ],
+      [
+       77.1,
+       28.95
+      ],
+      [
+       77.02,
+       29.32
+      ]
+     ],
+     "name": "Ibrahim Lodi zieht ihm entgegen"
+    }
+   ]
+  },
+  {
+   "zeit": "12. April",
+   "t": 60,
+   "kurz": "Zwei Heere in Sichtweite, und keines greift an.",
+   "text": "Babur erreicht Panipat und stellt sich nördlich der Stadt auf. Das Sultanatsheer lagert wenige Kilometer südlich, und dann geschieht acht Tage lang nichts. Babur schreibt in seinem Tagebuch, Ibrahim sei ein unerfahrener Feldherr, der weder angreife noch abziehe – ein Urteil, das er sich leisten kann, weil er die Zeit zum Graben braucht.",
+   "stellungen": [
+    {
+     "id": "m-front",
+     "partei": "mog",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       77.04547,
+       29.39896
+      ],
+      [
+       77.04918,
+       29.4009
+      ],
+      [
+       77.04918,
+       29.4051
+      ],
+      [
+       77.04547,
+       29.40704
+      ],
+      [
+       76.97453,
+       29.40704
+      ],
+      [
+       76.97082,
+       29.4051
+      ],
+      [
+       76.97082,
+       29.4009
+      ],
+      [
+       76.97453,
+       29.39896
+      ]
+     ],
+     "name": "Babur nördlich der Stadt",
+     "staerke": "12.000"
+    },
+    {
+     "id": "m-rechts",
+     "partei": "mog",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       76.976,
+       29.41019
+      ],
+      [
+       76.98007,
+       29.40722
+      ],
+      [
+       76.98286,
+       29.40405
+      ],
+      [
+       76.98296,
+       29.3995
+      ],
+      [
+       76.97804,
+       29.39811
+      ],
+      [
+       76.97338,
+       29.39674
+      ],
+      [
+       76.96953,
+       29.39974
+      ],
+      [
+       76.97006,
+       29.40391
+      ],
+      [
+       76.97077,
+       29.40843
+      ]
+     ],
+     "name": "Rechter Flügel an der Stadt"
+    },
+    {
+     "id": "l-lager",
+     "partei": "lodi",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       77.04092,
+       29.362
+      ],
+      [
+       77.02816,
+       29.35093
+      ],
+      [
+       77.01453,
+       29.34333
+      ],
+      [
+       76.99494,
+       29.34305
+      ],
+      [
+       76.98898,
+       29.35644
+      ],
+      [
+       76.98305,
+       29.36913
+      ],
+      [
+       76.99599,
+       29.37963
+      ],
+      [
+       77.01392,
+       29.37816
+      ],
+      [
+       77.03336,
+       29.37623
+      ]
+     ],
+     "name": "Das Sultanatsheer im Lager",
+     "staerke": "ein Vielfaches"
+    }
+   ]
+  },
+  {
+   "zeit": "Die acht Tage",
+   "t": 130,
+   "kurz": "Siebenhundert Karren, mit Riemen aneinandergebunden.",
+   "text": "Babur lässt aus den Dörfern der Umgebung siebenhundert Ochsenkarren holen und in einer Reihe quer über das Feld aufstellen, mit rohen Lederriemen verbunden. Zwischen je sechs oder sieben Karren bleibt eine Lücke, breit genug für hundert Reiter im Ausfall. Hinter den Karren stehen die Geschütze und die Schützen mit den Luntenschlossgewehren. Rechts deckt die Stadt, links werden ein Graben und ein Verhau aus gefällten Bäumen angelegt.",
+   "stellungen": [
+    {
+     "id": "m-wagen",
+     "partei": "mog",
+     "form": "flaeche",
+     "gattung": "geschuetz",
+     "punkte": [
+      [
+       77.0498,
+       29.40143
+      ],
+      [
+       77.05125,
+       29.40218
+      ],
+      [
+       77.05125,
+       29.40382
+      ],
+      [
+       77.0498,
+       29.40457
+      ],
+      [
+       76.9702,
+       29.40457
+      ],
+      [
+       76.96875,
+       29.40382
+      ],
+      [
+       76.96875,
+       29.40218
+      ],
+      [
+       76.9702,
+       29.40143
+      ]
+     ],
+     "name": "Die Wagenburg",
+     "staerke": "700 Karren"
+    },
+    {
+     "id": "m-front",
+     "partei": "mog",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       77.04341,
+       29.40696
+      ],
+      [
+       77.04712,
+       29.4089
+      ],
+      [
+       77.04712,
+       29.4131
+      ],
+      [
+       77.04341,
+       29.41504
+      ],
+      [
+       76.97659,
+       29.41504
+      ],
+      [
+       76.97288,
+       29.4131
+      ],
+      [
+       76.97288,
+       29.4089
+      ],
+      [
+       76.97659,
+       29.40696
+      ]
+     ],
+     "name": "Dahinter das Heer",
+     "staerke": "12.000"
+    },
+    {
+     "id": "m-rechts",
+     "partei": "mog",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       76.976,
+       29.41619
+      ],
+      [
+       76.98007,
+       29.41322
+      ],
+      [
+       76.98286,
+       29.41005
+      ],
+      [
+       76.98296,
+       29.4055
+      ],
+      [
+       76.97804,
+       29.40411
+      ],
+      [
+       76.97338,
+       29.40274
+      ],
+      [
+       76.96952,
+       29.40574
+      ],
+      [
+       76.97006,
+       29.40991
+      ],
+      [
+       76.97077,
+       29.41443
+      ]
+     ],
+     "name": "Rechts die Stadt"
+    },
+    {
+     "id": "m-links",
+     "partei": "mog",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       77.054,
+       29.41619
+      ],
+      [
+       77.05807,
+       29.41322
+      ],
+      [
+       77.06086,
+       29.41005
+      ],
+      [
+       77.06096,
+       29.4055
+      ],
+      [
+       77.05604,
+       29.40411
+      ],
+      [
+       77.05138,
+       29.40274
+      ],
+      [
+       77.04752,
+       29.40574
+      ],
+      [
+       77.04806,
+       29.40991
+      ],
+      [
+       77.04877,
+       29.41443
+      ]
+     ],
+     "name": "Links Graben und Verhau"
+    },
+    {
+     "id": "l-lager",
+     "partei": "lodi",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       77.04092,
+       29.362
+      ],
+      [
+       77.02816,
+       29.35093
+      ],
+      [
+       77.01453,
+       29.34333
+      ],
+      [
+       76.99494,
+       29.34305
+      ],
+      [
+       76.98898,
+       29.35644
+      ],
+      [
+       76.98305,
+       29.36913
+      ],
+      [
+       76.99599,
+       29.37963
+      ],
+      [
+       77.01392,
+       29.37816
+      ],
+      [
+       77.03336,
+       29.37623
+      ]
+     ],
+     "name": "wartet ab",
+     "staerke": "ein Vielfaches"
+    }
+   ]
+  },
+  {
+   "zeit": "19. April, nachts",
+   "t": 200,
+   "kurz": "Ein Nachtangriff, der misslingt und trotzdem wirkt.",
+   "text": "Weil sein Gegner nicht kommt, schickt Babur viertausend Mann zu einem Überfall auf das Lager. Der Angriff gerät in Unordnung, die Truppe verliert im Dunkeln den Zusammenhalt und muss zurück; Babur nennt es in seinen Aufzeichnungen einen Fehlschlag. Er hat aber das erreicht, was er wollte: Ibrahim glaubt jetzt, der Gegner sei zum Angriff zu schwach, und beschließt anzugreifen.",
+   "stellungen": [
+    {
+     "id": "m-nacht",
+     "partei": "mog",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       77.02,
+       29.4
+      ],
+      [
+       77.018,
+       29.38
+      ],
+      [
+       77.014,
+       29.368
+      ]
+     ],
+     "name": "Überfall bei Nacht",
+     "geschlagen": true
+    },
+    {
+     "id": "m-wagen",
+     "partei": "mog",
+     "form": "flaeche",
+     "gattung": "geschuetz",
+     "punkte": [
+      [
+       77.0498,
+       29.40143
+      ],
+      [
+       77.05125,
+       29.40218
+      ],
+      [
+       77.05125,
+       29.40382
+      ],
+      [
+       77.0498,
+       29.40457
+      ],
+      [
+       76.9702,
+       29.40457
+      ],
+      [
+       76.96875,
+       29.40382
+      ],
+      [
+       76.96875,
+       29.40218
+      ],
+      [
+       76.9702,
+       29.40143
+      ]
+     ],
+     "name": "Die Wagenburg",
+     "staerke": "700 Karren"
+    },
+    {
+     "id": "l-lager",
+     "partei": "lodi",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       77.04092,
+       29.362
+      ],
+      [
+       77.02816,
+       29.35093
+      ],
+      [
+       77.01453,
+       29.34333
+      ],
+      [
+       76.99494,
+       29.34305
+      ],
+      [
+       76.98898,
+       29.35644
+      ],
+      [
+       76.98305,
+       29.36913
+      ],
+      [
+       76.99599,
+       29.37963
+      ],
+      [
+       77.01392,
+       29.37816
+      ],
+      [
+       77.03336,
+       29.37623
+      ]
+     ],
+     "name": "Der Überfall verläuft im Sand",
+     "staerke": "ein Vielfaches"
+    }
+   ]
+  },
+  {
+   "zeit": "21. April, Morgengrauen",
+   "t": 260,
+   "kurz": "Ein Heer läuft an, das sich selbst im Weg steht.",
+   "text": "Das Sultanatsheer rückt in dichter Masse vor, die Elefanten voran. Es ist auf ein Gefecht in offener Ebene eingerichtet, in dem die Überzahl zählt. Vor der Wagenburg findet es aber keine Front zum Umfassen, sondern eine Wand, und die Reihen hinter der Spitze laufen auf die Reihen davor auf. Nach wenigen hundert Metern steht das Heer und kann sich weder ausbreiten noch zurück.",
+   "stellungen": [
+    {
+     "id": "l-vor",
+     "partei": "lodi",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       76.9702,
+       29.39319
+      ],
+      [
+       76.96361,
+       29.38974
+      ],
+      [
+       76.96361,
+       29.38226
+      ],
+      [
+       76.9702,
+       29.37881
+      ],
+      [
+       77.0498,
+       29.37881
+      ],
+      [
+       77.05639,
+       29.38226
+      ],
+      [
+       77.05639,
+       29.38974
+      ],
+      [
+       77.0498,
+       29.39319
+      ]
+     ],
+     "name": "Angriff in dichter Masse",
+     "staerke": "die ganze Front"
+    },
+    {
+     "id": "l-elefanten",
+     "partei": "lodi",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       76.98629,
+       29.39625
+      ],
+      [
+       76.98422,
+       29.39517
+      ],
+      [
+       76.98422,
+       29.39283
+      ],
+      [
+       76.98629,
+       29.39175
+      ],
+      [
+       77.03371,
+       29.39175
+      ],
+      [
+       77.03578,
+       29.39283
+      ],
+      [
+       77.03578,
+       29.39517
+      ],
+      [
+       77.03371,
+       29.39625
+      ]
+     ],
+     "name": "Die Elefanten voran",
+     "staerke": "bis zu 1.000"
+    },
+    {
+     "id": "l-stoss",
+     "partei": "lodi",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       77.01,
+       29.39
+      ],
+      [
+       77.01,
+       29.397
+      ],
+      [
+       77.01,
+       29.401
+      ]
+     ]
+    },
+    {
+     "id": "m-wagen",
+     "partei": "mog",
+     "form": "flaeche",
+     "gattung": "geschuetz",
+     "punkte": [
+      [
+       77.0498,
+       29.40143
+      ],
+      [
+       77.05125,
+       29.40218
+      ],
+      [
+       77.05125,
+       29.40382
+      ],
+      [
+       77.0498,
+       29.40457
+      ],
+      [
+       76.9702,
+       29.40457
+      ],
+      [
+       76.96875,
+       29.40382
+      ],
+      [
+       76.96875,
+       29.40218
+      ],
+      [
+       76.9702,
+       29.40143
+      ]
+     ],
+     "name": "Die Wagenburg hält",
+     "staerke": "700 Karren"
+    },
+    {
+     "id": "m-front",
+     "partei": "mog",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       77.04341,
+       29.40696
+      ],
+      [
+       77.04712,
+       29.4089
+      ],
+      [
+       77.04712,
+       29.4131
+      ],
+      [
+       77.04341,
+       29.41504
+      ],
+      [
+       76.97659,
+       29.41504
+      ],
+      [
+       76.97288,
+       29.4131
+      ],
+      [
+       76.97288,
+       29.4089
+      ],
+      [
+       76.97659,
+       29.40696
+      ]
+     ],
+     "name": "dahinter",
+     "staerke": "12.000"
+    }
+   ]
+  },
+  {
+   "zeit": "Erste Stunde",
+   "t": 320,
+   "kurz": "Die Reiterei geht außen um beide Flügel herum.",
+   "text": "Babur schickt von beiden Enden der Wagenburg Reiterei hinaus, die weit ausholt und dem stehenden Heer in den Rücken kommt – das Verfahren, das seine Vorfahren aus der Steppe mitgebracht haben. Von vorn steht eine Wand, von hinten und von den Seiten kommen berittene Bogenschützen, die schießen und ausweichen. Das Sultanatsheer wird von außen nach innen zusammengedrückt.",
+   "stellungen": [
+    {
+     "id": "m-umR",
+     "partei": "mog",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       76.97,
+       29.403
+      ],
+      [
+       76.954,
+       29.382
+      ],
+      [
+       76.976,
+       29.362
+      ],
+      [
+       77,
+       29.356
+      ]
+     ],
+     "name": "Umfassung rechts"
+    },
+    {
+     "id": "m-umL",
+     "partei": "mog",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       77.056,
+       29.403
+      ],
+      [
+       77.074,
+       29.382
+      ],
+      [
+       77.05,
+       29.36
+      ],
+      [
+       77.025,
+       29.355
+      ]
+     ],
+     "name": "Umfassung links"
+    },
+    {
+     "id": "l-vor",
+     "partei": "lodi",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       76.97742,
+       29.39419
+      ],
+      [
+       76.97082,
+       29.39074
+      ],
+      [
+       76.97082,
+       29.38326
+      ],
+      [
+       76.97742,
+       29.37981
+      ],
+      [
+       77.04258,
+       29.37981
+      ],
+      [
+       77.04918,
+       29.38326
+      ],
+      [
+       77.04918,
+       29.39074
+      ],
+      [
+       77.04258,
+       29.39419
+      ]
+     ],
+     "name": "steht fest",
+     "staerke": "die ganze Front",
+     "geschlagen": true
+    },
+    {
+     "id": "m-wagen",
+     "partei": "mog",
+     "form": "flaeche",
+     "gattung": "geschuetz",
+     "punkte": [
+      [
+       77.0498,
+       29.40143
+      ],
+      [
+       77.05125,
+       29.40218
+      ],
+      [
+       77.05125,
+       29.40382
+      ],
+      [
+       77.0498,
+       29.40457
+      ],
+      [
+       76.9702,
+       29.40457
+      ],
+      [
+       76.96875,
+       29.40382
+      ],
+      [
+       76.96875,
+       29.40218
+      ],
+      [
+       76.9702,
+       29.40143
+      ]
+     ],
+     "name": "Die Wagenburg",
+     "staerke": "700 Karren"
+    },
+    {
+     "id": "m-front",
+     "partei": "mog",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       77.04341,
+       29.40696
+      ],
+      [
+       77.04712,
+       29.4089
+      ],
+      [
+       77.04712,
+       29.4131
+      ],
+      [
+       77.04341,
+       29.41504
+      ],
+      [
+       76.97659,
+       29.41504
+      ],
+      [
+       76.97288,
+       29.4131
+      ],
+      [
+       76.97288,
+       29.4089
+      ],
+      [
+       76.97659,
+       29.40696
+      ]
+     ],
+     "name": "Babur dahinter",
+     "staerke": "12.000"
+    }
+   ]
+  },
+  {
+   "zeit": "Vormittag",
+   "t": 400,
+   "kurz": "Feldgeschütze, wie sie hier keiner gesehen hat.",
+   "text": "Aus den Lücken der Wagenburg feuern die Geschütze Ustad Ali Qulis und die Luntenschlossschützen in die dichteste Stelle. Der militärische Schaden ist begrenzt – nachgeladen wird langsam –, die Wirkung auf die Elefanten nicht: Sie drehen um und gehen durch die eigenen Reihen zurück. Zugleich reiten aus denselben Lücken Trupps heraus und stoßen in die Front.",
+   "stellungen": [
+    {
+     "id": "m-wagen",
+     "partei": "mog",
+     "form": "flaeche",
+     "gattung": "geschuetz",
+     "punkte": [
+      [
+       77.0498,
+       29.40143
+      ],
+      [
+       77.05125,
+       29.40218
+      ],
+      [
+       77.05125,
+       29.40382
+      ],
+      [
+       77.0498,
+       29.40457
+      ],
+      [
+       76.9702,
+       29.40457
+      ],
+      [
+       76.96875,
+       29.40382
+      ],
+      [
+       76.96875,
+       29.40218
+      ],
+      [
+       76.9702,
+       29.40143
+      ]
+     ],
+     "name": "Geschütze und Schützen",
+     "staerke": "aus den Lücken"
+    },
+    {
+     "id": "m-ausfall1",
+     "partei": "mog",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       76.99,
+       29.402
+      ],
+      [
+       76.988,
+       29.394
+      ],
+      [
+       76.986,
+       29.389
+      ]
+     ]
+    },
+    {
+     "id": "m-ausfall2",
+     "partei": "mog",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       77.032,
+       29.402
+      ],
+      [
+       77.033,
+       29.394
+      ],
+      [
+       77.034,
+       29.389
+      ]
+     ]
+    },
+    {
+     "id": "l-elefanten",
+     "partei": "lodi",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       76.98979,
+       29.38569
+      ],
+      [
+       76.98732,
+       29.3844
+      ],
+      [
+       76.98732,
+       29.3816
+      ],
+      [
+       76.98979,
+       29.38031
+      ],
+      [
+       77.03021,
+       29.38031
+      ],
+      [
+       77.03268,
+       29.3816
+      ],
+      [
+       77.03268,
+       29.3844
+      ],
+      [
+       77.03021,
+       29.38569
+      ]
+     ],
+     "name": "Die Elefanten drehen um",
+     "geschlagen": true
+    },
+    {
+     "id": "l-vor",
+     "partei": "lodi",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       76.98237,
+       29.38508
+      ],
+      [
+       76.97495,
+       29.3812
+      ],
+      [
+       76.97495,
+       29.3728
+      ],
+      [
+       76.98237,
+       29.36892
+      ],
+      [
+       77.03763,
+       29.36892
+      ],
+      [
+       77.04505,
+       29.3728
+      ],
+      [
+       77.04505,
+       29.3812
+      ],
+      [
+       77.03763,
+       29.38508
+      ]
+     ],
+     "name": "zusammengedrückt",
+     "staerke": "ineinandergeschoben",
+     "geschlagen": true
+    },
+    {
+     "id": "m-umR",
+     "partei": "mog",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       76.96,
+       29.376
+      ],
+      [
+       76.98,
+       29.36
+      ],
+      [
+       77.002,
+       29.356
+      ]
+     ],
+     "name": "von hinten"
+    },
+    {
+     "id": "m-umL",
+     "partei": "mog",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       77.062,
+       29.376
+      ],
+      [
+       77.042,
+       29.359
+      ],
+      [
+       77.02,
+       29.355
+      ]
+     ],
+     "name": "von hinten"
+    }
+   ]
+  },
+  {
+   "zeit": "Gegen Mittag",
+   "t": 470,
+   "kurz": "Nach einem Vormittag liegt der Sultan im Feld.",
+   "text": "Kurz nach Mittag ist es vorbei. Ibrahim Lodi fällt mitten in seinem Heer; Babur schreibt, man habe fünfzehn- oder sechzehntausend Tote um ihn herum gezählt und den Kopf des Sultans zu ihm gebracht. Es ist der einzige Sultan von Delhi, der je auf dem Schlachtfeld gestorben ist. Der Rest löst sich nach Süden und Osten auf.",
+   "stellungen": [
+    {
+     "id": "l-vor",
+     "partei": "lodi",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       77.03969,
+       29.38
+      ],
+      [
+       77.02744,
+       29.37203
+      ],
+      [
+       77.01435,
+       29.36656
+      ],
+      [
+       76.99554,
+       29.36636
+      ],
+      [
+       76.98981,
+       29.376
+      ],
+      [
+       76.98412,
+       29.38513
+      ],
+      [
+       76.99655,
+       29.39269
+      ],
+      [
+       77.01377,
+       29.39163
+      ],
+      [
+       77.03243,
+       29.39025
+      ]
+     ],
+     "name": "Ibrahim Lodi fällt",
+     "staerke": "aufgerieben",
+     "geschlagen": true
+    },
+    {
+     "id": "l-flucht",
+     "partei": "lodi",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       77.02,
+       29.36
+      ],
+      [
+       77.05,
+       29.32
+      ],
+      [
+       77.09,
+       29.26
+      ]
+     ],
+     "name": "Auflösung nach Süden",
+     "rueckzug": true
+    },
+    {
+     "id": "m-wagen",
+     "partei": "mog",
+     "form": "flaeche",
+     "gattung": "geschuetz",
+     "punkte": [
+      [
+       77.0498,
+       29.40143
+      ],
+      [
+       77.05125,
+       29.40218
+      ],
+      [
+       77.05125,
+       29.40382
+      ],
+      [
+       77.0498,
+       29.40457
+      ],
+      [
+       76.9702,
+       29.40457
+      ],
+      [
+       76.96875,
+       29.40382
+      ],
+      [
+       76.96875,
+       29.40218
+      ],
+      [
+       76.9702,
+       29.40143
+      ]
+     ],
+     "name": "Die Wagenburg",
+     "staerke": "700 Karren"
+    },
+    {
+     "id": "m-front",
+     "partei": "mog",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       77.04341,
+       29.39396
+      ],
+      [
+       77.04712,
+       29.3959
+      ],
+      [
+       77.04712,
+       29.4001
+      ],
+      [
+       77.04341,
+       29.40204
+      ],
+      [
+       76.97659,
+       29.40204
+      ],
+      [
+       76.97288,
+       29.4001
+      ],
+      [
+       76.97288,
+       29.3959
+      ],
+      [
+       76.97659,
+       29.39396
+      ]
+     ],
+     "name": "rückt nach",
+     "staerke": "12.000"
+    }
+   ]
+  },
+  {
+   "zeit": "Nach dem 21. April",
+   "t": 560,
+   "kurz": "Ein Reich, das bis 1857 hält.",
+   "text": "Humayun reitet noch am selben Tag nach Agra voraus und sichert die Schatzkammer; die Familie des besiegten Fürsten von Gwalior schenkt ihm dafür einen Diamanten, der später Koh-i-Noor heißt. Babur nimmt Delhi und Agra und bleibt – was seine Truppen, die zurück nach Kabul wollen, nicht begeistert. Er hat noch vier Jahre. Das Reich, das er begründet, regiert Nordindien bis zur britischen Absetzung des letzten Großmoguls 1858.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     66.5,
+     20
+    ],
+    [
+     92.5,
+     37.5
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "m-delhi",
+     "partei": "mog",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       77.01,
+       29.4
+      ],
+      [
+       77.21,
+       28.61
+      ],
+      [
+       78.01,
+       27.18
+      ]
+     ],
+     "name": "Delhi und Agra"
+    },
+    {
+     "id": "m-reich",
+     "partei": "mog",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       78.01,
+       27.18
+      ],
+      [
+       82.9,
+       25.32
+      ],
+      [
+       87.5,
+       24.6
+      ],
+      [
+       88.36,
+       22.57
+      ]
+     ],
+     "name": "Bis 1530 nach Osten bis Bengalen"
+    },
+    {
+     "id": "m-heimat",
+     "partei": "mog",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       77.01,
+       29.4
+      ],
+      [
+       74.34,
+       31.55
+      ],
+      [
+       71.58,
+       34.01
+      ],
+      [
+       69.18,
+       34.53
+      ]
+     ],
+     "name": "Die Truppe will zurück nach Kabul"
+    }
+   ]
+  }
+ ],
+ "ausgang": "Das Sultanatsheer wird an einem Vormittag zerschlagen; Ibrahim Lodi fällt. Delhi und Agra ergeben sich binnen Tagen.",
+ "verluste": [
+  {
+   "partei": "lodi",
+   "text": "nach Baburs Zählung 15.000 bis 16.000 allein um den Sultan; der Sultan selbst gefallen"
+  },
+  {
+   "partei": "mog",
+   "text": "nicht überliefert; nach Baburs Darstellung gering"
+  }
+ ],
+ "folgen": "Babur nimmt Delhi und Agra und bleibt in Indien, obwohl seine Truppen zurück nach Kabul wollen. Er stirbt 1530; sein Sohn Humayun verliert das Reich noch einmal an Sher Shah Suri und gewinnt es zurück. Unter Akbar wird daraus der Staat, der Nordindien bis ins 18. Jahrhundert beherrscht – die Mogulherrschaft endet formell erst 1858 mit der britischen Absetzung Bahadur Shahs II. Auf demselben Feld bei Panipat wird 1556 und 1761 noch zweimal über Indien entschieden.",
+ "streit": "Fast alles, was über die Schlacht bekannt ist, steht im Baburnama – der Bericht des Siegers und zugleich eine der offensten Selbstdarstellungen der Weltliteratur. Baburs Zahlen für die Gegenseite (100.000 Mann, 1.000 Elefanten) gelten als stark überhöht; wie groß die Wirkung der Feldgeschütze wirklich war, ist umstritten, weil die Feuergeschwindigkeit gering war. Unstrittig ist die Wagenburg – ein Verfahren, das Babur ausdrücklich als „osmanische Art“ bezeichnet und über zwei angeworbene Fachleute erhalten hat."
+}

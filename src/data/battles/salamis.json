@@ -1,0 +1,1480 @@
+{
+ "id": "salamis",
+ "name": "Salamis",
+ "ort": "Meerenge zwischen Salamis und Attika",
+ "datum": "September 480 v. Chr.",
+ "jahr": -500,
+ "mitte": [
+  23.545,
+  37.945
+ ],
+ "zoom": 12.2,
+ "grund": "blatt",
+ "see": true,
+ "worum": "Eine Seeschlacht, in der die Geografie das Argument ist: In einer Enge von anderthalb Kilometern nützt die dreifache Zahl nichts. Themistokles’ Leistung besteht darin, den Gegner mit einer falschen Nachricht dazu zu bringen, hineinzufahren.",
+ "parteien": [
+  {
+   "id": "gr",
+   "name": "Griechische Bündnisflotte",
+   "farbe": "#6f9fe0",
+   "fuehrung": "Themistokles, Eurybiades",
+   "staerke": "rund 370 Trieren",
+   "zahl": 370
+  },
+  {
+   "id": "per",
+   "name": "Perserreich",
+   "farbe": "#d4737c",
+   "fuehrung": "Xerxes I., Ariabignes",
+   "staerke": "600 bis 800 Schiffe, davon phönizische und ionische",
+   "zahl": 700
+  }
+ ],
+ "gelaende": [
+  {
+   "art": "hoehe",
+   "name": "Salamis",
+   "punkte": [
+    [
+     23.5749,
+     37.97511
+    ],
+    [
+     23.54505,
+     37.93356
+    ],
+    [
+     23.50806,
+     37.90028
+    ],
+    [
+     23.44191,
+     37.88048
+    ],
+    [
+     23.40543,
+     37.90991
+    ],
+    [
+     23.3699,
+     37.9375
+    ],
+    [
+     23.40106,
+     37.97773
+    ],
+    [
+     23.46369,
+     37.99134
+    ],
+    [
+     23.53195,
+     38.0052
+    ]
+   ]
+  },
+  {
+   "art": "hoehe",
+   "name": "Psyttaleia",
+   "punkte": [
+    [
+     23.576,
+     37.94194
+    ],
+    [
+     23.57909,
+     37.9399
+    ],
+    [
+     23.58121,
+     37.93772
+    ],
+    [
+     23.58129,
+     37.93459
+    ],
+    [
+     23.57755,
+     37.93364
+    ],
+    [
+     23.57401,
+     37.93269
+    ],
+    [
+     23.57108,
+     37.93476
+    ],
+    [
+     23.57149,
+     37.93763
+    ],
+    [
+     23.57203,
+     37.94073
+    ]
+   ]
+  },
+  {
+   "art": "hoehe",
+   "name": "Aigaleos",
+   "punkte": [
+    [
+     23.61864,
+     37.99954
+    ],
+    [
+     23.6262,
+     37.98357
+    ],
+    [
+     23.62926,
+     37.96795
+    ],
+    [
+     23.62094,
+     37.94913
+    ],
+    [
+     23.60235,
+     37.94801
+    ],
+    [
+     23.58462,
+     37.94668
+    ],
+    [
+     23.57781,
+     37.96264
+    ],
+    [
+     23.58747,
+     37.97928
+    ],
+    [
+     23.59834,
+     37.99719
+    ]
+   ]
+  },
+  {
+   "art": "stadt",
+   "name": "Piräus",
+   "punkte": [
+    [
+     23.642,
+     37.95198
+    ],
+    [
+     23.64761,
+     37.94828
+    ],
+    [
+     23.65147,
+     37.94432
+    ],
+    [
+     23.65161,
+     37.93862
+    ],
+    [
+     23.64482,
+     37.93689
+    ],
+    [
+     23.63839,
+     37.93517
+    ],
+    [
+     23.63306,
+     37.93893
+    ],
+    [
+     23.6338,
+     37.94414
+    ],
+    [
+     23.63478,
+     37.94979
+    ]
+   ]
+  }
+ ],
+ "stationen": [
+  {
+   "zeit": "August 480",
+   "t": 0,
+   "kurz": "Nach den Thermopylen steht Attika offen.",
+   "text": "Der Engpass bei den Thermopylen ist gefallen, das Heer des Xerxes zieht nach Süden. Athen wird geräumt – die Bevölkerung geht auf Salamis, Aigina und in die Peloponnes. Die Akropolis brennt. Was den Griechen bleibt, ist die Flotte, und über die wird gestritten: Die Peloponnesier wollen sich an den Isthmos zurückziehen, Themistokles will bleiben.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     22.4,
+     36.9
+    ],
+    [
+     24.6,
+     39.2
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "anm-per",
+     "partei": "per",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       23.9,
+       39
+      ],
+      [
+       23.72,
+       38.4
+      ],
+      [
+       23.62,
+       37.98
+      ]
+     ],
+     "name": "Persische Flotte von Norden"
+    },
+    {
+     "id": "anm-gr",
+     "partei": "gr",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       23.75,
+       38.35
+      ],
+      [
+       23.62,
+       38.05
+      ],
+      [
+       23.5,
+       37.95
+      ]
+     ],
+     "name": "Griechen nach Salamis"
+    }
+   ]
+  },
+  {
+   "zeit": "Der Kriegsrat",
+   "t": 90,
+   "kurz": "Schlag, aber höre mich an.",
+   "text": "Im Rat der Feldherren droht Eurybiades, Themistokles mit dem Stab zu schlagen, als der nicht aufhört zu reden. „Schlag zu, aber höre mich an“, soll dieser geantwortet haben. Sein Argument ist geografisch: In der Enge zählt Zahl nicht, im offenen Wasser vor dem Isthmos zählt sie sehr wohl. Er setzt sich nicht durch – die Peloponnesier wollen abfahren.",
+   "stellungen": [
+    {
+     "id": "g-flotte",
+     "partei": "gr",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       23.53987,
+       37.952
+      ],
+      [
+       23.52342,
+       37.94093
+      ],
+      [
+       23.50585,
+       37.93333
+      ],
+      [
+       23.48058,
+       37.93305
+      ],
+      [
+       23.47289,
+       37.94644
+      ],
+      [
+       23.46524,
+       37.95913
+      ],
+      [
+       23.48193,
+       37.96963
+      ],
+      [
+       23.50506,
+       37.96816
+      ],
+      [
+       23.53012,
+       37.96623
+      ]
+     ],
+     "name": "Griechische Flotte in der Bucht",
+     "staerke": "370 Trieren"
+    },
+    {
+     "id": "p-flotte",
+     "partei": "per",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       23.71177,
+       37.94358
+      ],
+      [
+       23.70023,
+       37.92043
+      ],
+      [
+       23.68416,
+       37.90082
+      ],
+      [
+       23.65159,
+       37.88554
+      ],
+      [
+       23.62973,
+       37.89723
+      ],
+      [
+       23.60855,
+       37.90808
+      ],
+      [
+       23.6209,
+       37.93069
+      ],
+      [
+       23.65223,
+       37.94258
+      ],
+      [
+       23.68648,
+       37.95507
+      ]
+     ],
+     "name": "Perser vor Phaleron",
+     "staerke": "700 Schiffe"
+    }
+   ]
+  },
+  {
+   "zeit": "Die Nacht davor",
+   "t": 150,
+   "kurz": "Eine Nachricht, die eine Falle ist.",
+   "text": "Themistokles schickt seinen Sklaven Sikinnos zu Xerxes: Die Griechen seien zerstritten und wollten in der Nacht davonfahren; wer jetzt die Ausgänge sperre, bekomme sie alle. Xerxes glaubt es. Er lässt die Flotte auslaufen und beide Enden der Enge besetzen – und damit ist die Entscheidung gefallen, bevor ein Schiff gerammt hat: Die Griechen können nicht mehr weg, und die Perser müssen hinein.",
+   "stellungen": [
+    {
+     "id": "p-sperreO",
+     "partei": "per",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       23.61588,
+       37.91996
+      ],
+      [
+       23.62001,
+       37.91732
+      ],
+      [
+       23.62557,
+       37.91892
+      ],
+      [
+       23.62658,
+       37.92303
+      ],
+      [
+       23.61412,
+       37.95004
+      ],
+      [
+       23.60999,
+       37.95268
+      ],
+      [
+       23.60443,
+       37.95108
+      ],
+      [
+       23.60342,
+       37.94697
+      ]
+     ],
+     "name": "Sperrt die Ostausfahrt",
+     "staerke": "400 Schiffe"
+    },
+    {
+     "id": "p-sperreW",
+     "partei": "per",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       23.42964,
+       37.98275
+      ],
+      [
+       23.42863,
+       37.98686
+      ],
+      [
+       23.42306,
+       37.98846
+      ],
+      [
+       23.41893,
+       37.98582
+      ],
+      [
+       23.41036,
+       37.96725
+      ],
+      [
+       23.41137,
+       37.96314
+      ],
+      [
+       23.41694,
+       37.96154
+      ],
+      [
+       23.42107,
+       37.96418
+      ]
+     ],
+     "name": "Sperrt den Westausgang",
+     "staerke": "150 Schiffe"
+    },
+    {
+     "id": "p-psyttaleia",
+     "partei": "per",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       23.576,
+       37.94149
+      ],
+      [
+       23.57881,
+       37.93964
+      ],
+      [
+       23.58074,
+       37.93766
+      ],
+      [
+       23.5808,
+       37.93481
+      ],
+      [
+       23.57741,
+       37.93395
+      ],
+      [
+       23.57419,
+       37.93308
+      ],
+      [
+       23.57153,
+       37.93496
+      ],
+      [
+       23.5719,
+       37.93757
+      ],
+      [
+       23.57239,
+       37.94039
+      ]
+     ],
+     "name": "Truppen auf Psyttaleia",
+     "staerke": "400 Mann"
+    },
+    {
+     "id": "g-flotte",
+     "partei": "gr",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       23.53987,
+       37.952
+      ],
+      [
+       23.52342,
+       37.94093
+      ],
+      [
+       23.50585,
+       37.93333
+      ],
+      [
+       23.48058,
+       37.93305
+      ],
+      [
+       23.47289,
+       37.94644
+      ],
+      [
+       23.46524,
+       37.95913
+      ],
+      [
+       23.48193,
+       37.96963
+      ],
+      [
+       23.50506,
+       37.96816
+      ],
+      [
+       23.53012,
+       37.96623
+      ]
+     ],
+     "name": "eingeschlossen – und bereit",
+     "staerke": "370 Trieren"
+    }
+   ]
+  },
+  {
+   "zeit": "Morgengrauen",
+   "t": 210,
+   "kurz": "Xerxes lässt sich einen Thron aufstellen.",
+   "text": "Der Großkönig lässt am Hang des Aigaleos einen Thron aufbauen, mit Schreibern daneben, die notieren sollen, welcher Befehlshaber sich auszeichnet. Von dort sieht man die ganze Enge. Es ist der einzige Fall der Antike, in dem eine große Seeschlacht vollständig vom Land aus beobachtet wurde – und die Griechen wissen es.",
+   "stellungen": [
+    {
+     "id": "p-thron",
+     "partei": "per",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       23.602,
+       37.96759
+      ],
+      [
+       23.60425,
+       37.96611
+      ],
+      [
+       23.60579,
+       37.96453
+      ],
+      [
+       23.60585,
+       37.96225
+      ],
+      [
+       23.60313,
+       37.96156
+      ],
+      [
+       23.60055,
+       37.96087
+      ],
+      [
+       23.59842,
+       37.96237
+      ],
+      [
+       23.59872,
+       37.96446
+      ],
+      [
+       23.59911,
+       37.96671
+      ]
+     ],
+     "name": "Xerxes’ Thron am Aigaleos",
+     "staerke": "Hofstaat"
+    },
+    {
+     "id": "p-einfahrt",
+     "partei": "per",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       23.58756,
+       37.92891
+      ],
+      [
+       23.59276,
+       37.92558
+      ],
+      [
+       23.60127,
+       37.92803
+      ],
+      [
+       23.60254,
+       37.93321
+      ],
+      [
+       23.59244,
+       37.95509
+      ],
+      [
+       23.58724,
+       37.95842
+      ],
+      [
+       23.57873,
+       37.95597
+      ],
+      [
+       23.57746,
+       37.95079
+      ]
+     ],
+     "name": "fährt in die Enge ein",
+     "staerke": "400 Schiffe"
+    },
+    {
+     "id": "g-flotte",
+     "partei": "gr",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       23.52377,
+       37.96637
+      ],
+      [
+       23.52187,
+       37.97029
+      ],
+      [
+       23.51604,
+       37.9711
+      ],
+      [
+       23.51256,
+       37.96793
+      ],
+      [
+       23.50623,
+       37.93963
+      ],
+      [
+       23.50813,
+       37.93571
+      ],
+      [
+       23.51396,
+       37.9349
+      ],
+      [
+       23.51744,
+       37.93807
+      ]
+     ],
+     "name": "wartet an der Küste",
+     "staerke": "370 Trieren"
+    }
+   ]
+  },
+  {
+   "zeit": "Erste Stunde",
+   "t": 260,
+   "kurz": "Die Enge zwingt sie in drei Reihen hintereinander.",
+   "text": "In der Enge ist Platz für vielleicht siebzig Schiffe nebeneinander. Die persische Flotte muss sich also hintereinander staffeln; die hinteren Reihen sehen nicht, was vorn geschieht, und drängen nach. Die Griechen fahren zunächst rückwärts und ziehen die Vorderreihe tiefer hinein, bis der Schlauch am engsten ist.",
+   "stellungen": [
+    {
+     "id": "p-reihe1",
+     "partei": "per",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       23.55985,
+       37.93394
+      ],
+      [
+       23.56263,
+       37.93141
+      ],
+      [
+       23.5673,
+       37.93205
+      ],
+      [
+       23.56882,
+       37.93518
+      ],
+      [
+       23.56415,
+       37.95606
+      ],
+      [
+       23.56137,
+       37.95859
+      ],
+      [
+       23.5567,
+       37.95795
+      ],
+      [
+       23.55518,
+       37.95482
+      ]
+     ],
+     "name": "Erste Reihe",
+     "staerke": "150 Schiffe"
+    },
+    {
+     "id": "p-reihe2",
+     "partei": "per",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       23.58785,
+       37.92894
+      ],
+      [
+       23.59063,
+       37.92641
+      ],
+      [
+       23.5953,
+       37.92705
+      ],
+      [
+       23.59682,
+       37.93018
+      ],
+      [
+       23.59215,
+       37.95106
+      ],
+      [
+       23.58937,
+       37.95359
+      ],
+      [
+       23.5847,
+       37.95295
+      ],
+      [
+       23.58318,
+       37.94982
+      ]
+     ],
+     "name": "Zweite Reihe drängt nach",
+     "staerke": "150 Schiffe"
+    },
+    {
+     "id": "p-reihe3",
+     "partei": "per",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       23.61585,
+       37.92394
+      ],
+      [
+       23.61863,
+       37.92141
+      ],
+      [
+       23.6233,
+       37.92205
+      ],
+      [
+       23.62482,
+       37.92518
+      ],
+      [
+       23.62015,
+       37.94606
+      ],
+      [
+       23.61737,
+       37.94859
+      ],
+      [
+       23.6127,
+       37.94795
+      ],
+      [
+       23.61118,
+       37.94482
+      ]
+     ],
+     "name": "Dritte Reihe",
+     "staerke": "100 Schiffe"
+    },
+    {
+     "id": "g-flotte",
+     "partei": "gr",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       23.5329,
+       37.96404
+      ],
+      [
+       23.53119,
+       37.96756
+      ],
+      [
+       23.52594,
+       37.96829
+      ],
+      [
+       23.5228,
+       37.96544
+      ],
+      [
+       23.5171,
+       37.93996
+      ],
+      [
+       23.51881,
+       37.93644
+      ],
+      [
+       23.52406,
+       37.93571
+      ],
+      [
+       23.5272,
+       37.93856
+      ]
+     ],
+     "name": "weicht zurück und lockt",
+     "staerke": "370 Trieren",
+     "finte": true
+    }
+   ]
+  },
+  {
+   "zeit": "Zweite Stunde",
+   "t": 320,
+   "kurz": "Die Athener wenden und rammen.",
+   "text": "Auf ein Signal fahren die griechischen Schiffe vor. Sie sind schwerer gebaut und schlechter zu manövrieren als die phönizischen – in der Enge ist beides ein Vorteil: Es gibt keinen Raum für die überlegene Rudertechnik des Gegners, nur für Rammstoß und Entern. Die persische Vorderreihe wird gegen die eigene zweite gedrückt.",
+   "stellungen": [
+    {
+     "id": "g-flotte",
+     "partei": "gr",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       23.5499,
+       37.96204
+      ],
+      [
+       23.54819,
+       37.96556
+      ],
+      [
+       23.54294,
+       37.96629
+      ],
+      [
+       23.5398,
+       37.96344
+      ],
+      [
+       23.5341,
+       37.93796
+      ],
+      [
+       23.53581,
+       37.93444
+      ],
+      [
+       23.54106,
+       37.93371
+      ],
+      [
+       23.5442,
+       37.93656
+      ]
+     ],
+     "name": "greift an",
+     "staerke": "370 Trieren"
+    },
+    {
+     "id": "g-stoss",
+     "partei": "gr",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       23.535,
+       37.95
+      ],
+      [
+       23.556,
+       37.947
+      ]
+     ]
+    },
+    {
+     "id": "p-reihe1",
+     "partei": "per",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       23.56481,
+       37.93498
+      ],
+      [
+       23.56795,
+       37.93213
+      ],
+      [
+       23.5732,
+       37.93286
+      ],
+      [
+       23.57491,
+       37.93639
+      ],
+      [
+       23.57119,
+       37.95302
+      ],
+      [
+       23.56805,
+       37.95587
+      ],
+      [
+       23.5628,
+       37.95514
+      ],
+      [
+       23.56109,
+       37.95161
+      ]
+     ],
+     "name": "gegen die eigene zweite gedrückt",
+     "staerke": "150 Schiffe",
+     "geschlagen": true
+    },
+    {
+     "id": "p-reihe2",
+     "partei": "per",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       23.58785,
+       37.92894
+      ],
+      [
+       23.59063,
+       37.92641
+      ],
+      [
+       23.5953,
+       37.92705
+      ],
+      [
+       23.59682,
+       37.93018
+      ],
+      [
+       23.59215,
+       37.95106
+      ],
+      [
+       23.58937,
+       37.95359
+      ],
+      [
+       23.5847,
+       37.95295
+      ],
+      [
+       23.58318,
+       37.94982
+      ]
+     ],
+     "name": "drängt weiter nach",
+     "staerke": "150 Schiffe"
+    },
+    {
+     "id": "p-reihe3",
+     "partei": "per",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       23.61585,
+       37.92394
+      ],
+      [
+       23.61863,
+       37.92141
+      ],
+      [
+       23.6233,
+       37.92205
+      ],
+      [
+       23.62482,
+       37.92518
+      ],
+      [
+       23.62015,
+       37.94606
+      ],
+      [
+       23.61737,
+       37.94859
+      ],
+      [
+       23.6127,
+       37.94795
+      ],
+      [
+       23.61118,
+       37.94482
+      ]
+     ],
+     "name": "ohne Sicht nach vorn",
+     "staerke": "100 Schiffe"
+    }
+   ]
+  },
+  {
+   "zeit": "Mittag",
+   "t": 400,
+   "kurz": "Der Befehlshaber fällt, und die Ordnung mit ihm.",
+   "text": "Ariabignes, ein Bruder des Königs und Befehlshaber des Flügels, fällt beim Entern. Danach gibt es keine gemeinsame Führung mehr. Wracks treiben quer in der Enge, die nachdrängenden Reihen können weder vor noch zurück. Was sich löst, wird an der Küste von Salamis von den dort wartenden Hopliten empfangen.",
+   "stellungen": [
+    {
+     "id": "p-reihe1",
+     "partei": "per",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       23.56796,
+       37.93521
+      ],
+      [
+       23.57064,
+       37.93278
+      ],
+      [
+       23.57771,
+       37.93376
+      ],
+      [
+       23.57918,
+       37.93677
+      ],
+      [
+       23.57604,
+       37.95079
+      ],
+      [
+       23.57336,
+       37.95322
+      ],
+      [
+       23.56629,
+       37.95224
+      ],
+      [
+       23.56482,
+       37.94923
+      ]
+     ],
+     "name": "ohne Führung",
+     "staerke": "Reste",
+     "geschlagen": true
+    },
+    {
+     "id": "p-reihe2",
+     "partei": "per",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       23.58881,
+       37.92998
+      ],
+      [
+       23.59195,
+       37.92713
+      ],
+      [
+       23.5972,
+       37.92786
+      ],
+      [
+       23.59891,
+       37.93139
+      ],
+      [
+       23.59519,
+       37.94802
+      ],
+      [
+       23.59205,
+       37.95087
+      ],
+      [
+       23.5868,
+       37.95014
+      ],
+      [
+       23.58509,
+       37.94661
+      ]
+     ],
+     "name": "kann nicht zurück",
+     "staerke": "140 Schiffe",
+     "geschlagen": true
+    },
+    {
+     "id": "g-flotte",
+     "partei": "gr",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       23.55638,
+       37.96061
+      ],
+      [
+       23.55448,
+       37.96452
+      ],
+      [
+       23.54864,
+       37.96533
+      ],
+      [
+       23.54516,
+       37.96217
+      ],
+      [
+       23.53962,
+       37.93739
+      ],
+      [
+       23.54152,
+       37.93348
+      ],
+      [
+       23.54736,
+       37.93267
+      ],
+      [
+       23.55084,
+       37.93583
+      ]
+     ],
+     "name": "Griechen",
+     "staerke": "350 Trieren"
+    },
+    {
+     "id": "g-hopliten",
+     "partei": "gr",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       23.49434,
+       37.95332
+      ],
+      [
+       23.49248,
+       37.95414
+      ],
+      [
+       23.49043,
+       37.9532
+      ],
+      [
+       23.4904,
+       37.95153
+      ],
+      [
+       23.50566,
+       37.93068
+      ],
+      [
+       23.50752,
+       37.92986
+      ],
+      [
+       23.50957,
+       37.9308
+      ],
+      [
+       23.5096,
+       37.93247
+      ]
+     ],
+     "name": "Hopliten an der Küste",
+     "staerke": "Aristeides"
+    }
+   ]
+  },
+  {
+   "zeit": "Nachmittag",
+   "t": 470,
+   "kurz": "Psyttaleia, vor den Augen des Königs.",
+   "text": "Aristeides setzt mit Hopliten auf die kleine Insel Psyttaleia über, auf der die Perser Truppen für den erwarteten Sieg abgestellt hatten. Die Besatzung wird niedergemacht – auf einer Insel, die von Xerxes’ Thron aus vollständig einzusehen ist. Aischylos, der als Soldat dabei war, macht daraus die Mitte seiner Tragödie.",
+   "stellungen": [
+    {
+     "id": "g-hopliten",
+     "partei": "gr",
+     "form": "pfeil",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       23.545,
+       37.942
+      ],
+      [
+       23.565,
+       37.939
+      ],
+      [
+       23.575,
+       37.9375
+      ]
+     ],
+     "name": "Aristeides auf Psyttaleia"
+    },
+    {
+     "id": "p-psyttaleia",
+     "partei": "per",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       23.576,
+       37.94104
+      ],
+      [
+       23.57853,
+       37.93937
+      ],
+      [
+       23.58026,
+       37.93759
+      ],
+      [
+       23.58032,
+       37.93503
+      ],
+      [
+       23.57727,
+       37.93425
+      ],
+      [
+       23.57437,
+       37.93348
+      ],
+      [
+       23.57198,
+       37.93517
+      ],
+      [
+       23.57231,
+       37.93751
+      ],
+      [
+       23.57275,
+       37.94005
+      ]
+     ],
+     "name": "niedergemacht",
+     "staerke": "400 Mann",
+     "geschlagen": true
+    },
+    {
+     "id": "p-flucht",
+     "partei": "per",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       23.59,
+       37.94
+      ],
+      [
+       23.63,
+       37.93
+      ],
+      [
+       23.66,
+       37.92
+      ]
+     ],
+     "name": "was herauskommt, fährt nach Phaleron",
+     "rueckzug": true
+    },
+    {
+     "id": "g-flotte",
+     "partei": "gr",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       23.56418,
+       37.95772
+      ],
+      [
+       23.56228,
+       37.96163
+      ],
+      [
+       23.55645,
+       37.96244
+      ],
+      [
+       23.55296,
+       37.95928
+      ],
+      [
+       23.54782,
+       37.93628
+      ],
+      [
+       23.54972,
+       37.93237
+      ],
+      [
+       23.55555,
+       37.93156
+      ],
+      [
+       23.55904,
+       37.93472
+      ]
+     ],
+     "name": "hält die Enge",
+     "staerke": "350 Trieren"
+    }
+   ]
+  },
+  {
+   "zeit": "Herbst 480 bis 479",
+   "t": 600,
+   "kurz": "Der König geht, das Heer bleibt – ein Jahr.",
+   "text": "Xerxes fürchtet, die Griechen könnten die Schiffbrücke über den Hellespont zerstören und ihn in Europa abschneiden, und geht mit einem Teil des Heeres zurück. Mardonios bleibt mit dem Rest in Griechenland. Ein Jahr später wird dieses Heer bei Plataiai geschlagen – zu Lande. Die Seeherrschaft im Ägäischen Meer wechselt endgültig zu Athen und wird die Grundlage seines Reiches.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     21.8,
+     35.8
+    ],
+    [
+     27.2,
+     41.2
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "p-rueck",
+     "partei": "per",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       23.6,
+       37.95
+      ],
+      [
+       23.1,
+       39.6
+      ],
+      [
+       24.6,
+       40.6
+      ],
+      [
+       26.4,
+       40.25
+      ]
+     ],
+     "name": "Xerxes zum Hellespont",
+     "rueckzug": true
+    },
+    {
+     "id": "p-mardonios",
+     "partei": "per",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       23.6,
+       38.1
+      ],
+      [
+       23.3,
+       38.32
+      ],
+      [
+       23.28,
+       38.32
+      ]
+     ],
+     "name": "Mardonios bleibt – Plataiai 479"
+    },
+    {
+     "id": "g-see",
+     "partei": "gr",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       23.55,
+       37.94
+      ],
+      [
+       24.9,
+       37.6
+      ],
+      [
+       26.3,
+       38.2
+      ],
+      [
+       27.1,
+       38.45
+      ]
+     ],
+     "name": "Athen wird Seemacht"
+    }
+   ]
+  }
+ ],
+ "ausgang": "Die persische Flotte verliert in der Enge einen großen Teil ihrer Schiffe und zieht sich nach Phaleron zurück. Xerxes kehrt mit einem Teil des Heeres nach Asien zurück.",
+ "verluste": [
+  {
+   "partei": "per",
+   "text": "nach Herodot rund 200 Schiffe, dazu die Besatzungen – viele Perser konnten nicht schwimmen"
+  },
+  {
+   "partei": "gr",
+   "text": "40 Schiffe"
+  }
+ ],
+ "folgen": "Der Seeweg nach Asien bleibt für die Perser unsicher; Xerxes geht zurück. Das in Griechenland verbliebene Heer wird 479 bei Plataiai geschlagen. Athen wird zur Seemacht – und aus dem Bündnis gegen Persien wird binnen einer Generation das attische Reich.",
+ "streit": "Die Zahlen sind wie bei allen Perserkriegsberichten unbrauchbar; Herodots 1.207 persische Schiffe gelten als weit überhöht, 600 bis 800 als plausibel. Auch die genaue Lage der Aufstellungen in der Enge wird verschieden rekonstruiert – Herodot, Aischylos und die spätere Überlieferung widersprechen einander in der Richtung, aus der die Perser einfuhren."
+}

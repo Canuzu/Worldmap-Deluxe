@@ -644,7 +644,8 @@
    "rang": 1,
    "sieger": "Spanien",
    "text": "Dreiundneunzig Tage Belagerung einer Stadt auf einer Insel im See, mit eigens gebauten Brigantinen und zehntausenden tlaxcaltekischen Verbündeten. In der Stadt wütet zugleich die Pockenepidemie. Am Ende ist eine der größten Städte der Welt eine Ruine.",
-   "wiki": "Belagerung von Tenochtitlan"
+   "wiki": "Belagerung von Tenochtitlan",
+   "verlauf": "tenochtitlan"
   },
   {
    "id": "pavia",
@@ -676,7 +677,8 @@
    "rang": 2,
    "sieger": "Mogulreich",
    "text": "Babur stellt siebenhundert Wagen mit Ketten verbunden auf und dahinter seine Feldgeschütze. Das Sultanatsheer mit seinen Elefanten läuft dagegen an. Nordindien wechselt an einem Vormittag den Besitzer.",
-   "wiki": "Erste Schlacht bei Panipat"
+   "wiki": "Erste Schlacht bei Panipat",
+   "verlauf": "panipat1526"
   },
   {
    "id": "romsacco",
@@ -966,7 +968,8 @@
    "rang": 2,
    "sieger": "Qing-Dynastie",
    "text": "Der Grenzgeneral Wu Sangui öffnet den Mandschu das Tor, um sich an den Aufständischen zu rächen, die Peking eingenommen haben. Er bekommt seine Rache und liefert China aus.",
-   "wiki": "Schlacht am Shanhai-Pass"
+   "wiki": "Schlacht am Shanhai-Pass",
+   "verlauf": "shanhaiguan"
   },
   {
    "id": "naseby",

@@ -32,7 +32,7 @@ Religion, Bevölkerung, Wirtschaft, Wendepunkte und Nachbarn.
 | **Kartengrundlage** | wahlweise Relief- oder physische Geländekarte unter den historischen Grenzen – bewusst ohne heutige Straßen, Städte oder Staatsgrenzen. Abschaltbar; ohne sie zeichnet der Atlas wie zuvor alles selbst |
 | **Orte zur Orientierung** | heutige Städte mit deutschen Namen, gestaffelt nach Rang eingeblendet – ohne sie ist die Karte ab Zoomstufe 6 anhaltslos |
 | **Kriege & Schlachten** | 87 Kriege und 175 Schlachten von Kadesch bis Bachmut. Das Register zeigt, was im eingestellten Jahr läuft – mit einem Balken, der die Dauer und den Stand angibt. Ein Klick legt die Kriegsparteien farbig auf die Karte und nummeriert seine Schlachtfelder in der Reihenfolge, in der sie geschlagen wurden |
-| **Berühmte Schlachten** | Gaugamela, Hastings, Waterloo, Stalingrad – der Verlauf läuft Station für Station ab, die Stellungen verschieben sich mit |
+| **Berühmte Schlachten** | 34 Verläufe von Marathon bis Dien Bien Phu – Station für Station abspielbar, die Stellungen verschieben sich mit |
 | **Vollbild** | <kbd>V</kbd> nimmt den ganzen Bildschirm, <kbd>F</kbd> blendet die Bedienelemente aus – beides einzeln, weil beides einzeln sinnvoll ist |
 | **Vier Einfärbungen** | nach Gemeinwesen, Oberhoheit, Kulturraum oder Genauigkeit des Grenzverlaufs |
 | **Suche** | über alle Gemeinwesen des aktuellen Zeitschnitts, deutsch und in der Schreibweise des Datensatzes |
@@ -199,7 +199,7 @@ npm run check:staaten # zählt alle 195 Staaten in den Gegenwartsjahren nach
 npm run check:herrscher # prüft, für wie viele Jahre ein Herrscher hinterlegt ist
 npm run check:ereignisse # verteilt die Ereignisse auf die Zeitschnitte und prüft die Orte
 npm run check:konflikte # prüft Kriege, Schlachtfelder und die Namen der Kriegsparteien
-npm run check:schlachten # prüft die zwölf abspielbaren Verläufe: Geometrie, Zeitmarken, Kennungen
+npm run check:schlachten # prüft die 34 abspielbaren Verläufe: Geometrie, Zeitmarken, Kennungen
 npm run check:layout  # Oberfläche in 5 Fenstergrößen × 6 Zuständen (braucht `npm run dev`)
 npm run check:ladelast -- http://127.0.0.1:4173  # was der erste Aufruf lädt (braucht `npm run preview`)
 npm run check:fluss    -- http://127.0.0.1:4173  # Bildraten beim Schwenken und Zoomen
@@ -576,17 +576,17 @@ Der Atlas zeigt sonst Zustände: So sah die Welt im Jahr X aus. Eine Schlacht
 ist aber kein Zustand, sondern eine **Bewegung** – und die fällt aus einer
 Karte heraus, die nur Jahresschnitte kennt.
 
-Vierundzwanzig Schlachten haben einen abspielbaren Verlauf, von Marathon bis
-Midway: **272 Stationen, 1.582 Truppenstellungen, 151 Geländezüge.** Jede
-Schlacht beginnt mit einem Übersichtsblatt über den Anmarsch – und darf mit
-einem über den Rückzug enden – und ist dazwischen in neun bis fünfzehn
+Vierunddreißig Schlachten haben einen abspielbaren Verlauf, von Marathon bis
+Dien Bien Phu: **372 Stationen, 2.011 Truppenstellungen, 207 Geländezüge.**
+Jede Schlacht beginnt mit einem Übersichtsblatt über den Anmarsch – und darf
+mit einem über den Rückzug enden – und ist dazwischen in neun bis fünfzehn
 Abschnitte gegliedert; jede Stellung ist ein benannter Verband mit Führer,
 Stärke und Waffengattung.
 
 Bis Sommer 2026 lagen zwölf davon vor, alle in Europa und am Mittelmeer, mit
-Gaugamela als einziger Ausnahme. Die zwölf neuen sind bewusst nach Lücken
-gewählt: **Zama** und **Actium** schließen die antiken Bögen, die mit Cannae
-und dem Bürgerkrieg begonnen hatten; **Tours**, **Hattin** und **Muhi** decken
+Gaugamela als einziger Ausnahme. Die zwölf danach waren nach Lücken gewählt:
+**Zama** und **Actium** schließen die antiken Bögen, die mit Cannae und dem
+Bürgerkrieg begonnen hatten; **Tours**, **Hattin** und **Muhi** decken
 Frankenreich, Kreuzzüge und den Mongolensturm ab; **Sekigahara** ist das erste
 Schlachtfeld in Ostasien überhaupt, **Gettysburg** das erste in Amerika;
 **Wien 1683**, **Poltawa** und **Austerlitz** stehen für die drei
@@ -594,23 +594,40 @@ Entscheidungen, an denen sich die Karte Mitteleuropas dreht; **Tsushima** und
 **Midway** sind die beiden Seeschlachten, in denen sich das 20. Jahrhundert
 entscheidet.
 
-Das Kriegsregister führt 177 Schlachten. Der Abstand zwischen 24 und 177 ist
+Die zehn zuletzt hinzugekommenen sind nach Weltgegenden gewählt, die bis dahin
+kein einziges Schlachtfeld hatten. **Tenochtitlan** ist das erste in
+Mesoamerika, **Ayacucho** das erste in Südamerika, **Adua** das erste im
+subsaharischen Afrika, **Panipat** das erste in Indien, **Shanhaiguan** das
+erste in China, **Dien Bien Phu** das erste in Südostasien. Dazu kommen vier
+europäische Lücken, die zu auffällig waren, um sie zu lassen: **Salamis** und
+**Alesia** als die beiden Schlachten der Antike, die man ohne Karte gar nicht
+erzählen kann – die eine, weil alles an der Enge der Meerenge hängt, die
+andere, weil sie aus zwei ineinandergelegten Wällen besteht –, die
+**Varusschlacht** als der Punkt, an dem die Reichsgrenze für vier Jahrhunderte
+am Rhein stehenbleibt, und die **Marne**, deren ganzer Inhalt eine Lücke von
+fünfzig Kilometern zwischen zwei Armeen ist.
+
+Das Kriegsregister führt 177 Schlachten. Der Abstand zwischen 34 und 177 ist
 der offene Teil, und er ist reine Verfassungsarbeit: Ein Verlauf besteht aus
 mehreren hundert von Hand gesetzten Koordinatenpaaren, die zu einem Gelände
 passen müssen, das es wirklich gibt. Erfinden lässt er sich nicht – der
 Datensatz sagt selbst, dass hier Truppenstellungen stehen und keine
 Staatsgrenzen. Wo die Forschung streitet, sagt das Feld `streit` es dazu: bei
 Zama ist schon der Ort offen, bei Actium die Frage, ob Kleopatras Abfahrt
-Plan oder Flucht war, bei Midway die Legende von den fünf Minuten.
+Plan oder Flucht war, bei Midway die Legende von den fünf Minuten, bei der
+Varusschlacht der halbe Verlauf – gesichert ist bei Kalkriese ein Kampfplatz,
+nicht die ganze Schlacht.
 
 **Eine Datei je Schlacht.** Vorher lagen alle Verläufe in einer einzigen Datei
 von 852 kB. Wer das Kriegsregister öffnete, um nachzusehen, welche Kriege 1815
 liefen, lud alle zwölf vollständig mit; bei dreißig Verläufen wären das zwei
 Megabyte für einen Blick in eine Liste gewesen. Jetzt trägt das Programm nur
-den Index – Name, Ort, Datum, Ausschnitt, sieben Kilobyte für alle –, und die
-Stationen einer Schlacht kommen in dem Augenblick, in dem jemand auf
-„abspielen“ tippt. Gemessen: Registeröffnung **368 kB → 0**, Abspielen einer
-Schlacht **0 → rund 30 kB**. Damit ist die Zahl der Verläufe nach oben offen.
+den Index – Name, Ort, Datum, Ausschnitt, 18 kB für alle –, und die Stationen
+einer Schlacht kommen in dem Augenblick, in dem jemand auf „abspielen“ tippt.
+Gemessen: Registeröffnung **368 kB → 0**, Abspielen einer Schlacht
+**0 → rund 30 kB**. Die Rechnung hat sich seither bestätigt: Die Zahl der
+Verläufe hat sich von zwölf auf 34 fast verdreifacht und 782 kB Stationsdaten
+angesammelt, der Erstaufruf ist dabei um fünf Kilobyte gewachsen.
 
 **Geometrie aus Kilometern statt aus Koordinaten.** `scripts/lib/stellung.mjs`
 baut die Stellungen aus Mittelpunkt, Ausdehnung in Kilometern und
@@ -623,26 +640,42 @@ sah man es sofort, in den Zahlen nicht.
 
 Die zugehörigen Skripte liegen in `scripts/verlaeufe/`. Sie haben die
 JSON-Dateien je einmal erzeugt; **gültig ist danach die JSON-Datei**, denn die
-zwölf älteren Verläufe sind von Hand geschrieben, und zwei Quellen für
+zwölf ältesten Verläufe sind von Hand geschrieben, und zwei Quellen für
 dieselbe Sache wären eine Falle. Die Skripte bleiben trotzdem im Bestand, weil
 sie zeigen, woher die Geometrie kommt.
 
-**Was die Prüfung gefunden hat.** Von den zwölf neuen Verläufen war keiner im
-ersten Anlauf sauber – `check:schlachten` hat 21 Beanstandungen gemeldet, alle
-berechtigt: Anmarschwege, die über den Rand ihres eigenen Übersichtsblatts
-hinausliefen; ein Rückzugsweg über 966 km in einer Station, die auf dem
-Schlachtfeld spielt; ein Übersichtsblatt bei Midway, dessen Rahmen die
+**Was die Prüfung gefunden hat.** Von den zwölf Verläufen der ersten Erweiterung
+war keiner im ersten Anlauf sauber – `check:schlachten` hat 21 Beanstandungen
+gemeldet, alle berechtigt: Anmarschwege, die über den Rand ihres eigenen
+Übersichtsblatts hinausliefen; ein Rückzugsweg über 966 km in einer Station, die
+auf dem Schlachtfeld spielt; ein Übersichtsblatt bei Midway, dessen Rahmen die
 Datumsgrenze überschritt und damit rechnerisch leer war; zu lange
 Kurzfassungen; und bei Sekigahara eine Kennung, die mitten in der Schlacht die
 Partei wechselt – Kobayakawas Übertritt. Letzteres ist eine Zeichenbeschränkung
 und wurde in den Daten gelöst, nicht in der Regel: Eine Kennung mit wechselnder
 Partei ließe den Zeichner die Fläche gleiten, während die Farbe umspringt.
 
+Bei den zehn zuletzt hinzugekommenen war es eine einzige Beanstandung – der
+Pfeil, der die Wirkung von Adua über den Kontinent trägt, lief über den Rand
+seines Übersichtsblatts hinaus. Das ist keine bessere Handschrift, sondern das
+Ergebnis derselben Prüfung: Die Fehlerarten der ersten Runde sind beim
+Schreiben der zweiten bereits mitgedacht worden. Was die Prüfung dagegen nicht
+findet, findet nach wie vor nur das Bild – bei Dien Bien Phu lagen die
+Batterien im Norden neun Kilometer vom Talboden und damit außerhalb des
+Ausschnitts, den die Station selbst aufspannt. Auf der Karte fehlten sie
+einfach.
+
 | | | | |
 |---|---|---|---|
-| Marathon 490 v. Chr. | Gaugamela 331 v. Chr. | Cannae 216 v. Chr. | Hastings 1066 |
-| Azincourt 1415 | Konstantinopel 1453 | Lepanto 1571 | Trafalgar 1805 |
-| Waterloo 1815 | Tannenberg 1914 | Stalingrad 1942 | Normandie 1944 |
+| Marathon 490 v. Chr. | Salamis 480 v. Chr. | Gaugamela 331 v. Chr. | Cannae 216 v. Chr. |
+| Zama 202 v. Chr. | Alesia 52 v. Chr. | Actium 31 v. Chr. | Varusschlacht 9 |
+| Tours 732 | Hastings 1066 | Hattin 1187 | Muhi 1241 |
+| Azincourt 1415 | Konstantinopel 1453 | Tenochtitlan 1521 | Panipat 1526 |
+| Lepanto 1571 | Sekigahara 1600 | Shanhaiguan 1644 | Wien 1683 |
+| Poltawa 1709 | Trafalgar 1805 | Austerlitz 1805 | Waterloo 1815 |
+| Ayacucho 1824 | Gettysburg 1863 | Adua 1896 | Tsushima 1905 |
+| Marne 1914 | Tannenberg 1914 | Stalingrad 1942 | Midway 1942 |
+| Normandie 1944 | Dien Bien Phu 1954 | | |
 
 #### Warum gegliten wird und nicht umgeschaltet
 

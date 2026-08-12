@@ -1,0 +1,1866 @@
+{
+ "id": "ayacucho",
+ "name": "Ayacucho",
+ "ort": "Pampa de la Quinua, peruanische Anden",
+ "datum": "9. Dezember 1824",
+ "jahr": 1824,
+ "mitte": [
+  -74.142,
+  -13.053
+ ],
+ "zoom": 13,
+ "grund": "relief",
+ "worum": "Eine Hochebene von anderthalb Kilometern auf 3.300 Metern, darüber ein Bergrücken. Wer vom Rücken herabsteigt, kommt in Kolonnen unten an und muss sich erst entfalten – und genau in diesem Augenblick geht Córdova vor. Was danach unterschrieben wird, beendet dreihundert Jahre spanische Herrschaft auf dem südamerikanischen Festland.",
+ "parteien": [
+  {
+   "id": "pat",
+   "name": "Das vereinigte Befreiungsheer",
+   "farbe": "#6f9fe0",
+   "fuehrung": "Antonio José de Sucre, José María Córdova, José de La Mar, Jacinto Lara, Guillermo Miller",
+   "staerke": "rund 5.800 aus Kolumbien, Peru, Argentinien, Chile und Irland – ein einziges Geschütz",
+   "zahl": 5800
+  },
+  {
+   "id": "rea",
+   "name": "Königliches Heer Perus",
+   "farbe": "#d4737c",
+   "fuehrung": "Vizekönig José de la Serna, José de Canterac, Jerónimo Valdés, Juan Antonio Monet",
+   "staerke": "rund 6.900, überwiegend in Peru geworben – elf Geschütze",
+   "zahl": 6900
+  }
+ ],
+ "gelaende": [
+  {
+   "art": "hoehe",
+   "name": "Condorcunca · der Hals des Kondors",
+   "punkte": [
+    [
+     -74.11857,
+     -13.05316
+    ],
+    [
+     -74.1253,
+     -13.05083
+    ],
+    [
+     -74.13189,
+     -13.04764
+    ],
+    [
+     -74.13981,
+     -13.04124
+    ],
+    [
+     -74.14026,
+     -13.03703
+    ],
+    [
+     -74.1408,
+     -13.03294
+    ],
+    [
+     -74.13408,
+     -13.03542
+    ],
+    [
+     -74.12708,
+     -13.04157
+    ],
+    [
+     -74.11954,
+     -13.04828
+    ]
+   ]
+  },
+  {
+   "art": "stadt",
+   "name": "Quinua",
+   "punkte": [
+    [
+     -74.137,
+     -13.05975
+    ],
+    [
+     -74.13586,
+     -13.06068
+    ],
+    [
+     -74.13508,
+     -13.06167
+    ],
+    [
+     -74.13505,
+     -13.06309
+    ],
+    [
+     -74.13643,
+     -13.06353
+    ],
+    [
+     -74.13773,
+     -13.06396
+    ],
+    [
+     -74.13881,
+     -13.06302
+    ],
+    [
+     -74.13866,
+     -13.06172
+    ],
+    [
+     -74.13846,
+     -13.0603
+    ]
+   ]
+  },
+  {
+   "art": "fluss",
+   "name": "Die Quebrada im Westen",
+   "punkte": [
+    [
+     -74.156,
+     -13.039
+    ],
+    [
+     -74.153,
+     -13.053
+    ],
+    [
+     -74.15,
+     -13.068
+    ]
+   ]
+  },
+  {
+   "art": "weg",
+   "name": "Der Weg nach Huamanga",
+   "punkte": [
+    [
+     -74.144,
+     -13.065
+    ],
+    [
+     -74.16,
+     -13.078
+    ],
+    [
+     -74.18,
+     -13.09
+    ]
+   ]
+  }
+ ],
+ "stationen": [
+  {
+   "zeit": "August bis November 1824",
+   "t": 0,
+   "kurz": "Nach Junín bleibt noch ein Heer in den Anden.",
+   "text": "Bolívar hat im August bei Junín gewonnen, einer Reiterschlacht ohne einen einzigen Schuss, und ist danach vom Kongress in Bogotá zurückgerufen worden. Das Kommando übernimmt Sucre, achtundzwanzig Jahre alt. Ihm gegenüber steht der Vizekönig selbst mit dem letzten geschlossenen Heer Spaniens auf dem Kontinent – zahlreicher, besser versorgt und im eigenen Land. In Oberperu hat sich General Olañeta gegen den Vizekönig erhoben und bindet weitere Truppen.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     -81.5,
+     -21
+    ],
+    [
+     -64.5,
+     -4
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "anm-pat",
+     "partei": "pat",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -79.03,
+       -8.11
+      ],
+      [
+       -77.5,
+       -9.9
+      ],
+      [
+       -76.1,
+       -11.1
+      ],
+      [
+       -74.22,
+       -12.7
+      ],
+      [
+       -74.14,
+       -13.05
+      ]
+     ],
+     "name": "Sucre von Norden über Junín"
+    },
+    {
+     "id": "anm-rea",
+     "partei": "rea",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -71.97,
+       -13.53
+      ],
+      [
+       -73.2,
+       -13.3
+      ],
+      [
+       -74.22,
+       -13.2
+      ],
+      [
+       -74.14,
+       -13.06
+      ]
+     ],
+     "name": "Der Vizekönig aus Cusco"
+    },
+    {
+     "id": "anm-ola",
+     "partei": "rea",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -65.75,
+       -19.58
+      ],
+      [
+       -67.2,
+       -18.5
+      ],
+      [
+       -68.15,
+       -16.5
+      ]
+     ],
+     "name": "Olañetas Aufstand in Oberperu"
+    }
+   ]
+  },
+  {
+   "zeit": "Die Wochen davor",
+   "t": 60,
+   "kurz": "Sechs Wochen umkreisen sich zwei Heere im Gebirge.",
+   "text": "Was dem 9. Dezember vorausgeht, ist ein Marsch ohne Schlacht: zwei Heere, die einander in den Andentälern nachlaufen, Flüsse überschreiten, Höhen tauschen und sich gegenseitig die Verpflegung wegnehmen. Sucre verliert dabei einen Viertel seiner Leute an Erschöpfung und Fahnenflucht. Am 8. Dezember gelingt es La Serna, ihm den Rückweg zu verlegen. Von da an muss gekämpft werden.",
+   "stellungen": [
+    {
+     "id": "p-heer",
+     "partei": "pat",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -74.13661,
+       -13.06
+      ],
+      [
+       -74.14007,
+       -13.0631
+      ],
+      [
+       -74.14377,
+       -13.06523
+      ],
+      [
+       -74.14909,
+       -13.06531
+      ],
+      [
+       -74.15071,
+       -13.06156
+      ],
+      [
+       -74.15232,
+       -13.058
+      ],
+      [
+       -74.1488,
+       -13.05506
+      ],
+      [
+       -74.14394,
+       -13.05548
+      ],
+      [
+       -74.13866,
+       -13.05601
+      ]
+     ],
+     "name": "Sucre auf der Pampa",
+     "staerke": "5.800"
+    },
+    {
+     "id": "r-heer",
+     "partei": "rea",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -74.12663,
+       -13.0517
+      ],
+      [
+       -74.12371,
+       -13.05241
+      ],
+      [
+       -74.12134,
+       -13.0501
+      ],
+      [
+       -74.12207,
+       -13.04726
+      ],
+      [
+       -74.13537,
+       -13.0343
+      ],
+      [
+       -74.13829,
+       -13.03359
+      ],
+      [
+       -74.14066,
+       -13.0359
+      ],
+      [
+       -74.13993,
+       -13.03874
+      ]
+     ],
+     "name": "Der Vizekönig auf dem Condorcunca",
+     "staerke": "6.900"
+    }
+   ]
+  },
+  {
+   "zeit": "Abend des 8. Dezember",
+   "t": 130,
+   "kurz": "Offiziere beider Seiten reden zwischen den Linien.",
+   "text": "Die Vorposten liegen so nah, dass man einander zurufen kann. Offiziere gehen zwischen die Linien und begrüßen sich; viele kennen sich, einige sind Brüder oder Vettern. Man spricht dieselbe Sprache, viele haben in derselben Armee angefangen. Dann geht jeder zurück, und am nächsten Morgen schießen sie aufeinander.",
+   "stellungen": [
+    {
+     "id": "p-heer",
+     "partei": "pat",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -74.13661,
+       -13.059
+      ],
+      [
+       -74.14007,
+       -13.0621
+      ],
+      [
+       -74.14377,
+       -13.06423
+      ],
+      [
+       -74.14909,
+       -13.06431
+      ],
+      [
+       -74.15071,
+       -13.06056
+      ],
+      [
+       -74.15232,
+       -13.057
+      ],
+      [
+       -74.1488,
+       -13.05406
+      ],
+      [
+       -74.14394,
+       -13.05448
+      ],
+      [
+       -74.13866,
+       -13.05501
+      ]
+     ],
+     "name": "Die Vorposten unten",
+     "staerke": "5.800"
+    },
+    {
+     "id": "r-heer",
+     "partei": "rea",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -74.12663,
+       -13.0517
+      ],
+      [
+       -74.12371,
+       -13.05241
+      ],
+      [
+       -74.12134,
+       -13.0501
+      ],
+      [
+       -74.12207,
+       -13.04726
+      ],
+      [
+       -74.13537,
+       -13.0343
+      ],
+      [
+       -74.13829,
+       -13.03359
+      ],
+      [
+       -74.14066,
+       -13.0359
+      ],
+      [
+       -74.13993,
+       -13.03874
+      ]
+     ],
+     "name": "Die Vorposten oben",
+     "staerke": "6.900"
+    }
+   ]
+  },
+  {
+   "zeit": "9. Dezember, Morgen",
+   "t": 200,
+   "kurz": "Unten die Ebene, oben der Bergrücken.",
+   "text": "Sucre stellt auf der Ebene auf: rechts die kolumbianische Division Córdovas, links die peruanische La Mars, dahinter die Reserve unter Lara und die Reiterei Millers. Oben auf dem Condorcunca steht das königliche Heer in ganzer Breite mit elf Geschützen. Sucre reitet die Front ab und sagt den bekannten Satz: Von den Anstrengungen dieses Tages hänge das Schicksal Südamerikas ab.",
+   "stellungen": [
+    {
+     "id": "p-cordova",
+     "partei": "pat",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -74.1385,
+       -13.05863
+      ],
+      [
+       -74.13975,
+       -13.05833
+      ],
+      [
+       -74.14077,
+       -13.05932
+      ],
+      [
+       -74.14046,
+       -13.06054
+      ],
+      [
+       -74.1355,
+       -13.06537
+      ],
+      [
+       -74.13425,
+       -13.06567
+      ],
+      [
+       -74.13323,
+       -13.06468
+      ],
+      [
+       -74.13354,
+       -13.06346
+      ]
+     ],
+     "name": "Córdova rechts",
+     "staerke": "Kolumbianer"
+    },
+    {
+     "id": "p-lamar",
+     "partei": "pat",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -74.1515,
+       -13.04763
+      ],
+      [
+       -74.15275,
+       -13.04733
+      ],
+      [
+       -74.15377,
+       -13.04832
+      ],
+      [
+       -74.15346,
+       -13.04954
+      ],
+      [
+       -74.1485,
+       -13.05437
+      ],
+      [
+       -74.14725,
+       -13.05467
+      ],
+      [
+       -74.14623,
+       -13.05368
+      ],
+      [
+       -74.14654,
+       -13.05246
+      ]
+     ],
+     "name": "La Mar links",
+     "staerke": "Peruaner"
+    },
+    {
+     "id": "p-lara",
+     "partei": "pat",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -74.14715,
+       -13.056
+      ],
+      [
+       -74.1484,
+       -13.05569
+      ],
+      [
+       -74.14942,
+       -13.05668
+      ],
+      [
+       -74.14911,
+       -13.0579
+      ],
+      [
+       -74.14285,
+       -13.064
+      ],
+      [
+       -74.1416,
+       -13.06431
+      ],
+      [
+       -74.14058,
+       -13.06332
+      ],
+      [
+       -74.14089,
+       -13.0621
+      ]
+     ],
+     "name": "Lara mit der Reserve"
+    },
+    {
+     "id": "p-miller",
+     "partei": "pat",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       -74.141,
+       -13.06186
+      ],
+      [
+       -74.13941,
+       -13.06315
+      ],
+      [
+       -74.13832,
+       -13.06454
+      ],
+      [
+       -74.13828,
+       -13.06653
+      ],
+      [
+       -74.1402,
+       -13.06714
+      ],
+      [
+       -74.14202,
+       -13.06774
+      ],
+      [
+       -74.14353,
+       -13.06642
+      ],
+      [
+       -74.14332,
+       -13.0646
+      ],
+      [
+       -74.14305,
+       -13.06262
+      ]
+     ],
+     "name": "Miller mit der Reiterei",
+     "staerke": "Grenadiere und Husaren"
+    },
+    {
+     "id": "r-valdes",
+     "partei": "rea",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -74.13847,
+       -13.04472
+      ],
+      [
+       -74.13701,
+       -13.04507
+      ],
+      [
+       -74.13582,
+       -13.04392
+      ],
+      [
+       -74.13619,
+       -13.04249
+      ],
+      [
+       -74.14153,
+       -13.03728
+      ],
+      [
+       -74.14299,
+       -13.03693
+      ],
+      [
+       -74.14418,
+       -13.03808
+      ],
+      [
+       -74.14381,
+       -13.03951
+      ]
+     ],
+     "name": "Valdés auf dem rechten Flügel",
+     "staerke": "mit der Artillerie"
+    },
+    {
+     "id": "r-monet",
+     "partei": "rea",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -74.13047,
+       -13.04872
+      ],
+      [
+       -74.12901,
+       -13.04907
+      ],
+      [
+       -74.12782,
+       -13.04792
+      ],
+      [
+       -74.12819,
+       -13.04649
+      ],
+      [
+       -74.13353,
+       -13.04128
+      ],
+      [
+       -74.13499,
+       -13.04093
+      ],
+      [
+       -74.13618,
+       -13.04208
+      ],
+      [
+       -74.13581,
+       -13.04351
+      ]
+     ],
+     "name": "Monet in der Mitte"
+    },
+    {
+     "id": "r-villalobos",
+     "partei": "rea",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -74.12379,
+       -13.0534
+      ],
+      [
+       -74.12233,
+       -13.05375
+      ],
+      [
+       -74.12115,
+       -13.0526
+      ],
+      [
+       -74.12151,
+       -13.05118
+      ],
+      [
+       -74.12621,
+       -13.0466
+      ],
+      [
+       -74.12767,
+       -13.04625
+      ],
+      [
+       -74.12885,
+       -13.0474
+      ],
+      [
+       -74.12849,
+       -13.04882
+      ]
+     ],
+     "name": "Villalobos links"
+    },
+    {
+     "id": "r-serna",
+     "partei": "rea",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -74.129,
+       -13.03541
+      ],
+      [
+       -74.12718,
+       -13.03689
+      ],
+      [
+       -74.12593,
+       -13.03847
+      ],
+      [
+       -74.12589,
+       -13.04075
+      ],
+      [
+       -74.12809,
+       -13.04144
+      ],
+      [
+       -74.13017,
+       -13.04213
+      ],
+      [
+       -74.13189,
+       -13.04063
+      ],
+      [
+       -74.13165,
+       -13.03854
+      ],
+      [
+       -74.13134,
+       -13.03629
+      ]
+     ],
+     "name": "Der Vizekönig mit der Reserve"
+    }
+   ]
+  },
+  {
+   "zeit": "Gegen 10 Uhr",
+   "t": 260,
+   "kurz": "Die Königlichen steigen vom Berg herunter.",
+   "text": "Statt oben zu bleiben und die Ebene unter Feuer zu halten, lässt La Serna angreifen. Der Hang ist steil; die Kolonnen kommen einzeln unten an und müssen sich erst entfalten, während die Nachfolgenden noch am Hang hängen. Für eine halbe Stunde ist das Heer auf dem Berg nicht ein Heer, sondern eine Reihe getrennter Verbände in ungünstiger Lage.",
+   "stellungen": [
+    {
+     "id": "r-valdes",
+     "partei": "rea",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -74.14247,
+       -13.04972
+      ],
+      [
+       -74.14101,
+       -13.05007
+      ],
+      [
+       -74.13982,
+       -13.04892
+      ],
+      [
+       -74.14019,
+       -13.04749
+      ],
+      [
+       -74.14553,
+       -13.04228
+      ],
+      [
+       -74.14699,
+       -13.04193
+      ],
+      [
+       -74.14818,
+       -13.04308
+      ],
+      [
+       -74.14781,
+       -13.04451
+      ]
+     ],
+     "name": "Valdés steigt zuerst ab",
+     "staerke": "mit der Artillerie"
+    },
+    {
+     "id": "r-monet",
+     "partei": "rea",
+     "form": "pfeil",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -74.132,
+       -13.045
+      ],
+      [
+       -74.135,
+       -13.049
+      ],
+      [
+       -74.137,
+       -13.053
+      ]
+     ],
+     "name": "Monet im Abstieg"
+    },
+    {
+     "id": "r-villalobos",
+     "partei": "rea",
+     "form": "pfeil",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -74.125,
+       -13.05
+      ],
+      [
+       -74.129,
+       -13.053
+      ],
+      [
+       -74.132,
+       -13.056
+      ]
+     ],
+     "name": "Villalobos im Abstieg"
+    },
+    {
+     "id": "p-cordova",
+     "partei": "pat",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -74.1385,
+       -13.05863
+      ],
+      [
+       -74.13975,
+       -13.05833
+      ],
+      [
+       -74.14077,
+       -13.05932
+      ],
+      [
+       -74.14046,
+       -13.06054
+      ],
+      [
+       -74.1355,
+       -13.06537
+      ],
+      [
+       -74.13425,
+       -13.06567
+      ],
+      [
+       -74.13323,
+       -13.06468
+      ],
+      [
+       -74.13354,
+       -13.06346
+      ]
+     ],
+     "name": "Córdova wartet ab",
+     "staerke": "Kolumbianer"
+    },
+    {
+     "id": "p-lamar",
+     "partei": "pat",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -74.1515,
+       -13.04763
+      ],
+      [
+       -74.15275,
+       -13.04733
+      ],
+      [
+       -74.15377,
+       -13.04832
+      ],
+      [
+       -74.15346,
+       -13.04954
+      ],
+      [
+       -74.1485,
+       -13.05437
+      ],
+      [
+       -74.14725,
+       -13.05467
+      ],
+      [
+       -74.14623,
+       -13.05368
+      ],
+      [
+       -74.14654,
+       -13.05246
+      ]
+     ],
+     "name": "La Mar unter Feuer",
+     "staerke": "Peruaner"
+    },
+    {
+     "id": "p-miller",
+     "partei": "pat",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       -74.141,
+       -13.06186
+      ],
+      [
+       -74.13941,
+       -13.06315
+      ],
+      [
+       -74.13832,
+       -13.06454
+      ],
+      [
+       -74.13828,
+       -13.06653
+      ],
+      [
+       -74.1402,
+       -13.06714
+      ],
+      [
+       -74.14202,
+       -13.06774
+      ],
+      [
+       -74.14353,
+       -13.06642
+      ],
+      [
+       -74.14332,
+       -13.0646
+      ],
+      [
+       -74.14305,
+       -13.06262
+      ]
+     ],
+     "name": "Miller in Bereitschaft"
+    }
+   ]
+  },
+  {
+   "zeit": "Kurz danach",
+   "t": 310,
+   "kurz": "Valdés drückt den linken Flügel zurück.",
+   "text": "Valdés hat als Einziger die Geschütze mit heruntergebracht und geht damit gegen die peruanische Division vor. La Mars Linie weicht, die Vorposten laufen zurück, und für einen Augenblick steht der linke Flügel offen. Sucre schickt Lara mit der Reserve hinüber und lässt Miller aufsitzen.",
+   "stellungen": [
+    {
+     "id": "r-valdes",
+     "partei": "rea",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -74.14582,
+       -13.05104
+      ],
+      [
+       -74.14413,
+       -13.05072
+      ],
+      [
+       -74.14347,
+       -13.04897
+      ],
+      [
+       -74.14456,
+       -13.04766
+      ],
+      [
+       -74.15218,
+       -13.04496
+      ],
+      [
+       -74.15387,
+       -13.04528
+      ],
+      [
+       -74.15453,
+       -13.04703
+      ],
+      [
+       -74.15344,
+       -13.04834
+      ]
+     ],
+     "name": "Valdés greift an",
+     "staerke": "mit der Artillerie"
+    },
+    {
+     "id": "r-stossV",
+     "partei": "rea",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -74.149,
+       -13.049
+      ],
+      [
+       -74.15,
+       -13.052
+      ],
+      [
+       -74.1505,
+       -13.0545
+      ]
+     ]
+    },
+    {
+     "id": "p-lamar",
+     "partei": "pat",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -74.15382,
+       -13.05357
+      ],
+      [
+       -74.15509,
+       -13.05381
+      ],
+      [
+       -74.15558,
+       -13.05512
+      ],
+      [
+       -74.15477,
+       -13.0561
+      ],
+      [
+       -74.14818,
+       -13.05843
+      ],
+      [
+       -74.14691,
+       -13.05819
+      ],
+      [
+       -74.14642,
+       -13.05688
+      ],
+      [
+       -74.14723,
+       -13.0559
+      ]
+     ],
+     "name": "La Mar weicht",
+     "staerke": "Peruaner",
+     "geschlagen": true
+    },
+    {
+     "id": "p-lara",
+     "partei": "pat",
+     "form": "pfeil",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -74.145,
+       -13.06
+      ],
+      [
+       -74.149,
+       -13.058
+      ],
+      [
+       -74.151,
+       -13.0555
+      ]
+     ],
+     "name": "Lara stützt die Linke"
+    },
+    {
+     "id": "p-cordova",
+     "partei": "pat",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -74.1385,
+       -13.05863
+      ],
+      [
+       -74.13975,
+       -13.05833
+      ],
+      [
+       -74.14077,
+       -13.05932
+      ],
+      [
+       -74.14046,
+       -13.06054
+      ],
+      [
+       -74.1355,
+       -13.06537
+      ],
+      [
+       -74.13425,
+       -13.06567
+      ],
+      [
+       -74.13323,
+       -13.06468
+      ],
+      [
+       -74.13354,
+       -13.06346
+      ]
+     ],
+     "name": "Córdova rechts",
+     "staerke": "Kolumbianer"
+    },
+    {
+     "id": "r-monet",
+     "partei": "rea",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -74.13447,
+       -13.05572
+      ],
+      [
+       -74.13301,
+       -13.05607
+      ],
+      [
+       -74.13182,
+       -13.05492
+      ],
+      [
+       -74.13219,
+       -13.05349
+      ],
+      [
+       -74.13753,
+       -13.04828
+      ],
+      [
+       -74.13899,
+       -13.04793
+      ],
+      [
+       -74.14018,
+       -13.04908
+      ],
+      [
+       -74.13981,
+       -13.05051
+      ]
+     ],
+     "name": "Monet entfaltet sich noch"
+    }
+   ]
+  },
+  {
+   "zeit": "Der entscheidende Augenblick",
+   "t": 370,
+   "kurz": "Córdova erschießt sein Pferd und geht vor.",
+   "text": "Auf dem rechten Flügel steigt Córdova ab, erschießt sein Pferd vor der Front, damit niemand daran denkt, wie man wegkommt, und gibt den Befehl, der in Südamerika sprichwörtlich geworden ist: „Division, Vormarsch, im Schritt der Sieger.“ Vier Bataillone gehen ohne Halt gegen Monets Verbände, die noch dabei sind, sich zu ordnen. Die Mitte des königlichen Heeres bricht in wenigen Minuten.",
+   "stellungen": [
+    {
+     "id": "p-cordova",
+     "partei": "pat",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -74.14025,
+       -13.05441
+      ],
+      [
+       -74.14152,
+       -13.05465
+      ],
+      [
+       -74.14201,
+       -13.05597
+      ],
+      [
+       -74.1412,
+       -13.05695
+      ],
+      [
+       -74.13375,
+       -13.05959
+      ],
+      [
+       -74.13248,
+       -13.05935
+      ],
+      [
+       -74.13199,
+       -13.05803
+      ],
+      [
+       -74.1328,
+       -13.05705
+      ]
+     ],
+     "name": "Córdova geht vor",
+     "staerke": "vier Bataillone"
+    },
+    {
+     "id": "p-stossC",
+     "partei": "pat",
+     "form": "pfeil",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -74.137,
+       -13.058
+      ],
+      [
+       -74.135,
+       -13.054
+      ],
+      [
+       -74.133,
+       -13.05
+      ]
+     ],
+     "name": "„Paso de vencedores“"
+    },
+    {
+     "id": "r-monet",
+     "partei": "rea",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -74.13072,
+       -13.05179
+      ],
+      [
+       -74.12912,
+       -13.05218
+      ],
+      [
+       -74.12771,
+       -13.05081
+      ],
+      [
+       -74.12811,
+       -13.04924
+      ],
+      [
+       -74.13328,
+       -13.04421
+      ],
+      [
+       -74.13488,
+       -13.04382
+      ],
+      [
+       -74.13629,
+       -13.04519
+      ],
+      [
+       -74.13589,
+       -13.04676
+      ]
+     ],
+     "name": "Monet bricht",
+     "geschlagen": true
+    },
+    {
+     "id": "r-villalobos",
+     "partei": "rea",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -74.12379,
+       -13.0544
+      ],
+      [
+       -74.12233,
+       -13.05475
+      ],
+      [
+       -74.12115,
+       -13.0536
+      ],
+      [
+       -74.12151,
+       -13.05218
+      ],
+      [
+       -74.12621,
+       -13.0476
+      ],
+      [
+       -74.12767,
+       -13.04725
+      ],
+      [
+       -74.12885,
+       -13.0484
+      ],
+      [
+       -74.12849,
+       -13.04982
+      ]
+     ],
+     "name": "Villalobos wird mitgerissen",
+     "geschlagen": true
+    },
+    {
+     "id": "p-miller",
+     "partei": "pat",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       -74.141,
+       -13.064
+      ],
+      [
+       -74.136,
+       -13.058
+      ],
+      [
+       -74.132,
+       -13.052
+      ]
+     ],
+     "name": "Miller reitet mit"
+    }
+   ]
+  },
+  {
+   "zeit": "Kurz vor Mittag",
+   "t": 420,
+   "kurz": "Millers Reiterei stellt den linken Flügel wieder her.",
+   "text": "Während die Mitte zusammenbricht, wenden sich Reiterei und Reserve gegen Valdés, der jetzt allein steht und keine Unterstützung mehr vom Berg bekommt. Auch sein Flügel geht zurück. Nach etwa einer Stunde Gefecht ist das königliche Heer in drei Teile zerfallen, die nicht mehr zusammenfinden.",
+   "stellungen": [
+    {
+     "id": "p-miller",
+     "partei": "pat",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       -74.136,
+       -13.055
+      ],
+      [
+       -74.144,
+       -13.052
+      ],
+      [
+       -74.149,
+       -13.049
+      ]
+     ],
+     "name": "gegen Valdés"
+    },
+    {
+     "id": "p-lara",
+     "partei": "pat",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -74.15225,
+       -13.05141
+      ],
+      [
+       -74.15352,
+       -13.05165
+      ],
+      [
+       -74.15401,
+       -13.05297
+      ],
+      [
+       -74.1532,
+       -13.05395
+      ],
+      [
+       -74.14575,
+       -13.05659
+      ],
+      [
+       -74.14448,
+       -13.05635
+      ],
+      [
+       -74.14399,
+       -13.05503
+      ],
+      [
+       -74.1448,
+       -13.05405
+      ]
+     ],
+     "name": "Lara drückt nach"
+    },
+    {
+     "id": "r-valdes",
+     "partei": "rea",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -74.14572,
+       -13.04879
+      ],
+      [
+       -74.14412,
+       -13.04918
+      ],
+      [
+       -74.14271,
+       -13.04781
+      ],
+      [
+       -74.14311,
+       -13.04624
+      ],
+      [
+       -74.14828,
+       -13.04121
+      ],
+      [
+       -74.14988,
+       -13.04082
+      ],
+      [
+       -74.15129,
+       -13.04219
+      ],
+      [
+       -74.15089,
+       -13.04376
+      ]
+     ],
+     "name": "Valdés steht allein",
+     "geschlagen": true
+    },
+    {
+     "id": "p-cordova",
+     "partei": "pat",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -74.13625,
+       -13.04741
+      ],
+      [
+       -74.13752,
+       -13.04765
+      ],
+      [
+       -74.13801,
+       -13.04897
+      ],
+      [
+       -74.1372,
+       -13.04995
+      ],
+      [
+       -74.12975,
+       -13.05259
+      ],
+      [
+       -74.12848,
+       -13.05235
+      ],
+      [
+       -74.12799,
+       -13.05103
+      ],
+      [
+       -74.1288,
+       -13.05005
+      ]
+     ],
+     "name": "Córdova auf dem Hang",
+     "staerke": "vier Bataillone"
+    },
+    {
+     "id": "r-monet",
+     "partei": "rea",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -74.129,
+       -13.04196
+      ],
+      [
+       -74.12695,
+       -13.04363
+      ],
+      [
+       -74.12555,
+       -13.04541
+      ],
+      [
+       -74.1255,
+       -13.04797
+      ],
+      [
+       -74.12797,
+       -13.04875
+      ],
+      [
+       -74.13032,
+       -13.04952
+      ],
+      [
+       -74.13226,
+       -13.04783
+      ],
+      [
+       -74.13199,
+       -13.04549
+      ],
+      [
+       -74.13163,
+       -13.04295
+      ]
+     ],
+     "name": "Reste der Mitte",
+     "geschlagen": true
+    }
+   ]
+  },
+  {
+   "zeit": "Mittag",
+   "t": 470,
+   "kurz": "Der Vizekönig wird verwundet gefangen genommen.",
+   "text": "José de la Serna, sechsundfünfzig Jahre alt und seit drei Jahren Vizekönig eines Reichs, das nur noch aus seinem Heer besteht, wird sechsfach verwundet und gefangen. Mit ihm geraten vier Feldmarschälle, zehn Generäle und über sechzig Obersten in Gefangenschaft. Am Nachmittag reitet Canterac herunter und unterschreibt die Kapitulation: freier Abzug, Übergabe aller Festungen, Anerkennung der Schulden.",
+   "stellungen": [
+    {
+     "id": "r-serna",
+     "partei": "rea",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -74.13,
+       -13.03886
+      ],
+      [
+       -74.12841,
+       -13.04015
+      ],
+      [
+       -74.12732,
+       -13.04154
+      ],
+      [
+       -74.12728,
+       -13.04353
+      ],
+      [
+       -74.1292,
+       -13.04414
+      ],
+      [
+       -74.13102,
+       -13.04474
+      ],
+      [
+       -74.13253,
+       -13.04342
+      ],
+      [
+       -74.13232,
+       -13.0416
+      ],
+      [
+       -74.13205,
+       -13.03962
+      ]
+     ],
+     "name": "Der Vizekönig gefangen",
+     "geschlagen": true
+    },
+    {
+     "id": "p-cordova",
+     "partei": "pat",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -74.13425,
+       -13.04441
+      ],
+      [
+       -74.13552,
+       -13.04465
+      ],
+      [
+       -74.13601,
+       -13.04597
+      ],
+      [
+       -74.1352,
+       -13.04695
+      ],
+      [
+       -74.12775,
+       -13.04959
+      ],
+      [
+       -74.12648,
+       -13.04935
+      ],
+      [
+       -74.12599,
+       -13.04803
+      ],
+      [
+       -74.1268,
+       -13.04705
+      ]
+     ],
+     "name": "Córdova auf dem Rücken",
+     "staerke": "vier Bataillone"
+    },
+    {
+     "id": "r-rueck",
+     "partei": "rea",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -74.125,
+       -13.043
+      ],
+      [
+       -74.115,
+       -13.037
+      ],
+      [
+       -74.105,
+       -13.032
+      ]
+     ],
+     "name": "Was entkommt",
+     "rueckzug": true
+    },
+    {
+     "id": "p-lara",
+     "partei": "pat",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -74.14569,
+       -13.04426
+      ],
+      [
+       -74.14695,
+       -13.0445
+      ],
+      [
+       -74.14745,
+       -13.04581
+      ],
+      [
+       -74.14663,
+       -13.04679
+      ],
+      [
+       -74.13831,
+       -13.04974
+      ],
+      [
+       -74.13705,
+       -13.0495
+      ],
+      [
+       -74.13655,
+       -13.04819
+      ],
+      [
+       -74.13737,
+       -13.04721
+      ]
+     ],
+     "name": "Die Ebene ist frei"
+    }
+   ]
+  },
+  {
+   "zeit": "Nach dem 9. Dezember",
+   "t": 550,
+   "kurz": "Das spanische Festlandreich hört auf zu bestehen.",
+   "text": "Mit der Kapitulation von Ayacucho endet die spanische Herrschaft über das südamerikanische Festland nach knapp dreihundert Jahren. Sucre marschiert nach Oberperu, das sich im August 1825 als Bolivien selbstständig macht und sich nach Bolívar benennt; Sucre wird sein erster gewählter Präsident und 1830 aus dem Hinterhalt erschossen. Die Festung Callao hält noch bis Januar 1826; Kuba und Puerto Rico bleiben spanisch bis 1898.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     -83,
+     -34
+    ],
+    [
+     -58,
+     2
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "p-bolivien",
+     "partei": "pat",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -74.14,
+       -13.06
+      ],
+      [
+       -71.97,
+       -13.53
+      ],
+      [
+       -68.15,
+       -16.5
+      ],
+      [
+       -65.26,
+       -19.05
+      ]
+     ],
+     "name": "Sucre nach Oberperu – 1825 Bolivien"
+    },
+    {
+     "id": "p-lima",
+     "partei": "pat",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -74.14,
+       -13.06
+      ],
+      [
+       -75.7,
+       -12.6
+      ],
+      [
+       -77.03,
+       -12.05
+      ]
+     ],
+     "name": "Lima und Callao, bis Januar 1826"
+    },
+    {
+     "id": "r-ende",
+     "partei": "rea",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -77.15,
+       -12.06
+      ],
+      [
+       -79.5,
+       -8.5
+      ],
+      [
+       -80.5,
+       -3
+      ],
+      [
+       -79,
+       1
+      ]
+     ],
+     "name": "Der Abzug der Königlichen"
+    }
+   ]
+  }
+ ],
+ "ausgang": "Das königliche Heer zerfällt in einer knappen Stunde; der Vizekönig wird verwundet gefangen. Am Nachmittag unterschreibt Canterac die Kapitulation.",
+ "verluste": [
+  {
+   "partei": "rea",
+   "text": "rund 1.800 Tote, 700 Verwundete, etwa 2.000 Gefangene – darunter der Vizekönig, vier Feldmarschälle und zehn Generäle"
+  },
+  {
+   "partei": "pat",
+   "text": "rund 310 Tote und 600 Verwundete"
+  }
+ ],
+ "folgen": "Die Kapitulation von Ayacucho beendet die spanische Herrschaft über das südamerikanische Festland. Oberperu erklärt sich im August 1825 als Bolivien selbstständig; Sucre wird dessen erster gewählter Präsident und 1830 aus dem Hinterhalt erschossen. Callao hält bis Januar 1826, Kuba und Puerto Rico bleiben spanisch bis 1898. Der Ort gibt der Provinz und der Stadt Huamanga ihren neuen Namen: Ayacucho.",
+ "streit": "Beide Heere bestanden überwiegend aus Südamerikanern – auf königlicher Seite waren nur wenige hundert in Spanien geborene Soldaten. Ob die Schlacht deshalb Befreiungskrieg oder Bürgerkrieg zu nennen ist, wird bis heute unterschiedlich beantwortet. Umstritten ist auch die Kapitulationsurkunde: Peru hat die darin anerkannten Schulden später nur teilweise bedient, und ob Canterac überhaupt befugt war, für alle Festungen zu unterschreiben, wurde in Madrid bestritten."
+}

@@ -1,0 +1,2091 @@
+{
+ "id": "tenochtitlan",
+ "name": "Die Belagerung von Tenochtitlan",
+ "ort": "Hochtal von Mexiko",
+ "datum": "22. Mai bis 13. August 1521",
+ "jahr": 1521,
+ "mitte": [
+  -99.135,
+  19.435
+ ],
+ "zoom": 10.6,
+ "grund": "blatt",
+ "worum": "Eine Stadt auf einer Insel, verbunden mit dem Festland durch drei Dämme, versorgt durch eine Wasserleitung und tausende Kanus. Die Belagerung besteht darin, diese vier Verbindungen nacheinander zu kappen – und jede davon lässt sich einzeichnen und dann durchstreichen. Dreiundneunzig Tage später ist eine der größten Städte der Welt eine planierte Fläche.",
+ "parteien": [
+  {
+   "id": "spa",
+   "name": "Spanien und seine Verbündeten",
+   "farbe": "#6f9fe0",
+   "fuehrung": "Hernán Cortés, Pedro de Alvarado, Gonzalo de Sandoval, Cristóbal de Olid",
+   "staerke": "rund 900 Spanier und 13 Brigantinen – dazu Zehntausende aus Tlaxcala, Texcoco und Huexotzinco",
+   "zahl": 100000
+  },
+  {
+   "id": "mex",
+   "name": "Aztekischer Dreibund",
+   "farbe": "#d4737c",
+   "fuehrung": "Cuauhtémoc, zuvor Cuitláhuac",
+   "staerke": "eine Stadt von rund 200.000 Menschen; das Heer nicht zu beziffern, durch die Pocken geschwächt",
+   "zahl": 80000
+  }
+ ],
+ "gelaende": [
+  {
+   "art": "see",
+   "name": "Texcoco-See",
+   "punkte": [
+    [
+     -99.0385,
+     19.55501
+    ],
+    [
+     -99.00113,
+     19.49986
+    ],
+    [
+     -98.97884,
+     19.44389
+    ],
+    [
+     -98.99133,
+     19.37082
+    ],
+    [
+     -99.05141,
+     19.35795
+    ],
+    [
+     -99.10851,
+     19.3447
+    ],
+    [
+     -99.14338,
+     19.40013
+    ],
+    [
+     -99.12477,
+     19.46581
+    ],
+    [
+     -99.10322,
+     19.53676
+    ]
+   ]
+  },
+  {
+   "art": "stadt",
+   "name": "Tenochtitlan",
+   "punkte": [
+    [
+     -99.135,
+     19.46069
+    ],
+    [
+     -99.12467,
+     19.45009
+    ],
+    [
+     -99.11757,
+     19.43877
+    ],
+    [
+     -99.11732,
+     19.42249
+    ],
+    [
+     -99.12981,
+     19.41753
+    ],
+    [
+     -99.14165,
+     19.4126
+    ],
+    [
+     -99.15145,
+     19.42336
+    ],
+    [
+     -99.15008,
+     19.43826
+    ],
+    [
+     -99.14828,
+     19.45441
+    ]
+   ]
+  },
+  {
+   "art": "stadt",
+   "name": "Tlatelolco",
+   "punkte": [
+    [
+     -99.137,
+     19.46008
+    ],
+    [
+     -99.13277,
+     19.45675
+    ],
+    [
+     -99.12987,
+     19.45319
+    ],
+    [
+     -99.12977,
+     19.44806
+    ],
+    [
+     -99.13488,
+     19.4465
+    ],
+    [
+     -99.13972,
+     19.44495
+    ],
+    [
+     -99.14373,
+     19.44834
+    ],
+    [
+     -99.14317,
+     19.45303
+    ],
+    [
+     -99.14243,
+     19.45811
+    ]
+   ]
+  },
+  {
+   "art": "weg",
+   "name": "Damm nach Tlacopan",
+   "punkte": [
+    [
+     -99.158,
+     19.443
+    ],
+    [
+     -99.174,
+     19.445
+    ],
+    [
+     -99.19,
+     19.446
+    ]
+   ]
+  },
+  {
+   "art": "weg",
+   "name": "Damm nach Tepeyac",
+   "punkte": [
+    [
+     -99.13,
+     19.46
+    ],
+    [
+     -99.12,
+     19.472
+    ],
+    [
+     -99.11,
+     19.485
+    ]
+   ]
+  },
+  {
+   "art": "weg",
+   "name": "Damm nach Iztapalapa",
+   "punkte": [
+    [
+     -99.126,
+     19.416
+    ],
+    [
+     -99.116,
+     19.382
+    ],
+    [
+     -99.106,
+     19.354
+    ]
+   ]
+  },
+  {
+   "art": "weg",
+   "name": "Die Wasserleitung von Chapultepec",
+   "punkte": [
+    [
+     -99.182,
+     19.421
+    ],
+    [
+     -99.16,
+     19.427
+    ],
+    [
+     -99.145,
+     19.431
+    ]
+   ]
+  }
+ ],
+ "stationen": [
+  {
+   "zeit": "Sommer 1520 bis Frühjahr 1521",
+   "t": 0,
+   "kurz": "Cortés ist geschlagen und baut sich eine Flotte.",
+   "text": "In der Nacht auf den 1. Juli 1520 fliehen die Spanier über den Damm nach Tlacopan aus der Stadt und verlieren dabei mehr als die Hälfte ihrer Leute. Was Cortés rettet, ist Tlaxcala: eine Stadt, die seit Jahrzehnten gegen die Azteken kämpft und ihn aufnimmt. Dort lässt er dreizehn Schiffe bauen, in Einzelteilen, und über die Berge nach Texcoco tragen. Gleichzeitig läuft eine Pockenwelle durch das Hochtal und tötet unter anderem den neuen Herrscher Cuitláhuac.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     -100.7,
+     18.1
+    ],
+    [
+     -96.1,
+     20.7
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "anm-flucht",
+     "partei": "spa",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -99.135,
+       19.435
+      ],
+      [
+       -99.19,
+       19.446
+      ],
+      [
+       -99.4,
+       19.52
+      ],
+      [
+       -98.7,
+       19.4
+      ],
+      [
+       -98.237,
+       19.318
+      ]
+     ],
+     "name": "Die Nacht des 1. Juli 1520 und der Weg nach Tlaxcala"
+    },
+    {
+     "id": "anm-holz",
+     "partei": "spa",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -98.237,
+       19.318
+      ],
+      [
+       -98.6,
+       19.42
+      ],
+      [
+       -98.88,
+       19.508
+      ]
+     ],
+     "name": "Dreizehn Schiffe in Einzelteilen über die Berge"
+    },
+    {
+     "id": "anm-kueste",
+     "partei": "spa",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -96.4,
+       19.18
+      ],
+      [
+       -97.4,
+       19.25
+      ],
+      [
+       -98.237,
+       19.318
+      ]
+     ],
+     "name": "Nachschub von der Küste"
+    },
+    {
+     "id": "anm-pocken",
+     "partei": "mex",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -96.7,
+       19.15
+      ],
+      [
+       -97.8,
+       19.28
+      ],
+      [
+       -98.9,
+       19.42
+      ],
+      [
+       -99.135,
+       19.435
+      ]
+     ],
+     "name": "Die Pocken ziehen ins Hochtal"
+    }
+   ]
+  },
+  {
+   "zeit": "28. April 1521",
+   "t": 60,
+   "kurz": "Dreizehn Brigantinen laufen auf dem See vom Stapel.",
+   "text": "In Texcoco am Ostufer ist ein Kanal ausgehoben worden, um die zusammengesetzten Schiffe ins Wasser zu lassen. Es sind flache Segler mit Rudern und je einem Geschütz – gebaut nicht für das Meer, sondern für einen Salzsee von wenigen Metern Tiefe. Damit ändert sich die Grundlage des Krieges: Bisher war der See das, was die Stadt schützte.",
+   "stellungen": [
+    {
+     "id": "s-brig",
+     "partei": "spa",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -98.91285,
+       19.5
+      ],
+      [
+       -98.91993,
+       19.49336
+      ],
+      [
+       -98.92749,
+       19.4888
+      ],
+      [
+       -98.93836,
+       19.48863
+      ],
+      [
+       -98.94166,
+       19.49667
+      ],
+      [
+       -98.94495,
+       19.50428
+      ],
+      [
+       -98.93777,
+       19.51058
+      ],
+      [
+       -98.92782,
+       19.5097
+      ],
+      [
+       -98.91704,
+       19.50854
+      ]
+     ],
+     "name": "Dreizehn Brigantinen",
+     "staerke": "je ein Geschütz"
+    },
+    {
+     "id": "s-texcoco",
+     "partei": "spa",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -98.8717,
+       19.515
+      ],
+      [
+       -98.87925,
+       19.50792
+      ],
+      [
+       -98.88732,
+       19.50305
+      ],
+      [
+       -98.89891,
+       19.50287
+      ],
+      [
+       -98.90244,
+       19.51144
+      ],
+      [
+       -98.90595,
+       19.51956
+      ],
+      [
+       -98.89829,
+       19.52628
+      ],
+      [
+       -98.88768,
+       19.52534
+      ],
+      [
+       -98.87618,
+       19.52411
+      ]
+     ],
+     "name": "Das Lager in Texcoco",
+     "staerke": "Spanier und Verbündete"
+    },
+    {
+     "id": "m-stadt",
+     "partei": "mex",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -99.135,
+       19.46069
+      ],
+      [
+       -99.12467,
+       19.45009
+      ],
+      [
+       -99.11757,
+       19.43877
+      ],
+      [
+       -99.11732,
+       19.42249
+      ],
+      [
+       -99.12981,
+       19.41753
+      ],
+      [
+       -99.14165,
+       19.4126
+      ],
+      [
+       -99.15145,
+       19.42336
+      ],
+      [
+       -99.15008,
+       19.43826
+      ],
+      [
+       -99.14828,
+       19.45441
+      ]
+     ],
+     "name": "Tenochtitlan",
+     "staerke": "200.000 Menschen"
+    },
+    {
+     "id": "m-kanus",
+     "partei": "mex",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -99.05523,
+       19.44
+      ],
+      [
+       -99.06545,
+       19.43115
+      ],
+      [
+       -99.07637,
+       19.42506
+      ],
+      [
+       -99.09206,
+       19.42484
+      ],
+      [
+       -99.09684,
+       19.43555
+      ],
+      [
+       -99.10159,
+       19.4457
+      ],
+      [
+       -99.09122,
+       19.4541
+      ],
+      [
+       -99.07686,
+       19.45293
+      ],
+      [
+       -99.06129,
+       19.45139
+      ]
+     ],
+     "name": "Die Kanuflotte",
+     "staerke": "tausende"
+    }
+   ]
+  },
+  {
+   "zeit": "22. Mai",
+   "t": 130,
+   "kurz": "Drei Lager an den drei Dämmen der Stadt.",
+   "text": "Cortés teilt sein Heer in drei Teile und setzt jeden an das Festlandende eines Dammes: Alvarado nach Tlacopan im Westen, Olid nach Coyoacán im Süden, Sandoval nach Iztapalapa und später nach Tepeyac im Norden. Damit ist die Stadt zu Lande abgeschnitten, ohne dass ein Ring um sie herum nötig wäre – die Dämme sind der Ring.",
+   "stellungen": [
+    {
+     "id": "s-alvarado",
+     "partei": "spa",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -99.17628,
+       19.446
+      ],
+      [
+       -99.18194,
+       19.44069
+      ],
+      [
+       -99.18799,
+       19.43704
+      ],
+      [
+       -99.19668,
+       19.43691
+      ],
+      [
+       -99.19933,
+       19.44333
+      ],
+      [
+       -99.20196,
+       19.44942
+      ],
+      [
+       -99.19622,
+       19.45446
+      ],
+      [
+       -99.18826,
+       19.45376
+      ],
+      [
+       -99.17964,
+       19.45283
+      ]
+     ],
+     "name": "Alvarado in Tlacopan",
+     "staerke": "Westdamm"
+    },
+    {
+     "id": "s-olid",
+     "partei": "spa",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -99.14829,
+       19.352
+      ],
+      [
+       -99.15395,
+       19.34669
+      ],
+      [
+       -99.15999,
+       19.34304
+      ],
+      [
+       -99.16868,
+       19.34291
+      ],
+      [
+       -99.17132,
+       19.34933
+      ],
+      [
+       -99.17395,
+       19.35542
+      ],
+      [
+       -99.16821,
+       19.36046
+      ],
+      [
+       -99.16026,
+       19.35976
+      ],
+      [
+       -99.15164,
+       19.35883
+      ]
+     ],
+     "name": "Olid in Coyoacán",
+     "staerke": "Süddamm"
+    },
+    {
+     "id": "s-sandoval",
+     "partei": "spa",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -99.07629,
+       19.356
+      ],
+      [
+       -99.08195,
+       19.35069
+      ],
+      [
+       -99.08799,
+       19.34704
+      ],
+      [
+       -99.09668,
+       19.34691
+      ],
+      [
+       -99.09932,
+       19.35333
+      ],
+      [
+       -99.10195,
+       19.35942
+      ],
+      [
+       -99.09621,
+       19.36446
+      ],
+      [
+       -99.08826,
+       19.36376
+      ],
+      [
+       -99.07964,
+       19.36283
+      ]
+     ],
+     "name": "Sandoval bei Iztapalapa",
+     "staerke": "Ostdamm"
+    },
+    {
+     "id": "s-brig",
+     "partei": "spa",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -99.02285,
+       19.43
+      ],
+      [
+       -99.02993,
+       19.42336
+      ],
+      [
+       -99.03749,
+       19.4188
+      ],
+      [
+       -99.04835,
+       19.41863
+      ],
+      [
+       -99.05166,
+       19.42667
+      ],
+      [
+       -99.05495,
+       19.43428
+      ],
+      [
+       -99.04777,
+       19.44058
+      ],
+      [
+       -99.03782,
+       19.4397
+      ],
+      [
+       -99.02705,
+       19.43854
+      ]
+     ],
+     "name": "Die Brigantinen auf dem See"
+    },
+    {
+     "id": "m-stadt",
+     "partei": "mex",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -99.135,
+       19.46069
+      ],
+      [
+       -99.12467,
+       19.45009
+      ],
+      [
+       -99.11757,
+       19.43877
+      ],
+      [
+       -99.11732,
+       19.42249
+      ],
+      [
+       -99.12981,
+       19.41753
+      ],
+      [
+       -99.14165,
+       19.4126
+      ],
+      [
+       -99.15145,
+       19.42336
+      ],
+      [
+       -99.15008,
+       19.43826
+      ],
+      [
+       -99.14828,
+       19.45441
+      ]
+     ],
+     "name": "Tenochtitlan",
+     "staerke": "200.000 Menschen"
+    }
+   ]
+  },
+  {
+   "zeit": "Ende Mai",
+   "t": 200,
+   "kurz": "Die Wasserleitung wird bei Chapultepec zerschlagen.",
+   "text": "Der See ist salzig; das Trinkwasser kommt in tönernen Rohren auf einem gemauerten Damm von den Quellen bei Chapultepec in die Stadt. Cortés schickt eine Abteilung dorthin und lässt die Leitung zerbrechen. Von diesem Tag an trinken zweihunderttausend Menschen Brackwasser und gegrabenes Sickerwasser. Es ist die stillste Maßnahme der Belagerung und wahrscheinlich die wirksamste.",
+   "stellungen": [
+    {
+     "id": "s-leitung",
+     "partei": "spa",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -99.19,
+       19.443
+      ],
+      [
+       -99.186,
+       19.43
+      ],
+      [
+       -99.182,
+       19.4212
+      ]
+     ],
+     "name": "Zur Wasserleitung"
+    },
+    {
+     "id": "s-alvarado",
+     "partei": "spa",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -99.17628,
+       19.446
+      ],
+      [
+       -99.18194,
+       19.44069
+      ],
+      [
+       -99.18799,
+       19.43704
+      ],
+      [
+       -99.19668,
+       19.43691
+      ],
+      [
+       -99.19933,
+       19.44333
+      ],
+      [
+       -99.20196,
+       19.44942
+      ],
+      [
+       -99.19622,
+       19.45446
+      ],
+      [
+       -99.18826,
+       19.45376
+      ],
+      [
+       -99.17964,
+       19.45283
+      ]
+     ],
+     "name": "Alvarado",
+     "staerke": "Westdamm"
+    },
+    {
+     "id": "m-stadt",
+     "partei": "mex",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -99.135,
+       19.46069
+      ],
+      [
+       -99.12467,
+       19.45009
+      ],
+      [
+       -99.11757,
+       19.43877
+      ],
+      [
+       -99.11732,
+       19.42249
+      ],
+      [
+       -99.12981,
+       19.41753
+      ],
+      [
+       -99.14165,
+       19.4126
+      ],
+      [
+       -99.15145,
+       19.42336
+      ],
+      [
+       -99.15008,
+       19.43826
+      ],
+      [
+       -99.14828,
+       19.45441
+      ]
+     ],
+     "name": "ohne Süßwasser",
+     "staerke": "200.000 Menschen",
+     "geschlagen": true
+    },
+    {
+     "id": "m-kanus",
+     "partei": "mex",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -99.06523,
+       19.438
+      ],
+      [
+       -99.07545,
+       19.42915
+      ],
+      [
+       -99.08637,
+       19.42306
+      ],
+      [
+       -99.10206,
+       19.42284
+      ],
+      [
+       -99.10684,
+       19.43355
+      ],
+      [
+       -99.11159,
+       19.4437
+      ],
+      [
+       -99.10122,
+       19.4521
+      ],
+      [
+       -99.08686,
+       19.45093
+      ],
+      [
+       -99.07129,
+       19.44939
+      ]
+     ],
+     "name": "Die Kanuflotte",
+     "staerke": "tausende"
+    }
+   ]
+  },
+  {
+   "zeit": "1. Juni",
+   "t": 260,
+   "kurz": "Der See gehört den Brigantinen, nicht den Kanus.",
+   "text": "Die Kanuflotte stellt sich den Schiffen entgegen, und bei auffrischendem Wind fahren die Brigantinen unter vollen Segeln mitten hinein. Ein Einbaum kann einem Kielboot mit Rammbug nichts entgegensetzen. Danach beherrschen dreizehn Schiffe eine Wasserfläche, auf der bis dahin die gesamte Versorgung der Stadt schwamm – und sie können außerdem an jeder Stelle beider Dammseiten Feuer geben.",
+   "stellungen": [
+    {
+     "id": "s-brig",
+     "partei": "spa",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -99.06333,
+       19.435
+      ],
+      [
+       -99.07433,
+       19.42615
+      ],
+      [
+       -99.08609,
+       19.42006
+      ],
+      [
+       -99.10299,
+       19.41984
+      ],
+      [
+       -99.10813,
+       19.43055
+      ],
+      [
+       -99.11325,
+       19.4407
+      ],
+      [
+       -99.10209,
+       19.4491
+      ],
+      [
+       -99.08662,
+       19.44793
+      ],
+      [
+       -99.06985,
+       19.44639
+      ]
+     ],
+     "name": "Die Brigantinen greifen an"
+    },
+    {
+     "id": "s-ramm",
+     "partei": "spa",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -99.07,
+       19.434
+      ],
+      [
+       -99.095,
+       19.435
+      ],
+      [
+       -99.115,
+       19.436
+      ]
+     ]
+    },
+    {
+     "id": "m-kanus",
+     "partei": "mex",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -99.08895,
+       19.436
+      ],
+      [
+       -99.09764,
+       19.42847
+      ],
+      [
+       -99.10691,
+       19.4233
+      ],
+      [
+       -99.12025,
+       19.42312
+      ],
+      [
+       -99.12431,
+       19.43222
+      ],
+      [
+       -99.12835,
+       19.44085
+      ],
+      [
+       -99.11954,
+       19.44799
+      ],
+      [
+       -99.10733,
+       19.44699
+      ],
+      [
+       -99.0941,
+       19.44568
+      ]
+     ],
+     "name": "Die Kanuflotte zerbricht",
+     "staerke": "tausende",
+     "geschlagen": true
+    },
+    {
+     "id": "m-stadt",
+     "partei": "mex",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -99.135,
+       19.46069
+      ],
+      [
+       -99.12467,
+       19.45009
+      ],
+      [
+       -99.11757,
+       19.43877
+      ],
+      [
+       -99.11732,
+       19.42249
+      ],
+      [
+       -99.12981,
+       19.41753
+      ],
+      [
+       -99.14165,
+       19.4126
+      ],
+      [
+       -99.15145,
+       19.42336
+      ],
+      [
+       -99.15008,
+       19.43826
+      ],
+      [
+       -99.14828,
+       19.45441
+      ]
+     ],
+     "name": "Tenochtitlan",
+     "staerke": "200.000 Menschen"
+    }
+   ]
+  },
+  {
+   "zeit": "Juni",
+   "t": 330,
+   "kurz": "Tags vorrücken, nachts wird der Damm aufgerissen.",
+   "text": "Der Kampf auf den Dämmen hat jeden Tag denselben Ablauf: Die Spanier und ihre Verbündeten schieben sich ein Stück vor, füllen die durchbrochenen Stellen mit Steinen und Schutt, und in der Nacht kommen die Verteidiger in Kanus und graben sie wieder auf. Ein Damm ist nur so lang wie das Stück, das man auch halten kann. Wochenlang gewinnt niemand mehr als ein paar hundert Meter.",
+   "stellungen": [
+    {
+     "id": "s-vorW",
+     "partei": "spa",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -99.188,
+       19.4458
+      ],
+      [
+       -99.17,
+       19.4444
+      ],
+      [
+       -99.156,
+       19.443
+      ]
+     ],
+     "name": "Alvarado auf dem Westdamm"
+    },
+    {
+     "id": "s-vorS",
+     "partei": "spa",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -99.108,
+       19.36
+      ],
+      [
+       -99.118,
+       19.39
+      ],
+      [
+       -99.126,
+       19.414
+      ]
+     ],
+     "name": "Olid und Cortés auf dem Süddamm"
+    },
+    {
+     "id": "s-vorN",
+     "partei": "spa",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -99.109,
+       19.484
+      ],
+      [
+       -99.121,
+       19.47
+      ],
+      [
+       -99.13,
+       19.459
+      ]
+     ],
+     "name": "Sandoval auf dem Norddamm"
+    },
+    {
+     "id": "m-daemme",
+     "partei": "mex",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -99.135,
+       19.46136
+      ],
+      [
+       -99.12561,
+       19.45172
+      ],
+      [
+       -99.11916,
+       19.44142
+      ],
+      [
+       -99.11893,
+       19.42662
+      ],
+      [
+       -99.13029,
+       19.42212
+      ],
+      [
+       -99.14104,
+       19.41764
+      ],
+      [
+       -99.14995,
+       19.42742
+      ],
+      [
+       -99.14871,
+       19.44096
+      ],
+      [
+       -99.14708,
+       19.45564
+      ]
+     ],
+     "name": "reißt die Dämme nachts wieder auf",
+     "staerke": "jede Nacht"
+    },
+    {
+     "id": "s-brig",
+     "partei": "spa",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -99.07921,
+       19.43132
+      ],
+      [
+       -99.08357,
+       19.41975
+      ],
+      [
+       -99.08982,
+       19.41002
+      ],
+      [
+       -99.10289,
+       19.40267
+      ],
+      [
+       -99.11201,
+       19.40884
+      ],
+      [
+       -99.12084,
+       19.41458
+      ],
+      [
+       -99.11615,
+       19.42586
+      ],
+      [
+       -99.10353,
+       19.43151
+      ],
+      [
+       -99.08973,
+       19.43743
+      ]
+     ],
+     "name": "Die Brigantinen decken die Flanken"
+    }
+   ]
+  },
+  {
+   "zeit": "30. Juni",
+   "t": 400,
+   "kurz": "Ein Angriff über eine Lücke, die nicht gefüllt war.",
+   "text": "Cortés drängt auf einen schnellen Vorstoß bis zum großen Markt und lässt eine Bresche im Damm nur notdürftig zuschütten. Die Verteidiger geben Boden preis, lassen die Kolonne über die Stelle hinweg und schlagen dann von beiden Seiten aus Kanus zu. Beim Rückzug bricht alles an derselben Lücke zusammen. Cortés wird am Bein verwundet und weggezogen; über fünfzig Spanier werden lebend gefangen.",
+   "stellungen": [
+    {
+     "id": "s-stoss",
+     "partei": "spa",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -99.126,
+       19.416
+      ],
+      [
+       -99.132,
+       19.429
+      ],
+      [
+       -99.135,
+       19.438
+      ]
+     ],
+     "name": "Vorstoß zum Markt",
+     "geschlagen": true
+    },
+    {
+     "id": "m-gegen1",
+     "partei": "mex",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -99.115,
+       19.43
+      ],
+      [
+       -99.125,
+       19.427
+      ],
+      [
+       -99.131,
+       19.425
+      ]
+     ],
+     "name": "aus Kanus von Osten"
+    },
+    {
+     "id": "m-gegen2",
+     "partei": "mex",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -99.148,
+       19.43
+      ],
+      [
+       -99.14,
+       19.427
+      ],
+      [
+       -99.134,
+       19.425
+      ]
+     ],
+     "name": "aus Kanus von Westen"
+    },
+    {
+     "id": "s-rueck",
+     "partei": "spa",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -99.133,
+       19.433
+      ],
+      [
+       -99.129,
+       19.423
+      ],
+      [
+       -99.125,
+       19.413
+      ]
+     ],
+     "name": "Rückzug über die Bresche",
+     "rueckzug": true
+    },
+    {
+     "id": "m-stadt",
+     "partei": "mex",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -99.135,
+       19.46069
+      ],
+      [
+       -99.12467,
+       19.45009
+      ],
+      [
+       -99.11757,
+       19.43877
+      ],
+      [
+       -99.11732,
+       19.42249
+      ],
+      [
+       -99.12981,
+       19.41753
+      ],
+      [
+       -99.14165,
+       19.4126
+      ],
+      [
+       -99.15145,
+       19.42336
+      ],
+      [
+       -99.15008,
+       19.43826
+      ],
+      [
+       -99.14828,
+       19.45441
+      ]
+     ],
+     "name": "Tenochtitlan",
+     "staerke": "200.000 Menschen"
+    }
+   ]
+  },
+  {
+   "zeit": "Die Nächte danach",
+   "t": 450,
+   "kurz": "Auf dem Tempel, sichtbar aus allen drei Lagern.",
+   "text": "Die Gefangenen werden auf der Plattform des Haupttempels geopfert, in Sichtweite der Lager, mit Trommeln, die nachts über den See zu hören sind. Die Wirkung ist genau berechnet: Ein großer Teil der indigenen Verbündeten zieht in den folgenden Tagen ab, weil Wahrsager der Stadt den Untergang der Fremden in acht Tagen angekündigt haben. Als die acht Tage vergehen, kommen sie zurück.",
+   "stellungen": [
+    {
+     "id": "m-tempel",
+     "partei": "mex",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -99.132,
+       19.43859
+      ],
+      [
+       -99.13012,
+       19.43711
+      ],
+      [
+       -99.12883,
+       19.43553
+      ],
+      [
+       -99.12879,
+       19.43325
+      ],
+      [
+       -99.13106,
+       19.43256
+      ],
+      [
+       -99.13321,
+       19.43187
+      ],
+      [
+       -99.13499,
+       19.43337
+      ],
+      [
+       -99.13474,
+       19.43546
+      ],
+      [
+       -99.13442,
+       19.43771
+      ]
+     ],
+     "name": "Der Haupttempel"
+    },
+    {
+     "id": "m-stadt",
+     "partei": "mex",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -99.135,
+       19.46069
+      ],
+      [
+       -99.12467,
+       19.45009
+      ],
+      [
+       -99.11757,
+       19.43877
+      ],
+      [
+       -99.11732,
+       19.42249
+      ],
+      [
+       -99.12981,
+       19.41753
+      ],
+      [
+       -99.14165,
+       19.4126
+      ],
+      [
+       -99.15145,
+       19.42336
+      ],
+      [
+       -99.15008,
+       19.43826
+      ],
+      [
+       -99.14828,
+       19.45441
+      ]
+     ],
+     "name": "Tenochtitlan",
+     "staerke": "200.000 Menschen"
+    },
+    {
+     "id": "s-abzug",
+     "partei": "spa",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -99.18,
+       19.446
+      ],
+      [
+       -99.3,
+       19.42
+      ],
+      [
+       -99.42,
+       19.39
+      ]
+     ],
+     "name": "Verbündete ziehen ab",
+     "rueckzug": true
+    },
+    {
+     "id": "s-alvarado",
+     "partei": "spa",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -99.17857,
+       19.446
+      ],
+      [
+       -99.18329,
+       19.44157
+      ],
+      [
+       -99.18832,
+       19.43853
+      ],
+      [
+       -99.19557,
+       19.43842
+      ],
+      [
+       -99.19777,
+       19.44378
+      ],
+      [
+       -99.19997,
+       19.44885
+      ],
+      [
+       -99.19518,
+       19.45305
+      ],
+      [
+       -99.18855,
+       19.45246
+      ],
+      [
+       -99.18136,
+       19.45169
+      ]
+     ],
+     "name": "Alvarado hält das Lager",
+     "staerke": "Westdamm"
+    },
+    {
+     "id": "s-olid",
+     "partei": "spa",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -99.15057,
+       19.352
+      ],
+      [
+       -99.15529,
+       19.34757
+      ],
+      [
+       -99.16032,
+       19.34453
+      ],
+      [
+       -99.16757,
+       19.34442
+      ],
+      [
+       -99.16977,
+       19.34978
+      ],
+      [
+       -99.17196,
+       19.35485
+      ],
+      [
+       -99.16718,
+       19.35905
+      ],
+      [
+       -99.16055,
+       19.35846
+      ],
+      [
+       -99.15337,
+       19.35769
+      ]
+     ],
+     "name": "Olid hält das Lager",
+     "staerke": "Süddamm"
+    }
+   ]
+  },
+  {
+   "zeit": "Juli",
+   "t": 520,
+   "kurz": "Was genommen ist, wird niedergerissen und verfüllt.",
+   "text": "Cortés ändert das Verfahren: Kein Haus, das genommen wird, bleibt stehen. Zehntausende Verbündete reißen Mauern und Dächer ab und werfen den Schutt in die Kanäle. Was entsteht, ist keine eroberte Stadt, sondern eine planierte Fläche, über die Reiterei und Geschütze gehen können. Der Vormarsch wird dadurch langsam, aber er lässt sich nachts nicht mehr rückgängig machen.",
+   "stellungen": [
+    {
+     "id": "m-stadt",
+     "partei": "mex",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -99.136,
+       19.46052
+      ],
+      [
+       -99.12896,
+       19.45329
+      ],
+      [
+       -99.12412,
+       19.44557
+      ],
+      [
+       -99.12394,
+       19.43447
+      ],
+      [
+       -99.13246,
+       19.43109
+      ],
+      [
+       -99.14053,
+       19.42773
+      ],
+      [
+       -99.14722,
+       19.43506
+      ],
+      [
+       -99.14628,
+       19.44522
+      ],
+      [
+       -99.14506,
+       19.45623
+      ]
+     ],
+     "name": "Was noch steht",
+     "staerke": "zusammengedrängt",
+     "geschlagen": true
+    },
+    {
+     "id": "s-abriss",
+     "partei": "spa",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -99.133,
+       19.44218
+      ],
+      [
+       -99.1269,
+       19.43592
+      ],
+      [
+       -99.1227,
+       19.42923
+      ],
+      [
+       -99.12255,
+       19.41961
+      ],
+      [
+       -99.12994,
+       19.41668
+      ],
+      [
+       -99.13693,
+       19.41377
+      ],
+      [
+       -99.14272,
+       19.42012
+      ],
+      [
+       -99.14191,
+       19.42893
+      ],
+      [
+       -99.14085,
+       19.43847
+      ]
+     ],
+     "name": "Abgetragen und verfüllt",
+     "staerke": "Zehntausende"
+    },
+    {
+     "id": "s-vorS",
+     "partei": "spa",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -99.13,
+       19.423
+      ],
+      [
+       -99.134,
+       19.432
+      ],
+      [
+       -99.136,
+       19.439
+      ]
+     ],
+     "name": "von Süden"
+    },
+    {
+     "id": "s-vorW",
+     "partei": "spa",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -99.156,
+       19.443
+      ],
+      [
+       -99.147,
+       19.444
+      ],
+      [
+       -99.141,
+       19.445
+      ]
+     ],
+     "name": "von Westen"
+    },
+    {
+     "id": "s-brig",
+     "partei": "spa",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -99.08536,
+       19.45569
+      ],
+      [
+       -99.08948,
+       19.44476
+      ],
+      [
+       -99.09539,
+       19.43557
+      ],
+      [
+       -99.10773,
+       19.42863
+      ],
+      [
+       -99.11635,
+       19.43446
+      ],
+      [
+       -99.12469,
+       19.43988
+      ],
+      [
+       -99.12025,
+       19.45054
+      ],
+      [
+       -99.10834,
+       19.45587
+      ],
+      [
+       -99.0953,
+       19.46146
+      ]
+     ],
+     "name": "Die Brigantinen"
+    }
+   ]
+  },
+  {
+   "zeit": "13. August",
+   "t": 600,
+   "kurz": "Cuauhtémoc wird auf dem Wasser aus dem Kanu geholt.",
+   "text": "Der letzte Widerstand steht in Tlatelolco, dem Marktviertel im Norden, auf einer Fläche von wenigen hundert Metern, zwischen Toten und ohne Wasser. Cuauhtémoc versucht am Nachmittag, mit einigen Booten über den See zu entkommen; eine Brigantine holt ihn ein. Er bittet, ihn mit dem Dolch zu töten. Damit endet die Belagerung nach dreiundneunzig Tagen.",
+   "stellungen": [
+    {
+     "id": "m-stadt",
+     "partei": "mex",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -99.137,
+       19.45829
+      ],
+      [
+       -99.13371,
+       19.45569
+      ],
+      [
+       -99.13146,
+       19.45292
+      ],
+      [
+       -99.13137,
+       19.44894
+      ],
+      [
+       -99.13535,
+       19.44772
+      ],
+      [
+       -99.13912,
+       19.44652
+      ],
+      [
+       -99.14223,
+       19.44915
+      ],
+      [
+       -99.1418,
+       19.4528
+      ],
+      [
+       -99.14123,
+       19.45675
+      ]
+     ],
+     "name": "Der letzte Rest in Tlatelolco",
+     "staerke": "wenige hundert Meter",
+     "geschlagen": true
+    },
+    {
+     "id": "m-flucht",
+     "partei": "mex",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -99.135,
+       19.456
+      ],
+      [
+       -99.12,
+       19.462
+      ],
+      [
+       -99.105,
+       19.465
+      ]
+     ],
+     "name": "Cuauhtémoc im Kanu",
+     "rueckzug": true
+    },
+    {
+     "id": "s-brig",
+     "partei": "spa",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -99.08,
+       19.475
+      ],
+      [
+       -99.095,
+       19.469
+      ],
+      [
+       -99.108,
+       19.4655
+      ]
+     ],
+     "name": "Eine Brigantine holt ihn ein"
+    },
+    {
+     "id": "s-abriss",
+     "partei": "spa",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -99.135,
+       19.45636
+      ],
+      [
+       -99.12561,
+       19.44672
+      ],
+      [
+       -99.11916,
+       19.43642
+      ],
+      [
+       -99.11893,
+       19.42162
+      ],
+      [
+       -99.13029,
+       19.41712
+      ],
+      [
+       -99.14104,
+       19.41264
+      ],
+      [
+       -99.14995,
+       19.42242
+      ],
+      [
+       -99.14871,
+       19.43596
+      ],
+      [
+       -99.14708,
+       19.45064
+      ]
+     ],
+     "name": "Die abgetragene Stadt",
+     "staerke": "planiert"
+    }
+   ]
+  },
+  {
+   "zeit": "Nach dem 13. August",
+   "t": 700,
+   "kurz": "Auf den Trümmern entsteht Mexiko-Stadt.",
+   "text": "Cortés lässt an derselben Stelle bauen: Die Kathedrale steht neben dem Fundament des Haupttempels, der Regierungspalast auf dem des Herrscherhauses. Cuauhtémoc wird gefoltert, damit er sagt, wo das Gold sei, vier Jahre mitgeführt und 1525 auf einem Zug nach Honduras gehängt. Die Eroberung des restlichen Mesoamerika dauert Jahrzehnte; was sie möglich macht, sind zu großen Teilen die Seuchen, die vor den Heeren herlaufen.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     -106.5,
+     12.5
+    ],
+    [
+     -86.5,
+     24.5
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "s-neuspanien",
+     "partei": "spa",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -99.13,
+       19.43
+      ],
+      [
+       -101.2,
+       19.7
+      ],
+      [
+       -103.35,
+       20.67
+      ],
+      [
+       -104.3,
+       21.5
+      ]
+     ],
+     "name": "Nach Westen bis zur Pazifikküste"
+    },
+    {
+     "id": "s-sueden",
+     "partei": "spa",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -99.13,
+       19.43
+      ],
+      [
+       -96.72,
+       17.07
+      ],
+      [
+       -92.9,
+       15.6
+      ],
+      [
+       -90.51,
+       14.64
+      ],
+      [
+       -87.2,
+       14.1
+      ]
+     ],
+     "name": "Nach Süden bis Guatemala und Honduras"
+    },
+    {
+     "id": "s-silber",
+     "partei": "spa",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -99.13,
+       19.43
+      ],
+      [
+       -97.1,
+       19.2
+      ],
+      [
+       -96.13,
+       19.19
+      ]
+     ],
+     "name": "Das Silber geht über Veracruz nach Spanien"
+    },
+    {
+     "id": "m-seuchen",
+     "partei": "mex",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -99.13,
+       19.43
+      ],
+      [
+       -97.5,
+       17.6
+      ],
+      [
+       -94.5,
+       16.4
+      ],
+      [
+       -91.5,
+       15.5
+      ]
+     ],
+     "name": "Die Seuchen laufen den Heeren voraus"
+    }
+   ]
+  }
+ ],
+ "ausgang": "Tlatelolco fällt am 13. August 1521; Cuauhtémoc wird auf dem See gefangen. Die Stadt ist zu großen Teilen abgetragen.",
+ "verluste": [
+  {
+   "partei": "mex",
+   "text": "Schätzungen zwischen 100.000 und 240.000 Toten, die meisten durch Hunger, Durst und Seuchen"
+  },
+  {
+   "partei": "spa",
+   "text": "einige hundert Spanier, darunter über fünfzig gefangen und geopfert; unter den Verbündeten Zehntausende"
+  }
+ ],
+ "folgen": "Auf den Trümmern wird Mexiko-Stadt gebaut, die Hauptstadt Neuspaniens: Kathedrale neben dem Fundament des Haupttempels, Palast auf dem Herrscherhaus. Cuauhtémoc wird gefoltert und 1525 gehängt. Tlaxcala, ohne dessen Zehntausende die Belagerung nicht möglich gewesen wäre, erhält Sonderrechte und verliert sie im Lauf der Kolonialzeit wieder. Der eigentliche Vorgang der nächsten hundert Jahre sind die Seuchen: Die indigene Bevölkerung Mesoamerikas geht auf ein Zehntel zurück.",
+ "streit": "Die Zahl der Verbündeten schwankt zwischen 80.000 und 200.000 – die Kolonialberichte hatten Gründe, sie klein zu halten, und Tlaxcala Gründe, sie groß zu machen. Die spanische Überlieferung stammt von Cortés selbst und von Bernal Díaz, die indigene aus den nach 1550 aufgezeichneten Berichten des Codex Florentinus; sie widersprechen einander an vielen Stellen. Der genaue Verlauf der Dämme und der Uferlinie ist rekonstruiert – der See ist längst trockengelegt, und die Stadt darüber sinkt bis heute in den alten Seegrund ein."
+}
