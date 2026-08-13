@@ -710,7 +710,8 @@
    "rang": 2,
    "sieger": "Ägypten",
    "text": "Die erste Schlacht der Geschichte, deren Verlauf sich einigermaßen rekonstruieren lässt – weil beide Seiten darüber schrieben. Ramses II. läuft in einen Hinterhalt und stellt die Sache anschließend zu Hause als Triumph dar, in Stein, mehrfach.",
-   "wiki": "Schlacht bei Kadesch"
+   "wiki": "Schlacht bei Kadesch",
+   "verlauf": "kadesch"
   },
   {
    "id": "deltaschlacht",
@@ -824,7 +825,8 @@
    "rang": 1,
    "sieger": "Perserreich",
    "text": "Ein Engpass zwischen Berg und Meer, in dem Zahlen nichts nützen – bis ein Ortskundiger den Bergpfad verrät. Die Nachhut fällt vollständig. Die verlorene Schlacht wird berühmter als jeder Sieg.",
-   "wiki": "Schlacht bei den Thermopylen"
+   "wiki": "Schlacht bei den Thermopylen",
+   "verlauf": "thermopylen"
   },
   {
    "id": "plataeae",
@@ -969,7 +971,8 @@
    "rang": 3,
    "sieger": "Makedonien und der Korinthische Bund",
    "text": "Gegen Kriegselefanten und einen angeschwollenen Fluss gewonnen – und danach verweigert das Heer den Weitermarsch. Alexanders Eroberung endet nicht an einem Gegner, sondern an der Erschöpfung seiner eigenen Leute.",
-   "wiki": "Schlacht am Hydaspes"
+   "wiki": "Schlacht am Hydaspes",
+   "verlauf": "hydaspes"
   },
   {
    "id": "kalingaschlacht",

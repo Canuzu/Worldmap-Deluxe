@@ -1,5 +1,20 @@
 [
  {
+  "id": "kadesch",
+  "name": "Kadesch",
+  "ort": "Tell Nebi Mend am Orontes",
+  "datum": "um 1274 v. Chr.",
+  "jahr": -1274,
+  "mitte": [
+   36.515,
+   34.55
+  ],
+  "zoom": 11.4,
+  "grund": "relief",
+  "worum": "Eine Falle, die aus einer Ortsangabe besteht: Zwei bestellte Überläufer sagen, der Feind stehe zweihundert Kilometer weiter nördlich. Ramses fährt daraufhin mit einem Viertel seines Heeres voraus und lagert vor einer Stadt, hinter der vierzigtausend Mann warten – während die anderen drei Viertel über zwanzig Kilometer verteilt die Straße heraufmarschieren.",
+  "stationen": 11
+ },
+ {
   "id": "marathon",
   "name": "Schlacht bei Marathon",
   "ort": "Ebene von Marathon, Attika",
@@ -29,6 +44,36 @@
   "see": true,
   "worum": "Eine Seeschlacht, in der die Geografie das Argument ist: In einer Enge von anderthalb Kilometern nützt die dreifache Zahl nichts. Themistokles’ Leistung besteht darin, den Gegner mit einer falschen Nachricht dazu zu bringen, hineinzufahren.",
   "stationen": 9
+ },
+ {
+  "id": "thermopylen",
+  "name": "Thermopylen",
+  "ort": "Der Engpass am Malischen Golf",
+  "datum": "August 480 v. Chr.",
+  "jahr": -480,
+  "mitte": [
+   22.535,
+   38.796
+  ],
+  "zoom": 12.2,
+  "grund": "blatt",
+  "worum": "Eine Frontbreite von hundert Metern nimmt der Überzahl ihren einzigen Vorteil: Zwischen dem Steilhang des Kallidromos und dem Wasser des Malischen Golfs passen nur wenige Dutzend Mann nebeneinander. Zwei Tage lang hält das. Dann zeigt ein Ortskundiger einen Pfad über den Berg – und die Rechnung, auf der die ganze Stellung beruht, ist hinfällig.",
+  "stationen": 11
+ },
+ {
+  "id": "hydaspes",
+  "name": "Am Hydaspes",
+  "ort": "Am Jhelum im Pandschab",
+  "datum": "Mai 326 v. Chr.",
+  "jahr": -326,
+  "mitte": [
+   73.74,
+   32.81
+  ],
+  "zoom": 11,
+  "grund": "blatt",
+  "worum": "Zweihundert Elefanten am anderen Ufer machen den geraden Weg unmöglich: Pferde gehen nicht gegen sie an, und schon gar nicht von einem Floß herunter. Also wird wochenlang nachts Lärm gemacht, bis der Gegner aufhört hinzusehen – und dann im Gewitter siebenundzwanzig Kilometer flussaufwärts übergesetzt. Die halbe Schlacht ist ein Flussübergang.",
+  "stationen": 11
  },
  {
   "id": "gaugamela",
@@ -122,6 +167,21 @@
   "stationen": 9
  },
  {
+  "id": "jarmuk",
+  "name": "Am Jarmuk",
+  "ort": "Die Hochfläche südlich des Golan",
+  "datum": "15. bis 20. August 636",
+  "jahr": 636,
+  "mitte": [
+   35.96,
+   32.78
+  ],
+  "zoom": 11.2,
+  "grund": "relief",
+  "worum": "Eine Hochfläche, auf drei Seiten von Schluchten begrenzt – und die byzantinische Aufstellung hat den Wadi ar-Ruqqad im Rücken, mit einem einzigen brauchbaren Übergang. Fünf Tage lang entscheidet das nichts. Am sechsten nimmt Chalid alle Reiter aus der Linie, trennt damit die gegnerische Reiterei vom Fußvolk und drückt die Linie genau dorthin, wo sie nicht mehr weiterkann.",
+  "stationen": 12
+ },
+ {
   "id": "tours",
   "name": "Tours und Poitiers",
   "ort": "Zwischen Poitiers und Tours",
@@ -152,6 +212,22 @@
   "stationen": 13
  },
  {
+  "id": "dannoura",
+  "name": "Dan-no-ura",
+  "ort": "Die Meerenge von Shimonoseki",
+  "datum": "25. April 1185",
+  "jahr": 1185,
+  "mitte": [
+   130.98,
+   33.961
+  ],
+  "zoom": 12.2,
+  "grund": "blatt",
+  "see": true,
+  "worum": "Der Wendepunkt ist eine Uhrzeit. Durch die Enge von Shimonoseki läuft der Gezeitenstrom mit bis zu acht Knoten – schneller, als ein Ruderschiff dagegen ankommt. Am Vormittag setzt er nach Osten und trägt die Taira gegen die Minamoto; gegen Mittag kehrt er um. Quer heraus führt kein Weg, und die Richtung, in der man kämpfen kann, wechselt an einem einzigen Punkt des Tages.",
+  "stationen": 10
+ },
+ {
   "id": "hattin",
   "name": "Hattin",
   "ort": "Hörner von Hattin, Galiläa",
@@ -165,6 +241,21 @@
   "grund": "relief",
   "worum": "Eine Schlacht, die das Wasser entscheidet. Zwischen dem Lager der Kreuzfahrer und dem belagerten Tiberias liegen dreißig Kilometer wasserlose Hochebene im Juli. Wer aufbricht, marschiert einen Tag ohne Quelle, mit berittenen Bogenschützen an beiden Flanken.",
   "stationen": 10
+ },
+ {
+  "id": "ainjalut",
+  "name": "Ain Djalut",
+  "ort": "Die Ebene von Jesreel",
+  "datum": "3. September 1260",
+  "jahr": 1260,
+  "mitte": [
+   35.37,
+   32.556
+  ],
+  "zoom": 11.6,
+  "grund": "relief",
+  "worum": "Zwanzig Jahre nach Muhi steht der mongolischen Reiterei zum ersten Mal ein Gegner gegenüber, der genauso kämpft: Die Mamluken sind selbst Steppenreiter, als Kinder verkauft und in Ägypten ausgebildet. Deshalb ist dies die Karte einer Umkehrung – ein Vortrupp weicht scheinbar, zieht die Mongolen in eine Ebene, und an deren Hängen wartet das Heer. Die Falle ist die, die ihre eigene Seite erfunden hat.",
+  "stationen": 11
  },
  {
   "id": "mohi",
@@ -242,6 +333,21 @@
   "stationen": 9
  },
  {
+  "id": "cajamarca",
+  "name": "Cajamarca",
+  "ort": "Nordperu, im Hochtal",
+  "datum": "16. November 1532",
+  "jahr": 1532,
+  "mitte": [
+   -78.49,
+   -7.163
+  ],
+  "zoom": 13.4,
+  "grund": "relief",
+  "worum": "Das größte Zahlenverhältnis dieser Sammlung auf der kleinsten Fläche: hundertachtundsechzig Männer gegen ein Reich von Millionen, entschieden auf einem Platz von zweihundert Metern Kantenlänge. Auf der Karte gehört beides zusammen – ein Lager, das den halben Talkessel füllt, und daneben ein geschlossener Platz, in den man nur durch schmale Gassen kommt und aus dem man nur durch dieselben wieder heraus.",
+  "stationen": 12
+ },
+ {
   "id": "lepanto",
   "name": "Seeschlacht von Lepanto",
   "ort": "Golf von Patras, vor den Echinaden",
@@ -270,6 +376,21 @@
   "zoom": 12.9,
   "grund": "relief",
   "worum": "Die Entscheidung über die Nachfolge Hideyoshis. Achtzigtausend gegen fünfundsiebzigtausend in einem Talkessel von drei Kilometern – und ein Drittel der Westarmee sitzt auf den Bergen und greift nie ein. Am Mittag wechselt einer dieser Berge die Seite.",
+  "stationen": 11
+ },
+ {
+  "id": "breitenfeld",
+  "name": "Breitenfeld",
+  "ort": "Nördlich von Leipzig",
+  "datum": "17. September 1631",
+  "jahr": 1631,
+  "mitte": [
+   12.395,
+   51.432
+  ],
+  "zoom": 12.4,
+  "grund": "relief",
+  "worum": "Zwei Ordnungen nebeneinander auf einem Feld: siebzehn Gevierthaufen von je anderthalbtausend Mann, die im Nahkampf fast unzerbrechlich sind und sich nicht drehen können – und zwei Linien aus Verbänden zu fünfhundert, mit Musketieren zwischen der Reiterei. Der Beweis kommt, als die Sachsen davonlaufen: Die schwedische Reserve baut mitten in der Schlacht eine neue Front im rechten Winkel. Mit Gevierthaufen ginge das nicht.",
   "stationen": 11
  },
  {
@@ -316,6 +437,21 @@
   "grund": "relief",
   "worum": "Zwei Monate Belagerung, ein Tag Schlacht. Das Entsatzheer kommt über den Wienerwald, den der Großwesir für unpassierbar hielt – und trifft am Nachmittag nicht auf die Front, sondern auf das ungedeckte Lager.",
   "stationen": 10
+ },
+ {
+  "id": "yorktown",
+  "name": "Yorktown",
+  "ort": "Virginia, am York River",
+  "datum": "28. September bis 19. Oktober 1781",
+  "jahr": 1781,
+  "mitte": [
+   -76.508,
+   37.235
+  ],
+  "zoom": 13,
+  "grund": "relief",
+  "worum": "Die Entscheidung fällt dreißig Seemeilen entfernt und drei Wochen vor dem ersten Schuss: Neuntausend Mann auf einer Landzunge sind so lange sicher, wie die Marine kommen kann – und am 5. September kann sie es nicht mehr. Danach ist die Belagerung nur noch die Ausführung, Nacht für Nacht einen Graben näher.",
+  "stationen": 11
  },
  {
   "id": "austerlitz",
@@ -392,6 +528,21 @@
   "grund": "relief",
   "worum": "Lees zweiter Vorstoß in den Norden. Drei Tage um einen Höhenrücken, der die Form eines Angelhakens hat – und weil die Union innen steht, kann sie Reserven schneller verschieben, als der Angreifer außen herum marschieren kann. Am dritten Tag setzt Lee alles auf einen Stoß über anderthalb Kilometer offenes Feld.",
   "stationen": 13
+ },
+ {
+  "id": "isandlwana",
+  "name": "Isandlwana",
+  "ort": "Zululand, am Fuß des Felsens",
+  "datum": "22. Januar 1879",
+  "jahr": 1879,
+  "mitte": [
+   30.66,
+   -28.35
+  ],
+  "zoom": 11.6,
+  "grund": "relief",
+  "worum": "Eine Schlachtordnung, die man auf einer Karte unmittelbar lesen kann: die Brust bindet von vorn, zwei Hörner laufen außen herum und schließen sich hinter dem Gegner, die Lenden sitzen als Reserve mit dem Rücken zum Feld. Dagegen steht eine Feuerlinie von vier Kilometern, die zu weit vor dem Lager liegt, um versorgt zu werden – und die in dem Augenblick wertlos wird, in dem das Feuer nachlässt.",
+  "stationen": 12
  },
  {
   "id": "adua",

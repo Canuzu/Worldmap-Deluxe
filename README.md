@@ -32,7 +32,7 @@ Religion, Bevölkerung, Wirtschaft, Wendepunkte und Nachbarn.
 | **Kartengrundlage** | wahlweise Relief- oder physische Geländekarte unter den historischen Grenzen – bewusst ohne heutige Straßen, Städte oder Staatsgrenzen. Abschaltbar; ohne sie zeichnet der Atlas wie zuvor alles selbst |
 | **Orte zur Orientierung** | heutige Städte mit deutschen Namen, gestaffelt nach Rang eingeblendet – ohne sie ist die Karte ab Zoomstufe 6 anhaltslos |
 | **Kriege & Schlachten** | 87 Kriege und 175 Schlachten von Kadesch bis Bachmut. Das Register zeigt, was im eingestellten Jahr läuft – mit einem Balken, der die Dauer und den Stand angibt. Ein Klick legt die Kriegsparteien farbig auf die Karte und nummeriert seine Schlachtfelder in der Reihenfolge, in der sie geschlagen wurden |
-| **Berühmte Schlachten** | 34 Verläufe von Marathon bis Dien Bien Phu – Station für Station abspielbar, die Stellungen verschieben sich mit |
+| **Berühmte Schlachten** | 44 Verläufe von Kadesch bis Dien Bien Phu – Station für Station abspielbar, die Stellungen verschieben sich mit |
 | **Vollbild** | <kbd>V</kbd> nimmt den ganzen Bildschirm, <kbd>F</kbd> blendet die Bedienelemente aus – beides einzeln, weil beides einzeln sinnvoll ist |
 | **Vier Einfärbungen** | nach Gemeinwesen, Oberhoheit, Kulturraum oder Genauigkeit des Grenzverlaufs |
 | **Suche** | über alle Gemeinwesen des aktuellen Zeitschnitts, deutsch und in der Schreibweise des Datensatzes |
@@ -199,7 +199,7 @@ npm run check:staaten # zählt alle 195 Staaten in den Gegenwartsjahren nach
 npm run check:herrscher # prüft, für wie viele Jahre ein Herrscher hinterlegt ist
 npm run check:ereignisse # verteilt die Ereignisse auf die Zeitschnitte und prüft die Orte
 npm run check:konflikte # prüft Kriege, Schlachtfelder und die Namen der Kriegsparteien
-npm run check:schlachten # prüft die 34 abspielbaren Verläufe: Geometrie, Zeitmarken, Kennungen
+npm run check:schlachten # prüft die 44 abspielbaren Verläufe: Geometrie, Zeitmarken, Kennungen
 npm run check:layout  # Oberfläche in 5 Fenstergrößen × 6 Zuständen (braucht `npm run dev`)
 npm run check:ladelast -- http://127.0.0.1:4173  # was der erste Aufruf lädt (braucht `npm run preview`)
 npm run check:fluss    -- http://127.0.0.1:4173  # Bildraten beim Schwenken und Zoomen
@@ -576,8 +576,8 @@ Der Atlas zeigt sonst Zustände: So sah die Welt im Jahr X aus. Eine Schlacht
 ist aber kein Zustand, sondern eine **Bewegung** – und die fällt aus einer
 Karte heraus, die nur Jahresschnitte kennt.
 
-Vierunddreißig Schlachten haben einen abspielbaren Verlauf, von Marathon bis
-Dien Bien Phu: **372 Stationen, 2.011 Truppenstellungen, 207 Geländezüge.**
+Vierundvierzig Schlachten haben einen abspielbaren Verlauf, von Kadesch bis
+Dien Bien Phu: **484 Stationen, 2.446 Truppenstellungen, 267 Geländezüge.**
 Jede Schlacht beginnt mit einem Übersichtsblatt über den Anmarsch – und darf
 mit einem über den Rückzug enden – und ist dazwischen in neun bis fünfzehn
 Abschnitte gegliedert; jede Stellung ist ein benannter Verband mit Führer,
@@ -607,7 +607,21 @@ andere, weil sie aus zwei ineinandergelegten Wällen besteht –, die
 am Rhein stehenbleibt, und die **Marne**, deren ganzer Inhalt eine Lücke von
 fünfzig Kilometern zwischen zwei Armeen ist.
 
-Das Kriegsregister führt 177 Schlachten. Der Abstand zwischen 34 und 177 ist
+Die zehn zuletzt hinzugekommenen füllen zeitliche Lücken statt räumlicher.
+**Kadesch** (1274 v. Chr.) rückt den Anfang um achthundert Jahre vor – es ist
+die früheste Schlacht, deren Verlauf sich nachzeichnen lässt, weil beide
+Seiten darüber geschrieben haben. **Thermopylen** und der **Hydaspes**
+schließen die griechische und die makedonische Reihe; **Jarmuk** ist die
+arabische Eroberung, die bis dahin ganz fehlte, **Ain Djalut** ihr Gegenstück
+zweihundert Jahre später und zugleich das Gegenstück zu Muhi. **Dan-no-ura**
+ist die einzige Schlacht der Sammlung, deren Wendepunkt eine Uhrzeit ist – der
+Gezeitenwechsel in einer Meerenge. **Cajamarca** stellt hundertachtundsechzig
+Mann gegen ein Reich von Millionen, **Breitenfeld** zwei Schlachtordnungen
+nebeneinander auf ein Feld, **Yorktown** entscheidet sich dreißig Seemeilen
+entfernt, und **Isandlwana** zeigt die Hörner des Büffels, eine Ordnung, die
+es sonst hier nicht gibt.
+
+Das Kriegsregister führt 177 Schlachten. Der Abstand zwischen 44 und 177 ist
 der offene Teil, und er ist reine Verfassungsarbeit: Ein Verlauf besteht aus
 mehreren hundert von Hand gesetzten Koordinatenpaaren, die zu einem Gelände
 passen müssen, das es wirklich gibt. Erfinden lässt er sich nicht – der
@@ -622,12 +636,13 @@ nicht die ganze Schlacht.
 von 852 kB. Wer das Kriegsregister öffnete, um nachzusehen, welche Kriege 1815
 liefen, lud alle zwölf vollständig mit; bei dreißig Verläufen wären das zwei
 Megabyte für einen Blick in eine Liste gewesen. Jetzt trägt das Programm nur
-den Index – Name, Ort, Datum, Ausschnitt, 18 kB für alle –, und die Stationen
+den Index – Name, Ort, Datum, Ausschnitt, 24 kB für alle –, und die Stationen
 einer Schlacht kommen in dem Augenblick, in dem jemand auf „abspielen“ tippt.
 Gemessen: Registeröffnung **368 kB → 0**, Abspielen einer Schlacht
 **0 → rund 30 kB**. Die Rechnung hat sich seither bestätigt: Die Zahl der
-Verläufe hat sich von zwölf auf 34 fast verdreifacht und 782 kB Stationsdaten
-angesammelt, der Erstaufruf ist dabei um fünf Kilobyte gewachsen.
+Verläufe ist von zwölf auf 44 gestiegen und hat 977 kB Stationsdaten
+angesammelt; der Erstaufruf ist dabei um elf Kilobyte gewachsen, weil nur der
+Index mitgeht. Viel Luft ist trotzdem nicht mehr: 3.086 kB von 3.100.
 
 **Geometrie aus Kilometern statt aus Koordinaten.** `scripts/lib/stellung.mjs`
 baut die Stellungen aus Mittelpunkt, Ausdehnung in Kilometern und
@@ -655,27 +670,38 @@ Partei wechselt – Kobayakawas Übertritt. Letzteres ist eine Zeichenbeschränk
 und wurde in den Daten gelöst, nicht in der Regel: Eine Kennung mit wechselnder
 Partei ließe den Zeichner die Fläche gleiten, während die Farbe umspringt.
 
-Bei den zehn zuletzt hinzugekommenen war es eine einzige Beanstandung – der
-Pfeil, der die Wirkung von Adua über den Kontinent trägt, lief über den Rand
-seines Übersichtsblatts hinaus. Das ist keine bessere Handschrift, sondern das
-Ergebnis derselben Prüfung: Die Fehlerarten der ersten Runde sind beim
-Schreiben der zweiten bereits mitgedacht worden. Was die Prüfung dagegen nicht
-findet, findet nach wie vor nur das Bild – bei Dien Bien Phu lagen die
-Batterien im Norden neun Kilometer vom Talboden und damit außerhalb des
-Ausschnitts, den die Station selbst aufspannt. Auf der Karte fehlten sie
-einfach.
+In den beiden Runden danach waren es noch acht Beanstandungen auf zwanzig
+Verläufe, und sieben davon waren dieselbe: ein Pfeil, der über den Rand seines
+eigenen Übersichtsblatts hinauslief. Das ist keine bessere Handschrift,
+sondern das Ergebnis derselben Prüfung – die Fehlerarten der ersten Runde sind
+beim Schreiben der späteren bereits mitgedacht worden, und übrig bleibt die
+eine, die sich nicht mitdenken lässt, weil man den Rahmen von Hand setzt.
+
+**Was die Prüfung nicht findet, findet nur das Bild.** Bei Dien Bien Phu lagen
+die Batterien im Norden neun Kilometer vom Talboden und damit außerhalb des
+Ausschnitts, den die Station selbst aufspannt – auf der Karte fehlten sie
+einfach. Bei Panipat stand Baburs Heer in einer Station nicht hinter seiner
+eigenen Wagenburg. Und Cajamarca stieß an eine Schranke des Zeichners: Der
+Ausschnitt je Station darf höchstens vier Kilometer schmal werden und
+höchstens 0,8 Zoomstufen näher gehen als der gesetzte Maßstab. Ein Platz von
+zweihundert Metern verschwand damit als Fleck in dreizehn Kilometern Tal. Die
+Lösung war nicht, den Platz größer zu zeichnen, sondern den gesetzten Maßstab
+anzuheben, bis der engste zulässige Rahmen greift – die Schranke ist richtig,
+nur war der Maßstab falsch dazu gewählt.
 
 | | | | |
 |---|---|---|---|
-| Marathon 490 v. Chr. | Salamis 480 v. Chr. | Gaugamela 331 v. Chr. | Cannae 216 v. Chr. |
-| Zama 202 v. Chr. | Alesia 52 v. Chr. | Actium 31 v. Chr. | Varusschlacht 9 |
-| Tours 732 | Hastings 1066 | Hattin 1187 | Muhi 1241 |
-| Azincourt 1415 | Konstantinopel 1453 | Tenochtitlan 1521 | Panipat 1526 |
-| Lepanto 1571 | Sekigahara 1600 | Shanhaiguan 1644 | Wien 1683 |
-| Poltawa 1709 | Trafalgar 1805 | Austerlitz 1805 | Waterloo 1815 |
-| Ayacucho 1824 | Gettysburg 1863 | Adua 1896 | Tsushima 1905 |
-| Marne 1914 | Tannenberg 1914 | Stalingrad 1942 | Midway 1942 |
-| Normandie 1944 | Dien Bien Phu 1954 | | |
+| Kadesch 1274 v. Chr. | Marathon 490 v. Chr. | Thermopylen 480 v. Chr. | Salamis 480 v. Chr. |
+| Gaugamela 331 v. Chr. | Hydaspes 326 v. Chr. | Cannae 216 v. Chr. | Zama 202 v. Chr. |
+| Alesia 52 v. Chr. | Actium 31 v. Chr. | Varusschlacht 9 | Jarmuk 636 |
+| Tours 732 | Hastings 1066 | Dan-no-ura 1185 | Hattin 1187 |
+| Muhi 1241 | Ain Djalut 1260 | Azincourt 1415 | Konstantinopel 1453 |
+| Tenochtitlan 1521 | Panipat 1526 | Cajamarca 1532 | Lepanto 1571 |
+| Sekigahara 1600 | Breitenfeld 1631 | Shanhaiguan 1644 | Wien 1683 |
+| Poltawa 1709 | Yorktown 1781 | Trafalgar 1805 | Austerlitz 1805 |
+| Waterloo 1815 | Ayacucho 1824 | Gettysburg 1863 | Isandlwana 1879 |
+| Adua 1896 | Tsushima 1905 | Marne 1914 | Tannenberg 1914 |
+| Stalingrad 1942 | Midway 1942 | Normandie 1944 | Dien Bien Phu 1954 |
 
 #### Warum gegliten wird und nicht umgeschaltet
 

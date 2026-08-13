@@ -1,0 +1,1835 @@
+{
+ "id": "kadesch",
+ "name": "Kadesch",
+ "ort": "Tell Nebi Mend am Orontes",
+ "datum": "um 1274 v. Chr.",
+ "jahr": -1274,
+ "mitte": [
+  36.515,
+  34.55
+ ],
+ "zoom": 11.4,
+ "grund": "relief",
+ "worum": "Eine Falle, die aus einer Ortsangabe besteht: Zwei bestellte Überläufer sagen, der Feind stehe zweihundert Kilometer weiter nördlich. Ramses fährt daraufhin mit einem Viertel seines Heeres voraus und lagert vor einer Stadt, hinter der vierzigtausend Mann warten – während die anderen drei Viertel über zwanzig Kilometer verteilt die Straße heraufmarschieren.",
+ "parteien": [
+  {
+   "id": "aeg",
+   "name": "Ägypten",
+   "farbe": "#6f9fe0",
+   "fuehrung": "Ramses II.",
+   "staerke": "vier Divisionen – Amun, Re, Ptah und Seth –, zusammen rund 20.000 Mann und 2.000 Streitwagen",
+   "zahl": 20000
+  },
+  {
+   "id": "het",
+   "name": "Hethiterreich",
+   "farbe": "#d4737c",
+   "fuehrung": "Muwatalli II., Hattusili",
+   "staerke": "rund 40.000 mit den Verbündeten aus Anatolien und Nordsyrien; 3.500 Streitwagen, zu dritt besetzt",
+   "zahl": 40000
+  }
+ ],
+ "gelaende": [
+  {
+   "art": "stadt",
+   "name": "Kadesch",
+   "punkte": [
+    [
+     36.52413,
+     34.56409
+    ],
+    [
+     36.52638,
+     34.5601
+    ],
+    [
+     36.52743,
+     34.55625
+    ],
+    [
+     36.52553,
+     34.55173
+    ],
+    [
+     36.52064,
+     34.55165
+    ],
+    [
+     36.51599,
+     34.5515
+    ],
+    [
+     36.51395,
+     34.55547
+    ],
+    [
+     36.51624,
+     34.55945
+    ],
+    [
+     36.51882,
+     34.56372
+    ]
+   ]
+  },
+  {
+   "art": "fluss",
+   "name": "Orontes",
+   "punkte": [
+    [
+     36.488,
+     34.46
+    ],
+    [
+     36.498,
+     34.52
+    ],
+    [
+     36.504,
+     34.57
+    ],
+    [
+     36.51,
+     34.63
+    ]
+   ]
+  },
+  {
+   "art": "fluss",
+   "name": "Der östliche Arm",
+   "punkte": [
+    [
+     36.532,
+     34.505
+    ],
+    [
+     36.542,
+     34.55
+    ],
+    [
+     36.53,
+     34.595
+    ]
+   ]
+  },
+  {
+   "art": "furt",
+   "name": "Die Furt bei Schabtuna",
+   "punkte": [
+    [
+     36.506,
+     34.47949
+    ],
+    [
+     36.50869,
+     34.47764
+    ],
+    [
+     36.51053,
+     34.47566
+    ],
+    [
+     36.5106,
+     34.47281
+    ],
+    [
+     36.50735,
+     34.47195
+    ],
+    [
+     36.50427,
+     34.47108
+    ],
+    [
+     36.50172,
+     34.47296
+    ],
+    [
+     36.50208,
+     34.47557
+    ],
+    [
+     36.50255,
+     34.47839
+    ]
+   ]
+  },
+  {
+   "art": "wald",
+   "name": "Der Wald von Labwi",
+   "punkte": [
+    [
+     36.46895,
+     34.51026
+    ],
+    [
+     36.47283,
+     34.49963
+    ],
+    [
+     36.47409,
+     34.48914
+    ],
+    [
+     36.4686,
+     34.47624
+    ],
+    [
+     36.45772,
+     34.47509
+    ],
+    [
+     36.44733,
+     34.4738
+    ],
+    [
+     36.44389,
+     34.48444
+    ],
+    [
+     36.45008,
+     34.49589
+    ],
+    [
+     36.45702,
+     34.50822
+    ]
+   ]
+  },
+  {
+   "art": "weg",
+   "name": "Die Straße von Süden",
+   "punkte": [
+    [
+     36.5,
+     34.43
+    ],
+    [
+     36.504,
+     34.49
+    ],
+    [
+     36.498,
+     34.54
+    ],
+    [
+     36.494,
+     34.58
+    ]
+   ]
+  }
+ ],
+ "stationen": [
+  {
+   "zeit": "Frühjahr 1274 v. Chr.",
+   "t": 0,
+   "kurz": "Zwei Reiche streiten um dieselbe Straße.",
+   "text": "Zwischen dem ägyptischen und dem hethitischen Machtbereich liegt Syrien, und in Syrien liegt die Straße, über die aller Handel zwischen Ägypten, Mesopotamien und Anatolien läuft. Kadesch ist der Riegel darauf. Ramses zieht im vierten Jahr seiner Regierung mit vier Divisionen von Piramesse nordwärts; Muwatalli bringt das größte Heer zusammen, das ein hethitischer König je geführt hat.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     28,
+     28
+    ],
+    [
+     43.5,
+     41.8
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "anm-aeg",
+     "partei": "aeg",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       31.83,
+       30.8
+      ],
+      [
+       34.47,
+       31.5
+      ],
+      [
+       35.3,
+       32.8
+      ],
+      [
+       35.85,
+       33.9
+      ],
+      [
+       36.5,
+       34.52
+      ]
+     ],
+     "name": "Ramses von Piramesse nach Norden"
+    },
+    {
+     "id": "anm-het",
+     "partei": "het",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       34.62,
+       40.02
+      ],
+      [
+       36.2,
+       38.4
+      ],
+      [
+       37.16,
+       36.2
+      ],
+      [
+       36.7,
+       35.1
+      ],
+      [
+       36.55,
+       34.6
+      ]
+     ],
+     "name": "Muwatalli von Hattusa über Aleppo"
+    },
+    {
+     "id": "anm-nearin",
+     "partei": "aeg",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       35.51,
+       33.9
+      ],
+      [
+       35.85,
+       34.35
+      ],
+      [
+       36.35,
+       34.62
+      ]
+     ],
+     "name": "Die Ne’arin von der Küste"
+    }
+   ]
+  },
+  {
+   "zeit": "Ein Tagesmarsch vor der Stadt",
+   "t": 60,
+   "kurz": "Zwei Beduinen sagen, der Feind sei weit im Norden.",
+   "text": "Am Wald von Labwi greifen ägyptische Späher zwei Männer vom Stamm der Schasu auf. Sie erzählen, ihre Sippen wollten zu Ramses überlaufen, und nebenbei, das hethitische Heer stehe weit im Norden bei Aleppo, aus Angst vor dem Pharao. Es ist eine gestellte Aussage, und sie wirkt: Ramses beschließt, mit der Vorhut vorauszufahren und die Stadt zu nehmen, bevor der Gegner überhaupt da ist.",
+   "stellungen": [
+    {
+     "id": "a-amun",
+     "partei": "aeg",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.48937,
+       34.50449
+      ],
+      [
+       36.48601,
+       34.50283
+      ],
+      [
+       36.48601,
+       34.49717
+      ],
+      [
+       36.48937,
+       34.49551
+      ],
+      [
+       36.50663,
+       34.49551
+      ],
+      [
+       36.50999,
+       34.49717
+      ],
+      [
+       36.50999,
+       34.50283
+      ],
+      [
+       36.50663,
+       34.50449
+      ]
+     ],
+     "name": "Division Amun mit dem König",
+     "staerke": "rund 5.000"
+    },
+    {
+     "id": "a-re",
+     "partei": "aeg",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.49337,
+       34.45449
+      ],
+      [
+       36.49002,
+       34.45283
+      ],
+      [
+       36.49002,
+       34.44717
+      ],
+      [
+       36.49337,
+       34.44551
+      ],
+      [
+       36.51063,
+       34.44551
+      ],
+      [
+       36.51398,
+       34.44717
+      ],
+      [
+       36.51398,
+       34.45283
+      ],
+      [
+       36.51063,
+       34.45449
+      ]
+     ],
+     "name": "Division Re, ein Stück dahinter",
+     "staerke": "rund 5.000"
+    },
+    {
+     "id": "h-versteck",
+     "partei": "het",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.57824,
+       34.56366
+      ],
+      [
+       36.58343,
+       34.55338
+      ],
+      [
+       36.58569,
+       34.54339
+      ],
+      [
+       36.58068,
+       34.53151
+      ],
+      [
+       36.56871,
+       34.53102
+      ],
+      [
+       36.55729,
+       34.53039
+      ],
+      [
+       36.55259,
+       34.54065
+      ],
+      [
+       36.55851,
+       34.55112
+      ],
+      [
+       36.56518,
+       34.5624
+      ]
+     ],
+     "name": "Muwatalli hinter der Stadt",
+     "staerke": "rund 40.000"
+    },
+    {
+     "id": "h-schasu",
+     "partei": "het",
+     "form": "pfeil",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       36.53,
+       34.53
+      ],
+      [
+       36.51,
+       34.505
+      ],
+      [
+       36.499,
+       34.498
+      ]
+     ],
+     "name": "Die beiden Schasu"
+    }
+   ]
+  },
+  {
+   "zeit": "Mittag",
+   "t": 130,
+   "kurz": "Ramses lagert, drei Divisionen sind noch unterwegs.",
+   "text": "Ramses überschreitet die Furt und schlägt nordwestlich der Stadt ein Lager auf, umstellt mit Schilden. Bei ihm ist nur die Division Amun. Re marschiert noch heran, Ptah steht am Fluss weiter südlich, Seth ist einen ganzen Tagesmarsch entfernt. Das Heer ist damit über zwanzig Kilometer verteilt, und die einzige Truppe, die kämpfen könnte, ist die kleinste.",
+   "stellungen": [
+    {
+     "id": "a-lager",
+     "partei": "aeg",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.49703,
+       34.59712
+      ],
+      [
+       36.49992,
+       34.59199
+      ],
+      [
+       36.50126,
+       34.58704
+      ],
+      [
+       36.49882,
+       34.58123
+      ],
+      [
+       36.49254,
+       34.58112
+      ],
+      [
+       36.48656,
+       34.58093
+      ],
+      [
+       36.48393,
+       34.58604
+      ],
+      [
+       36.48687,
+       34.59115
+      ],
+      [
+       36.4902,
+       34.59664
+      ]
+     ],
+     "name": "Das Lager des Königs",
+     "staerke": "Division Amun"
+    },
+    {
+     "id": "a-re",
+     "partei": "aeg",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.49458,
+       34.50204
+      ],
+      [
+       36.49092,
+       34.50023
+      ],
+      [
+       36.49092,
+       34.49577
+      ],
+      [
+       36.49458,
+       34.49396
+      ],
+      [
+       36.51342,
+       34.49396
+      ],
+      [
+       36.51708,
+       34.49577
+      ],
+      [
+       36.51708,
+       34.50023
+      ],
+      [
+       36.51342,
+       34.50204
+      ]
+     ],
+     "name": "Division Re auf dem Marsch",
+     "staerke": "rund 5.000"
+    },
+    {
+     "id": "a-ptah",
+     "partei": "aeg",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.49259,
+       34.43904
+      ],
+      [
+       36.48893,
+       34.43723
+      ],
+      [
+       36.48893,
+       34.43277
+      ],
+      [
+       36.49259,
+       34.43096
+      ],
+      [
+       36.51141,
+       34.43096
+      ],
+      [
+       36.51507,
+       34.43277
+      ],
+      [
+       36.51507,
+       34.43723
+      ],
+      [
+       36.51141,
+       34.43904
+      ]
+     ],
+     "name": "Division Ptah, weit zurück",
+     "staerke": "rund 5.000"
+    },
+    {
+     "id": "h-versteck",
+     "partei": "het",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.57824,
+       34.56366
+      ],
+      [
+       36.58343,
+       34.55338
+      ],
+      [
+       36.58569,
+       34.54339
+      ],
+      [
+       36.58068,
+       34.53151
+      ],
+      [
+       36.56871,
+       34.53102
+      ],
+      [
+       36.55729,
+       34.53039
+      ],
+      [
+       36.55259,
+       34.54065
+      ],
+      [
+       36.55851,
+       34.55112
+      ],
+      [
+       36.56518,
+       34.5624
+      ]
+     ],
+     "name": "unsichtbar hinter der Stadt",
+     "staerke": "rund 40.000"
+    }
+   ]
+  },
+  {
+   "zeit": "Kurz darauf",
+   "t": 190,
+   "kurz": "Zwei gefangene Späher sagen die Wahrheit.",
+   "text": "Ägyptische Posten greifen zwei hethitische Kundschafter auf. Unter Schlägen sagen sie, was die Schasu verschwiegen hatten: Das ganze hethitische Heer steht keine drei Kilometer entfernt, unmittelbar hinter Kadesch. Ramses lässt sofort Boten zu den nachrückenden Divisionen jagen. Für Re kommt der Bote zu spät.",
+   "stellungen": [
+    {
+     "id": "a-lager",
+     "partei": "aeg",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.49703,
+       34.59712
+      ],
+      [
+       36.49992,
+       34.59199
+      ],
+      [
+       36.50126,
+       34.58704
+      ],
+      [
+       36.49882,
+       34.58123
+      ],
+      [
+       36.49254,
+       34.58112
+      ],
+      [
+       36.48656,
+       34.58093
+      ],
+      [
+       36.48393,
+       34.58604
+      ],
+      [
+       36.48687,
+       34.59115
+      ],
+      [
+       36.4902,
+       34.59664
+      ]
+     ],
+     "name": "Das Lager erfährt es",
+     "staerke": "Division Amun"
+    },
+    {
+     "id": "a-bote",
+     "partei": "aeg",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       36.493,
+       34.575
+      ],
+      [
+       36.499,
+       34.53
+      ],
+      [
+       36.504,
+       34.5
+      ]
+     ],
+     "name": "Boten nach Süden"
+    },
+    {
+     "id": "h-versteck",
+     "partei": "het",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.57624,
+       34.56066
+      ],
+      [
+       36.58143,
+       34.55038
+      ],
+      [
+       36.58369,
+       34.54039
+      ],
+      [
+       36.57868,
+       34.52851
+      ],
+      [
+       36.56671,
+       34.52802
+      ],
+      [
+       36.55529,
+       34.52739
+      ],
+      [
+       36.55059,
+       34.53765
+      ],
+      [
+       36.55651,
+       34.54812
+      ],
+      [
+       36.56318,
+       34.5594
+      ]
+     ],
+     "name": "Das hethitische Heer",
+     "staerke": "rund 40.000"
+    },
+    {
+     "id": "a-re",
+     "partei": "aeg",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.49458,
+       34.51604
+      ],
+      [
+       36.49092,
+       34.51423
+      ],
+      [
+       36.49092,
+       34.50977
+      ],
+      [
+       36.49458,
+       34.50796
+      ],
+      [
+       36.51342,
+       34.50796
+      ],
+      [
+       36.51708,
+       34.50977
+      ],
+      [
+       36.51708,
+       34.51423
+      ],
+      [
+       36.51342,
+       34.51604
+      ]
+     ],
+     "name": "Division Re, noch ahnungslos",
+     "staerke": "rund 5.000"
+    }
+   ]
+  },
+  {
+   "zeit": "Der Stoß",
+   "t": 250,
+   "kurz": "Die Wagen kommen von Süden in eine Marschsäule.",
+   "text": "Zweitausendfünfhundert hethitische Streitwagen gehen südlich der Stadt über den Fluss und fallen der Division Re quer in die Flanke – nicht in eine Schlachtordnung, sondern in eine Kolonne im Marsch, ohne Front und ohne Bogenschützen in Stellung. Re zerfällt in wenigen Minuten. Was davon wegkommt, läuft nach Norden, geradewegs auf das Lager des Königs zu, und nimmt die Verfolger mit.",
+   "stellungen": [
+    {
+     "id": "h-wagen",
+     "partei": "het",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       36.545,
+       34.515
+      ],
+      [
+       36.525,
+       34.51
+      ],
+      [
+       36.508,
+       34.51
+      ]
+     ],
+     "name": "2.500 Streitwagen in die Flanke"
+    },
+    {
+     "id": "a-re",
+     "partei": "aeg",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.49337,
+       34.51604
+      ],
+      [
+       36.49001,
+       34.51438
+      ],
+      [
+       36.49001,
+       34.50962
+      ],
+      [
+       36.49337,
+       34.50796
+      ],
+      [
+       36.51063,
+       34.50796
+      ],
+      [
+       36.51399,
+       34.50962
+      ],
+      [
+       36.51399,
+       34.51438
+      ],
+      [
+       36.51063,
+       34.51604
+      ]
+     ],
+     "name": "Division Re zerfällt",
+     "staerke": "rund 5.000",
+     "geschlagen": true
+    },
+    {
+     "id": "a-flucht",
+     "partei": "aeg",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.5,
+       34.522
+      ],
+      [
+       36.496,
+       34.555
+      ],
+      [
+       36.493,
+       34.579
+      ]
+     ],
+     "name": "Flucht ins Lager",
+     "rueckzug": true
+    },
+    {
+     "id": "a-lager",
+     "partei": "aeg",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.49703,
+       34.59712
+      ],
+      [
+       36.49992,
+       34.59199
+      ],
+      [
+       36.50126,
+       34.58704
+      ],
+      [
+       36.49882,
+       34.58123
+      ],
+      [
+       36.49254,
+       34.58112
+      ],
+      [
+       36.48656,
+       34.58093
+      ],
+      [
+       36.48393,
+       34.58604
+      ],
+      [
+       36.48687,
+       34.59115
+      ],
+      [
+       36.4902,
+       34.59664
+      ]
+     ],
+     "name": "Das Lager",
+     "staerke": "Division Amun"
+    }
+   ]
+  },
+  {
+   "zeit": "Im Lager",
+   "t": 310,
+   "kurz": "Das Lager wird überrannt, bevor jemand steht.",
+   "text": "Die Fliehenden reißen die Schildwand ein, die Wagen sind hinter ihnen. Ein großer Teil der Division Amun läuft davon, ohne die Waffen anzulegen. Die Inschrift sagt: „Da war kein Offizier bei mir, kein Wagenlenker, kein Soldat.“ Was den Ägyptern in diesem Augenblick hilft, ist nichts Militärisches: Die hethitischen Wagenkämpfer halten an und beginnen zu plündern.",
+   "stellungen": [
+    {
+     "id": "h-wagen",
+     "partei": "het",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       36.50137,
+       34.59416
+      ],
+      [
+       36.50522,
+       34.58732
+      ],
+      [
+       36.50702,
+       34.58072
+      ],
+      [
+       36.50376,
+       34.57297
+      ],
+      [
+       36.49539,
+       34.57282
+      ],
+      [
+       36.48741,
+       34.57257
+      ],
+      [
+       36.48391,
+       34.57939
+      ],
+      [
+       36.48783,
+       34.58619
+      ],
+      [
+       36.49226,
+       34.59352
+      ]
+     ],
+     "name": "Streitwagen im Lager",
+     "staerke": "2.500",
+     "finte": true
+    },
+    {
+     "id": "a-lager",
+     "partei": "aeg",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.49314,
+       34.60209
+      ],
+      [
+       36.49538,
+       34.5981
+      ],
+      [
+       36.49643,
+       34.59425
+      ],
+      [
+       36.49453,
+       34.58973
+      ],
+      [
+       36.48964,
+       34.58965
+      ],
+      [
+       36.48499,
+       34.5895
+      ],
+      [
+       36.48295,
+       34.59347
+      ],
+      [
+       36.48523,
+       34.59745
+      ],
+      [
+       36.48782,
+       34.60172
+      ]
+     ],
+     "name": "Was vom Lager übrig ist",
+     "staerke": "Reste",
+     "geschlagen": true
+    },
+    {
+     "id": "a-flucht",
+     "partei": "aeg",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.493,
+       34.59
+      ],
+      [
+       36.478,
+       34.61
+      ],
+      [
+       36.46,
+       34.63
+      ]
+     ],
+     "name": "Auseinanderlaufen nach Norden",
+     "rueckzug": true
+    },
+    {
+     "id": "h-versteck",
+     "partei": "het",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.56976,
+       34.55956
+      ],
+      [
+       36.57464,
+       34.54989
+      ],
+      [
+       36.57677,
+       34.54049
+      ],
+      [
+       36.57205,
+       34.5293
+      ],
+      [
+       36.56078,
+       34.52885
+      ],
+      [
+       36.55003,
+       34.52825
+      ],
+      [
+       36.54561,
+       34.5379
+      ],
+      [
+       36.55119,
+       34.54776
+      ],
+      [
+       36.55747,
+       34.55838
+      ]
+     ],
+     "name": "Das Fußvolk bleibt stehen",
+     "staerke": "rund 37.000"
+    }
+   ]
+  },
+  {
+   "zeit": "Der König selbst",
+   "t": 370,
+   "kurz": "Ramses fährt selbst, sagt die Inschrift, ganz allein.",
+   "text": "Nach eigener Darstellung besteigt Ramses seinen Wagen, ruft Amun an und fährt sechsmal in die Feinde hinein, ohne Begleitung außer seinem Wagenlenker Menna und zwei Pferden mit Namen. Das ist Königsdichtung. Der militärisch nachvollziehbare Kern ist trotzdem da: Ein Gegenstoß aus dem Lager nach Osten drückt die plündernden Wagen zum Fluss hin, weil sie in Unordnung und abgesessen sind.",
+   "stellungen": [
+    {
+     "id": "a-ramses",
+     "partei": "aeg",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       36.49,
+       34.59
+      ],
+      [
+       36.505,
+       34.582
+      ],
+      [
+       36.518,
+       34.576
+      ]
+     ],
+     "name": "Der Gegenstoß des Königs"
+    },
+    {
+     "id": "a-lager",
+     "partei": "aeg",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.49214,
+       34.60109
+      ],
+      [
+       36.49438,
+       34.5971
+      ],
+      [
+       36.49543,
+       34.59325
+      ],
+      [
+       36.49353,
+       34.58873
+      ],
+      [
+       36.48864,
+       34.58865
+      ],
+      [
+       36.48399,
+       34.5885
+      ],
+      [
+       36.48195,
+       34.59247
+      ],
+      [
+       36.48423,
+       34.59645
+      ],
+      [
+       36.48682,
+       34.60072
+      ]
+     ],
+     "name": "Was noch steht",
+     "staerke": "Leibwache",
+     "geschlagen": true
+    },
+    {
+     "id": "h-wagen",
+     "partei": "het",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       36.51337,
+       34.59216
+      ],
+      [
+       36.51722,
+       34.58532
+      ],
+      [
+       36.51902,
+       34.57872
+      ],
+      [
+       36.51576,
+       34.57097
+      ],
+      [
+       36.50739,
+       34.57082
+      ],
+      [
+       36.49941,
+       34.57057
+      ],
+      [
+       36.49591,
+       34.57739
+      ],
+      [
+       36.49983,
+       34.58419
+      ],
+      [
+       36.50426,
+       34.59152
+      ]
+     ],
+     "name": "beim Plündern überrascht",
+     "staerke": "2.500",
+     "geschlagen": true
+    },
+    {
+     "id": "h-versteck",
+     "partei": "het",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.56976,
+       34.55956
+      ],
+      [
+       36.57464,
+       34.54989
+      ],
+      [
+       36.57677,
+       34.54049
+      ],
+      [
+       36.57205,
+       34.5293
+      ],
+      [
+       36.56078,
+       34.52885
+      ],
+      [
+       36.55003,
+       34.52825
+      ],
+      [
+       36.54561,
+       34.5379
+      ],
+      [
+       36.55119,
+       34.54776
+      ],
+      [
+       36.55747,
+       34.55838
+      ]
+     ],
+     "name": "Muwatalli hält das Fußvolk zurück",
+     "staerke": "rund 37.000"
+    }
+   ]
+  },
+  {
+   "zeit": "Aus dem Nordwesten",
+   "t": 430,
+   "kurz": "Es kommt, wer an diesem Tag nicht erwartet wurde.",
+   "text": "In diesem Augenblick trifft eine ägyptische Abteilung ein, die nicht auf der Straße marschiert war, sondern von der Küste her über Amurru: die Ne’arin, junge Elitetruppen. Sie erscheinen nordwestlich des Lagers, also genau im Rücken der Wagen, die dort plündern. Warum sie ausgerechnet jetzt kommen, sagt keine Quelle; die Inschrift lässt es aussehen wie eine Fügung.",
+   "stellungen": [
+    {
+     "id": "a-nearin",
+     "partei": "aeg",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.44,
+       34.63
+      ],
+      [
+       36.465,
+       34.605
+      ],
+      [
+       36.488,
+       34.59
+      ]
+     ],
+     "name": "Die Ne’arin treffen ein"
+    },
+    {
+     "id": "a-ramses",
+     "partei": "aeg",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       36.495,
+       34.586
+      ],
+      [
+       36.51,
+       34.58
+      ],
+      [
+       36.522,
+       34.574
+      ]
+     ],
+     "name": "Gegenstoß des Königs"
+    },
+    {
+     "id": "h-wagen",
+     "partei": "het",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       36.51993,
+       34.58714
+      ],
+      [
+       36.52345,
+       34.58088
+      ],
+      [
+       36.5251,
+       34.57482
+      ],
+      [
+       36.52212,
+       34.56772
+      ],
+      [
+       36.51444,
+       34.56759
+      ],
+      [
+       36.50713,
+       34.56736
+      ],
+      [
+       36.50392,
+       34.5736
+      ],
+      [
+       36.50751,
+       34.57985
+      ],
+      [
+       36.51157,
+       34.58656
+      ]
+     ],
+     "name": "zwischen zwei Seiten",
+     "staerke": "2.500",
+     "geschlagen": true
+    },
+    {
+     "id": "a-lager",
+     "partei": "aeg",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.49314,
+       34.60109
+      ],
+      [
+       36.49538,
+       34.5971
+      ],
+      [
+       36.49643,
+       34.59325
+      ],
+      [
+       36.49453,
+       34.58873
+      ],
+      [
+       36.48964,
+       34.58865
+      ],
+      [
+       36.48499,
+       34.5885
+      ],
+      [
+       36.48295,
+       34.59247
+      ],
+      [
+       36.48523,
+       34.59645
+      ],
+      [
+       36.48782,
+       34.60072
+      ]
+     ],
+     "name": "Das Lager hält",
+     "staerke": "Leibwache"
+    }
+   ]
+  },
+  {
+   "zeit": "Gegen Abend",
+   "t": 490,
+   "kurz": "Wer nicht wegkommt, wird in den Orontes gedrückt.",
+   "text": "Die hethitischen Wagen werden gegen den Fluss geschoben. Muwatalli schickt tausend weitere hinterher, hält aber sein Fußvolk am Ostufer zurück – warum, ist der große offene Punkt der Schlacht. Die Inschrift schildert genüsslich, wie hohe Herren aus dem Wasser gezogen werden, den Fürsten von Aleppo kopfüber, damit ihm das Wasser aus dem Leib läuft. Am Abend trifft die Division Ptah ein.",
+   "stellungen": [
+    {
+     "id": "h-wagen",
+     "partei": "het",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       36.53048,
+       34.58213
+      ],
+      [
+       36.53368,
+       34.57644
+      ],
+      [
+       36.53518,
+       34.57093
+      ],
+      [
+       36.53247,
+       34.56447
+      ],
+      [
+       36.52549,
+       34.56435
+      ],
+      [
+       36.51884,
+       34.56414
+      ],
+      [
+       36.51592,
+       34.56982
+      ],
+      [
+       36.51919,
+       34.5755
+      ],
+      [
+       36.52288,
+       34.5816
+      ]
+     ],
+     "name": "gegen den Fluss gedrückt",
+     "staerke": "Reste",
+     "geschlagen": true
+    },
+    {
+     "id": "a-druck",
+     "partei": "aeg",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.498,
+       34.582
+      ],
+      [
+       36.515,
+       34.576
+      ],
+      [
+       36.53,
+       34.57
+      ]
+     ],
+     "name": "Von Westen nachgedrückt"
+    },
+    {
+     "id": "a-ptah",
+     "partei": "aeg",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.49058,
+       34.53949
+      ],
+      [
+       36.48691,
+       34.53768
+      ],
+      [
+       36.48691,
+       34.53232
+      ],
+      [
+       36.49058,
+       34.53051
+      ],
+      [
+       36.50942,
+       34.53051
+      ],
+      [
+       36.51309,
+       34.53232
+      ],
+      [
+       36.51309,
+       34.53768
+      ],
+      [
+       36.50942,
+       34.53949
+      ]
+     ],
+     "name": "Division Ptah trifft ein",
+     "staerke": "rund 5.000"
+    },
+    {
+     "id": "h-versteck",
+     "partei": "het",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.57176,
+       34.55756
+      ],
+      [
+       36.57664,
+       34.54789
+      ],
+      [
+       36.57877,
+       34.53849
+      ],
+      [
+       36.57405,
+       34.5273
+      ],
+      [
+       36.56278,
+       34.52685
+      ],
+      [
+       36.55203,
+       34.52625
+      ],
+      [
+       36.54761,
+       34.5359
+      ],
+      [
+       36.55319,
+       34.54576
+      ],
+      [
+       36.55947,
+       34.55638
+      ]
+     ],
+     "name": "Das Fußvolk greift nicht ein",
+     "staerke": "rund 37.000"
+    }
+   ]
+  },
+  {
+   "zeit": "Am nächsten Tag",
+   "t": 560,
+   "kurz": "Zweiter Tag, dann bietet Muwatalli Waffenstillstand.",
+   "text": "Am folgenden Tag wird noch einmal gekämpft, ohne Entscheidung. Dann schlägt Muwatalli einen Waffenstillstand vor, und Ramses nimmt an – was er in seiner eigenen Inschrift als Großmut darstellt. Beide Heere ziehen ab. Kadesch bleibt hethitisch, und die Grenze verschiebt sich sogar nach Süden: Ägypten verliert danach das Fürstentum Amurru.",
+   "stellungen": [
+    {
+     "id": "a-heer",
+     "partei": "aeg",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.50264,
+       34.5747
+      ],
+      [
+       36.49989,
+       34.57847
+      ],
+      [
+       36.49011,
+       34.57847
+      ],
+      [
+       36.48736,
+       34.5747
+      ],
+      [
+       36.48736,
+       34.5553
+      ],
+      [
+       36.49011,
+       34.55153
+      ],
+      [
+       36.49989,
+       34.55153
+      ],
+      [
+       36.50264,
+       34.5553
+      ]
+     ],
+     "name": "Ägypten zieht ab",
+     "staerke": "was übrig ist"
+    },
+    {
+     "id": "h-versteck",
+     "partei": "het",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.56776,
+       34.56256
+      ],
+      [
+       36.57264,
+       34.55289
+      ],
+      [
+       36.57477,
+       34.54349
+      ],
+      [
+       36.57005,
+       34.5323
+      ],
+      [
+       36.55878,
+       34.53185
+      ],
+      [
+       36.54803,
+       34.53125
+      ],
+      [
+       36.54361,
+       34.5409
+      ],
+      [
+       36.54919,
+       34.55076
+      ],
+      [
+       36.55547,
+       34.56138
+      ]
+     ],
+     "name": "Das hethitische Heer bleibt",
+     "staerke": "rund 37.000"
+    },
+    {
+     "id": "a-abzug",
+     "partei": "aeg",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.495,
+       34.55
+      ],
+      [
+       36.5,
+       34.49
+      ],
+      [
+       36.5,
+       34.43
+      ]
+     ],
+     "name": "Rückmarsch nach Süden",
+     "rueckzug": true
+    }
+   ]
+  },
+  {
+   "zeit": "Nach 1274 v. Chr.",
+   "t": 640,
+   "kurz": "Der älteste Friedensvertrag, den wir im Wortlaut haben.",
+   "text": "Ramses lässt die Schlacht an fünf Tempeln in Bild und Text als vollständigen Sieg anbringen, in einer Ausführlichkeit, die ohne Beispiel ist – und dadurch überhaupt erst rekonstruierbar macht, wie knapp es war. Sechzehn Jahre später schließen beide Reiche einen Vertrag über Frieden, Bündnis und Auslieferung von Flüchtlingen: in Hieroglyphen in Karnak, in Keilschrift in Hattusa. Eine Kopie hängt heute im Sitzungsgebäude der Vereinten Nationen.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     26.5,
+     25.5
+    ],
+    [
+     45.5,
+     42.5
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "h-grenze",
+     "partei": "het",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.52,
+       34.56
+      ],
+      [
+       36.1,
+       34.2
+      ],
+      [
+       35.85,
+       33.9
+      ]
+     ],
+     "name": "Die Grenze bleibt südlich von Kadesch"
+    },
+    {
+     "id": "a-tempel",
+     "partei": "aeg",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.52,
+       34.56
+      ],
+      [
+       34.2,
+       31.5
+      ],
+      [
+       32.6,
+       29
+      ],
+      [
+       32.66,
+       25.72
+      ]
+     ],
+     "name": "Die Fassung in Stein, von Karnak bis Abu Simbel"
+    },
+    {
+     "id": "h-vertrag",
+     "partei": "het",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       34.62,
+       40.02
+      ],
+      [
+       35.5,
+       37
+      ],
+      [
+       35.3,
+       33
+      ],
+      [
+       32.66,
+       25.72
+      ]
+     ],
+     "name": "1259 v. Chr.: der Vertrag, in zwei Sprachen"
+    }
+   ]
+  }
+ ],
+ "ausgang": "Der ägyptische Gegenstoß rettet das Lager; nach einem zweiten Tag ohne Entscheidung wird ein Waffenstillstand geschlossen. Kadesch bleibt hethitisch.",
+ "verluste": [
+  {
+   "partei": "aeg",
+   "text": "die Division Re als Verband zerschlagen; Zahlen nennt keine Quelle"
+  },
+  {
+   "partei": "het",
+   "text": "schwere Verluste unter den Streitwagen und im Gefolge Muwatallis, darunter sein Bruder"
+  }
+ ],
+ "folgen": "Ägypten kann Kadesch nicht halten; die Grenze bleibt südlich davon, und das Fürstentum Amurru geht verloren. Beide Reiche kämpfen noch anderthalb Jahrzehnte weiter und schließen 1259 v. Chr. einen Vertrag über Frieden und Bündnis, der in ägyptischer und in hethitischer Fassung erhalten ist – der älteste Staatsvertrag, dessen Wortlaut vorliegt. Achtzig Jahre später gibt es das Hethiterreich nicht mehr.",
+ "streit": "Alles hängt an zwei Parteien, die beide gesiegt haben wollen: Ramses’ Tempelinschriften und der hethitische Schriftverkehr. Warum Muwatalli sein Fußvolk am Ostufer zurückhielt, ist unerklärt und die entscheidende Lücke. Die Truppenzahlen sind Schätzungen aus der Zahl der Streitwagen; das Jahr schwankt je nach Chronologie zwischen 1274 und 1285 v. Chr. Selbst der Verlauf der Flussarme um die Stadt ist rekonstruiert."
+}

@@ -1,0 +1,1883 @@
+{
+ "id": "jarmuk",
+ "name": "Am Jarmuk",
+ "ort": "Die Hochfläche südlich des Golan",
+ "datum": "15. bis 20. August 636",
+ "jahr": 636,
+ "mitte": [
+  35.96,
+  32.78
+ ],
+ "zoom": 11.2,
+ "grund": "relief",
+ "worum": "Eine Hochfläche, auf drei Seiten von Schluchten begrenzt – und die byzantinische Aufstellung hat den Wadi ar-Ruqqad im Rücken, mit einem einzigen brauchbaren Übergang. Fünf Tage lang entscheidet das nichts. Am sechsten nimmt Chalid alle Reiter aus der Linie, trennt damit die gegnerische Reiterei vom Fußvolk und drückt die Linie genau dorthin, wo sie nicht mehr weiterkann.",
+ "parteien": [
+  {
+   "id": "byz",
+   "name": "Oströmisches Reich",
+   "farbe": "#6f9fe0",
+   "fuehrung": "Vahan, Theodoros Trithyrios, Gregorios, Qanatir, Jabala ibn al-Aiham",
+   "staerke": "Reichstruppen, Armenier und ghassanidische Verbündete – die Quellen nennen 100.000 und mehr, die Forschung eher 20.000 bis 40.000",
+   "zahl": 40000
+  },
+  {
+   "id": "kal",
+   "name": "Kalifat",
+   "farbe": "#7fbf7f",
+   "fuehrung": "Chalid ibn al-Walid, Abu Ubaida ibn al-Dscharrah, Amr ibn al-As, Schurahbil ibn Hasana",
+   "staerke": "rund 25.000 bis 40.000, davon etwa 8.000 beritten",
+   "zahl": 30000
+  }
+ ],
+ "gelaende": [
+  {
+   "art": "fluss",
+   "name": "Die Jarmuk-Schlucht",
+   "punkte": [
+    [
+     36.16,
+     32.705
+    ],
+    [
+     36.02,
+     32.718
+    ],
+    [
+     35.88,
+     32.722
+    ],
+    [
+     35.72,
+     32.715
+    ]
+   ]
+  },
+  {
+   "art": "fluss",
+   "name": "Wadi ar-Ruqqad · steilwandig, ein Übergang",
+   "punkte": [
+    [
+     35.818,
+     32.88
+    ],
+    [
+     35.828,
+     32.81
+    ],
+    [
+     35.838,
+     32.74
+    ],
+    [
+     35.85,
+     32.722
+    ]
+   ]
+  },
+  {
+   "art": "fluss",
+   "name": "Wadi al-Allan",
+   "punkte": [
+    [
+     36.1,
+     32.88
+    ],
+    [
+     36.08,
+     32.8
+    ],
+    [
+     36.06,
+     32.73
+    ]
+   ]
+  },
+  {
+   "art": "fluss",
+   "name": "Wadi al-Harir",
+   "punkte": [
+    [
+     35.86,
+     32.87
+    ],
+    [
+     35.95,
+     32.88
+    ],
+    [
+     36.05,
+     32.87
+    ]
+   ]
+  },
+  {
+   "art": "furt",
+   "name": "Ain Dhakar · der einzige Übergang",
+   "punkte": [
+    [
+     35.838,
+     32.76739
+    ],
+    [
+     35.84116,
+     32.76517
+    ],
+    [
+     35.84333,
+     32.76279
+    ],
+    [
+     35.84341,
+     32.75937
+    ],
+    [
+     35.83959,
+     32.75834
+    ],
+    [
+     35.83597,
+     32.7573
+    ],
+    [
+     35.83297,
+     32.75956
+    ],
+    [
+     35.83339,
+     32.76268
+    ],
+    [
+     35.83394,
+     32.76607
+    ]
+   ]
+  },
+  {
+   "art": "stadt",
+   "name": "Jabiya",
+   "punkte": [
+    [
+     35.94,
+     32.94219
+    ],
+    [
+     35.94422,
+     32.93922
+    ],
+    [
+     35.94712,
+     32.93605
+    ],
+    [
+     35.94722,
+     32.9315
+    ],
+    [
+     35.94212,
+     32.93011
+    ],
+    [
+     35.93728,
+     32.92874
+    ],
+    [
+     35.93328,
+     32.93174
+    ],
+    [
+     35.93384,
+     32.93591
+    ],
+    [
+     35.93457,
+     32.94043
+    ]
+   ]
+  }
+ ],
+ "stationen": [
+  {
+   "zeit": "628 bis 636",
+   "t": 0,
+   "kurz": "Zwei erschöpfte Großmächte und ein dritter Bewerber.",
+   "text": "Byzanz und Persien haben sich sechsundzwanzig Jahre lang bekriegt und beide fast ruiniert; Herakleios hat das Kreuz erst 630 nach Jerusalem zurückgebracht. In genau diesem Augenblick kommen aus dem Süden Heere, mit denen niemand gerechnet hat. 634 fällt Bosra, 635 Damaskus. Herakleios stellt in Nordsyrien eine Feldarmee auf, um die Provinz in einem Schlag zurückzugewinnen.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     26.5,
+     19.5
+    ],
+    [
+     50.5,
+     42.5
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "anm-byz",
+     "partei": "byz",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.2,
+       36.2
+      ],
+      [
+       36.3,
+       35.2
+      ],
+      [
+       36.3,
+       34.2
+      ],
+      [
+       36.1,
+       33.3
+      ],
+      [
+       35.95,
+       32.85
+      ]
+     ],
+     "name": "Die Feldarmee aus Nordsyrien"
+    },
+    {
+     "id": "anm-kal",
+     "partei": "kal",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       39.83,
+       21.42
+      ],
+      [
+       39.6,
+       24.47
+      ],
+      [
+       37.3,
+       28.4
+      ],
+      [
+       36.3,
+       30.9
+      ],
+      [
+       35.98,
+       32.72
+      ]
+     ],
+     "name": "Von Medina nach Syrien"
+    },
+    {
+     "id": "anm-raeumung",
+     "partei": "kal",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.29,
+       33.51
+      ],
+      [
+       36.1,
+       33.1
+      ],
+      [
+       35.98,
+       32.8
+      ]
+     ],
+     "name": "Damaskus und Homs werden geräumt"
+    },
+    {
+     "id": "anm-pers",
+     "partei": "byz",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       44.42,
+       33.1
+      ],
+      [
+       42,
+       34.5
+      ],
+      [
+       38.3,
+       36.5
+      ],
+      [
+       36.2,
+       36.2
+      ]
+     ],
+     "name": "Der eben beendete Krieg gegen Persien"
+    }
+   ]
+  },
+  {
+   "zeit": "Juli 636",
+   "t": 60,
+   "kurz": "Damaskus wird geräumt, um alles zu versammeln.",
+   "text": "Abu Ubaida gibt Damaskus und Homs auf – und lässt sogar die eingezogene Steuer zurückerstatten, weil der Schutz nicht mehr geleistet werden kann. Alle Verbände ziehen sich auf die Ebene südlich des Golan zusammen. Der Rückzug ist kein Zeichen von Schwäche, sondern die Voraussetzung dafür, dem größeren Heer überhaupt geschlossen gegenüberzustehen.",
+   "stellungen": [
+    {
+     "id": "k-heer",
+     "partei": "kal",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       35.98538,
+       32.74206
+      ],
+      [
+       35.99,
+       32.73559
+      ],
+      [
+       36,
+       32.73559
+      ],
+      [
+       36.00462,
+       32.74206
+      ],
+      [
+       36.00462,
+       32.82794
+      ],
+      [
+       36,
+       32.83441
+      ],
+      [
+       35.99,
+       32.83441
+      ],
+      [
+       35.98538,
+       32.82794
+      ]
+     ],
+     "name": "Die Verbände sammeln sich",
+     "staerke": "rund 30.000"
+    },
+    {
+     "id": "b-heer",
+     "partei": "byz",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       35.97991,
+       32.89
+      ],
+      [
+       35.95519,
+       32.87229
+      ],
+      [
+       35.92878,
+       32.86012
+      ],
+      [
+       35.89082,
+       32.85968
+      ],
+      [
+       35.87927,
+       32.88111
+      ],
+      [
+       35.86778,
+       32.9014
+      ],
+      [
+       35.89285,
+       32.9182
+      ],
+      [
+       35.9276,
+       32.91585
+      ],
+      [
+       35.96525,
+       32.91278
+      ]
+     ],
+     "name": "Die Feldarmee rückt heran",
+     "staerke": "weit überlegen"
+    }
+   ]
+  },
+  {
+   "zeit": "Die Aufstellung",
+   "t": 120,
+   "kurz": "Eine Ebene, aus der es nach drei Seiten nicht geht.",
+   "text": "Die Heere stellen sich auf einer Linie von etwa dreizehn Kilometern gegenüber, Nord–Süd, zwischen der Jarmuk-Schlucht im Süden und dem Wadi al-Harir im Norden. Die Muslime stehen östlich und haben die Wüste im Rücken, aus der ihr Nachschub kommt. Die Byzantiner stehen westlich – und hinter ihnen liegt der Wadi ar-Ruqqad, eine Schlucht mit einem einzigen brauchbaren Übergang.",
+   "stellungen": [
+    {
+     "id": "k-heer",
+     "partei": "kal",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       35.98645,
+       32.73236
+      ],
+      [
+       35.99055,
+       32.72661
+      ],
+      [
+       35.99945,
+       32.72661
+      ],
+      [
+       36.00355,
+       32.73236
+      ],
+      [
+       36.00355,
+       32.83764
+      ],
+      [
+       35.99945,
+       32.84339
+      ],
+      [
+       35.99055,
+       32.84339
+      ],
+      [
+       35.98645,
+       32.83764
+      ]
+     ],
+     "name": "Vier Verbände nebeneinander",
+     "staerke": "rund 30.000"
+    },
+    {
+     "id": "k-reiterei",
+     "partei": "kal",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       36.01266,
+       32.76164
+      ],
+      [
+       36.01522,
+       32.75805
+      ],
+      [
+       36.02078,
+       32.75805
+      ],
+      [
+       36.02334,
+       32.76164
+      ],
+      [
+       36.02334,
+       32.80836
+      ],
+      [
+       36.02078,
+       32.81195
+      ],
+      [
+       36.01522,
+       32.81195
+      ],
+      [
+       36.01266,
+       32.80836
+      ]
+     ],
+     "name": "Reiterei hinter jedem Flügel",
+     "staerke": "8.000"
+    },
+    {
+     "id": "b-heer",
+     "partei": "byz",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       35.93675,
+       32.83998
+      ],
+      [
+       35.93111,
+       32.84788
+      ],
+      [
+       35.91889,
+       32.84788
+      ],
+      [
+       35.91325,
+       32.83998
+      ],
+      [
+       35.91325,
+       32.73002
+      ],
+      [
+       35.91889,
+       32.72212
+      ],
+      [
+       35.93111,
+       32.72212
+      ],
+      [
+       35.93675,
+       32.73002
+      ]
+     ],
+     "name": "Die byzantinische Linie",
+     "staerke": "weit überlegen"
+    },
+    {
+     "id": "b-reiterei",
+     "partei": "byz",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       35.90141,
+       32.83459
+      ],
+      [
+       35.89833,
+       32.8389
+      ],
+      [
+       35.89167,
+       32.8389
+      ],
+      [
+       35.88859,
+       32.83459
+      ],
+      [
+       35.88859,
+       32.73541
+      ],
+      [
+       35.89167,
+       32.7311
+      ],
+      [
+       35.89833,
+       32.7311
+      ],
+      [
+       35.90141,
+       32.73541
+      ]
+     ],
+     "name": "Die Reiterei dahinter"
+    }
+   ]
+  },
+  {
+   "zeit": "Erster Tag",
+   "t": 180,
+   "kurz": "Zweikämpfe vor der Front, sonst wenig.",
+   "text": "Der erste Tag vergeht mit Zweikämpfen zwischen Einzelnen vor den Linien und mit vorsichtigen Vorstößen. Vahan hofft weiter auf eine Verhandlungslösung und will die Kräfte nicht verbrauchen; die arabischen Quellen füllen diesen Tag mit Namen und Heldentaten, die man nicht nachprüfen kann.",
+   "stellungen": [
+    {
+     "id": "k-heer",
+     "partei": "kal",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       35.98645,
+       32.73236
+      ],
+      [
+       35.99055,
+       32.72661
+      ],
+      [
+       35.99945,
+       32.72661
+      ],
+      [
+       36.00355,
+       32.73236
+      ],
+      [
+       36.00355,
+       32.83764
+      ],
+      [
+       35.99945,
+       32.84339
+      ],
+      [
+       35.99055,
+       32.84339
+      ],
+      [
+       35.98645,
+       32.83764
+      ]
+     ],
+     "name": "Die Linie steht",
+     "staerke": "rund 30.000"
+    },
+    {
+     "id": "b-heer",
+     "partei": "byz",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       35.93975,
+       32.83998
+      ],
+      [
+       35.93411,
+       32.84788
+      ],
+      [
+       35.92189,
+       32.84788
+      ],
+      [
+       35.91625,
+       32.83998
+      ],
+      [
+       35.91625,
+       32.73002
+      ],
+      [
+       35.92189,
+       32.72212
+      ],
+      [
+       35.93411,
+       32.72212
+      ],
+      [
+       35.93975,
+       32.73002
+      ]
+     ],
+     "name": "Die Linie steht",
+     "staerke": "weit überlegen"
+    },
+    {
+     "id": "b-tast",
+     "partei": "byz",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       35.945,
+       32.79
+      ],
+      [
+       35.965,
+       32.788
+      ],
+      [
+       35.98,
+       32.786
+      ]
+     ],
+     "name": "Vorstöße zum Abtasten"
+    }
+   ]
+  },
+  {
+   "zeit": "Zweiter und dritter Tag",
+   "t": 240,
+   "kurz": "Die Flügel weichen bis in die eigenen Lager.",
+   "text": "Vahan greift jetzt ernsthaft an, vor allem die Flügel. Zweimal wird der rechte muslimische Flügel bis an die Zeltlager zurückgedrängt; die arabische Überlieferung berichtet, die Frauen der Lager hätten die Fliehenden mit Zeltstangen und Spottversen zurückgetrieben. Chalid fängt beide Male mit der Reiterei ab und stellt die Linie wieder her.",
+   "stellungen": [
+    {
+     "id": "b-stossN",
+     "partei": "byz",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       35.935,
+       32.83
+      ],
+      [
+       35.97,
+       32.828
+      ],
+      [
+       35.995,
+       32.825
+      ]
+     ],
+     "name": "Angriff auf den linken Flügel"
+    },
+    {
+     "id": "b-stossS",
+     "partei": "byz",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       35.935,
+       32.74
+      ],
+      [
+       35.97,
+       32.742
+      ],
+      [
+       35.995,
+       32.744
+      ]
+     ],
+     "name": "Angriff auf den rechten Flügel"
+    },
+    {
+     "id": "k-heer",
+     "partei": "kal",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.00038,
+       32.73308
+      ],
+      [
+       36.005,
+       32.72661
+      ],
+      [
+       36.015,
+       32.72661
+      ],
+      [
+       36.01962,
+       32.73308
+      ],
+      [
+       36.01962,
+       32.83692
+      ],
+      [
+       36.015,
+       32.84339
+      ],
+      [
+       36.005,
+       32.84339
+      ],
+      [
+       36.00038,
+       32.83692
+      ]
+     ],
+     "name": "zurückgedrängt und wiederhergestellt",
+     "staerke": "rund 30.000",
+     "geschlagen": true
+    },
+    {
+     "id": "k-reiterei",
+     "partei": "kal",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       36.01966,
+       32.76164
+      ],
+      [
+       36.02222,
+       32.75805
+      ],
+      [
+       36.02778,
+       32.75805
+      ],
+      [
+       36.03034,
+       32.76164
+      ],
+      [
+       36.03034,
+       32.80836
+      ],
+      [
+       36.02778,
+       32.81195
+      ],
+      [
+       36.02222,
+       32.81195
+      ],
+      [
+       36.01966,
+       32.80836
+      ]
+     ],
+     "name": "Chalid fängt ab",
+     "staerke": "8.000"
+    },
+    {
+     "id": "b-heer",
+     "partei": "byz",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       35.93975,
+       32.83998
+      ],
+      [
+       35.93411,
+       32.84788
+      ],
+      [
+       35.92189,
+       32.84788
+      ],
+      [
+       35.91625,
+       32.83998
+      ],
+      [
+       35.91625,
+       32.73002
+      ],
+      [
+       35.92189,
+       32.72212
+      ],
+      [
+       35.93411,
+       32.72212
+      ],
+      [
+       35.93975,
+       32.73002
+      ]
+     ],
+     "name": "drückt",
+     "staerke": "weit überlegen"
+    }
+   ]
+  },
+  {
+   "zeit": "Vierter Tag",
+   "t": 300,
+   "kurz": "Der Tag der verlorenen Augen.",
+   "text": "Der schwerste Tag. Armenische Bogenschützen schießen auf kurze Entfernung in die Gesichter der vorderen Reihen; die arabische Überlieferung nennt ihn den Tag der verlorenen Augen und zählt Hunderte Geblendete. Wieder weichen beide Flügel, wieder wird die Linie mit der Reiterei geflickt. Am Abend hat keine Seite etwas gewonnen, und beide sind erschöpft.",
+   "stellungen": [
+    {
+     "id": "b-bogen",
+     "partei": "byz",
+     "form": "flaeche",
+     "gattung": "bogen",
+     "punkte": [
+      [
+       35.95927,
+       32.83602
+      ],
+      [
+       35.95722,
+       32.8389
+      ],
+      [
+       35.95278,
+       32.8389
+      ],
+      [
+       35.95073,
+       32.83602
+      ],
+      [
+       35.95073,
+       32.73398
+      ],
+      [
+       35.95278,
+       32.7311
+      ],
+      [
+       35.95722,
+       32.7311
+      ],
+      [
+       35.95927,
+       32.73398
+      ]
+     ],
+     "name": "Armenische Bogenschützen",
+     "staerke": "auf kurze Entfernung"
+    },
+    {
+     "id": "k-heer",
+     "partei": "kal",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.00038,
+       32.73308
+      ],
+      [
+       36.005,
+       32.72661
+      ],
+      [
+       36.015,
+       32.72661
+      ],
+      [
+       36.01962,
+       32.73308
+      ],
+      [
+       36.01962,
+       32.83692
+      ],
+      [
+       36.015,
+       32.84339
+      ],
+      [
+       36.005,
+       32.84339
+      ],
+      [
+       36.00038,
+       32.83692
+      ]
+     ],
+     "name": "hält mit Mühe",
+     "staerke": "rund 30.000",
+     "geschlagen": true
+    },
+    {
+     "id": "k-reiterei",
+     "partei": "kal",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       36.02466,
+       32.76164
+      ],
+      [
+       36.02722,
+       32.75805
+      ],
+      [
+       36.03278,
+       32.75805
+      ],
+      [
+       36.03534,
+       32.76164
+      ],
+      [
+       36.03534,
+       32.80836
+      ],
+      [
+       36.03278,
+       32.81195
+      ],
+      [
+       36.02722,
+       32.81195
+      ],
+      [
+       36.02466,
+       32.80836
+      ]
+     ],
+     "name": "flickt die Linie",
+     "staerke": "8.000"
+    },
+    {
+     "id": "b-heer",
+     "partei": "byz",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       35.93975,
+       32.83998
+      ],
+      [
+       35.93411,
+       32.84788
+      ],
+      [
+       35.92189,
+       32.84788
+      ],
+      [
+       35.91625,
+       32.83998
+      ],
+      [
+       35.91625,
+       32.73002
+      ],
+      [
+       35.92189,
+       32.72212
+      ],
+      [
+       35.93411,
+       32.72212
+      ],
+      [
+       35.93975,
+       32.73002
+      ]
+     ],
+     "name": "greift den ganzen Tag an",
+     "staerke": "weit überlegen"
+    }
+   ]
+  },
+  {
+   "zeit": "Fünfter Tag",
+   "t": 360,
+   "kurz": "Stillstand, Verhandlungen und eine Nacht Arbeit.",
+   "text": "Der fünfte Tag vergeht fast ohne Kampf; Vahan bietet Verhandlungen an. In dieser Nacht schickt Chalid eine Abteilung nach Westen und lässt den Übergang bei Ain Dhakar besetzen – die einzige Stelle, an der der Wadi ar-Ruqqad mit einem Heer zu überschreiten ist. Von diesem Augenblick an hat die byzantinische Aufstellung keinen Rückweg mehr, und niemand dort weiß es.",
+   "stellungen": [
+    {
+     "id": "k-abteilung",
+     "partei": "kal",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       36,
+       32.735
+      ],
+      [
+       35.92,
+       32.725
+      ],
+      [
+       35.85,
+       32.75
+      ],
+      [
+       35.84,
+       32.76
+      ]
+     ],
+     "name": "Nachts zum Übergang"
+    },
+    {
+     "id": "k-heer",
+     "partei": "kal",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       35.98892,
+       32.73272
+      ],
+      [
+       35.99328,
+       32.72661
+      ],
+      [
+       36.00272,
+       32.72661
+      ],
+      [
+       36.00708,
+       32.73272
+      ],
+      [
+       36.00708,
+       32.83728
+      ],
+      [
+       36.00272,
+       32.84339
+      ],
+      [
+       35.99328,
+       32.84339
+      ],
+      [
+       35.98892,
+       32.83728
+      ]
+     ],
+     "name": "Stillhalten",
+     "staerke": "rund 30.000"
+    },
+    {
+     "id": "b-heer",
+     "partei": "byz",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       35.93975,
+       32.83998
+      ],
+      [
+       35.93411,
+       32.84788
+      ],
+      [
+       35.92189,
+       32.84788
+      ],
+      [
+       35.91625,
+       32.83998
+      ],
+      [
+       35.91625,
+       32.73002
+      ],
+      [
+       35.92189,
+       32.72212
+      ],
+      [
+       35.93411,
+       32.72212
+      ],
+      [
+       35.93975,
+       32.73002
+      ]
+     ],
+     "name": "Vahan verhandelt",
+     "staerke": "weit überlegen"
+    }
+   ]
+  },
+  {
+   "zeit": "Sechster Tag, Morgen",
+   "t": 420,
+   "kurz": "Chalid nimmt alle Reiter aus der Linie heraus.",
+   "text": "Am sechsten Tag ändert Chalid die Ordnung: Er zieht die Reiterei aller vier Verbände heraus und stellt sie als einen einzigen Verband von rund achttausend Pferden zusammen, hinter dem rechten Flügel. Damit gibt er die Linie hinter sich auf, gewinnt aber das Einzige, was gegen ein größeres Heer hilft – eine Faust, die an einer Stelle stärker ist als alles, was dort steht.",
+   "stellungen": [
+    {
+     "id": "k-reiterei",
+     "partei": "kal",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       36.01477,
+       32.75864
+      ],
+      [
+       36.02888,
+       32.75191
+      ],
+      [
+       36.04019,
+       32.74357
+      ],
+      [
+       36.04691,
+       32.72867
+      ],
+      [
+       36.03692,
+       32.72045
+      ],
+      [
+       36.02755,
+       32.71245
+      ],
+      [
+       36.01388,
+       32.71947
+      ],
+      [
+       36.00926,
+       32.73358
+      ],
+      [
+       36.00455,
+       32.74896
+      ]
+     ],
+     "name": "Die ganze Reiterei in einer Hand",
+     "staerke": "8.000"
+    },
+    {
+     "id": "k-heer",
+     "partei": "kal",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       35.98752,
+       32.73164
+      ],
+      [
+       35.99111,
+       32.72661
+      ],
+      [
+       35.99889,
+       32.72661
+      ],
+      [
+       36.00248,
+       32.73164
+      ],
+      [
+       36.00248,
+       32.83836
+      ],
+      [
+       35.99889,
+       32.84339
+      ],
+      [
+       35.99111,
+       32.84339
+      ],
+      [
+       35.98752,
+       32.83836
+      ]
+     ],
+     "name": "Das Fußvolk allein in der Linie",
+     "staerke": "rund 22.000"
+    },
+    {
+     "id": "b-heer",
+     "partei": "byz",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       35.93975,
+       32.83998
+      ],
+      [
+       35.93411,
+       32.84788
+      ],
+      [
+       35.92189,
+       32.84788
+      ],
+      [
+       35.91625,
+       32.83998
+      ],
+      [
+       35.91625,
+       32.73002
+      ],
+      [
+       35.92189,
+       32.72212
+      ],
+      [
+       35.93411,
+       32.72212
+      ],
+      [
+       35.93975,
+       32.73002
+      ]
+     ],
+     "name": "Die byzantinische Linie",
+     "staerke": "weit überlegen"
+    },
+    {
+     "id": "b-reiterei",
+     "partei": "byz",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       35.90441,
+       32.83459
+      ],
+      [
+       35.90133,
+       32.8389
+      ],
+      [
+       35.89467,
+       32.8389
+      ],
+      [
+       35.89159,
+       32.83459
+      ],
+      [
+       35.89159,
+       32.73541
+      ],
+      [
+       35.89467,
+       32.7311
+      ],
+      [
+       35.90133,
+       32.7311
+      ],
+      [
+       35.90441,
+       32.73541
+      ]
+     ],
+     "name": "Die Reiterei hinter dem Fußvolk"
+    }
+   ]
+  },
+  {
+   "zeit": "Sechster Tag, Vormittag",
+   "t": 480,
+   "kurz": "Erst wird die Reiterei vom Fußvolk getrennt.",
+   "text": "Der erste Stoß gilt nicht der Front, sondern der byzantinischen Reiterei: Chalid wirft seine geschlossene Masse gegen sie und drängt sie nach Norden ab, weg von den Fußtruppen, die sie decken soll. Sie weicht aus und findet nicht mehr zurück. Was danach in der Linie steht, ist Infanterie ohne Schutz an den Flanken.",
+   "stellungen": [
+    {
+     "id": "k-reiterei",
+     "partei": "kal",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       36.02,
+       32.75
+      ],
+      [
+       35.96,
+       32.81
+      ],
+      [
+       35.91,
+       32.85
+      ],
+      [
+       35.89,
+       32.875
+      ]
+     ],
+     "name": "gegen die byzantinische Reiterei"
+    },
+    {
+     "id": "b-reiterei",
+     "partei": "byz",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       35.88642,
+       32.89264
+      ],
+      [
+       35.88334,
+       32.89695
+      ],
+      [
+       35.87666,
+       32.89695
+      ],
+      [
+       35.87358,
+       32.89264
+      ],
+      [
+       35.87358,
+       32.84736
+      ],
+      [
+       35.87666,
+       32.84305
+      ],
+      [
+       35.88334,
+       32.84305
+      ],
+      [
+       35.88642,
+       32.84736
+      ]
+     ],
+     "name": "nach Norden abgedrängt",
+     "geschlagen": true
+    },
+    {
+     "id": "b-heer",
+     "partei": "byz",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       35.93975,
+       32.83049
+      ],
+      [
+       35.93411,
+       32.83839
+      ],
+      [
+       35.92189,
+       32.83839
+      ],
+      [
+       35.91625,
+       32.83049
+      ],
+      [
+       35.91625,
+       32.72951
+      ],
+      [
+       35.92189,
+       32.72161
+      ],
+      [
+       35.93411,
+       32.72161
+      ],
+      [
+       35.93975,
+       32.72951
+      ]
+     ],
+     "name": "Fußvolk ohne Deckung",
+     "staerke": "weit überlegen"
+    },
+    {
+     "id": "k-heer",
+     "partei": "kal",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       35.98752,
+       32.72664
+      ],
+      [
+       35.99111,
+       32.72161
+      ],
+      [
+       35.99889,
+       32.72161
+      ],
+      [
+       36.00248,
+       32.72664
+      ],
+      [
+       36.00248,
+       32.83336
+      ],
+      [
+       35.99889,
+       32.83839
+      ],
+      [
+       35.99111,
+       32.83839
+      ],
+      [
+       35.98752,
+       32.83336
+      ]
+     ],
+     "name": "bindet die Front",
+     "staerke": "rund 22.000"
+    }
+   ]
+  },
+  {
+   "zeit": "Sechster Tag, Mittag",
+   "t": 540,
+   "kurz": "Dann wird die Linie von Norden aufgerollt.",
+   "text": "Die Reiterei dreht bei und fällt dem nördlichen Ende der byzantinischen Linie in Flanke und Rücken, während das Fußvolk von vorn drückt. Eine Linie, die man nur an einem Ende fasst, gibt in der ganzen Länge nach: Verband für Verband weicht nach Süden und Westen aus, weil dort noch Platz ist. Die Ghassaniden Jabalas lösen sich und ziehen ab.",
+   "stellungen": [
+    {
+     "id": "k-reiterei",
+     "partei": "kal",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       35.89,
+       32.87
+      ],
+      [
+       35.9,
+       32.83
+      ],
+      [
+       35.92,
+       32.79
+      ]
+     ],
+     "name": "in Flanke und Rücken"
+    },
+    {
+     "id": "b-heer",
+     "partei": "byz",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       35.92889,
+       32.81456
+      ],
+      [
+       35.92222,
+       32.8239
+      ],
+      [
+       35.90778,
+       32.8239
+      ],
+      [
+       35.90111,
+       32.81456
+      ],
+      [
+       35.90111,
+       32.72544
+      ],
+      [
+       35.90778,
+       32.7161
+      ],
+      [
+       35.92222,
+       32.7161
+      ],
+      [
+       35.92889,
+       32.72544
+      ]
+     ],
+     "name": "wird von Norden aufgerollt",
+     "geschlagen": true
+    },
+    {
+     "id": "k-heer",
+     "partei": "kal",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       35.99,
+       32.78
+      ],
+      [
+       35.96,
+       32.78
+      ],
+      [
+       35.935,
+       32.78
+      ]
+     ],
+     "name": "Druck von vorn"
+    },
+    {
+     "id": "b-ghassan",
+     "partei": "byz",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       35.9,
+       32.85
+      ],
+      [
+       35.92,
+       32.9
+      ],
+      [
+       35.94,
+       32.94
+      ]
+     ],
+     "name": "Die Ghassaniden ziehen ab",
+     "rueckzug": true
+    }
+   ]
+  },
+  {
+   "zeit": "Sechster Tag, Abend",
+   "t": 600,
+   "kurz": "Der einzige Übergang über den Ruqqad ist besetzt.",
+   "text": "Wer nach Westen ausweicht, läuft auf den Wadi ar-Ruqqad zu und findet den Übergang in fremder Hand. Die Schlucht ist zwanzig bis dreißig Meter tief mit senkrechten Wänden. Was sich dort staut, wird hineingedrängt; die Quellen beider Seiten stimmen darin überein, dass mehr Menschen in den Schluchten umkommen als im Gefecht. Theodoros fällt, Vahan verschwindet aus der Überlieferung.",
+   "stellungen": [
+    {
+     "id": "b-heer",
+     "partei": "byz",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       35.8611,
+       32.81246
+      ],
+      [
+       35.88033,
+       32.79725
+      ],
+      [
+       35.89494,
+       32.78012
+      ],
+      [
+       35.90097,
+       32.75326
+      ],
+      [
+       35.88386,
+       32.74229
+      ],
+      [
+       35.86775,
+       32.7315
+      ],
+      [
+       35.84926,
+       32.74708
+      ],
+      [
+       35.84616,
+       32.77202
+      ],
+      [
+       35.84327,
+       32.79911
+      ]
+     ],
+     "name": "gegen die Schlucht gedrückt",
+     "geschlagen": true
+    },
+    {
+     "id": "k-reiterei",
+     "partei": "kal",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       35.93,
+       32.81
+      ],
+      [
+       35.9,
+       32.79
+      ],
+      [
+       35.88,
+       32.778
+      ]
+     ],
+     "name": "drückt nach Westen"
+    },
+    {
+     "id": "k-abteilung",
+     "partei": "kal",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       35.842,
+       32.762
+      ],
+      [
+       35.85,
+       32.766
+      ],
+      [
+       35.86,
+       32.77
+      ]
+     ],
+     "name": "Der Übergang ist zu"
+    },
+    {
+     "id": "k-heer",
+     "partei": "kal",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       35.92252,
+       32.73113
+      ],
+      [
+       35.92611,
+       32.7261
+      ],
+      [
+       35.93389,
+       32.7261
+      ],
+      [
+       35.93748,
+       32.73113
+      ],
+      [
+       35.93748,
+       32.82887
+      ],
+      [
+       35.93389,
+       32.8339
+      ],
+      [
+       35.92611,
+       32.8339
+      ],
+      [
+       35.92252,
+       32.82887
+      ]
+     ],
+     "name": "rückt nach",
+     "staerke": "rund 22.000"
+    }
+   ]
+  },
+  {
+   "zeit": "Nach dem Jarmuk",
+   "t": 680,
+   "kurz": "Syrien ist verloren, und es bleibt verloren.",
+   "text": "Herakleios erfährt die Nachricht in Antiochia und zieht nach Konstantinopel ab; überliefert ist sein Abschiedswort an die Provinz: „Leb wohl, Syrien – was für ein schönes Land für den Feind.“ Innerhalb von vier Jahren fallen Jerusalem, Ägypten und Mesopotamien; das Sassanidenreich verschwindet ganz. Die Grenze läuft danach am Taurus und bleibt dort dreihundert Jahre.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     24.5,
+     22.5
+    ],
+    [
+     62.5,
+     44.5
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "k-syrien",
+     "partei": "kal",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       35.95,
+       32.78
+      ],
+      [
+       35.23,
+       31.78
+      ],
+      [
+       31.24,
+       30.05
+      ],
+      [
+       29.92,
+       31.2
+      ]
+     ],
+     "name": "Jerusalem 637, Ägypten bis 642"
+    },
+    {
+     "id": "k-persien",
+     "partei": "kal",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       35.95,
+       32.8
+      ],
+      [
+       40,
+       33.5
+      ],
+      [
+       44.36,
+       33.31
+      ],
+      [
+       51.4,
+       33
+      ],
+      [
+       59.6,
+       36.3
+      ]
+     ],
+     "name": "Das Sassanidenreich, bis 651"
+    },
+    {
+     "id": "b-taurus",
+     "partei": "byz",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       36.2,
+       36.2
+      ],
+      [
+       34.8,
+       37.6
+      ],
+      [
+       32.5,
+       38.2
+      ],
+      [
+       29,
+       39.5
+      ],
+      [
+       28.98,
+       41.01
+      ]
+     ],
+     "name": "Rückzug hinter den Taurus"
+    }
+   ]
+  }
+ ],
+ "ausgang": "Die byzantinische Feldarmee wird nach sechs Tagen aufgerollt und gegen die Schluchten gedrängt; sie hört als Verband auf zu bestehen.",
+ "verluste": [
+  {
+   "partei": "byz",
+   "text": "die Feldarmee vernichtet; die Quellen nennen Zehntausende, viele davon in den Schluchten"
+  },
+  {
+   "partei": "kal",
+   "text": "nach arabischer Überlieferung rund 4.000"
+  }
+ ],
+ "folgen": "Syrien geht Byzanz endgültig verloren; Jerusalem fällt 637, Ägypten bis 642, das Sassanidenreich verschwindet bis 651 vollständig. Die byzantinische Grenze läuft danach am Taurus und liegt dort, mit Schwankungen, dreihundert Jahre. Die reichste Provinz des Reiches, mit Antiochia und Damaskus, wird zum Kernland eines neuen Staates: 661 macht Muawiya Damaskus zur Hauptstadt des Kalifats.",
+ "streit": "Die Zahlen sind der größte Vorbehalt: Die arabischen Quellen, alle mindestens ein Jahrhundert jünger, nennen für Byzanz 100.000 bis 400.000; die heutige Forschung hält 20.000 bis 40.000 für wahrscheinlich, manche noch weniger. Auch die Sechstagegliederung stammt aus dieser späten Überlieferung und ist womöglich eine erzählerische Ordnung. Gesichert sind der Ort, das Ergebnis und die Landschaft – und die erklärt am meisten."
+}

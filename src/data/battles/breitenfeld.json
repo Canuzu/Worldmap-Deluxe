@@ -1,0 +1,2133 @@
+{
+ "id": "breitenfeld",
+ "name": "Breitenfeld",
+ "ort": "Nördlich von Leipzig",
+ "datum": "17. September 1631",
+ "jahr": 1631,
+ "mitte": [
+  12.395,
+  51.432
+ ],
+ "zoom": 12.4,
+ "grund": "relief",
+ "worum": "Zwei Ordnungen nebeneinander auf einem Feld: siebzehn Gevierthaufen von je anderthalbtausend Mann, die im Nahkampf fast unzerbrechlich sind und sich nicht drehen können – und zwei Linien aus Verbänden zu fünfhundert, mit Musketieren zwischen der Reiterei. Der Beweis kommt, als die Sachsen davonlaufen: Die schwedische Reserve baut mitten in der Schlacht eine neue Front im rechten Winkel. Mit Gevierthaufen ginge das nicht.",
+ "parteien": [
+  {
+   "id": "swe",
+   "name": "Schweden und Sachsen",
+   "farbe": "#6f9fe0",
+   "fuehrung": "Gustav II. Adolf, Gustav Horn, Johann Banér; Kurfürst Johann Georg I., Hans Georg von Arnim",
+   "staerke": "rund 23.000 Schweden und Finnen, 18.000 Sachsen; über 100 Geschütze, viele davon leichte Regimentsstücke",
+   "zahl": 41000
+  },
+  {
+   "id": "kai",
+   "name": "Kaiserliche und Liga",
+   "farbe": "#d4737c",
+   "fuehrung": "Johann t’Serclaes von Tilly, Gottfried Heinrich zu Pappenheim, Egon von Fürstenberg",
+   "staerke": "rund 35.000 in siebzehn großen Gevierthaufen; 27 schwere Geschütze",
+   "zahl": 35000
+  }
+ ],
+ "gelaende": [
+  {
+   "art": "hoehe",
+   "name": "Der flache Rücken, auf dem Tilly steht",
+   "punkte": [
+    [
+     12.4411,
+     51.423
+    ],
+    [
+     12.42208,
+     51.41946
+    ],
+    [
+     12.40176,
+     51.41702
+    ],
+    [
+     12.37254,
+     51.41694
+    ],
+    [
+     12.36366,
+     51.42122
+    ],
+    [
+     12.35481,
+     51.42528
+    ],
+    [
+     12.37411,
+     51.42864
+    ],
+    [
+     12.40085,
+     51.42817
+    ],
+    [
+     12.42982,
+     51.42756
+    ]
+   ]
+  },
+  {
+   "art": "stadt",
+   "name": "Breitenfeld",
+   "punkte": [
+    [
+     12.388,
+     51.42114
+    ],
+    [
+     12.39048,
+     51.41985
+    ],
+    [
+     12.39219,
+     51.41846
+    ],
+    [
+     12.39225,
+     51.41647
+    ],
+    [
+     12.38925,
+     51.41586
+    ],
+    [
+     12.3864,
+     51.41526
+    ],
+    [
+     12.38404,
+     51.41658
+    ],
+    [
+     12.38437,
+     51.4184
+    ],
+    [
+     12.3848,
+     51.42038
+    ]
+   ]
+  },
+  {
+   "art": "stadt",
+   "name": "Podelwitz",
+   "punkte": [
+    [
+     12.39,
+     51.45514
+    ],
+    [
+     12.39249,
+     51.45385
+    ],
+    [
+     12.3942,
+     51.45246
+    ],
+    [
+     12.39426,
+     51.45047
+    ],
+    [
+     12.39125,
+     51.44986
+    ],
+    [
+     12.3884,
+     51.44926
+    ],
+    [
+     12.38604,
+     51.45058
+    ],
+    [
+     12.38637,
+     51.4524
+    ],
+    [
+     12.3868,
+     51.45438
+    ]
+   ]
+  },
+  {
+   "art": "stadt",
+   "name": "Seehausen",
+   "punkte": [
+    [
+     12.42,
+     51.44114
+    ],
+    [
+     12.42249,
+     51.43985
+    ],
+    [
+     12.42419,
+     51.43846
+    ],
+    [
+     12.42426,
+     51.43647
+    ],
+    [
+     12.42125,
+     51.43586
+    ],
+    [
+     12.4184,
+     51.43526
+    ],
+    [
+     12.41604,
+     51.43658
+    ],
+    [
+     12.41637,
+     51.4384
+    ],
+    [
+     12.4168,
+     51.44038
+    ]
+   ]
+  },
+  {
+   "art": "fluss",
+   "name": "Die Lober",
+   "punkte": [
+    [
+     12.31,
+     51.47
+    ],
+    [
+     12.38,
+     51.462
+    ],
+    [
+     12.46,
+     51.456
+    ]
+   ]
+  },
+  {
+   "art": "weg",
+   "name": "Die Straße nach Leipzig",
+   "punkte": [
+    [
+     12.39,
+     51.41
+    ],
+    [
+     12.38,
+     51.38
+    ],
+    [
+     12.373,
+     51.345
+    ]
+   ]
+  }
+ ],
+ "stationen": [
+  {
+   "zeit": "1630 bis September 1631",
+   "t": 0,
+   "kurz": "Ein König landet mit 13.000 Mann in Pommern.",
+   "text": "Nach zwölf Jahren Krieg steht der Kaiser so gut da wie nie: Das Restitutionsedikt von 1629 nimmt den Protestanten die Kirchengüter zurück. Im Juli 1630 landet Gustav Adolf bei Peenemünde – zunächst mit dreizehntausend Mann und ohne einen einzigen deutschen Verbündeten. Im Mai 1631 wird Magdeburg erstürmt und brennt ab; die Nachricht treibt Kursachsen ins schwedische Lager. Tilly zieht daraufhin in Sachsen ein und nimmt Leipzig.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     3.5,
+     44.5
+    ],
+    [
+     27.5,
+     60.5
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "anm-swe",
+     "partei": "swe",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       18.07,
+       59.33
+      ],
+      [
+       16,
+       56.5
+      ],
+      [
+       13.77,
+       54.14
+      ],
+      [
+       12.1,
+       53.1
+      ],
+      [
+       12.39,
+       51.44
+      ]
+     ],
+     "name": "Gustav Adolf von Stockholm nach Sachsen"
+    },
+    {
+     "id": "anm-kai",
+     "partei": "kai",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       11.62,
+       52.13
+      ],
+      [
+       11.9,
+       51.8
+      ],
+      [
+       12.3,
+       51.55
+      ],
+      [
+       12.37,
+       51.34
+      ]
+     ],
+     "name": "Tilly von Magdeburg nach Leipzig"
+    },
+    {
+     "id": "anm-sax",
+     "partei": "swe",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       13.74,
+       51.05
+      ],
+      [
+       13.1,
+       51.25
+      ],
+      [
+       12.5,
+       51.45
+      ]
+     ],
+     "name": "Kursachsen tritt bei"
+    },
+    {
+     "id": "anm-wien",
+     "partei": "kai",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       16.37,
+       48.21
+      ],
+      [
+       14.3,
+       49.6
+      ],
+      [
+       12.9,
+       50.6
+      ],
+      [
+       12.4,
+       51.3
+      ]
+     ],
+     "name": "Der Nachschub des Kaisers"
+    }
+   ]
+  },
+  {
+   "zeit": "Zwei Ordnungen",
+   "t": 60,
+   "kurz": "Siebzehn Gevierthaufen gegen viele kleine Verbände.",
+   "text": "Tilly stellt auf, wie man seit hundert Jahren aufstellt: siebzehn Gevierthaufen zu je anderthalbtausend Mann, Pikeniere im Kern, Musketiere an den Ecken, alles in einer Linie auf einem flachen Rücken. So ein Block ist im Nahkampf fast unzerbrechlich – und er kann sich nicht drehen. Gustav Adolf stellt in zwei Linien aus Verbänden von fünfhundert Mann auf, mit Musketierabteilungen zwischen den Reiterschwadronen und leichten Geschützen bei jedem Regiment.",
+   "stellungen": [
+    {
+     "id": "k-linie",
+     "partei": "kai",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       12.36187,
+       51.42849
+      ],
+      [
+       12.3561,
+       51.42634
+      ],
+      [
+       12.3561,
+       51.42166
+      ],
+      [
+       12.36187,
+       51.41951
+      ],
+      [
+       12.42813,
+       51.41951
+      ],
+      [
+       12.4339,
+       51.42166
+      ],
+      [
+       12.4339,
+       51.42634
+      ],
+      [
+       12.42813,
+       51.42849
+      ]
+     ],
+     "name": "Siebzehn Gevierthaufen",
+     "staerke": "je rund 1.500"
+    },
+    {
+     "id": "k-pappenheim",
+     "partei": "kai",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       12.3317,
+       51.43059
+      ],
+      [
+       12.32847,
+       51.42939
+      ],
+      [
+       12.32847,
+       51.42461
+      ],
+      [
+       12.3317,
+       51.42341
+      ],
+      [
+       12.3483,
+       51.42341
+      ],
+      [
+       12.35153,
+       51.42461
+      ],
+      [
+       12.35153,
+       51.42939
+      ],
+      [
+       12.3483,
+       51.43059
+      ]
+     ],
+     "name": "Pappenheim auf dem linken Flügel",
+     "staerke": "5.000 Kürassiere"
+    },
+    {
+     "id": "k-fuerstenberg",
+     "partei": "kai",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       12.4417,
+       51.42959
+      ],
+      [
+       12.43847,
+       51.42839
+      ],
+      [
+       12.43847,
+       51.42361
+      ],
+      [
+       12.4417,
+       51.42241
+      ],
+      [
+       12.4583,
+       51.42241
+      ],
+      [
+       12.46153,
+       51.42361
+      ],
+      [
+       12.46153,
+       51.42839
+      ],
+      [
+       12.4583,
+       51.42959
+      ]
+     ],
+     "name": "Fürstenberg auf dem rechten Flügel"
+    },
+    {
+     "id": "s-linie1",
+     "partei": "swe",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       12.40594,
+       51.43975
+      ],
+      [
+       12.40882,
+       51.44083
+      ],
+      [
+       12.40882,
+       51.44317
+      ],
+      [
+       12.40594,
+       51.44425
+      ],
+      [
+       12.35406,
+       51.44425
+      ],
+      [
+       12.35118,
+       51.44317
+      ],
+      [
+       12.35118,
+       51.44083
+      ],
+      [
+       12.35406,
+       51.43975
+      ]
+     ],
+     "name": "Erste schwedische Linie",
+     "staerke": "Brigaden zu 500"
+    },
+    {
+     "id": "s-linie2",
+     "partei": "swe",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       12.40306,
+       51.44575
+      ],
+      [
+       12.40595,
+       51.44683
+      ],
+      [
+       12.40595,
+       51.44917
+      ],
+      [
+       12.40306,
+       51.45025
+      ],
+      [
+       12.35694,
+       51.45025
+      ],
+      [
+       12.35405,
+       51.44917
+      ],
+      [
+       12.35405,
+       51.44683
+      ],
+      [
+       12.35694,
+       51.44575
+      ]
+     ],
+     "name": "Zweite Linie als Reserve"
+    },
+    {
+     "id": "s-sachsen",
+     "partei": "swe",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       12.45499,
+       51.43996
+      ],
+      [
+       12.46018,
+       51.4419
+      ],
+      [
+       12.46018,
+       51.4461
+      ],
+      [
+       12.45499,
+       51.44804
+      ],
+      [
+       12.42501,
+       51.44804
+      ],
+      [
+       12.41982,
+       51.4461
+      ],
+      [
+       12.41982,
+       51.4419
+      ],
+      [
+       12.42501,
+       51.43996
+      ]
+     ],
+     "name": "Die Sachsen links, für sich",
+     "staerke": "18.000"
+    }
+   ]
+  },
+  {
+   "zeit": "Mittag",
+   "t": 120,
+   "kurz": "Zwei Stunden Geschützfeuer, drei Schuss gegen einen.",
+   "text": "Die Schlacht beginnt mit einem Artilleriewechsel, der zwei Stunden dauert. Die schwedischen Rohre sind leichter, näher an der Truppe und mit fertigen Kartuschen geladen; sie schießen drei- bis fünfmal so oft wie die kaiserlichen. Für die dichtgedrängten Gevierthaufen ist jeder Treffer teuer, weil er in die Tiefe geht. Tilly beschließt, den Beschuss nicht länger auszuhalten.",
+   "stellungen": [
+    {
+     "id": "s-geschuetz",
+     "partei": "swe",
+     "form": "flaeche",
+     "gattung": "geschuetz",
+     "punkte": [
+      [
+       12.40998,
+       51.43765
+      ],
+      [
+       12.4117,
+       51.4383
+      ],
+      [
+       12.4117,
+       51.4397
+      ],
+      [
+       12.40998,
+       51.44035
+      ],
+      [
+       12.35002,
+       51.44035
+      ],
+      [
+       12.3483,
+       51.4397
+      ],
+      [
+       12.3483,
+       51.4383
+      ],
+      [
+       12.35002,
+       51.43765
+      ]
+     ],
+     "name": "Über 100 Rohre, dreifache Folge"
+    },
+    {
+     "id": "k-geschuetz",
+     "partei": "kai",
+     "form": "flaeche",
+     "gattung": "geschuetz",
+     "punkte": [
+      [
+       12.36791,
+       51.42985
+      ],
+      [
+       12.36618,
+       51.4292
+      ],
+      [
+       12.36618,
+       51.4278
+      ],
+      [
+       12.36791,
+       51.42715
+      ],
+      [
+       12.42209,
+       51.42715
+      ],
+      [
+       12.42382,
+       51.4278
+      ],
+      [
+       12.42382,
+       51.4292
+      ],
+      [
+       12.42209,
+       51.42985
+      ]
+     ],
+     "name": "27 schwere Rohre auf dem Rücken"
+    },
+    {
+     "id": "k-linie",
+     "partei": "kai",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       12.36187,
+       51.42849
+      ],
+      [
+       12.3561,
+       51.42634
+      ],
+      [
+       12.3561,
+       51.42166
+      ],
+      [
+       12.36187,
+       51.41951
+      ],
+      [
+       12.42813,
+       51.41951
+      ],
+      [
+       12.4339,
+       51.42166
+      ],
+      [
+       12.4339,
+       51.42634
+      ],
+      [
+       12.42813,
+       51.42849
+      ]
+     ],
+     "name": "steht im Feuer",
+     "staerke": "siebzehn Haufen"
+    },
+    {
+     "id": "s-linie1",
+     "partei": "swe",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       12.40594,
+       51.43975
+      ],
+      [
+       12.40882,
+       51.44083
+      ],
+      [
+       12.40882,
+       51.44317
+      ],
+      [
+       12.40594,
+       51.44425
+      ],
+      [
+       12.35406,
+       51.44425
+      ],
+      [
+       12.35118,
+       51.44317
+      ],
+      [
+       12.35118,
+       51.44083
+      ],
+      [
+       12.35406,
+       51.43975
+      ]
+     ],
+     "name": "Erste Linie",
+     "staerke": "Brigaden zu 500"
+    },
+    {
+     "id": "s-sachsen",
+     "partei": "swe",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       12.45499,
+       51.43996
+      ],
+      [
+       12.46018,
+       51.4419
+      ],
+      [
+       12.46018,
+       51.4461
+      ],
+      [
+       12.45499,
+       51.44804
+      ],
+      [
+       12.42501,
+       51.44804
+      ],
+      [
+       12.41982,
+       51.4461
+      ],
+      [
+       12.41982,
+       51.4419
+      ],
+      [
+       12.42501,
+       51.43996
+      ]
+     ],
+     "name": "Die Sachsen",
+     "staerke": "18.000"
+    }
+   ]
+  },
+  {
+   "zeit": "Gegen zwei",
+   "t": 180,
+   "kurz": "Pappenheim reitet siebenmal an und kommt nicht durch.",
+   "text": "Pappenheim greift den schwedischen rechten Flügel an, ohne Befehl abzuwarten, und wiederholt es sieben Mal. Jedes Mal empfangen ihn die Musketierabteilungen, die zwischen den Schwadronen stehen, mit Salven auf kurze Entfernung; dann geht die schwedische Reiterei zum Gegenstoß über, während die Musketiere nachladen. Es ist genau das Zusammenspiel, für das die Aufstellung gemacht ist.",
+   "stellungen": [
+    {
+     "id": "k-pappenheim",
+     "partei": "kai",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       12.34,
+       51.429
+      ],
+      [
+       12.348,
+       51.436
+      ],
+      [
+       12.356,
+       51.44
+      ]
+     ],
+     "name": "Siebenmal gegen den rechten Flügel",
+     "geschlagen": true
+    },
+    {
+     "id": "s-rechts",
+     "partei": "swe",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       12.36534,
+       51.43886
+      ],
+      [
+       12.36897,
+       51.44021
+      ],
+      [
+       12.36897,
+       51.44379
+      ],
+      [
+       12.36534,
+       51.44514
+      ],
+      [
+       12.34666,
+       51.44514
+      ],
+      [
+       12.34303,
+       51.44379
+      ],
+      [
+       12.34303,
+       51.44021
+      ],
+      [
+       12.34666,
+       51.43886
+      ]
+     ],
+     "name": "Reiterei und Musketiere gemischt",
+     "staerke": "Banér"
+    },
+    {
+     "id": "s-gegen",
+     "partei": "swe",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       12.356,
+       51.44
+      ],
+      [
+       12.348,
+       51.435
+      ],
+      [
+       12.342,
+       51.431
+      ]
+     ],
+     "name": "Gegenstoß nach jeder Salve"
+    },
+    {
+     "id": "k-linie",
+     "partei": "kai",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       12.36187,
+       51.42849
+      ],
+      [
+       12.3561,
+       51.42634
+      ],
+      [
+       12.3561,
+       51.42166
+      ],
+      [
+       12.36187,
+       51.41951
+      ],
+      [
+       12.42813,
+       51.41951
+      ],
+      [
+       12.4339,
+       51.42166
+      ],
+      [
+       12.4339,
+       51.42634
+      ],
+      [
+       12.42813,
+       51.42849
+      ]
+     ],
+     "name": "Die Mitte steht",
+     "staerke": "siebzehn Haufen"
+    },
+    {
+     "id": "s-sachsen",
+     "partei": "swe",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       12.45499,
+       51.43996
+      ],
+      [
+       12.46018,
+       51.4419
+      ],
+      [
+       12.46018,
+       51.4461
+      ],
+      [
+       12.45499,
+       51.44804
+      ],
+      [
+       12.42501,
+       51.44804
+      ],
+      [
+       12.41982,
+       51.4461
+      ],
+      [
+       12.41982,
+       51.4419
+      ],
+      [
+       12.42501,
+       51.43996
+      ]
+     ],
+     "name": "Die Sachsen",
+     "staerke": "18.000"
+    }
+   ]
+  },
+  {
+   "zeit": "Kurz darauf",
+   "t": 240,
+   "kurz": "Die Sachsen laufen weg, und links steht nichts mehr.",
+   "text": "Auf dem anderen Flügel wirft Fürstenberg seine Reiterei gegen die Sachsen – Truppen, die im Sommer erst aufgestellt worden sind und noch nie gefochten haben. Sie halten nicht einmal einen Anlauf aus. Achtzehntausend Mann laufen davon, der Kurfürst mit ihnen bis Eilenburg; unterwegs plündern sie den schwedischen Tross. Die linke Flanke des schwedischen Heeres ist damit offen, und ein Drittel der Streitmacht ist weg.",
+   "stellungen": [
+    {
+     "id": "k-fuerstenberg",
+     "partei": "kai",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       12.45,
+       51.43
+      ],
+      [
+       12.445,
+       51.438
+      ],
+      [
+       12.44,
+       51.443
+      ]
+     ],
+     "name": "Angriff auf die Sachsen"
+    },
+    {
+     "id": "s-sachsen",
+     "partei": "swe",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       12.44,
+       51.446
+      ],
+      [
+       12.47,
+       51.462
+      ],
+      [
+       12.52,
+       51.48
+      ]
+     ],
+     "name": "Die Sachsen laufen davon",
+     "rueckzug": true
+    },
+    {
+     "id": "s-linie1",
+     "partei": "swe",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       12.40594,
+       51.43975
+      ],
+      [
+       12.40882,
+       51.44083
+      ],
+      [
+       12.40882,
+       51.44317
+      ],
+      [
+       12.40594,
+       51.44425
+      ],
+      [
+       12.35406,
+       51.44425
+      ],
+      [
+       12.35118,
+       51.44317
+      ],
+      [
+       12.35118,
+       51.44083
+      ],
+      [
+       12.35406,
+       51.43975
+      ]
+     ],
+     "name": "Die linke Flanke liegt offen",
+     "staerke": "Brigaden zu 500",
+     "geschlagen": true
+    },
+    {
+     "id": "k-linie",
+     "partei": "kai",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       12.36187,
+       51.42849
+      ],
+      [
+       12.3561,
+       51.42634
+      ],
+      [
+       12.3561,
+       51.42166
+      ],
+      [
+       12.36187,
+       51.41951
+      ],
+      [
+       12.42813,
+       51.41951
+      ],
+      [
+       12.4339,
+       51.42166
+      ],
+      [
+       12.4339,
+       51.42634
+      ],
+      [
+       12.42813,
+       51.42849
+      ]
+     ],
+     "name": "Tilly sieht die Lücke",
+     "staerke": "siebzehn Haufen"
+    }
+   ]
+  },
+  {
+   "zeit": "Gegen drei",
+   "t": 300,
+   "kurz": "Tilly schwenkt in die Flanke, die eben frei wurde.",
+   "text": "Tilly setzt seine Gevierthaufen schräg in Bewegung, nach Nordosten, um die schwedische Linie von der offenen Seite her aufzurollen. Es ist die richtige Entscheidung, und sie ist die einzige, die diese Aufstellung überhaupt zulässt: Ein Haufen kann marschieren und er kann kämpfen, aber er kann nicht die Richtung wechseln, wenn er einmal in Bewegung ist.",
+   "stellungen": [
+    {
+     "id": "k-schwenk",
+     "partei": "kai",
+     "form": "pfeil",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       12.41,
+       51.426
+      ],
+      [
+       12.43,
+       51.434
+      ],
+      [
+       12.44,
+       51.44
+      ]
+     ],
+     "name": "Schräg gegen die offene Flanke"
+    },
+    {
+     "id": "k-linie",
+     "partei": "kai",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       12.40053,
+       51.44564
+      ],
+      [
+       12.39271,
+       51.44686
+      ],
+      [
+       12.38635,
+       51.4429
+      ],
+      [
+       12.38831,
+       51.43802
+      ],
+      [
+       12.42947,
+       51.41236
+      ],
+      [
+       12.43729,
+       51.41114
+      ],
+      [
+       12.44365,
+       51.4151
+      ],
+      [
+       12.44169,
+       51.41998
+      ]
+     ],
+     "name": "Die Haufen schwenken",
+     "staerke": "siebzehn Haufen"
+    },
+    {
+     "id": "s-linie1",
+     "partei": "swe",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       12.40594,
+       51.43975
+      ],
+      [
+       12.40882,
+       51.44083
+      ],
+      [
+       12.40882,
+       51.44317
+      ],
+      [
+       12.40594,
+       51.44425
+      ],
+      [
+       12.35406,
+       51.44425
+      ],
+      [
+       12.35118,
+       51.44317
+      ],
+      [
+       12.35118,
+       51.44083
+      ],
+      [
+       12.35406,
+       51.43975
+      ]
+     ],
+     "name": "Erste Linie, Flanke offen",
+     "staerke": "Brigaden zu 500",
+     "geschlagen": true
+    },
+    {
+     "id": "s-linie2",
+     "partei": "swe",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       12.40306,
+       51.44575
+      ],
+      [
+       12.40595,
+       51.44683
+      ],
+      [
+       12.40595,
+       51.44917
+      ],
+      [
+       12.40306,
+       51.45025
+      ],
+      [
+       12.35694,
+       51.45025
+      ],
+      [
+       12.35405,
+       51.44917
+      ],
+      [
+       12.35405,
+       51.44683
+      ],
+      [
+       12.35694,
+       51.44575
+      ]
+     ],
+     "name": "Die zweite Linie steht noch"
+    }
+   ]
+  },
+  {
+   "zeit": "Der Beweis",
+   "t": 360,
+   "kurz": "Horn dreht die zweite Linie im rechten Winkel.",
+   "text": "Gustav Horn zieht die Reserve der zweiten Linie heraus und stellt sie quer zur bisherigen Front – innerhalb weniger Minuten steht dort, wo eben eine Lücke war, eine neue Front nach Osten. Genau dafür sind die kleinen Verbände da. Als Tillys Haufen ankommen, treffen sie nicht auf eine Flanke, sondern auf Musketen und Regimentsgeschütze, und ihr Schwung ist verbraucht.",
+   "stellungen": [
+    {
+     "id": "s-linie2",
+     "partei": "swe",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       12.42932,
+       51.45832
+      ],
+      [
+       12.42725,
+       51.46047
+      ],
+      [
+       12.42275,
+       51.46047
+      ],
+      [
+       12.42068,
+       51.45832
+      ],
+      [
+       12.42068,
+       51.43568
+      ],
+      [
+       12.42275,
+       51.43353
+      ],
+      [
+       12.42725,
+       51.43353
+      ],
+      [
+       12.42932,
+       51.43568
+      ]
+     ],
+     "name": "Die neue Front nach Osten",
+     "staerke": "zweite Linie"
+    },
+    {
+     "id": "s-horn",
+     "partei": "swe",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       12.39,
+       51.449
+      ],
+      [
+       12.41,
+       51.448
+      ],
+      [
+       12.425,
+       51.4475
+      ]
+     ],
+     "name": "Horn schwenkt die Reserve"
+    },
+    {
+     "id": "k-linie",
+     "partei": "kai",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       12.4274,
+       51.4535
+      ],
+      [
+       12.41827,
+       51.45492
+      ],
+      [
+       12.41085,
+       51.4503
+      ],
+      [
+       12.41314,
+       51.44461
+      ],
+      [
+       12.4486,
+       51.4225
+      ],
+      [
+       12.45773,
+       51.42108
+      ],
+      [
+       12.46515,
+       51.4257
+      ],
+      [
+       12.46286,
+       51.43139
+      ]
+     ],
+     "name": "läuft in eine Front statt in eine Lücke",
+     "staerke": "siebzehn Haufen",
+     "geschlagen": true
+    },
+    {
+     "id": "s-linie1",
+     "partei": "swe",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       12.40594,
+       51.43975
+      ],
+      [
+       12.40882,
+       51.44083
+      ],
+      [
+       12.40882,
+       51.44317
+      ],
+      [
+       12.40594,
+       51.44425
+      ],
+      [
+       12.35406,
+       51.44425
+      ],
+      [
+       12.35118,
+       51.44317
+      ],
+      [
+       12.35118,
+       51.44083
+      ],
+      [
+       12.35406,
+       51.43975
+      ]
+     ],
+     "name": "Erste Linie hält",
+     "staerke": "Brigaden zu 500"
+    }
+   ]
+  },
+  {
+   "zeit": "Gegen fünf",
+   "t": 420,
+   "kurz": "Der König nimmt die Geschütze auf dem Hügel.",
+   "text": "Während links gehalten wird, führt Gustav Adolf den rechten Flügel nach vorn – gegen einen Rücken, den Tilly beim Schwenken entblößt hat. Die schwedische Reiterei nimmt die kaiserliche Artilleriestellung. Damit hat der Kaiser seine schweren Rohre verloren, und die Schweden haben sie.",
+   "stellungen": [
+    {
+     "id": "s-koenig",
+     "partei": "swe",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       12.362,
+       51.44
+      ],
+      [
+       12.375,
+       51.433
+      ],
+      [
+       12.39,
+       51.4285
+      ]
+     ],
+     "name": "Der König gegen den Rücken"
+    },
+    {
+     "id": "k-geschuetz",
+     "partei": "kai",
+     "form": "flaeche",
+     "gattung": "geschuetz",
+     "punkte": [
+      [
+       12.36791,
+       51.42985
+      ],
+      [
+       12.36618,
+       51.4292
+      ],
+      [
+       12.36618,
+       51.4278
+      ],
+      [
+       12.36791,
+       51.42715
+      ],
+      [
+       12.42209,
+       51.42715
+      ],
+      [
+       12.42382,
+       51.4278
+      ],
+      [
+       12.42382,
+       51.4292
+      ],
+      [
+       12.42209,
+       51.42985
+      ]
+     ],
+     "name": "Die Batterie wird genommen",
+     "geschlagen": true
+    },
+    {
+     "id": "s-rechts",
+     "partei": "swe",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       12.38038,
+       51.43286
+      ],
+      [
+       12.38441,
+       51.43437
+      ],
+      [
+       12.38441,
+       51.43763
+      ],
+      [
+       12.38038,
+       51.43914
+      ],
+      [
+       12.35962,
+       51.43914
+      ],
+      [
+       12.35559,
+       51.43763
+      ],
+      [
+       12.35559,
+       51.43437
+      ],
+      [
+       12.35962,
+       51.43286
+      ]
+     ],
+     "name": "Der rechte Flügel folgt",
+     "staerke": "Banér"
+    },
+    {
+     "id": "k-linie",
+     "partei": "kai",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       12.4274,
+       51.4535
+      ],
+      [
+       12.41827,
+       51.45492
+      ],
+      [
+       12.41085,
+       51.4503
+      ],
+      [
+       12.41314,
+       51.44461
+      ],
+      [
+       12.4486,
+       51.4225
+      ],
+      [
+       12.45773,
+       51.42108
+      ],
+      [
+       12.46515,
+       51.4257
+      ],
+      [
+       12.46286,
+       51.43139
+      ]
+     ],
+     "name": "gebunden im Osten",
+     "staerke": "siebzehn Haufen",
+     "geschlagen": true
+    },
+    {
+     "id": "s-linie2",
+     "partei": "swe",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       12.42932,
+       51.45832
+      ],
+      [
+       12.42725,
+       51.46047
+      ],
+      [
+       12.42275,
+       51.46047
+      ],
+      [
+       12.42068,
+       51.45832
+      ],
+      [
+       12.42068,
+       51.43568
+      ],
+      [
+       12.42275,
+       51.43353
+      ],
+      [
+       12.42725,
+       51.43353
+      ],
+      [
+       12.42932,
+       51.43568
+      ]
+     ],
+     "name": "Horns neue Front hält"
+    }
+   ]
+  },
+  {
+   "zeit": "Danach",
+   "t": 480,
+   "kurz": "Und richtet sie auf die, denen sie gehören.",
+   "text": "Die eroberten Rohre werden umgedreht und zusammen mit der eigenen Artillerie in die Flanke der Gevierthaufen gefeuert. Ein Block von anderthalbtausend Mann in dreißig Reihen Tiefe ist für Längsfeuer das dankbarste Ziel, das es gibt. Von diesem Augenblick an ist die Schlacht kein Ringen mehr, sondern eine Rechenaufgabe.",
+   "stellungen": [
+    {
+     "id": "s-erbeutet",
+     "partei": "swe",
+     "form": "flaeche",
+     "gattung": "geschuetz",
+     "punkte": [
+      [
+       12.38037,
+       51.44189
+      ],
+      [
+       12.37842,
+       51.4422
+      ],
+      [
+       12.37683,
+       51.44121
+      ],
+      [
+       12.37732,
+       51.43999
+      ],
+      [
+       12.41563,
+       51.41611
+      ],
+      [
+       12.41758,
+       51.4158
+      ],
+      [
+       12.41917,
+       51.41679
+      ],
+      [
+       12.41868,
+       51.41801
+      ]
+     ],
+     "name": "Die erbeuteten Rohre, umgedreht"
+    },
+    {
+     "id": "s-feuer",
+     "partei": "swe",
+     "form": "pfeil",
+     "gattung": "geschuetz",
+     "punkte": [
+      [
+       12.405,
+       51.43
+      ],
+      [
+       12.422,
+       51.434
+      ],
+      [
+       12.435,
+       51.437
+      ]
+     ],
+     "name": "Längsfeuer in die Haufen"
+    },
+    {
+     "id": "k-linie",
+     "partei": "kai",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       12.42842,
+       51.45386
+      ],
+      [
+       12.41929,
+       51.45529
+      ],
+      [
+       12.41187,
+       51.45066
+      ],
+      [
+       12.41415,
+       51.44497
+      ],
+      [
+       12.44758,
+       51.42414
+      ],
+      [
+       12.45671,
+       51.42271
+      ],
+      [
+       12.46413,
+       51.42734
+      ],
+      [
+       12.46185,
+       51.43303
+      ]
+     ],
+     "name": "im Längsfeuer",
+     "staerke": "siebzehn Haufen",
+     "geschlagen": true
+    },
+    {
+     "id": "s-linie2",
+     "partei": "swe",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       12.42932,
+       51.45832
+      ],
+      [
+       12.42725,
+       51.46047
+      ],
+      [
+       12.42275,
+       51.46047
+      ],
+      [
+       12.42068,
+       51.45832
+      ],
+      [
+       12.42068,
+       51.43568
+      ],
+      [
+       12.42275,
+       51.43353
+      ],
+      [
+       12.42725,
+       51.43353
+      ],
+      [
+       12.42932,
+       51.43568
+      ]
+     ],
+     "name": "von Norden"
+    },
+    {
+     "id": "s-linie1",
+     "partei": "swe",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       12.3986,
+       51.45437
+      ],
+      [
+       12.39687,
+       51.45617
+      ],
+      [
+       12.39313,
+       51.45617
+      ],
+      [
+       12.3914,
+       51.45437
+      ],
+      [
+       12.3914,
+       51.42563
+      ],
+      [
+       12.39313,
+       51.42383
+      ],
+      [
+       12.39687,
+       51.42383
+      ],
+      [
+       12.3986,
+       51.42563
+      ]
+     ],
+     "name": "von Westen"
+    }
+   ]
+  },
+  {
+   "zeit": "Bei Einbruch der Dunkelheit",
+   "t": 540,
+   "kurz": "Bei Dunkelheit steht von siebzehn Haufen keiner.",
+   "text": "Die Blöcke zerfallen einer nach dem anderen; vier Regimenter halten am längsten und werden bis auf den letzten Rest zusammengeschossen. Tilly, zweiundsiebzig Jahre alt, wird dreimal verwundet und entkommt knapp; Pappenheim deckt mit dem Rest der Reiterei den Abzug. Von den Gefangenen treten Tausende noch auf dem Feld in schwedische Dienste – für einen Söldner ist der Sieger der bessere Arbeitgeber.",
+   "stellungen": [
+    {
+     "id": "k-linie",
+     "partei": "kai",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       12.44589,
+       51.44391
+      ],
+      [
+       12.44536,
+       51.43606
+      ],
+      [
+       12.4425,
+       51.42911
+      ],
+      [
+       12.43257,
+       51.42274
+      ],
+      [
+       12.42222,
+       51.42538
+      ],
+      [
+       12.41226,
+       51.42778
+      ],
+      [
+       12.4132,
+       51.43549
+      ],
+      [
+       12.42322,
+       51.44074
+      ],
+      [
+       12.43426,
+       51.44632
+      ]
+     ],
+     "name": "Was noch steht",
+     "staerke": "Reste",
+     "geschlagen": true
+    },
+    {
+     "id": "k-rueckzug",
+     "partei": "kai",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       12.42,
+       51.426
+      ],
+      [
+       12.38,
+       51.4
+      ],
+      [
+       12.33,
+       51.37
+      ]
+     ],
+     "name": "Tilly entkommt nach Westen",
+     "rueckzug": true
+    },
+    {
+     "id": "k-pappenheim",
+     "partei": "kai",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       12.38067,
+       51.41859
+      ],
+      [
+       12.37704,
+       51.41723
+      ],
+      [
+       12.37704,
+       51.41277
+      ],
+      [
+       12.38067,
+       51.41141
+      ],
+      [
+       12.39933,
+       51.41141
+      ],
+      [
+       12.40296,
+       51.41277
+      ],
+      [
+       12.40296,
+       51.41723
+      ],
+      [
+       12.39933,
+       51.41859
+      ]
+     ],
+     "name": "Pappenheim deckt den Abzug"
+    },
+    {
+     "id": "s-linie1",
+     "partei": "swe",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       12.40432,
+       51.44981
+      ],
+      [
+       12.40225,
+       51.45197
+      ],
+      [
+       12.39775,
+       51.45197
+      ],
+      [
+       12.39568,
+       51.44981
+      ],
+      [
+       12.39568,
+       51.41819
+      ],
+      [
+       12.39775,
+       51.41603
+      ],
+      [
+       12.40225,
+       51.41603
+      ],
+      [
+       12.40432,
+       51.41819
+      ]
+     ],
+     "name": "Das Feld",
+     "staerke": "Brigaden zu 500"
+    }
+   ]
+  },
+  {
+   "zeit": "Nach dem 17. September",
+   "t": 620,
+   "kurz": "Die schwedische Ordnung wird das Vorbild Europas.",
+   "text": "Der Krieg, der entschieden schien, geht weitere siebzehn Jahre. Gustav Adolf zieht durch Franken bis München, fällt aber schon im November 1632 bei Lützen; Schweden bleibt trotzdem bis zum Westfälischen Frieden im Spiel und behält Vorpommern. Die Aufstellung in kleinen Verbänden mit beweglicher Artillerie wird in ganz Europa nachgebaut – der Gevierthaufen verschwindet innerhalb einer Generation.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     2.5,
+     43.5
+    ],
+    [
+     24.5,
+     60.5
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "s-sued",
+     "partei": "swe",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       12.39,
+       51.44
+      ],
+      [
+       11.08,
+       49.45
+      ],
+      [
+       10.9,
+       48.37
+      ],
+      [
+       11.58,
+       48.14
+      ]
+     ],
+     "name": "Bis München, Frühjahr 1632"
+    },
+    {
+     "id": "k-wallenstein",
+     "partei": "kai",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       14.42,
+       50.09
+      ],
+      [
+       13,
+       50.6
+      ],
+      [
+       12.14,
+       51.25
+      ]
+     ],
+     "name": "Wallenstein wird zurückgeholt"
+    },
+    {
+     "id": "s-luetzen",
+     "partei": "swe",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       11.58,
+       48.14
+      ],
+      [
+       11.9,
+       49.6
+      ],
+      [
+       12.14,
+       51.25
+      ]
+     ],
+     "name": "November 1632: Lützen"
+    },
+    {
+     "id": "s-frieden",
+     "partei": "swe",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       12.14,
+       51.25
+      ],
+      [
+       11,
+       52.6
+      ],
+      [
+       13.4,
+       54.1
+      ],
+      [
+       18.07,
+       59.33
+      ]
+     ],
+     "name": "1648: Vorpommern bleibt schwedisch"
+    }
+   ]
+  }
+ ],
+ "ausgang": "Die kaiserliche Linie wird von der Flanke her mit den eigenen erbeuteten Geschützen zerschossen und zerfällt bei Einbruch der Dunkelheit.",
+ "verluste": [
+  {
+   "partei": "kai",
+   "text": "rund 7.600 Tote und Verwundete, gegen 6.000 Gefangene – von denen viele sofort in schwedische Dienste treten; alle schweren Geschütze"
+  },
+  {
+   "partei": "swe",
+   "text": "rund 2.100 Schweden, dazu etwa 3.000 Sachsen, die meisten davon auf der Flucht"
+  }
+ ],
+ "folgen": "Der Krieg, der 1631 entschieden schien, dauert noch siebzehn Jahre. Gustav Adolf zieht bis München, fällt aber im November 1632 bei Lützen; Schweden bleibt trotzdem bis zum Westfälischen Frieden im Spiel und behält Vorpommern. Militärisch ist die Wirkung dauerhafter als politisch: Die Aufstellung in kleinen Verbänden mit beweglicher Regimentsartillerie wird überall nachgebaut, und der Gevierthaufen verschwindet innerhalb einer Generation aus Europa.",
+ "streit": "Wie groß der Anteil der neuen Ordnung am Sieg war, wird bis heute unterschiedlich gewichtet – manche sehen den entscheidenden Punkt eher in Pappenheims eigenmächtigen Angriffen und in Tillys Entschluss, den Beschuss nicht länger auszuhalten. Auch die Zahl der Geschütze schwankt; die oft genannte dreifache Feuergeschwindigkeit ist eine Schätzung aus späteren Versuchen. Das Feld selbst ist heute überbaut und in der Nachbarschaft durch Braunkohleabbau verändert."
+}

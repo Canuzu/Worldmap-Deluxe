@@ -1,0 +1,1890 @@
+{
+ "id": "thermopylen",
+ "name": "Thermopylen",
+ "ort": "Der Engpass am Malischen Golf",
+ "datum": "August 480 v. Chr.",
+ "jahr": -480,
+ "mitte": [
+  22.535,
+  38.796
+ ],
+ "zoom": 12.2,
+ "grund": "blatt",
+ "worum": "Eine Frontbreite von hundert Metern nimmt der Überzahl ihren einzigen Vorteil: Zwischen dem Steilhang des Kallidromos und dem Wasser des Malischen Golfs passen nur wenige Dutzend Mann nebeneinander. Zwei Tage lang hält das. Dann zeigt ein Ortskundiger einen Pfad über den Berg – und die Rechnung, auf der die ganze Stellung beruht, ist hinfällig.",
+ "parteien": [
+  {
+   "id": "gr",
+   "name": "Griechischer Bund",
+   "farbe": "#6f9fe0",
+   "fuehrung": "Leonidas I. von Sparta, Demophilos von Thespiai",
+   "staerke": "rund 7.000 aus einem Dutzend Städten, darunter 300 Spartiaten mit ihrem Gefolge",
+   "zahl": 7000
+  },
+  {
+   "id": "per",
+   "name": "Perserreich",
+   "farbe": "#d4737c",
+   "fuehrung": "Xerxes I., Hydarnes, Mardonios",
+   "staerke": "nach Herodot Millionen, nach heutiger Schätzung 70.000 bis 300.000 – dazu die Flotte",
+   "zahl": 150000
+  }
+ ],
+ "gelaende": [
+  {
+   "art": "hoehe",
+   "name": "Kallidromos",
+   "punkte": [
+    [
+     22.63141,
+     38.768
+    ],
+    [
+     22.59575,
+     38.75693
+    ],
+    [
+     22.55767,
+     38.74933
+    ],
+    [
+     22.50291,
+     38.74905
+    ],
+    [
+     22.48625,
+     38.76244
+    ],
+    [
+     22.46967,
+     38.77513
+    ],
+    [
+     22.50584,
+     38.78563
+    ],
+    [
+     22.55596,
+     38.78416
+    ],
+    [
+     22.61027,
+     38.78223
+    ]
+   ]
+  },
+  {
+   "art": "see",
+   "name": "Der Malische Golf · Küste von 480 v. Chr.",
+   "punkte": [
+    [
+     22.64031,
+     38.828
+    ],
+    [
+     22.59273,
+     38.81693
+    ],
+    [
+     22.54191,
+     38.80933
+    ],
+    [
+     22.46883,
+     38.80905
+    ],
+    [
+     22.4466,
+     38.82244
+    ],
+    [
+     22.42448,
+     38.83513
+    ],
+    [
+     22.47275,
+     38.84563
+    ],
+    [
+     22.53963,
+     38.84416
+    ],
+    [
+     22.6121,
+     38.84223
+    ]
+   ]
+  },
+  {
+   "art": "weg",
+   "name": "Der Engpass · an der engsten Stelle ein Wagen breit",
+   "punkte": [
+    [
+     22.49567,
+     38.79719
+    ],
+    [
+     22.49466,
+     38.79671
+    ],
+    [
+     22.49466,
+     38.79569
+    ],
+    [
+     22.49567,
+     38.79521
+    ],
+    [
+     22.57433,
+     38.79521
+    ],
+    [
+     22.57534,
+     38.79569
+    ],
+    [
+     22.57534,
+     38.79671
+    ],
+    [
+     22.57433,
+     38.79719
+    ]
+   ]
+  },
+  {
+   "art": "mauer",
+   "name": "Die phokische Mauer",
+   "punkte": [
+    [
+     22.53379,
+     38.79804
+    ],
+    [
+     22.53365,
+     38.79822
+    ],
+    [
+     22.53335,
+     38.79822
+    ],
+    [
+     22.53321,
+     38.79804
+    ],
+    [
+     22.53321,
+     38.79436
+    ],
+    [
+     22.53335,
+     38.79418
+    ],
+    [
+     22.53365,
+     38.79418
+    ],
+    [
+     22.53379,
+     38.79436
+    ]
+   ]
+  },
+  {
+   "art": "weg",
+   "name": "Der Anopaia-Pfad über den Berg",
+   "punkte": [
+    [
+     22.472,
+     38.812
+    ],
+    [
+     22.5,
+     38.78
+    ],
+    [
+     22.54,
+     38.764
+    ],
+    [
+     22.576,
+     38.782
+    ],
+    [
+     22.587,
+     38.796
+    ]
+   ]
+  },
+  {
+   "art": "sumpf",
+   "name": "Die heißen Quellen",
+   "punkte": [
+    [
+     22.5305,
+     38.79937
+    ],
+    [
+     22.53149,
+     38.79872
+    ],
+    [
+     22.53218,
+     38.79803
+    ],
+    [
+     22.5322,
+     38.79703
+    ],
+    [
+     22.531,
+     38.79673
+    ],
+    [
+     22.52986,
+     38.79643
+    ],
+    [
+     22.52892,
+     38.79709
+    ],
+    [
+     22.52905,
+     38.798
+    ],
+    [
+     22.52922,
+     38.79899
+    ]
+   ]
+  }
+ ],
+ "stationen": [
+  {
+   "zeit": "Frühjahr und Sommer 480",
+   "t": 0,
+   "kurz": "Ein Heer, das Herodot nicht mehr zählen kann, kommt.",
+   "text": "Zehn Jahre nach Marathon kommt Xerxes selbst. Über den Hellespont wird eine Schiffsbrücke gelegt, durch die Halbinsel des Athos ein Kanal gegraben, damit die Flotte nicht wieder am Kap zerschellt. Heer und Flotte ziehen gemeinsam an der Küste entlang nach Süden. Der griechische Bund entscheidet, das Heer im Engpass der Thermopylen und die Flotte gleichzeitig bei Artemision aufzuhalten – die beiden Stellungen hängen voneinander ab.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     19,
+     34
+    ],
+    [
+     29.8,
+     42.5
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "anm-per",
+     "partei": "per",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       26.4,
+       40.2
+      ],
+      [
+       24.5,
+       40.9
+      ],
+      [
+       23,
+       40.5
+      ],
+      [
+       22.6,
+       39.6
+      ],
+      [
+       22.55,
+       38.85
+      ]
+     ],
+     "name": "Xerxes über den Hellespont"
+    },
+    {
+     "id": "anm-flotte",
+     "partei": "per",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       26.2,
+       40.35
+      ],
+      [
+       24.3,
+       40.1
+      ],
+      [
+       23.6,
+       39.15
+      ],
+      [
+       23.22,
+       39.02
+      ]
+     ],
+     "name": "Die Flotte an der Küste entlang"
+    },
+    {
+     "id": "anm-gr",
+     "partei": "gr",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       22.43,
+       37.07
+      ],
+      [
+       23.05,
+       37.75
+      ],
+      [
+       23.73,
+       37.98
+      ],
+      [
+       22.9,
+       38.6
+      ],
+      [
+       22.55,
+       38.8
+      ]
+     ],
+     "name": "Der Bund stellt sich in den Pass"
+    },
+    {
+     "id": "anm-grfl",
+     "partei": "gr",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       23.73,
+       37.94
+      ],
+      [
+       23.9,
+       38.4
+      ],
+      [
+       23.35,
+       38.95
+      ]
+     ],
+     "name": "Die Flotte nach Artemision"
+    }
+   ]
+  },
+  {
+   "zeit": "Anfang August",
+   "t": 60,
+   "kurz": "Ein Weg zwischen Berg und Meer, ohne Frontbreite.",
+   "text": "Der Pass hat drei Engstellen; die Griechen setzen sich an die mittlere, wo eine alte Mauer der Phoker steht, und bauen sie wieder auf. Rechts fällt der Kallidromos steil ab, links liegt das Wasser. Wer hier angreift, kann höchstens so viele Leute nebeneinander stellen, wie zwischen Fels und Ufer Platz haben – Zahlen nützen nichts. Genau deshalb ist der Ort gewählt.",
+   "stellungen": [
+    {
+     "id": "g-mauer",
+     "partei": "gr",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       22.53219,
+       38.7951
+      ],
+      [
+       22.53252,
+       38.79467
+      ],
+      [
+       22.53348,
+       38.79467
+      ],
+      [
+       22.53381,
+       38.7951
+      ],
+      [
+       22.53381,
+       38.7973
+      ],
+      [
+       22.53348,
+       38.79773
+      ],
+      [
+       22.53252,
+       38.79773
+      ],
+      [
+       22.53219,
+       38.7973
+      ]
+     ],
+     "name": "Hinter der phokischen Mauer",
+     "staerke": "rund 7.000"
+    },
+    {
+     "id": "g-phoker",
+     "partei": "gr",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       22.54,
+       38.76859
+      ],
+      [
+       22.54227,
+       38.76711
+      ],
+      [
+       22.54383,
+       38.76553
+      ],
+      [
+       22.54389,
+       38.76325
+      ],
+      [
+       22.54114,
+       38.76256
+      ],
+      [
+       22.53854,
+       38.76187
+      ],
+      [
+       22.53638,
+       38.76337
+      ],
+      [
+       22.53668,
+       38.76546
+      ],
+      [
+       22.53708,
+       38.76771
+      ]
+     ],
+     "name": "1.000 Phoker auf dem Bergpfad"
+    },
+    {
+     "id": "p-lager",
+     "partei": "per",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       22.50728,
+       38.808
+      ],
+      [
+       22.49396,
+       38.79915
+      ],
+      [
+       22.47973,
+       38.79306
+      ],
+      [
+       22.45928,
+       38.79284
+      ],
+      [
+       22.45305,
+       38.80355
+      ],
+      [
+       22.44686,
+       38.8137
+      ],
+      [
+       22.46037,
+       38.8221
+      ],
+      [
+       22.4791,
+       38.82093
+      ],
+      [
+       22.49938,
+       38.81939
+      ]
+     ],
+     "name": "Das persische Lager in der Ebene",
+     "staerke": "das ganze Heer"
+    }
+   ]
+  },
+  {
+   "zeit": "Vier Tage",
+   "t": 120,
+   "kurz": "Xerxes wartet vier Tage, dass sie weglaufen.",
+   "text": "Xerxes lässt vier Tage verstreichen, in der Annahme, ein so kleiner Haufen werde von selbst abziehen, sobald er die Größe des Heeres sieht. Ein Späher meldet, die Spartaner säßen vor der Mauer und kämmten sich das Haar. Der verbannte Spartanerkönig Demaratos erklärt dem Großkönig, das sei ihre Gewohnheit, wenn sie sich anschickten zu sterben.",
+   "stellungen": [
+    {
+     "id": "g-mauer",
+     "partei": "gr",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       22.53219,
+       38.7951
+      ],
+      [
+       22.53252,
+       38.79467
+      ],
+      [
+       22.53348,
+       38.79467
+      ],
+      [
+       22.53381,
+       38.7951
+      ],
+      [
+       22.53381,
+       38.7973
+      ],
+      [
+       22.53348,
+       38.79773
+      ],
+      [
+       22.53252,
+       38.79773
+      ],
+      [
+       22.53219,
+       38.7973
+      ]
+     ],
+     "name": "Die Griechen warten",
+     "staerke": "rund 7.000"
+    },
+    {
+     "id": "p-lager",
+     "partei": "per",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       22.50728,
+       38.808
+      ],
+      [
+       22.49396,
+       38.79915
+      ],
+      [
+       22.47973,
+       38.79306
+      ],
+      [
+       22.45928,
+       38.79284
+      ],
+      [
+       22.45305,
+       38.80355
+      ],
+      [
+       22.44686,
+       38.8137
+      ],
+      [
+       22.46037,
+       38.8221
+      ],
+      [
+       22.4791,
+       38.82093
+      ],
+      [
+       22.49938,
+       38.81939
+      ]
+     ],
+     "name": "Das Lager wartet ebenso",
+     "staerke": "das ganze Heer"
+    },
+    {
+     "id": "p-spaeher",
+     "partei": "per",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       22.495,
+       38.802
+      ],
+      [
+       22.515,
+       38.799
+      ],
+      [
+       22.528,
+       38.797
+      ]
+     ],
+     "name": "Ein Späher reitet vor"
+    }
+   ]
+  },
+  {
+   "zeit": "Erster Tag",
+   "t": 180,
+   "kurz": "Die Meder kommen und kommen zurück.",
+   "text": "Am fünften Tag schickt Xerxes die Meder und Kissier vor, mit dem Befehl, die Griechen lebend zu bringen. Sie laufen in eine Phalanx aus langen Stoßlanzen und großen Schilden, in einer Gasse, in der man nicht ausweichen kann. Die Spartaner täuschen mehrfach Flucht vor, kehren um und schlagen die Nachdrängenden zusammen. Xerxes soll dreimal vom Sitz aufgesprungen sein.",
+   "stellungen": [
+    {
+     "id": "g-mauer",
+     "partei": "gr",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       22.53119,
+       38.7951
+      ],
+      [
+       22.53152,
+       38.79467
+      ],
+      [
+       22.53248,
+       38.79467
+      ],
+      [
+       22.53281,
+       38.7951
+      ],
+      [
+       22.53281,
+       38.7973
+      ],
+      [
+       22.53248,
+       38.79773
+      ],
+      [
+       22.53152,
+       38.79773
+      ],
+      [
+       22.53119,
+       38.7973
+      ]
+     ],
+     "name": "Die Phalanx im Engpass",
+     "staerke": "abwechselnd je eine Stadt"
+    },
+    {
+     "id": "p-meder",
+     "partei": "per",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       22.52388,
+       38.79847
+      ],
+      [
+       22.52359,
+       38.79885
+      ],
+      [
+       22.51841,
+       38.79885
+      ],
+      [
+       22.51812,
+       38.79847
+      ],
+      [
+       22.51812,
+       38.79653
+      ],
+      [
+       22.51841,
+       38.79615
+      ],
+      [
+       22.52359,
+       38.79615
+      ],
+      [
+       22.52388,
+       38.79653
+      ]
+     ],
+     "name": "Meder und Kissier",
+     "staerke": "in Wellen",
+     "geschlagen": true
+    },
+    {
+     "id": "p-stoss",
+     "partei": "per",
+     "form": "pfeil",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       22.523,
+       38.7972
+      ],
+      [
+       22.529,
+       38.7965
+      ],
+      [
+       22.5315,
+       38.7962
+      ]
+     ]
+    },
+    {
+     "id": "g-finte",
+     "partei": "gr",
+     "form": "pfeil",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       22.532,
+       38.7955
+      ],
+      [
+       22.527,
+       38.7952
+      ],
+      [
+       22.532,
+       38.7948
+      ]
+     ],
+     "name": "Scheinflucht und Umkehr",
+     "finte": true
+    },
+    {
+     "id": "p-lager",
+     "partei": "per",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       22.50728,
+       38.808
+      ],
+      [
+       22.49396,
+       38.79915
+      ],
+      [
+       22.47973,
+       38.79306
+      ],
+      [
+       22.45928,
+       38.79284
+      ],
+      [
+       22.45305,
+       38.80355
+      ],
+      [
+       22.44686,
+       38.8137
+      ],
+      [
+       22.46037,
+       38.8221
+      ],
+      [
+       22.4791,
+       38.82093
+      ],
+      [
+       22.49938,
+       38.81939
+      ]
+     ],
+     "name": "Das Lager",
+     "staerke": "das ganze Heer"
+    }
+   ]
+  },
+  {
+   "zeit": "Später am ersten Tag",
+   "t": 240,
+   "kurz": "Auch die Unsterblichen kommen nicht durch.",
+   "text": "Danach schickt Xerxes die Zehntausend, die Leibgarde, die man die Unsterblichen nennt, weil jeder Gefallene sofort ersetzt wird. Sie kämpfen nicht besser als die Meder, weil das Problem nicht an ihnen liegt: Ihre kurzen Speere und Flechtschilde taugen nicht gegen eine geschlossene Reihe, und mehr als ein paar Dutzend passen ohnehin nicht nebeneinander.",
+   "stellungen": [
+    {
+     "id": "p-unsterbl",
+     "partei": "per",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       22.52588,
+       38.79817
+      ],
+      [
+       22.52559,
+       38.79855
+      ],
+      [
+       22.52041,
+       38.79855
+      ],
+      [
+       22.52012,
+       38.79817
+      ],
+      [
+       22.52012,
+       38.79623
+      ],
+      [
+       22.52041,
+       38.79585
+      ],
+      [
+       22.52559,
+       38.79585
+      ],
+      [
+       22.52588,
+       38.79623
+      ]
+     ],
+     "name": "Die Unsterblichen",
+     "staerke": "10.000",
+     "geschlagen": true
+    },
+    {
+     "id": "g-mauer",
+     "partei": "gr",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       22.53119,
+       38.7951
+      ],
+      [
+       22.53152,
+       38.79467
+      ],
+      [
+       22.53248,
+       38.79467
+      ],
+      [
+       22.53281,
+       38.7951
+      ],
+      [
+       22.53281,
+       38.7973
+      ],
+      [
+       22.53248,
+       38.79773
+      ],
+      [
+       22.53152,
+       38.79773
+      ],
+      [
+       22.53119,
+       38.7973
+      ]
+     ],
+     "name": "Die Phalanx hält",
+     "staerke": "rund 7.000"
+    },
+    {
+     "id": "p-stoss",
+     "partei": "per",
+     "form": "pfeil",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       22.525,
+       38.797
+      ],
+      [
+       22.53,
+       38.7964
+      ],
+      [
+       22.5318,
+       38.7962
+      ]
+     ]
+    },
+    {
+     "id": "p-lager",
+     "partei": "per",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       22.50728,
+       38.808
+      ],
+      [
+       22.49396,
+       38.79915
+      ],
+      [
+       22.47973,
+       38.79306
+      ],
+      [
+       22.45928,
+       38.79284
+      ],
+      [
+       22.45305,
+       38.80355
+      ],
+      [
+       22.44686,
+       38.8137
+      ],
+      [
+       22.46037,
+       38.8221
+      ],
+      [
+       22.4791,
+       38.82093
+      ],
+      [
+       22.49938,
+       38.81939
+      ]
+     ],
+     "name": "Das Lager",
+     "staerke": "das ganze Heer"
+    }
+   ]
+  },
+  {
+   "zeit": "Zweiter Tag",
+   "t": 300,
+   "kurz": "Dasselbe Bild, dieselbe Enge, dasselbe Ergebnis.",
+   "text": "Der zweite Tag verläuft wie der erste. Die Griechen wechseln sich stadtweise ab, sodass immer ausgeruhte Reihen vorn stehen; die Perser laufen weiter in dieselbe Gasse. Am Abend weiß Xerxes, dass er den Pass frontal nicht nehmen kann, und hat keinen Plan – bis sich ein Einheimischer im Lager meldet.",
+   "stellungen": [
+    {
+     "id": "g-mauer",
+     "partei": "gr",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       22.53119,
+       38.7951
+      ],
+      [
+       22.53152,
+       38.79467
+      ],
+      [
+       22.53248,
+       38.79467
+      ],
+      [
+       22.53281,
+       38.7951
+      ],
+      [
+       22.53281,
+       38.7973
+      ],
+      [
+       22.53248,
+       38.79773
+      ],
+      [
+       22.53152,
+       38.79773
+      ],
+      [
+       22.53119,
+       38.7973
+      ]
+     ],
+     "name": "Ablösung nach Städten",
+     "staerke": "rund 7.000"
+    },
+    {
+     "id": "p-unsterbl",
+     "partei": "per",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       22.52638,
+       38.79817
+      ],
+      [
+       22.52609,
+       38.79855
+      ],
+      [
+       22.52091,
+       38.79855
+      ],
+      [
+       22.52062,
+       38.79817
+      ],
+      [
+       22.52062,
+       38.79623
+      ],
+      [
+       22.52091,
+       38.79585
+      ],
+      [
+       22.52609,
+       38.79585
+      ],
+      [
+       22.52638,
+       38.79623
+      ]
+     ],
+     "name": "Zweiter Tag, dritter Versuch",
+     "geschlagen": true
+    },
+    {
+     "id": "g-phoker",
+     "partei": "gr",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       22.54,
+       38.76859
+      ],
+      [
+       22.54227,
+       38.76711
+      ],
+      [
+       22.54383,
+       38.76553
+      ],
+      [
+       22.54389,
+       38.76325
+      ],
+      [
+       22.54114,
+       38.76256
+      ],
+      [
+       22.53854,
+       38.76187
+      ],
+      [
+       22.53638,
+       38.76337
+      ],
+      [
+       22.53668,
+       38.76546
+      ],
+      [
+       22.53708,
+       38.76771
+      ]
+     ],
+     "name": "Die Phoker auf dem Berg"
+    },
+    {
+     "id": "p-lager",
+     "partei": "per",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       22.50728,
+       38.808
+      ],
+      [
+       22.49396,
+       38.79915
+      ],
+      [
+       22.47973,
+       38.79306
+      ],
+      [
+       22.45928,
+       38.79284
+      ],
+      [
+       22.45305,
+       38.80355
+      ],
+      [
+       22.44686,
+       38.8137
+      ],
+      [
+       22.46037,
+       38.8221
+      ],
+      [
+       22.4791,
+       38.82093
+      ],
+      [
+       22.49938,
+       38.81939
+      ]
+     ],
+     "name": "Das Lager",
+     "staerke": "das ganze Heer"
+    }
+   ]
+  },
+  {
+   "zeit": "Zweiter Abend",
+   "t": 360,
+   "kurz": "Ein Ortskundiger zeigt den Weg über den Berg.",
+   "text": "Ephialtes aus Malis kommt ins persische Lager und bietet gegen Belohnung an, den Bergpfad zu zeigen, der oberhalb des Passes verläuft und hinter der griechischen Stellung wieder herunterkommt. Dass es diesen Pfad gibt, wissen die Griechen; deshalb steht dort ein Kontingent von tausend Phokern. Was sie nicht wissen, ist, dass er in dieser Nacht begangen wird.",
+   "stellungen": [
+    {
+     "id": "p-hydarnes",
+     "partei": "per",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       22.472,
+       38.812
+      ],
+      [
+       22.498,
+       38.78
+      ],
+      [
+       22.539,
+       38.7645
+      ]
+     ],
+     "name": "Hydarnes bricht bei Dunkelheit auf"
+    },
+    {
+     "id": "g-phoker",
+     "partei": "gr",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       22.54,
+       38.76859
+      ],
+      [
+       22.54227,
+       38.76711
+      ],
+      [
+       22.54383,
+       38.76553
+      ],
+      [
+       22.54389,
+       38.76325
+      ],
+      [
+       22.54114,
+       38.76256
+      ],
+      [
+       22.53854,
+       38.76187
+      ],
+      [
+       22.53638,
+       38.76337
+      ],
+      [
+       22.53668,
+       38.76546
+      ],
+      [
+       22.53708,
+       38.76771
+      ]
+     ],
+     "name": "1.000 Phoker, ahnungslos"
+    },
+    {
+     "id": "g-mauer",
+     "partei": "gr",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       22.53119,
+       38.7951
+      ],
+      [
+       22.53152,
+       38.79467
+      ],
+      [
+       22.53248,
+       38.79467
+      ],
+      [
+       22.53281,
+       38.7951
+      ],
+      [
+       22.53281,
+       38.7973
+      ],
+      [
+       22.53248,
+       38.79773
+      ],
+      [
+       22.53152,
+       38.79773
+      ],
+      [
+       22.53119,
+       38.7973
+      ]
+     ],
+     "name": "Die Stellung im Pass",
+     "staerke": "rund 7.000"
+    },
+    {
+     "id": "p-lager",
+     "partei": "per",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       22.50728,
+       38.808
+      ],
+      [
+       22.49396,
+       38.79915
+      ],
+      [
+       22.47973,
+       38.79306
+      ],
+      [
+       22.45928,
+       38.79284
+      ],
+      [
+       22.45305,
+       38.80355
+      ],
+      [
+       22.44686,
+       38.8137
+      ],
+      [
+       22.46037,
+       38.8221
+      ],
+      [
+       22.4791,
+       38.82093
+      ],
+      [
+       22.49938,
+       38.81939
+      ]
+     ],
+     "name": "Das Lager",
+     "staerke": "das ganze Heer"
+    }
+   ]
+  },
+  {
+   "zeit": "Dritter Tag, Morgengrauen",
+   "t": 420,
+   "kurz": "Nachts über den Anopaia, an den Phokern vorbei.",
+   "text": "Die Phoker hören die Perser im Eichenlaub, bevor sie sie sehen, und stellen sich auf den Kamm. Hydarnes will keine Zeit verlieren, lässt eine Salve Pfeile schießen und marschiert vorbei – die Phoker weichen auf die Höhe aus und warten dort auf einen Angriff, der nicht kommt. Kurz darauf melden Läufer im Pass, dass der Feind im Rücken ist.",
+   "stellungen": [
+    {
+     "id": "p-hydarnes",
+     "partei": "per",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       22.539,
+       38.7645
+      ],
+      [
+       22.57,
+       38.778
+      ],
+      [
+       22.586,
+       38.795
+      ]
+     ],
+     "name": "Vorbei und hinunter nach Alpenoi"
+    },
+    {
+     "id": "g-phoker",
+     "partei": "gr",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       22.543,
+       38.76214
+      ],
+      [
+       22.54499,
+       38.76085
+      ],
+      [
+       22.54635,
+       38.75946
+      ],
+      [
+       22.5464,
+       38.75747
+      ],
+      [
+       22.544,
+       38.75686
+      ],
+      [
+       22.54172,
+       38.75626
+      ],
+      [
+       22.53984,
+       38.75758
+      ],
+      [
+       22.5401,
+       38.7594
+      ],
+      [
+       22.54044,
+       38.76138
+      ]
+     ],
+     "name": "Die Phoker weichen bergauf",
+     "geschlagen": true
+    },
+    {
+     "id": "g-mauer",
+     "partei": "gr",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       22.53119,
+       38.7951
+      ],
+      [
+       22.53152,
+       38.79467
+      ],
+      [
+       22.53248,
+       38.79467
+      ],
+      [
+       22.53281,
+       38.7951
+      ],
+      [
+       22.53281,
+       38.7973
+      ],
+      [
+       22.53248,
+       38.79773
+      ],
+      [
+       22.53152,
+       38.79773
+      ],
+      [
+       22.53119,
+       38.7973
+      ]
+     ],
+     "name": "Die Nachricht kommt an",
+     "staerke": "rund 7.000"
+    },
+    {
+     "id": "g-abzug",
+     "partei": "gr",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       22.533,
+       38.795
+      ],
+      [
+       22.515,
+       38.793
+      ],
+      [
+       22.49,
+       38.79
+      ]
+     ],
+     "name": "Die meisten Städte ziehen ab",
+     "rueckzug": true
+    }
+   ]
+  },
+  {
+   "zeit": "Dritter Tag, Vormittag",
+   "t": 480,
+   "kurz": "Leonidas schickt die anderen weg und bleibt.",
+   "text": "Leonidas entlässt den größten Teil des Heeres. Es bleiben die dreihundert Spartiaten, siebenhundert Thespier, die freiwillig bleiben, und vierhundert Thebaner. Sie gehen diesmal vor die Enge hinaus, ins breitere Stück, wo sie mehr treffen und mehr getroffen werden. Als die Speere brechen, kämpfen sie mit Schwertern, dann mit Händen und Zähnen, schreibt Herodot. Leonidas fällt; um seinen Leichnam wird viermal gerungen.",
+   "stellungen": [
+    {
+     "id": "g-rest",
+     "partei": "gr",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       22.52596,
+       38.79471
+      ],
+      [
+       22.52635,
+       38.7942
+      ],
+      [
+       22.52765,
+       38.7942
+      ],
+      [
+       22.52804,
+       38.79471
+      ],
+      [
+       22.52804,
+       38.79729
+      ],
+      [
+       22.52765,
+       38.7978
+      ],
+      [
+       22.52635,
+       38.7978
+      ],
+      [
+       22.52596,
+       38.79729
+      ]
+     ],
+     "name": "Spartiaten, Thespier, Thebaner",
+     "staerke": "1.400",
+     "geschlagen": true
+    },
+    {
+     "id": "p-front",
+     "partei": "per",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       22.51661,
+       38.79912
+      ],
+      [
+       22.51613,
+       38.79975
+      ],
+      [
+       22.50787,
+       38.79975
+      ],
+      [
+       22.50739,
+       38.79912
+      ],
+      [
+       22.50739,
+       38.79588
+      ],
+      [
+       22.50787,
+       38.79525
+      ],
+      [
+       22.51613,
+       38.79525
+      ],
+      [
+       22.51661,
+       38.79588
+      ]
+     ],
+     "name": "Von vorn, mit Peitschen angetrieben",
+     "staerke": "in Wellen"
+    },
+    {
+     "id": "p-hydarnes",
+     "partei": "per",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       22.586,
+       38.795
+      ],
+      [
+       22.562,
+       38.7958
+      ],
+      [
+       22.545,
+       38.796
+      ]
+     ],
+     "name": "Hydarnes aus dem Rücken"
+    },
+    {
+     "id": "g-mauer",
+     "partei": "gr",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       22.53292,
+       38.79503
+      ],
+      [
+       22.5332,
+       38.79467
+      ],
+      [
+       22.5338,
+       38.79467
+      ],
+      [
+       22.53408,
+       38.79503
+      ],
+      [
+       22.53408,
+       38.79737
+      ],
+      [
+       22.5338,
+       38.79773
+      ],
+      [
+       22.5332,
+       38.79773
+      ],
+      [
+       22.53292,
+       38.79737
+      ]
+     ],
+     "name": "Die Mauer, jetzt hinter ihnen"
+    }
+   ]
+  },
+  {
+   "zeit": "Mittag",
+   "t": 530,
+   "kurz": "Zuletzt ein Hügel und ein Ring von Pfeilen.",
+   "text": "Der Rest zieht sich hinter die Mauer auf einen kleinen Hügel zurück und stellt sich im Kreis auf. Xerxes lässt nicht mehr angreifen, sondern beschießen. Die Thebaner ergeben sich und werden gebrandmarkt. Auf dem Hügel finden Archäologen im 20. Jahrhundert Hunderte persischer Pfeilspitzen – der einzige Fund, der eine Herodot-Stelle unmittelbar bestätigt.",
+   "stellungen": [
+    {
+     "id": "g-rest",
+     "partei": "gr",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       22.539,
+       38.79649
+      ],
+      [
+       22.53962,
+       38.79608
+      ],
+      [
+       22.54005,
+       38.79564
+      ],
+      [
+       22.54007,
+       38.79502
+      ],
+      [
+       22.53931,
+       38.79483
+      ],
+      [
+       22.5386,
+       38.79464
+      ],
+      [
+       22.538,
+       38.79505
+      ],
+      [
+       22.53809,
+       38.79563
+      ],
+      [
+       22.5382,
+       38.79625
+      ]
+     ],
+     "name": "Der Kolonos-Hügel",
+     "staerke": "was übrig ist",
+     "geschlagen": true
+    },
+    {
+     "id": "p-bogen",
+     "partei": "per",
+     "form": "flaeche",
+     "gattung": "bogen",
+     "punkte": [
+      [
+       22.54522,
+       38.7955
+      ],
+      [
+       22.54266,
+       38.79351
+      ],
+      [
+       22.53991,
+       38.79214
+      ],
+      [
+       22.53597,
+       38.79209
+      ],
+      [
+       22.53477,
+       38.7945
+      ],
+      [
+       22.53357,
+       38.79678
+      ],
+      [
+       22.53618,
+       38.79867
+      ],
+      [
+       22.53979,
+       38.79841
+      ],
+      [
+       22.5437,
+       38.79806
+      ]
+     ],
+     "name": "Beschuss von allen Seiten",
+     "staerke": "Bogenschützen"
+    },
+    {
+     "id": "p-front",
+     "partei": "per",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       22.53146,
+       38.79782
+      ],
+      [
+       22.53097,
+       38.79845
+      ],
+      [
+       22.52503,
+       38.79845
+      ],
+      [
+       22.52454,
+       38.79782
+      ],
+      [
+       22.52454,
+       38.79458
+      ],
+      [
+       22.52503,
+       38.79395
+      ],
+      [
+       22.53097,
+       38.79395
+      ],
+      [
+       22.53146,
+       38.79458
+      ]
+     ],
+     "name": "Der Pass ist offen"
+    }
+   ]
+  },
+  {
+   "zeit": "Nach den Thermopylen",
+   "t": 610,
+   "kurz": "Die verlorene Schlacht wird berühmter als der Sieg.",
+   "text": "Die griechische Flotte bricht Artemision ab, weil die Stellung ohne den Pass keinen Sinn mehr hat. Athen wird geräumt und niedergebrannt. Vier Wochen später wird bei Salamis in einer Meerenge entschieden, was hier in einer Landenge nicht zu entscheiden war, und ein Jahr darauf bei Plataiai endgültig. Auf dem Hügel steht bis heute die Inschrift des Simonides: Wanderer, kommst du nach Sparta.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     19.5,
+     34.5
+    ],
+    [
+     27.5,
+     41
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "p-athen",
+     "partei": "per",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       22.55,
+       38.8
+      ],
+      [
+       23.05,
+       38.45
+      ],
+      [
+       23.6,
+       38.2
+      ],
+      [
+       23.73,
+       37.98
+      ]
+     ],
+     "name": "Der Weg nach Athen ist frei"
+    },
+    {
+     "id": "g-flotte",
+     "partei": "gr",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       23.35,
+       38.95
+      ],
+      [
+       23.8,
+       38.4
+      ],
+      [
+       23.55,
+       37.95
+      ],
+      [
+       23.55,
+       37.94
+      ]
+     ],
+     "name": "Artemision wird abgebrochen"
+    },
+    {
+     "id": "g-salamis",
+     "partei": "gr",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       23.6,
+       37.94
+      ],
+      [
+       23.53,
+       37.95
+      ],
+      [
+       23.5,
+       37.96
+      ]
+     ],
+     "name": "September 480: Salamis"
+    },
+    {
+     "id": "g-plataeae",
+     "partei": "gr",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       22.43,
+       37.07
+      ],
+      [
+       22.9,
+       37.6
+      ],
+      [
+       23.27,
+       38.22
+      ]
+     ],
+     "name": "479: Plataiai"
+    }
+   ]
+  }
+ ],
+ "ausgang": "Der Pass wird nach zwei Tagen über den Anopaia-Pfad umgangen. Die Nachhut fällt vollständig; Leonidas fällt mit ihr.",
+ "verluste": [
+  {
+   "partei": "gr",
+   "text": "die 300 Spartiaten, 700 Thespier und die spartanischen Heloten vollständig; insgesamt rund 2.000"
+  },
+  {
+   "partei": "per",
+   "text": "nach Herodot 20.000 – die Zahl ist wie alle seine persischen Angaben unbrauchbar; sicher ist nur, dass die Verluste hoch waren"
+  }
+ ],
+ "folgen": "Die griechische Flotte gibt Artemision auf, weil die Seestellung ohne den Landpass wertlos ist. Attika wird geräumt, Athen niedergebrannt. Vier Wochen später entscheidet Salamis den Feldzug zur See, ein Jahr darauf Plataiai zu Lande. Die Schlacht selbst wird zum meistzitierten Verlust der Weltgeschichte – von Simonides’ Grabspruch über die römische Rhetorenschule bis in die Bildsprache des 20. Jahrhunderts, in der sie regelmäßig für Zwecke gebraucht wird, die mit 480 v. Chr. nichts zu tun haben.",
+ "streit": "Die Küste ist der wichtigste Vorbehalt: Der Spercheios hat den Golf zugeschüttet, der Pass liegt heute fünf Kilometer landeinwärts, und die Enge ist nur rekonstruierbar. Herodots Zahlen für das persische Heer – über fünf Millionen mit Tross – sind unbrauchbar; die Schätzungen der Forschung reichen von 70.000 bis 300.000. Ob Leonidas die Verbündeten entließ oder ob sie davonliefen, sagt schon Herodot nicht sicher, und die Rolle der Thebaner ist eine spätere athenische Zuspitzung."
+}

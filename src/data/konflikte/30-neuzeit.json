@@ -710,7 +710,8 @@
    "rang": 1,
    "sieger": "Spanien",
    "text": "Hundertachtundsechzig Spanier nehmen auf einem Platz den Inka-Herrscher gefangen, der von achtzigtausend Mann begleitet wird. Das Lösegeld – ein Raum voll Gold – wird gezahlt, und Atahualpa wird trotzdem hingerichtet.",
-   "wiki": "Schlacht von Cajamarca"
+   "wiki": "Schlacht von Cajamarca",
+   "verlauf": "cajamarca"
   },
   {
    "id": "muehlberg",
@@ -904,7 +905,8 @@
    "rang": 2,
    "sieger": "Protestantische Union, Schweden und Frankreich",
    "text": "Gustav Adolf stellt seine Truppen flacher und beweglicher auf als die massigen Gevierthaufen der Gegenseite und zerlegt sie. Die schwedische Aufstellung wird zum Vorbild der europäischen Heere für ein Jahrhundert.",
-   "wiki": "Schlacht bei Breitenfeld (1631)"
+   "wiki": "Schlacht bei Breitenfeld (1631)",
+   "verlauf": "breitenfeld"
   },
   {
    "id": "magdeburg",
@@ -1195,7 +1197,8 @@
    "rang": 1,
    "sieger": "Die Vereinigten Staaten und Frankreich",
    "text": "Eine französische Flotte sperrt die Bucht, ein französisch-amerikanisches Heer schließt die Halbinsel ab. Cornwallis kapituliert; die britische Kapelle soll dabei „Die Welt steht kopf“ gespielt haben.",
-   "wiki": "Schlacht von Yorktown"
+   "wiki": "Schlacht von Yorktown",
+   "verlauf": "yorktown"
   }
  ]
 }

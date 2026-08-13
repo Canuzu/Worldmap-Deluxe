@@ -1,0 +1,2121 @@
+{
+ "id": "yorktown",
+ "name": "Yorktown",
+ "ort": "Virginia, am York River",
+ "datum": "28. September bis 19. Oktober 1781",
+ "jahr": 1781,
+ "mitte": [
+  -76.508,
+  37.235
+ ],
+ "zoom": 13,
+ "grund": "relief",
+ "worum": "Die Entscheidung fällt dreißig Seemeilen entfernt und drei Wochen vor dem ersten Schuss: Neuntausend Mann auf einer Landzunge sind so lange sicher, wie die Marine kommen kann – und am 5. September kann sie es nicht mehr. Danach ist die Belagerung nur noch die Ausführung, Nacht für Nacht einen Graben näher.",
+ "parteien": [
+  {
+   "id": "all",
+   "name": "Die Vereinigten Staaten und Frankreich",
+   "farbe": "#6f9fe0",
+   "fuehrung": "George Washington, Jean-Baptiste de Rochambeau, La Fayette, François-Joseph Paul de Grasse, Henry Knox",
+   "staerke": "rund 8.000 Kontinentale und Miliz, 8.000 Franzosen zu Lande; 29 französische Linienschiffe vor der Bucht",
+   "zahl": 16000
+  },
+  {
+   "id": "bri",
+   "name": "Großbritannien",
+   "farbe": "#d4737c",
+   "fuehrung": "Charles Cornwallis, Charles O’Hara, Banastre Tarleton",
+   "staerke": "rund 9.000 – britische Regimenter, hessische Verbände und Loyalisten; dazu Kriegsschiffe im Fluss",
+   "zahl": 9000
+  }
+ ],
+ "gelaende": [
+  {
+   "art": "stadt",
+   "name": "Yorktown",
+   "punkte": [
+    [
+     -76.50272,
+     37.24043
+    ],
+    [
+     -76.50365,
+     37.2377
+    ],
+    [
+     -76.50512,
+     37.23544
+    ],
+    [
+     -76.50843,
+     37.23386
+    ],
+    [
+     -76.51096,
+     37.23548
+    ],
+    [
+     -76.51341,
+     37.237
+    ],
+    [
+     -76.51238,
+     37.23965
+    ],
+    [
+     -76.50916,
+     37.24083
+    ],
+    [
+     -76.50562,
+     37.24205
+    ]
+   ]
+  },
+  {
+   "art": "stadt",
+   "name": "Gloucester Point",
+   "punkte": [
+    [
+     -76.495,
+     37.25659
+    ],
+    [
+     -76.49278,
+     37.25511
+    ],
+    [
+     -76.49125,
+     37.25353
+    ],
+    [
+     -76.49119,
+     37.25125
+    ],
+    [
+     -76.49388,
+     37.25056
+    ],
+    [
+     -76.49643,
+     37.24987
+    ],
+    [
+     -76.49854,
+     37.25137
+    ],
+    [
+     -76.49825,
+     37.25346
+    ],
+    [
+     -76.49786,
+     37.25571
+    ]
+   ]
+  },
+  {
+   "art": "fluss",
+   "name": "Der York River",
+   "punkte": [
+    [
+     -76.64,
+     37.31
+    ],
+    [
+     -76.54,
+     37.26
+    ],
+    [
+     -76.46,
+     37.22
+    ],
+    [
+     -76.36,
+     37.18
+    ]
+   ]
+  },
+  {
+   "art": "sumpf",
+   "name": "Die Sümpfe von Wormley Creek",
+   "punkte": [
+    [
+     -76.48368,
+     37.22671
+    ],
+    [
+     -76.48292,
+     37.22157
+    ],
+    [
+     -76.48339,
+     37.21666
+    ],
+    [
+     -76.48731,
+     37.2111
+    ],
+    [
+     -76.4926,
+     37.2113
+    ],
+    [
+     -76.49768,
+     37.2114
+    ],
+    [
+     -76.49823,
+     37.21652
+    ],
+    [
+     -76.49412,
+     37.22137
+    ],
+    [
+     -76.48956,
+     37.22657
+    ]
+   ]
+  },
+  {
+   "art": "mauer",
+   "name": "Die britische Innenlinie",
+   "punkte": [
+    [
+     -76.49901,
+     37.24213
+    ],
+    [
+     -76.5005,
+     37.23736
+    ],
+    [
+     -76.50293,
+     37.23343
+    ],
+    [
+     -76.50857,
+     37.23074
+    ],
+    [
+     -76.513,
+     37.23365
+    ],
+    [
+     -76.51727,
+     37.23637
+    ],
+    [
+     -76.51562,
+     37.24101
+    ],
+    [
+     -76.51011,
+     37.243
+    ],
+    [
+     -76.50407,
+     37.24507
+    ]
+   ]
+  },
+  {
+   "art": "weg",
+   "name": "Die Straße nach Williamsburg",
+   "punkte": [
+    [
+     -76.53,
+     37.245
+    ],
+    [
+     -76.61,
+     37.26
+    ],
+    [
+     -76.71,
+     37.27
+    ]
+   ]
+  }
+ ],
+ "stationen": [
+  {
+   "zeit": "Frühjahr und Sommer 1781",
+   "t": 0,
+   "kurz": "Der Krieg wandert nach Süden und in eine Falle.",
+   "text": "Nach fünf Jahren ohne Entscheidung im Norden verlegen die Briten den Schwerpunkt in die Südstaaten. Cornwallis marschiert durch die Carolinas nach Virginia, gewinnt Gefechte und verliert dabei Leute, die er nicht ersetzen kann. Im Sommer befiehlt ihm Clinton, einen Hafen zu befestigen, aus dem die Marine ihn versorgen und notfalls abholen kann. Er wählt Yorktown, am schmalsten Punkt des York River.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     -82.5,
+     17
+    ],
+    [
+     -62.5,
+     45.5
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "anm-bri",
+     "partei": "bri",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -79.94,
+       32.78
+      ],
+      [
+       -80.84,
+       35.23
+      ],
+      [
+       -78.9,
+       36.1
+      ],
+      [
+       -77.44,
+       37.54
+      ],
+      [
+       -76.51,
+       37.24
+      ]
+     ],
+     "name": "Cornwallis von Charleston nach Virginia"
+    },
+    {
+     "id": "anm-fr",
+     "partei": "all",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -71.4,
+       41.49
+      ],
+      [
+       -72.5,
+       40.5
+      ],
+      [
+       -75.2,
+       38.2
+      ],
+      [
+       -76,
+       37
+      ],
+      [
+       -76.4,
+       37.2
+      ]
+     ],
+     "name": "Rochambeau und die Flotte von Newport"
+    },
+    {
+     "id": "anm-grasse",
+     "partei": "all",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -72.3,
+       19
+      ],
+      [
+       -75.5,
+       25.5
+      ],
+      [
+       -77,
+       32
+      ],
+      [
+       -76,
+       36.93
+      ]
+     ],
+     "name": "De Grasse aus der Karibik, 29 Linienschiffe"
+    },
+    {
+     "id": "anm-wash",
+     "partei": "all",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -73.92,
+       41.05
+      ],
+      [
+       -75.16,
+       39.95
+      ],
+      [
+       -76.61,
+       39.29
+      ],
+      [
+       -77.44,
+       37.54
+      ],
+      [
+       -76.6,
+       37.27
+      ]
+     ],
+     "name": "Washington marschiert 700 km nach Süden"
+    },
+    {
+     "id": "anm-graves",
+     "partei": "bri",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -73.92,
+       40.7
+      ],
+      [
+       -74.9,
+       38.6
+      ],
+      [
+       -75.4,
+       37.1
+      ],
+      [
+       -75.9,
+       36.9
+      ]
+     ],
+     "name": "5. September: Graves läuft aus New York"
+    },
+    {
+     "id": "anm-kaps",
+     "partei": "bri",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -75.6,
+       36.85
+      ],
+      [
+       -74.9,
+       37.6
+      ],
+      [
+       -73.92,
+       40.7
+      ]
+     ],
+     "name": "und segelt danach zurück – die Bucht bleibt zu",
+     "rueckzug": true
+    }
+   ]
+  },
+  {
+   "zeit": "August 1781",
+   "t": 60,
+   "kurz": "Ein Stützpunkt am Wasser, versorgt nur von See.",
+   "text": "Cornwallis lässt Yorktown und das gegenüberliegende Gloucester Point befestigen: eine Innenlinie um die Stadt, davor einige vorgeschobene Werke. Neuntausend Mann auf einer Landzunge sind so lange sicher, wie die Royal Navy den Fluss offen hält – und niemand auf britischer Seite zweifelt daran, dass sie das kann. Diese eine Annahme trägt die ganze Anlage.",
+   "stellungen": [
+    {
+     "id": "b-stadt",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -76.49901,
+       37.24213
+      ],
+      [
+       -76.5005,
+       37.23736
+      ],
+      [
+       -76.50293,
+       37.23343
+      ],
+      [
+       -76.50857,
+       37.23074
+      ],
+      [
+       -76.513,
+       37.23365
+      ],
+      [
+       -76.51727,
+       37.23637
+      ],
+      [
+       -76.51562,
+       37.24101
+      ],
+      [
+       -76.51011,
+       37.243
+      ],
+      [
+       -76.50407,
+       37.24507
+      ]
+     ],
+     "name": "Die Innenlinie um Yorktown",
+     "staerke": "rund 8.000"
+    },
+    {
+     "id": "b-gloucester",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -76.495,
+       37.25749
+      ],
+      [
+       -76.49222,
+       37.25564
+      ],
+      [
+       -76.49031,
+       37.25366
+      ],
+      [
+       -76.49024,
+       37.25081
+      ],
+      [
+       -76.4936,
+       37.24995
+      ],
+      [
+       -76.49679,
+       37.24908
+      ],
+      [
+       -76.49943,
+       37.25096
+      ],
+      [
+       -76.49906,
+       37.25357
+      ],
+      [
+       -76.49858,
+       37.25639
+      ]
+     ],
+     "name": "Gloucester Point",
+     "staerke": "rund 1.000"
+    },
+    {
+     "id": "b-schiffe",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -76.48179,
+       37.25177
+      ],
+      [
+       -76.48351,
+       37.24792
+      ],
+      [
+       -76.48598,
+       37.24467
+      ],
+      [
+       -76.49114,
+       37.24222
+      ],
+      [
+       -76.49474,
+       37.24428
+      ],
+      [
+       -76.49823,
+       37.24619
+      ],
+      [
+       -76.49638,
+       37.24995
+      ],
+      [
+       -76.49139,
+       37.25184
+      ],
+      [
+       -76.48594,
+       37.25381
+      ]
+     ],
+     "name": "Kriegsschiffe im Fluss"
+    },
+    {
+     "id": "a-lafayette",
+     "partei": "all",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -76.64645,
+       37.275
+      ],
+      [
+       -76.65204,
+       37.27057
+      ],
+      [
+       -76.65801,
+       37.26753
+      ],
+      [
+       -76.6666,
+       37.26742
+      ],
+      [
+       -76.66921,
+       37.27278
+      ],
+      [
+       -76.67181,
+       37.27785
+      ],
+      [
+       -76.66614,
+       37.28205
+      ],
+      [
+       -76.65828,
+       37.28146
+      ],
+      [
+       -76.64977,
+       37.28069
+      ]
+     ],
+     "name": "La Fayette beobachtet",
+     "staerke": "rund 4.000"
+    }
+   ]
+  },
+  {
+   "zeit": "5. September",
+   "t": 130,
+   "kurz": "Vor der Bucht wird das Fahrwasser zugemacht.",
+   "text": "De Grasse ist mit neunundzwanzig Linienschiffen aus der Karibik gekommen – mehr, als London für möglich gehalten hat, weil spanische Kredite in Havanna die Fahrt finanzierten. Vor den Kaps trifft er auf Graves. Die Seeschlacht selbst bleibt unentschieden, aber die britische Flotte segelt danach nach New York zurück, um Schäden auszubessern. Damit ist die Bucht geschlossen, und die Annahme, auf der Yorktown ruht, ist hinfällig.",
+   "sicht": [
+    [
+     -76.72,
+     37.12
+    ],
+    [
+     -76.3,
+     37.34
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "a-sperre",
+     "partei": "all",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -76.40391,
+       37.2018
+      ],
+      [
+       -76.40382,
+       37.19761
+      ],
+      [
+       -76.39874,
+       37.19527
+      ],
+      [
+       -76.39414,
+       37.19731
+      ],
+      [
+       -76.37609,
+       37.2222
+      ],
+      [
+       -76.37618,
+       37.22639
+      ],
+      [
+       -76.38126,
+       37.22873
+      ],
+      [
+       -76.38586,
+       37.22669
+      ]
+     ],
+     "name": "Franzosen vor der Flussmündung",
+     "staerke": "ein Geschwader"
+    },
+    {
+     "id": "a-riegel",
+     "partei": "all",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -76.35,
+       37.19
+      ],
+      [
+       -76.39,
+       37.21
+      ],
+      [
+       -76.43,
+       37.228
+      ]
+     ],
+     "name": "Der Fluss wird von unten verschlossen"
+    },
+    {
+     "id": "b-schiffe",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -76.48179,
+       37.25177
+      ],
+      [
+       -76.48351,
+       37.24792
+      ],
+      [
+       -76.48598,
+       37.24467
+      ],
+      [
+       -76.49114,
+       37.24222
+      ],
+      [
+       -76.49474,
+       37.24428
+      ],
+      [
+       -76.49823,
+       37.24619
+      ],
+      [
+       -76.49638,
+       37.24995
+      ],
+      [
+       -76.49139,
+       37.25184
+      ],
+      [
+       -76.48594,
+       37.25381
+      ]
+     ],
+     "name": "Die Schiffe sitzen im Fluss fest",
+     "geschlagen": true
+    },
+    {
+     "id": "b-stadt",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -76.49901,
+       37.24213
+      ],
+      [
+       -76.5005,
+       37.23736
+      ],
+      [
+       -76.50293,
+       37.23343
+      ],
+      [
+       -76.50857,
+       37.23074
+      ],
+      [
+       -76.513,
+       37.23365
+      ],
+      [
+       -76.51727,
+       37.23637
+      ],
+      [
+       -76.51562,
+       37.24101
+      ],
+      [
+       -76.51011,
+       37.243
+      ],
+      [
+       -76.50407,
+       37.24507
+      ]
+     ],
+     "name": "Cornwallis wartet auf Entsatz",
+     "staerke": "rund 8.000"
+    }
+   ]
+  },
+  {
+   "zeit": "28. September",
+   "t": 200,
+   "kurz": "Die Halbinsel wird auf der Landseite geschlossen.",
+   "text": "Washington und Rochambeau sind aus New York herangekommen – mit einer Täuschung, die Clinton wochenlang glauben ließ, das Ziel sei Staten Island. Sechzehntausend Mann schließen einen Halbkreis um Yorktown, das Wasser übernimmt den Rest. Cornwallis räumt in der Nacht darauf die vorgeschobenen Werke, weil er eine Nachricht Clintons hat, Entsatz sei unterwegs. Er gibt damit den Boden auf, auf dem später die Batterien stehen werden.",
+   "stellungen": [
+    {
+     "id": "a-linie",
+     "partei": "all",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -76.47991,
+       37.25091
+      ],
+      [
+       -76.48455,
+       37.236
+      ],
+      [
+       -76.49215,
+       37.22372
+      ],
+      [
+       -76.50978,
+       37.2153
+      ],
+      [
+       -76.52361,
+       37.22441
+      ],
+      [
+       -76.53696,
+       37.23291
+      ],
+      [
+       -76.5318,
+       37.24741
+      ],
+      [
+       -76.51458,
+       37.25363
+      ],
+      [
+       -76.49572,
+       37.26008
+      ]
+     ],
+     "name": "Der Belagerungsring",
+     "staerke": "16.000"
+    },
+    {
+     "id": "b-stadt",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -76.49901,
+       37.24213
+      ],
+      [
+       -76.5005,
+       37.23736
+      ],
+      [
+       -76.50293,
+       37.23343
+      ],
+      [
+       -76.50857,
+       37.23074
+      ],
+      [
+       -76.513,
+       37.23365
+      ],
+      [
+       -76.51727,
+       37.23637
+      ],
+      [
+       -76.51562,
+       37.24101
+      ],
+      [
+       -76.51011,
+       37.243
+      ],
+      [
+       -76.50407,
+       37.24507
+      ]
+     ],
+     "name": "Cornwallis in der Innenlinie",
+     "staerke": "rund 8.000"
+    },
+    {
+     "id": "b-raeumung",
+     "partei": "bri",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -76.53,
+       37.23
+      ],
+      [
+       -76.518,
+       37.234
+      ],
+      [
+       -76.51,
+       37.237
+      ]
+     ],
+     "name": "Die Außenwerke werden geräumt",
+     "rueckzug": true
+    },
+    {
+     "id": "b-gloucester",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -76.495,
+       37.25749
+      ],
+      [
+       -76.49222,
+       37.25564
+      ],
+      [
+       -76.49031,
+       37.25366
+      ],
+      [
+       -76.49024,
+       37.25081
+      ],
+      [
+       -76.4936,
+       37.24995
+      ],
+      [
+       -76.49679,
+       37.24908
+      ],
+      [
+       -76.49943,
+       37.25096
+      ],
+      [
+       -76.49906,
+       37.25357
+      ],
+      [
+       -76.49858,
+       37.25639
+      ]
+     ],
+     "name": "Gloucester Point",
+     "staerke": "rund 1.000"
+    }
+   ]
+  },
+  {
+   "zeit": "6. Oktober, nachts",
+   "t": 260,
+   "kurz": "Die erste Parallele, sechshundert Meter vor der Stadt.",
+   "text": "In der Nacht heben viertausend Mann bei Regen und ohne Licht einen Graben von zwei Kilometern Länge aus, parallel zur britischen Linie – nach dem Verfahren, das Vauban hundert Jahre zuvor beschrieben hat und das die französischen Ingenieure mitgebracht haben. Am Morgen steht er. Washington tut den ersten Spatenstich selbst, damit man später sagen kann, er habe ihn getan.",
+   "stellungen": [
+    {
+     "id": "a-parallele1",
+     "partei": "all",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -76.4889,
+       37.24678
+      ],
+      [
+       -76.49205,
+       37.23664
+      ],
+      [
+       -76.49722,
+       37.22829
+      ],
+      [
+       -76.50921,
+       37.22256
+      ],
+      [
+       -76.51862,
+       37.22876
+      ],
+      [
+       -76.5277,
+       37.23454
+      ],
+      [
+       -76.52418,
+       37.2444
+      ],
+      [
+       -76.51248,
+       37.24863
+      ],
+      [
+       -76.49965,
+       37.25302
+      ]
+     ],
+     "name": "Die erste Parallele",
+     "staerke": "2 km Graben"
+    },
+    {
+     "id": "a-linie",
+     "partei": "all",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -76.47991,
+       37.25091
+      ],
+      [
+       -76.48455,
+       37.236
+      ],
+      [
+       -76.49215,
+       37.22372
+      ],
+      [
+       -76.50978,
+       37.2153
+      ],
+      [
+       -76.52361,
+       37.22441
+      ],
+      [
+       -76.53696,
+       37.23291
+      ],
+      [
+       -76.5318,
+       37.24741
+      ],
+      [
+       -76.51458,
+       37.25363
+      ],
+      [
+       -76.49572,
+       37.26008
+      ]
+     ],
+     "name": "Die Lager dahinter",
+     "staerke": "16.000"
+    },
+    {
+     "id": "b-stadt",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -76.49901,
+       37.24213
+      ],
+      [
+       -76.5005,
+       37.23736
+      ],
+      [
+       -76.50293,
+       37.23343
+      ],
+      [
+       -76.50857,
+       37.23074
+      ],
+      [
+       -76.513,
+       37.23365
+      ],
+      [
+       -76.51727,
+       37.23637
+      ],
+      [
+       -76.51562,
+       37.24101
+      ],
+      [
+       -76.51011,
+       37.243
+      ],
+      [
+       -76.50407,
+       37.24507
+      ]
+     ],
+     "name": "Die Innenlinie",
+     "staerke": "rund 8.000"
+    },
+    {
+     "id": "b-redouten",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -76.49727,
+       37.2343
+      ],
+      [
+       -76.49728,
+       37.2348
+      ],
+      [
+       -76.49789,
+       37.23509
+      ],
+      [
+       -76.49845,
+       37.23484
+      ],
+      [
+       -76.50073,
+       37.2317
+      ],
+      [
+       -76.50072,
+       37.2312
+      ],
+      [
+       -76.50011,
+       37.23091
+      ],
+      [
+       -76.49955,
+       37.23116
+      ]
+     ],
+     "name": "Redoute 9 und 10 am linken Flügel"
+    }
+   ]
+  },
+  {
+   "zeit": "9. Oktober",
+   "t": 320,
+   "kurz": "Am Nachmittag fangen die Batterien an.",
+   "text": "Um drei Uhr feuert die erste französische Batterie, um fünf die amerikanische; Washington zündet die erste Lunte. Von da an wird Tag und Nacht geschossen, mit über hundert Rohren, darunter schweren Schiffsgeschützen. Die Fregatte Charon brennt im Fluss aus. In der Stadt gibt es keinen Ort mehr, an dem man außer Reichweite wäre; Cornwallis verlegt sein Quartier in eine Höhle am Ufer.",
+   "stellungen": [
+    {
+     "id": "a-batterien",
+     "partei": "all",
+     "form": "flaeche",
+     "gattung": "geschuetz",
+     "punkte": [
+      [
+       -76.49002,
+       37.24626
+      ],
+      [
+       -76.49299,
+       37.23672
+      ],
+      [
+       -76.49786,
+       37.22886
+      ],
+      [
+       -76.50914,
+       37.22347
+      ],
+      [
+       -76.51799,
+       37.2293
+      ],
+      [
+       -76.52654,
+       37.23475
+      ],
+      [
+       -76.52323,
+       37.24402
+      ],
+      [
+       -76.51221,
+       37.248
+      ],
+      [
+       -76.50014,
+       37.25213
+      ]
+     ],
+     "name": "Über hundert Rohre"
+    },
+    {
+     "id": "a-feuer",
+     "partei": "all",
+     "form": "pfeil",
+     "gattung": "geschuetz",
+     "punkte": [
+      [
+       -76.525,
+       37.23
+      ],
+      [
+       -76.516,
+       37.234
+      ],
+      [
+       -76.51,
+       37.237
+      ]
+     ],
+     "name": "Tag und Nacht"
+    },
+    {
+     "id": "b-stadt",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -76.49957,
+       37.24187
+      ],
+      [
+       -76.50096,
+       37.2374
+      ],
+      [
+       -76.50325,
+       37.23372
+      ],
+      [
+       -76.50854,
+       37.23119
+      ],
+      [
+       -76.51268,
+       37.23392
+      ],
+      [
+       -76.51669,
+       37.23647
+      ],
+      [
+       -76.51514,
+       37.24082
+      ],
+      [
+       -76.50998,
+       37.24269
+      ],
+      [
+       -76.50432,
+       37.24462
+      ]
+     ],
+     "name": "unter Beschuss",
+     "staerke": "rund 8.000",
+     "geschlagen": true
+    },
+    {
+     "id": "b-schiffe",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -76.48516,
+       37.25014
+      ],
+      [
+       -76.48659,
+       37.24693
+      ],
+      [
+       -76.48865,
+       37.24423
+      ],
+      [
+       -76.49295,
+       37.24219
+      ],
+      [
+       -76.49595,
+       37.2439
+      ],
+      [
+       -76.49886,
+       37.24549
+      ],
+      [
+       -76.49731,
+       37.24863
+      ],
+      [
+       -76.49316,
+       37.2502
+      ],
+      [
+       -76.48862,
+       37.25184
+      ]
+     ],
+     "name": "Die Charon brennt aus",
+     "geschlagen": true
+    }
+   ]
+  },
+  {
+   "zeit": "11. bis 13. Oktober",
+   "t": 380,
+   "kurz": "Die zweite Parallele hängt an zwei Redouten.",
+   "text": "Der zweite Graben wird dreihundert Meter vor der britischen Linie ausgehoben – nahe genug, dass Musketen hinüberreichen. Er lässt sich aber nicht bis zum Fluss durchziehen, weil zwei vorgeschobene Werke am britischen linken Flügel im Weg stehen. Solange Redoute 9 und 10 halten, hängt die ganze Arbeit in der Luft.",
+   "stellungen": [
+    {
+     "id": "a-parallele2",
+     "partei": "all",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -76.49451,
+       37.2442
+      ],
+      [
+       -76.49674,
+       37.23704
+      ],
+      [
+       -76.50039,
+       37.23115
+      ],
+      [
+       -76.50886,
+       37.2271
+      ],
+      [
+       -76.51549,
+       37.23148
+      ],
+      [
+       -76.5219,
+       37.23556
+      ],
+      [
+       -76.51942,
+       37.24252
+      ],
+      [
+       -76.51116,
+       37.2455
+      ],
+      [
+       -76.5021,
+       37.2486
+      ]
+     ],
+     "name": "Die zweite Parallele",
+     "staerke": "300 m vor der Linie"
+    },
+    {
+     "id": "b-redouten",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -76.49727,
+       37.2343
+      ],
+      [
+       -76.49728,
+       37.2348
+      ],
+      [
+       -76.49789,
+       37.23509
+      ],
+      [
+       -76.49845,
+       37.23484
+      ],
+      [
+       -76.50073,
+       37.2317
+      ],
+      [
+       -76.50072,
+       37.2312
+      ],
+      [
+       -76.50011,
+       37.23091
+      ],
+      [
+       -76.49955,
+       37.23116
+      ]
+     ],
+     "name": "Redoute 9 und 10 stehen im Weg"
+    },
+    {
+     "id": "b-stadt",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -76.49957,
+       37.24187
+      ],
+      [
+       -76.50096,
+       37.2374
+      ],
+      [
+       -76.50325,
+       37.23372
+      ],
+      [
+       -76.50854,
+       37.23119
+      ],
+      [
+       -76.51268,
+       37.23392
+      ],
+      [
+       -76.51669,
+       37.23647
+      ],
+      [
+       -76.51514,
+       37.24082
+      ],
+      [
+       -76.50998,
+       37.24269
+      ],
+      [
+       -76.50432,
+       37.24462
+      ]
+     ],
+     "name": "Die Innenlinie",
+     "staerke": "rund 8.000"
+    },
+    {
+     "id": "a-batterien",
+     "partei": "all",
+     "form": "flaeche",
+     "gattung": "geschuetz",
+     "punkte": [
+      [
+       -76.49002,
+       37.24626
+      ],
+      [
+       -76.49299,
+       37.23672
+      ],
+      [
+       -76.49786,
+       37.22886
+      ],
+      [
+       -76.50914,
+       37.22347
+      ],
+      [
+       -76.51799,
+       37.2293
+      ],
+      [
+       -76.52654,
+       37.23475
+      ],
+      [
+       -76.52323,
+       37.24402
+      ],
+      [
+       -76.51221,
+       37.248
+      ],
+      [
+       -76.50014,
+       37.25213
+      ]
+     ],
+     "name": "Die Batterien"
+    }
+   ]
+  },
+  {
+   "zeit": "14. Oktober, nachts",
+   "t": 440,
+   "kurz": "Beide Redouten fallen in derselben Nacht.",
+   "text": "Zwei Sturmtrupps gehen gleichzeitig vor, mit ungeladenen Gewehren, damit niemand durch einen Schuss die Sache verrät. Vierhundert Franzosen unter Guillaume de Deux-Ponts nehmen Redoute 9, vierhundert Amerikaner unter Alexander Hamilton Redoute 10 – Hamilton hat sich das Kommando bei Washington erbeten. Beide Werke fallen in weniger als einer halben Stunde. Danach lässt sich die zweite Parallele bis ans Wasser ziehen.",
+   "stellungen": [
+    {
+     "id": "a-sturm9",
+     "partei": "all",
+     "form": "pfeil",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -76.506,
+       37.229
+      ],
+      [
+       -76.501,
+       37.2315
+      ],
+      [
+       -76.4985,
+       37.2328
+      ]
+     ],
+     "name": "Die Franzosen auf Redoute 9"
+    },
+    {
+     "id": "a-sturm10",
+     "partei": "all",
+     "form": "pfeil",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       -76.501,
+       37.227
+      ],
+      [
+       -76.498,
+       37.23
+      ],
+      [
+       -76.4962,
+       37.232
+      ]
+     ],
+     "name": "Hamilton auf Redoute 10"
+    },
+    {
+     "id": "b-redouten",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -76.49727,
+       37.2343
+      ],
+      [
+       -76.49728,
+       37.2348
+      ],
+      [
+       -76.49789,
+       37.23509
+      ],
+      [
+       -76.49845,
+       37.23484
+      ],
+      [
+       -76.50073,
+       37.2317
+      ],
+      [
+       -76.50072,
+       37.2312
+      ],
+      [
+       -76.50011,
+       37.23091
+      ],
+      [
+       -76.49955,
+       37.23116
+      ]
+     ],
+     "name": "Beide Werke fallen",
+     "geschlagen": true
+    },
+    {
+     "id": "a-parallele2",
+     "partei": "all",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -76.49564,
+       37.24368
+      ],
+      [
+       -76.49768,
+       37.23712
+      ],
+      [
+       -76.50103,
+       37.23172
+      ],
+      [
+       -76.50879,
+       37.22801
+      ],
+      [
+       -76.51487,
+       37.23202
+      ],
+      [
+       -76.52074,
+       37.23576
+      ],
+      [
+       -76.51847,
+       37.24214
+      ],
+      [
+       -76.5109,
+       37.24488
+      ],
+      [
+       -76.5026,
+       37.24772
+      ]
+     ],
+     "name": "Die zweite Parallele reicht ans Wasser"
+    },
+    {
+     "id": "b-stadt",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -76.50013,
+       37.24162
+      ],
+      [
+       -76.50143,
+       37.23744
+      ],
+      [
+       -76.50356,
+       37.234
+      ],
+      [
+       -76.5085,
+       37.23164
+      ],
+      [
+       -76.51237,
+       37.23419
+      ],
+      [
+       -76.51611,
+       37.23658
+      ],
+      [
+       -76.51466,
+       37.24064
+      ],
+      [
+       -76.50984,
+       37.24238
+      ],
+      [
+       -76.50456,
+       37.24418
+      ]
+     ],
+     "name": "Die Innenlinie",
+     "staerke": "rund 8.000",
+     "geschlagen": true
+    }
+   ]
+  },
+  {
+   "zeit": "16. Oktober",
+   "t": 500,
+   "kurz": "Ein Ausbruch bei Nacht, den ein Sturm beendet.",
+   "text": "Cornwallis versucht zweierlei. Am Morgen ein Ausfall gegen zwei Batterien: Er gelingt, die vernagelten Rohre sind aber nach Stunden wieder in Betrieb. In der Nacht dann der Versuch, das Heer in Booten über den Fluss nach Gloucester zu bringen und sich nach Norden durchzuschlagen. Die erste Welle setzt über, dann kommt ein Gewittersturm und treibt die Boote flussab. Am Morgen ist die Truppe auf beide Ufer verteilt.",
+   "stellungen": [
+    {
+     "id": "b-ausfall",
+     "partei": "bri",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -76.51,
+       37.235
+      ],
+      [
+       -76.518,
+       37.232
+      ],
+      [
+       -76.524,
+       37.23
+      ]
+     ],
+     "name": "Ausfall gegen die Batterien",
+     "geschlagen": true
+    },
+    {
+     "id": "b-boote",
+     "partei": "bri",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -76.506,
+       37.242
+      ],
+      [
+       -76.501,
+       37.247
+      ],
+      [
+       -76.496,
+       37.251
+      ]
+     ],
+     "name": "Der Übersetzversuch bei Nacht",
+     "geschlagen": true
+    },
+    {
+     "id": "b-stadt",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -76.5007,
+       37.24136
+      ],
+      [
+       -76.5019,
+       37.23748
+      ],
+      [
+       -76.50388,
+       37.23429
+      ],
+      [
+       -76.50846,
+       37.2321
+      ],
+      [
+       -76.51206,
+       37.23447
+      ],
+      [
+       -76.51553,
+       37.23668
+      ],
+      [
+       -76.51419,
+       37.24045
+      ],
+      [
+       -76.50971,
+       37.24206
+      ],
+      [
+       -76.50481,
+       37.24374
+      ]
+     ],
+     "name": "Der Rest bleibt in der Stadt",
+     "staerke": "rund 7.000",
+     "geschlagen": true
+    },
+    {
+     "id": "a-parallele2",
+     "partei": "all",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -76.49564,
+       37.24368
+      ],
+      [
+       -76.49768,
+       37.23712
+      ],
+      [
+       -76.50103,
+       37.23172
+      ],
+      [
+       -76.50879,
+       37.22801
+      ],
+      [
+       -76.51487,
+       37.23202
+      ],
+      [
+       -76.52074,
+       37.23576
+      ],
+      [
+       -76.51847,
+       37.24214
+      ],
+      [
+       -76.5109,
+       37.24488
+      ],
+      [
+       -76.5026,
+       37.24772
+      ]
+     ],
+     "name": "Die zweite Parallele",
+     "staerke": "16.000"
+    }
+   ]
+  },
+  {
+   "zeit": "17. bis 19. Oktober",
+   "t": 560,
+   "kurz": "Am 19. marschieren sie zwischen zwei Reihen hindurch.",
+   "text": "Am Morgen des 17. – auf den Tag vier Jahre nach Saratoga – erscheint ein Trommler auf der Brustwehr, den niemand hört, und daneben ein Offizier mit einem weißen Tuch. Zwei Tage wird über die Bedingungen verhandelt; die Ehrenbezeigungen, die man den Amerikanern bei Charleston verweigert hatte, werden nun ihrerseits verweigert. Am 19. marschieren die Briten zwischen den aufgestellten Reihen der Sieger hindurch und legen die Waffen nieder. Cornwallis meldet sich krank; O’Hara übergibt an seiner Stelle.",
+   "stellungen": [
+    {
+     "id": "b-stadt",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -76.5007,
+       37.24136
+      ],
+      [
+       -76.5019,
+       37.23748
+      ],
+      [
+       -76.50388,
+       37.23429
+      ],
+      [
+       -76.50846,
+       37.2321
+      ],
+      [
+       -76.51206,
+       37.23447
+      ],
+      [
+       -76.51553,
+       37.23668
+      ],
+      [
+       -76.51419,
+       37.24045
+      ],
+      [
+       -76.50971,
+       37.24206
+      ],
+      [
+       -76.50481,
+       37.24374
+      ]
+     ],
+     "name": "Die Übergabe",
+     "staerke": "rund 7.000",
+     "geschlagen": true
+    },
+    {
+     "id": "a-gasse",
+     "partei": "all",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -76.51277,
+       37.24365
+      ],
+      [
+       -76.51149,
+       37.24548
+      ],
+      [
+       -76.51296,
+       37.2475
+      ],
+      [
+       -76.51559,
+       37.24754
+      ],
+      [
+       -76.53123,
+       37.24035
+      ],
+      [
+       -76.53251,
+       37.23852
+      ],
+      [
+       -76.53104,
+       37.2365
+      ],
+      [
+       -76.52841,
+       37.23646
+      ]
+     ],
+     "name": "Die Reihen der Sieger",
+     "staerke": "16.000"
+    },
+    {
+     "id": "b-abmarsch",
+     "partei": "bri",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -76.51,
+       37.238
+      ],
+      [
+       -76.52,
+       37.242
+      ],
+      [
+       -76.532,
+       37.247
+      ]
+     ],
+     "name": "Abmarsch ins Gefangenenlager",
+     "rueckzug": true
+    },
+    {
+     "id": "b-gloucester",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -76.495,
+       37.25704
+      ],
+      [
+       -76.4925,
+       37.25537
+      ],
+      [
+       -76.49078,
+       37.25359
+      ],
+      [
+       -76.49072,
+       37.25103
+      ],
+      [
+       -76.49374,
+       37.25025
+      ],
+      [
+       -76.49661,
+       37.24948
+      ],
+      [
+       -76.49899,
+       37.25117
+      ],
+      [
+       -76.49865,
+       37.25351
+      ],
+      [
+       -76.49822,
+       37.25605
+      ]
+     ],
+     "name": "Gloucester ergibt sich mit",
+     "staerke": "rund 1.000",
+     "geschlagen": true
+    }
+   ]
+  },
+  {
+   "zeit": "Nach dem 19. Oktober",
+   "t": 640,
+   "kurz": "Frankreich gewinnt den Krieg und ruiniert sich dabei.",
+   "text": "Der Krieg ist militärisch nicht zu Ende – die Briten halten New York, Charleston und Savannah noch zwei Jahre –, aber politisch. Als die Nachricht London erreicht, soll Lord North gesagt haben: „O Gott, es ist alles vorbei.“ Im März 1782 stürzt seine Regierung, 1783 erkennt der Friede von Paris die Unabhängigkeit an. Frankreich hat gewonnen und dabei einen Schuldenberg aufgehäuft, der sechs Jahre später die Einberufung der Generalstände erzwingt.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     -82.5,
+     28.5
+    ],
+    [
+     8.5,
+     56.5
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "a-nachricht",
+     "partei": "all",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -76.51,
+       37.24
+      ],
+      [
+       -70,
+       40
+      ],
+      [
+       -40,
+       46
+      ],
+      [
+       -10,
+       50
+      ],
+      [
+       -0.13,
+       51.51
+      ]
+     ],
+     "name": "Die Nachricht nach London, 25. November"
+    },
+    {
+     "id": "bri-rest",
+     "partei": "bri",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       -73.92,
+       40.7
+      ],
+      [
+       -76,
+       34
+      ],
+      [
+       -79.94,
+       32.78
+      ],
+      [
+       -81.1,
+       32.08
+      ]
+     ],
+     "name": "New York, Charleston und Savannah, bis 1783"
+    },
+    {
+     "id": "a-paris",
+     "partei": "all",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       -76.51,
+       37.24
+      ],
+      [
+       -60,
+       42
+      ],
+      [
+       -20,
+       48
+      ],
+      [
+       2.35,
+       48.86
+      ]
+     ],
+     "name": "1783: der Friede von Paris"
+    },
+    {
+     "id": "a-schulden",
+     "partei": "all",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       2.12,
+       48.8
+      ],
+      [
+       2.24,
+       48.83
+      ],
+      [
+       2.35,
+       48.86
+      ]
+     ],
+     "name": "1789: die Rechnung dafür"
+    }
+   ]
+  }
+ ],
+ "ausgang": "Cornwallis kapituliert am 19. Oktober 1781 mit rund 8.000 Mann. Es ist die zweite britische Armee, die in diesem Krieg als Ganzes verlorengeht.",
+ "verluste": [
+  {
+   "partei": "bri",
+   "text": "rund 150 Tote, 320 Verwundete – und über 7.000 Gefangene, das ganze Heer"
+  },
+  {
+   "partei": "all",
+   "text": "rund 80 Tote und 190 Verwundete auf beiden Seiten des Bündnisses zusammen"
+  }
+ ],
+ "folgen": "Der Krieg dauert militärisch noch zwei Jahre, politisch ist er entschieden: Im März 1782 stürzt die Regierung North, 1783 erkennt der Friede von Paris die Unabhängigkeit der Vereinigten Staaten an. Frankreich hat den Krieg gewonnen und sich dabei so verschuldet, dass 1789 die Generalstände einberufen werden müssen. Für Großbritannien verschiebt sich der Schwerpunkt des Empires nach Indien und in den Pazifik.",
+ "streit": "Wie entscheidend die Seeschlacht vor den Kaps war, ist nicht strittig – strittig ist, warum Graves danach nach New York zurücksegelte statt zu bleiben, und wie viel Schuld Clinton daran trägt, dass der Entsatz erst am 24. Oktober ausläuft. Zwischen Clinton und Cornwallis begann noch während der Belagerung ein Schriftwechsel, der später öffentlich ausgetragen wurde und in dem jeder dem anderen die Verantwortung zuschob."
+}

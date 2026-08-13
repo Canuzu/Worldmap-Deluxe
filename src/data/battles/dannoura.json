@@ -1,0 +1,1527 @@
+{
+ "id": "dannoura",
+ "name": "Dan-no-ura",
+ "ort": "Die Meerenge von Shimonoseki",
+ "datum": "25. April 1185",
+ "jahr": 1185,
+ "mitte": [
+  130.98,
+  33.961
+ ],
+ "zoom": 12.2,
+ "see": true,
+ "grund": "blatt",
+ "worum": "Der Wendepunkt ist eine Uhrzeit. Durch die Enge von Shimonoseki läuft der Gezeitenstrom mit bis zu acht Knoten – schneller, als ein Ruderschiff dagegen ankommt. Am Vormittag setzt er nach Osten und trägt die Taira gegen die Minamoto; gegen Mittag kehrt er um. Quer heraus führt kein Weg, und die Richtung, in der man kämpfen kann, wechselt an einem einzigen Punkt des Tages.",
+ "parteien": [
+  {
+   "id": "tai",
+   "name": "Taira",
+   "farbe": "#d4737c",
+   "fuehrung": "Taira no Tomomori, Taira no Munemori, Taira no Tokiko",
+   "staerke": "rund 500 Schiffe – mit dem siebenjährigen Kaiser Antoku und den Reichsinsignien an Bord",
+   "zahl": 500
+  },
+  {
+   "id": "min",
+   "name": "Minamoto",
+   "farbe": "#6f9fe0",
+   "fuehrung": "Minamoto no Yoshitsune, Minamoto no Noriyori, Kajiwara Kagetoki",
+   "staerke": "rund 800 Schiffe, dazu die übergelaufenen Flotten von Kyushu und Shikoku",
+   "zahl": 800
+  }
+ ],
+ "gelaende": [
+  {
+   "art": "stroemung",
+   "name": "Die Meerenge von Shimonoseki",
+   "punkte": [
+    [
+     130.915,
+     33.942
+    ],
+    [
+     130.952,
+     33.954
+    ],
+    [
+     130.99,
+     33.962
+    ],
+    [
+     131.04,
+     33.974
+    ]
+   ]
+  },
+  {
+   "art": "stroemung",
+   "name": "Hayatomo no Seto · die Enge, bis acht Knoten",
+   "punkte": [
+    [
+     130.96927,
+     33.96068
+    ],
+    [
+     130.96395,
+     33.95471
+    ],
+    [
+     130.95758,
+     33.94956
+    ],
+    [
+     130.94667,
+     33.94525
+    ],
+    [
+     130.94116,
+     33.94785
+    ],
+    [
+     130.93578,
+     33.95024
+    ],
+    [
+     130.9413,
+     33.95608
+    ],
+    [
+     130.95156,
+     33.95953
+    ],
+    [
+     130.96273,
+     33.96318
+    ]
+   ]
+  },
+  {
+   "art": "stadt",
+   "name": "Dan-no-ura am Nordufer",
+   "punkte": [
+    [
+     130.966,
+     33.97004
+    ],
+    [
+     130.9684,
+     33.96837
+    ],
+    [
+     130.97005,
+     33.96659
+    ],
+    [
+     130.97011,
+     33.96403
+    ],
+    [
+     130.96721,
+     33.96325
+    ],
+    [
+     130.96445,
+     33.96248
+    ],
+    [
+     130.96217,
+     33.96417
+    ],
+    [
+     130.96249,
+     33.96651
+    ],
+    [
+     130.96291,
+     33.96905
+    ]
+   ]
+  },
+  {
+   "art": "stadt",
+   "name": "Moji am Südufer",
+   "punkte": [
+    [
+     130.964,
+     33.94604
+    ],
+    [
+     130.9664,
+     33.94437
+    ],
+    [
+     130.96805,
+     33.94259
+    ],
+    [
+     130.96811,
+     33.94003
+    ],
+    [
+     130.96521,
+     33.93925
+    ],
+    [
+     130.96245,
+     33.93848
+    ],
+    [
+     130.96018,
+     33.94017
+    ],
+    [
+     130.96049,
+     33.94251
+    ],
+    [
+     130.96091,
+     33.94505
+    ]
+   ]
+  },
+  {
+   "art": "hoehe",
+   "name": "Hikoshima · der Ankerplatz der Taira",
+   "punkte": [
+    [
+     130.93031,
+     33.94592
+    ],
+    [
+     130.9267,
+     33.93866
+    ],
+    [
+     130.92181,
+     33.93275
+    ],
+    [
+     130.91218,
+     33.92887
+    ],
+    [
+     130.90595,
+     33.93356
+    ],
+    [
+     130.89991,
+     33.93794
+    ],
+    [
+     130.90375,
+     33.94498
+    ],
+    [
+     130.91299,
+     33.94778
+    ],
+    [
+     130.92308,
+     33.95067
+    ]
+   ]
+  }
+ ],
+ "stationen": [
+  {
+   "zeit": "1180 bis 1185",
+   "t": 0,
+   "kurz": "Fünf Jahre Bürgerkrieg treiben eine Sippe ans Meer.",
+   "text": "Der Genpei-Krieg ist der Streit zweier Kriegersippen um die Herrschaft hinter dem Kaiserhaus. Nach 1183 verlieren die Taira die Hauptstadt und weichen mit dem Kindkaiser und den Reichsinsignien immer weiter nach Westen aus: Ichinotani, Yashima, zuletzt die Inseln vor der Meerenge von Shimonoseki. Weiter geht es nicht; hinter ihnen liegt offene See.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     128.5,
+     30.5
+    ],
+    [
+     141.5,
+     38.5
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "anm-tai",
+     "partei": "tai",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       135.77,
+       34.98
+      ],
+      [
+       135.18,
+       34.69
+      ],
+      [
+       134.05,
+       34.35
+      ],
+      [
+       132.46,
+       34.39
+      ],
+      [
+       130.96,
+       33.96
+      ]
+     ],
+     "name": "Die Taira weichen nach Westen aus"
+    },
+    {
+     "id": "anm-min",
+     "partei": "min",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       139.55,
+       35.32
+      ],
+      [
+       137.2,
+       35.1
+      ],
+      [
+       135.77,
+       34.98
+      ],
+      [
+       134.05,
+       34.2
+      ],
+      [
+       131.2,
+       33.99
+      ]
+     ],
+     "name": "Yoritomo und Yoshitsune folgen"
+    },
+    {
+     "id": "anm-kyushu",
+     "partei": "min",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       130.4,
+       33.6
+      ],
+      [
+       130.7,
+       33.8
+      ],
+      [
+       131.05,
+       33.97
+      ]
+     ],
+     "name": "Kyushu läuft über"
+    }
+   ]
+  },
+  {
+   "zeit": "Morgen des 25. April",
+   "t": 60,
+   "kurz": "Die Flotten treffen sich am Ostausgang der Enge.",
+   "text": "Die Taira laufen von Hikoshima aus, die Minamoto kommen von Osten aus der Binnensee. Zwischen ihnen liegt eine Wasserstraße, die an der engsten Stelle keinen Kilometer breit ist. Auf der Taira-Seite stehen erfahrene Seeleute der Inlandsee; auf der Gegenseite Landkrieger, die erst seit Monaten zu Schiff kämpfen – dafür in der Überzahl.",
+   "stellungen": [
+    {
+     "id": "t-flotte",
+     "partei": "tai",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       130.95662,
+       33.96452
+      ],
+      [
+       130.95281,
+       33.96665
+      ],
+      [
+       130.94729,
+       33.96451
+      ],
+      [
+       130.94681,
+       33.96072
+      ],
+      [
+       130.95538,
+       33.94548
+      ],
+      [
+       130.95919,
+       33.94335
+      ],
+      [
+       130.96471,
+       33.94549
+      ],
+      [
+       130.96519,
+       33.94928
+      ]
+     ],
+     "name": "Die Taira laufen aus",
+     "staerke": "500 Schiffe"
+    },
+    {
+     "id": "m-flotte",
+     "partei": "min",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       131.01438,
+       33.95634
+      ],
+      [
+       131.01907,
+       33.95372
+      ],
+      [
+       131.02558,
+       33.95623
+      ],
+      [
+       131.02616,
+       33.9609
+      ],
+      [
+       131.01562,
+       33.97966
+      ],
+      [
+       131.01093,
+       33.98228
+      ],
+      [
+       131.00442,
+       33.97977
+      ],
+      [
+       131.00384,
+       33.9751
+      ]
+     ],
+     "name": "Die Minamoto aus der Binnensee",
+     "staerke": "800 Schiffe"
+    }
+   ]
+  },
+  {
+   "zeit": "Acht Uhr",
+   "t": 120,
+   "kurz": "Der Strom setzt nach Osten – für die Taira.",
+   "text": "Am Vormittag läuft die Tide nach Osten. Die Taira nutzen sie, teilen sich in drei Geschwader und greifen mit dem Strom an: Sie kommen schnell heran, die Gegenseite kommt langsam vom Fleck. Es beginnt mit Pfeilschüssen auf große Entfernung, dann werden die Schiffe längsseits gelegt und geentert.",
+   "stellungen": [
+    {
+     "id": "t-flotte",
+     "partei": "tai",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       130.97987,
+       33.97085
+      ],
+      [
+       130.97569,
+       33.9732
+      ],
+      [
+       130.97058,
+       33.97123
+      ],
+      [
+       130.97006,
+       33.96706
+      ],
+      [
+       130.98013,
+       33.94915
+      ],
+      [
+       130.98431,
+       33.9468
+      ],
+      [
+       130.98942,
+       33.94877
+      ],
+      [
+       130.98994,
+       33.95294
+      ]
+     ],
+     "name": "Angriff mit dem Strom",
+     "staerke": "500 Schiffe"
+    },
+    {
+     "id": "t-stoss",
+     "partei": "tai",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       130.975,
+       33.96
+      ],
+      [
+       131,
+       33.964
+      ],
+      [
+       131.02,
+       33.968
+      ]
+     ],
+     "name": "mit der Tide nach Osten"
+    },
+    {
+     "id": "m-flotte",
+     "partei": "min",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       131.02971,
+       33.95876
+      ],
+      [
+       131.0347,
+       33.95597
+      ],
+      [
+       131.04087,
+       33.95835
+      ],
+      [
+       131.04149,
+       33.96331
+      ],
+      [
+       131.03029,
+       33.98324
+      ],
+      [
+       131.0253,
+       33.98603
+      ],
+      [
+       131.01913,
+       33.98365
+      ],
+      [
+       131.01851,
+       33.97869
+      ]
+     ],
+     "name": "kommt gegen den Strom nicht vor",
+     "staerke": "800 Schiffe",
+     "geschlagen": true
+    },
+    {
+     "id": "t-strom",
+     "partei": "tai",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       130.93,
+       33.95
+      ],
+      [
+       130.97,
+       33.958
+      ],
+      [
+       131.01,
+       33.966
+      ]
+     ],
+     "name": "Der Gezeitenstrom, vormittags"
+    }
+   ]
+  },
+  {
+   "zeit": "Vormittag",
+   "t": 180,
+   "kurz": "Ein Köderschiff und ein Verräter, der es verrät.",
+   "text": "Die Taira haben die Vorsichtsmaßnahme getroffen, den Hof auf ein schlichtes Schiff zu setzen und die Krieger auf das prächtige – wer das Flaggschiff entert, findet dort Bewaffnete statt der Beute. Der List setzt Taira no Shigeyoshi ein Ende: Er läuft über und sagt Yoshitsune, auf welchem Schiff der Kaiser wirklich ist.",
+   "stellungen": [
+    {
+     "id": "t-koeder",
+     "partei": "tai",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       131,
+       33.96714
+      ],
+      [
+       131.00187,
+       33.96585
+      ],
+      [
+       131.00315,
+       33.96446
+      ],
+      [
+       131.0032,
+       33.96247
+      ],
+      [
+       131.00094,
+       33.96186
+      ],
+      [
+       130.9988,
+       33.96126
+      ],
+      [
+       130.99702,
+       33.96258
+      ],
+      [
+       130.99727,
+       33.9644
+      ],
+      [
+       130.9976,
+       33.96638
+      ]
+     ],
+     "name": "Das prächtige Köderschiff",
+     "finte": true
+    },
+    {
+     "id": "t-kaiser",
+     "partei": "tai",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       130.97,
+       33.96114
+      ],
+      [
+       130.97187,
+       33.95985
+      ],
+      [
+       130.97315,
+       33.95846
+      ],
+      [
+       130.9732,
+       33.95647
+      ],
+      [
+       130.97094,
+       33.95586
+      ],
+      [
+       130.9688,
+       33.95526
+      ],
+      [
+       130.96702,
+       33.95658
+      ],
+      [
+       130.96727,
+       33.9584
+      ],
+      [
+       130.9676,
+       33.96038
+      ]
+     ],
+     "name": "Das Schiff des Kaisers"
+    },
+    {
+     "id": "t-flotte",
+     "partei": "tai",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       130.98487,
+       33.97185
+      ],
+      [
+       130.98069,
+       33.9742
+      ],
+      [
+       130.97558,
+       33.97223
+      ],
+      [
+       130.97506,
+       33.96806
+      ],
+      [
+       130.98513,
+       33.95015
+      ],
+      [
+       130.98931,
+       33.9478
+      ],
+      [
+       130.99442,
+       33.94977
+      ],
+      [
+       130.99494,
+       33.95394
+      ]
+     ],
+     "name": "Die Taira drücken weiter",
+     "staerke": "500 Schiffe"
+    },
+    {
+     "id": "m-flotte",
+     "partei": "min",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       131.02971,
+       33.95876
+      ],
+      [
+       131.0347,
+       33.95597
+      ],
+      [
+       131.04087,
+       33.95835
+      ],
+      [
+       131.04149,
+       33.96331
+      ],
+      [
+       131.03029,
+       33.98324
+      ],
+      [
+       131.0253,
+       33.98603
+      ],
+      [
+       131.01913,
+       33.98365
+      ],
+      [
+       131.01851,
+       33.97869
+      ]
+     ],
+     "name": "hält sich",
+     "staerke": "800 Schiffe"
+    },
+    {
+     "id": "m-verrat",
+     "partei": "min",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       130.995,
+       33.963
+      ],
+      [
+       131.015,
+       33.967
+      ],
+      [
+       131.029,
+       33.97
+      ]
+     ],
+     "name": "Shigeyoshi läuft über"
+    }
+   ]
+  },
+  {
+   "zeit": "Gegen elf",
+   "t": 240,
+   "kurz": "Yoshitsune lässt auf Ruderer und Steuerleute schießen.",
+   "text": "Yoshitsune gibt einen Befehl, der gegen die Übereinkunft seines Standes verstößt: nicht auf die Krieger zu schießen, sondern auf die Ruderer und Steuerleute, die als Nichtkämpfer gelten. Ein Schiff ohne Steuermann treibt in einer Strömung von mehreren Knoten dorthin, wohin das Wasser will. Die Taira-Formation beginnt sich aufzulösen, bevor sich die Tide überhaupt dreht.",
+   "stellungen": [
+    {
+     "id": "m-bogen",
+     "partei": "min",
+     "form": "flaeche",
+     "gattung": "bogen",
+     "punkte": [
+      [
+       131.02147,
+       33.95687
+      ],
+      [
+       131.02482,
+       33.955
+      ],
+      [
+       131.02891,
+       33.95658
+      ],
+      [
+       131.02933,
+       33.95991
+      ],
+      [
+       131.01853,
+       33.97913
+      ],
+      [
+       131.01518,
+       33.981
+      ],
+      [
+       131.01109,
+       33.97942
+      ],
+      [
+       131.01067,
+       33.97609
+      ]
+     ],
+     "name": "Bogenschützen auf die Ruderer"
+    },
+    {
+     "id": "m-schuss",
+     "partei": "min",
+     "form": "pfeil",
+     "gattung": "bogen",
+     "punkte": [
+      [
+       131.015,
+       33.967
+      ],
+      [
+       130.998,
+       33.964
+      ],
+      [
+       130.985,
+       33.9615
+      ]
+     ]
+    },
+    {
+     "id": "t-flotte",
+     "partei": "tai",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       130.98562,
+       33.97266
+      ],
+      [
+       130.98093,
+       33.97528
+      ],
+      [
+       130.97443,
+       33.97277
+      ],
+      [
+       130.97384,
+       33.9681
+      ],
+      [
+       130.98438,
+       33.94934
+      ],
+      [
+       130.98907,
+       33.94672
+      ],
+      [
+       130.99557,
+       33.94923
+      ],
+      [
+       130.99616,
+       33.9539
+      ]
+     ],
+     "name": "Schiffe ohne Steuerleute",
+     "staerke": "500 Schiffe",
+     "geschlagen": true
+    },
+    {
+     "id": "m-flotte",
+     "partei": "min",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       131.02771,
+       33.95826
+      ],
+      [
+       131.0327,
+       33.95547
+      ],
+      [
+       131.03887,
+       33.95785
+      ],
+      [
+       131.03949,
+       33.96281
+      ],
+      [
+       131.02829,
+       33.98274
+      ],
+      [
+       131.0233,
+       33.98553
+      ],
+      [
+       131.01713,
+       33.98315
+      ],
+      [
+       131.01651,
+       33.97819
+      ]
+     ],
+     "name": "schließt auf",
+     "staerke": "800 Schiffe"
+    }
+   ]
+  },
+  {
+   "zeit": "Mittag",
+   "t": 300,
+   "kurz": "Der Strom kehrt um, und mit ihm die Schlacht.",
+   "text": "Um die Mittagszeit läuft die Tide aus, kehrt um und setzt nach Westen. Damit haben die Minamoto den Strom im Rücken und die Taira ihn vor dem Bug. Dieselbe Enge, die am Vormittag den einen half, arbeitet jetzt für die anderen – und zwar mit einer Wucht, gegen die man nicht anrudern kann.",
+   "stellungen": [
+    {
+     "id": "m-strom",
+     "partei": "min",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       131.04,
+       33.974
+      ],
+      [
+       131,
+       33.965
+      ],
+      [
+       130.96,
+       33.956
+      ]
+     ],
+     "name": "Der Gezeitenstrom, nachmittags"
+    },
+    {
+     "id": "m-flotte",
+     "partei": "min",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       130.99971,
+       33.95276
+      ],
+      [
+       131.0047,
+       33.94997
+      ],
+      [
+       131.01087,
+       33.95235
+      ],
+      [
+       131.01149,
+       33.95731
+      ],
+      [
+       131.00029,
+       33.97724
+      ],
+      [
+       130.9953,
+       33.98003
+      ],
+      [
+       130.98913,
+       33.97765
+      ],
+      [
+       130.98851,
+       33.97269
+      ]
+     ],
+     "name": "Angriff mit dem Strom",
+     "staerke": "800 Schiffe"
+    },
+    {
+     "id": "t-flotte",
+     "partei": "tai",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       130.96495,
+       33.96807
+      ],
+      [
+       130.96055,
+       33.97053
+      ],
+      [
+       130.95372,
+       33.96789
+      ],
+      [
+       130.95317,
+       33.96351
+      ],
+      [
+       130.96305,
+       33.94593
+      ],
+      [
+       130.96745,
+       33.94347
+      ],
+      [
+       130.97428,
+       33.94611
+      ],
+      [
+       130.97483,
+       33.95049
+      ]
+     ],
+     "name": "gegen den Strom gedrückt",
+     "staerke": "500 Schiffe",
+     "geschlagen": true
+    }
+   ]
+  },
+  {
+   "zeit": "Früher Nachmittag",
+   "t": 360,
+   "kurz": "In die Enge geschoben, wo kein Ausweichen ist.",
+   "text": "Die Taira werden nach Westen in die engste Stelle geschoben, wo Schiff an Schiff liegt und niemand mehr manövriert. Die Verbände aus Shikoku und Kyushu, die bis eben mitgefochten haben, drehen ab oder laufen über. Was bleibt, ist der Kern der Sippe auf wenigen hundert Metern Wasser.",
+   "stellungen": [
+    {
+     "id": "t-flotte",
+     "partei": "tai",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       130.96637,
+       33.95928
+      ],
+      [
+       130.96329,
+       33.9537
+      ],
+      [
+       130.95924,
+       33.94911
+      ],
+      [
+       130.95145,
+       33.94599
+      ],
+      [
+       130.94661,
+       33.94943
+      ],
+      [
+       130.94191,
+       33.95265
+      ],
+      [
+       130.94516,
+       33.95808
+      ],
+      [
+       130.95261,
+       33.96038
+      ],
+      [
+       130.96073,
+       33.96276
+      ]
+     ],
+     "name": "in der Enge zusammengeschoben",
+     "staerke": "was noch da ist",
+     "geschlagen": true
+    },
+    {
+     "id": "m-flotte",
+     "partei": "min",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       130.9784,
+       33.94796
+      ],
+      [
+       130.98309,
+       33.94534
+      ],
+      [
+       130.99156,
+       33.94861
+      ],
+      [
+       130.99214,
+       33.95328
+      ],
+      [
+       130.9816,
+       33.97204
+      ],
+      [
+       130.97691,
+       33.97466
+      ],
+      [
+       130.96844,
+       33.97139
+      ],
+      [
+       130.96786,
+       33.96672
+      ]
+     ],
+     "name": "schiebt nach",
+     "staerke": "800 Schiffe"
+    },
+    {
+     "id": "t-abfall",
+     "partei": "tai",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       130.97,
+       33.95
+      ],
+      [
+       130.95,
+       33.942
+      ],
+      [
+       130.925,
+       33.938
+      ]
+     ],
+     "name": "Verbündete drehen ab",
+     "rueckzug": true
+    },
+    {
+     "id": "m-stoss",
+     "partei": "min",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       130.975,
+       33.959
+      ],
+      [
+       130.965,
+       33.957
+      ],
+      [
+       130.958,
+       33.9555
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "zeit": "Der Sprung",
+   "t": 420,
+   "kurz": "Die Großmutter springt mit dem Kaiser ins Meer.",
+   "text": "Als klar ist, dass es vorbei ist, nimmt Taira no Tokiko, die Großmutter des siebenjährigen Antoku, das Kind auf den Arm, steckt das Schwert in den Gürtel und den Jaspis in die Falten des Gewandes. Auf die Frage des Kindes, wohin sie gehe, antwortet sie nach dem Heike monogatari, auch auf dem Grund des Meeres gebe es eine Hauptstadt. Dann springt sie. Tomomori bindet sich einen Anker an die Füße; andere folgen. Munemori wird lebend herausgezogen und später hingerichtet.",
+   "stellungen": [
+    {
+     "id": "t-kaiser",
+     "partei": "tai",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       130.953,
+       33.95625
+      ],
+      [
+       130.95433,
+       33.95532
+      ],
+      [
+       130.95525,
+       33.95433
+      ],
+      [
+       130.95528,
+       33.95291
+      ],
+      [
+       130.95367,
+       33.95247
+      ],
+      [
+       130.95214,
+       33.95204
+      ],
+      [
+       130.95087,
+       33.95298
+      ],
+      [
+       130.95105,
+       33.95428
+      ],
+      [
+       130.95128,
+       33.9557
+      ]
+     ],
+     "name": "Das Schiff des Kaisers",
+     "geschlagen": true
+    },
+    {
+     "id": "t-flotte",
+     "partei": "tai",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       130.96562,
+       33.95852
+      ],
+      [
+       130.96323,
+       33.95418
+      ],
+      [
+       130.96007,
+       33.95061
+      ],
+      [
+       130.95402,
+       33.94818
+      ],
+      [
+       130.95025,
+       33.95086
+      ],
+      [
+       130.9466,
+       33.95336
+      ],
+      [
+       130.94913,
+       33.95759
+      ],
+      [
+       130.95492,
+       33.95937
+      ],
+      [
+       130.96124,
+       33.96122
+      ]
+     ],
+     "name": "Die Sippe geht unter",
+     "staerke": "Reste",
+     "geschlagen": true
+    },
+    {
+     "id": "m-flotte",
+     "partei": "min",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       130.97207,
+       33.94705
+      ],
+      [
+       130.97647,
+       33.94459
+      ],
+      [
+       130.98526,
+       33.94799
+      ],
+      [
+       130.98581,
+       33.95236
+      ],
+      [
+       130.97593,
+       33.96995
+      ],
+      [
+       130.97153,
+       33.97241
+      ],
+      [
+       130.96274,
+       33.96901
+      ],
+      [
+       130.96219,
+       33.96464
+      ]
+     ],
+     "name": "Die Minamoto",
+     "staerke": "800 Schiffe"
+    }
+   ]
+  },
+  {
+   "zeit": "Danach",
+   "t": 480,
+   "kurz": "Von drei Insignien wird eine nie wieder gefunden.",
+   "text": "Der Spiegel und der Jaspis werden aus dem Wasser geborgen – der Jaspis soll in seinem Kästchen an die Oberfläche getrieben sein. Das Schwert Kusanagi bleibt verschwunden; was heute in Nagoya als Reichsschwert gilt, ist nach eigener Überlieferung ein Ersatz. Die Fischer der Meerenge fangen bis heute Krabben, deren Panzer wie ein zorniges Gesicht gezeichnet ist, und nennen sie Heike-Krabben.",
+   "stellungen": [
+    {
+     "id": "m-flotte",
+     "partei": "min",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       130.96007,
+       33.94455
+      ],
+      [
+       130.96447,
+       33.94209
+      ],
+      [
+       130.97326,
+       33.94549
+      ],
+      [
+       130.97381,
+       33.94986
+      ],
+      [
+       130.96393,
+       33.96745
+      ],
+      [
+       130.95953,
+       33.96991
+      ],
+      [
+       130.95074,
+       33.96651
+      ],
+      [
+       130.95019,
+       33.96214
+      ]
+     ],
+     "name": "Die Meerenge nach der Schlacht",
+     "staerke": "800 Schiffe"
+    },
+    {
+     "id": "m-bergung",
+     "partei": "min",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       130.97,
+       33.9575
+      ],
+      [
+       130.96,
+       33.9555
+      ],
+      [
+       130.953,
+       33.9542
+      ]
+     ],
+     "name": "Spiegel und Jaspis geborgen"
+    },
+    {
+     "id": "t-flotte",
+     "partei": "tai",
+     "form": "flaeche",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       130.95774,
+       33.95602
+      ],
+      [
+       130.95639,
+       33.9533
+      ],
+      [
+       130.95455,
+       33.95108
+      ],
+      [
+       130.95094,
+       33.94963
+      ],
+      [
+       130.94861,
+       33.95138
+      ],
+      [
+       130.94634,
+       33.95303
+      ],
+      [
+       130.94778,
+       33.95567
+      ],
+      [
+       130.95125,
+       33.95672
+      ],
+      [
+       130.95503,
+       33.9578
+      ]
+     ],
+     "name": "Was übrig ist",
+     "staerke": "Gefangene",
+     "geschlagen": true
+    }
+   ]
+  },
+  {
+   "zeit": "Nach 1185",
+   "t": 560,
+   "kurz": "Japan bekommt eine zweite Regierung neben dem Hof.",
+   "text": "Yoritomo baut in Kamakura eine Militärregierung auf und lässt sich 1192 zum Shogun ernennen – der Kaiserhof bleibt in Kyoto und behält die Würde, die Macht liegt anderswo. Diese Doppelung hält, mit wechselnden Häusern, bis 1868. Yoshitsune, der die Schlacht gewonnen hat, überwirft sich mit seinem Bruder, wird gejagt und tötet sich 1189 im Norden; er wird dadurch zur beliebtesten tragischen Gestalt der japanischen Überlieferung.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     127.5,
+     29.5
+    ],
+    [
+     143.5,
+     42.5
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "m-kamakura",
+     "partei": "min",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       130.96,
+       33.96
+      ],
+      [
+       133.5,
+       34.3
+      ],
+      [
+       135.77,
+       34.98
+      ],
+      [
+       139.55,
+       35.32
+      ]
+     ],
+     "name": "Die Macht wandert nach Kamakura"
+    },
+    {
+     "id": "m-yoshitsune",
+     "partei": "min",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       135.77,
+       34.98
+      ],
+      [
+       137.2,
+       36.2
+      ],
+      [
+       140.1,
+       38.3
+      ],
+      [
+       141.1,
+       39
+      ]
+     ],
+     "name": "Yoshitsune auf der Flucht, bis 1189"
+    },
+    {
+     "id": "t-ende",
+     "partei": "tai",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       130.96,
+       33.95
+      ],
+      [
+       131.8,
+       33.3
+      ],
+      [
+       130.4,
+       32.8
+      ]
+     ],
+     "name": "Versprengte Taira in den Bergdörfern"
+    }
+   ]
+  }
+ ],
+ "ausgang": "Die Taira-Flotte wird in die Enge geschoben und vernichtet. Der Kindkaiser Antoku ertrinkt; das Reichsschwert bleibt verschwunden.",
+ "verluste": [
+  {
+   "partei": "tai",
+   "text": "die Flotte und die Sippe – der Kaiser, Tokiko, Tomomori und der größte Teil des Hauses tot oder gefangen"
+  },
+  {
+   "partei": "min",
+   "text": "nicht überliefert; nach allen Berichten gering"
+  }
+ ],
+ "folgen": "Der Genpei-Krieg ist entschieden. Yoritomo errichtet in Kamakura eine Militärregierung und lässt sich 1192 zum Shogun ernennen; der Kaiserhof behält die Würde, die Macht liegt fortan bei den Kriegerhäusern – eine Doppelung, die bis 1868 hält. Yoshitsune wird von seinem eigenen Bruder gejagt und tötet sich 1189. Das Heike monogatari, aus dem fast alles über diesen Tag stammt, wird über Jahrhunderte von blinden Sängern vorgetragen und ist bis heute Schulstoff.",
+ "streit": "Fast der ganze Ablauf steht nur im Heike monogatari, einer Dichtung, die rund ein Jahrhundert später aufgeschrieben wurde und offen erbauliche Zwecke verfolgt. Ob der Gezeitenwechsel die Schlacht wirklich entschied, ist umstritten: Die Rekonstruktion der Strömungsverhältnisse vom 25. April 1185 wurde in den 1970er Jahren berechnet und wird seither auch bezweifelt. Die Zahl der Schiffe schwankt je nach Handschrift."
+}

@@ -1,0 +1,2057 @@
+{
+ "id": "isandlwana",
+ "name": "Isandlwana",
+ "ort": "Zululand, am Fuß des Felsens",
+ "datum": "22. Januar 1879",
+ "jahr": 1879,
+ "mitte": [
+  30.66,
+  -28.35
+ ],
+ "zoom": 11.6,
+ "grund": "relief",
+ "worum": "Eine Schlachtordnung, die man auf einer Karte unmittelbar lesen kann: die Brust bindet von vorn, zwei Hörner laufen außen herum und schließen sich hinter dem Gegner, die Lenden sitzen als Reserve mit dem Rücken zum Feld. Dagegen steht eine Feuerlinie von vier Kilometern, die zu weit vor dem Lager liegt, um versorgt zu werden – und die in dem Augenblick wertlos wird, in dem das Feuer nachlässt.",
+ "parteien": [
+  {
+   "id": "bri",
+   "name": "Großbritannien",
+   "farbe": "#6f9fe0",
+   "fuehrung": "Henry Pulleine, Anthony Durnford – Lord Chelmsford ist an diesem Tag nicht da",
+   "staerke": "rund 1.800 im Lager – sechs Kompanien des 24. Regiments, zwei Geschütze, Natal Native Contingent, berittene Freiwillige",
+   "zahl": 1800
+  },
+  {
+   "id": "zul",
+   "name": "Zulureich",
+   "farbe": "#c98a4b",
+   "fuehrung": "Ntshingwayo kaMahole, Mavumengwana kaNdlela",
+   "staerke": "rund 20.000 – die Regimenter uKhandempemvu, uMbonambi, iNgobamakhosi, uNokhenke, dazu die uNdi-Reserve",
+   "zahl": 20000
+  }
+ ],
+ "gelaende": [
+  {
+   "art": "hoehe",
+   "name": "Isandlwana · der Felsen",
+   "punkte": [
+    [
+     30.65483,
+     -28.35216
+    ],
+    [
+     30.65579,
+     -28.35567
+    ],
+    [
+     30.656,
+     -28.35915
+    ],
+    [
+     30.65426,
+     -28.3635
+    ],
+    [
+     30.65115,
+     -28.36399
+    ],
+    [
+     30.64817,
+     -28.36452
+    ],
+    [
+     30.64733,
+     -28.36101
+    ],
+    [
+     30.64925,
+     -28.35714
+    ],
+    [
+     30.6514,
+     -28.35296
+    ]
+   ]
+  },
+  {
+   "art": "hoehe",
+   "name": "Mahlabamkhosi · die kegelförmige Kuppe",
+   "punkte": [
+    [
+     30.669,
+     -28.36475
+    ],
+    [
+     30.67026,
+     -28.36568
+    ],
+    [
+     30.67112,
+     -28.36667
+    ],
+    [
+     30.67115,
+     -28.36809
+    ],
+    [
+     30.66963,
+     -28.36853
+    ],
+    [
+     30.66819,
+     -28.36896
+    ],
+    [
+     30.667,
+     -28.36802
+    ],
+    [
+     30.66716,
+     -28.36672
+    ],
+    [
+     30.66738,
+     -28.3653
+    ]
+   ]
+  },
+  {
+   "art": "hoehe",
+   "name": "Die Hochfläche von Nqutu",
+   "punkte": [
+    [
+     30.73092,
+     -28.325
+    ],
+    [
+     30.71197,
+     -28.33607
+    ],
+    [
+     30.69173,
+     -28.34367
+    ],
+    [
+     30.66263,
+     -28.34395
+    ],
+    [
+     30.65378,
+     -28.33056
+    ],
+    [
+     30.64497,
+     -28.31787
+    ],
+    [
+     30.66419,
+     -28.30737
+    ],
+    [
+     30.69083,
+     -28.30884
+    ],
+    [
+     30.71969,
+     -28.31077
+    ]
+   ]
+  },
+  {
+   "art": "sumpf",
+   "name": "Das Ngwebeni-Tal · dort lag das Heer",
+   "punkte": [
+    [
+     30.74108,
+     -28.29983
+    ],
+    [
+     30.73621,
+     -28.30588
+    ],
+    [
+     30.73033,
+     -28.31133
+    ],
+    [
+     30.72018,
+     -28.31658
+    ],
+    [
+     30.71495,
+     -28.31491
+    ],
+    [
+     30.70985,
+     -28.3134
+    ],
+    [
+     30.71491,
+     -28.30743
+    ],
+    [
+     30.72447,
+     -28.30304
+    ],
+    [
+     30.73488,
+     -28.29837
+    ]
+   ]
+  },
+  {
+   "art": "fluss",
+   "name": "Die Nyogane-Donga",
+   "punkte": [
+    [
+     30.684,
+     -28.338
+    ],
+    [
+     30.677,
+     -28.352
+    ],
+    [
+     30.672,
+     -28.366
+    ]
+   ]
+  },
+  {
+   "art": "fluss",
+   "name": "Der Manzimnyama",
+   "punkte": [
+    [
+     30.63,
+     -28.328
+    ],
+    [
+     30.635,
+     -28.36
+    ],
+    [
+     30.64,
+     -28.388
+    ]
+   ]
+  },
+  {
+   "art": "fluss",
+   "name": "Der Buffalo · dahinter Natal",
+   "punkte": [
+    [
+     30.56,
+     -28.305
+    ],
+    [
+     30.538,
+     -28.345
+    ],
+    [
+     30.562,
+     -28.392
+    ]
+   ]
+  },
+  {
+   "art": "furt",
+   "name": "Rorke’s Drift",
+   "punkte": [
+    [
+     30.535,
+     -28.34575
+    ],
+    [
+     30.53626,
+     -28.34668
+    ],
+    [
+     30.53712,
+     -28.34767
+    ],
+    [
+     30.53715,
+     -28.34909
+    ],
+    [
+     30.53563,
+     -28.34953
+    ],
+    [
+     30.53419,
+     -28.34996
+    ],
+    [
+     30.533,
+     -28.34902
+    ],
+    [
+     30.53316,
+     -28.34772
+    ],
+    [
+     30.53338,
+     -28.3463
+    ]
+   ]
+  }
+ ],
+ "stationen": [
+  {
+   "zeit": "Dezember 1878",
+   "t": 0,
+   "kurz": "Ein Ultimatum, das niemand annehmen kann.",
+   "text": "Der britische Hochkommissar Bartle Frere will das südliche Afrika zu einer Föderation zusammenfassen und braucht dafür ein Ende des Zulureiches. Er stellt Cetshwayo ein Ultimatum, das unter anderem die Auflösung des Heeres verlangt, und lässt es ohne Rückfrage in London ablaufen. Am 11. Januar 1879 überschreiten drei Kolonnen die Grenze; die mittlere geht bei Rorke’s Drift über den Buffalo.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     27.5,
+     -32.5
+    ],
+    [
+     34.5,
+     -24.5
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "anm-bri",
+     "partei": "bri",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       31.03,
+       -29.86
+      ],
+      [
+       30.4,
+       -29.2
+      ],
+      [
+       30.53,
+       -28.35
+      ],
+      [
+       30.65,
+       -28.36
+      ]
+     ],
+     "name": "Die mittlere Kolonne über Rorke’s Drift"
+    },
+    {
+     "id": "anm-bri2",
+     "partei": "bri",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       32.3,
+       -28.8
+      ],
+      [
+       31.6,
+       -28.5
+      ],
+      [
+       31,
+       -28.3
+      ]
+     ],
+     "name": "Die Küstenkolonne"
+    },
+    {
+     "id": "anm-zul",
+     "partei": "zul",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       31.42,
+       -28.31
+      ],
+      [
+       31.1,
+       -28.32
+      ],
+      [
+       30.8,
+       -28.33
+      ],
+      [
+       30.68,
+       -28.32
+      ]
+     ],
+     "name": "Das Zulu-Heer aus Ulundi"
+    }
+   ]
+  },
+  {
+   "zeit": "20. Januar",
+   "t": 60,
+   "kurz": "Ein Lager ohne Wagenburg und ohne Graben.",
+   "text": "Die Kolonne schlägt am Fuß des Isandlwana ein Lager auf – anderthalb Kilometer lang, mit dem Felsen im Rücken. Die eigenen Felddienstvorschriften verlangen, die Wagen zu einer Burg zusammenzufahren oder wenigstens einen Graben auszuheben. Beides unterbleibt: Der Boden ist steinig, das Lager soll nur zwei Nächte stehen, und niemand rechnet damit, dass ein Gegner ohne Gewehre eine britische Feuerlinie erreichen könnte.",
+   "stellungen": [
+    {
+     "id": "b-lager",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       30.65979,
+       -28.35057
+      ],
+      [
+       30.65893,
+       -28.34931
+      ],
+      [
+       30.65707,
+       -28.34931
+      ],
+      [
+       30.65621,
+       -28.35057
+      ],
+      [
+       30.65621,
+       -28.36243
+      ],
+      [
+       30.65707,
+       -28.36369
+      ],
+      [
+       30.65893,
+       -28.36369
+      ],
+      [
+       30.65979,
+       -28.36243
+      ]
+     ],
+     "name": "Das Lager am Fuß des Felsens",
+     "staerke": "rund 1.800"
+    },
+    {
+     "id": "z-heer",
+     "partei": "zul",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       30.73985,
+       -28.30045
+      ],
+      [
+       30.73548,
+       -28.30625
+      ],
+      [
+       30.73015,
+       -28.31142
+      ],
+      [
+       30.72078,
+       -28.31627
+      ],
+      [
+       30.71579,
+       -28.31448
+      ],
+      [
+       30.71093,
+       -28.31285
+      ],
+      [
+       30.71547,
+       -28.30715
+      ],
+      [
+       30.72431,
+       -28.30312
+      ],
+      [
+       30.73395,
+       -28.29885
+      ]
+     ],
+     "name": "Das Zulu-Heer im Ngwebeni-Tal",
+     "staerke": "rund 20.000"
+    }
+   ]
+  },
+  {
+   "zeit": "22. Januar, früh",
+   "t": 120,
+   "kurz": "Chelmsford marschiert mit der Hälfte fort.",
+   "text": "Meldungen sprechen von Zulu-Verbänden im Südosten. Chelmsford bricht vor Tagesanbruch mit gut der Hälfte der Truppe dorthin auf, um die Entscheidungsschlacht zu suchen, die er seit elf Tagen sucht. Zurück bleiben unter Oberstleutnant Pulleine rund 1.300 Mann, dazu später Durnford mit berittenen Verbänden. Was Chelmsford verfolgt, ist eine Vorhut; das Heer liegt in die andere Richtung.",
+   "stellungen": [
+    {
+     "id": "b-chelmsford",
+     "partei": "bri",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       30.66,
+       -28.362
+      ],
+      [
+       30.7,
+       -28.39
+      ],
+      [
+       30.74,
+       -28.415
+      ]
+     ],
+     "name": "Chelmsford zieht nach Südosten ab"
+    },
+    {
+     "id": "b-lager",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       30.65979,
+       -28.35102
+      ],
+      [
+       30.65893,
+       -28.34976
+      ],
+      [
+       30.65707,
+       -28.34976
+      ],
+      [
+       30.65621,
+       -28.35102
+      ],
+      [
+       30.65621,
+       -28.36198
+      ],
+      [
+       30.65707,
+       -28.36324
+      ],
+      [
+       30.65893,
+       -28.36324
+      ],
+      [
+       30.65979,
+       -28.36198
+      ]
+     ],
+     "name": "Pulleine bleibt zurück",
+     "staerke": "rund 1.300"
+    },
+    {
+     "id": "z-heer",
+     "partei": "zul",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       30.73985,
+       -28.30045
+      ],
+      [
+       30.73548,
+       -28.30625
+      ],
+      [
+       30.73015,
+       -28.31142
+      ],
+      [
+       30.72078,
+       -28.31627
+      ],
+      [
+       30.71579,
+       -28.31448
+      ],
+      [
+       30.71093,
+       -28.31285
+      ],
+      [
+       30.71547,
+       -28.30715
+      ],
+      [
+       30.72431,
+       -28.30312
+      ],
+      [
+       30.73395,
+       -28.29885
+      ]
+     ],
+     "name": "liegt unentdeckt im Tal",
+     "staerke": "rund 20.000"
+    }
+   ]
+  },
+  {
+   "zeit": "Gegen elf",
+   "t": 180,
+   "kurz": "Ein Reiter sieht in eine Schlucht und findet alles.",
+   "text": "Eine berittene Patrouille verfolgt auf der Hochfläche einige Rinder bis an den Rand einer Senke – und sieht darunter, dicht an dicht und schweigend sitzend, zwanzigtausend Männer. Die Zulu greifen sofort an, obwohl der Tag als unheilvoll gilt und der Angriff für den folgenden geplant war. Von diesem Augenblick an läuft alles ohne Plan und sehr schnell.",
+   "stellungen": [
+    {
+     "id": "b-patrouille",
+     "partei": "bri",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       30.68,
+       -28.335
+      ],
+      [
+       30.7,
+       -28.322
+      ],
+      [
+       30.718,
+       -28.312
+      ]
+     ],
+     "name": "Raws Patrouille auf der Hochfläche"
+    },
+    {
+     "id": "z-heer",
+     "partei": "zul",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       30.73985,
+       -28.30045
+      ],
+      [
+       30.73548,
+       -28.30625
+      ],
+      [
+       30.73015,
+       -28.31142
+      ],
+      [
+       30.72078,
+       -28.31627
+      ],
+      [
+       30.71579,
+       -28.31448
+      ],
+      [
+       30.71093,
+       -28.31285
+      ],
+      [
+       30.71547,
+       -28.30715
+      ],
+      [
+       30.72431,
+       -28.30312
+      ],
+      [
+       30.73395,
+       -28.29885
+      ]
+     ],
+     "name": "wird entdeckt und tritt sofort an",
+     "staerke": "rund 20.000"
+    },
+    {
+     "id": "b-lager",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       30.65979,
+       -28.35102
+      ],
+      [
+       30.65893,
+       -28.34976
+      ],
+      [
+       30.65707,
+       -28.34976
+      ],
+      [
+       30.65621,
+       -28.35102
+      ],
+      [
+       30.65621,
+       -28.36198
+      ],
+      [
+       30.65707,
+       -28.36324
+      ],
+      [
+       30.65893,
+       -28.36324
+      ],
+      [
+       30.65979,
+       -28.36198
+      ]
+     ],
+     "name": "Das Lager",
+     "staerke": "rund 1.300"
+    }
+   ]
+  },
+  {
+   "zeit": "Kurz darauf",
+   "t": 240,
+   "kurz": "Die Hörner des Büffels gehen nach beiden Seiten.",
+   "text": "Das Heer entfaltet sich im Laufen in die Ordnung, für die es ausgebildet ist: Die Brust – drei Regimenter – geht frontal auf das Lager zu, die beiden Hörner laufen weit außen darum herum, das linke nördlich um den Felsen, das rechte südlich um die kegelförmige Kuppe. Die Lenden, die Reserve, setzen sich mit dem Rücken zum Feld, damit der Anblick sie nicht vorzeitig in Bewegung bringt.",
+   "stellungen": [
+    {
+     "id": "z-brust",
+     "partei": "zul",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       30.69836,
+       -28.35769
+      ],
+      [
+       30.70169,
+       -28.36007
+      ],
+      [
+       30.70618,
+       -28.35863
+      ],
+      [
+       30.70699,
+       -28.35493
+      ],
+      [
+       30.69764,
+       -28.33231
+      ],
+      [
+       30.69431,
+       -28.32993
+      ],
+      [
+       30.68982,
+       -28.33137
+      ],
+      [
+       30.68901,
+       -28.33507
+      ]
+     ],
+     "name": "Die Brust",
+     "staerke": "drei Regimenter"
+    },
+    {
+     "id": "z-hornL",
+     "partei": "zul",
+     "form": "pfeil",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       30.705,
+       -28.32
+      ],
+      [
+       30.67,
+       -28.312
+      ],
+      [
+       30.63,
+       -28.322
+      ]
+     ],
+     "name": "Das linke Horn, nördlich um den Felsen"
+    },
+    {
+     "id": "z-hornR",
+     "partei": "zul",
+     "form": "pfeil",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       30.715,
+       -28.366
+      ],
+      [
+       30.69,
+       -28.378
+      ],
+      [
+       30.66,
+       -28.383
+      ]
+     ],
+     "name": "Das rechte Horn, südlich herum"
+    },
+    {
+     "id": "z-reserve",
+     "partei": "zul",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       30.708,
+       -28.32371
+      ],
+      [
+       30.71152,
+       -28.32631
+      ],
+      [
+       30.71394,
+       -28.32908
+      ],
+      [
+       30.71403,
+       -28.33306
+      ],
+      [
+       30.70977,
+       -28.33428
+      ],
+      [
+       30.70573,
+       -28.33548
+      ],
+      [
+       30.70239,
+       -28.33285
+      ],
+      [
+       30.70286,
+       -28.3292
+      ],
+      [
+       30.70347,
+       -28.32525
+      ]
+     ],
+     "name": "Die Lenden, mit dem Rücken zum Feld"
+    },
+    {
+     "id": "b-lager",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       30.65979,
+       -28.35102
+      ],
+      [
+       30.65893,
+       -28.34976
+      ],
+      [
+       30.65707,
+       -28.34976
+      ],
+      [
+       30.65621,
+       -28.35102
+      ],
+      [
+       30.65621,
+       -28.36198
+      ],
+      [
+       30.65707,
+       -28.36324
+      ],
+      [
+       30.65893,
+       -28.36324
+      ],
+      [
+       30.65979,
+       -28.36198
+      ]
+     ],
+     "name": "Das Lager",
+     "staerke": "rund 1.300"
+    }
+   ]
+  },
+  {
+   "zeit": "Mittag",
+   "t": 300,
+   "kurz": "Eine Feuerlinie, einen Kilometer vor dem Lager.",
+   "text": "Pulleine schickt seine Kompanien einzeln nach vorn, jede dorthin, wo gerade gemeldet wird. Daraus wird ein weiter Bogen von fast vier Kilometern, an manchen Stellen mit mehreren Metern Abstand zwischen den Männern. Solange geschossen wird, hält er: Das Martini-Henry-Gewehr trifft auf vierhundert Meter, und die Zulu haben fast nur Speere. Vorn stapeln sich die Toten, und es sieht eine Weile aus wie ein Sieg.",
+   "stellungen": [
+    {
+     "id": "b-links",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       30.65137,
+       -28.33946
+      ],
+      [
+       30.65088,
+       -28.33972
+      ],
+      [
+       30.65088,
+       -28.34028
+      ],
+      [
+       30.65137,
+       -28.34054
+      ],
+      [
+       30.66263,
+       -28.34054
+      ],
+      [
+       30.66312,
+       -28.34028
+      ],
+      [
+       30.66312,
+       -28.33972
+      ],
+      [
+       30.66263,
+       -28.33946
+      ]
+     ],
+     "name": "Cavaye und Mostyn im Norden",
+     "staerke": "zwei Kompanien"
+    },
+    {
+     "id": "b-mitte",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       30.67461,
+       -28.34524
+      ],
+      [
+       30.67432,
+       -28.34481
+      ],
+      [
+       30.67368,
+       -28.34481
+      ],
+      [
+       30.67339,
+       -28.34524
+      ],
+      [
+       30.67339,
+       -28.35876
+      ],
+      [
+       30.67368,
+       -28.35919
+      ],
+      [
+       30.67432,
+       -28.35919
+      ],
+      [
+       30.67461,
+       -28.35876
+      ]
+     ],
+     "name": "Die Feuerlinie nach Osten",
+     "staerke": "drei Kompanien"
+    },
+    {
+     "id": "b-geschuetz",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "geschuetz",
+     "punkte": [
+      [
+       30.671,
+       -28.35519
+      ],
+      [
+       30.67145,
+       -28.35553
+      ],
+      [
+       30.67176,
+       -28.35588
+      ],
+      [
+       30.67178,
+       -28.35639
+      ],
+      [
+       30.67123,
+       -28.35655
+      ],
+      [
+       30.67071,
+       -28.3567
+      ],
+      [
+       30.67028,
+       -28.35637
+      ],
+      [
+       30.67034,
+       -28.3559
+      ],
+      [
+       30.67042,
+       -28.35539
+      ]
+     ],
+     "name": "Zwei Sieben-Pfünder"
+    },
+    {
+     "id": "b-durnford",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       30.68277,
+       -28.35805
+      ],
+      [
+       30.6824,
+       -28.35751
+      ],
+      [
+       30.6816,
+       -28.35751
+      ],
+      [
+       30.68123,
+       -28.35805
+      ],
+      [
+       30.68123,
+       -28.36595
+      ],
+      [
+       30.6816,
+       -28.36649
+      ],
+      [
+       30.6824,
+       -28.36649
+      ],
+      [
+       30.68277,
+       -28.36595
+      ]
+     ],
+     "name": "Durnford in der Donga",
+     "staerke": "berittene Basotho"
+    },
+    {
+     "id": "z-brust",
+     "partei": "zul",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       30.69009,
+       -28.36135
+      ],
+      [
+       30.69379,
+       -28.36399
+      ],
+      [
+       30.69878,
+       -28.3624
+      ],
+      [
+       30.69968,
+       -28.35828
+      ],
+      [
+       30.68991,
+       -28.33465
+      ],
+      [
+       30.68621,
+       -28.33201
+      ],
+      [
+       30.68122,
+       -28.3336
+      ],
+      [
+       30.68032,
+       -28.33772
+      ]
+     ],
+     "name": "Die Brust liegt im Feuer",
+     "staerke": "drei Regimenter",
+     "geschlagen": true
+    }
+   ]
+  },
+  {
+   "zeit": "Gegen ein Uhr",
+   "t": 360,
+   "kurz": "Die Munition kommt nicht bis nach vorn.",
+   "text": "Die Vorräte liegen im Lager, einen Kilometer hinter der Linie, in Kisten, die man aufschrauben muss; die Quartiermeister geben nur an die eigene Einheit aus. Ob das die Entscheidung brachte, wird bis heute bestritten – unbestritten ist, dass eine Linie, die so weit vorn liegt und nur durch Feuer wirkt, in dem Augenblick wertlos wird, in dem das Feuer nachlässt.",
+   "stellungen": [
+    {
+     "id": "b-mitte",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       30.67461,
+       -28.34524
+      ],
+      [
+       30.67432,
+       -28.34481
+      ],
+      [
+       30.67368,
+       -28.34481
+      ],
+      [
+       30.67339,
+       -28.34524
+      ],
+      [
+       30.67339,
+       -28.35876
+      ],
+      [
+       30.67368,
+       -28.35919
+      ],
+      [
+       30.67432,
+       -28.35919
+      ],
+      [
+       30.67461,
+       -28.35876
+      ]
+     ],
+     "name": "Das Feuer lässt nach",
+     "staerke": "drei Kompanien",
+     "geschlagen": true
+    },
+    {
+     "id": "b-nachschub",
+     "partei": "bri",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       30.66,
+       -28.356
+      ],
+      [
+       30.666,
+       -28.354
+      ],
+      [
+       30.67,
+       -28.3525
+      ]
+     ],
+     "name": "Der Nachschub kommt zu langsam"
+    },
+    {
+     "id": "b-durnford",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       30.68277,
+       -28.35805
+      ],
+      [
+       30.6824,
+       -28.35751
+      ],
+      [
+       30.6816,
+       -28.35751
+      ],
+      [
+       30.68123,
+       -28.35805
+      ],
+      [
+       30.68123,
+       -28.36595
+      ],
+      [
+       30.6816,
+       -28.36649
+      ],
+      [
+       30.6824,
+       -28.36649
+      ],
+      [
+       30.68277,
+       -28.36595
+      ]
+     ],
+     "name": "Durnford geht die Munition aus",
+     "geschlagen": true
+    },
+    {
+     "id": "z-brust",
+     "partei": "zul",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       30.68609,
+       -28.36235
+      ],
+      [
+       30.68979,
+       -28.36499
+      ],
+      [
+       30.69478,
+       -28.3634
+      ],
+      [
+       30.69568,
+       -28.35928
+      ],
+      [
+       30.68591,
+       -28.33565
+      ],
+      [
+       30.68221,
+       -28.33301
+      ],
+      [
+       30.67722,
+       -28.3346
+      ],
+      [
+       30.67632,
+       -28.33872
+      ]
+     ],
+     "name": "Die Brust kommt wieder hoch",
+     "staerke": "drei Regimenter"
+    },
+    {
+     "id": "b-links",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       30.65137,
+       -28.33946
+      ],
+      [
+       30.65088,
+       -28.33972
+      ],
+      [
+       30.65088,
+       -28.34028
+      ],
+      [
+       30.65137,
+       -28.34054
+      ],
+      [
+       30.66263,
+       -28.34054
+      ],
+      [
+       30.66312,
+       -28.34028
+      ],
+      [
+       30.66312,
+       -28.33972
+      ],
+      [
+       30.66263,
+       -28.33946
+      ]
+     ],
+     "name": "im Norden",
+     "staerke": "zwei Kompanien"
+    }
+   ]
+  },
+  {
+   "zeit": "Kurz danach",
+   "t": 410,
+   "kurz": "Der rechte Flügel geht zurück, die Flanke liegt frei.",
+   "text": "Durnfords Reiter räumen die Donga und reiten zum Lager zurück. Damit hat die Feuerlinie an ihrem rechten Ende nichts mehr, woran sie sich anlehnen könnte, und die Regimenter, die dort festgehalten wurden, sind frei. Sie gehen sofort vor. Pulleine lässt zurücknehmen – und ein Rückzug in offener Ordnung vor einem Gegner, der schneller läuft als man selbst, ist das Ende der Ordnung.",
+   "stellungen": [
+    {
+     "id": "b-durnford",
+     "partei": "bri",
+     "form": "pfeil",
+     "gattung": "reiter",
+     "punkte": [
+      [
+       30.681,
+       -28.362
+      ],
+      [
+       30.67,
+       -28.36
+      ],
+      [
+       30.662,
+       -28.358
+      ]
+     ],
+     "name": "Durnford räumt die Donga",
+     "rueckzug": true
+    },
+    {
+     "id": "z-brust",
+     "partei": "zul",
+     "form": "pfeil",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       30.685,
+       -28.352
+      ],
+      [
+       30.672,
+       -28.354
+      ],
+      [
+       30.664,
+       -28.356
+      ]
+     ],
+     "name": "Die Brust geht vor"
+    },
+    {
+     "id": "b-mitte",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       30.66677,
+       -28.34825
+      ],
+      [
+       30.6664,
+       -28.34771
+      ],
+      [
+       30.6656,
+       -28.34771
+      ],
+      [
+       30.66523,
+       -28.34825
+      ],
+      [
+       30.66523,
+       -28.35975
+      ],
+      [
+       30.6656,
+       -28.36029
+      ],
+      [
+       30.6664,
+       -28.36029
+      ],
+      [
+       30.66677,
+       -28.35975
+      ]
+     ],
+     "name": "Rücknahme in offener Ordnung",
+     "geschlagen": true
+    },
+    {
+     "id": "b-links",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       30.65347,
+       -28.34437
+      ],
+      [
+       30.6529,
+       -28.34467
+      ],
+      [
+       30.6529,
+       -28.34533
+      ],
+      [
+       30.65347,
+       -28.34563
+      ],
+      [
+       30.66253,
+       -28.34563
+      ],
+      [
+       30.6631,
+       -28.34533
+      ],
+      [
+       30.6631,
+       -28.34467
+      ],
+      [
+       30.66253,
+       -28.34437
+      ]
+     ],
+     "name": "auch der Nordflügel zurück",
+     "geschlagen": true
+    },
+    {
+     "id": "z-hornL",
+     "partei": "zul",
+     "form": "pfeil",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       30.635,
+       -28.323
+      ],
+      [
+       30.628,
+       -28.345
+      ],
+      [
+       30.633,
+       -28.368
+      ]
+     ],
+     "name": "Das linke Horn läuft weiter"
+    }
+   ]
+  },
+  {
+   "zeit": "Gegen halb zwei",
+   "t": 460,
+   "kurz": "Das linke Horn schließt hinter dem Lager.",
+   "text": "Das linke Horn ist inzwischen westlich um den Felsen herum und steht hinter dem Lager, auf dem Weg nach Rorke’s Drift. Damit ist der Ring geschlossen, und niemand kommt mehr auf der Straße heraus. Was im Lager kämpft, kämpft in Gruppen zwischen Zelten und Wagen: kleine Karrees, dann Rücken an Rücken, dann einzeln.",
+   "stellungen": [
+    {
+     "id": "z-hornL",
+     "partei": "zul",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       30.64059,
+       -28.35553
+      ],
+      [
+       30.63888,
+       -28.35302
+      ],
+      [
+       30.63312,
+       -28.35302
+      ],
+      [
+       30.63141,
+       -28.35553
+      ],
+      [
+       30.63141,
+       -28.36847
+      ],
+      [
+       30.63312,
+       -28.37098
+      ],
+      [
+       30.63888,
+       -28.37098
+      ],
+      [
+       30.64059,
+       -28.36847
+      ]
+     ],
+     "name": "Das linke Horn hinter dem Lager",
+     "staerke": "geschlossen"
+    },
+    {
+     "id": "z-hornR",
+     "partei": "zul",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       30.65465,
+       -28.37596
+      ],
+      [
+       30.65179,
+       -28.37747
+      ],
+      [
+       30.65179,
+       -28.38253
+      ],
+      [
+       30.65465,
+       -28.38404
+      ],
+      [
+       30.66935,
+       -28.38404
+      ],
+      [
+       30.67221,
+       -28.38253
+      ],
+      [
+       30.67221,
+       -28.37747
+      ],
+      [
+       30.66935,
+       -28.37596
+      ]
+     ],
+     "name": "Das rechte Horn von Süden"
+    },
+    {
+     "id": "z-brust",
+     "partei": "zul",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       30.66704,
+       -28.36682
+      ],
+      [
+       30.67074,
+       -28.36946
+      ],
+      [
+       30.67573,
+       -28.36786
+      ],
+      [
+       30.67664,
+       -28.36375
+      ],
+      [
+       30.66896,
+       -28.34518
+      ],
+      [
+       30.66526,
+       -28.34254
+      ],
+      [
+       30.66027,
+       -28.34414
+      ],
+      [
+       30.65936,
+       -28.34825
+      ]
+     ],
+     "name": "Die Brust im Lager",
+     "staerke": "drei Regimenter"
+    },
+    {
+     "id": "b-lager",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       30.66515,
+       -28.3565
+      ],
+      [
+       30.6622,
+       -28.35871
+      ],
+      [
+       30.65905,
+       -28.36023
+      ],
+      [
+       30.65452,
+       -28.36029
+      ],
+      [
+       30.65314,
+       -28.35761
+      ],
+      [
+       30.65177,
+       -28.35507
+      ],
+      [
+       30.65476,
+       -28.35297
+      ],
+      [
+       30.65891,
+       -28.35327
+      ],
+      [
+       30.6634,
+       -28.35365
+      ]
+     ],
+     "name": "Kämpfe zwischen den Zelten",
+     "staerke": "was übrig ist",
+     "geschlagen": true
+    }
+   ]
+  },
+  {
+   "zeit": "14.29 Uhr",
+   "t": 510,
+   "kurz": "Der Tag, an dem die Sonne verdunkelt wird.",
+   "text": "Mitten in den letzten Gefechten schiebt sich der Mond vor die Sonne – eine partielle Finsternis, die den Nachmittag verdüstert; die Zulu nennen den Tag danach den Tag des toten Mondes. Die letzten Gruppen des 24. Regiments fallen am Fuß des Felsens. Zwei Offiziere versuchen, die Fahne über den Buffalo zu retten, und ertrinken dabei; das Tuch wird zehn Tage später aus dem Fluss gezogen.",
+   "stellungen": [
+    {
+     "id": "b-lager",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       30.65522,
+       -28.35505
+      ],
+      [
+       30.6559,
+       -28.35664
+      ],
+      [
+       30.65617,
+       -28.35821
+      ],
+      [
+       30.65543,
+       -28.36009
+      ],
+      [
+       30.65376,
+       -28.3602
+      ],
+      [
+       30.65217,
+       -28.36033
+      ],
+      [
+       30.65156,
+       -28.35874
+      ],
+      [
+       30.65243,
+       -28.35707
+      ],
+      [
+       30.6534,
+       -28.35528
+      ]
+     ],
+     "name": "Die letzten Gruppen am Felsen",
+     "staerke": "Reste",
+     "geschlagen": true
+    },
+    {
+     "id": "b-flucht",
+     "partei": "bri",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       30.645,
+       -28.364
+      ],
+      [
+       30.6,
+       -28.372
+      ],
+      [
+       30.562,
+       -28.386
+      ]
+     ],
+     "name": "Flucht zur Furt der Flüchtigen",
+     "rueckzug": true
+    },
+    {
+     "id": "z-verfolg",
+     "partei": "zul",
+     "form": "pfeil",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       30.635,
+       -28.366
+      ],
+      [
+       30.598,
+       -28.376
+      ],
+      [
+       30.568,
+       -28.388
+      ]
+     ],
+     "name": "Verfolgung bis an den Fluss"
+    },
+    {
+     "id": "z-brust",
+     "partei": "zul",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       30.65847,
+       -28.36744
+      ],
+      [
+       30.66184,
+       -28.36984
+      ],
+      [
+       30.66724,
+       -28.36811
+      ],
+      [
+       30.66806,
+       -28.36436
+      ],
+      [
+       30.66153,
+       -28.34856
+      ],
+      [
+       30.65816,
+       -28.34616
+      ],
+      [
+       30.65276,
+       -28.34789
+      ],
+      [
+       30.65194,
+       -28.35164
+      ]
+     ],
+     "name": "Das Feld",
+     "staerke": "drei Regimenter"
+    }
+   ]
+  },
+  {
+   "zeit": "Am selben Abend",
+   "t": 570,
+   "kurz": "Am selben Abend brennt Rorke’s Drift.",
+   "text": "Die Reserve, die den ganzen Tag mit dem Rücken zum Feld gesessen hat und nichts abbekommen hat, geht ohne Befehl über den Buffalo und greift den Nachschubposten bei Rorke’s Drift an: viertausend gegen einhundertfünfzig. Die Station hält die Nacht durch. Für die britische Öffentlichkeit wird sie zur Hauptsache, und elf Victoria-Kreuze – die höchste Zahl für ein einziges Gefecht – helfen dabei, über den Vormittag hinwegzukommen.",
+   "stellungen": [
+    {
+     "id": "z-reserve",
+     "partei": "zul",
+     "form": "pfeil",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       30.63,
+       -28.345
+      ],
+      [
+       30.58,
+       -28.348
+      ],
+      [
+       30.542,
+       -28.348
+      ]
+     ],
+     "name": "Die Reserve geht über den Fluss"
+    },
+    {
+     "id": "b-rorke",
+     "partei": "bri",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       30.535,
+       -28.34643
+      ],
+      [
+       30.53588,
+       -28.34708
+      ],
+      [
+       30.53649,
+       -28.34777
+      ],
+      [
+       30.53651,
+       -28.34877
+      ],
+      [
+       30.53544,
+       -28.34907
+      ],
+      [
+       30.53443,
+       -28.34937
+      ],
+      [
+       30.5336,
+       -28.34871
+      ],
+      [
+       30.53371,
+       -28.3478
+      ],
+      [
+       30.53387,
+       -28.34681
+      ]
+     ],
+     "name": "Rorke’s Drift · 150 Mann",
+     "staerke": "150"
+    },
+    {
+     "id": "z-brust",
+     "partei": "zul",
+     "form": "flaeche",
+     "gattung": "fuss",
+     "punkte": [
+      [
+       30.65847,
+       -28.36744
+      ],
+      [
+       30.66184,
+       -28.36984
+      ],
+      [
+       30.66724,
+       -28.36811
+      ],
+      [
+       30.66806,
+       -28.36436
+      ],
+      [
+       30.66153,
+       -28.34856
+      ],
+      [
+       30.65816,
+       -28.34616
+      ],
+      [
+       30.65276,
+       -28.34789
+      ],
+      [
+       30.65194,
+       -28.35164
+      ]
+     ],
+     "name": "Das Feld von Isandlwana",
+     "staerke": "rund 20.000"
+    },
+    {
+     "id": "b-chelmsford",
+     "partei": "bri",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       30.73,
+       -28.405
+      ],
+      [
+       30.695,
+       -28.38
+      ],
+      [
+       30.665,
+       -28.362
+      ]
+     ],
+     "name": "Chelmsford kehrt in der Nacht zurück"
+    }
+   ]
+  },
+  {
+   "zeit": "Nach dem 22. Januar",
+   "t": 650,
+   "kurz": "Sechs Monate später ist das Zulureich zerlegt.",
+   "text": "London schickt Verstärkungen, mit denen niemand gerechnet hätte, wenn die Kolonne nicht untergegangen wäre. Im Juli 1879 wird das Zulu-Heer bei Ulundi in offener Feldschlacht von einem Karree mit Gatling-Geschützen zerschossen; Cetshwayo wird gefangen und das Reich in dreizehn Häuptlingsgebiete zerlegt, die sich gegenseitig bekriegen. Isandlwana bleibt trotzdem der Bezugspunkt: der Beweis, dass eine europäische Armee zu schlagen ist.",
+   "uebersicht": true,
+   "sicht": [
+    [
+     24.8,
+     -35.5
+    ],
+    [
+     36.5,
+     -22.5
+    ]
+   ],
+   "stellungen": [
+    {
+     "id": "bri-ulundi",
+     "partei": "bri",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       30.53,
+       -28.35
+      ],
+      [
+       30.9,
+       -28.34
+      ],
+      [
+       31.42,
+       -28.31
+      ]
+     ],
+     "name": "Juli 1879: Ulundi"
+    },
+    {
+     "id": "bri-verstaerkung",
+     "partei": "bri",
+     "form": "pfeil",
+     "gattung": "schiff",
+     "punkte": [
+      [
+       31.03,
+       -29.86
+      ],
+      [
+       30.4,
+       -30.6
+      ],
+      [
+       28.2,
+       -31.5
+      ],
+      [
+       30.2,
+       -29.3
+      ]
+     ],
+     "name": "Verstärkungen über Durban"
+    },
+    {
+     "id": "zul-teilung",
+     "partei": "zul",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       31.42,
+       -28.31
+      ],
+      [
+       31.9,
+       -28
+      ],
+      [
+       32.3,
+       -27.6
+      ]
+     ],
+     "name": "Das Reich wird in dreizehn Gebiete zerlegt"
+    },
+    {
+     "id": "zul-vorbild",
+     "partei": "zul",
+     "form": "pfeil",
+     "gattung": "gemischt",
+     "punkte": [
+      [
+       30.65,
+       -28.36
+      ],
+      [
+       30,
+       -26.2
+      ],
+      [
+       28.05,
+       -26.2
+      ],
+      [
+       26.2,
+       -29.1
+      ]
+     ],
+     "name": "Der Bezugspunkt bleibt"
+    }
+   ]
+  }
+ ],
+ "ausgang": "Das Lager wird überrannt; von den rund 1.800 Zurückgebliebenen überleben etwa 350, fast nur Berittene und Angehörige des Natal Native Contingent.",
+ "verluste": [
+  {
+   "partei": "bri",
+   "text": "rund 1.300 Tote, darunter 52 Offiziere und fünf Kompanien des 24. Regiments vollständig; beide Geschütze"
+  },
+  {
+   "partei": "zul",
+   "text": "rund 1.000 bis 2.000 Tote und eine weit größere Zahl Verwundeter, die meisten davon in den folgenden Wochen gestorben"
+  }
+ ],
+ "folgen": "Die Niederlage bewirkt das Gegenteil dessen, was sie hätte bewirken können: London schickt Verstärkungen in einer Größenordnung, die vorher nicht durchsetzbar gewesen wäre. Im Juli 1879 wird das Zulu-Heer bei Ulundi im offenen Feld zusammengeschossen, Cetshwayo gefangen und das Reich in dreizehn gegeneinander gestellte Häuptlingsgebiete zerlegt; 1887 wird es britische Kolonie. Bartle Frere, der den Krieg ohne Rückendeckung Londons begonnen hatte, wird gerügt und bleibt im Amt.",
+ "streit": "Die Munitionsfrage ist der Dauerstreit: Ob die schwer zu öffnenden Kisten und die Zuteilung nach Einheiten den Zusammenbruch verursachten oder ob die zu weit ausgedehnte Linie ohnehin nicht zu halten war, wird seit hundert Jahren verhandelt; die Ausgrabungen der letzten Jahrzehnte sprechen eher für Letzteres. Auch der Anteil Durnfords und Pulleines an der Verantwortung wurde nie geklärt – beide fielen, und Chelmsford, der überlebte, hatte ein Interesse daran, dass es so blieb. Die Zulu-Verluste sind Schätzungen."
+}

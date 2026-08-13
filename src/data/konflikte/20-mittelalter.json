@@ -596,7 +596,8 @@
    "rang": 1,
    "sieger": "Kalifat",
    "text": "Sechs Tage Schlacht in einer Landschaft aus Schluchten, aus der es kein Zurück gibt. Byzanz verliert Syrien in einer Woche – und mit ihm die reichste Provinz, die es je besaß.",
-   "wiki": "Schlacht am Jarmuk"
+   "wiki": "Schlacht am Jarmuk",
+   "verlauf": "jarmuk"
   },
   {
    "id": "kadisiya",
@@ -790,7 +791,8 @@
    "rang": 3,
    "sieger": "Minamoto",
    "text": "Als die Gezeiten kippen, kippt die Schlacht. Die Großmutter des siebenjährigen Kaisers springt mit ihm ins Meer; die Reichsinsignien gehen zum Teil verloren. Japan bekommt seinen ersten Shogun.",
-   "wiki": "Schlacht von Dan-no-ura"
+   "wiki": "Schlacht von Dan-no-ura",
+   "verlauf": "dannoura"
   },
   {
    "id": "hattin",
@@ -920,7 +922,8 @@
    "rang": 2,
    "sieger": "China, Persien, Russland, Ungarn",
    "text": "Die Mamluken aus Ägypten schlagen ein mongolisches Heer – die erste Niederlage, von der sich die Mongolen nicht erholen. Die Westgrenze des Reiches bleibt für immer am Euphrat.",
-   "wiki": "Schlacht bei ʿAin Djālūt"
+   "wiki": "Schlacht bei ʿAin Djālūt",
+   "verlauf": "ainjalut"
   },
   {
    "id": "yamen",
