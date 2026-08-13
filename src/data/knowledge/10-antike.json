@@ -145,7 +145,7 @@
     "languages": [
      "Arabisch"
     ],
-    "population": "ca. 10 Mio.",
+    "population": "ca. 4 Mio. (1820), ca. 21 Mio. (1952)",
     "economy": "Baumwollexport, Suezkanal ab 1869",
     "summary": [
      "Muhammad Ali baut in wenigen Jahrzehnten eine Armee, eine Flotte und Fabriken auf – der erste ernsthafte Modernisierungsversuch im Nahen Osten.",
@@ -241,7 +241,7 @@
      "Aramäisch (Reichssprache)",
      "Elamisch"
     ],
-    "population": "ca. 25 bis 35 Mio. – etwa ein Sechstel der Menschheit",
+    "population": "ca. 25 bis 35 Mio. – etwa ein Viertel der damaligen Menschheit",
     "economy": "Tributsystem, Königsstraße, geprägte Dareiken",
     "summary": [
      "Das erste Reich, das drei Kontinente verbindet: vom Indus bis an die Ägäis, von Ägypten bis nach Zentralasien. Rund 20 Satrapien liefern Tribute, behalten aber Sprache, Religion und Rechtsbrauch.",
@@ -629,7 +629,9 @@
      "Griechisch",
      "Latein"
     ],
-    "summary": "Der östliche Reichsteil unter dem Senior-Augustus Diokletian: Ägypten, Syrien, Kleinasien und der Balkanraum – wirtschaftlich der stärkere Teil des Reiches."
+    "summary": "Der östliche Reichsteil unter dem Senior-Augustus Diokletian: Ägypten, Syrien, Kleinasien und der Balkanraum – wirtschaftlich der stärkere Teil des Reiches.",
+    "population": "ca. 25 Mio. in den östlichen Provinzen",
+    "economy": "Steuerreform nach Kopf und Bodeneinheit (capitatio–iugatio), Höchstpreisedikt 301"
    }
   ]
  },
@@ -648,7 +650,9 @@
     "languages": [
      "Latein"
     ],
-    "summary": "Italien, Africa und Hispanien unter dem westlichen Augustus. Die Aufgabenteilung sollte die Grenzverteidigung an Rhein und Donau von der am Euphrat entlasten."
+    "summary": "Italien, Africa und Hispanien unter dem westlichen Augustus. Die Aufgabenteilung sollte die Grenzverteidigung an Rhein und Donau von der am Euphrat entlasten.",
+    "population": "ca. 20 Mio. in Italien, Africa und Hispanien",
+    "economy": "Getreide aus Africa, Münzprägung in Mailand, Ticinum und Aquileia"
    }
   ]
  },
@@ -903,7 +907,7 @@
      "Gotisch",
      "Latein"
     ],
-    "population": "schwer schätzbar, wenige Hunderttausend Krieger und Angehörige",
+    "population": "schwer schätzbar; die Heere zählten Zehntausende, mit Angehörigen wenige Hunderttausend",
     "economy": "Tribute aus Ostrom, Beute, Viehwirtschaft",
     "summary": [
      "Die Hunnen stoßen ab 375 in den Donauraum vor und setzen die germanischen Wanderungen in Bewegung – ihre größte Wirkung ist indirekt.",
