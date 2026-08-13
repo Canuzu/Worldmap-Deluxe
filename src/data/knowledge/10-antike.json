@@ -233,7 +233,7 @@
     "rulerTitle": "Großkönig, König der Könige",
     "dynasty": "Achämeniden",
     "reign": "522–486 v. Chr.",
-    "capital": "Persepolis, Susa, Ekbatana (Wanderhof)",
+    "capital": "Pasargadae, ab Dareios I. Persepolis und Susa",
     "government": "Satrapienverwaltung mit königlichen Kontrolleuren",
     "religion": "Mazdaismus; Duldung aller Landeskulte",
     "languages": [
@@ -498,7 +498,7 @@
  "Roman Empire": {
   "kind": "Kaiserreich",
   "wiki": "Römisches Reich",
-  "founded": -509,
+  "founded": -27,
   "dissolved": 476,
   "events": [
    {
@@ -596,7 +596,7 @@
     "rulerTitle": "Augustus",
     "dynasty": "Tetrarchie",
     "reign": "284–305",
-    "capital": "Nikomedia, Mailand, Trier, Sirmium",
+    "capital": "Nikomedia, Mailand, Trier, Sirmium; ab 330 Konstantinopel",
     "government": "Tetrarchie – zwei Augusti und zwei Caesares",
     "religion": "Staatskult, letzte große Christenverfolgung, ab 313 Duldung",
     "languages": [
@@ -749,7 +749,8 @@
      "Der Bilderstreit spaltet das Reich über ein Jahrhundert und entfremdet es dem lateinischen Westen."
     ]
    }
-  ]
+  ],
+  "dissolved": 1453
  },
  "Parthian Empire": {
   "kind": "Großreich",

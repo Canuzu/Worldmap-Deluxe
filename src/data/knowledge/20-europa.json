@@ -74,7 +74,7 @@
     "rulerTitle": "Basileus",
     "dynasty": "Palaiologen",
     "reign": "1282–1328",
-    "capital": "Konstantinopel",
+    "capital": "Nikaia, ab 1261 wieder Konstantinopel",
     "government": "Kaisertum über ein stark geschrumpftes Gebiet",
     "religion": "Orthodoxie; Unionsversuche mit Rom scheitern",
     "languages": [
@@ -115,7 +115,8 @@
      "Das Reich wird bei jedem Erbfall geteilt. Die eigentliche Macht wandert im 7. Jahrhundert zu den Hausmeiern."
     ]
    }
-  ]
+  ],
+  "dissolved": 843
  },
  "Carolingian Empire": {
   "kind": "Kaiserreich",
@@ -311,7 +312,9 @@
      "Philipp II. entreißt den englischen Plantagenets die Normandie und das Anjou und verdreifacht die Krondomäne."
     ]
    }
-  ]
+  ],
+  "founded": 987,
+  "dissolved": 1792
  },
  "France": {
   "kind": "Königreich, später Republik",
@@ -1016,7 +1019,7 @@
   ]
  },
  "Polish–Lithuanian Commonwealth": {
-  "kind": "Adelsrepublik",
+  "kind": "Personalunion, ab 1569 Adelsrepublik",
   "wiki": "Polen-Litauen",
   "founded": 1385,
   "dissolved": 1795,
@@ -1639,7 +1642,7 @@
     "to": 1525,
     "ruler": "Der jeweilige Hochmeister",
     "rulerTitle": "Hochmeister des Deutschen Ordens",
-    "capital": "Marienburg (Malbork)",
+    "capital": "Akkon, ab 1309 Marienburg (Malbork)",
     "government": "Wahlmonarchie des Ordenskonvents",
     "religion": "Katholisches Christentum",
     "languages": [
