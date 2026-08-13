@@ -10,7 +10,7 @@
 
     { "id": "tordesillas", "jahr": 1494, "art": "vertrag", "rang": 1,
       "name": "Der Vertrag von Tordesillas", "ort": [-5, 41.51], "wo": "Kastilien",
-      "text": "Spanien und Portugal teilen die noch unbekannte Welt entlang eines Meridians 370 Meilen westlich der Kapverden. Deshalb spricht Brasilien portugiesisch – die Linie schnitt gerade noch seine Ostspitze.",
+      "text": "Spanien und Portugal teilen die noch unbekannte Welt entlang eines Meridians 370 Leguas – rund 2.000 Kilometer – westlich der Kapverden. Deshalb spricht Brasilien portugiesisch – die Linie schnitt gerade noch seine Ostspitze.",
       "wiki": "Vertrag von Tordesillas" },
 
     { "id": "vasco-da-gama", "jahr": 1497, "bis": 1499, "art": "fahrt", "rang": 1,

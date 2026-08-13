@@ -4,7 +4,7 @@
   "ereignisse": [
     { "id": "tambora", "jahr": 1815, "art": "seuche", "rang": 2,
       "name": "Der Ausbruch des Tambora", "ort": [118, -8.25], "wo": "Sumbawa, Ostindien",
-      "text": "Der stärkste Vulkanausbruch der letzten zehntausend Jahre. Die Aschewolke senkt die Welttemperatur um ein halbes Grad; 1816 ist in Europa und Nordamerika das Jahr ohne Sommer, mit Missernten und Hungersnot.",
+      "text": "Der stärkste Vulkanausbruch der überlieferten Geschichte. Die Aschewolke senkt die Welttemperatur um ein halbes Grad; 1816 ist in Europa und Nordamerika das Jahr ohne Sommer, mit Missernten und Hungersnot.",
       "wiki": "Tambora" },
 
     { "id": "wiener-kongress", "jahr": 1815, "art": "vertrag", "rang": 1,
