@@ -424,19 +424,68 @@ export class AtlasData {
   /**
    * Wissenseintrag zu einem Gemeinwesen im gegebenen Jahr.
    * Liefert den Stammeintrag und den passenden Zeitabschnitt.
+   *
+   * Deckt kein Abschnitt das Jahr, wird der **letzte** genommen, der davor
+   * beginnt – nicht der erste. Mit `find` stand über dem Russischen Reich von
+   * 1918 der Abschnitt 1721–1825 und über Ägypten von 1800 der von 4000 v. Chr.
+   * mit Naqada als Hauptstadt. Der Rückfall soll den nächstgelegenen Stand
+   * zeigen, nicht den ältesten vorhandenen.
    */
   lookup(name, year) {
     const canon = this.canonical(name);
     const entry = this.knowledge[canon] ?? this.knowledge[name] ?? null;
     if (!entry) return null;
     const periods = entry.periods ?? [];
-    const period =
-      periods.find((p) => (p.from ?? -Infinity) <= year && year <= (p.to ?? Infinity)) ??
-      periods.find((p) => (p.from ?? -Infinity) <= year) ??
-      periods[0] ?? null;
-    return { key: canon, entry, period, ruler: herrscherZu(period, year) };
+    const genau = periods.findLast(
+      (p) => (p.from ?? -Infinity) <= year && year <= (p.to ?? Infinity),
+    );
+    /* Kein Abschnitt deckt das Jahr: Dann gilt der letzte, der davor begann –
+       ein früherer Stand desselben Gemeinwesens, den die Tafel als solchen
+       ausweist.
+
+       Liegt das Jahr aber **vor allen** Abschnitten, gibt es keinen früheren
+       Stand, sondern nur einen späteren. Der wurde bisher trotzdem gezeigt:
+       Persien im Jahr 400 trug den Steckbrief der Kadscharen von 1789 bis
+       1925. Ein Stand aus der Zukunft ist keine Näherung, sondern eine falsche
+       Angabe – deshalb steht dann gar keiner da.
+
+       Und auch nach hinten hat der Rückfall eine Reichweite. Er ist dafür da,
+       dass ein Kartenstand von 1918 den Abschnitt bis 1917 findet – nicht
+       dafür, Ägypten im Jahr 1800 den Steckbrief der Saitenzeit umzuhängen,
+       mit Tanis und Memphis als Hauptstadt. Was weiter zurückliegt als
+       RUECKFALL_REICHWEITE, ist keine Näherung mehr, sondern fehlendes
+       Wissen – und das sagt die Tafel dann auch. */
+    const davor = periods.findLast((p) => (p.from ?? -Infinity) <= year);
+    const nah = davor && (davor.to == null || year - davor.to <= RUECKFALL_REICHWEITE);
+    const period = genau ?? (nah ? davor : null);
+    return {
+      key: canon,
+      entry,
+      period,
+      // Ob der Abschnitt das Jahr wirklich abdeckt, muss die Tafel wissen:
+      // Sonst liest sich ein Rückfall wie eine Angabe für dieses Jahr.
+      abschnittFremd: Boolean(period) && !genau,
+      ruler: herrscherZu(period, year),
+    };
   }
 }
+
+/**
+ * Wie weit eine Lücke höchstens sein darf, damit der zuletzt Verzeichnete noch
+ * als Anhaltspunkt genannt wird – eine Menschenlebensspanne.
+ */
+const LUECKE_MIT_HINWEIS = 60;
+
+/**
+ * Wie weit ein Zeitabschnitt höchstens zurückliegen darf, um für ein Jahr noch
+ * herangezogen zu werden.
+ *
+ * Der Rückfall gleicht aus, dass die Karte 62 feste Stände kennt und die
+ * Wissensbasis eigene Grenzen zieht: Ein Stand von 1918 soll den Abschnitt bis
+ * 1917 finden. Über zwei Generationen hinaus beschreibt ein Abschnitt aber
+ * nicht mehr dasselbe Land.
+ */
+const RUECKFALL_REICHWEITE = 50;
 
 /**
  * Den Herrscher eines Zeitabschnitts zum gewählten Jahr bestimmen.
@@ -472,20 +521,36 @@ export function herrscherZu(period, year) {
    * Hitler.
    */
   const genau = liste.findLast((r) => (r.from ?? -Infinity) <= year && year <= (r.to ?? Infinity));
-  // Liegt das Jahr in einer Lücke – Thronvakanz, Bürgerkrieg, oder schlicht ein
-  // Abschnitt, für den die Liste nur eine Auswahl führt –, wird der zuletzt
-  // Regierende gezeigt und als solcher gekennzeichnet. Lieber „zuletzt regierte“
-  // als ein Name, der für das Jahr falsch wäre.
-  const davor = genau ?? [...liste].reverse().find((r) => (r.from ?? -Infinity) <= year);
-  const treffer = davor ?? liste[0];
+  if (genau) {
+    return { ...genau, title: genau.title ?? period.rulerTitle, ausListe: true };
+  }
+
+  /*
+   * Kein Eintrag deckt das Jahr – und dann wird **kein Name genannt**.
+   *
+   * Vorher stand hier der zuletzt Verzeichnete, mit einer kleinen Zeile
+   * darüber. Das Ergebnis waren Aussagen wie „Armenien 1944 – Trdat III.“
+   * (regierte 287–330), „Rom 500 v. Chr. – Augustus“ und, weil auch nach vorn
+   * gegriffen wurde, „Persien 400 – Agha Mohammed Khan“ (1789–1797). Die
+   * Einschränkung stand da, aber gelesen wurde der Name.
+   *
+   * Ein Name in großer Schrift wiegt schwerer als ein Halbsatz in kleiner.
+   * Wer nichts weiß, sagt nichts.
+   */
+  const davor = liste.findLast((r) => (r.from ?? -Infinity) <= year);
+  const abstand = davor ? year - (davor.to ?? davor.from ?? year) : null;
+  /* Der zuletzt Verzeichnete bleibt als Anhaltspunkt stehen, solange er einer
+     ist: Für das Weströmische Reich von 500 sagt „zuletzt verzeichnet:
+     Romulus Augustulus, 475–476“ etwas. Über eine Menschenlebensspanne hinaus
+     sagt es nichts mehr und wird zu Rauschen. */
+  const nah = davor && abstand != null && abstand <= LUECKE_MIT_HINWEIS;
   return {
-    ...treffer,
-    title: treffer.title ?? period.rulerTitle,
     ausListe: true,
-    // Zwei verschiedene Lücken: hinter dem letzten Eintrag – oder vor dem ersten,
-    // wenn die Karte ein Gemeinwesen früher zeigt, als die Liste reicht.
-    nachwirkend: !genau && Boolean(davor),
+    ohneAngabe: true,
+    // Vor dem ersten Eintrag gibt es nicht einmal einen Anhaltspunkt: Ein Name
+    // von später wäre kein Vorgänger, sondern ein Nachfolger.
     vorzeitig: !davor,
+    zuletzt: nah ? { name: davor.name, from: davor.from, to: davor.to } : null,
   };
 }
 

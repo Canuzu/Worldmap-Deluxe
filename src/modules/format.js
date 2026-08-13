@@ -59,12 +59,42 @@ export function rangeText(from, to) {
   return `${a}–${b}`;
 }
 
-/** Fläche in km², ab einer Million in Millionen. */
+/**
+ * Satzpunkt setzen, aber nicht doppelt.
+ *
+ * Jahresangaben vor der Zeitenwende enden auf „v. Chr.“ – ein Satz, der mit
+ * einer solchen Spanne aufhört, hat seinen Punkt schon. „…von 1069 v. Chr.–333
+ * v. Chr..“ ist der Fehler, den das hier verhindert.
+ */
+export function satzEnde(s) {
+  const t = String(s ?? '').trimEnd();
+  return /[.!?]$/.test(t) ? t : `${t}.`;
+}
+
+/**
+ * Fläche in km², ab einer Million in Millionen.
+ *
+ * **Auf drei geltende Ziffern gerundet, und zwar mit Absicht.** Die Zahl ist
+ * kein amtlicher Wert, sondern die Fläche des gezeichneten Umrisses, sphärisch
+ * gerechnet. Gegen die heutigen amtlichen Angaben liegt sie im Mittel um rund
+ * vier Prozent daneben – Inselstaaten mehr, weil die Küstenlinie vereinfacht
+ * ist und kleine Inseln wegfallen, umstrittene Gebiete auch, weil sie hier
+ * einer Seite zugeschlagen sind.
+ *
+ * „502.593 km²“ behauptet Quadratmeter. Wer ±4 % misst, schreibt 503.000.
+ */
 export function areaText(km2) {
   const { nf: n, nf1: n1 } = formate();
   if (!km2 || km2 < 1) return txt('format.ohne');
-  if (km2 >= 1_000_000) return `${n1.format(km2 / 1_000_000)} ${txt('format.mio')}`;
-  return `${n.format(Math.round(km2))} km²`;
+  if (km2 >= 1_000_000) return `${n1.format(rundeAufDrei(km2) / 1_000_000)} ${txt('format.mio')}`;
+  return `${n.format(rundeAufDrei(km2))} km²`;
+}
+
+/** Auf drei geltende Ziffern runden – 502.593 → 503.000, 44.136 → 44.100. */
+function rundeAufDrei(wert) {
+  if (!Number.isFinite(wert) || wert === 0) return 0;
+  const stufe = 10 ** Math.max(0, Math.floor(Math.log10(Math.abs(wert))) - 2);
+  return Math.round(wert / stufe) * stufe;
 }
 
 /** Entfernungen für den Maßstabsbalken. */

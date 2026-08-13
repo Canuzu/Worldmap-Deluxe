@@ -7,7 +7,7 @@
  *   2. kuratierte Wissensbasis (deutsch, epochenbezogen)
  *   3. Wikipedia-Auszug (optional, nachgeladen)
  */
-import { esc, areaText, rangeText, yearShort, yearText, initials, num } from './format.js';
+import { esc, areaText, rangeText, yearShort, yearText, initials, num, satzEnde } from './format.js';
 import RELIGION from '../data/religion/vokabular.json';
 import { precisionLabel, religionName } from './palette.js';
 import { lookupArticle } from './wikipedia.js';
@@ -173,7 +173,7 @@ export class DetailPanel {
       <article class="pnl" style="--accent:${esc(color)}">
         ${this._hero({ name, german, entry, epoch, year, base, period, color })}
         ${this._ruler(period, year, info?.ruler)}
-        ${this._facts({ entry, period, base, epoch })}
+        ${this._facts({ entry, period, base, epoch, fremd: info?.abschnittFremd })}
         ${this._prose(period, base)}
         ${this._events(period, base, year)}
         ${this._neighbours(entry, epoch)}
@@ -237,6 +237,27 @@ export class DetailPanel {
    * Liste bleibt es beim einzelnen Namen des Abschnitts.
    */
   _ruler(period, year, ruler) {
+    /* Kein Name für dieses Jahr: Dann steht das da – und nichts sonst.
+       Die Regierungsfolge bleibt trotzdem stehen, damit man sich von hier aus
+       in die nächstgelegene verzeichnete Regierung klicken kann. */
+    if (ruler?.ohneAngabe) {
+      const liste = period?.rulers ?? [];
+      const z = ruler.zuletzt;
+      return `
+      <section class="sec">
+        <h3 class="sec__h">${esc(txt('tafel.herrschaft', { jahr: yearShort(year) }))}</h3>
+        <div class="ruler ruler--luecke">
+          <div>
+            <div class="ruler__gap">${esc(txt('tafel.luecke.keine'))}</div>
+            ${z ? `<div class="ruler__zuletzt">${esc(txt('tafel.luecke.zuletzt', {
+    name: z.name, spanne: rangeText(z.from, z.to),
+  }))}</div>` : ''}
+          </div>
+        </div>
+        ${this._rulerLine(liste, ruler, year)}
+      </section>
+    `;
+    }
     if (!ruler?.name) return '';
 
     const seal = ruler.image
@@ -255,11 +276,9 @@ export class DetailPanel {
     return `
       <section class="sec">
         <h3 class="sec__h">${esc(txt('tafel.herrschaft', { jahr: yearShort(year) }))}</h3>
-        <div class="ruler${ruler.nachwirkend || ruler.vorzeitig ? ' ruler--luecke' : ''}">
+        <div class="ruler">
           <div class="ruler__seal">${seal}</div>
           <div>
-            ${ruler.nachwirkend ? `<div class="ruler__gap">${esc(txt('tafel.luecke.nach'))}</div>` : ''}
-            ${ruler.vorzeitig ? `<div class="ruler__gap">${esc(txt('tafel.luecke.vor'))}</div>` : ''}
             <div class="ruler__name">${esc(ruler.name)}</div>
             ${bits.length ? `<div class="ruler__role">${bits.join(' · ')}</div>` : ''}
             ${reign ? `<div class="ruler__reign">${esc(txt('tafel.regierungszeit', { spanne: reign }))}</div>` : ''}
@@ -280,13 +299,19 @@ export class DetailPanel {
    */
   _rulerLine(liste, aktuell, year) {
     if (liste.length < 2) return '';
-    const i = liste.findIndex((r) => r === aktuell || (r.name === aktuell.name && r.from === aktuell.from));
+    /* Ohne Namen für dieses Jahr gibt es keinen laufenden Eintrag, auf den die
+       Reihe zeigen könnte. Dann wird sie am Jahr ausgerichtet, damit die
+       nächstgelegene verzeichnete Regierung einen Klick entfernt ist – und
+       nicht der Anfang der Liste. */
+    const i = aktuell?.ohneAngabe
+      ? Math.max(0, liste.findLastIndex((r) => (r.from ?? -Infinity) <= year))
+      : liste.findIndex((r) => r === aktuell || (r.name === aktuell.name && r.from === aktuell.from));
     const von = Math.max(0, Math.min(i - 2, liste.length - 5));
     const bis = Math.min(liste.length, von + 5);
     const teil = liste.slice(von, bis);
 
     const knoepfe = teil.map((r) => {
-      const ist = r.name === aktuell.name && r.from === aktuell.from;
+      const ist = !aktuell?.ohneAngabe && r.name === aktuell.name && r.from === aktuell.from;
       // In die Mitte der Regierungszeit springen, nicht auf das erste Jahr:
       // Ein Herrschaftsantritt fällt oft mit einem Krieg zusammen, und die
       // Karte des Antrittsjahres zeigt dann den Zustand davor.
@@ -312,8 +337,17 @@ export class DetailPanel {
     `;
   }
 
-  _facts({ entry, period, base, epoch }) {
+  _facts({ entry, period, base, epoch, fremd }) {
     const tiles = [];
+    /* Der Abschnitt deckt das gewählte Jahr nicht ab – dann gelten Hauptstadt,
+       Regierungsform und Bevölkerung für eine andere Zeit, und das muss
+       dabeistehen. Ohne diesen Satz trug Ägypten im Jahr 1800 „Naqada,
+       Hierakonpolis“ als Hauptstadt. */
+    const hinweis = fremd && (period?.from != null || period?.to != null)
+      ? `<p class="fact__fremd">${esc(satzEnde(txt('tafel.abschnittfremd', {
+        spanne: rangeText(period.from, period.to),
+      })))}</p>`
+      : '';
     const add = (label, value, opts = {}) => {
       if (!value) return;
       tiles.push(`<div class="fact${opts.wide ? ' fact--wide' : ''}">
@@ -362,7 +396,11 @@ export class DetailPanel {
     add(txt('tafel.fach.bevoelkerung'), period?.population);
     add(txt('tafel.fach.wirtschaft'), period?.economy, { wide: true });
 
-    add(txt('tafel.flaeche'), `<span class="num">${esc(areaText(entry.area))}</span>`, { raw: true });
+    /* Die Fläche ist gemessen, nicht nachgeschlagen: Sie ist der sphärisch
+       gerechnete Inhalt des gezeichneten Umrisses. Das steht dabei, weil eine
+       Zahl ohne Herkunft wie eine amtliche Angabe aussieht. */
+    add(txt('tafel.flaeche'), `<span class="num">${esc(areaText(entry.area))}</span>`
+      + `<i class="fact__guete">${esc(txt('tafel.flaeche.gemessen'))}</i>`, { raw: true });
     // Wie viel des Landes fremd besetzt war – die Zahl macht den Unterschied
     // zwischen Randbesetzung und fast vollständiger Fremdherrschaft sichtbar.
     // Bei genau einer Macht, die das ganze Gebiet hält, sagt die Kachel nichts,
@@ -383,7 +421,7 @@ export class DetailPanel {
 
     if (!tiles.length) return '';
     return `<section class="sec"><h3 class="sec__h">${esc(txt('tafel.steckbrief'))}</h3>
-      <dl class="facts">${tiles.join('')}</dl></section>`;
+      ${hinweis}<dl class="facts">${tiles.join('')}</dl></section>`;
   }
 
   _prose(period, base) {

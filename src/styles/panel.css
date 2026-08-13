@@ -230,18 +230,21 @@
   margin-top: .35rem;
   line-height: 1.4;
 }
-/* Für das gewählte Jahr steht niemand in der Liste. Der Hinweis geht dem Namen
-   voraus, damit er nicht wie eine Aussage über dieses Jahr gelesen wird; das
-   Siegel bleibt blass, solange die Zuordnung nur eine Näherung ist. */
+/* Für das gewählte Jahr steht niemand in der Liste – dann steht hier auch kein
+   Name, sondern nur dieser Satz. Ein Name in großer Schrift wiegt schwerer als
+   jede Einschränkung daneben; deshalb gibt es ihn hier gar nicht erst. */
 .ruler__gap {
-  font-size: .68rem;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  margin-bottom: .18rem;
+  font-size: .82rem;
+  color: var(--ink-muted);
+  line-height: 1.45;
 }
-.ruler--luecke .ruler__seal { opacity: .55; }
-.ruler--luecke .ruler__name { color: var(--ink-muted); }
+.ruler__zuletzt {
+  font-size: .76rem;
+  color: var(--ink-faint);
+  margin-top: .3rem;
+  line-height: 1.45;
+}
+.ruler--luecke { align-items: center; min-height: 2.2rem; }
 
 /* ------------------------------------------------------ Regierungsfolge
 
@@ -345,6 +348,18 @@
   font-family: var(--font-display);
   font-size: 1.05rem;
   font-variant-numeric: tabular-nums;
+}
+/* Woher eine Angabe kommt, wie sicher sie ist – die Fußnote zur Kachel.
+   Eigene Zeile, kleiner und blasser: Sie gehört zur Zahl, ist aber nicht die
+   Zahl. Ohne diese Regel lief „aus dem Kartenumriss gemessen“ direkt hinter
+   „503.000 km²“ weiter, und die Religionsgüte ebenso. */
+.fact__guete {
+  display: block;
+  margin-top: .22rem;
+  font-size: .68rem;
+  font-style: normal;
+  line-height: 1.35;
+  color: var(--ink-faint);
 }
 
 /* -------------------------------------------------------------- Text */
@@ -619,4 +634,16 @@
   body.hat-blatt .mapmodes button span { display: none; }
   body.hat-blatt .mapmodes button svg { display: block; }
   body.hat-blatt .mapmodes button { padding: .35rem; }
+}
+
+/* Der Steckbrief beschreibt eine andere Zeit als die gewählte. Das steht über
+   den Kacheln und nicht darunter: Wer die Hauptstadt liest, soll vorher wissen,
+   für wann sie gilt. */
+.fact__fremd {
+  font-size: .78rem;
+  line-height: 1.45;
+  color: var(--ink-muted);
+  margin: 0 0 .6rem;
+  padding-left: .6rem;
+  border-left: 2px solid var(--line);
 }

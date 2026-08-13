@@ -27,12 +27,17 @@ const entries = knowledge.entries ?? {};
 const aliases = names.aliases ?? {};
 const canon = (n) => aliases[n] ?? n;
 
+/* Muss mit `lookup` in src/modules/data.js übereinstimmen – sonst prüft das
+   Skript etwas anderes als die Tafel zeigt. */
+const RUECKFALL_REICHWEITE = 50;
+
 /** Dieselbe Auswahl wie zur Laufzeit – sonst prüft das Skript etwas anderes. */
 function periodeZu(entry, year) {
   const ps = entry.periods ?? [];
-  return ps.find((p) => (p.from ?? -Infinity) <= year && year <= (p.to ?? Infinity))
-    ?? ps.find((p) => (p.from ?? -Infinity) <= year)
-    ?? ps[0] ?? null;
+  const genau = ps.findLast((p) => (p.from ?? -Infinity) <= year && year <= (p.to ?? Infinity));
+  if (genau) return genau;
+  const davor = ps.findLast((p) => (p.from ?? -Infinity) <= year);
+  return davor && (davor.to == null || year - davor.to <= RUECKFALL_REICHWEITE) ? davor : null;
 }
 
 let mitListe = 0;
@@ -70,7 +75,8 @@ console.log(`${index.epochs.length} Zeitschnitte geprüft.`);
 console.log(`${mitListe} Fälle mit hinterlegter Liste, davon ${genau} mit einem Namen für genau dieses Jahr (${quote} %).\n`);
 
 if (luecken.size) {
-  console.log(`${luecken.size} Lücke(n) – dort zeigt die Tafel den zuletzt Regierenden:`);
+  console.log(`${luecken.size} Lücke(n) – dort nennt die Tafel keinen Namen, sondern`);
+  console.log('sagt, dass für dieses Jahr nichts verzeichnet ist. Das ist die Arbeitsliste:');
   for (const [key] of [...luecken].slice(0, zeigeLuecken)) console.log(`  · ${key}`);
   if (luecken.size > zeigeLuecken) console.log(`  … und ${luecken.size - zeigeLuecken} weitere`);
 } else {
