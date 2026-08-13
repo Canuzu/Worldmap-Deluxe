@@ -282,6 +282,11 @@ export const EN = {
   'schlacht.strasse': 'Road',
   'schlacht.rueckzug': 'Retreat, rout',
   'schlacht.feld': 'Battlefield',
+  'schlacht.darstellung': 'Rendering',
+  'schlacht.stich': 'Engraving',
+  'schlacht.stich.hilfe': 'Muted and hatched, like a sheet from a staff atlas',
+  'schlacht.schaubild': 'Diagram',
+  'schlacht.schaubild.hilfe': 'The same information drawn louder – for a first look',
 
   /* --------------------------------------------------------------- Modal */
   'modal.schliessen': 'Close',

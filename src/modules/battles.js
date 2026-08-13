@@ -106,6 +106,29 @@ const ANFLUG_HALT = 2200;
 const ANFLUG_EIN = 2100;
 
 /**
+ * Bilder je Sekunde, solange der Verlauf steht.
+ *
+ * Rauch und Funken brauchen keine sechzig – zwanzig sehen genauso weich aus
+ * und kosten ein Drittel. Wer die Karte anhält, will außerdem nicht, dass sein
+ * Gebläse angeht.
+ */
+const REGUNG_TAKT = 20;
+
+/* Pulverdampf: wie viele Ballen je Batterie, wie lang ihr Weg dauert und
+   wohin der Wind steht. Der Wind ist für alle Schlachten derselbe – wo er
+   wirklich stand, ist meist nicht überliefert, und eine erfundene Windrose
+   je Schlacht wäre eine Behauptung mehr, als die Karte machen darf. */
+const RAUCH_BALLEN = 7;
+const RAUCH_DAUER = 5200;
+const RAUCH_WIND = [.42, -.91];
+/** Funken an den Nähten: wie viele gleichzeitig, wie lang jeder lebt. */
+const FUNKEN_ZAHL = 26;
+const FUNKEN_LEBEN = 620;
+/** Splitter geschlagener Verbände. */
+const SPLITTER_ZAHL = 14;
+const SPLITTER_DAUER = 3400;
+
+/**
  * Der Ausschnitt je Station – und wann die Karte ihm folgt.
  *
  * Eine Schlacht hat nicht durchgehend denselben Maßstab. Bei Tannenberg
@@ -312,10 +335,13 @@ const GELAENDE_SPANNUNG = .32;
 
 const GELAENDE = {
   fluss: { farbe: '#4d92d8', breite: 4, linie: true, ader: true },
-  see: { farbe: '#3f7fc0', flaeche: '#3f7fc0', deckung: .34, kante: .8 },
+  see: { farbe: '#3f7fc0', flaeche: '#3f7fc0', deckung: .34, kante: .8, wellen: true },
   sumpf: { farbe: '#6f9a8c', flaeche: '#6f9a8c', deckung: .2, muster: 'sumpf', kante: 0 },
   wald: { farbe: '#4f8250', flaeche: '#4f8250', deckung: .26, muster: 'wald', kante: 1.1 },
-  hoehe: { farbe: '#b08d55', flaeche: '#b08d55', deckung: .1, kante: 1.4, schraffur: true },
+  hoehe: {
+    farbe: '#b08d55', flaeche: '#b08d55', deckung: .1, kante: 1.4,
+    schraffur: true, schummer: true,
+  },
   stadt: { farbe: '#c3b39a', flaeche: '#8d7f6c', deckung: .3, muster: 'stadt', kante: 1.2 },
   mauer: { farbe: '#e0d0b0', breite: 4.5, linie: true, zinnen: true },
   weg: { farbe: '#cbb894', breite: 2.6, linie: true, doppelt: true },
@@ -384,6 +410,77 @@ function zahlAus(text) {
   return m ? Number(m[0]) : 0;
 }
 
+/* ------------------------------------------------------- Truppenkörner */
+
+/**
+ * Statt einer Schraffur: einzelne Zeichen im Verband.
+ *
+ * Eine Musterfüllung sagt „hier steht Fußvolk“. Sie sagt nicht, wie viel –
+ * zehntausend Mann und fünfhundert bekommen dieselbe Schraffur, nur auf
+ * verschieden großer Fläche, und die Fläche ist gezeichnet, nicht gezählt.
+ * Körner sagen beides: Ihre Zeichnung nennt die Gattung, ihre Zahl die Stärke.
+ *
+ * Sie liegen außerdem **ausgerichtet**. Ein Regiment steht nicht als Wolke im
+ * Feld, es steht in Gliedern, quer zur Front. Die Richtung dafür wird nicht
+ * gemessen – sie steht in keiner Datei –, sondern aus dem Umriss gewonnen: Die
+ * Hauptachse eines Linienverbands ist die Front, die kurze Achse zeigt zum
+ * Feind. Welche der beiden Richtungen der Kurzachse nach vorn weist, verrät
+ * die Lage des Verbands zum eigenen Heer: Nach vorn ist vom eigenen Schwerpunkt
+ * weg.
+ */
+const KORN_MIN = 5;
+const KORN_MAX = 260;
+/** Kleinster Abstand zweier Körner in Bildpunkten – darunter wird es Brei. */
+const KORN_ENGE = 8;
+/**
+ * Ab welcher Mannschaftszahl die Stärkeangabe das Korn verdichtet.
+ *
+ * Sie ist Fließtext und meint nicht immer eine Heeresstärke: In Breitenfeld
+ * steht „Brigaden zu 500“ und „siebzehn Haufen“, und die erste Zahl daraus ist
+ * 500 beziehungsweise gar keine. Wer die Körner allein danach zählte, gäbe
+ * einem Flügel von zwölftausend Mann fünf Zeichen. Grundlage ist deshalb die
+ * Fläche; die Zahl verdichtet nur, und nur wenn sie nach einem Heer aussieht.
+ */
+const KORN_HEER = 2000;
+/** Ab welcher Verbandsgröße Körner die Schraffur ablösen (Bildpunkte). */
+const KORN_AB = 15;
+const KORN_VOLL = 38;
+
+
+/** Hauptachse einer Punktwolke – die Richtung, in der sie am längsten ist. */
+function hauptachse(p) {
+  let mx = 0;
+  let my = 0;
+  for (const [x, y] of p) { mx += x; my += y; }
+  mx /= p.length;
+  my /= p.length;
+  let a = 0;
+  let b = 0;
+  let c = 0;
+  for (const [x, y] of p) {
+    const dx = x - mx;
+    const dy = y - my;
+    a += dx * dx; b += dx * dy; c += dy * dy;
+  }
+  const w = .5 * Math.atan2(2 * b, a - c);
+  return [mx, my, Math.cos(w), Math.sin(w)];
+}
+
+/** Immer dieselbe Streuung für denselben Verband – sonst flimmert das Feld. */
+function streuung(saat) {
+  let s = 2166136261;
+  for (let i = 0; i < saat.length; i++) {
+    s ^= saat.charCodeAt(i);
+    s = Math.imul(s, 16777619);
+  }
+  return () => {
+    s ^= s << 13; s >>>= 0;
+    s ^= s >> 17;
+    s ^= s << 5; s >>>= 0;
+    return s / 4294967296;
+  };
+}
+
 /** Musterkacheln je Farbe und Gattung – einmal angelegt, dann wiederverwendet. */
 const MUSTER = new Map();
 function musterFuer(ctx, farbe, gattung) {
@@ -430,6 +527,86 @@ function musterFuer(ctx, farbe, gattung) {
  * Die Kachel wird einmal gebaut und an der Karte verankert, nicht am Fenster:
  * Sonst schwämme die Struktur beim Schwenken über den Boden.
  */
+/* ---------------------------------------------------------- Einflussfeld
+
+   Wer hält gerade welchen Boden?
+
+   Eine Schlacht ist keine Ansammlung von Rechtecken, sondern eine Front, die
+   sich verschiebt. Die Rechtecke zeigen, wo Verbände stehen; sie zeigen nicht,
+   wem das Feld dazwischen gehört. Genau das ist aber die Frage, um die es
+   geht – und die Antwort ändert sich von Station zu Station.
+
+   Deshalb legt sich unter die Truppen ein weiches Feld: Jeder Verband färbt
+   den Boden um sich in seiner Parteifarbe ein, mit einer Reichweite, die aus
+   seiner Größe folgt. Wo zwei Parteien ähnlich stark einwirken, entsteht eine
+   Naht – die Kampfzone. Man sieht die Front kippen, ohne dass es jemand
+   beschriftet.
+
+   Gerechnet wird auf einem Sechstel der Auflösung: Ein Einflussfeld ist von
+   Natur aus unscharf, und 240×150 Zellen kosten nichts. Die drei Parteien
+   liegen dabei in den drei Farbkanälen **einer** Hilfsleinwand – so braucht
+   es nur ein einziges Auslesen je Bild statt drei.
+*/
+/* ------------------------------------------------------------ Darstellung
+
+   Zwei Fassungen derselben Karte.
+
+   „Stich“ ist die Grundeinstellung und die Sprache des übrigen Atlasses:
+   gedämpft, schraffiert, wie ein Blatt aus einem Generalstabswerk. Sie
+   behauptet nichts, was sie nicht weiß, und man kann sie lange ansehen.
+
+   „Schaubild“ dreht dieselben Angaben lauter: kräftigere Felder, glühende
+   Nähte, sichtbarer Rauch. Es zeigt keine anderen Daten, nur andere Regler –
+   wer eine Schlacht zum ersten Mal sieht, versteht sie damit schneller.
+*/
+const DARSTELLUNGEN = ['stich', 'schaubild'];
+const DARSTELLUNG_SCHLUESSEL = 'wmd.schlacht.darstellung';
+let _darstellung = null;
+
+export function darstellung() {
+  if (_darstellung) return _darstellung;
+  let gemerkt = null;
+  try { gemerkt = localStorage.getItem(DARSTELLUNG_SCHLUESSEL); } catch { /* ohne Speicher */ }
+  _darstellung = DARSTELLUNGEN.includes(gemerkt) ? gemerkt : 'stich';
+  return _darstellung;
+}
+
+export function setzeDarstellung(wert) {
+  if (!DARSTELLUNGEN.includes(wert)) return darstellung();
+  _darstellung = wert;
+  try { localStorage.setItem(DARSTELLUNG_SCHLUESSEL, wert); } catch { /* ohne Speicher */ }
+  return _darstellung;
+}
+
+const FELD_TEILER = 6;
+const FELD_UNSCHAERFE = 5;
+/* Ab welchem Anteil eine Zelle als umkämpft gilt: Liegen beide Parteien
+   näher als das beieinander, ist der Boden strittig. */
+const FELD_NAHT = .42;
+
+let feldHilfe = null;
+let feldBild = null;
+
+function feldLeinwand(w, h) {
+  if (!feldHilfe) {
+    feldHilfe = document.createElement('canvas');
+    feldBild = document.createElement('canvas');
+  }
+  if (feldHilfe.width !== w || feldHilfe.height !== h) {
+    feldHilfe.width = w; feldHilfe.height = h;
+    feldBild.width = w; feldBild.height = h;
+  }
+  return [feldHilfe, feldBild];
+}
+
+/** Hexfarbe zu [r,g,b]. */
+function rgbAus(farbe) {
+  const h = String(farbe).replace('#', '');
+  const v = h.length === 3 ? h.split('').map((c) => c + c).join('') : h;
+  const n = parseInt(v, 16);
+  return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+}
+
 const GRUND_KACHEL = 72;
 const GRUND = new Map();
 function grundMuster(ctx, see) {
@@ -652,12 +829,30 @@ const SchlachtLeinwand = L.Layer.extend({
       );
       ctx.clip();
     }
-    for (const g of inhalt.gelaende ?? []) this._gelaende(ctx, g);
     // Die Bildschirmlage einmal je Körper und Bild: Körper und Fähnchen
     // müssen dieselbe Größe sehen, sonst legt sich die Beschriftung auf einen
-    // Verband, den sie für kleiner hält, als er gezeichnet wird.
+    // Verband, den sie für kleiner hält, als er gezeichnet wird. Das
+    // Einflussfeld braucht sie ebenfalls – deshalb steht die Berechnung vor
+    // allem anderen, was gezeichnet wird.
     for (const k of inhalt.koerper ?? []) k._lage = this._lage(k);
+    this._lager = this._schwerpunkte(inhalt.koerper ?? []);
+    /* Was gerade auf dem Schirm steht – im Unterschied zu `_inhalt`, das den
+       zuletzt übergebenen Stand hält. Die beiden fielen früher zusammen, weil
+       nur auf Anforderung gezeichnet wurde. Seit das Feld auch im Stillstand
+       weiterläuft, liegt zwischen Übergabe und Zeichnung regelmäßig ein Bild –
+       und `_lage` steht erst danach. Wer die Lage eines Verbands wissen will,
+       fragt deshalb hier und nicht bei `_inhalt`. */
+    this._gezeichnet = inhalt;
+    /* Erst der Boden, dann das Gelände, dann die Truppe: Das Einflussfeld ist
+       eine Aussage über die Fläche, nicht über die Zeichnung darauf. Läge es
+       oben, verschluckte es die Höhenlinien und die Kanten der Verbände. */
+    this._heiss = this._einfluss(ctx, groesse, inhalt);
+    for (const g of inhalt.gelaende ?? []) this._gelaende(ctx, g);
     for (const k of inhalt.koerper ?? []) this._koerper(ctx, k);
+    this._frontlinie(ctx, klemm(inhalt.buehne ?? 1, 0, 1), inhalt);
+    /* Rauch, Funken und Splitter liegen über der Truppe und unter den Pfeilen:
+       Sie verhüllen das Feld, aber nie die Aussage. */
+    this._regungen(ctx, inhalt);
     this._pfeilPlaetze = [];
     for (const p of inhalt.pfeile ?? []) this._pfeil(ctx, p);
     // Erst die Verbände beschriften, dann das Gelände: Wo beides um denselben
@@ -936,6 +1131,377 @@ const SchlachtLeinwand = L.Layer.extend({
     ctx.restore();
   },
 
+  /**
+   * Das Einflussfeld unter den Truppen.
+   *
+   * Ablauf je Bild:
+   *   1. Jede Partei bekommt einen Farbkanal und wird dort als weiche Wolke
+   *      um ihre Verbände eingezeichnet – Reichweite nach Ausdehnung.
+   *   2. Ein einziges Auslesen liefert alle Kanäle auf einmal.
+   *   3. Je Zelle gewinnt die stärkste Partei; liegt die zweite nahe genug
+   *      dahinter, ist die Zelle umkämpft und bekommt die Nahtfarbe.
+   *
+   * Zurück kommt die Liste der umkämpften Stellen – daran hängen später
+   * Funken und Rauch.
+   */
+  _einfluss(ctx, groesse, inhalt) {
+    const a = klemm(inhalt.buehne ?? 1, 0, 1);
+    const koerper = (inhalt.koerper ?? []).filter((k) => (k._lage?.p ?? k.punkte)?.length >= 3);
+    if (a <= .01 || !koerper.length) return [];
+
+    const parteien = [];
+    for (const k of koerper) {
+      const id = k.partei ?? k.farbe;
+      if (!parteien.some((x) => x.id === id) && parteien.length < 3) {
+        parteien.push({ id, farbe: k.farbe });
+      }
+    }
+    if (!parteien.length) return [];
+
+    const w = Math.max(2, Math.round(groesse.x / FELD_TEILER));
+    const h = Math.max(2, Math.round(groesse.y / FELD_TEILER));
+    const [hilfe, bild] = feldLeinwand(w, h);
+    const hc = hilfe.getContext('2d', { willReadFrequently: true });
+    hc.setTransform(1, 0, 0, 1, 0, 0);
+    hc.clearRect(0, 0, w, h);
+    /* Die Kanäle addieren sich: Rot ist Partei 1, Grün Partei 2, Blau
+       Partei 3. Zwei Verbände derselben Partei verstärken einander. */
+    hc.globalCompositeOperation = 'lighter';
+    hc.filter = `blur(${FELD_UNSCHAERFE}px)`;
+
+    for (const k of koerper) {
+      const idx = parteien.findIndex((x) => x.id === (k.partei ?? k.farbe));
+      if (idx < 0) continue;
+      const p = (k._lage?.p ?? []).length >= 3 ? k._lage.p : null;
+      if (!p) continue;
+      /* Ein geschlagener Verband hält weniger Boden – das ist der ganze
+         Unterschied zwischen „steht dort“ und „beherrscht dort“. */
+      const staerke = (k.deckung ?? 1) * (k.geschlagen ? .45 : 1);
+      hc.fillStyle = `rgb(${idx === 0 ? 255 : 0},${idx === 1 ? 255 : 0},${idx === 2 ? 255 : 0})`;
+      hc.globalAlpha = klemm(staerke * .9, 0, 1);
+      hc.beginPath();
+      for (let i = 0; i < p.length; i++) {
+        const x = p[i][0] / FELD_TEILER;
+        const y = p[i][1] / FELD_TEILER;
+        if (i === 0) hc.moveTo(x, y); else hc.lineTo(x, y);
+      }
+      hc.closePath();
+      hc.fill();
+    }
+    hc.filter = 'none';
+    hc.globalCompositeOperation = 'source-over';
+    hc.globalAlpha = 1;
+
+    const quelle = hc.getImageData(0, 0, w, h);
+    const q = quelle.data;
+    const bc = bild.getContext('2d');
+    const ziel = bc.createImageData(w, h);
+    const z = ziel.data;
+    const rgb = parteien.map((x) => rgbAus(x.farbe));
+    /* Die Naht: ein warmer Ton, der zu keiner Partei gehört. Er soll wie
+       aufgewühlter Boden wirken, nicht wie eine dritte Fahne. */
+    const naht = inhalt.schaubild ? [255, 196, 120] : [214, 168, 112];
+    const grund = inhalt.schaubild ? .58 : .3;
+    /* Wer je Zelle führt, wird gemerkt: Daraus wird gleich die Frontlinie –
+       die Kette der Zellen, deren Nachbar einer anderen Partei gehört. */
+    const fuehrer = new Int8Array(w * h).fill(-1);
+    const wucht = new Uint8Array(w * h);
+    const heiss = [];
+
+    for (let i = 0, n = w * h; i < n; i++) {
+      const v = [q[i * 4], q[i * 4 + 1], q[i * 4 + 2]];
+      let erst = -1;
+      let zweit = -1;
+      let besteI = 0;
+      for (let j = 0; j < parteien.length; j++) {
+        if (v[j] > erst) { zweit = erst; erst = v[j]; besteI = j; } else if (v[j] > zweit) zweit = v[j];
+      }
+      if (erst < 12) continue;
+      fuehrer[i] = besteI;
+      wucht[i] = erst;
+      const summe = erst + Math.max(zweit, 0);
+      const anteil = summe > 0 ? (erst - Math.max(zweit, 0)) / summe : 1;
+      const staerke = klemm(erst / 190, 0, 1);
+      let farbe;
+      let alpha;
+      if (anteil < FELD_NAHT) {
+        farbe = naht;
+        // Die Naht ist dort am kräftigsten, wo beide am stärksten drücken.
+        alpha = staerke * grund * (inhalt.schaubild ? 1.6 : 1.3);
+        if (staerke > .3) heiss.push(i);
+      } else {
+        farbe = rgb[besteI];
+        alpha = staerke * grund * klemm(anteil, .35, 1);
+      }
+      z[i * 4] = farbe[0];
+      z[i * 4 + 1] = farbe[1];
+      z[i * 4 + 2] = farbe[2];
+      z[i * 4 + 3] = Math.round(klemm(alpha, 0, .92) * 255);
+    }
+    bc.putImageData(ziel, 0, 0);
+
+    ctx.save();
+    ctx.globalAlpha = a * (inhalt.schaubild ? 1 : .85);
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    ctx.drawImage(bild, 0, 0, w, h, 0, 0, groesse.x, groesse.y);
+    ctx.restore();
+
+    /* Gezeichnet wird die Front erst nach den Truppen: Sie ist eine Aussage
+       über das Bild, kein Untergrund darunter. Unter dem Gelände lag sie
+       vorher – und war dort nicht zu sehen. */
+    this._front = this._frontStriche(fuehrer, wucht, q, w, h);
+
+    // Bildschirmlage der umkämpften Zellen, für Funken und Rauch.
+    return heiss.map((i) => [
+      ((i % w) + .5) * FELD_TEILER,
+      (Math.floor(i / w) + .5) * FELD_TEILER,
+    ]);
+  },
+
+  /**
+   * Die Frontlinie: dort, wo der Einfluss kippt.
+   *
+   * Der eingefärbte Boden zeigt Mehrheiten, aber keine Kante – und die Kante
+   * ist das, worauf man schaut. Gezeichnet wird sie als Kette kurzer Striche
+   * längs der Front: So sieht eine Frontlinie auf einer Stabskarte aus.
+   *
+   * Gefunden wird sie zellenweise: Wo der rechte oder der untere Nachbar einer
+   * anderen Partei gehört, liegt ein Stück Front. **Die Richtung des Strichs
+   * kommt aber nicht von der Nachbarschaft**, sonst stünde er nur waagerecht
+   * oder senkrecht und die Front liefe als Treppe über das Feld. Sie kommt aus
+   * dem Gefälle: Zwischen den beiden beteiligten Kanälen wird die Differenz
+   * gebildet, ihr Gradient zeigt quer zur Front, der Strich steht senkrecht
+   * darauf. So dreht sich die Kette stetig mit und liest sich als Linie.
+   */
+  _frontStriche(fuehrer, wucht, q, w, h) {
+    const striche = [];
+    for (let y = 1; y < h - 1; y++) {
+      for (let x = 1; x < w - 1; x++) {
+        const i = y * w + x;
+        const f = fuehrer[i];
+        if (f < 0 || wucht[i] < 26) continue;
+        /* Höchstens ein Strich je Zelle: Zwei Striche im selben Feld werden
+           zum Doppelstrich, und der liest sich als Straße. */
+        let g = -1;
+        let mx = 0;
+        let my = 0;
+        let schwaechster = wucht[i];
+        for (const [dx, dy, j] of [[1, 0, i + 1], [0, 1, i + w]]) {
+          const n = fuehrer[j];
+          if (n < 0 || n === f || wucht[j] < 26) continue;
+          if (g < 0) g = n;
+          mx += dx * .5;
+          my += dy * .5;
+          schwaechster = Math.min(schwaechster, wucht[j]);
+        }
+        if (g < 0) continue;
+        const d = (xx, yy) => {
+          const k = (yy * w + xx) * 4;
+          return q[k + f] - q[k + g];
+        };
+        const gx = d(x + 1, y) - d(x - 1, y);
+        const gy = d(x, y + 1) - d(x, y - 1);
+        const laenge = Math.hypot(gx, gy);
+        /* Ohne Gefälle keine Richtung – dann liegt der Strich quer zum
+           Nachbarn, wie zuvor. */
+        const quer = Math.hypot(mx, my) || 1;
+        const [tx, ty] = laenge > 1 ? [-gy / laenge, gx / laenge] : [-my / quer, mx / quer];
+        striche.push([
+          (x + .5 + mx) * FELD_TEILER,
+          (y + .5 + my) * FELD_TEILER,
+          tx, ty, schwaechster / 255,
+        ]);
+      }
+    }
+    return striche;
+  },
+
+  /**
+   * Was sich während einer Station bewegt.
+   *
+   * Eine Station ist kein Augenblick, sondern eine halbe Stunde Schlacht. Ein
+   * Standbild davon ist eine Behauptung: dass in dieser halben Stunde nichts
+   * geschah. Drei Dinge widersprechen dem, und alle drei stehen schon in den
+   * Daten – es wurde nur nichts daraus gemacht:
+   *
+   *   Rauch über den Geschützen. Wo Rohre stehen, steht Pulverdampf, und er
+   *   zieht ab. Er ist außerdem das einzige, was auf einem Schlachtfeld die
+   *   Sicht nimmt – und die genommene Sicht entscheidet mehrere dieser
+   *   Schlachten.
+   *
+   *   Funken an den Nähten. Das Einflussfeld weiß bereits, wo beide Parteien
+   *   gleich stark drücken; dort wird gekämpft. Ein Aufblitzen dort sagt in
+   *   einem Bild, was der Text in einem Absatz sagt.
+   *
+   *   Treibende Splitter bei Geschlagenen. Ein geschlagener Verband löst sich
+   *   auf; das gestrichelte Kleid sagt „geschlagen“, aber es sagt nicht, wohin
+   *   er geht. Die Splitter treiben nach hinten – von der eigenen Front weg.
+   *
+   * Alles davon ist zustandslos gerechnet: Aus der Uhrzeit und einer festen
+   * Saat folgt jedes Teilchen. Es gibt keine Teilchenliste, die fortgeschrieben
+   * würde, und deshalb auch nichts, was beim Umschalten, Zurückspringen oder
+   * Zoomen aus dem Tritt geriete.
+   */
+  _regungen(ctx, inhalt) {
+    const a = klemm(inhalt.buehne ?? 1, 0, 1);
+    if (a <= .02) return;
+    const jetzt = performance.now();
+    this._rauch(ctx, inhalt, jetzt, a);
+    this._funken(ctx, inhalt, jetzt, a);
+    this._splitter(ctx, inhalt, jetzt, a);
+  },
+
+  /** Pulverdampf über den Rohren – er steigt, weitet sich und verzieht. */
+  _rauch(ctx, inhalt, jetzt, a) {
+    const rohre = (inhalt.koerper ?? []).filter((k) => k.gattung === 'geschuetz' && k._lage);
+    if (!rohre.length) return;
+    ctx.save();
+    ctx.globalCompositeOperation = 'lighter';
+    for (const k of rohre) {
+      const l = k._lage;
+      const gross = klemm(Math.max(l.rx, l.ry) / 22, .8, 1.9);
+      const wuerfel = streuung(`rauch|${k.partei}|${k.name}`);
+      for (let i = 0; i < RAUCH_BALLEN; i++) {
+        const wo = [wuerfel() - .5, wuerfel() - .5];
+        const versatz = wuerfel();
+        const phase = ((jetzt / RAUCH_DAUER) + versatz) % 1;
+        /* Der Ballen steigt, und während er steigt, wird er größer und
+           dünner – wie Rauch, nicht wie eine wandernde Scheibe. */
+        const r = (5 + phase * 22) * gross;
+        const x = l.cx + wo[0] * l.rx * 1.6 + RAUCH_WIND[0] * phase * 30 * gross;
+        const y = l.cy + wo[1] * l.ry * 1.6 + RAUCH_WIND[1] * phase * 30 * gross;
+        const dicht = Math.sin(phase * Math.PI) ** 1.5
+          * (inhalt.schaubild ? .26 : .15) * a * k.deckung;
+        if (dicht < .004) continue;
+        const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+        g.addColorStop(0, `rgba(226,222,212,${dicht.toFixed(4)})`);
+        g.addColorStop(.6, `rgba(198,192,180,${(dicht * .42).toFixed(4)})`);
+        g.addColorStop(1, 'rgba(180,176,166,0)');
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.arc(x, y, r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+    ctx.restore();
+  },
+
+  /**
+   * Wird in dieser Station überhaupt gekämpft?
+   *
+   * Die Naht des Einflussfeldes entsteht schon, wenn zwei Heere nur nahe
+   * beieinanderstehen. Funken darüber zu setzen hieße, den Kampf eine Station
+   * zu früh zu behaupten – bei Breitenfeld zwei Stunden zu früh, denn die
+   * Aufstellung dauerte einen halben Vormittag.
+   *
+   * Geraten wird das nicht, es steht in der Station: Ein Angriffspfeil, ein
+   * geschlagener Verband oder auffahrende Geschütze. Wo nichts davon steht,
+   * stehen die Heere einander gegenüber und warten – und das Feld bleibt
+   * ruhig.
+   */
+  _gekaempft(inhalt) {
+    if ((inhalt.pfeile ?? []).some((p) => !p.rueckzug && !p.finte)) return true;
+    return (inhalt.koerper ?? []).some((k) => k.geschlagen || k.gattung === 'geschuetz');
+  },
+
+  /**
+   * Aufblitzen dort, wo der Boden strittig ist.
+   *
+   * Die Zellen kommen aus dem Einflussfeld. Welche gerade brennt, folgt aus
+   * der Uhr: Jedes Funkenfeld hat eine Lebenszeit, und aus der Nummer seines
+   * Lebens wird die Zelle gezogen. Damit wandert das Feuer über die Naht,
+   * ohne dass irgendwo eine Liste geführt würde.
+   */
+  _funken(ctx, inhalt, jetzt, a) {
+    const heiss = this._heiss;
+    if (!heiss?.length || !this._gekaempft(inhalt)) return;
+    const zahl = Math.min(FUNKEN_ZAHL, Math.ceil(heiss.length / 3));
+    ctx.save();
+    ctx.globalCompositeOperation = 'lighter';
+    for (let i = 0; i < zahl; i++) {
+      const versatz = i * FUNKEN_LEBEN * .618;
+      const leben = Math.floor((jetzt + versatz) / FUNKEN_LEBEN);
+      // Aus der Nummer des Lebens die Zelle: derselbe Funke, dieselbe Stelle.
+      let h = Math.imul(leben ^ (i * 0x9e3779b1), 0x85ebca6b);
+      h ^= h >>> 13;
+      const [x, y] = heiss[Math.abs(h) % heiss.length];
+      const alter = ((jetzt + versatz) % FUNKEN_LEBEN) / FUNKEN_LEBEN;
+      const hell = Math.sin(alter * Math.PI) ** 2.2 * a * (inhalt.schaubild ? .85 : .5);
+      if (hell < .01) continue;
+      const r = 2.2 + alter * 3.4;
+      const g = ctx.createRadialGradient(x, y, 0, x, y, r * 2.6);
+      g.addColorStop(0, `rgba(255,236,196,${hell.toFixed(4)})`);
+      g.addColorStop(.4, `rgba(255,186,104,${(hell * .5).toFixed(4)})`);
+      g.addColorStop(1, 'rgba(255,150,70,0)');
+      ctx.fillStyle = g;
+      ctx.beginPath();
+      ctx.arc(x, y, r * 2.6, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.restore();
+  },
+
+  /** Was sich von einem geschlagenen Verband löst und nach hinten treibt. */
+  _splitter(ctx, inhalt, jetzt, a) {
+    const weichende = (inhalt.koerper ?? []).filter((k) => k.geschlagen && k._lage);
+    if (!weichende.length) return;
+    ctx.save();
+    ctx.lineCap = 'round';
+    for (const k of weichende) {
+      const l = k._lage;
+      const [mx, my, ux, uy] = hauptachse(l.p);
+      let vx = -uy;
+      let vy = ux;
+      const lager = this._lager?.get(k.partei);
+      if (lager && ((mx - lager[0]) * vx + (my - lager[1]) * vy) < 0) { vx = -vx; vy = -vy; }
+      // Nach hinten heißt: der Front den Rücken zu.
+      vx = -vx; vy = -vy;
+      const weit = Math.max(l.rx, l.ry) * 1.9 + 26;
+      const wuerfel = streuung(`splitter|${k.partei}|${k.name}`);
+      ctx.strokeStyle = mitAlpha(k.farbe, .9);
+      for (let i = 0; i < SPLITTER_ZAHL; i++) {
+        const quer = (wuerfel() - .5) * 1.7;
+        const versatz = wuerfel();
+        const phase = ((jetzt / SPLITTER_DAUER) + versatz) % 1;
+        const s = phase * weit;
+        const x = mx + (ux * quer * l.rx) + vx * s;
+        const y = my + (uy * quer * l.ry) + vy * s;
+        const sicht = Math.sin(phase * Math.PI) * a * k.deckung * (inhalt.schaubild ? .8 : .55);
+        if (sicht < .02) continue;
+        ctx.globalAlpha = sicht;
+        ctx.lineWidth = 1.3;
+        ctx.beginPath();
+        ctx.moveTo(x - vx * 3.5, y - vy * 3.5);
+        ctx.lineTo(x + vx * 3.5, y + vy * 3.5);
+        ctx.stroke();
+      }
+    }
+    ctx.restore();
+  },
+
+  /** Die gesammelte Front zeichnen – über Gelände und Truppen. */
+  _frontlinie(ctx, a, inhalt) {
+    const striche = this._front;
+    if (!striche?.length) return;
+    ctx.save();
+    ctx.lineCap = 'round';
+    ctx.strokeStyle = inhalt.schaubild ? 'rgba(255,206,138,.95)' : 'rgba(226,178,116,.8)';
+    for (const [x, y, tx, ty, staerke] of striche) {
+      /* Der Strich liegt längs der Front. Im Schaubild überlappen die Striche
+         leicht und ergeben eine durchgehende Linie; im Stich bleiben sie
+         getrennt und lesen sich als Schraffur. */
+      const laenge = FELD_TEILER * (inhalt.schaubild ? 1.25 : .85) * (.55 + staerke);
+      ctx.globalAlpha = a * klemm(staerke * 2.1, .18, 1) * (inhalt.schaubild ? 1 : .8);
+      ctx.lineWidth = inhalt.schaubild ? 2.1 : 1.5;
+      ctx.beginPath();
+      ctx.moveTo(x - tx * laenge / 2, y - ty * laenge / 2);
+      ctx.lineTo(x + tx * laenge / 2, y + ty * laenge / 2);
+      ctx.stroke();
+    }
+    ctx.restore();
+  },
+
   _buehne(ctx, groesse, inhalt) {
     const a = inhalt.buehne ?? 1;
     if (a <= 0) return;
@@ -997,6 +1563,8 @@ const SchlachtLeinwand = L.Layer.extend({
       ctx.fillStyle = mitAlpha(art.flaeche, art.deckung ?? .25);
       ctx.fill();
     }
+    if (art.schummer) this._schummer(ctx, art, p);
+    if (art.wellen) this._wellen(ctx, art, p);
     if (art.muster) this._gelaendeMuster(ctx, art, p);
     if (art.kante) {
       ctx.beginPath();
@@ -1148,9 +1716,15 @@ const SchlachtLeinwand = L.Layer.extend({
       for (let x = x0 + ((Math.round(y / d) % 2) * d) / 2; x < x1 + d; x += d) {
         ctx.beginPath();
         if (art.muster === 'wald') {
-          // Ein Kringel mit Stiel – das übliche Waldzeichen.
-          ctx.arc(x, y - 1, 2.1, 0, Math.PI * 2);
+          /* Ein Kringel mit Stiel – das übliche Waldzeichen. Der Stiel stand
+             im Kommentar, gezeichnet war er nie; und ohne ihn ist ein Wald
+             eine Punktkörnung wie jede andere. */
+          ctx.arc(x, y - 1.4, 2.1, 0, Math.PI * 2);
           ctx.fill();
+          ctx.beginPath();
+          ctx.moveTo(x, y + .5);
+          ctx.lineTo(x, y + 3.1);
+          ctx.stroke();
         } else if (art.muster === 'sumpf') {
           ctx.moveTo(x - 3, y);
           ctx.lineTo(x + 3, y);
@@ -1160,6 +1734,79 @@ const SchlachtLeinwand = L.Layer.extend({
         } else if (art.muster === 'stadt') {
           ctx.fillRect(x - 2.2, y - 2.2, 4.4, 4.4);
         }
+      }
+    }
+    ctx.restore();
+  },
+
+  /**
+   * Schummerung: der Höhenzug bekommt eine Sonne.
+   *
+   * Die Böschungsschraffur sagt, wo es hinaufgeht. Sie sagt es aber nur an der
+   * Kante, und in der Mitte bleibt der Rücken eine flache Tönung. Ein
+   * schräges Licht von Nordwesten – die Übereinkunft aller Reliefkarten seit
+   * Dufour – macht daraus eine Form: helle Flanke gegen die Sonne, dunkle im
+   * Schatten, und dazwischen die Höhe.
+   *
+   * Es ist eine Andeutung, keine Geländemessung: Woher der Hang wirklich
+   * ansteigt, steht in keiner Datei. Was gezeichnet wird, ist die Wölbung, die
+   * der Umriss ohnehin behauptet – nur so, dass man sie sieht.
+   */
+  _schummer(ctx, art, p) {
+    let x0 = Infinity; let y0 = Infinity; let x1 = -Infinity; let y1 = -Infinity;
+    for (const [x, y] of p) {
+      if (x < x0) x0 = x; if (x > x1) x1 = x;
+      if (y < y0) y0 = y; if (y > y1) y1 = y;
+    }
+    const r = Math.max(x1 - x0, y1 - y0) / 2;
+    if (r < 8) return;
+    const cx = (x0 + x1) / 2;
+    const cy = (y0 + y1) / 2;
+    ctx.save();
+    ctx.beginPath();
+    weicherWeg(ctx, p, GELAENDE_SPANNUNG);
+    ctx.clip();
+    // Licht von Nordwesten, also von links oben.
+    const g = ctx.createLinearGradient(cx - r * .7, cy - r * .7, cx + r * .7, cy + r * .7);
+    g.addColorStop(0, 'rgba(255,238,204,.16)');
+    g.addColorStop(.46, 'rgba(255,238,204,0)');
+    g.addColorStop(.54, 'rgba(20,14,8,0)');
+    g.addColorStop(1, 'rgba(20,14,8,.22)');
+    ctx.fillStyle = g;
+    ctx.fillRect(x0 - 2, y0 - 2, x1 - x0 + 4, y1 - y0 + 4);
+    ctx.restore();
+  },
+
+  /**
+   * Wellen auf dem Wasser.
+   *
+   * Eine blaue Fläche ist auf einer Stabskarte kein Meer, sondern ein Fleck.
+   * Zwei kurze Bögen übereinander, versetzt gesetzt, sind das Zeichen für
+   * offenes Wasser – dieselbe Signatur, die die Seekarten seit je führen. Sie
+   * ruhen; bewegt wird auf diesem Blatt nur, was kämpft.
+   */
+  _wellen(ctx, art, p) {
+    let x0 = Infinity; let y0 = Infinity; let x1 = -Infinity; let y1 = -Infinity;
+    for (const [x, y] of p) {
+      if (x < x0) x0 = x; if (x > x1) x1 = x;
+      if (y < y0) y0 = y; if (y > y1) y1 = y;
+    }
+    if (x1 - x0 > 900 || y1 - y0 > 900) return;
+    ctx.save();
+    ctx.beginPath();
+    weicherWeg(ctx, p, GELAENDE_SPANNUNG);
+    ctx.clip();
+    ctx.strokeStyle = mitAlpha(art.farbe, .4);
+    ctx.lineWidth = 1;
+    ctx.lineCap = 'round';
+    const d = 15;
+    for (let y = y0; y < y1 + d; y += d) {
+      for (let x = x0 + ((Math.round(y / d) % 2) * d) / 2; x < x1 + d; x += d) {
+        ctx.beginPath();
+        ctx.moveTo(x - 4.5, y);
+        ctx.quadraticCurveTo(x - 2.2, y - 2.2, x, y);
+        ctx.quadraticCurveTo(x + 2.2, y + 2.2, x + 4.5, y);
+        ctx.stroke();
       }
     }
     ctx.restore();
@@ -1318,6 +1965,153 @@ const SchlachtLeinwand = L.Layer.extend({
     ctx.restore();
   },
 
+  /**
+   * Der Schwerpunkt jeder Partei – die Mitte all ihrer Verbände.
+   *
+   * Er wird für nichts Sichtbares gebraucht, nur für eine Entscheidung: In
+   * welche der beiden Richtungen quer zur Aufstellung ein Verband schaut.
+   * Vom eigenen Heer weg ist nach vorn; das gilt bei jeder Aufstellung, die
+   * nicht gerade eingekesselt ist.
+   */
+  _schwerpunkte(koerper) {
+    const summe = new Map();
+    for (const k of koerper) {
+      const l = k._lage;
+      if (!l || k.partei == null) continue;
+      const s = summe.get(k.partei) ?? [0, 0, 0];
+      s[0] += l.cx; s[1] += l.cy; s[2] += 1;
+      summe.set(k.partei, s);
+    }
+    const mitte = new Map();
+    for (const [id, [x, y, n]] of summe) if (n) mitte.set(id, [x / n, y / n]);
+    return mitte;
+  },
+
+  /**
+   * Die Körner eines Verbands setzen und zeichnen.
+   *
+   * Die Zahl der Körner folgt der Mannschaftszahl, nicht der Fläche: Ein
+   * Verband von zwanzigtausend Mann trägt mehr Zeichen als einer von zweien,
+   * auch wenn beide gleich groß gezeichnet sind – und genau das soll man
+   * sehen. Nach oben begrenzt die Fläche: Wo kein Platz für ein Korn ist,
+   * wird keines gesetzt, sonst entstünde eine zweite Schraffur.
+   *
+   * Gesetzt wird in einem Raster, das an der Hauptachse hängt und in jeder
+   * Zelle einen festen Zufall trägt. Fest heißt: aus dem Namen des Verbands
+   * gezogen, nicht aus der Zeit. Ein Raster, das in jedem Bild neu würfelt,
+   * flimmert; eines, das gar nicht würfelt, sieht gedruckt aus.
+   */
+  _koerner(ctx, k, l, staerkeAn) {
+    const p = l.p;
+    const [mx, my, ux, uy] = hauptachse(p);
+    /* Quer zur Hauptachse: dorthin schaut der Verband. Das Vorzeichen kommt
+       vom eigenen Heer – nach vorn ist vom eigenen Schwerpunkt weg. */
+    let vx = -uy;
+    let vy = ux;
+    const lager = this._lager?.get(k.partei);
+    if (lager && ((mx - lager[0]) * vx + (my - lager[1]) * vy) < 0) { vx = -vx; vy = -vy; }
+
+    /* Ausdehnung in beiden Achsen – daraus Zellenzahl und Zellengröße. */
+    let u0 = Infinity; let u1 = -Infinity; let v0 = Infinity; let v1 = -Infinity;
+    for (const [x, y] of p) {
+      const dx = x - mx;
+      const dy = y - my;
+      const u = dx * ux + dy * uy;
+      const v = dx * vx + dy * vy;
+      if (u < u0) u0 = u; if (u > u1) u1 = u;
+      if (v < v0) v0 = v; if (v > v1) v1 = v;
+    }
+    const lu = Math.max(u1 - u0, 1);
+    const lv = Math.max(v1 - v0, 1);
+
+    const platz = Math.floor((lu * lv) / (KORN_ENGE * KORN_ENGE));
+    const mann = zahlAus(k.staerke);
+    const dichte = mann >= KORN_HEER
+      ? klemm(.55 + Math.log10(mann / KORN_HEER) * .45, .55, 1)
+      : .55;
+    const n = klemm(Math.round(platz * dichte), KORN_MIN, KORN_MAX);
+    if (n < KORN_MIN) return;
+
+    /* Zellen so aufteilen, dass sie ungefähr quadratisch werden. */
+    const spalten = Math.max(1, Math.round(Math.sqrt((n * lu) / lv)));
+    const reihen = Math.max(1, Math.ceil(n / spalten));
+    const wuerfel = streuung(`${k.partei}|${k.name}|${k.gattung}|${n}`);
+    const gross = klemm(Math.min(lu / spalten, lv / reihen) / 9, .55, 1.5);
+
+    ctx.save();
+    ctx.beginPath();
+    weicherWeg(ctx, p);
+    ctx.clip();
+    ctx.globalAlpha = k.deckung * (1 - l.zeichen) * staerkeAn * (k.geschlagen ? .45 : .92);
+    ctx.strokeStyle = mitAlpha(k.farbe, .95);
+    ctx.fillStyle = mitAlpha(k.farbe, .95);
+    ctx.lineWidth = Math.max(.9, 1.25 * gross);
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+
+    for (let r = 0; r < reihen; r++) {
+      for (let s = 0; s < spalten; s++) {
+        const ju = wuerfel() - .5;
+        const jv = wuerfel() - .5;
+        /* Ein geschlagener Verband steht nicht mehr in Gliedern: Dort darf
+           der Zufall doppelt so weit ausschlagen. */
+        const streu = k.geschlagen ? .78 : .34;
+        const u = u0 + ((s + .5) / spalten + ju * streu / spalten) * lu;
+        const v = v0 + ((r + .5) / reihen + jv * streu / reihen) * lv;
+        /* Kein Punkt-im-Umriss-Test: Der Umriss ist schon als Maske gesetzt,
+           und er ist dort weich gezogen – ein Test an den rohen Ecken träfe
+           eine andere Kante als die, an der wirklich beschnitten wird. */
+        this._korn(ctx, k.gattung, mx + u * ux + v * vx, my + u * uy + v * vy, ux, uy, vx, vy, gross);
+      }
+    }
+    ctx.restore();
+  },
+
+  /**
+   * Ein einzelnes Korn.
+   *
+   * `u` liegt längs der Front, `v` zeigt nach vorn. Jede Gattung bekommt ein
+   * Zeichen, das man auch einzeln erkennt: Fußvolk einen Querstrich, weil es
+   * in Gliedern steht; Bogenschützen einen Winkel, der nach vorn zeigt;
+   * Reiterei einen Schrägstrich in Bewegungsrichtung; Geschütze einen Punkt
+   * mit Rohr; Schiffe einen Rumpf. Es sind dieselben Zeichen wie in der
+   * Zeichenerklärung – nur einzeln statt gekachelt.
+   */
+  _korn(ctx, gattung, x, y, ux, uy, vx, vy, g) {
+    const a = 3.1 * g;
+    ctx.beginPath();
+    if (gattung === 'reiter') {
+      ctx.moveTo(x - (ux + vx) * a * .8, y - (uy + vy) * a * .8);
+      ctx.lineTo(x + (ux + vx) * a * .8, y + (uy + vy) * a * .8);
+      ctx.stroke();
+    } else if (gattung === 'bogen') {
+      ctx.moveTo(x - ux * a - vx * a * .7, y - uy * a - vy * a * .7);
+      ctx.lineTo(x + vx * a * .7, y + vy * a * .7);
+      ctx.lineTo(x + ux * a - vx * a * .7, y + uy * a - vy * a * .7);
+      ctx.stroke();
+    } else if (gattung === 'geschuetz') {
+      ctx.arc(x, y, 1.5 * g, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(x + vx * 1.4 * g, y + vy * 1.4 * g);
+      ctx.lineTo(x + vx * a * 1.5, y + vy * a * 1.5);
+      ctx.stroke();
+    } else if (gattung === 'schiff') {
+      ctx.moveTo(x - vx * a * 1.3, y - vy * a * 1.3);
+      ctx.quadraticCurveTo(x + ux * a * .8, y + uy * a * .8, x + vx * a * 1.3, y + vy * a * 1.3);
+      ctx.quadraticCurveTo(x - ux * a * .8, y - uy * a * .8, x - vx * a * 1.3, y - vy * a * 1.3);
+      ctx.stroke();
+    } else if (gattung === 'fuss') {
+      ctx.moveTo(x - ux * a, y - uy * a);
+      ctx.lineTo(x + ux * a, y + uy * a);
+      ctx.stroke();
+    } else {
+      // Gemischt: ein Korn ohne Aussage über die Waffe.
+      ctx.arc(x, y, 1.35 * g, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  },
+
   _koerper(ctx, k) {
     const l = k._lage ?? this._lage(k);
     const p = l.p;
@@ -1336,18 +2130,24 @@ const SchlachtLeinwand = L.Layer.extend({
     ctx.shadowBlur = 0;
     ctx.shadowOffsetY = 0;
 
+    /* Schraffur und Körner lösen einander ab. Kleine Verbände tragen das
+       Muster – dort wären fünf Körner nur fünf Flecken. Große tragen die
+       Körner. Dazwischen liegt beides übereinander, sonst springt das Bild
+       beim Zoomen. */
+    const koernung = klemm((Math.max(l.rx, l.ry) * 2 - KORN_AB) / (KORN_VOLL - KORN_AB), 0, 1);
     const muster = musterFuer(ctx, k.farbe, k.gattung);
-    if (muster) {
+    if (muster && koernung < .995) {
       ctx.save();
       ctx.beginPath();
       weicherWeg(ctx, p);
       ctx.clip();
-      ctx.globalAlpha = k.deckung * (1 - l.zeichen) * (k.geschlagen ? .4 : .85);
+      ctx.globalAlpha = k.deckung * (1 - l.zeichen) * (k.geschlagen ? .4 : .85) * (1 - koernung);
       ctx.fillStyle = muster;
       ctx.fill();
       ctx.restore();
       ctx.globalAlpha = k.deckung * (1 - l.zeichen);
     }
+    if (koernung > .005) this._koerner(ctx, k, l, koernung);
 
     ctx.beginPath();
     weicherWeg(ctx, p);
@@ -1621,6 +2421,10 @@ export class BattlePlayer {
     this.zeit = 0;
     this.playing = false;
     this._rahmen = null;
+    this._regungRahmen = null;
+    /* Einmal abgefragt, nicht je Bild: Wer weniger Bewegung eingestellt hat,
+       bekommt ein stehendes Feld statt ziehendem Rauch. */
+    this._wenigerBewegung = window.matchMedia?.('(prefers-reduced-motion: reduce)') ?? null;
     this._zuletzt = 0;
     this._station = 0;
     /** Wie lange ein Stationsfenster beim Abspielen dauert. */
@@ -1728,6 +2532,7 @@ export class BattlePlayer {
     this._anflug = true;
     this._auf = performance.now() + ANFLUG_HALT + ANFLUG_EIN;
     this._bild();
+    this._regung();
 
     map.flyTo(ziel, weit, { duration: 1.3 });
     const pulsen = () => {
@@ -1965,10 +2770,24 @@ export class BattlePlayer {
    */
   setSperren(rechtecke) { this.sperren = rechtecke ?? []; this._bild(); }
 
+  /**
+   * Zwischen „Stich“ und „Schaubild“ umschalten.
+   *
+   * Es sind dieselben Daten und dieselbe Station – nur andere Regler. Deshalb
+   * wird auch nichts neu berechnet, nur neu gezeichnet: Wer im dritten Zug
+   * umschaltet, bleibt im dritten Zug.
+   */
+  setzeBlick(wert) {
+    setzeDarstellung(wert);
+    this._bild();
+    return darstellung();
+  }
+
   close() {
     this.stop();
     clearTimeout(this._anflugTimer);
     cancelAnimationFrame(this._pulsRahmen);
+    cancelAnimationFrame(this._regungRahmen);
     this._anflug = false;
     this.atlas.map.off('dragstart', this._eingriff);
     this.atlas.map.off('zoomstart', this._eingriff);
@@ -1987,6 +2806,34 @@ export class BattlePlayer {
     this.playing = false;
     if (this._rahmen) cancelAnimationFrame(this._rahmen);
     this._rahmen = null;
+  }
+
+  /**
+   * Das Feld hört nicht auf zu leben, wenn der Verlauf steht.
+   *
+   * Bisher wurde nur gezeichnet, während der Verlauf lief – wer anhielt, sah
+   * ein Standbild. Das ist falsch für das, was eine Station zeigt: Die Station
+   * ist kein Augenblick, sondern eine Viertelstunde Schlacht. Rauch zieht
+   * darin ab, Geschlagene treiben weiter, an den Nähten funkt es. Deshalb
+   * läuft ein zweiter, langsamerer Takt, solange die Schlacht offen ist.
+   *
+   * Er zeichnet höchstens REGUNG_TAKT-mal in der Sekunde und schweigt ganz,
+   * wenn der Verlauf ohnehin läuft oder das Betriebssystem weniger Bewegung
+   * verlangt – dann steht das Bild still, wie es soll.
+   */
+  _regung() {
+    cancelAnimationFrame(this._regungRahmen);
+    if (this._wenigerBewegung?.matches) return;
+    let zuletzt = 0;
+    const takt = (jetzt) => {
+      if (!this.battle) return;
+      this._regungRahmen = requestAnimationFrame(takt);
+      if (this.playing || this._anflug) return;
+      if (jetzt - zuletzt < 1000 / REGUNG_TAKT) return;
+      zuletzt = jetzt;
+      this._bild();
+    };
+    this._regungRahmen = requestAnimationFrame(takt);
   }
 
   play() {
@@ -2159,6 +3006,7 @@ export class BattlePlayer {
       const ziel = zielRoh ? dreheZu(a, zielRoh) : null;
       koerper.push({
         punkte: ziel && zug > 0 ? formeUm(a, ziel, zug) : a,
+        partei: s.partei,
         farbe: this.farben.get(s.partei) ?? '#8a94a6',
         name: s.name ?? '',
         staerke: s.staerke ?? '',
@@ -2179,6 +3027,7 @@ export class BattlePlayer {
         if (!r) continue;
         koerper.push({
           punkte: r,
+          partei: s.partei,
           farbe: this.farben.get(s.partei) ?? '#8a94a6',
           name: s.name ?? '',
           staerke: s.staerke ?? '',
@@ -2208,6 +3057,7 @@ export class BattlePlayer {
       buehne: auf,
       grund: auf,
       see: !!b.see,
+      schaubild: darstellung() === 'schaubild',
       feldMitte,
       // Das Blatt liegt um das freie Feld – dieselbe Messung, mit der auch
       // der Ausschnitt je Station gelegt wird.

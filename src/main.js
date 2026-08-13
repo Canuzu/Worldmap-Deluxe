@@ -21,7 +21,7 @@ import {
   txt, sprache, SPRACHEN, spracheEinrichten, spracheWechseln, markupBeschriften,
 } from './modules/sprache.js';
 import { ERA_COLORS, religionName } from './modules/palette.js';
-import { BattlePlayer, BATTLES, ladeVerlauf } from './modules/battles.js';
+import { BattlePlayer, BATTLES, ladeVerlauf, darstellung } from './modules/battles.js';
 import { Beiblatt } from './modules/beiblatt.js';
 import { bodenblatt } from './modules/blatt.js';
 import { EventLayer, ARTEN, artKurz, artLabel, zeitfenster } from './modules/ereignisse.js';
@@ -1389,19 +1389,29 @@ async function main() {
                aria-label="Zeitpunkt der Schlacht" />
       </div>
       <div class="battles__controls">
-        <button class="tbtn" data-act="prev" ${player.index === 0 && player.fortschritt <= 0 ? 'disabled' : ''} aria-label="Zurück">
+        <button class="tbtn" data-act="prev" ${player.index === 0 && player.fortschritt <= 0 ? 'disabled' : ''} aria-label="${esc(txt('schlacht.zurueckknopf'))}">
           <svg viewBox="0 0 24 24" width="16" height="16"><path d="M15.4 5L8.4 12l7 7 1.4-1.4L11.2 12l5.6-5.6L15.4 5z" fill="currentColor"/></svg>
         </button>
-        <button class="tbtn tbtn--play" data-act="play" aria-label="${player.playing ? 'Anhalten' : 'Abspielen'}">
+        <button class="tbtn tbtn--play" data-act="play" aria-label="${esc(txt(player.playing ? 'schlacht.anhalten' : 'schlacht.abspielen'))}">
           ${player.playing
             ? '<svg viewBox="0 0 24 24" width="18" height="18"><path d="M7 5h3.5v14H7V5zm6.5 0H17v14h-3.5V5z" fill="currentColor"/></svg>'
             : '<svg viewBox="0 0 24 24" width="18" height="18"><path d="M8 5l11 7-11 7V5z" fill="currentColor"/></svg>'}
         </button>
-        <button class="tbtn" data-act="next" ${player.index >= player.count - 1 ? 'disabled' : ''} aria-label="Weiter">
+        <button class="tbtn" data-act="next" ${player.index >= player.count - 1 ? 'disabled' : ''} aria-label="${esc(txt('schlacht.weiter'))}">
           <svg viewBox="0 0 24 24" width="16" height="16"><path d="M8.6 5L7.2 6.4 12.8 12l-5.6 5.6L8.6 19l7-7-7-7z" fill="currentColor"/></svg>
         </button>
         <span class="battles__zaehler">${player.index + 1} / ${player.count}</span>
-        <button class="chip chip--action" data-act="back">Andere Schlacht</button>
+        <button class="chip chip--action" data-act="back">${esc(txt('schlacht.andere'))}</button>
+      </div>
+
+      <!-- Dieselben Angaben, zwei Lautstärken. Der Schalter steht unter den
+           Bedienknöpfen und nicht in den Einstellungen: Er verändert das
+           Bild, auf das man gerade schaut, und gehört daher daneben. -->
+      <div class="battles__blick" role="radiogroup" aria-label="${esc(txt('schlacht.darstellung'))}">
+        ${['stich', 'schaubild'].map((d) => `
+          <button class="battles__blickBtn" type="button" data-blick="${d}"
+                  role="radio" aria-checked="${d === darstellung()}"
+                  title="${esc(txt(`schlacht.${d}.hilfe`))}">${esc(txt(`schlacht.${d}`))}</button>`).join('')}
       </div>
 
       <ol class="battles__stationen">${b.stationen.map((s, i) => `
@@ -1463,6 +1473,14 @@ async function main() {
     if (krieg) { waehleKrieg(krieg.dataset.krieg); return; }
     const schlacht = event.target.closest('[data-schlacht]');
     if (schlacht) { konflikte.zeige(schlacht.dataset.schlacht); return; }
+    const blick = event.target.closest('[data-blick]');
+    if (blick) {
+      const gewaehlt = battles.setzeBlick(blick.dataset.blick);
+      for (const b of battlesBox.querySelectorAll('[data-blick]')) {
+        b.setAttribute('aria-checked', String(b.dataset.blick === gewaehlt));
+      }
+      return;
+    }
     const step = event.target.closest('[data-step]');
     if (step) { battles.stop(); battles.goTo(Number(step.dataset.step)); return; }
     const act = event.target.closest('[data-act]')?.dataset.act;

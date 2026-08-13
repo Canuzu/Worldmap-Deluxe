@@ -693,7 +693,11 @@ await check('Kleine Verbände wachsen auf Mindestgröße und werden zum Zeichen'
     window.__battles.stop();
     window.__battles.goTo(k);
     await new Promise((r) => setTimeout(r, 1600));
-    const koerper = window.__battles.leinwand._inhalt.koerper.filter((q) => q.deckung > .6);
+    /* `_gezeichnet` und nicht `_inhalt`: Gefragt ist die Lage auf dem Schirm,
+       und die steht erst nach dem Zeichnen. Das Feld läuft auch im Stillstand
+       weiter, deshalb liegt im übergebenen Stand regelmäßig ein noch nicht
+       gezeichnetes Bild. */
+    const koerper = window.__battles.leinwand._gezeichnet.koerper.filter((q) => q.deckung > .6);
     return koerper.map((q) => ({
       quer: q._lage?.quer ?? 0,
       mindest: q.mindest ?? 0,

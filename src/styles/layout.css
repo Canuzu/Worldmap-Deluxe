@@ -999,6 +999,38 @@
   flex: 1;
 }
 
+/* Stich oder Schaubild. Zwei Wörter nebeneinander in einer gemeinsamen Rille –
+   kein Schalter mit Knebel, weil keine der beiden Fassungen die „aus“-Stellung
+   ist. Die gewählte trägt den Goldton, den im Atlas sonst nur Gewähltes trägt. */
+.battles__blick {
+  display: flex;
+  gap: 1px;
+  margin-top: .5rem;
+  padding: 2px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface-2);
+}
+.battles__blickBtn {
+  flex: 1;
+  padding: .28rem .5rem;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: var(--ink-faint);
+  font: inherit;
+  font-size: .7rem;
+  letter-spacing: .04em;
+  cursor: pointer;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.battles__blickBtn:hover { color: var(--ink-strong); }
+.battles__blickBtn[aria-checked='true'] {
+  background: color-mix(in srgb, var(--gold) 18%, transparent);
+  color: var(--gold);
+}
+.battles__blickBtn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
 /* Kräfteverhältnis: ein Balken sagt in einer Zeile, was zwei Zahlenkolonnen
    nicht sagen – bei Azincourt 6.000 gegen 20.000 sieht man den Unterschied,
    statt ihn auszurechnen. */

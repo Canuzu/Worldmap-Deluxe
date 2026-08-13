@@ -284,6 +284,11 @@ export const DE = {
   'schlacht.strasse': 'Straße',
   'schlacht.rueckzug': 'Rückzug, Flucht',
   'schlacht.feld': 'Schlachtfeld',
+  'schlacht.darstellung': 'Darstellung',
+  'schlacht.stich': 'Stich',
+  'schlacht.stich.hilfe': 'Gedämpft und schraffiert wie ein Blatt aus einem Generalstabswerk',
+  'schlacht.schaubild': 'Schaubild',
+  'schlacht.schaubild.hilfe': 'Dieselben Angaben, kräftiger gezeichnet – für den ersten Blick',
 
   /* ------------------------------------------------------- Modalfenster */
   'modal.schliessen': 'Schließen',
