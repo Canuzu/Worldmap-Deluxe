@@ -1,1391 +1,1785 @@
 {
-  "_hinweis": "Steckbriefe zu Europa vom Frühmittelalter bis zur Gegenwart.",
-
-  "Byzantine Empire": {
-    "kind": "Kaiserreich",
-    "wiki": "Byzantinisches Reich",
-    "founded": 395,
-    "dissolved": 1453,
-    "events": [
-      { "year": 1054, "text": "Morgenländisches Schisma: endgültiger Bruch mit Rom." },
-      { "year": 1071, "text": "Niederlage bei Manzikert gegen die Seldschuken; Verlust Anatoliens." },
-      { "year": 1204, "text": "Der Vierte Kreuzzug plündert Konstantinopel." },
-      { "year": 1453, "text": "Mehmed II. erobert Konstantinopel; Ende des Reiches." }
+ "_hinweis": "Steckbriefe zu Europa vom Frühmittelalter bis zur Gegenwart.",
+ "Byzantine Empire": {
+  "kind": "Kaiserreich",
+  "wiki": "Byzantinisches Reich",
+  "founded": 395,
+  "dissolved": 1453,
+  "events": [
+   {
+    "year": 1054,
+    "text": "Morgenländisches Schisma: endgültiger Bruch mit Rom."
+   },
+   {
+    "year": 1071,
+    "text": "Niederlage bei Manzikert gegen die Seldschuken; Verlust Anatoliens."
+   },
+   {
+    "year": 1204,
+    "text": "Der Vierte Kreuzzug plündert Konstantinopel."
+   },
+   {
+    "year": 1453,
+    "text": "Mehmed II. erobert Konstantinopel; Ende des Reiches."
+   }
+  ],
+  "periods": [
+   {
+    "from": 800,
+    "to": 1024,
+    "ruler": "Basileios II.",
+    "rulerTitle": "Basileus – Kaiser der Rhomäer",
+    "dynasty": "Makedonische Dynastie",
+    "reign": "976–1025",
+    "capital": "Konstantinopel",
+    "government": "Kaisertum mit Themenverfassung und Beamtenadel",
+    "religion": "Orthodoxes Christentum",
+    "languages": [
+     "Griechisch",
+     "Slawisch",
+     "Armenisch"
     ],
-    "periods": [
-      {
-        "from": 800, "to": 1024,
-        "ruler": "Basileios II.",
-        "rulerTitle": "Basileus – Kaiser der Rhomäer",
-        "dynasty": "Makedonische Dynastie",
-        "reign": "976–1025",
-        "capital": "Konstantinopel",
-        "government": "Kaisertum mit Themenverfassung und Beamtenadel",
-        "religion": "Orthodoxes Christentum",
-        "languages": ["Griechisch", "Slawisch", "Armenisch"],
-        "population": "ca. 12 Mio.",
-        "economy": "Seidenmonopol, Fernhandel, stabiler Goldsolidus",
-        "summary": [
-          "Unter der makedonischen Dynastie erreicht das Reich seine zweite Blüte: Bulgarien wird unterworfen, Süditalien gehalten, die Rus christianisiert.",
-          "Die Bezeichnung „Byzanz“ ist eine Erfindung der Neuzeit. Die Bewohner nannten sich Rhomaioi – Römer – und ihr Staat war die ununterbrochene Fortsetzung des Imperium Romanum."
-        ],
-        "quote": "Tausend Jahre lang das reichste, bestverwaltete Staatswesen Europas."
-      },
-      {
-        "from": 1025, "to": 1203,
-        "ruler": "Alexios I. Komnenos",
-        "rulerTitle": "Basileus",
-        "dynasty": "Komnenen",
-        "reign": "1081–1118",
-        "capital": "Konstantinopel",
-        "government": "Kaisertum, gestützt auf verwandte Adelsfamilien",
-        "religion": "Orthodoxie",
-        "languages": ["Griechisch"],
-        "population": "ca. 10 Mio.",
-        "economy": "Handelsprivilegien an Venedig, sinkende Zolleinnahmen",
-        "summary": [
-          "Nach der Katastrophe von Manzikert stabilisiert Alexios das Reich – auch, indem er den Papst um Söldner bittet. Statt Söldnern kommt der Erste Kreuzzug.",
-          "Um venezianische Flottenhilfe zu erhalten, gibt Konstantinopel Zollfreiheiten ab. Die eigene Handelsflotte verliert dadurch dauerhaft an Boden."
-        ]
-      },
-      {
-        "from": 1204, "to": 1453,
-        "ruler": "Andronikos II. Palaiologos",
-        "rulerTitle": "Basileus",
-        "dynasty": "Palaiologen",
-        "reign": "1282–1328",
-        "capital": "Konstantinopel",
-        "government": "Kaisertum über ein stark geschrumpftes Gebiet",
-        "religion": "Orthodoxie; Unionsversuche mit Rom scheitern",
-        "languages": ["Griechisch"],
-        "population": "unter 2 Mio.",
-        "economy": "Genuesische und venezianische Kaufleute beherrschen den Handel",
-        "summary": [
-          "Nach der Rückeroberung 1261 ist das Reich nur noch ein Schatten seiner selbst: Konstantinopel, Teile Griechenlands und Thrakiens. Der Handel liegt in italienischer Hand.",
-          "Die letzten Kaiser suchen im Westen Hilfe und bezahlen dafür mit Kirchenunionen, die zu Hause abgelehnt werden. 1453 fällt die Stadt nach 53 Tagen Belagerung."
-        ]
-      }
-    ]
-  },
-
-  "Frankish Kingdom": {
-    "kind": "Königreich",
-    "wiki": "Fränkisches Reich",
-    "founded": 481,
-    "periods": [
-      {
-        "from": 481, "to": 750,
-        "ruler": "Chlothar II.",
-        "rulerTitle": "König der Franken",
-        "dynasty": "Merowinger",
-        "reign": "584–629",
-        "capital": "Wanderkönigtum; Pfalzen in Paris, Soissons, Metz",
-        "government": "Personenverbandsstaat ohne feste Verwaltung",
-        "religion": "Katholisches Christentum seit der Taufe Chlodwigs",
-        "languages": ["Altfränkisch", "Vulgärlatein"],
-        "population": "ca. 5 Mio.",
-        "economy": "Grundherrschaft, kaum Münzumlauf, Naturalabgaben",
-        "summary": [
-          "Chlodwigs Übertritt zum katholischen – nicht arianischen – Christentum um 500 verschafft den Franken die Unterstützung der gallorömischen Bischöfe. Das entscheidet den Wettlauf der Nachfolgereiche Westroms.",
-          "Das Reich wird bei jedem Erbfall geteilt. Die eigentliche Macht wandert im 7. Jahrhundert zu den Hausmeiern."
-        ]
-      }
-    ]
-  },
-
-  "Carolingian Empire": {
-    "kind": "Kaiserreich",
-    "wiki": "Fränkisches Reich",
-    "founded": 800,
-    "dissolved": 888,
-    "events": [
-      { "year": 800, "text": "Kaiserkrönung Karls des Großen in Rom." },
-      { "year": 843, "text": "Vertrag von Verdun teilt das Reich in drei Teile." }
+    "population": "ca. 12 Mio.",
+    "economy": "Seidenmonopol, Fernhandel, stabiler Goldsolidus",
+    "summary": [
+     "Unter der makedonischen Dynastie erreicht das Reich seine zweite Blüte: Bulgarien wird unterworfen, Süditalien gehalten, die Rus christianisiert.",
+     "Die Bezeichnung „Byzanz“ ist eine Erfindung der Neuzeit. Die Bewohner nannten sich Rhomaioi – Römer – und ihr Staat war die ununterbrochene Fortsetzung des Imperium Romanum."
     ],
-    "periods": [
-      {
-        "from": 751, "to": 888,
-        "ruler": "Karl der Große",
-        "rulerTitle": "Imperator Romanorum, König der Franken und Langobarden",
-        "dynasty": "Karolinger",
-        "reign": "768–814",
-        "capital": "Aachen",
-        "government": "Grafschaftsverfassung mit Königsboten (missi dominici)",
-        "religion": "Katholisches Christentum; Zwangsmission der Sachsen",
-        "languages": ["Althochdeutsch", "Altfranzösisch", "Latein"],
-        "population": "ca. 10 bis 15 Mio.",
-        "economy": "Grundherrschaft, karolingischer Denar als Einheitswährung",
-        "summary": [
-          "Karl vereint fast das gesamte lateinische Christentum unter einer Herrschaft. Die Kaiserkrönung an Weihnachten 800 begründet den Anspruch auf die Nachfolge Roms im Westen.",
-          "Die „karolingische Renaissance“ rettet den antiken Textbestand: Was heute von lateinischer Literatur erhalten ist, verdankt sich meist Abschriften dieser Zeit. Auch unsere Kleinbuchstaben gehen auf die karolingische Minuskel zurück."
-        ],
-        "quote": "Verdun 843 zieht eine Linie, an der Europa noch tausend Jahre später ringt."
-      }
-    ]
-  },
-
-  "Holy Roman Empire": {
-    "kind": "Wahlmonarchie",
-    "wiki": "Heiliges Römisches Reich",
-    "founded": 962,
-    "dissolved": 1806,
-    "events": [
-      { "year": 962, "text": "Kaiserkrönung Ottos I. in Rom." },
-      { "year": 1077, "text": "Gang nach Canossa im Investiturstreit." },
-      { "year": 1356, "text": "Goldene Bulle regelt die Königswahl durch sieben Kurfürsten." },
-      { "year": 1517, "text": "Luthers Thesen lösen die Reformation aus." },
-      { "year": 1648, "text": "Westfälischer Frieden sichert den Ständen die Landeshoheit." },
-      { "year": 1806, "text": "Franz II. legt die Kaiserkrone nieder." }
+    "quote": "Tausend Jahre lang das reichste, bestverwaltete Staatswesen Europas."
+   },
+   {
+    "from": 1025,
+    "to": 1203,
+    "ruler": "Alexios I. Komnenos",
+    "rulerTitle": "Basileus",
+    "dynasty": "Komnenen",
+    "reign": "1081–1118",
+    "capital": "Konstantinopel",
+    "government": "Kaisertum, gestützt auf verwandte Adelsfamilien",
+    "religion": "Orthodoxie",
+    "languages": [
+     "Griechisch"
     ],
-    "periods": [
-      {
-        "from": 962, "to": 1250,
-        "ruler": "Friedrich I. Barbarossa",
-        "rulerTitle": "Römisch-deutscher Kaiser",
-        "dynasty": "Staufer",
-        "reign": "1155–1190",
-        "capital": "Kein fester Sitz – Reisekönigtum mit Pfalzen",
-        "government": "Wahlmonarchie über Herzogtümer und Reichsstädte",
-        "religion": "Katholisches Christentum",
-        "languages": ["Mittelhochdeutsch", "Latein", "Italienisch", "Tschechisch"],
-        "population": "ca. 10 Mio.",
-        "economy": "Landwirtschaft, aufblühende Städte, Silberbergbau im Harz",
-        "summary": [
-          "Das Reich hat keine Hauptstadt und kaum zentrale Behörden: Der König zieht mit seinem Hof von Pfalz zu Pfalz und regiert durch Anwesenheit.",
-          "Der Investiturstreit mit dem Papsttum um die Bischofseinsetzung schwächt die Königsmacht dauerhaft und stärkt die Fürsten – eine Weichenstellung für Jahrhunderte."
-        ]
-      },
-      {
-        "from": 1251, "to": 1517,
-        "ruler": "Karl IV.",
-        "rulerTitle": "Römisch-deutscher Kaiser, König von Böhmen",
-        "dynasty": "Luxemburger",
-        "reign": "1346–1378",
-        "capital": "Prag als Residenz",
-        "government": "Wahlmonarchie; sieben Kurfürsten wählen den König",
-        "religion": "Katholisches Christentum",
-        "languages": ["Deutsch", "Latein", "Tschechisch", "Italienisch"],
-        "population": "ca. 12 Mio., nach der Pest 1348 stark gesunken",
-        "economy": "Fernhandel, Hanse im Norden, oberdeutsche Handelshäuser",
-        "summary": [
-          "Die Goldene Bulle von 1356 gibt dem Reich seine bis 1806 gültige Verfassung: Sieben Kurfürsten wählen den König, päpstliche Mitsprache entfällt.",
-          "Karl IV. macht Prag zur Metropole und gründet 1348 die erste Universität nördlich der Alpen."
-        ]
-      },
-      {
-        "from": 1518, "to": 1648,
-        "ruler": "Karl V.",
-        "rulerTitle": "Römisch-deutscher Kaiser, König von Spanien",
-        "dynasty": "Habsburg",
-        "reign": "1519–1556",
-        "capital": "Wanderhof; Reichstage in Augsburg, Worms, Regensburg",
-        "government": "Wahlmonarchie mit Reichstag, Reichskammergericht, Reichskreisen",
-        "religion": "Katholisch und lutherisch nebeneinander; ab 1555 Landesherr entscheidet",
-        "languages": ["Deutsch", "Latein", "Niederländisch", "Italienisch"],
-        "population": "ca. 16 Mio., nach dem Dreißigjährigen Krieg unter 12 Mio.",
-        "economy": "Fugger und Welser, Bergbau, Frühkapitalismus",
-        "summary": [
-          "In Karls Reich geht die Sonne nicht unter – doch Reformation, Fürstenopposition und Frankreich blockieren jeden Versuch einer geschlossenen Monarchie. 1556 dankt er ab.",
-          "Der Dreißigjährige Krieg 1618–1648 kostet je nach Region ein Drittel bis die Hälfte der Bevölkerung. Der Westfälische Frieden macht die Landeshoheit der Fürsten endgültig."
-        ],
-        "quote": "„Ein Monstrum“, urteilte Samuel von Pufendorf – gemeint war die Verfassung, nicht das Land."
-      },
-      {
-        "from": 1649, "to": 1806,
-        "ruler": "Karl VI.",
-        "rulerTitle": "Römisch-deutscher Kaiser",
-        "dynasty": "Habsburg",
-        "reign": "1711–1740",
-        "capital": "Wien als Kaiserresidenz, Regensburg als Sitz des Reichstags",
-        "government": "Lockerer Staatenbund aus rund 300 Territorien",
-        "religion": "Konfessionell geteilt, im Rahmen des Reichsrechts geregelt",
-        "languages": ["Deutsch", "Latein", "Tschechisch", "Italienisch"],
-        "population": "ca. 20 Mio.",
-        "economy": "Merkantilismus in den Einzelterritorien",
-        "summary": [
-          "Nach 1648 ist das Reich kein Staat im modernen Sinn, sondern ein Rechtsverband: Er sichert kleinen Territorien Bestand und bietet ein funktionierendes Gerichtswesen.",
-          "Die Konkurrenz Österreich–Preußen zersetzt ihn im 18. Jahrhundert. 1806 löst Franz II. unter dem Druck Napoleons das Reich auf."
-        ]
-      }
+    "population": "ca. 10 Mio.",
+    "economy": "Handelsprivilegien an Venedig, sinkende Zolleinnahmen",
+    "summary": [
+     "Nach der Katastrophe von Manzikert stabilisiert Alexios das Reich – auch, indem er den Papst um Söldner bittet. Statt Söldnern kommt der Erste Kreuzzug.",
+     "Um venezianische Flottenhilfe zu erhalten, gibt Konstantinopel Zollfreiheiten ab. Die eigene Handelsflotte verliert dadurch dauerhaft an Boden."
     ]
-  },
-
-  "Kingdom of France": {
-    "kind": "Königreich",
-    "wiki": "Frankreich",
-    "periods": [
-      {
-        "from": 987, "to": 1300,
-        "ruler": "Philipp II. August",
-        "rulerTitle": "König von Frankreich",
-        "dynasty": "Kapetinger",
-        "reign": "1180–1223",
-        "capital": "Paris",
-        "government": "Lehnsmonarchie mit wachsender Krondomäne",
-        "religion": "Katholisches Christentum",
-        "languages": ["Altfranzösisch", "Okzitanisch", "Latein"],
-        "population": "ca. 12 Mio. – das bevölkerungsreichste Land Europas",
-        "economy": "Landwirtschaft, Champagnermessen, Tuchhandel",
-        "summary": [
-          "Die Kapetinger beginnen 987 als Herren über kaum mehr als die Île-de-France. Über drei Jahrhunderte bauen sie geduldig eine Königsmacht auf – vor allem durch Heirat, Erbrecht und Gerichtshoheit.",
-          "Philipp II. entreißt den englischen Plantagenets die Normandie und das Anjou und verdreifacht die Krondomäne."
-        ]
-      }
-    ]
-  },
-
-  "France": {
-    "kind": "Königreich, später Republik",
-    "wiki": "Frankreich",
-    "founded": 987,
-    "events": [
-      { "year": 1337, "text": "Beginn des Hundertjährigen Krieges gegen England." },
-      { "year": 1598, "text": "Edikt von Nantes gewährt den Hugenotten Duldung." },
-      { "year": 1789, "text": "Sturm auf die Bastille; Beginn der Revolution." },
-      { "year": 1804, "text": "Napoleon krönt sich zum Kaiser der Franzosen." },
-      { "year": 1871, "text": "Niederlage gegen Preußen; Gründung der Dritten Republik." },
-      { "year": 1958, "text": "Fünfte Republik unter de Gaulle." }
+   },
+   {
+    "from": 1204,
+    "to": 1453,
+    "ruler": "Andronikos II. Palaiologos",
+    "rulerTitle": "Basileus",
+    "dynasty": "Palaiologen",
+    "reign": "1282–1328",
+    "capital": "Konstantinopel",
+    "government": "Kaisertum über ein stark geschrumpftes Gebiet",
+    "religion": "Orthodoxie; Unionsversuche mit Rom scheitern",
+    "languages": [
+     "Griechisch"
     ],
-    "periods": [
-      {
-        "from": 1301, "to": 1515,
-        "ruler": "Ludwig XI.",
-        "rulerTitle": "König von Frankreich",
-        "dynasty": "Valois",
-        "reign": "1461–1483",
-        "capital": "Paris, Hof an der Loire",
-        "government": "Ständische Monarchie",
-        "religion": "Katholisches Christentum",
-        "languages": ["Mittelfranzösisch", "Okzitanisch"],
-        "population": "ca. 15 Mio.",
-        "economy": "Landwirtschaft, Messen von Lyon, stehendes Heer",
-        "summary": [
-          "Nach dem Hundertjährigen Krieg baut Ludwig XI. mit Diplomatie, Geld und Spionage die Königsmacht aus und zerschlägt das burgundische Zwischenreich.",
-          "Frankreich ist damals der bevölkerungsreichste Staat Europas – die Grundlage seiner späteren Vormachtstellung."
-        ]
-      },
-      {
-        "from": 1516, "to": 1714,
-        "ruler": "Ludwig XIV.",
-        "rulerTitle": "König von Frankreich und Navarra",
-        "dynasty": "Bourbon",
-        "reign": "1643–1715",
-        "capital": "Versailles (ab 1682)",
-        "government": "Absolute Monarchie",
-        "religion": "Katholizismus; 1685 Widerruf des Edikts von Nantes",
-        "languages": ["Französisch"],
-        "population": "ca. 20 Mio.",
-        "economy": "Merkantilismus unter Colbert, Manufakturen, Kolonien",
-        "summary": [
-          "Versailles ist Regierungssitz und Käfig zugleich: Der Adel wird zum Hofdienst verpflichtet und damit politisch entmachtet. Das Modell wird in ganz Europa kopiert.",
-          "Vier große Kriege in fünf Jahrzehnten überdehnen die Finanzen. Der Widerruf des Toleranzedikts vertreibt Hunderttausende Hugenotten – ein Verlust an Handwerk und Kapital."
-        ],
-        "quote": "„L'État, c'est moi“ ist wohl nie gesagt worden – gelebt wurde es dennoch."
-      },
-      {
-        "from": 1715, "to": 1814,
-        "ruler": "Napoleon Bonaparte",
-        "rulerTitle": "Kaiser der Franzosen",
-        "dynasty": "Bonaparte",
-        "reign": "1804–1814/15",
-        "capital": "Paris",
-        "government": "Plebiszitäres Kaisertum auf revolutionärer Grundlage",
-        "religion": "Katholizismus als Mehrheitsreligion, staatlich geregelt (Konkordat 1801)",
-        "languages": ["Französisch"],
-        "population": "ca. 29 Mio. im Kernland",
-        "economy": "Kontinentalsperre gegen England, Aufrüstung, Kontributionen",
-        "summary": [
-          "Aus der Revolution geht ein Staat hervor, der Verwaltung, Recht und Bildung neu ordnet. Der Code civil von 1804 prägt bis heute die Rechtsordnung vieler Länder.",
-          "Auf dem Höhepunkt 1812 beherrscht oder kontrolliert Frankreich fast ganz Europa. Der Russlandfeldzug beendet die Vorherrschaft binnen eines Jahres."
-        ]
-      },
-      {
-        "from": 1815, "to": 1913,
-        "ruler": "Napoleon III.",
-        "rulerTitle": "Kaiser der Franzosen (1852–1870), danach Präsidenten der Dritten Republik",
-        "capital": "Paris",
-        "government": "Konstitutionelle Monarchie, Kaiserreich, ab 1870 Republik",
-        "religion": "Katholizismus; ab 1905 Trennung von Kirche und Staat",
-        "languages": ["Französisch"],
-        "population": "ca. 39 Mio.",
-        "economy": "Industrialisierung, Eisenbahnbau, zweitgrößtes Kolonialreich der Welt",
-        "summary": [
-          "Frankreich wechselt im 19. Jahrhundert siebenmal die Staatsform. Stabil bleibt die zentralistische Verwaltung aus napoleonischer Zeit.",
-          "Nach 1871 baut die Dritte Republik ein Kolonialreich in Nord- und Westafrika sowie Indochina auf – flächenmäßig das zweitgrößte nach dem britischen."
-        ]
-      },
-      {
-        "from": 1914, "to": 1944,
-        "ruler": "Raymond Poincaré, später Charles de Gaulle (Exil)",
-        "rulerTitle": "Präsident der Republik",
-        "capital": "Paris; 1940–1944 Vichy",
-        "government": "Parlamentarische Republik, 1940–1944 Besatzung und Kollaborationsregime",
-        "religion": "Laizistischer Staat",
-        "languages": ["Französisch"],
-        "population": "ca. 41 Mio.",
-        "economy": "Kriegswirtschaft, Wiederaufbau, Kolonialhandel",
-        "summary": [
-          "Der Erste Weltkrieg kostet Frankreich 1,4 Millionen Gefallene – gemessen an der Bevölkerung einer der höchsten Verluste aller Krieg führenden Staaten.",
-          "1940 unterliegt das Land in sechs Wochen. Die Résistance und die Freien Französischen Streitkräfte sichern Frankreich 1945 dennoch einen Platz unter den Siegermächten."
-        ]
-      },
-      {
-        "from": 1945, "to": null,
-        "ruler": "Wechselnde Staatspräsidenten",
-        "rulerTitle": "Präsident der Französischen Republik",
-        "capital": "Paris",
-        "government": "Semipräsidentielle Republik (Fünfte Republik seit 1958)",
-        "religion": "Laizität",
-        "languages": ["Französisch"],
-        "population": "ca. 67 Mio.",
-        "economy": "Industrie, Kernenergie, Landwirtschaft, Tourismus",
-        "summary": [
-          "Frankreich verliert bis 1962 sein Kolonialreich – Indochina und Algerien in langen Kriegen – und wird zugleich Mitbegründer der europäischen Einigung.",
-          "Seit 1958 verbindet die Fünfte Republik ein starkes Präsidentenamt mit parlamentarischer Regierung."
-        ]
-      }
+    "population": "unter 2 Mio.",
+    "economy": "Genuesische und venezianische Kaufleute beherrschen den Handel",
+    "summary": [
+     "Nach der Rückeroberung 1261 ist das Reich nur noch ein Schatten seiner selbst: Konstantinopel, Teile Griechenlands und Thrakiens. Der Handel liegt in italienischer Hand.",
+     "Die letzten Kaiser suchen im Westen Hilfe und bezahlen dafür mit Kirchenunionen, die zu Hause abgelehnt werden. 1453 fällt die Stadt nach 53 Tagen Belagerung."
     ]
-  },
-
-  "England": {
-    "kind": "Königreich",
-    "wiki": "Königreich England",
-    "founded": 927,
-    "dissolved": 1707,
-    "events": [
-      { "year": 1066, "text": "Normannische Eroberung durch Wilhelm den Eroberer." },
-      { "year": 1215, "text": "Magna Carta bindet den König an das Recht." },
-      { "year": 1534, "text": "Bruch mit Rom, Gründung der anglikanischen Kirche." }
+   }
+  ]
+ },
+ "Frankish Kingdom": {
+  "kind": "Königreich",
+  "wiki": "Fränkisches Reich",
+  "founded": 481,
+  "periods": [
+   {
+    "from": 481,
+    "to": 750,
+    "ruler": "Chlothar II.",
+    "rulerTitle": "König der Franken",
+    "dynasty": "Merowinger",
+    "reign": "584–629",
+    "capital": "Wanderkönigtum; Pfalzen in Paris, Soissons, Metz",
+    "government": "Personenverbandsstaat ohne feste Verwaltung",
+    "religion": "Katholisches Christentum seit der Taufe Chlodwigs",
+    "languages": [
+     "Altfränkisch",
+     "Vulgärlatein"
     ],
-    "periods": [
-      {
-        "from": 927, "to": 1153,
-        "ruler": "Wilhelm I. der Eroberer",
-        "rulerTitle": "König von England, Herzog der Normandie",
-        "dynasty": "Normannen",
-        "reign": "1066–1087",
-        "capital": "Winchester, später London",
-        "government": "Lehnsmonarchie mit ungewöhnlich straffer Verwaltung",
-        "religion": "Katholisches Christentum",
-        "languages": ["Altenglisch", "Anglonormannisch", "Latein"],
-        "population": "ca. 1,8 Mio.",
-        "economy": "Wollproduktion, Ackerbau",
-        "summary": [
-          "Das Domesday Book von 1086 erfasst jeden Hof und jede Mühle des Landes – eine Verwaltungsleistung ohne Gegenstück im damaligen Europa.",
-          "Die normannische Oberschicht spricht Französisch, die Bevölkerung Englisch. Aus dieser Mischung entsteht die heutige englische Sprache."
-        ]
-      },
-      {
-        "from": 1154, "to": 1706,
-        "ruler": "Elisabeth I.",
-        "rulerTitle": "Königin von England und Irland",
-        "dynasty": "Tudor",
-        "reign": "1558–1603",
-        "capital": "London",
-        "government": "Monarchie mit Parlament",
-        "religion": "Anglikanische Staatskirche",
-        "languages": ["Englisch"],
-        "population": "ca. 4 Mio.",
-        "economy": "Tuchexport, Freibeuterei, erste Handelskompanien",
-        "summary": [
-          "Unter Elisabeth I. wird England zur Seemacht: 1588 scheitert die spanische Armada, 1600 entsteht die Ostindien-Kompanie.",
-          "Der Konflikt zwischen Krone und Parlament führt im 17. Jahrhundert zu Bürgerkrieg, Königshinrichtung und schließlich zur konstitutionellen Monarchie von 1689."
-        ]
-      }
+    "population": "ca. 5 Mio.",
+    "economy": "Grundherrschaft, kaum Münzumlauf, Naturalabgaben",
+    "summary": [
+     "Chlodwigs Übertritt zum katholischen – nicht arianischen – Christentum um 500 verschafft den Franken die Unterstützung der gallorömischen Bischöfe. Das entscheidet den Wettlauf der Nachfolgereiche Westroms.",
+     "Das Reich wird bei jedem Erbfall geteilt. Die eigentliche Macht wandert im 7. Jahrhundert zu den Hausmeiern."
     ]
-  },
-
-  "United Kingdom": {
-    "kind": "Königreich mit Weltreich",
-    "wiki": "Vereinigtes Königreich",
-    "founded": 1707,
-    "events": [
-      { "year": 1707, "text": "Union von England und Schottland zu Großbritannien." },
-      { "year": 1815, "text": "Sieg über Napoleon; Beginn der britischen Vormacht." },
-      { "year": 1837, "text": "Beginn der Regierungszeit Königin Victorias." },
-      { "year": 1947, "text": "Unabhängigkeit Indiens; Beginn der Entkolonialisierung." }
+   }
+  ]
+ },
+ "Carolingian Empire": {
+  "kind": "Kaiserreich",
+  "wiki": "Fränkisches Reich",
+  "founded": 800,
+  "dissolved": 888,
+  "events": [
+   {
+    "year": 800,
+    "text": "Kaiserkrönung Karls des Großen in Rom."
+   },
+   {
+    "year": 843,
+    "text": "Vertrag von Verdun teilt das Reich in drei Teile."
+   }
+  ],
+  "periods": [
+   {
+    "from": 751,
+    "to": 888,
+    "ruler": "Karl der Große",
+    "rulerTitle": "Imperator Romanorum, König der Franken und Langobarden",
+    "dynasty": "Karolinger",
+    "reign": "768–814",
+    "capital": "Aachen",
+    "government": "Grafschaftsverfassung mit Königsboten (missi dominici)",
+    "religion": "Katholisches Christentum; Zwangsmission der Sachsen",
+    "languages": [
+     "Althochdeutsch",
+     "Altfranzösisch",
+     "Latein"
     ],
-    "periods": [
-      {
-        "from": 1707, "to": 1836,
-        "ruler": "Georg III.",
-        "rulerTitle": "König von Großbritannien und Irland",
-        "dynasty": "Haus Hannover",
-        "reign": "1760–1820",
-        "capital": "London",
-        "government": "Konstitutionelle Monarchie mit Kabinettsregierung",
-        "religion": "Anglikanische Kirche",
-        "languages": ["Englisch", "Schottisch-Gälisch", "Walisisch"],
-        "population": "ca. 16 Mio.",
-        "economy": "Beginn der Industriellen Revolution, Atlantikhandel, Sklavenhandel bis 1807",
-        "summary": [
-          "Die Industrielle Revolution beginnt in England: Dampfmaschine, Kohle und mechanische Weberei verändern in wenigen Jahrzehnten, wie Menschen arbeiten und wo sie leben.",
-          "1783 verliert Großbritannien die dreizehn amerikanischen Kolonien, gewinnt aber in Indien und im Pazifik neue Machtbasen."
-        ]
-      },
-      {
-        "from": 1837, "to": 1913,
-        "ruler": "Victoria",
-        "rulerTitle": "Königin des Vereinigten Königreichs, Kaiserin von Indien",
-        "dynasty": "Haus Hannover",
-        "reign": "1837–1901",
-        "capital": "London",
-        "government": "Parlamentarische Monarchie",
-        "religion": "Anglikanische Kirche",
-        "languages": ["Englisch"],
-        "population": "ca. 41 Mio. im Kernland, über 400 Mio. im Empire",
-        "economy": "Werkstatt der Welt: Textil, Stahl, Schiffbau, Freihandel, Goldstandard",
-        "summary": [
-          "Auf dem Höhepunkt umfasst das Empire ein Viertel der Landfläche und ein Viertel der Menschheit. Die Royal Navy sichert Handelswege, London ist Finanzzentrum der Welt.",
-          "Zu Hause bringt derselbe Zeitraum Wahlrechtsreformen, Gewerkschaften und Fabrikgesetze – Fortschritt und Ausbeutung liegen dicht beieinander."
-        ],
-        "quote": "Das Reich, in dem die Sonne nie unterging – und über dem sie nie richtig aufging, spotteten Kritiker."
-      },
-      {
-        "from": 1914, "to": null,
-        "ruler": "Wechselnde Premierminister",
-        "rulerTitle": "Premierminister; Staatsoberhaupt ist der Monarch",
-        "capital": "London",
-        "government": "Parlamentarische Monarchie",
-        "religion": "Anglikanische Staatskirche, weitgehend säkulare Gesellschaft",
-        "languages": ["Englisch"],
-        "population": "ca. 67 Mio.",
-        "economy": "Dienstleistungen, Finanzwesen, Industrie",
-        "summary": [
-          "Zwei Weltkriege kosten das Land seine Führungsrolle. Nach 1945 löst sich das Empire binnen zwei Jahrzehnten weitgehend auf, das Commonwealth tritt an seine Stelle.",
-          "1973 tritt Großbritannien der EG bei, 2020 verlässt es die Europäische Union."
-        ]
-      }
-    ]
-  },
-
-  "Spain": {
-    "kind": "Königreich mit Kolonialreich",
-    "wiki": "Spanien",
-    "founded": 1479,
-    "events": [
-      { "year": 1492, "text": "Fall Granadas, Vertreibung der Juden, erste Fahrt des Kolumbus." },
-      { "year": 1521, "text": "Cortés erobert Tenochtitlán." },
-      { "year": 1588, "text": "Untergang der Armada vor England." },
-      { "year": 1824, "text": "Schlacht von Ayacucho beendet die spanische Herrschaft in Südamerika." }
+    "population": "ca. 10 bis 15 Mio.",
+    "economy": "Grundherrschaft, karolingischer Denar als Einheitswährung",
+    "summary": [
+     "Karl vereint fast das gesamte lateinische Christentum unter einer Herrschaft. Die Kaiserkrönung an Weihnachten 800 begründet den Anspruch auf die Nachfolge Roms im Westen.",
+     "Die „karolingische Renaissance“ rettet den antiken Textbestand: Was heute von lateinischer Literatur erhalten ist, verdankt sich meist Abschriften dieser Zeit. Auch unsere Kleinbuchstaben gehen auf die karolingische Minuskel zurück."
     ],
-    "periods": [
-      {
-        "from": 1479, "to": 1598,
-        "ruler": "Philipp II.",
-        "rulerTitle": "König von Spanien, Neapel, Portugal und der Westindischen Inseln",
-        "dynasty": "Habsburg",
-        "reign": "1556–1598",
-        "capital": "Madrid (ab 1561), Residenz El Escorial",
-        "government": "Zusammengesetzte Monarchie mit Räten je Reichsteil",
-        "religion": "Katholizismus, durchgesetzt durch die Inquisition",
-        "languages": ["Kastilisch", "Katalanisch", "Baskisch", "Nahuatl", "Quechua"],
-        "population": "ca. 8 Mio. in Iberien, dazu die amerikanischen Vizekönigreiche",
-        "economy": "Silber aus Potosí und Zacatecas, Wollexport, Staatsbankrotte",
-        "summary": [
-          "Silber aus Amerika macht Spanien zur ersten Weltmacht der Neuzeit – und zugleich abhängig: Die Einfuhren treiben die Preise, während Handwerk und Landwirtschaft verkümmern.",
-          "Philipp II. regiert vom Schreibtisch aus ein Reich über vier Kontinente. Trotz beispielloser Einnahmen erklärt die Krone während seiner Regierung dreimal den Bankrott."
-        ]
-      },
-      {
-        "from": 1599, "to": 1874,
-        "ruler": "Karl III.",
-        "rulerTitle": "König von Spanien",
-        "dynasty": "Bourbon",
-        "reign": "1759–1788",
-        "capital": "Madrid",
-        "government": "Aufgeklärter Absolutismus, ab 1812 zeitweise Verfassung",
-        "religion": "Katholizismus",
-        "languages": ["Spanisch"],
-        "population": "ca. 11 Mio.",
-        "economy": "Kolonialhandel, Reformversuche, Verlust der amerikanischen Besitzungen",
-        "summary": [
-          "Die Bourbonen modernisieren Verwaltung und Wirtschaft, doch die napoleonische Besetzung 1808 bricht die Verbindung zu den amerikanischen Kolonien.",
-          "Bis 1826 sind fast alle Festlandsbesitzungen in Amerika unabhängig; Kuba und die Philippinen gehen 1898 verloren."
-        ]
-      },
-      {
-        "from": 1875, "to": null,
-        "ruler": "Wechselnde Staatsoberhäupter; 1939–1975 Francisco Franco",
-        "rulerTitle": "König bzw. Staatschef",
-        "capital": "Madrid",
-        "government": "Konstitutionelle Monarchie; 1931–1939 Republik, 1939–1975 Diktatur",
-        "religion": "Katholizismus, seit 1978 kein Staatsbekenntnis",
-        "languages": ["Spanisch", "Katalanisch", "Galicisch", "Baskisch"],
-        "population": "ca. 48 Mio.",
-        "economy": "Industrie, Tourismus, Landwirtschaft",
-        "summary": [
-          "Der Bürgerkrieg 1936–1939 kostet rund eine halbe Million Menschenleben und mündet in eine bis 1975 währende Diktatur.",
-          "Die Verfassung von 1978 macht Spanien zu einer parlamentarischen Monarchie mit weitreichender Autonomie der Regionen; 1986 folgt der EG-Beitritt."
-        ]
-      }
-    ]
-  },
-
-  "Portugal": {
-    "kind": "Königreich mit Seereich",
-    "wiki": "Portugal",
-    "founded": 1139,
-    "events": [
-      { "year": 1415, "text": "Eroberung Ceutas – Beginn der überseeischen Expansion." },
-      { "year": 1498, "text": "Vasco da Gama erreicht Indien auf dem Seeweg." },
-      { "year": 1500, "text": "Cabral landet in Brasilien." },
-      { "year": 1822, "text": "Brasilien wird unabhängig." }
+    "quote": "Verdun 843 zieht eine Linie, an der Europa noch tausend Jahre später ringt."
+   }
+  ]
+ },
+ "Holy Roman Empire": {
+  "kind": "Wahlmonarchie",
+  "wiki": "Heiliges Römisches Reich",
+  "founded": 962,
+  "dissolved": 1806,
+  "events": [
+   {
+    "year": 962,
+    "text": "Kaiserkrönung Ottos I. in Rom."
+   },
+   {
+    "year": 1077,
+    "text": "Gang nach Canossa im Investiturstreit."
+   },
+   {
+    "year": 1356,
+    "text": "Goldene Bulle regelt die Königswahl durch sieben Kurfürsten."
+   },
+   {
+    "year": 1517,
+    "text": "Luthers Thesen lösen die Reformation aus."
+   },
+   {
+    "year": 1648,
+    "text": "Westfälischer Frieden sichert den Ständen die Landeshoheit."
+   },
+   {
+    "year": 1806,
+    "text": "Franz II. legt die Kaiserkrone nieder."
+   }
+  ],
+  "periods": [
+   {
+    "from": 962,
+    "to": 1250,
+    "ruler": "Friedrich I. Barbarossa",
+    "rulerTitle": "Römisch-deutscher Kaiser",
+    "dynasty": "Staufer",
+    "reign": "1155–1190",
+    "capital": "Kein fester Sitz – Reisekönigtum mit Pfalzen",
+    "government": "Wahlmonarchie über Herzogtümer und Reichsstädte",
+    "religion": "Katholisches Christentum",
+    "languages": [
+     "Mittelhochdeutsch",
+     "Latein",
+     "Italienisch",
+     "Tschechisch"
     ],
-    "periods": [
-      {
-        "from": 1139, "to": 1580,
-        "ruler": "Manuel I.",
-        "rulerTitle": "König von Portugal und der Algarven, Herr des Handels von Äthiopien, Arabien, Persien und Indien",
-        "dynasty": "Avis",
-        "reign": "1495–1521",
-        "capital": "Lissabon",
-        "government": "Königtum mit staatlichem Handelsmonopol",
-        "religion": "Katholizismus",
-        "languages": ["Portugiesisch"],
-        "population": "ca. 1,2 Mio.",
-        "economy": "Gewürzmonopol, Stützpunktnetz statt Flächenkolonien",
-        "summary": [
-          "Portugal – klein und dünn besiedelt – baut das erste globale Seereich: eine Kette von Festungen und Faktoreien von Marokko über Indien bis Macau.",
-          "Der Vertrag von Tordesillas 1494 teilt die außereuropäische Welt zwischen Portugal und Kastilien auf, ohne dass die Betroffenen gefragt worden wären."
-        ]
-      },
-      {
-        "from": 1581, "to": null,
-        "ruler": "Wechselnde Könige, ab 1910 Präsidenten",
-        "rulerTitle": "König bzw. Präsident",
-        "capital": "Lissabon",
-        "government": "Monarchie, ab 1910 Republik, 1933–1974 Diktatur, seither Demokratie",
-        "religion": "Katholizismus",
-        "languages": ["Portugiesisch"],
-        "population": "ca. 10 Mio.",
-        "economy": "Brasilianisches Gold, später Wein und Textil, heute Dienstleistungen",
-        "summary": [
-          "Nach dem Verlust Brasiliens 1822 konzentriert sich Portugal auf Afrika. Die Kolonialkriege der 1960er Jahre führen 1974 zur Nelkenrevolution und zum Ende der Diktatur.",
-          "1975 werden Angola, Mosambik und die übrigen afrikanischen Gebiete unabhängig – das älteste Kolonialreich Europas endet als letztes."
-        ]
-      }
+    "population": "ca. 10 Mio.",
+    "economy": "Landwirtschaft, aufblühende Städte, Silberbergbau im Harz",
+    "summary": [
+     "Das Reich hat keine Hauptstadt und kaum zentrale Behörden: Der König zieht mit seinem Hof von Pfalz zu Pfalz und regiert durch Anwesenheit.",
+     "Der Investiturstreit mit dem Papsttum um die Bischofseinsetzung schwächt die Königsmacht dauerhaft und stärkt die Fürsten – eine Weichenstellung für Jahrhunderte."
     ]
-  },
-
-  "Kievan Rus": {
-    "kind": "Fürstenverband",
-    "wiki": "Kiewer Rus",
-    "founded": 882,
-    "dissolved": 1240,
-    "periods": [
-      {
-        "from": 882, "to": 1240,
-        "ruler": "Jaroslaw der Weise",
-        "rulerTitle": "Großfürst von Kiew",
-        "dynasty": "Rurikiden",
-        "reign": "1019–1054",
-        "capital": "Kiew",
-        "government": "Verband von Teilfürstentümern unter einem Großfürsten",
-        "religion": "Seit 988 orthodoxes Christentum",
-        "languages": ["Altostslawisch", "Kirchenslawisch"],
-        "population": "ca. 5 Mio.",
-        "economy": "Handel auf dem Weg „von den Warägern zu den Griechen“, Pelze, Wachs, Honig",
-        "summary": [
-          "Die Rus verbindet Ostsee und Schwarzes Meer. Ihre Oberschicht geht auf skandinavische Händler und Krieger zurück, verschmilzt aber rasch mit der slawischen Bevölkerung.",
-          "988 nimmt Wladimir das Christentum byzantinischer Prägung an – die Weichenstellung für die kulturelle Ausrichtung Russlands, der Ukraine und Belarus'.",
-          "Jaroslaws Gesetzbuch, die Russkaja Prawda, ist die erste ostslawische Rechtssammlung. Der Mongolensturm 1237–1240 beendet den Verband."
-        ]
-      }
-    ]
-  },
-
-  "Grand Duchy of Moscow": {
-    "kind": "Großfürstentum",
-    "wiki": "Großfürstentum Moskau",
-    "founded": 1283,
-    "dissolved": 1547,
-    "periods": [
-      {
-        "from": 1283, "to": 1547,
-        "ruler": "Iwan III. der Große",
-        "rulerTitle": "Großfürst von Moskau und aller Rus",
-        "dynasty": "Rurikiden",
-        "reign": "1462–1505",
-        "capital": "Moskau",
-        "government": "Autokratisches Fürstentum mit Bojarenrat",
-        "religion": "Russisch-orthodoxes Christentum",
-        "languages": ["Altrussisch", "Kirchenslawisch"],
-        "population": "ca. 6 Mio.",
-        "economy": "Pelzhandel, Landwirtschaft, Tributeinzug für die Horde",
-        "summary": [
-          "Moskau steigt zunächst als Steuereintreiber der Goldenen Horde auf. 1480 verweigert Iwan III. den Tribut endgültig – das Ende der mongolischen Oberherrschaft.",
-          "Nach dem Fall Konstantinopels 1453 heiratet Iwan die Nichte des letzten byzantinischen Kaisers und übernimmt den Doppeladler. Moskau beansprucht das Erbe des orthodoxen Kaisertums."
-        ]
-      }
-    ]
-  },
-
-  "Tsardom of Muscovy": {
-    "kind": "Zarentum",
-    "wiki": "Zarentum Russland",
-    "founded": 1547,
-    "dissolved": 1721,
-    "periods": [
-      {
-        "from": 1547, "to": 1721,
-        "ruler": "Peter I. der Große",
-        "rulerTitle": "Zar und Großfürst aller Reußen",
-        "dynasty": "Romanow",
-        "reign": "1682–1725",
-        "capital": "Moskau, ab 1712 Sankt Petersburg",
-        "government": "Autokratie mit Bojarenduma, ab Peter I. Kollegienverwaltung",
-        "religion": "Russisch-orthodoxes Christentum",
-        "languages": ["Russisch"],
-        "population": "ca. 15 Mio.",
-        "economy": "Getreide, Pelze aus Sibirien, staatliche Manufakturen, Leibeigenschaft",
-        "summary": [
-          "Zwischen 1580 und 1640 dringen Kosaken und Pelzhändler bis an den Pazifik vor – Russland gewinnt in wenigen Jahrzehnten ein Gebiet von der Größe Nordamerikas.",
-          "Peter I. erzwingt eine Modernisierung nach westeuropäischem Muster: neue Hauptstadt, Flotte, Behörden, Kalender. Zugleich verfestigt er die Leibeigenschaft."
-        ],
-        "quote": "Ein Fenster nach Europa – gebaut auf einem Sumpf und Zehntausenden Toten."
-      }
-    ]
-  },
-
-  "Russian Empire": {
-    "kind": "Kaiserreich",
-    "wiki": "Russisches Kaiserreich",
-    "founded": 1721,
-    "dissolved": 1917,
-    "events": [
-      { "year": 1812, "text": "Napoleons Russlandfeldzug scheitert." },
-      { "year": 1861, "text": "Aufhebung der Leibeigenschaft." },
-      { "year": 1905, "text": "Revolution erzwingt die erste Duma." },
-      { "year": 1917, "text": "Februarrevolution beendet die Zarenherrschaft." }
+   },
+   {
+    "from": 1251,
+    "to": 1517,
+    "ruler": "Karl IV.",
+    "rulerTitle": "Römisch-deutscher Kaiser, König von Böhmen",
+    "dynasty": "Luxemburger",
+    "reign": "1346–1378",
+    "capital": "Prag als Residenz",
+    "government": "Wahlmonarchie; sieben Kurfürsten wählen den König",
+    "religion": "Katholisches Christentum",
+    "languages": [
+     "Deutsch",
+     "Latein",
+     "Tschechisch",
+     "Italienisch"
     ],
-    "periods": [
-      {
-        "from": 1721, "to": 1825,
-        "ruler": "Katharina II. die Große",
-        "rulerTitle": "Kaiserin und Selbstherrscherin aller Reußen",
-        "dynasty": "Romanow",
-        "reign": "1762–1796",
-        "capital": "Sankt Petersburg",
-        "government": "Aufgeklärter Absolutismus",
-        "religion": "Russisch-orthodoxes Christentum als Staatskirche",
-        "languages": ["Russisch", "Französisch bei Hofe", "Polnisch", "Tatarisch"],
-        "population": "ca. 37 Mio.",
-        "economy": "Getreideexport, Bergbau im Ural, Leibeigenschaft",
-        "summary": [
-          "Katharina korrespondiert mit Voltaire und Diderot und erweitert zugleich die Leibeigenschaft. Das Reich gewinnt die Krim, den Zugang zum Schwarzen Meer und große Teile Polens.",
-          "1812 zerbricht Napoleons Grande Armée am russischen Winter und an der verbrannten Erde – der Wendepunkt der napoleonischen Kriege."
-        ]
-      },
-      {
-        "from": 1826, "to": 1917,
-        "ruler": "Nikolaus II.",
-        "rulerTitle": "Kaiser und Selbstherrscher aller Reußen",
-        "dynasty": "Romanow",
-        "reign": "1894–1917",
-        "capital": "Sankt Petersburg",
-        "government": "Autokratie, ab 1906 mit eingeschränktem Parlament (Duma)",
-        "religion": "Orthodoxie als Staatskirche",
-        "languages": ["Russisch und über 100 weitere Sprachen"],
-        "population": "ca. 166 Mio. (1914)",
-        "economy": "Späte, rasche Industrialisierung; Transsibirische Eisenbahn; Getreideexport",
-        "summary": [
-          "Das flächengrößte Reich der Neuzeit reicht von Warschau bis Wladiwostok. Die Aufhebung der Leibeigenschaft 1861 kommt spät und löst die Landfrage nicht.",
-          "Niederlagen gegen Japan 1905 und die Belastungen des Ersten Weltkriegs überfordern den Staat. 1917 dankt Nikolaus II. ab, im Oktober übernehmen die Bolschewiki."
-        ]
-      }
+    "population": "ca. 12 Mio., nach der Pest 1348 stark gesunken",
+    "economy": "Fernhandel, Hanse im Norden, oberdeutsche Handelshäuser",
+    "summary": [
+     "Die Goldene Bulle von 1356 gibt dem Reich seine bis 1806 gültige Verfassung: Sieben Kurfürsten wählen den König, päpstliche Mitsprache entfällt.",
+     "Karl IV. macht Prag zur Metropole und gründet 1348 die erste Universität nördlich der Alpen."
     ]
-  },
-
-  "USSR": {
-    "kind": "Sozialistischer Bundesstaat",
-    "wiki": "Sowjetunion",
-    "founded": 1922,
-    "dissolved": 1991,
-    "events": [
-      { "year": 1922, "text": "Gründung der Union der Sozialistischen Sowjetrepubliken." },
-      { "year": 1932, "text": "Hungersnot in der Ukraine und in Kasachstan (Holodomor)." },
-      { "year": 1941, "text": "Deutscher Überfall; Beginn des Großen Vaterländischen Krieges." },
-      { "year": 1957, "text": "Sputnik – Beginn des Raumfahrtzeitalters." },
-      { "year": 1991, "text": "Auflösung der Sowjetunion." }
+   },
+   {
+    "from": 1518,
+    "to": 1648,
+    "ruler": "Karl V.",
+    "rulerTitle": "Römisch-deutscher Kaiser, König von Spanien",
+    "dynasty": "Habsburg",
+    "reign": "1519–1556",
+    "capital": "Wanderhof; Reichstage in Augsburg, Worms, Regensburg",
+    "government": "Wahlmonarchie mit Reichstag, Reichskammergericht, Reichskreisen",
+    "religion": "Katholisch und lutherisch nebeneinander; ab 1555 Landesherr entscheidet",
+    "languages": [
+     "Deutsch",
+     "Latein",
+     "Niederländisch",
+     "Italienisch"
     ],
-    "periods": [
-      {
-        "from": 1922, "to": 1953,
-        "ruler": "Josef Stalin",
-        "rulerTitle": "Generalsekretär der KPdSU",
-        "reign": "1922–1953",
-        "capital": "Moskau",
-        "government": "Einparteienstaat mit zentraler Planwirtschaft",
-        "religion": "Staatlicher Atheismus",
-        "languages": ["Russisch als Verkehrssprache, über 100 Nationalsprachen"],
-        "population": "ca. 170 Mio. (1939)",
-        "economy": "Fünfjahrpläne, Zwangskollektivierung, Schwerindustrie, Lagersystem",
-        "summary": [
-          "Die Sowjetunion industrialisiert sich in zwei Jahrzehnten – um den Preis von Millionen Toten durch Zwangskollektivierung, Hungersnöte und politischen Terror.",
-          "Im Zweiten Weltkrieg trägt sie die Hauptlast des Kampfes gegen die Wehrmacht: rund 27 Millionen sowjetische Bürger kommen ums Leben."
-        ]
-      },
-      {
-        "from": 1954, "to": 1991,
-        "ruler": "Leonid Breschnew",
-        "rulerTitle": "Generalsekretär der KPdSU",
-        "reign": "1964–1982",
-        "capital": "Moskau",
-        "government": "Einparteienstaat",
-        "religion": "Staatlicher Atheismus",
-        "languages": ["Russisch und die Sprachen der 15 Unionsrepubliken"],
-        "population": "ca. 290 Mio. (1991)",
-        "economy": "Planwirtschaft, Rüstung, Erdöl und Erdgas",
-        "summary": [
-          "Als eine von zwei Supermächten prägt die UdSSR den Kalten Krieg – vom Sputnik-Schock bis zur Kubakrise, von der Berliner Mauer bis Afghanistan.",
-          "Wirtschaftliche Stagnation, der Rüstungswettlauf und die Reformen Gorbatschows führen 1991 zur Auflösung in fünfzehn unabhängige Staaten."
-        ]
-      }
-    ]
-  },
-
-  "Russia": {
-    "kind": "Bundesrepublik",
-    "wiki": "Russland",
-    "founded": 1991,
-    "periods": [
-      {
-        "from": 1991, "to": null,
-        "ruler": "Boris Jelzin, ab 2000 Wladimir Putin",
-        "rulerTitle": "Präsident der Russischen Föderation",
-        "capital": "Moskau",
-        "government": "Präsidiale Föderation",
-        "religion": "Russisch-orthodoxes Christentum, Islam als zweitgrößte Religion",
-        "languages": ["Russisch und zahlreiche Regionalsprachen"],
-        "population": "ca. 145 Mio.",
-        "economy": "Erdöl, Erdgas, Metalle, Rüstungsindustrie",
-        "summary": [
-          "Als Rechtsnachfolgerin der Sowjetunion bleibt Russland flächengrößter Staat der Erde und ständiges Mitglied im UN-Sicherheitsrat.",
-          "Die 1990er Jahre bringen wirtschaftlichen Absturz und Privatisierung; ab 2000 folgen Zentralisierung der Macht und außenpolitische Konfrontation mit dem Westen."
-        ]
-      }
-    ]
-  },
-
-  "Polish–Lithuanian Commonwealth": {
-    "kind": "Adelsrepublik",
-    "wiki": "Polen-Litauen",
-    "founded": 1385,
-    "dissolved": 1795,
-    "periods": [
-      {
-        "from": 1385, "to": 1795,
-        "ruler": "Johann III. Sobieski",
-        "rulerTitle": "Gewählter König von Polen und Großfürst von Litauen",
-        "reign": "1674–1696",
-        "capital": "Krakau, ab 1596 Warschau",
-        "government": "Wahlmonarchie mit mächtigem Adelsparlament (Sejm)",
-        "religion": "Katholizismus; ungewöhnlich weitgehende Duldung anderer Bekenntnisse",
-        "languages": ["Polnisch", "Litauisch", "Ruthenisch", "Latein", "Jiddisch"],
-        "population": "ca. 11 Mio.",
-        "economy": "Getreideexport über Danzig, Gutsherrschaft",
-        "summary": [
-          "Die Union von Lublin 1569 schafft den flächengrößten Staat Europas seiner Zeit. Rund zehn Prozent der Bevölkerung – der Adel – wählen den König und beschließen die Gesetze.",
-          "Das liberum veto erlaubt jedem Abgeordneten, den Reichstag im Alleingang zu sprengen. Diese Blockademöglichkeit lähmt den Staat im 18. Jahrhundert.",
-          "1683 entsetzt Sobieski das belagerte Wien. Ein Jahrhundert später verschwindet Polen-Litauen in drei Teilungen von der Landkarte."
-        ]
-      }
-    ]
-  },
-
-  "Sweden": {
-    "kind": "Königreich",
-    "wiki": "Schweden",
-    "periods": [
-      {
-        "from": 1000, "to": 1520,
-        "ruler": "Wechselnde Könige",
-        "rulerTitle": "König von Schweden",
-        "capital": "Uppsala, später Stockholm",
-        "government": "Wahlkönigtum mit Provinziallandschaften",
-        "religion": "Christianisierung ab dem 11. Jahrhundert",
-        "languages": ["Altschwedisch"],
-        "population": "unter 1 Mio.",
-        "economy": "Eisen- und Kupferbergbau, Fernhandel",
-        "summary": "Aus wikingerzeitlichen Kleinreichen entsteht ein Königtum, das ab 1397 in der Kalmarer Union mit Dänemark und Norwegen verbunden ist."
-      },
-      {
-        "from": 1521, "to": 1721,
-        "ruler": "Gustav II. Adolf",
-        "rulerTitle": "König von Schweden",
-        "dynasty": "Wasa",
-        "reign": "1611–1632",
-        "capital": "Stockholm",
-        "government": "Erbmonarchie mit Reichsrat und Ständereichstag",
-        "religion": "Lutherische Staatskirche",
-        "languages": ["Schwedisch", "Finnisch", "Deutsch", "Estnisch"],
-        "population": "ca. 1,5 Mio.",
-        "economy": "Kupfer aus Falun, Eisen, Kriegskontributionen",
-        "summary": [
-          "Ein dünn besiedeltes Land wird zur Großmacht: Die Ostsee ist im 17. Jahrhundert praktisch ein schwedisches Binnenmeer.",
-          "Gustav II. Adolf greift 1630 in den Dreißigjährigen Krieg ein und gilt als Erneuerer der Kriegführung. Der Große Nordische Krieg 1700–1721 beendet die Großmachtstellung."
-        ]
-      },
-      {
-        "from": 1722, "to": null,
-        "ruler": "Wechselnde Könige und Regierungen",
-        "rulerTitle": "König; Regierungsgewalt beim Parlament",
-        "capital": "Stockholm",
-        "government": "Konstitutionelle Monarchie",
-        "religion": "Lutherische Tradition, seit 2000 keine Staatskirche",
-        "languages": ["Schwedisch"],
-        "population": "ca. 10 Mio.",
-        "economy": "Stahl, Maschinenbau, Holz, Hochtechnologie",
-        "summary": [
-          "1814 tritt Schweden in seinen letzten Krieg ein und hält seither an der Bündnisfreiheit fest – bis zum NATO-Beitritt 2024.",
-          "Im 20. Jahrhundert entsteht das schwedische Wohlfahrtsmodell, das international als eigener Weg zwischen Markt und Staat wahrgenommen wird."
-        ]
-      }
-    ]
-  },
-
-  "Denmark-Norway": {
-    "kind": "Personalunion",
-    "wiki": "Dänemark-Norwegen",
-    "founded": 1380,
-    "dissolved": 1814,
-    "periods": [
-      {
-        "from": 1380, "to": 1814,
-        "ruler": "Christian IV.",
-        "rulerTitle": "König von Dänemark und Norwegen",
-        "dynasty": "Oldenburg",
-        "reign": "1588–1648",
-        "capital": "Kopenhagen",
-        "government": "Ab 1660 absolute Erbmonarchie",
-        "religion": "Lutherische Staatskirche",
-        "languages": ["Dänisch", "Norwegisch", "Isländisch", "Deutsch"],
-        "population": "ca. 1,8 Mio.",
-        "economy": "Sundzoll, Fischerei, Holz, Kolonialhandel",
-        "summary": [
-          "Der Sundzoll auf jedes Schiff, das in die Ostsee will, finanziert die dänische Krone jahrhundertelang. Das Reich umfasst auch Island, Grönland und die Färöer.",
-          "1814 muss Dänemark Norwegen an Schweden abtreten – die Quittung für das Bündnis mit Napoleon. Grönland, Island und die Färöer bleiben dänisch."
-        ]
-      }
-    ]
-  },
-
-  "Kalmar Union": {
-    "kind": "Personalunion dreier Königreiche",
-    "wiki": "Kalmarer Union",
-    "founded": 1397,
-    "dissolved": 1523,
-    "periods": [
-      {
-        "from": 1397, "to": 1523,
-        "ruler": "Margarethe I.",
-        "rulerTitle": "Regentin von Dänemark, Norwegen und Schweden",
-        "reign": "1387–1412",
-        "capital": "Kopenhagen",
-        "government": "Union unter einem gemeinsamen Monarchen bei eigenen Reichsräten",
-        "religion": "Katholisches Christentum",
-        "languages": ["Dänisch", "Schwedisch", "Norwegisch"],
-        "population": "ca. 1,5 Mio.",
-        "economy": "Heringsfang, Holz, Eisen; Konkurrenz zur Hanse",
-        "summary": [
-          "Margarethe I. vereint 1397 die drei nordischen Königreiche – auf dem Papier der größte Staat Europas, in der Praxis ein Zweckbündnis gegen die Hanse.",
-          "Das „Stockholmer Blutbad“ von 1520 löst den schwedischen Aufstand aus; 1523 zerbricht die Union endgültig."
-        ]
-      }
-    ]
-  },
-
-  "Austrian Empire": {
-    "kind": "Kaisertum",
-    "wiki": "Kaisertum Österreich",
-    "founded": 1804,
-    "dissolved": 1867,
-    "periods": [
-      {
-        "from": 1650, "to": 1803,
-        "kind": "Habsburgermonarchie",
-        "ruler": "Maria Theresia",
-        "rulerTitle": "Erzherzogin von Österreich, Königin von Ungarn und Böhmen",
-        "dynasty": "Habsburg",
-        "reign": "1740–1780",
-        "capital": "Wien",
-        "government": "Zusammengesetzte Monarchie, ab 1749 zentralisierte Verwaltung",
-        "religion": "Katholizismus",
-        "languages": ["Deutsch", "Ungarisch", "Tschechisch", "Italienisch", "Kroatisch"],
-        "population": "ca. 18 Mio.",
-        "economy": "Landwirtschaft, Manufakturen, Bergbau",
-        "summary": [
-          "Maria Theresia erbt 1740 einen bedrohten Länderverband und macht daraus einen modernen Staat: Schulpflicht, Zentralbehörden, einheitliches Steuerwesen.",
-          "Der Verlust Schlesiens an Preußen begründet den österreichisch-preußischen Gegensatz, der die deutsche Geschichte bis 1866 bestimmt."
-        ]
-      },
-      {
-        "from": 1804, "to": 1866,
-        "ruler": "Franz I.",
-        "rulerTitle": "Kaiser von Österreich",
-        "dynasty": "Habsburg-Lothringen",
-        "reign": "1804–1835",
-        "capital": "Wien",
-        "government": "Absolute Monarchie; ab 1861 Verfassung",
-        "religion": "Katholizismus",
-        "languages": ["Deutsch, Ungarisch, Tschechisch, Polnisch, Italienisch u. a."],
-        "population": "ca. 30 Mio.",
-        "economy": "Landwirtschaft, beginnende Industrialisierung in Böhmen",
-        "summary": [
-          "1804 nimmt Franz den Titel eines Kaisers von Österreich an – zwei Jahre bevor das Heilige Römische Reich endet.",
-          "Der Wiener Kongress 1814/15 macht Österreich unter Metternich zur Ordnungsmacht Europas. Nach 1848 hält nur noch die Dynastie die Nationalitäten zusammen."
-        ]
-      }
-    ]
-  },
-
-  "Austria-Hungary": {
-    "kind": "Doppelmonarchie",
-    "wiki": "Österreich-Ungarn",
-    "founded": 1867,
-    "dissolved": 1918,
-    "periods": [
-      {
-        "from": 1867, "to": 1918,
-        "ruler": "Franz Joseph I.",
-        "rulerTitle": "Kaiser von Österreich, Apostolischer König von Ungarn",
-        "dynasty": "Habsburg-Lothringen",
-        "reign": "1848–1916",
-        "capital": "Wien und Budapest",
-        "government": "Realunion zweier Staaten mit gemeinsamem Herrscher, Heer und Außenpolitik",
-        "religion": "Katholizismus, daneben Protestanten, Orthodoxe, Juden, Muslime",
-        "languages": ["Deutsch", "Ungarisch", "Tschechisch", "Polnisch", "Kroatisch", "Rumänisch", "Slowakisch", "Ruthenisch", "Slowenisch", "Serbisch", "Italienisch"],
-        "population": "ca. 52 Mio. (1914)",
-        "economy": "Landwirtschaft in Ungarn, Industrie in Böhmen und Wien",
-        "summary": [
-          "Elf anerkannte Nationalitäten, keine Mehrheit: Die Doppelmonarchie ist der Versuch, ein Vielvölkerreich im Zeitalter des Nationalismus zusammenzuhalten.",
-          "Wien um 1900 ist ein Zentrum der Moderne – Freud, Mahler, Klimt, Wittgenstein. Zugleich blockieren sich die Nationalitätenkonflikte im Parlament.",
-          "Das Attentat von Sarajevo 1914 löst den Ersten Weltkrieg aus; 1918 zerfällt der Staat in Nachfolgestaaten."
-        ]
-      }
-    ]
-  },
-
-  "Prussia": {
-    "kind": "Königreich",
-    "wiki": "Preußen",
-    "founded": 1701,
-    "dissolved": 1947,
-    "periods": [
-      {
-        "from": 1701, "to": 1870,
-        "ruler": "Friedrich II. der Große",
-        "rulerTitle": "König von Preußen",
-        "dynasty": "Hohenzollern",
-        "reign": "1740–1786",
-        "capital": "Berlin, Residenz Potsdam",
-        "government": "Aufgeklärter Absolutismus mit Beamten- und Militärstaat",
-        "religion": "Lutherisch und reformiert; ungewöhnlich weitgehende Duldung",
-        "languages": ["Deutsch", "Polnisch"],
-        "population": "ca. 5 Mio. (1786)",
-        "economy": "Landwirtschaft, staatlich geförderte Manufakturen, Kanalbau",
-        "summary": [
-          "Preußen ist ein Staat aus verstreuten Territorien, den Verwaltung und Heer zusammenhalten. Mit der Eroberung Schlesiens 1740 steigt es zur europäischen Großmacht auf.",
-          "Friedrich II. schafft die Folter ab, fördert Ackerbau und Zuwanderung – und führt drei Kriege, die sein Land an den Rand des Ruins bringen."
-        ]
-      },
-      {
-        "from": 1871, "to": 1947,
-        "ruler": "Wilhelm I., zugleich Deutscher Kaiser",
-        "rulerTitle": "König von Preußen",
-        "dynasty": "Hohenzollern",
-        "capital": "Berlin",
-        "government": "Konstitutionelle Monarchie mit Dreiklassenwahlrecht",
-        "religion": "Evangelisch geprägt",
-        "languages": ["Deutsch", "Polnisch"],
-        "population": "ca. 40 Mio.",
-        "economy": "Ruhrgebiet, Stahl, Chemie, Eisenbahn",
-        "summary": [
-          "Preußen stellt zwei Drittel des Deutschen Reiches; sein König ist zugleich Kaiser, sein Ministerpräsident meist Reichskanzler.",
-          "1947 löst der Alliierte Kontrollrat Preußen als „Träger des Militarismus“ förmlich auf."
-        ]
-      }
-    ]
-  },
-
-  "German Empire": {
-    "kind": "Bundesstaat mit Kaiser",
-    "wiki": "Deutsches Kaiserreich",
-    "founded": 1871,
-    "dissolved": 1918,
-    "periods": [
-      {
-        "from": 1871, "to": 1918,
-        "ruler": "Wilhelm II.",
-        "rulerTitle": "Deutscher Kaiser, König von Preußen",
-        "dynasty": "Hohenzollern",
-        "reign": "1888–1918",
-        "capital": "Berlin",
-        "government": "Konstitutionelle Monarchie; Reichstag mit allgemeinem Männerwahlrecht",
-        "religion": "Zwei Drittel evangelisch, ein Drittel katholisch",
-        "languages": ["Deutsch", "Polnisch", "Dänisch", "Französisch"],
-        "population": "ca. 68 Mio. (1914)",
-        "economy": "Chemie, Elektrotechnik, Stahl – zweitgrößte Industriemacht der Welt",
-        "summary": [
-          "Das Kaiserreich wird 1871 in Versailles ausgerufen und ist binnen einer Generation Europas führende Industrienation. Bismarck führt zugleich die erste staatliche Sozialversicherung ein.",
-          "Nach Bismarcks Entlassung 1890 setzt Wilhelm II. auf Flottenbau und „Weltpolitik“ – und treibt Großbritannien, Frankreich und Russland zusammen.",
-          "Die Niederlage von 1918 beendet die Monarchie; es folgt die Weimarer Republik."
-        ]
-      }
-    ]
-  },
-
-  "Germany": {
-    "kind": "Bundesstaat",
-    "wiki": "Deutschland",
-    "events": [
-      { "year": 1919, "text": "Weimarer Verfassung; Frauenwahlrecht." },
-      { "year": 1933, "text": "Machtübertragung an die NSDAP." },
-      { "year": 1945, "text": "Bedingungslose Kapitulation; Teilung in Besatzungszonen." },
-      { "year": 1990, "text": "Deutsche Wiedervereinigung." }
+    "population": "ca. 16 Mio., nach dem Dreißigjährigen Krieg unter 12 Mio.",
+    "economy": "Fugger und Welser, Bergbau, Frühkapitalismus",
+    "summary": [
+     "In Karls Reich geht die Sonne nicht unter – doch Reformation, Fürstenopposition und Frankreich blockieren jeden Versuch einer geschlossenen Monarchie. 1556 dankt er ab.",
+     "Der Dreißigjährige Krieg 1618–1648 kostet je nach Region ein Drittel bis die Hälfte der Bevölkerung. Der Westfälische Frieden macht die Landeshoheit der Fürsten endgültig."
     ],
-    "periods": [
-      {
-        "from": 1871, "to": 1918,
-        "ruler": "Wilhelm II.",
-        "rulerTitle": "Deutscher Kaiser",
-        "capital": "Berlin",
-        "government": "Konstitutionelle Monarchie",
-        "religion": "Evangelisch und katholisch",
-        "languages": ["Deutsch"],
-        "population": "ca. 68 Mio.",
-        "summary": "Siehe Deutsches Kaiserreich: 1871 gegründeter Bundesstaat unter preußischer Führung."
-      },
-      {
-        "from": 1919, "to": 1932,
-        "kind": "Republik",
-        "ruler": "Paul von Hindenburg",
-        "rulerTitle": "Reichspräsident",
-        "reign": "1925–1934",
-        "capital": "Berlin",
-        "government": "Parlamentarische Republik mit starkem Präsidentenamt",
-        "religion": "Evangelisch und katholisch",
-        "languages": ["Deutsch"],
-        "population": "ca. 63 Mio.",
-        "economy": "Hyperinflation 1923, kurze Erholung, Weltwirtschaftskrise ab 1929",
-        "summary": [
-          "Die Weimarer Republik gibt Deutschland seine erste Demokratie: Frauenwahlrecht, Verhältniswahl, weitreichende Grundrechte.",
-          "Reparationslasten, Inflation und Massenarbeitslosigkeit untergraben ihren Rückhalt. Der Artikel 48 erlaubt Regieren per Notverordnung – ein Einfallstor für die Diktatur."
-        ]
-      },
-      {
-        "from": 1933, "to": 1945,
-        "kind": "Diktatur",
-        "ruler": "Adolf Hitler",
-        "rulerTitle": "Reichskanzler, ab 1934 „Führer und Reichskanzler“",
-        "capital": "Berlin",
-        "government": "Nationalsozialistische Einparteiendiktatur",
-        "religion": "Kirchen unter staatlicher Kontrolle; Verfolgung der jüdischen Bevölkerung",
-        "languages": ["Deutsch"],
-        "population": "ca. 69 Mio. (1939)",
-        "economy": "Aufrüstung, Zwangsarbeit, Ausplünderung besetzter Gebiete",
-        "summary": [
-          "Binnen weniger Monate werden Parteien, Gewerkschaften und Presse gleichgeschaltet, politische Gegner verfolgt und die Rechte der jüdischen Bevölkerung beseitigt.",
-          "Der von Deutschland begonnene Zweite Weltkrieg fordert weltweit über 60 Millionen Menschenleben. Im Holocaust ermordet das Regime rund sechs Millionen Jüdinnen und Juden sowie Hunderttausende Sinti und Roma, Kranke, Homosexuelle und politisch Verfolgte."
-        ]
-      },
-      {
-        "from": 1946, "to": null,
-        "kind": "Bundesrepublik",
-        "ruler": "Wechselnde Bundeskanzler",
-        "rulerTitle": "Bundeskanzler; Staatsoberhaupt ist der Bundespräsident",
-        "capital": "Bonn, seit 1990 Berlin",
-        "government": "Parlamentarische Bundesrepublik",
-        "religion": "Konfessionell gemischt, wachsende Konfessionslosigkeit",
-        "languages": ["Deutsch"],
-        "population": "ca. 84 Mio.",
-        "economy": "Exportorientierte Industrie: Fahrzeugbau, Maschinen, Chemie",
-        "summary": [
-          "1949 entstehen zwei deutsche Staaten. Die Bundesrepublik bindet sich an den Westen und wird Gründungsmitglied der Europäischen Gemeinschaften.",
-          "1989 fällt die Mauer, 1990 vollzieht sich die Wiedervereinigung – ausgehandelt im Zwei-plus-Vier-Vertrag mit den vier Siegermächten."
-        ]
-      }
-    ]
-  },
-
-  "Italy": {
-    "kind": "Königreich, später Republik",
-    "wiki": "Italien",
-    "founded": 1861,
-    "periods": [
-      {
-        "from": 1861, "to": 1945,
-        "ruler": "Viktor Emanuel III.; ab 1922 Regierungschef Benito Mussolini",
-        "rulerTitle": "König von Italien",
-        "dynasty": "Savoyen",
-        "capital": "Turin, Florenz, ab 1871 Rom",
-        "government": "Konstitutionelle Monarchie, 1925–1943 faschistische Diktatur",
-        "religion": "Katholizismus; Lateranverträge 1929",
-        "languages": ["Italienisch und zahlreiche Regionalsprachen"],
-        "population": "ca. 43 Mio.",
-        "economy": "Landwirtschaft im Süden, Industrie im Norden, Auswanderung",
-        "summary": [
-          "Das Risorgimento eint die Halbinsel bis 1870. „Wir haben Italien gemacht, jetzt müssen wir Italiener machen“, bemerkte Massimo d'Azeglio – Nord und Süd blieben lange getrennte Welten.",
-          "Ab 1922 errichtet Mussolini die erste faschistische Diktatur Europas. Der Kriegseintritt an deutscher Seite 1940 endet 1943 in Kapitulation und Bürgerkrieg."
-        ]
-      },
-      {
-        "from": 1946, "to": null,
-        "ruler": "Wechselnde Ministerpräsidenten",
-        "rulerTitle": "Ministerpräsident; Staatsoberhaupt ist der Staatspräsident",
-        "capital": "Rom",
-        "government": "Parlamentarische Republik",
-        "religion": "Katholizismus",
-        "languages": ["Italienisch"],
-        "population": "ca. 59 Mio.",
-        "economy": "Maschinenbau, Mode, Tourismus, Landwirtschaft",
-        "summary": [
-          "1946 schafft ein Referendum die Monarchie ab. Italien gehört 1957 zu den sechs Gründerstaaten der Europäischen Wirtschaftsgemeinschaft.",
-          "Das „Wirtschaftswunder“ der 1950er und 60er Jahre macht aus einem Agrarland eine der größten Industrienationen Europas."
-        ]
-      }
-    ]
-  },
-
-  "Poland": {
-    "kind": "Königreich, später Republik",
-    "wiki": "Polen",
-    "founded": 966,
-    "periods": [
-      {
-        "from": 966, "to": 1385,
-        "ruler": "Kasimir III. der Große",
-        "rulerTitle": "König von Polen",
-        "dynasty": "Piasten",
-        "reign": "1333–1370",
-        "capital": "Gnesen, später Krakau",
-        "government": "Erbmonarchie",
-        "religion": "Katholisches Christentum seit 966",
-        "languages": ["Altpolnisch", "Latein"],
-        "population": "ca. 2 Mio.",
-        "economy": "Getreide, Salz aus Wieliczka, Fernhandel",
-        "summary": [
-          "„Er fand ein Polen aus Holz und hinterließ ein Polen aus Stein“ – Kasimir III. gründet Städte, kodifiziert das Recht und stiftet 1364 die Universität Krakau.",
-          "Polen nimmt in dieser Zeit jüdische Flüchtlinge aus Westeuropa auf und wird für Jahrhunderte zum Zentrum jüdischen Lebens."
-        ]
-      },
-      {
-        "from": 1918, "to": null,
-        "ruler": "Wechselnde Staatsoberhäupter",
-        "rulerTitle": "Präsident der Republik Polen",
-        "capital": "Warschau",
-        "government": "Republik; 1945–1989 sozialistischer Einparteienstaat",
-        "religion": "Katholizismus",
-        "languages": ["Polnisch"],
-        "population": "ca. 38 Mio.",
-        "economy": "Industrie, Landwirtschaft, Dienstleistungen",
-        "summary": [
-          "1918 kehrt Polen nach 123 Jahren Teilung auf die Landkarte zurück. 1939 wird es von Deutschland und der Sowjetunion überfallen und verliert rund ein Sechstel seiner Bevölkerung.",
-          "Nach 1945 wird das Staatsgebiet nach Westen verschoben. Die Gewerkschaft Solidarność leitet ab 1980 das Ende des Ostblocks mit ein."
-        ]
-      }
-    ]
-  },
-
-  "Netherlands": {
-    "kind": "Republik, später Königreich",
-    "wiki": "Niederlande",
-    "founded": 1581,
-    "periods": [
-      {
-        "from": 1581, "to": 1794,
-        "ruler": "Statthalter aus dem Haus Oranien, daneben die Generalstaaten",
-        "rulerTitle": "Statthalter (Stadhouder)",
-        "capital": "Den Haag; Amsterdam als Wirtschaftszentrum",
-        "government": "Föderative Republik der Sieben Vereinigten Provinzen",
-        "religion": "Calvinistisch geprägt, in der Praxis tolerant",
-        "languages": ["Niederländisch"],
-        "population": "ca. 2 Mio.",
-        "economy": "Welthandel, VOC, Amsterdamer Börse und Wechselbank, Heringsfang",
-        "summary": [
-          "Aus dem Aufstand gegen Spanien geht eine Handelsrepublik hervor, die im 17. Jahrhundert die Weltmeere beherrscht. Amsterdam wird zum Finanzplatz Europas.",
-          "Die Vereinigte Ostindische Kompanie von 1602 gilt als erste Aktiengesellschaft mit handelbaren Anteilen – und führte zugleich Krieg, schloss Verträge und beherrschte Kolonien."
-        ]
-      },
-      {
-        "from": 1815, "to": null,
-        "ruler": "Wechselnde Monarchen des Hauses Oranien-Nassau",
-        "rulerTitle": "König bzw. Königin der Niederlande",
-        "capital": "Amsterdam; Regierungssitz Den Haag",
-        "government": "Parlamentarische Monarchie",
-        "religion": "Konfessionell gemischt, stark säkularisiert",
-        "languages": ["Niederländisch", "Friesisch"],
-        "population": "ca. 18 Mio.",
-        "economy": "Handel, Landwirtschaft, Chemie, Rotterdam als Europas größter Hafen",
-        "summary": [
-          "Nach dem Verlust Belgiens 1830 konzentriert sich das Königreich auf Handel und Kolonien; Indonesien wird 1949 unabhängig.",
-          "Die Niederlande gehören zu den Gründungsmitgliedern von NATO und EWG."
-        ]
-      }
-    ]
-  },
-
-  "Venice": {
-    "kind": "Handelsrepublik",
-    "wiki": "Republik Venedig",
-    "founded": 697,
-    "dissolved": 1797,
-    "periods": [
-      {
-        "from": 697, "to": 1797,
-        "ruler": "Enrico Dandolo",
-        "rulerTitle": "Doge von Venedig",
-        "reign": "1192–1205",
-        "capital": "Venedig",
-        "government": "Oligarchische Republik; der Doge wird auf Lebenszeit gewählt",
-        "religion": "Katholizismus mit betonter Eigenständigkeit gegenüber Rom",
-        "languages": ["Venezianisch", "Italienisch", "Griechisch"],
-        "population": "ca. 180.000 in der Stadt",
-        "economy": "Levantehandel, Salz, Glas, Schiffbau im staatlichen Arsenal",
-        "summary": [
-          "Über tausend Jahre besteht die Republik – länger als jedes andere europäische Staatswesen der Neuzeit. Ihr Reichtum beruht auf dem Handel zwischen Europa und dem Orient.",
-          "Das Arsenal beschäftigt im 16. Jahrhundert bis zu 16.000 Menschen und kann in Serienfertigung ein Schiff pro Tag ausrüsten – die größte Industrieanlage des vorindustriellen Europa.",
-          "1797 übergibt der letzte Doge die Republik kampflos an Napoleon."
-        ]
-      }
-    ]
-  },
-
-  "Papal States": {
-    "kind": "Geistlicher Staat",
-    "wiki": "Kirchenstaat",
-    "founded": 756,
-    "dissolved": 1870,
-    "periods": [
-      {
-        "from": 756, "to": 1870,
-        "ruler": "Der jeweils regierende Papst",
-        "rulerTitle": "Papst, zugleich weltlicher Landesherr",
-        "capital": "Rom, zeitweise Avignon",
-        "government": "Wahlmonarchie; das Kardinalskollegium wählt auf Lebenszeit",
-        "religion": "Katholizismus",
-        "languages": ["Italienisch", "Latein"],
-        "population": "ca. 3 Mio. (19. Jahrhundert)",
-        "economy": "Kirchenzehnt, Pilgerwesen, Landwirtschaft im Umland",
-        "summary": [
-          "Mit der Pippinschen Schenkung 756 erhält der Papst weltliche Herrschaft in Mittelitalien – Grundlage einer über tausendjährigen Doppelrolle als geistliches und politisches Oberhaupt.",
-          "1870 besetzt das Königreich Italien Rom. Erst die Lateranverträge von 1929 schaffen mit der Vatikanstadt einen souveränen Reststaat."
-        ]
-      }
-    ]
-  },
-
-  "Teutonic Knights": {
-    "kind": "Geistlicher Ritterorden mit Ordensstaat",
-    "wiki": "Deutscher Orden",
-    "founded": 1190,
-    "periods": [
-      {
-        "from": 1226, "to": 1525,
-        "ruler": "Der jeweilige Hochmeister",
-        "rulerTitle": "Hochmeister des Deutschen Ordens",
-        "capital": "Marienburg (Malbork)",
-        "government": "Wahlmonarchie des Ordenskonvents",
-        "religion": "Katholisches Christentum",
-        "languages": ["Deutsch", "Prußisch", "Polnisch", "Lettisch"],
-        "population": "ca. 500.000",
-        "economy": "Getreide- und Bernsteinhandel, Städtegründungen, Hanse",
-        "summary": [
-          "Aus einem Hospitalorden des Heiligen Landes wird ein Territorialstaat an der Ostsee. Die Unterwerfung der prußischen Stämme dauert über fünfzig Jahre.",
-          "Die Niederlage bei Tannenberg 1410 gegen Polen-Litauen bricht die Vormacht. 1525 wandelt der Hochmeister den Ordensstaat in ein weltliches, lutherisches Herzogtum um."
-        ]
-      }
-    ]
-  },
-
-  "Ottoman Empire": {
-    "kind": "Sultanat und Kalifat",
-    "wiki": "Osmanisches Reich",
-    "founded": 1299,
-    "dissolved": 1922,
-    "events": [
-      { "year": 1453, "text": "Mehmed II. erobert Konstantinopel." },
-      { "year": 1529, "text": "Erste Belagerung Wiens." },
-      { "year": 1683, "text": "Zweite Belagerung Wiens scheitert; Beginn des Rückzugs." },
-      { "year": 1922, "text": "Abschaffung des Sultanats; ein Jahr später wird die Türkei Republik." }
+    "quote": "„Ein Monstrum“, urteilte Samuel von Pufendorf – gemeint war die Verfassung, nicht das Land."
+   },
+   {
+    "from": 1649,
+    "to": 1806,
+    "ruler": "Karl VI.",
+    "rulerTitle": "Römisch-deutscher Kaiser",
+    "dynasty": "Habsburg",
+    "reign": "1711–1740",
+    "capital": "Wien als Kaiserresidenz, Regensburg als Sitz des Reichstags",
+    "government": "Lockerer Staatenbund aus rund 300 Territorien",
+    "religion": "Konfessionell geteilt, im Rahmen des Reichsrechts geregelt",
+    "languages": [
+     "Deutsch",
+     "Latein",
+     "Tschechisch",
+     "Italienisch"
     ],
-    "periods": [
-      {
-        "from": 1299, "to": 1512,
-        "ruler": "Mehmed II. der Eroberer",
-        "rulerTitle": "Sultan",
-        "dynasty": "Osmanen",
-        "reign": "1451–1481",
-        "capital": "Bursa, Edirne, ab 1453 Konstantinopel",
-        "government": "Sultanat mit Janitscharenheer und Timar-Lehnswesen",
-        "religion": "Sunnitischer Islam; Millet-System für Christen und Juden",
-        "languages": ["Osmanisch-Türkisch", "Griechisch", "Arabisch", "Serbisch", "Armenisch"],
-        "population": "ca. 9 Mio.",
-        "economy": "Karawanenhandel, Zölle, Landwirtschaft",
-        "summary": [
-          "Mit der Eroberung Konstantinopels 1453 löst das Osmanische Reich Byzanz endgültig ab und wird zur beherrschenden Macht zwischen Balkan und Vorderem Orient.",
-          "Das Millet-System gewährt christlichen und jüdischen Gemeinschaften eigene Gerichtsbarkeit – Ungleichheit bei gleichzeitiger, für die Zeit ungewöhnlicher Duldung."
-        ]
-      },
-      {
-        "from": 1513, "to": 1699,
-        "ruler": "Süleyman I. der Prächtige",
-        "rulerTitle": "Sultan, Kalif, Hüter der beiden Heiligen Stätten",
-        "dynasty": "Osmanen",
-        "reign": "1520–1566",
-        "capital": "Konstantinopel (Istanbul)",
-        "government": "Sultanat mit Großwesir und Diwan",
-        "religion": "Sunnitischer Islam",
-        "languages": ["Osmanisch-Türkisch", "Arabisch", "Persisch", "Griechisch", "Ladino"],
-        "population": "ca. 25 Mio.",
-        "economy": "Handel zwischen Indien und Europa, Zünfte, Stiftungswesen",
-        "summary": [
-          "Unter Süleyman reicht das Reich von Ungarn bis zum Jemen, von Algier bis Bagdad. Er gilt als Gesetzgeber – im Türkischen heißt er Kanunî.",
-          "Die gescheiterte Belagerung Wiens 1683 markiert den Wendepunkt: Ab dem Frieden von Karlowitz 1699 verliert das Reich dauerhaft Gebiete."
-        ]
-      },
-      {
-        "from": 1700, "to": 1922,
-        "ruler": "Abdülhamid II.",
-        "rulerTitle": "Sultan und Kalif",
-        "dynasty": "Osmanen",
-        "reign": "1876–1909",
-        "capital": "Istanbul",
-        "government": "Sultanat; 1876 und ab 1908 mit Verfassung und Parlament",
-        "religion": "Sunnitischer Islam",
-        "languages": ["Osmanisch-Türkisch", "Arabisch", "Griechisch", "Armenisch", "Bulgarisch"],
-        "population": "ca. 21 Mio. (1914)",
-        "economy": "Agrarexporte, Eisenbahnbau, wachsende Auslandsverschuldung",
-        "summary": [
-          "Als „kranker Mann am Bosporus“ verspottet, versucht das Reich mit den Tanzimat-Reformen ab 1839 die Erneuerung nach europäischem Vorbild – gegen wachsende Nationalbewegungen auf dem Balkan.",
-          "Der Erste Weltkrieg an deutscher Seite endet mit Zusammenbruch und Besetzung. In dieser Zeit werden Hunderttausende Armenier deportiert und getötet – nach überwiegender Forschungsmeinung ein Völkermord.",
-          "1923 geht aus dem Kernland unter Mustafa Kemal die Republik Türkei hervor."
-        ]
-      }
+    "population": "ca. 20 Mio.",
+    "economy": "Merkantilismus in den Einzelterritorien",
+    "summary": [
+     "Nach 1648 ist das Reich kein Staat im modernen Sinn, sondern ein Rechtsverband: Er sichert kleinen Territorien Bestand und bietet ein funktionierendes Gerichtswesen.",
+     "Die Konkurrenz Österreich–Preußen zersetzt ihn im 18. Jahrhundert. 1806 löst Franz II. unter dem Druck Napoleons das Reich auf."
     ]
-  },
-
-  "Turkey": {
+   }
+  ]
+ },
+ "Kingdom of France": {
+  "kind": "Königreich",
+  "wiki": "Frankreich",
+  "periods": [
+   {
+    "from": 987,
+    "to": 1300,
+    "ruler": "Philipp II. August",
+    "rulerTitle": "König von Frankreich",
+    "dynasty": "Kapetinger",
+    "reign": "1180–1223",
+    "capital": "Paris",
+    "government": "Lehnsmonarchie mit wachsender Krondomäne",
+    "religion": "Katholisches Christentum",
+    "languages": [
+     "Altfranzösisch",
+     "Okzitanisch",
+     "Latein"
+    ],
+    "population": "ca. 12 Mio. – das bevölkerungsreichste Land Europas",
+    "economy": "Landwirtschaft, Champagnermessen, Tuchhandel",
+    "summary": [
+     "Die Kapetinger beginnen 987 als Herren über kaum mehr als die Île-de-France. Über drei Jahrhunderte bauen sie geduldig eine Königsmacht auf – vor allem durch Heirat, Erbrecht und Gerichtshoheit.",
+     "Philipp II. entreißt den englischen Plantagenets die Normandie und das Anjou und verdreifacht die Krondomäne."
+    ]
+   }
+  ]
+ },
+ "France": {
+  "kind": "Königreich, später Republik",
+  "wiki": "Frankreich",
+  "founded": 987,
+  "events": [
+   {
+    "year": 1337,
+    "text": "Beginn des Hundertjährigen Krieges gegen England."
+   },
+   {
+    "year": 1598,
+    "text": "Edikt von Nantes gewährt den Hugenotten Duldung."
+   },
+   {
+    "year": 1789,
+    "text": "Sturm auf die Bastille; Beginn der Revolution."
+   },
+   {
+    "year": 1804,
+    "text": "Napoleon krönt sich zum Kaiser der Franzosen."
+   },
+   {
+    "year": 1871,
+    "text": "Niederlage gegen Preußen; Gründung der Dritten Republik."
+   },
+   {
+    "year": 1958,
+    "text": "Fünfte Republik unter de Gaulle."
+   }
+  ],
+  "periods": [
+   {
+    "from": 1301,
+    "to": 1515,
+    "ruler": "Ludwig XI.",
+    "rulerTitle": "König von Frankreich",
+    "dynasty": "Valois",
+    "reign": "1461–1483",
+    "capital": "Paris, Hof an der Loire",
+    "government": "Ständische Monarchie",
+    "religion": "Katholisches Christentum",
+    "languages": [
+     "Mittelfranzösisch",
+     "Okzitanisch"
+    ],
+    "population": "ca. 15 Mio.",
+    "economy": "Landwirtschaft, Messen von Lyon, stehendes Heer",
+    "summary": [
+     "Nach dem Hundertjährigen Krieg baut Ludwig XI. mit Diplomatie, Geld und Spionage die Königsmacht aus und zerschlägt das burgundische Zwischenreich.",
+     "Frankreich ist damals der bevölkerungsreichste Staat Europas – die Grundlage seiner späteren Vormachtstellung."
+    ]
+   },
+   {
+    "from": 1516,
+    "to": 1714,
+    "ruler": "Ludwig XIV.",
+    "rulerTitle": "König von Frankreich und Navarra",
+    "dynasty": "Bourbon",
+    "reign": "1643–1715",
+    "capital": "Versailles (ab 1682)",
+    "government": "Absolute Monarchie",
+    "religion": "Katholizismus; 1685 Widerruf des Edikts von Nantes",
+    "languages": [
+     "Französisch"
+    ],
+    "population": "ca. 20 Mio.",
+    "economy": "Merkantilismus unter Colbert, Manufakturen, Kolonien",
+    "summary": [
+     "Versailles ist Regierungssitz und Käfig zugleich: Der Adel wird zum Hofdienst verpflichtet und damit politisch entmachtet. Das Modell wird in ganz Europa kopiert.",
+     "Vier große Kriege in fünf Jahrzehnten überdehnen die Finanzen. Der Widerruf des Toleranzedikts vertreibt Hunderttausende Hugenotten – ein Verlust an Handwerk und Kapital."
+    ],
+    "quote": "„L'État, c'est moi“ ist wohl nie gesagt worden – gelebt wurde es dennoch."
+   },
+   {
+    "from": 1715,
+    "to": 1814,
+    "ruler": "Napoleon Bonaparte",
+    "rulerTitle": "Kaiser der Franzosen",
+    "dynasty": "Bonaparte",
+    "reign": "1804–1814/15",
+    "capital": "Paris",
+    "government": "Plebiszitäres Kaisertum auf revolutionärer Grundlage",
+    "religion": "Katholizismus als Mehrheitsreligion, staatlich geregelt (Konkordat 1801)",
+    "languages": [
+     "Französisch"
+    ],
+    "population": "ca. 29 Mio. im Kernland",
+    "economy": "Kontinentalsperre gegen England, Aufrüstung, Kontributionen",
+    "summary": [
+     "Aus der Revolution geht ein Staat hervor, der Verwaltung, Recht und Bildung neu ordnet. Der Code civil von 1804 prägt bis heute die Rechtsordnung vieler Länder.",
+     "Auf dem Höhepunkt 1812 beherrscht oder kontrolliert Frankreich fast ganz Europa. Der Russlandfeldzug beendet die Vorherrschaft binnen eines Jahres."
+    ]
+   },
+   {
+    "from": 1815,
+    "to": 1913,
+    "ruler": "Napoleon III.",
+    "rulerTitle": "Kaiser der Franzosen (1852–1870), danach Präsidenten der Dritten Republik",
+    "capital": "Paris",
+    "government": "Konstitutionelle Monarchie, Kaiserreich, ab 1870 Republik",
+    "religion": "Katholizismus; ab 1905 Trennung von Kirche und Staat",
+    "languages": [
+     "Französisch"
+    ],
+    "population": "ca. 39 Mio.",
+    "economy": "Industrialisierung, Eisenbahnbau, zweitgrößtes Kolonialreich der Welt",
+    "summary": [
+     "Frankreich wechselt im 19. Jahrhundert siebenmal die Staatsform. Stabil bleibt die zentralistische Verwaltung aus napoleonischer Zeit.",
+     "Nach 1871 baut die Dritte Republik ein Kolonialreich in Nord- und Westafrika sowie Indochina auf – flächenmäßig das zweitgrößte nach dem britischen."
+    ]
+   },
+   {
+    "from": 1914,
+    "to": 1944,
+    "ruler": "Raymond Poincaré, später Charles de Gaulle (Exil)",
+    "rulerTitle": "Präsident der Republik",
+    "capital": "Paris; 1940–1944 Vichy",
+    "government": "Parlamentarische Republik, 1940–1944 Besatzung und Kollaborationsregime",
+    "religion": "Laizistischer Staat",
+    "languages": [
+     "Französisch"
+    ],
+    "population": "ca. 41 Mio.",
+    "economy": "Kriegswirtschaft, Wiederaufbau, Kolonialhandel",
+    "summary": [
+     "Der Erste Weltkrieg kostet Frankreich 1,4 Millionen Gefallene – gemessen an der Bevölkerung einer der höchsten Verluste aller Krieg führenden Staaten.",
+     "1940 unterliegt das Land in sechs Wochen. Die Résistance und die Freien Französischen Streitkräfte sichern Frankreich 1945 dennoch einen Platz unter den Siegermächten."
+    ]
+   },
+   {
+    "from": 1945,
+    "to": null,
+    "ruler": "Wechselnde Staatspräsidenten",
+    "rulerTitle": "Präsident der Französischen Republik",
+    "capital": "Paris",
+    "government": "Semipräsidentielle Republik (Fünfte Republik seit 1958)",
+    "religion": "Laizität",
+    "languages": [
+     "Französisch"
+    ],
+    "population": "ca. 67 Mio.",
+    "economy": "Industrie, Kernenergie, Landwirtschaft, Tourismus",
+    "summary": [
+     "Frankreich verliert bis 1962 sein Kolonialreich – Indochina und Algerien in langen Kriegen – und wird zugleich Mitbegründer der europäischen Einigung.",
+     "Seit 1958 verbindet die Fünfte Republik ein starkes Präsidentenamt mit parlamentarischer Regierung."
+    ]
+   }
+  ]
+ },
+ "England": {
+  "kind": "Königreich",
+  "wiki": "Königreich England",
+  "founded": 927,
+  "dissolved": 1707,
+  "events": [
+   {
+    "year": 1066,
+    "text": "Normannische Eroberung durch Wilhelm den Eroberer."
+   },
+   {
+    "year": 1215,
+    "text": "Magna Carta bindet den König an das Recht."
+   },
+   {
+    "year": 1534,
+    "text": "Bruch mit Rom, Gründung der anglikanischen Kirche."
+   }
+  ],
+  "periods": [
+   {
+    "from": 927,
+    "to": 1153,
+    "ruler": "Wilhelm I. der Eroberer",
+    "rulerTitle": "König von England, Herzog der Normandie",
+    "dynasty": "Normannen",
+    "reign": "1066–1087",
+    "capital": "Winchester, später London",
+    "government": "Lehnsmonarchie mit ungewöhnlich straffer Verwaltung",
+    "religion": "Katholisches Christentum",
+    "languages": [
+     "Altenglisch",
+     "Anglonormannisch",
+     "Latein"
+    ],
+    "population": "ca. 1,8 Mio.",
+    "economy": "Wollproduktion, Ackerbau",
+    "summary": [
+     "Das Domesday Book von 1086 erfasst jeden Hof und jede Mühle des Landes – eine Verwaltungsleistung ohne Gegenstück im damaligen Europa.",
+     "Die normannische Oberschicht spricht Französisch, die Bevölkerung Englisch. Aus dieser Mischung entsteht die heutige englische Sprache."
+    ]
+   },
+   {
+    "from": 1154,
+    "to": 1706,
+    "ruler": "Elisabeth I.",
+    "rulerTitle": "Königin von England und Irland",
+    "dynasty": "Tudor",
+    "reign": "1558–1603",
+    "capital": "London",
+    "government": "Monarchie mit Parlament",
+    "religion": "Anglikanische Staatskirche",
+    "languages": [
+     "Englisch"
+    ],
+    "population": "ca. 4 Mio.",
+    "economy": "Tuchexport, Freibeuterei, erste Handelskompanien",
+    "summary": [
+     "Unter Elisabeth I. wird England zur Seemacht: 1588 scheitert die spanische Armada, 1600 entsteht die Ostindien-Kompanie.",
+     "Der Konflikt zwischen Krone und Parlament führt im 17. Jahrhundert zu Bürgerkrieg, Königshinrichtung und schließlich zur konstitutionellen Monarchie von 1689."
+    ]
+   }
+  ]
+ },
+ "United Kingdom": {
+  "kind": "Königreich mit Weltreich",
+  "wiki": "Vereinigtes Königreich",
+  "founded": 1707,
+  "events": [
+   {
+    "year": 1707,
+    "text": "Union von England und Schottland zu Großbritannien."
+   },
+   {
+    "year": 1815,
+    "text": "Sieg über Napoleon; Beginn der britischen Vormacht."
+   },
+   {
+    "year": 1837,
+    "text": "Beginn der Regierungszeit Königin Victorias."
+   },
+   {
+    "year": 1947,
+    "text": "Unabhängigkeit Indiens; Beginn der Entkolonialisierung."
+   }
+  ],
+  "periods": [
+   {
+    "from": 1707,
+    "to": 1836,
+    "ruler": "Georg III.",
+    "rulerTitle": "König von Großbritannien und Irland",
+    "dynasty": "Haus Hannover",
+    "reign": "1760–1820",
+    "capital": "London",
+    "government": "Konstitutionelle Monarchie mit Kabinettsregierung",
+    "religion": "Anglikanische Kirche",
+    "languages": [
+     "Englisch",
+     "Schottisch-Gälisch",
+     "Walisisch"
+    ],
+    "population": "ca. 16 Mio.",
+    "economy": "Beginn der Industriellen Revolution, Atlantikhandel, Sklavenhandel bis 1807",
+    "summary": [
+     "Die Industrielle Revolution beginnt in England: Dampfmaschine, Kohle und mechanische Weberei verändern in wenigen Jahrzehnten, wie Menschen arbeiten und wo sie leben.",
+     "1783 verliert Großbritannien die dreizehn amerikanischen Kolonien, gewinnt aber in Indien und im Pazifik neue Machtbasen."
+    ]
+   },
+   {
+    "from": 1837,
+    "to": 1913,
+    "ruler": "Victoria",
+    "rulerTitle": "Königin des Vereinigten Königreichs, Kaiserin von Indien",
+    "dynasty": "Haus Hannover",
+    "reign": "1837–1901",
+    "capital": "London",
+    "government": "Parlamentarische Monarchie",
+    "religion": "Anglikanische Kirche",
+    "languages": [
+     "Englisch"
+    ],
+    "population": "ca. 41 Mio. im Kernland, über 400 Mio. im Empire",
+    "economy": "Werkstatt der Welt: Textil, Stahl, Schiffbau, Freihandel, Goldstandard",
+    "summary": [
+     "Auf dem Höhepunkt umfasst das Empire ein Viertel der Landfläche und ein Viertel der Menschheit. Die Royal Navy sichert Handelswege, London ist Finanzzentrum der Welt.",
+     "Zu Hause bringt derselbe Zeitraum Wahlrechtsreformen, Gewerkschaften und Fabrikgesetze – Fortschritt und Ausbeutung liegen dicht beieinander."
+    ],
+    "quote": "Das Reich, in dem die Sonne nie unterging – und über dem sie nie richtig aufging, spotteten Kritiker."
+   },
+   {
+    "from": 1914,
+    "to": null,
+    "ruler": "Wechselnde Premierminister",
+    "rulerTitle": "Premierminister; Staatsoberhaupt ist der Monarch",
+    "capital": "London",
+    "government": "Parlamentarische Monarchie",
+    "religion": "Anglikanische Staatskirche, weitgehend säkulare Gesellschaft",
+    "languages": [
+     "Englisch"
+    ],
+    "population": "ca. 67 Mio.",
+    "economy": "Dienstleistungen, Finanzwesen, Industrie",
+    "summary": [
+     "Zwei Weltkriege kosten das Land seine Führungsrolle. Nach 1945 löst sich das Empire binnen zwei Jahrzehnten weitgehend auf, das Commonwealth tritt an seine Stelle.",
+     "1973 tritt Großbritannien der EG bei, 2020 verlässt es die Europäische Union."
+    ]
+   }
+  ]
+ },
+ "Spain": {
+  "kind": "Königreich mit Kolonialreich",
+  "wiki": "Spanien",
+  "founded": 1479,
+  "events": [
+   {
+    "year": 1492,
+    "text": "Fall Granadas, Vertreibung der Juden, erste Fahrt des Kolumbus."
+   },
+   {
+    "year": 1521,
+    "text": "Cortés erobert Tenochtitlán."
+   },
+   {
+    "year": 1588,
+    "text": "Untergang der Armada vor England."
+   },
+   {
+    "year": 1824,
+    "text": "Schlacht von Ayacucho beendet die spanische Herrschaft in Südamerika."
+   }
+  ],
+  "periods": [
+   {
+    "from": 1479,
+    "to": 1598,
+    "ruler": "Philipp II.",
+    "rulerTitle": "König von Spanien, Neapel, Portugal und der Westindischen Inseln",
+    "dynasty": "Habsburg",
+    "reign": "1556–1598",
+    "capital": "Madrid (ab 1561), Residenz El Escorial",
+    "government": "Zusammengesetzte Monarchie mit Räten je Reichsteil",
+    "religion": "Katholizismus, durchgesetzt durch die Inquisition",
+    "languages": [
+     "Kastilisch",
+     "Katalanisch",
+     "Baskisch",
+     "Nahuatl",
+     "Quechua"
+    ],
+    "population": "ca. 8 Mio. in Iberien, dazu die amerikanischen Vizekönigreiche",
+    "economy": "Silber aus Potosí und Zacatecas, Wollexport, Staatsbankrotte",
+    "summary": [
+     "Silber aus Amerika macht Spanien zur ersten Weltmacht der Neuzeit – und zugleich abhängig: Die Einfuhren treiben die Preise, während Handwerk und Landwirtschaft verkümmern.",
+     "Philipp II. regiert vom Schreibtisch aus ein Reich über vier Kontinente. Trotz beispielloser Einnahmen erklärt die Krone während seiner Regierung dreimal den Bankrott."
+    ]
+   },
+   {
+    "from": 1599,
+    "to": 1874,
+    "ruler": "Karl III.",
+    "rulerTitle": "König von Spanien",
+    "dynasty": "Bourbon",
+    "reign": "1759–1788",
+    "capital": "Madrid",
+    "government": "Aufgeklärter Absolutismus, ab 1812 zeitweise Verfassung",
+    "religion": "Katholizismus",
+    "languages": [
+     "Spanisch"
+    ],
+    "population": "ca. 11 Mio.",
+    "economy": "Kolonialhandel, Reformversuche, Verlust der amerikanischen Besitzungen",
+    "summary": [
+     "Die Bourbonen modernisieren Verwaltung und Wirtschaft, doch die napoleonische Besetzung 1808 bricht die Verbindung zu den amerikanischen Kolonien.",
+     "Bis 1826 sind fast alle Festlandsbesitzungen in Amerika unabhängig; Kuba und die Philippinen gehen 1898 verloren."
+    ]
+   },
+   {
+    "from": 1875,
+    "to": null,
+    "ruler": "Wechselnde Staatsoberhäupter; 1939–1975 Francisco Franco",
+    "rulerTitle": "König bzw. Staatschef",
+    "capital": "Madrid",
+    "government": "Konstitutionelle Monarchie; 1931–1939 Republik, 1939–1975 Diktatur",
+    "religion": "Katholizismus, seit 1978 kein Staatsbekenntnis",
+    "languages": [
+     "Spanisch",
+     "Katalanisch",
+     "Galicisch",
+     "Baskisch"
+    ],
+    "population": "ca. 48 Mio.",
+    "economy": "Industrie, Tourismus, Landwirtschaft",
+    "summary": [
+     "Der Bürgerkrieg 1936–1939 kostet rund eine halbe Million Menschenleben und mündet in eine bis 1975 währende Diktatur.",
+     "Die Verfassung von 1978 macht Spanien zu einer parlamentarischen Monarchie mit weitreichender Autonomie der Regionen; 1986 folgt der EG-Beitritt."
+    ]
+   }
+  ]
+ },
+ "Portugal": {
+  "kind": "Königreich mit Seereich",
+  "wiki": "Portugal",
+  "founded": 1139,
+  "events": [
+   {
+    "year": 1415,
+    "text": "Eroberung Ceutas – Beginn der überseeischen Expansion."
+   },
+   {
+    "year": 1498,
+    "text": "Vasco da Gama erreicht Indien auf dem Seeweg."
+   },
+   {
+    "year": 1500,
+    "text": "Cabral landet in Brasilien."
+   },
+   {
+    "year": 1822,
+    "text": "Brasilien wird unabhängig."
+   }
+  ],
+  "periods": [
+   {
+    "from": 1139,
+    "to": 1580,
+    "ruler": "Manuel I.",
+    "rulerTitle": "König von Portugal und der Algarven, Herr des Handels von Äthiopien, Arabien, Persien und Indien",
+    "dynasty": "Avis",
+    "reign": "1495–1521",
+    "capital": "Lissabon",
+    "government": "Königtum mit staatlichem Handelsmonopol",
+    "religion": "Katholizismus",
+    "languages": [
+     "Portugiesisch"
+    ],
+    "population": "ca. 1,2 Mio.",
+    "economy": "Gewürzmonopol, Stützpunktnetz statt Flächenkolonien",
+    "summary": [
+     "Portugal – klein und dünn besiedelt – baut das erste globale Seereich: eine Kette von Festungen und Faktoreien von Marokko über Indien bis Macau.",
+     "Der Vertrag von Tordesillas 1494 teilt die außereuropäische Welt zwischen Portugal und Kastilien auf, ohne dass die Betroffenen gefragt worden wären."
+    ]
+   },
+   {
+    "from": 1581,
+    "to": null,
+    "ruler": "Wechselnde Könige, ab 1910 Präsidenten",
+    "rulerTitle": "König bzw. Präsident",
+    "capital": "Lissabon",
+    "government": "Monarchie, ab 1910 Republik, 1933–1974 Diktatur, seither Demokratie",
+    "religion": "Katholizismus",
+    "languages": [
+     "Portugiesisch"
+    ],
+    "population": "ca. 10 Mio.",
+    "economy": "Brasilianisches Gold, später Wein und Textil, heute Dienstleistungen",
+    "summary": [
+     "Nach dem Verlust Brasiliens 1822 konzentriert sich Portugal auf Afrika. Die Kolonialkriege der 1960er Jahre führen 1974 zur Nelkenrevolution und zum Ende der Diktatur.",
+     "1975 werden Angola, Mosambik und die übrigen afrikanischen Gebiete unabhängig – das älteste Kolonialreich Europas endet als letztes."
+    ]
+   }
+  ]
+ },
+ "Kievan Rus": {
+  "kind": "Fürstenverband",
+  "wiki": "Kiewer Rus",
+  "founded": 882,
+  "dissolved": 1240,
+  "periods": [
+   {
+    "from": 882,
+    "to": 1240,
+    "ruler": "Jaroslaw der Weise",
+    "rulerTitle": "Großfürst von Kiew",
+    "dynasty": "Rurikiden",
+    "reign": "1019–1054",
+    "capital": "Kiew",
+    "government": "Verband von Teilfürstentümern unter einem Großfürsten",
+    "religion": "Seit 988 orthodoxes Christentum",
+    "languages": [
+     "Altostslawisch",
+     "Kirchenslawisch"
+    ],
+    "population": "ca. 5 Mio.",
+    "economy": "Handel auf dem Weg „von den Warägern zu den Griechen“, Pelze, Wachs, Honig",
+    "summary": [
+     "Die Rus verbindet Ostsee und Schwarzes Meer. Ihre Oberschicht geht auf skandinavische Händler und Krieger zurück, verschmilzt aber rasch mit der slawischen Bevölkerung.",
+     "988 nimmt Wladimir das Christentum byzantinischer Prägung an – die Weichenstellung für die kulturelle Ausrichtung Russlands, der Ukraine und Belarus'.",
+     "Jaroslaws Gesetzbuch, die Russkaja Prawda, ist die erste ostslawische Rechtssammlung. Der Mongolensturm 1237–1240 beendet den Verband."
+    ]
+   }
+  ]
+ },
+ "Grand Duchy of Moscow": {
+  "kind": "Großfürstentum",
+  "wiki": "Großfürstentum Moskau",
+  "founded": 1283,
+  "dissolved": 1547,
+  "periods": [
+   {
+    "from": 1283,
+    "to": 1547,
+    "ruler": "Iwan III. der Große",
+    "rulerTitle": "Großfürst von Moskau und aller Rus",
+    "dynasty": "Rurikiden",
+    "reign": "1462–1505",
+    "capital": "Moskau",
+    "government": "Autokratisches Fürstentum mit Bojarenrat",
+    "religion": "Russisch-orthodoxes Christentum",
+    "languages": [
+     "Altrussisch",
+     "Kirchenslawisch"
+    ],
+    "population": "ca. 6 Mio.",
+    "economy": "Pelzhandel, Landwirtschaft, Tributeinzug für die Horde",
+    "summary": [
+     "Moskau steigt zunächst als Steuereintreiber der Goldenen Horde auf. 1480 verweigert Iwan III. den Tribut endgültig – das Ende der mongolischen Oberherrschaft.",
+     "Nach dem Fall Konstantinopels 1453 heiratet Iwan die Nichte des letzten byzantinischen Kaisers und übernimmt den Doppeladler. Moskau beansprucht das Erbe des orthodoxen Kaisertums."
+    ]
+   }
+  ]
+ },
+ "Tsardom of Muscovy": {
+  "kind": "Zarentum",
+  "wiki": "Zarentum Russland",
+  "founded": 1547,
+  "dissolved": 1721,
+  "periods": [
+   {
+    "from": 1547,
+    "to": 1721,
+    "ruler": "Peter I. der Große",
+    "rulerTitle": "Zar und Großfürst aller Reußen",
+    "dynasty": "Romanow",
+    "reign": "1682–1725",
+    "capital": "Moskau, ab 1712 Sankt Petersburg",
+    "government": "Autokratie mit Bojarenduma, ab Peter I. Kollegienverwaltung",
+    "religion": "Russisch-orthodoxes Christentum",
+    "languages": [
+     "Russisch"
+    ],
+    "population": "ca. 15 Mio.",
+    "economy": "Getreide, Pelze aus Sibirien, staatliche Manufakturen, Leibeigenschaft",
+    "summary": [
+     "Zwischen 1580 und 1640 dringen Kosaken und Pelzhändler bis an den Pazifik vor – Russland gewinnt in wenigen Jahrzehnten ein Gebiet von der Größe Nordamerikas.",
+     "Peter I. erzwingt eine Modernisierung nach westeuropäischem Muster: neue Hauptstadt, Flotte, Behörden, Kalender. Zugleich verfestigt er die Leibeigenschaft."
+    ],
+    "quote": "Ein Fenster nach Europa – gebaut auf einem Sumpf und Zehntausenden Toten."
+   }
+  ]
+ },
+ "Russian Empire": {
+  "kind": "Kaiserreich",
+  "wiki": "Russisches Kaiserreich",
+  "founded": 1721,
+  "dissolved": 1917,
+  "events": [
+   {
+    "year": 1812,
+    "text": "Napoleons Russlandfeldzug scheitert."
+   },
+   {
+    "year": 1861,
+    "text": "Aufhebung der Leibeigenschaft."
+   },
+   {
+    "year": 1905,
+    "text": "Revolution erzwingt die erste Duma."
+   },
+   {
+    "year": 1917,
+    "text": "Februarrevolution beendet die Zarenherrschaft."
+   }
+  ],
+  "periods": [
+   {
+    "from": 1721,
+    "to": 1825,
+    "ruler": "Katharina II. die Große",
+    "rulerTitle": "Kaiserin und Selbstherrscherin aller Reußen",
+    "dynasty": "Romanow",
+    "reign": "1762–1796",
+    "capital": "Sankt Petersburg",
+    "government": "Aufgeklärter Absolutismus",
+    "religion": "Russisch-orthodoxes Christentum als Staatskirche",
+    "languages": [
+     "Russisch",
+     "Französisch bei Hofe",
+     "Polnisch",
+     "Tatarisch"
+    ],
+    "population": "ca. 37 Mio.",
+    "economy": "Getreideexport, Bergbau im Ural, Leibeigenschaft",
+    "summary": [
+     "Katharina korrespondiert mit Voltaire und Diderot und erweitert zugleich die Leibeigenschaft. Das Reich gewinnt die Krim, den Zugang zum Schwarzen Meer und große Teile Polens.",
+     "1812 zerbricht Napoleons Grande Armée am russischen Winter und an der verbrannten Erde – der Wendepunkt der napoleonischen Kriege."
+    ]
+   },
+   {
+    "from": 1826,
+    "to": 1917,
+    "ruler": "Nikolaus II.",
+    "rulerTitle": "Kaiser und Selbstherrscher aller Reußen",
+    "dynasty": "Romanow",
+    "reign": "1894–1917",
+    "capital": "Sankt Petersburg",
+    "government": "Autokratie, ab 1906 mit eingeschränktem Parlament (Duma)",
+    "religion": "Orthodoxie als Staatskirche",
+    "languages": [
+     "Russisch und über 100 weitere Sprachen"
+    ],
+    "population": "ca. 166 Mio. (1914)",
+    "economy": "Späte, rasche Industrialisierung; Transsibirische Eisenbahn; Getreideexport",
+    "summary": [
+     "Das flächengrößte Reich der Neuzeit reicht von Warschau bis Wladiwostok. Die Aufhebung der Leibeigenschaft 1861 kommt spät und löst die Landfrage nicht.",
+     "Niederlagen gegen Japan 1905 und die Belastungen des Ersten Weltkriegs überfordern den Staat. 1917 dankt Nikolaus II. ab, im Oktober übernehmen die Bolschewiki."
+    ]
+   }
+  ]
+ },
+ "USSR": {
+  "kind": "Sozialistischer Bundesstaat",
+  "wiki": "Sowjetunion",
+  "founded": 1922,
+  "dissolved": 1991,
+  "events": [
+   {
+    "year": 1922,
+    "text": "Gründung der Union der Sozialistischen Sowjetrepubliken."
+   },
+   {
+    "year": 1932,
+    "text": "Hungersnot in der Ukraine und in Kasachstan (Holodomor)."
+   },
+   {
+    "year": 1941,
+    "text": "Deutscher Überfall; Beginn des Großen Vaterländischen Krieges."
+   },
+   {
+    "year": 1957,
+    "text": "Sputnik – Beginn des Raumfahrtzeitalters."
+   },
+   {
+    "year": 1991,
+    "text": "Auflösung der Sowjetunion."
+   }
+  ],
+  "periods": [
+   {
+    "from": 1922,
+    "to": 1953,
+    "ruler": "Josef Stalin",
+    "rulerTitle": "Generalsekretär der KPdSU",
+    "reign": "1922–1953",
+    "capital": "Moskau",
+    "government": "Einparteienstaat mit zentraler Planwirtschaft",
+    "religion": "Staatlicher Atheismus",
+    "languages": [
+     "Russisch als Verkehrssprache, über 100 Nationalsprachen"
+    ],
+    "population": "ca. 170 Mio. (1939)",
+    "economy": "Fünfjahrpläne, Zwangskollektivierung, Schwerindustrie, Lagersystem",
+    "summary": [
+     "Die Sowjetunion industrialisiert sich in zwei Jahrzehnten – um den Preis von Millionen Toten durch Zwangskollektivierung, Hungersnöte und politischen Terror.",
+     "Im Zweiten Weltkrieg trägt sie die Hauptlast des Kampfes gegen die Wehrmacht: rund 27 Millionen sowjetische Bürger kommen ums Leben."
+    ]
+   },
+   {
+    "from": 1954,
+    "to": 1991,
+    "ruler": "Leonid Breschnew",
+    "rulerTitle": "Generalsekretär der KPdSU",
+    "reign": "1964–1982",
+    "capital": "Moskau",
+    "government": "Einparteienstaat",
+    "religion": "Staatlicher Atheismus",
+    "languages": [
+     "Russisch und die Sprachen der 15 Unionsrepubliken"
+    ],
+    "population": "ca. 290 Mio. (1991)",
+    "economy": "Planwirtschaft, Rüstung, Erdöl und Erdgas",
+    "summary": [
+     "Als eine von zwei Supermächten prägt die UdSSR den Kalten Krieg – vom Sputnik-Schock bis zur Kubakrise, von der Berliner Mauer bis Afghanistan.",
+     "Wirtschaftliche Stagnation, der Rüstungswettlauf und die Reformen Gorbatschows führen 1991 zur Auflösung in fünfzehn unabhängige Staaten."
+    ]
+   }
+  ]
+ },
+ "Russia": {
+  "kind": "Bundesrepublik",
+  "wiki": "Russland",
+  "founded": 1991,
+  "periods": [
+   {
+    "from": 1991,
+    "to": null,
+    "ruler": "Boris Jelzin, ab 2000 Wladimir Putin",
+    "rulerTitle": "Präsident der Russischen Föderation",
+    "capital": "Moskau",
+    "government": "Präsidiale Föderation",
+    "religion": "Russisch-orthodoxes Christentum, Islam als zweitgrößte Religion",
+    "languages": [
+     "Russisch und zahlreiche Regionalsprachen"
+    ],
+    "population": "ca. 145 Mio.",
+    "economy": "Erdöl, Erdgas, Metalle, Rüstungsindustrie",
+    "summary": [
+     "Als Rechtsnachfolgerin der Sowjetunion bleibt Russland flächengrößter Staat der Erde und ständiges Mitglied im UN-Sicherheitsrat.",
+     "Die 1990er Jahre bringen wirtschaftlichen Absturz und Privatisierung; ab 2000 folgen Zentralisierung der Macht und außenpolitische Konfrontation mit dem Westen."
+    ]
+   }
+  ]
+ },
+ "Polish–Lithuanian Commonwealth": {
+  "kind": "Adelsrepublik",
+  "wiki": "Polen-Litauen",
+  "founded": 1385,
+  "dissolved": 1795,
+  "periods": [
+   {
+    "from": 1385,
+    "to": 1795,
+    "ruler": "Johann III. Sobieski",
+    "rulerTitle": "Gewählter König von Polen und Großfürst von Litauen",
+    "reign": "1674–1696",
+    "capital": "Krakau, ab 1596 Warschau",
+    "government": "Wahlmonarchie mit mächtigem Adelsparlament (Sejm)",
+    "religion": "Katholizismus; ungewöhnlich weitgehende Duldung anderer Bekenntnisse",
+    "languages": [
+     "Polnisch",
+     "Litauisch",
+     "Ruthenisch",
+     "Latein",
+     "Jiddisch"
+    ],
+    "population": "ca. 11 Mio.",
+    "economy": "Getreideexport über Danzig, Gutsherrschaft",
+    "summary": [
+     "Die Union von Lublin 1569 schafft den flächengrößten Staat Europas seiner Zeit. Rund zehn Prozent der Bevölkerung – der Adel – wählen den König und beschließen die Gesetze.",
+     "Das liberum veto erlaubt jedem Abgeordneten, den Reichstag im Alleingang zu sprengen. Diese Blockademöglichkeit lähmt den Staat im 18. Jahrhundert.",
+     "1683 entsetzt Sobieski das belagerte Wien. Ein Jahrhundert später verschwindet Polen-Litauen in drei Teilungen von der Landkarte."
+    ]
+   }
+  ]
+ },
+ "Sweden": {
+  "kind": "Königreich",
+  "wiki": "Schweden",
+  "periods": [
+   {
+    "from": 1000,
+    "to": 1520,
+    "ruler": "Wechselnde Könige",
+    "rulerTitle": "König von Schweden",
+    "capital": "Uppsala, später Stockholm",
+    "government": "Wahlkönigtum mit Provinziallandschaften",
+    "religion": "Christianisierung ab dem 11. Jahrhundert",
+    "languages": [
+     "Altschwedisch"
+    ],
+    "population": "unter 1 Mio.",
+    "economy": "Eisen- und Kupferbergbau, Fernhandel",
+    "summary": "Aus wikingerzeitlichen Kleinreichen entsteht ein Königtum, das ab 1397 in der Kalmarer Union mit Dänemark und Norwegen verbunden ist."
+   },
+   {
+    "from": 1521,
+    "to": 1721,
+    "ruler": "Gustav II. Adolf",
+    "rulerTitle": "König von Schweden",
+    "dynasty": "Wasa",
+    "reign": "1611–1632",
+    "capital": "Stockholm",
+    "government": "Erbmonarchie mit Reichsrat und Ständereichstag",
+    "religion": "Lutherische Staatskirche",
+    "languages": [
+     "Schwedisch",
+     "Finnisch",
+     "Deutsch",
+     "Estnisch"
+    ],
+    "population": "ca. 1,5 Mio.",
+    "economy": "Kupfer aus Falun, Eisen, Kriegskontributionen",
+    "summary": [
+     "Ein dünn besiedeltes Land wird zur Großmacht: Die Ostsee ist im 17. Jahrhundert praktisch ein schwedisches Binnenmeer.",
+     "Gustav II. Adolf greift 1630 in den Dreißigjährigen Krieg ein und gilt als Erneuerer der Kriegführung. Der Große Nordische Krieg 1700–1721 beendet die Großmachtstellung."
+    ]
+   },
+   {
+    "from": 1722,
+    "to": null,
+    "ruler": "Wechselnde Könige und Regierungen",
+    "rulerTitle": "König; Regierungsgewalt beim Parlament",
+    "capital": "Stockholm",
+    "government": "Konstitutionelle Monarchie",
+    "religion": "Lutherische Tradition, seit 2000 keine Staatskirche",
+    "languages": [
+     "Schwedisch"
+    ],
+    "population": "ca. 10 Mio.",
+    "economy": "Stahl, Maschinenbau, Holz, Hochtechnologie",
+    "summary": [
+     "1814 tritt Schweden in seinen letzten Krieg ein und hält seither an der Bündnisfreiheit fest – bis zum NATO-Beitritt 2024.",
+     "Im 20. Jahrhundert entsteht das schwedische Wohlfahrtsmodell, das international als eigener Weg zwischen Markt und Staat wahrgenommen wird."
+    ]
+   }
+  ]
+ },
+ "Denmark-Norway": {
+  "kind": "Personalunion",
+  "wiki": "Dänemark-Norwegen",
+  "founded": 1380,
+  "dissolved": 1814,
+  "periods": [
+   {
+    "from": 1380,
+    "to": 1814,
+    "ruler": "Christian IV.",
+    "rulerTitle": "König von Dänemark und Norwegen",
+    "dynasty": "Oldenburg",
+    "reign": "1588–1648",
+    "capital": "Kopenhagen",
+    "government": "Ab 1660 absolute Erbmonarchie",
+    "religion": "Lutherische Staatskirche",
+    "languages": [
+     "Dänisch",
+     "Norwegisch",
+     "Isländisch",
+     "Deutsch"
+    ],
+    "population": "ca. 1,8 Mio.",
+    "economy": "Sundzoll, Fischerei, Holz, Kolonialhandel",
+    "summary": [
+     "Der Sundzoll auf jedes Schiff, das in die Ostsee will, finanziert die dänische Krone jahrhundertelang. Das Reich umfasst auch Island, Grönland und die Färöer.",
+     "1814 muss Dänemark Norwegen an Schweden abtreten – die Quittung für das Bündnis mit Napoleon. Grönland, Island und die Färöer bleiben dänisch."
+    ]
+   }
+  ]
+ },
+ "Kalmar Union": {
+  "kind": "Personalunion dreier Königreiche",
+  "wiki": "Kalmarer Union",
+  "founded": 1397,
+  "dissolved": 1523,
+  "periods": [
+   {
+    "from": 1397,
+    "to": 1523,
+    "ruler": "Margarethe I.",
+    "rulerTitle": "Regentin von Dänemark, Norwegen und Schweden",
+    "reign": "1387–1412",
+    "capital": "Kopenhagen",
+    "government": "Union unter einem gemeinsamen Monarchen bei eigenen Reichsräten",
+    "religion": "Katholisches Christentum",
+    "languages": [
+     "Dänisch",
+     "Schwedisch",
+     "Norwegisch"
+    ],
+    "population": "ca. 1,5 Mio.",
+    "economy": "Heringsfang, Holz, Eisen; Konkurrenz zur Hanse",
+    "summary": [
+     "Margarethe I. vereint 1397 die drei nordischen Königreiche – auf dem Papier der größte Staat Europas, in der Praxis ein Zweckbündnis gegen die Hanse.",
+     "Das „Stockholmer Blutbad“ von 1520 löst den schwedischen Aufstand aus; 1523 zerbricht die Union endgültig."
+    ]
+   }
+  ]
+ },
+ "Austrian Empire": {
+  "kind": "Habsburgermonarchie, ab 1804 Kaisertum",
+  "wiki": "Kaisertum Österreich",
+  "founded": 1526,
+  "dissolved": 1867,
+  "periods": [
+   {
+    "from": 1650,
+    "to": 1803,
+    "kind": "Habsburgermonarchie",
+    "ruler": "Maria Theresia",
+    "rulerTitle": "Erzherzogin von Österreich, Königin von Ungarn und Böhmen",
+    "dynasty": "Habsburg",
+    "reign": "1740–1780",
+    "capital": "Wien",
+    "government": "Zusammengesetzte Monarchie, ab 1749 zentralisierte Verwaltung",
+    "religion": "Katholizismus",
+    "languages": [
+     "Deutsch",
+     "Ungarisch",
+     "Tschechisch",
+     "Italienisch",
+     "Kroatisch"
+    ],
+    "population": "ca. 18 Mio.",
+    "economy": "Landwirtschaft, Manufakturen, Bergbau",
+    "summary": [
+     "Maria Theresia erbt 1740 einen bedrohten Länderverband und macht daraus einen modernen Staat: Schulpflicht, Zentralbehörden, einheitliches Steuerwesen.",
+     "Der Verlust Schlesiens an Preußen begründet den österreichisch-preußischen Gegensatz, der die deutsche Geschichte bis 1866 bestimmt."
+    ]
+   },
+   {
+    "from": 1804,
+    "to": 1866,
+    "ruler": "Franz I.",
+    "rulerTitle": "Kaiser von Österreich",
+    "dynasty": "Habsburg-Lothringen",
+    "reign": "1804–1835",
+    "capital": "Wien",
+    "government": "Absolute Monarchie; ab 1861 Verfassung",
+    "religion": "Katholizismus",
+    "languages": [
+     "Deutsch, Ungarisch, Tschechisch, Polnisch, Italienisch u. a."
+    ],
+    "population": "ca. 30 Mio.",
+    "economy": "Landwirtschaft, beginnende Industrialisierung in Böhmen",
+    "summary": [
+     "1804 nimmt Franz den Titel eines Kaisers von Österreich an – zwei Jahre bevor das Heilige Römische Reich endet.",
+     "Der Wiener Kongress 1814/15 macht Österreich unter Metternich zur Ordnungsmacht Europas. Nach 1848 hält nur noch die Dynastie die Nationalitäten zusammen."
+    ]
+   }
+  ]
+ },
+ "Austria-Hungary": {
+  "kind": "Doppelmonarchie",
+  "wiki": "Österreich-Ungarn",
+  "founded": 1867,
+  "dissolved": 1918,
+  "periods": [
+   {
+    "from": 1867,
+    "to": 1918,
+    "ruler": "Franz Joseph I.",
+    "rulerTitle": "Kaiser von Österreich, Apostolischer König von Ungarn",
+    "dynasty": "Habsburg-Lothringen",
+    "reign": "1848–1916",
+    "capital": "Wien und Budapest",
+    "government": "Realunion zweier Staaten mit gemeinsamem Herrscher, Heer und Außenpolitik",
+    "religion": "Katholizismus, daneben Protestanten, Orthodoxe, Juden, Muslime",
+    "languages": [
+     "Deutsch",
+     "Ungarisch",
+     "Tschechisch",
+     "Polnisch",
+     "Kroatisch",
+     "Rumänisch",
+     "Slowakisch",
+     "Ruthenisch",
+     "Slowenisch",
+     "Serbisch",
+     "Italienisch"
+    ],
+    "population": "ca. 52 Mio. (1914)",
+    "economy": "Landwirtschaft in Ungarn, Industrie in Böhmen und Wien",
+    "summary": [
+     "Elf anerkannte Nationalitäten, keine Mehrheit: Die Doppelmonarchie ist der Versuch, ein Vielvölkerreich im Zeitalter des Nationalismus zusammenzuhalten.",
+     "Wien um 1900 ist ein Zentrum der Moderne – Freud, Mahler, Klimt, Wittgenstein. Zugleich blockieren sich die Nationalitätenkonflikte im Parlament.",
+     "Das Attentat von Sarajevo 1914 löst den Ersten Weltkrieg aus; 1918 zerfällt der Staat in Nachfolgestaaten."
+    ]
+   }
+  ]
+ },
+ "Prussia": {
+  "kind": "Königreich",
+  "wiki": "Preußen",
+  "founded": 1701,
+  "dissolved": 1947,
+  "periods": [
+   {
+    "from": 1701,
+    "to": 1870,
+    "ruler": "Friedrich II. der Große",
+    "rulerTitle": "König von Preußen",
+    "dynasty": "Hohenzollern",
+    "reign": "1740–1786",
+    "capital": "Berlin, Residenz Potsdam",
+    "government": "Aufgeklärter Absolutismus mit Beamten- und Militärstaat",
+    "religion": "Lutherisch und reformiert; ungewöhnlich weitgehende Duldung",
+    "languages": [
+     "Deutsch",
+     "Polnisch"
+    ],
+    "population": "ca. 5 Mio. (1786)",
+    "economy": "Landwirtschaft, staatlich geförderte Manufakturen, Kanalbau",
+    "summary": [
+     "Preußen ist ein Staat aus verstreuten Territorien, den Verwaltung und Heer zusammenhalten. Mit der Eroberung Schlesiens 1740 steigt es zur europäischen Großmacht auf.",
+     "Friedrich II. schafft die Folter ab, fördert Ackerbau und Zuwanderung – und führt drei Kriege, die sein Land an den Rand des Ruins bringen."
+    ]
+   },
+   {
+    "from": 1871,
+    "to": 1947,
+    "ruler": "Wilhelm I., zugleich Deutscher Kaiser",
+    "rulerTitle": "König von Preußen",
+    "dynasty": "Hohenzollern",
+    "capital": "Berlin",
+    "government": "Konstitutionelle Monarchie mit Dreiklassenwahlrecht",
+    "religion": "Evangelisch geprägt",
+    "languages": [
+     "Deutsch",
+     "Polnisch"
+    ],
+    "population": "ca. 40 Mio.",
+    "economy": "Ruhrgebiet, Stahl, Chemie, Eisenbahn",
+    "summary": [
+     "Preußen stellt zwei Drittel des Deutschen Reiches; sein König ist zugleich Kaiser, sein Ministerpräsident meist Reichskanzler.",
+     "1947 löst der Alliierte Kontrollrat Preußen als „Träger des Militarismus“ förmlich auf."
+    ]
+   }
+  ]
+ },
+ "German Empire": {
+  "kind": "Bundesstaat mit Kaiser",
+  "wiki": "Deutsches Kaiserreich",
+  "founded": 1871,
+  "dissolved": 1918,
+  "periods": [
+   {
+    "from": 1871,
+    "to": 1918,
+    "ruler": "Wilhelm II.",
+    "rulerTitle": "Deutscher Kaiser, König von Preußen",
+    "dynasty": "Hohenzollern",
+    "reign": "1888–1918",
+    "capital": "Berlin",
+    "government": "Konstitutionelle Monarchie; Reichstag mit allgemeinem Männerwahlrecht",
+    "religion": "Zwei Drittel evangelisch, ein Drittel katholisch",
+    "languages": [
+     "Deutsch",
+     "Polnisch",
+     "Dänisch",
+     "Französisch"
+    ],
+    "population": "ca. 68 Mio. (1914)",
+    "economy": "Chemie, Elektrotechnik, Stahl – zweitgrößte Industriemacht der Welt",
+    "summary": [
+     "Das Kaiserreich wird 1871 in Versailles ausgerufen und ist binnen einer Generation Europas führende Industrienation. Bismarck führt zugleich die erste staatliche Sozialversicherung ein.",
+     "Nach Bismarcks Entlassung 1890 setzt Wilhelm II. auf Flottenbau und „Weltpolitik“ – und treibt Großbritannien, Frankreich und Russland zusammen.",
+     "Die Niederlage von 1918 beendet die Monarchie; es folgt die Weimarer Republik."
+    ]
+   }
+  ]
+ },
+ "Germany": {
+  "kind": "Bundesstaat",
+  "wiki": "Deutschland",
+  "events": [
+   {
+    "year": 1919,
+    "text": "Weimarer Verfassung; Frauenwahlrecht."
+   },
+   {
+    "year": 1933,
+    "text": "Machtübertragung an die NSDAP."
+   },
+   {
+    "year": 1945,
+    "text": "Bedingungslose Kapitulation; Teilung in Besatzungszonen."
+   },
+   {
+    "year": 1990,
+    "text": "Deutsche Wiedervereinigung."
+   }
+  ],
+  "periods": [
+   {
+    "from": 1871,
+    "to": 1918,
+    "ruler": "Wilhelm II.",
+    "rulerTitle": "Deutscher Kaiser",
+    "capital": "Berlin",
+    "government": "Konstitutionelle Monarchie",
+    "religion": "Evangelisch und katholisch",
+    "languages": [
+     "Deutsch"
+    ],
+    "population": "ca. 68 Mio.",
+    "summary": "Siehe Deutsches Kaiserreich: 1871 gegründeter Bundesstaat unter preußischer Führung."
+   },
+   {
+    "from": 1919,
+    "to": 1932,
     "kind": "Republik",
-    "wiki": "Türkei",
-    "founded": 1923,
-    "periods": [
-      {
-        "from": 1923, "to": null,
-        "ruler": "Mustafa Kemal Atatürk, später wechselnde Präsidenten",
-        "rulerTitle": "Präsident der Republik",
-        "capital": "Ankara",
-        "government": "Republik; seit 2018 Präsidialsystem",
-        "religion": "Mehrheitlich sunnitischer Islam; laizistische Verfassung",
-        "languages": ["Türkisch", "Kurdisch"],
-        "population": "ca. 85 Mio.",
-        "economy": "Industrie, Landwirtschaft, Tourismus",
-        "summary": [
-          "Atatürk baut aus dem Rest des Osmanischen Reiches einen laizistischen Nationalstaat: lateinische Schrift, neues Zivilrecht, Frauenwahlrecht 1934.",
-          "Die Türkei tritt 1952 der NATO bei und verhandelt seit 2005 – faktisch ausgesetzt – über einen EU-Beitritt."
-        ]
-      }
+    "ruler": "Paul von Hindenburg",
+    "rulerTitle": "Reichspräsident",
+    "reign": "1925–1934",
+    "capital": "Berlin",
+    "government": "Parlamentarische Republik mit starkem Präsidentenamt",
+    "religion": "Evangelisch und katholisch",
+    "languages": [
+     "Deutsch"
+    ],
+    "population": "ca. 63 Mio.",
+    "economy": "Hyperinflation 1923, kurze Erholung, Weltwirtschaftskrise ab 1929",
+    "summary": [
+     "Die Weimarer Republik gibt Deutschland seine erste Demokratie: Frauenwahlrecht, Verhältniswahl, weitreichende Grundrechte.",
+     "Reparationslasten, Inflation und Massenarbeitslosigkeit untergraben ihren Rückhalt. Der Artikel 48 erlaubt Regieren per Notverordnung – ein Einfallstor für die Diktatur."
     ]
-  }
+   },
+   {
+    "from": 1933,
+    "to": 1945,
+    "kind": "Diktatur",
+    "ruler": "Adolf Hitler",
+    "rulerTitle": "Reichskanzler, ab 1934 „Führer und Reichskanzler“",
+    "capital": "Berlin",
+    "government": "Nationalsozialistische Einparteiendiktatur",
+    "religion": "Kirchen unter staatlicher Kontrolle; Verfolgung der jüdischen Bevölkerung",
+    "languages": [
+     "Deutsch"
+    ],
+    "population": "ca. 69 Mio. (1939)",
+    "economy": "Aufrüstung, Zwangsarbeit, Ausplünderung besetzter Gebiete",
+    "summary": [
+     "Binnen weniger Monate werden Parteien, Gewerkschaften und Presse gleichgeschaltet, politische Gegner verfolgt und die Rechte der jüdischen Bevölkerung beseitigt.",
+     "Der von Deutschland begonnene Zweite Weltkrieg fordert weltweit über 60 Millionen Menschenleben. Im Holocaust ermordet das Regime rund sechs Millionen Jüdinnen und Juden sowie Hunderttausende Sinti und Roma, Kranke, Homosexuelle und politisch Verfolgte."
+    ]
+   },
+   {
+    "from": 1946,
+    "to": null,
+    "kind": "Bundesrepublik",
+    "ruler": "Wechselnde Bundeskanzler",
+    "rulerTitle": "Bundeskanzler; Staatsoberhaupt ist der Bundespräsident",
+    "capital": "Bonn, seit 1990 Berlin",
+    "government": "Parlamentarische Bundesrepublik",
+    "religion": "Konfessionell gemischt, wachsende Konfessionslosigkeit",
+    "languages": [
+     "Deutsch"
+    ],
+    "population": "ca. 84 Mio.",
+    "economy": "Exportorientierte Industrie: Fahrzeugbau, Maschinen, Chemie",
+    "summary": [
+     "1949 entstehen zwei deutsche Staaten. Die Bundesrepublik bindet sich an den Westen und wird Gründungsmitglied der Europäischen Gemeinschaften.",
+     "1989 fällt die Mauer, 1990 vollzieht sich die Wiedervereinigung – ausgehandelt im Zwei-plus-Vier-Vertrag mit den vier Siegermächten."
+    ]
+   }
+  ]
+ },
+ "Italy": {
+  "kind": "Königreich, später Republik",
+  "wiki": "Italien",
+  "founded": 1861,
+  "periods": [
+   {
+    "from": 1861,
+    "to": 1945,
+    "ruler": "Viktor Emanuel III.; ab 1922 Regierungschef Benito Mussolini",
+    "rulerTitle": "König von Italien",
+    "dynasty": "Savoyen",
+    "capital": "Turin, Florenz, ab 1871 Rom",
+    "government": "Konstitutionelle Monarchie, 1925–1943 faschistische Diktatur",
+    "religion": "Katholizismus; Lateranverträge 1929",
+    "languages": [
+     "Italienisch und zahlreiche Regionalsprachen"
+    ],
+    "population": "ca. 43 Mio.",
+    "economy": "Landwirtschaft im Süden, Industrie im Norden, Auswanderung",
+    "summary": [
+     "Das Risorgimento eint die Halbinsel bis 1870. „Wir haben Italien gemacht, jetzt müssen wir Italiener machen“, bemerkte Massimo d'Azeglio – Nord und Süd blieben lange getrennte Welten.",
+     "Ab 1922 errichtet Mussolini die erste faschistische Diktatur Europas. Der Kriegseintritt an deutscher Seite 1940 endet 1943 in Kapitulation und Bürgerkrieg."
+    ]
+   },
+   {
+    "from": 1946,
+    "to": null,
+    "ruler": "Wechselnde Ministerpräsidenten",
+    "rulerTitle": "Ministerpräsident; Staatsoberhaupt ist der Staatspräsident",
+    "capital": "Rom",
+    "government": "Parlamentarische Republik",
+    "religion": "Katholizismus",
+    "languages": [
+     "Italienisch"
+    ],
+    "population": "ca. 59 Mio.",
+    "economy": "Maschinenbau, Mode, Tourismus, Landwirtschaft",
+    "summary": [
+     "1946 schafft ein Referendum die Monarchie ab. Italien gehört 1957 zu den sechs Gründerstaaten der Europäischen Wirtschaftsgemeinschaft.",
+     "Das „Wirtschaftswunder“ der 1950er und 60er Jahre macht aus einem Agrarland eine der größten Industrienationen Europas."
+    ]
+   }
+  ]
+ },
+ "Poland": {
+  "kind": "Königreich, später Republik",
+  "wiki": "Polen",
+  "founded": 966,
+  "periods": [
+   {
+    "from": 966,
+    "to": 1385,
+    "ruler": "Kasimir III. der Große",
+    "rulerTitle": "König von Polen",
+    "dynasty": "Piasten",
+    "reign": "1333–1370",
+    "capital": "Gnesen, später Krakau",
+    "government": "Erbmonarchie",
+    "religion": "Katholisches Christentum seit 966",
+    "languages": [
+     "Altpolnisch",
+     "Latein"
+    ],
+    "population": "ca. 2 Mio.",
+    "economy": "Getreide, Salz aus Wieliczka, Fernhandel",
+    "summary": [
+     "„Er fand ein Polen aus Holz und hinterließ ein Polen aus Stein“ – Kasimir III. gründet Städte, kodifiziert das Recht und stiftet 1364 die Universität Krakau.",
+     "Polen nimmt in dieser Zeit jüdische Flüchtlinge aus Westeuropa auf und wird für Jahrhunderte zum Zentrum jüdischen Lebens."
+    ]
+   },
+   {
+    "from": 1918,
+    "to": null,
+    "ruler": "Wechselnde Staatsoberhäupter",
+    "rulerTitle": "Präsident der Republik Polen",
+    "capital": "Warschau",
+    "government": "Republik; 1945–1989 sozialistischer Einparteienstaat",
+    "religion": "Katholizismus",
+    "languages": [
+     "Polnisch"
+    ],
+    "population": "ca. 38 Mio.",
+    "economy": "Industrie, Landwirtschaft, Dienstleistungen",
+    "summary": [
+     "1918 kehrt Polen nach 123 Jahren Teilung auf die Landkarte zurück. 1939 wird es von Deutschland und der Sowjetunion überfallen und verliert rund ein Sechstel seiner Bevölkerung.",
+     "Nach 1945 wird das Staatsgebiet nach Westen verschoben. Die Gewerkschaft Solidarność leitet ab 1980 das Ende des Ostblocks mit ein."
+    ]
+   }
+  ]
+ },
+ "Netherlands": {
+  "kind": "Republik, später Königreich",
+  "wiki": "Niederlande",
+  "founded": 1581,
+  "periods": [
+   {
+    "from": 1581,
+    "to": 1794,
+    "ruler": "Statthalter aus dem Haus Oranien, daneben die Generalstaaten",
+    "rulerTitle": "Statthalter (Stadhouder)",
+    "capital": "Den Haag; Amsterdam als Wirtschaftszentrum",
+    "government": "Föderative Republik der Sieben Vereinigten Provinzen",
+    "religion": "Calvinistisch geprägt, in der Praxis tolerant",
+    "languages": [
+     "Niederländisch"
+    ],
+    "population": "ca. 2 Mio.",
+    "economy": "Welthandel, VOC, Amsterdamer Börse und Wechselbank, Heringsfang",
+    "summary": [
+     "Aus dem Aufstand gegen Spanien geht eine Handelsrepublik hervor, die im 17. Jahrhundert die Weltmeere beherrscht. Amsterdam wird zum Finanzplatz Europas.",
+     "Die Vereinigte Ostindische Kompanie von 1602 gilt als erste Aktiengesellschaft mit handelbaren Anteilen – und führte zugleich Krieg, schloss Verträge und beherrschte Kolonien."
+    ]
+   },
+   {
+    "from": 1815,
+    "to": null,
+    "ruler": "Wechselnde Monarchen des Hauses Oranien-Nassau",
+    "rulerTitle": "König bzw. Königin der Niederlande",
+    "capital": "Amsterdam; Regierungssitz Den Haag",
+    "government": "Parlamentarische Monarchie",
+    "religion": "Konfessionell gemischt, stark säkularisiert",
+    "languages": [
+     "Niederländisch",
+     "Friesisch"
+    ],
+    "population": "ca. 18 Mio.",
+    "economy": "Handel, Landwirtschaft, Chemie, Rotterdam als Europas größter Hafen",
+    "summary": [
+     "Nach dem Verlust Belgiens 1830 konzentriert sich das Königreich auf Handel und Kolonien; Indonesien wird 1949 unabhängig.",
+     "Die Niederlande gehören zu den Gründungsmitgliedern von NATO und EWG."
+    ]
+   }
+  ]
+ },
+ "Venice": {
+  "kind": "Handelsrepublik",
+  "wiki": "Republik Venedig",
+  "founded": 697,
+  "dissolved": 1797,
+  "periods": [
+   {
+    "from": 697,
+    "to": 1797,
+    "ruler": "Enrico Dandolo",
+    "rulerTitle": "Doge von Venedig",
+    "reign": "1192–1205",
+    "capital": "Venedig",
+    "government": "Oligarchische Republik; der Doge wird auf Lebenszeit gewählt",
+    "religion": "Katholizismus mit betonter Eigenständigkeit gegenüber Rom",
+    "languages": [
+     "Venezianisch",
+     "Italienisch",
+     "Griechisch"
+    ],
+    "population": "ca. 180.000 in der Stadt",
+    "economy": "Levantehandel, Salz, Glas, Schiffbau im staatlichen Arsenal",
+    "summary": [
+     "Über tausend Jahre besteht die Republik – länger als jedes andere europäische Staatswesen der Neuzeit. Ihr Reichtum beruht auf dem Handel zwischen Europa und dem Orient.",
+     "Das Arsenal beschäftigt im 16. Jahrhundert bis zu 16.000 Menschen und kann in Serienfertigung ein Schiff pro Tag ausrüsten – die größte Industrieanlage des vorindustriellen Europa.",
+     "1797 übergibt der letzte Doge die Republik kampflos an Napoleon."
+    ]
+   }
+  ]
+ },
+ "Papal States": {
+  "kind": "Geistlicher Staat",
+  "wiki": "Kirchenstaat",
+  "founded": 756,
+  "dissolved": 1870,
+  "periods": [
+   {
+    "from": 756,
+    "to": 1870,
+    "ruler": "Der jeweils regierende Papst",
+    "rulerTitle": "Papst, zugleich weltlicher Landesherr",
+    "capital": "Rom, zeitweise Avignon",
+    "government": "Wahlmonarchie; das Kardinalskollegium wählt auf Lebenszeit",
+    "religion": "Katholizismus",
+    "languages": [
+     "Italienisch",
+     "Latein"
+    ],
+    "population": "ca. 3 Mio. (19. Jahrhundert)",
+    "economy": "Kirchenzehnt, Pilgerwesen, Landwirtschaft im Umland",
+    "summary": [
+     "Mit der Pippinschen Schenkung 756 erhält der Papst weltliche Herrschaft in Mittelitalien – Grundlage einer über tausendjährigen Doppelrolle als geistliches und politisches Oberhaupt.",
+     "1870 besetzt das Königreich Italien Rom. Erst die Lateranverträge von 1929 schaffen mit der Vatikanstadt einen souveränen Reststaat."
+    ]
+   }
+  ]
+ },
+ "Teutonic Knights": {
+  "kind": "Geistlicher Ritterorden mit Ordensstaat",
+  "wiki": "Deutscher Orden",
+  "founded": 1190,
+  "periods": [
+   {
+    "from": 1226,
+    "to": 1525,
+    "ruler": "Der jeweilige Hochmeister",
+    "rulerTitle": "Hochmeister des Deutschen Ordens",
+    "capital": "Marienburg (Malbork)",
+    "government": "Wahlmonarchie des Ordenskonvents",
+    "religion": "Katholisches Christentum",
+    "languages": [
+     "Deutsch",
+     "Prußisch",
+     "Polnisch",
+     "Lettisch"
+    ],
+    "population": "ca. 500.000",
+    "economy": "Getreide- und Bernsteinhandel, Städtegründungen, Hanse",
+    "summary": [
+     "Aus einem Hospitalorden des Heiligen Landes wird ein Territorialstaat an der Ostsee. Die Unterwerfung der prußischen Stämme dauert über fünfzig Jahre.",
+     "Die Niederlage bei Tannenberg 1410 gegen Polen-Litauen bricht die Vormacht. 1525 wandelt der Hochmeister den Ordensstaat in ein weltliches, lutherisches Herzogtum um."
+    ]
+   }
+  ]
+ },
+ "Ottoman Empire": {
+  "kind": "Sultanat und Kalifat",
+  "wiki": "Osmanisches Reich",
+  "founded": 1299,
+  "dissolved": 1922,
+  "events": [
+   {
+    "year": 1453,
+    "text": "Mehmed II. erobert Konstantinopel."
+   },
+   {
+    "year": 1529,
+    "text": "Erste Belagerung Wiens."
+   },
+   {
+    "year": 1683,
+    "text": "Zweite Belagerung Wiens scheitert; Beginn des Rückzugs."
+   },
+   {
+    "year": 1922,
+    "text": "Abschaffung des Sultanats; ein Jahr später wird die Türkei Republik."
+   }
+  ],
+  "periods": [
+   {
+    "from": 1299,
+    "to": 1512,
+    "ruler": "Mehmed II. der Eroberer",
+    "rulerTitle": "Sultan",
+    "dynasty": "Osmanen",
+    "reign": "1451–1481",
+    "capital": "Bursa, Edirne, ab 1453 Konstantinopel",
+    "government": "Sultanat mit Janitscharenheer und Timar-Lehnswesen",
+    "religion": "Sunnitischer Islam; Millet-System für Christen und Juden",
+    "languages": [
+     "Osmanisch-Türkisch",
+     "Griechisch",
+     "Arabisch",
+     "Serbisch",
+     "Armenisch"
+    ],
+    "population": "ca. 9 Mio.",
+    "economy": "Karawanenhandel, Zölle, Landwirtschaft",
+    "summary": [
+     "Mit der Eroberung Konstantinopels 1453 löst das Osmanische Reich Byzanz endgültig ab und wird zur beherrschenden Macht zwischen Balkan und Vorderem Orient.",
+     "Das Millet-System gewährt christlichen und jüdischen Gemeinschaften eigene Gerichtsbarkeit – Ungleichheit bei gleichzeitiger, für die Zeit ungewöhnlicher Duldung."
+    ]
+   },
+   {
+    "from": 1513,
+    "to": 1699,
+    "ruler": "Süleyman I. der Prächtige",
+    "rulerTitle": "Sultan, Kalif, Hüter der beiden Heiligen Stätten",
+    "dynasty": "Osmanen",
+    "reign": "1520–1566",
+    "capital": "Konstantinopel (Istanbul)",
+    "government": "Sultanat mit Großwesir und Diwan",
+    "religion": "Sunnitischer Islam",
+    "languages": [
+     "Osmanisch-Türkisch",
+     "Arabisch",
+     "Persisch",
+     "Griechisch",
+     "Ladino"
+    ],
+    "population": "ca. 25 Mio.",
+    "economy": "Handel zwischen Indien und Europa, Zünfte, Stiftungswesen",
+    "summary": [
+     "Unter Süleyman reicht das Reich von Ungarn bis zum Jemen, von Algier bis Bagdad. Er gilt als Gesetzgeber – im Türkischen heißt er Kanunî.",
+     "Die gescheiterte Belagerung Wiens 1683 markiert den Wendepunkt: Ab dem Frieden von Karlowitz 1699 verliert das Reich dauerhaft Gebiete."
+    ]
+   },
+   {
+    "from": 1700,
+    "to": 1922,
+    "ruler": "Abdülhamid II.",
+    "rulerTitle": "Sultan und Kalif",
+    "dynasty": "Osmanen",
+    "reign": "1876–1909",
+    "capital": "Istanbul",
+    "government": "Sultanat; 1876 und ab 1908 mit Verfassung und Parlament",
+    "religion": "Sunnitischer Islam",
+    "languages": [
+     "Osmanisch-Türkisch",
+     "Arabisch",
+     "Griechisch",
+     "Armenisch",
+     "Bulgarisch"
+    ],
+    "population": "ca. 21 Mio. (1914)",
+    "economy": "Agrarexporte, Eisenbahnbau, wachsende Auslandsverschuldung",
+    "summary": [
+     "Als „kranker Mann am Bosporus“ verspottet, versucht das Reich mit den Tanzimat-Reformen ab 1839 die Erneuerung nach europäischem Vorbild – gegen wachsende Nationalbewegungen auf dem Balkan.",
+     "Der Erste Weltkrieg an deutscher Seite endet mit Zusammenbruch und Besetzung. In dieser Zeit werden Hunderttausende Armenier deportiert und getötet – nach überwiegender Forschungsmeinung ein Völkermord.",
+     "1923 geht aus dem Kernland unter Mustafa Kemal die Republik Türkei hervor."
+    ]
+   }
+  ]
+ },
+ "Turkey": {
+  "kind": "Republik",
+  "wiki": "Türkei",
+  "founded": 1923,
+  "periods": [
+   {
+    "from": 1923,
+    "to": null,
+    "ruler": "Mustafa Kemal Atatürk, später wechselnde Präsidenten",
+    "rulerTitle": "Präsident der Republik",
+    "capital": "Ankara",
+    "government": "Republik; seit 2018 Präsidialsystem",
+    "religion": "Mehrheitlich sunnitischer Islam; laizistische Verfassung",
+    "languages": [
+     "Türkisch",
+     "Kurdisch"
+    ],
+    "population": "ca. 85 Mio.",
+    "economy": "Industrie, Landwirtschaft, Tourismus",
+    "summary": [
+     "Atatürk baut aus dem Rest des Osmanischen Reiches einen laizistischen Nationalstaat: lateinische Schrift, neues Zivilrecht, Frauenwahlrecht 1934.",
+     "Die Türkei tritt 1952 der NATO bei und verhandelt seit 2005 – faktisch ausgesetzt – über einen EU-Beitritt."
+    ]
+   }
+  ]
+ }
 }

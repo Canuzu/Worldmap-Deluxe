@@ -199,6 +199,7 @@ npm run check:staaten # zählt alle 195 Staaten in den Gegenwartsjahren nach
 npm run check:herrscher # prüft, für wie viele Jahre ein Herrscher hinterlegt ist
 npm run check:ereignisse # verteilt die Ereignisse auf die Zeitschnitte und prüft die Orte
 npm run check:konflikte # prüft Kriege, Schlachtfelder und die Namen der Kriegsparteien
+npm run check:fakten   # sucht Widersprüche zwischen den Datensätzen (Herrscher/Bestehen, Schlacht/Krieg)
 npm run check:schlachten # prüft die 44 abspielbaren Verläufe: Geometrie, Zeitmarken, Kennungen
 npm run check:layout  # Oberfläche in 5 Fenstergrößen × 6 Zuständen (braucht `npm run dev`)
 npm run check:ladelast -- http://127.0.0.1:4173  # was der erste Aufruf lädt (braucht `npm run preview`)

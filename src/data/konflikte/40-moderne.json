@@ -298,6 +298,36 @@
    "wiki": "Deutsche Einigungskriege"
   },
   {
+   "id": "zulukrieg",
+   "name": "Der Anglo-Zulu-Krieg",
+   "von": 1879,
+   "bis": 1879,
+   "art": "eroberung",
+   "rang": 2,
+   "ort": [
+    30.9,
+    -28.6
+   ],
+   "wo": "Zululand",
+   "seiten": [
+    {
+     "name": "Britisches Empire",
+     "staaten": [
+      "United Kingdom"
+     ]
+    },
+    {
+     "name": "Zulureich",
+     "staaten": [
+      "Zulu"
+     ]
+    }
+   ],
+   "text": "Ein Ultimatum, das niemand annehmen kann, und sechs Monate später ein zerlegtes Reich. Dazwischen liegt die schwerste Niederlage, die eine europäische Armee im 19. Jahrhundert gegen einen afrikanischen Gegner erleidet – und ein Nachtgefecht, das in Großbritannien berühmter wird als sie.",
+   "ausgang": "Das Zulu-Heer wird im Juli 1879 bei Ulundi geschlagen, Cetshwayo gefangen, das Reich in dreizehn Häuptlingsgebiete zerlegt.",
+   "wiki": "Zulukrieg"
+  },
+  {
    "id": "wettlaufafrika",
    "name": "Der Wettlauf um Afrika",
    "von": 1881,
@@ -1269,7 +1299,7 @@
   },
   {
    "id": "isandlwana",
-   "krieg": "wettlaufafrika",
+   "krieg": "zulukrieg",
    "jahr": 1879,
    "datum": "22. Januar 1879",
    "name": "Isandlwana",
@@ -1279,7 +1309,7 @@
    ],
    "wo": "Zululand",
    "rang": 3,
-   "sieger": "Afrikanische Reiche und Völker",
+   "sieger": "Zulureich",
    "text": "Zwanzigtausend Zulu überrennen ein britisches Lager und töten dreizehnhundert Soldaten – die schwerste Niederlage einer europäischen Armee gegen einen afrikanischen Gegner. Sechs Monate später ist das Zulureich trotzdem zerschlagen.",
    "wiki": "Schlacht bei Isandlwana",
    "verlauf": "isandlwana"

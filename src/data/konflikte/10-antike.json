@@ -534,6 +534,36 @@
    "wiki": "Bürgerkrieg zwischen Caesar und Pompeius"
   },
   {
+   "id": "antoniusoctavian",
+   "name": "Der Krieg gegen Antonius und Kleopatra",
+   "von": -32,
+   "bis": -30,
+   "art": "buergerkrieg",
+   "rang": 1,
+   "ort": [
+    24.0,
+    36.0
+   ],
+   "wo": "Griechenland, Ionisches Meer, Ägypten",
+   "seiten": [
+    {
+     "name": "Octavian",
+     "staaten": [
+      "Rome"
+     ]
+    },
+    {
+     "name": "Antonius und Kleopatra",
+     "staaten": [
+      "Ptolemaic Kingdom"
+     ]
+    }
+   ],
+   "text": "Der letzte der römischen Bürgerkriege wird als Krieg gegen eine ausländische Königin geführt – so hat Octavian ihn erklärt, und so steht er bis heute in den Büchern. Entschieden wird er zur See vor der Westküste Griechenlands.",
+   "ausgang": "Octavian siegt; Antonius und Kleopatra töten sich 30 v. Chr. in Alexandria. Ägypten wird römische Provinz, Octavian wird Augustus.",
+   "wiki": "Römischer Bürgerkrieg (32–30 v. Chr.)"
+  },
+  {
    "id": "germanien",
    "name": "Roms Griff nach Germanien",
    "von": -12,
@@ -1203,7 +1233,7 @@
   },
   {
    "id": "actium",
-   "krieg": "roembuerger",
+   "krieg": "antoniusoctavian",
    "jahr": -31,
    "datum": "2. September 31 v. Chr.",
    "name": "Actium",
@@ -1213,7 +1243,7 @@
    ],
    "wo": "Westgriechische Küste",
    "rang": 1,
-   "sieger": "Caesar und die Popularen",
+   "sieger": "Octavian",
    "text": "Die Seeschlacht, aus der das Kaiserreich hervorgeht: Octavian gegen Antonius und Kleopatra. Kleopatras Geschwader dreht ab, Antonius folgt, und mit ihm endet das hellenistische Ägypten.",
    "wiki": "Schlacht bei Actium",
    "verlauf": "actium"

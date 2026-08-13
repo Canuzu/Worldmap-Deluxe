@@ -21,6 +21,7 @@
     "check:besatzung": "node scripts/check-besatzung.mjs",
     "check:staaten": "node scripts/check-staaten.mjs",
     "check:herrscher": "node scripts/check-herrscher.mjs",
+    "check:fakten": "node scripts/check-fakten.mjs",
     "check:ereignisse": "node scripts/check-ereignisse.mjs",
     "check:layout": "node scripts/check-layout.mjs",
     "check:sprache": "node scripts/check-sprache.mjs",
