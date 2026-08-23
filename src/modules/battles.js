@@ -28,6 +28,11 @@
 import L from 'leaflet';
 import { getJSON } from './data.js';
 import { zeichendichte } from './dichte.js';
+/* Textbreiten aus dem gemeinsamen Speicher der Beschriftungsebene.
+   `measureText` ist billig, aber das Schlachtfeld fragt es rund vierzig Mal
+   je Bild – und seit das Feld auch im Stillstand weiterläuft, zwanzigmal in
+   der Sekunde. Die Namen ändern sich dabei nie. */
+import { breiteVon } from './labels.js';
 
 /**
  * Verläufe kommen einzeln – und erst, wenn jemand sie sehen will.
@@ -920,9 +925,9 @@ const SchlachtLeinwand = L.Layer.extend({
     const ctx = this._ctx;
     ctx.save();
     ctx.font = '500 14px ' + BLATT_SCHRIFT;
-    const wt = ctx.measureText(titel).width;
+    const wt = breiteVon(ctx, titel);
     ctx.font = '500 10.5px ui-sans-serif, system-ui, sans-serif';
-    const wd = ctx.measureText(datum).width;
+    const wd = breiteVon(ctx, datum);
     ctx.restore();
     const kw = Math.min(Math.max(wt, wd) + 26, (x1 - x0) * .6);
     const kh = datum ? 44 : 30;
@@ -1147,7 +1152,36 @@ const SchlachtLeinwand = L.Layer.extend({
   _einfluss(ctx, groesse, inhalt) {
     const a = klemm(inhalt.buehne ?? 1, 0, 1);
     const koerper = (inhalt.koerper ?? []).filter((k) => (k._lage?.p ?? k.punkte)?.length >= 3);
-    if (a <= .01 || !koerper.length) return [];
+    if (a <= .01 || !koerper.length) { this._feldStand = null; return []; }
+
+    /* Steht alles still, steht auch das Feld.
+     *
+     * Die Berechnung ist der teuerste Posten des ganzen Renderers: Sie
+     * zeichnet drei Wolken, legt einen Weichzeichner darüber und liest die
+     * Fläche einmal vollständig zurück – `getImageData` sperrt dabei jede
+     * Bildbeschleunigung. Solange der Verlauf lief, geschah das je Bild und
+     * war richtig so, denn je Bild bewegten sich die Verbände.
+     *
+     * Seit das Feld auch im Stillstand weiterläuft, damit Rauch abziehen und
+     * Funken springen können, geschah es zwanzigmal in der Sekunde für ein
+     * Ergebnis, das sich nicht ändert. Es hängt allein an der Lage der
+     * Verbände; die steht zwischen zwei Stationen still. Also wird die Lage
+     * zu einem Schlüssel zusammengefasst, und bei gleichem Schlüssel wird das
+     * fertige Bild noch einmal aufgelegt statt neu gerechnet. */
+    const stand = `${groesse.x}|${groesse.y}|${inhalt.schaubild ? 1 : 0}|${a.toFixed(2)}|`
+      + koerper.map((k) => `${k.partei}:${Math.round(k._lage?.cx ?? 0)},${Math.round(k._lage?.cy ?? 0)}`
+        + `,${Math.round(k._lage?.rx ?? 0)},${Math.round(k._lage?.ry ?? 0)}`
+        + `,${(k.deckung ?? 1).toFixed(2)},${k.geschlagen ? 1 : 0}`).join(';');
+    if (stand === this._feldStand && feldBild) {
+      ctx.save();
+      ctx.globalAlpha = a * (inhalt.schaubild ? 1 : .85);
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
+      ctx.drawImage(feldBild, 0, 0, feldBild.width, feldBild.height, 0, 0, groesse.x, groesse.y);
+      ctx.restore();
+      return this._heiss ?? [];
+    }
+    this._feldStand = stand;
 
     const parteien = [];
     for (const k of koerper) {
@@ -1156,7 +1190,7 @@ const SchlachtLeinwand = L.Layer.extend({
         parteien.push({ id, farbe: k.farbe });
       }
     }
-    if (!parteien.length) return [];
+    if (!parteien.length) { this._feldStand = null; return []; }
 
     const w = Math.max(2, Math.round(groesse.x / FELD_TEILER));
     const h = Math.max(2, Math.round(groesse.y / FELD_TEILER));
@@ -1823,7 +1857,7 @@ const SchlachtLeinwand = L.Layer.extend({
     y /= p.length;
     const art = GELAENDE[g.art] ?? GELAENDE.hoehe;
     ctx.font = 'italic 500 10.5px ui-serif, Georgia, serif';
-    const w = ctx.measureText(g.name).width + 6;
+    const w = breiteVon(ctx, g.name) + 6;
     const platz = [[x, y], [x, y - 15], [x, y + 15], [x - w * .7, y], [x + w * .7, y]]
       .find(([px, py]) => !belegt.some(
         (b) => Math.abs(b.x - px) < (b.w + w) / 2 + 4 && Math.abs(b.y - py) < (b.h + 14) / 2 + 3,
@@ -2276,7 +2310,7 @@ const SchlachtLeinwand = L.Layer.extend({
       ctx.fillStyle = '#eef2f8';
       ctx.fillText(a.name, mitte[0], mitte[1] - 11);
       this._pfeilPlaetze?.push({
-        x: mitte[0], y: mitte[1] - 11, w: ctx.measureText(a.name).width + 6, h: 14,
+        x: mitte[0], y: mitte[1] - 11, w: breiteVon(ctx, a.name) + 6, h: 14,
       });
     }
     ctx.restore();
@@ -2331,9 +2365,9 @@ const SchlachtLeinwand = L.Layer.extend({
       let gewaehlt = null;
       for (const f of fassungen) {
         ctx.font = '600 11.5px ui-sans-serif, system-ui, sans-serif';
-        const wName = ctx.measureText(f.name).width;
+        const wName = breiteVon(ctx, f.name);
         ctx.font = '500 10px ui-sans-serif, system-ui, sans-serif';
-        const wZahl = f.staerke ? ctx.measureText(f.staerke).width : 0;
+        const wZahl = f.staerke ? breiteVon(ctx, f.staerke) : 0;
         const w = Math.max(wName, wZahl) + 14;
         const h = f.staerke ? 30 : 19;
 

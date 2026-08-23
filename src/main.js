@@ -110,18 +110,20 @@ async function main() {
 
   document.documentElement.dataset.theme = prefs.theme;
 
+  /* Die Adresse wird vor dem Start gelesen, nicht danach. Sie steht ohnehin
+     schon da, und aus ihr folgt, welcher Zeitschnitt gebraucht wird – die
+     einzige Angabe, die `boot` braucht, um die längste Anfrage des Starts
+     neben den übrigen herlaufen zu lassen statt hinter ihnen. */
+  const hash = readHash();
   try {
-    await atlasData.boot(progress);
+    await atlasData.boot(progress, { startJahr: hash.year ?? 1815 });
   } catch (err) {
     bootStatus.innerHTML = `${esc(txt('start.fehler'))}<br><small>${esc(err.message)}</small>`;
     bootBar.style.background = 'var(--rose)';
     return;
   }
 
-  const hash = readHash();
-  const startIndex = hash.year != null
-    ? atlasData.indexForYear(hash.year)
-    : atlasData.indexForYear(1815);
+  const startIndex = atlasData.indexForYear(hash.year ?? 1815);
 
   $('app').hidden = false;
 
@@ -258,12 +260,38 @@ async function main() {
     ? (h) => window.cancelIdleCallback(h)
     : (h) => window.clearTimeout(h);
 
+  /**
+   * Der erste Vorgriff bekommt Vorlauf, die späteren nicht.
+   *
+   * `requestIdleCallback` meldet Leerlauf, sobald der Hauptfaden nichts mehr
+   * zu tun hat – und das ist unmittelbar nach dem Aufbau der Fall, während
+   * die Karte gerade erst erscheint. Gemessen lagen dadurch zwei zusätzliche
+   * Zeitschnitte, rund 840 kB, noch im Startfenster: geholt für den Fall,
+   * dass gleich jemand den Regler bewegt, und dabei auf einer schmalen
+   * Leitung genau mit dem im Wettbewerb, worauf der Betrachter wartet.
+   *
+   * Leerlauf des Rechners ist eben nicht dasselbe wie Ruhe beim Betrachter.
+   * Der erste Vorgriff wartet deshalb zusätzlich eine reale Pause ab; jeder
+   * weitere kommt sofort, denn dann steht die Karte längst.
+   */
+  const ERSTER_VORGRIFF_WARTET = 1800;
+  let ersterVorgriff = true;
+  // Eigene Ablage, denn dieses Handle ist immer ein Zeitgeber – es darf nicht
+  // an `abbrechen` geraten, das je nach Fassung `cancelIdleCallback` ruft.
+  let vorlaufHandle = null;
+
   function planePrefetch(index) {
-    if (prefetchHandle != null) abbrechen(prefetchHandle);
-    prefetchHandle = imLeerlauf(() => {
-      prefetchHandle = null;
-      atlasData.prefetch(index, { weit: reisebereit });
-    });
+    if (prefetchHandle != null) { abbrechen(prefetchHandle); prefetchHandle = null; }
+    if (vorlaufHandle != null) { window.clearTimeout(vorlaufHandle); vorlaufHandle = null; }
+    const anstossen = () => {
+      prefetchHandle = imLeerlauf(() => {
+        prefetchHandle = null;
+        atlasData.prefetch(index, { weit: reisebereit });
+      });
+    };
+    if (!ersterVorgriff) { anstossen(); return; }
+    ersterVorgriff = false;
+    vorlaufHandle = window.setTimeout(() => { vorlaufHandle = null; anstossen(); }, ERSTER_VORGRIFF_WARTET);
   }
 
   /**

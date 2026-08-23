@@ -184,7 +184,24 @@ export class AtlasData {
     this._maxCache = 6;
   }
 
-  async boot(onProgress = () => {}) {
+  /**
+   * Den Atlas hochfahren.
+   *
+   * `startJahr` ist der Grund, warum diese Methode überhaupt einen Parameter
+   * hat, und der ganze Unterschied beim ersten Bild. Vorher lief der Start als
+   * Kette: Zeitschnittverzeichnis, dann Wissensbasis und Namen, dann die
+   * Küstenlinie – und **erst danach**, aus dem Aufrufer heraus, der
+   * Zeitschnitt selbst. Vier Anfragen nacheinander, ehe das geholt wurde,
+   * worauf die Karte tatsächlich wartet: gemessen 2,6 Sekunden, bevor der
+   * erste Byte Geometrie unterwegs war.
+   *
+   * Dabei hängt der Zeitschnitt an nichts davon. `prepareEpoch` ist eine reine
+   * Funktion aus Verzeichniseintrag, Geometrie und Religionsangaben; die
+   * Wissensbasis fragt erst die Tafel. Sobald das Verzeichnis da ist, steht
+   * fest, welche Datei gebraucht wird – also wird sie sofort angefordert und
+   * läuft neben allem anderen her. Aus einer Kette werden zwei Glieder.
+   */
+  async boot(onProgress = () => {}, { startJahr = null } = {}) {
     onProgress(.08, txt('start.zeitschnitte'));
     this.index = await getJSON('data/epochs.json');
     this.epochs = this.index.epochs;
@@ -198,10 +215,21 @@ export class AtlasData {
       short: txt(`epoche.${e.id}.kurz`),
     }));
 
+    /* Sofort anfordern, nicht abwarten: Der Zeitschnitt ist das Längste am
+       Start und hing bisher am Ende der Kette. Ein Fehlschlag wird hier
+       geschluckt – der Aufrufer holt ihn gleich noch einmal und bekommt dann
+       den Fehler, der zur Ladeschirm-Meldung gehört. */
+    const zeitschnitt = startJahr == null
+      ? null
+      : this.load(this.indexForYear(startJahr)).catch(() => null);
+
     onProgress(.24, txt('start.wissen'));
-    const [knowledge, names] = await Promise.all([
+    const [knowledge, names, ozean] = await Promise.all([
       this._wissen('polities', { entries: {} }),
       this._wissen('names', { names: {} }),
+      // Nur die Übersichtsküste blockiert den Start; die hochaufgelöste
+      // Fassung und die Gewässer kommen später bzw. erst auf Anforderung.
+      getJSON('data/base/ocean.json').then(toFeatures),
     ]);
     this.knowledge = knowledge.entries ?? {};
     this.knowledgeMeta = knowledge.meta ?? {};
@@ -213,11 +241,12 @@ export class AtlasData {
     this.wissenSprache = knowledge.meta?.language ?? 'de';
 
     onProgress(.46, txt('start.kuesten'));
-    // Nur die Übersichtsküste blockiert den Start; die hochaufgelöste Fassung
-    // und die Gewässer kommen später bzw. erst auf Anforderung.
-    this.base = { ocean: await getJSON('data/base/ocean.json').then(toFeatures) };
+    this.base = { ocean: ozean };
 
     onProgress(.72, txt('start.aufbau'));
+    // In aller Regel längst da – gewartet wird hier nur, damit der
+    // Fortschrittsbalken nicht vor der Karte fertig ist.
+    await zeitschnitt;
     return this;
   }
 
