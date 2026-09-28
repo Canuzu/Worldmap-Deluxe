@@ -161,6 +161,8 @@ async function main() {
     // Ein aufgeschlagenes Ereignis blendet die Detailtafel nicht weg – man
     // liest oft beides nebeneinander: das Land und was dort geschah.
     onOpen: () => { alleZu(); },
+    // Wo eine Ereignismarke steht, setzt die Karte keinen Ländernamen hin.
+    onBelegt: (rechtecke) => atlas.setLabelSperren('ereignisse', rechtecke),
   });
 
   /**
@@ -475,6 +477,20 @@ async function main() {
 
   atlas.on('select', (name) => selectPolity(name));
   atlas.on('view', () => { updateScale(); updateHash(); aktualisiereBeiblatt(); });
+
+  /* Die Bedienflächen wandern nicht mit der Karte, aber ihre Zahl und Größe
+     ändert sich: Die Tafel klappt auf, das Register schiebt sich herein, das
+     Fenster wird schmaler. Gemeldet wird deshalb beim Start, bei jeder
+     Größenänderung und immer dann, wenn eine dieser Flächen ein- oder
+     ausgeblendet wird. Ein Beobachter auf `hidden` ist genauer als eine Liste
+     von Aufrufstellen – und vergisst keine. */
+  const sperrBeobachter = new MutationObserver(() => requestAnimationFrame(meldeOberflaechenSperren));
+  for (const id of ['panel', 'battlesBox', 'colorModes', 'timeline', 'brand', 'tools']) {
+    const el = document.getElementById(id);
+    if (el) sperrBeobachter.observe(el, { attributes: true, attributeFilter: ['hidden', 'class', 'style'] });
+  }
+  window.addEventListener('resize', () => requestAnimationFrame(meldeOberflaechenSperren));
+  requestAnimationFrame(() => requestAnimationFrame(meldeOberflaechenSperren));
 
   /* ------------------------------------------------------ Hover-Hinweis */
 
@@ -1221,6 +1237,47 @@ async function main() {
     aktualisiereBeiblatt();
     // Erst nach dem Einblenden messen, sonst steht die Höhe noch nicht fest.
     requestAnimationFrame(meldeSperren);
+  }
+
+  /**
+   * Was auf der Karte liegt, ohne Karte zu sein.
+   *
+   * Zeitleiste, Kopfzeile, Modusleiste, Werkzeugleiste und Tafel schweben
+   * über dem Kartenbild. Die Beschriftungsebene wusste davon nichts und
+   * setzte ihre Namen weiter darunter – auf dem Schirm blieb davon ein
+   * angeschnittenes „Äthiopien" am unteren Rand und ein „Fulbe-Reich", von
+   * dem die Zeitleiste die untere Hälfte verdeckte. Ein halber Name ist
+   * schlimmer als keiner: Er sieht aus wie ein Fehler, und er ist einer.
+   *
+   * Gemeldet wird in Containerkoordinaten mit der linken oberen Ecke, so wie
+   * die Beschriftungsebene rechnet. Der Kartenrand kommt als vier schmale
+   * Streifen dazu, damit kein Name halb aus dem Bild ragt.
+   */
+  function meldeOberflaechenSperren() {
+    const buehne = atlas.el.getBoundingClientRect();
+    const RAND = 6;
+    const flaechen = ['timeline', 'brand', 'colorModes', 'tools', 'panel', 'battlesBox']
+      .map((id) => document.getElementById(id))
+      .filter((el) => el && !el.hidden && el.offsetParent !== null)
+      .map((el) => {
+        const r = el.getBoundingClientRect();
+        return {
+          x: r.left - buehne.left - RAND,
+          y: r.top - buehne.top - RAND,
+          w: r.width + RAND * 2,
+          h: r.height + RAND * 2,
+        };
+      });
+    // Der Bildrand selbst: Ein Name, der zur Hälfte draußen liegt, wird von
+    // der Leinwand abgeschnitten – „Britische O…" statt „Britisches Ostindien".
+    const b = buehne;
+    flaechen.push(
+      { x: -200, y: -200, w: b.width + 400, h: 200 },
+      { x: -200, y: b.height, w: b.width + 400, h: 200 },
+      { x: -200, y: -200, w: 200, h: b.height + 400 },
+      { x: b.width, y: -200, w: 200, h: b.height + 400 },
+    );
+    atlas.setLabelSperren('oberflaeche', flaechen);
   }
 
   /**

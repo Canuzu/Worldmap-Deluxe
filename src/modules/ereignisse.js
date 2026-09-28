@@ -18,6 +18,7 @@
  */
 import L from 'leaflet';
 import { esc } from './format.js';
+import { breiteVon } from './labels.js';
 import { txt } from './sprache.js';
 
 /*
@@ -130,9 +131,17 @@ function jahrText(e) {
 }
 
 export class EventLayer {
-  constructor(atlas, { onOpen } = {}) {
+  constructor(atlas, { onOpen, onBelegt } = {}) {
     this.atlas = atlas;
     this.onOpen = onOpen ?? (() => {});
+    /* Wird nach jedem Setzen mit den Rechtecken gerufen, die die Namen der
+       Ereignisse einnehmen. Die Beschriftungsebene weicht ihnen dann aus –
+       sonst steht „Der Wiener Kongress" quer über „Kaisertum Österreich". */
+    this.onBelegt = onBelegt ?? (() => {});
+    // Eigenes Canvas allein zum Messen: Die Namen sind DOM-Elemente, ihre
+    // Breite steht erst nach dem Einhängen fest – zu spät, um damit über das
+    // Einhängen zu entscheiden.
+    this._mass = document.createElement('canvas').getContext('2d');
     this.sichtbar = false;
     this.fenster = [-Infinity, Infinity];
     this.alle = [];
@@ -242,6 +251,10 @@ export class EventLayer {
     if (!this.sichtbar || !this.liste.length) {
       this.wege.remove();
       this.marken.remove();
+      // Ausgeschaltet heißt: gibt nichts mehr frei zu halten. Ohne diese
+      // Zeile blieben die Sperrflächen der letzten Zeichnung stehen und die
+      // Ländernamen wichen einer Marke aus, die es nicht mehr gibt.
+      this.onBelegt([]);
       return;
     }
     this.wege.addTo(map);
@@ -254,7 +267,17 @@ export class EventLayer {
     // übereinander – und über den Namen der Länder darunter. Geprüft wird
     // gegen die schon gesetzten Namen, größere Ränge zuerst.
     const belegt = [];
-    const passtNoch = (pt, breite) => {
+    /* Gemessen, nicht geschätzt.
+     *
+     * Hier stand „6,2 Bildpunkte je Zeichen ist nah genug". Für „Der Wiener
+     * Kongress" ergibt das 118 Bildpunkte, gesetzt sind es 131 – und der
+     * Unterschied ist genau der Platz, den der nächste Name für frei hielt.
+     * Ein Canvas zum Messen kostet einmal im Leben der Ebene etwas; der
+     * Schriftschnitt steht in map.css und muss hier gleich lauten. */
+    this._mass.font = '500 11.5px ' + (getComputedStyle(document.body).getPropertyValue('--font-ui').trim()
+      || 'system-ui, sans-serif');
+    const passtNoch = (pt, name) => {
+      const breite = breiteVon(this._mass, name);
       const kasten = [pt.x + 14, pt.y - 8, pt.x + 14 + breite, pt.y + 8];
       for (const b of belegt) {
         if (kasten[0] < b[2] && kasten[2] > b[0] && kasten[1] < b[3] && kasten[3] > b[1]) return false;
@@ -295,7 +318,7 @@ export class EventLayer {
       const pt = map.latLngToContainerPoint([e.ort[1], e.ort[0]]);
       // 6,2 Bildpunkte je Zeichen ist für diese Schrift und Größe nah genug;
       // eine echte Messung kostete ein Canvas nur für die Breitenberechnung.
-      const zeigeName = zoom >= NAME_AB_ZOOM && passtNoch(pt, e.name.length * 6.2);
+      const zeigeName = zoom >= NAME_AB_ZOOM && passtNoch(pt, e.name);
 
       const marke = L.marker([e.ort[1], e.ort[0]], {
         pane: 'events',
@@ -317,7 +340,15 @@ export class EventLayer {
       });
       marke.on('click', () => this._oeffne(e));
       this.marken.addLayer(marke);
+      // Die Marke selbst belegt ebenfalls Platz, auch ohne Namen: 22×22
+      // Bildpunkte, mittig am Ort. Ein Ländername mitten durch das Zeichen
+      // ist genauso unschön wie einer durch die Beschriftung.
+      belegt.push([pt.x - 12, pt.y - 12, pt.x + 12, pt.y + 12]);
     }
+
+    /* Der Beschriftungsebene vorlegen, was hier belegt ist. Umgerechnet auf
+       die Form, in der dort gerechnet wird: Ecke, Breite, Höhe. */
+    this.onBelegt(belegt.map(([x0, y0, x1, y1]) => ({ x: x0, y: y0, w: x1 - x0, h: y1 - y0 })));
   }
 }
 

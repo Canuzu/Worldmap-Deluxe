@@ -831,7 +831,7 @@
   z-index: 520;
   left: calc(.9rem + var(--safe-l));
   top: calc(4.1rem + env(safe-area-inset-top, 0px));
-  width: min(23rem, calc(100vw - 2rem));
+  width: var(--register-b);
   max-height: calc(100vh - var(--console-h, 9rem) - 7.8rem - env(safe-area-inset-top, 0px));
   display: flex;
   flex-direction: column;
@@ -1655,6 +1655,24 @@
   -webkit-backdrop-filter: blur(18px) saturate(140%);
 }
 .mapmodes::-webkit-scrollbar { display: none; }
+/* Dass die Leiste seitlich weiterläuft, war bisher nur zu entdecken, indem
+   man es versuchte: Auf dem Telefon endete sie mitten in „Religion“, und
+   nichts sagte, dass dahinter noch etwas steht. Eine weiche Kante an beiden
+   Enden ist die übliche Antwort darauf – sie zeigt an, dass abgeschnitten
+   wird, ohne einen Balken ins Bild zu setzen. */
+.mapmodes {
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 .85rem,
+    #000 calc(100% - .85rem), transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 .85rem,
+    #000 calc(100% - .85rem), transparent 100%);
+}
+/* Passt alles hinein, soll nichts verblassen. */
+@media (min-width: 1101px) {
+  .app:not(:has(#panel:not([hidden]))):not(:has(.battles:not([hidden]))) .mapmodes {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
 
 .mapmodes button {
   display: flex;
@@ -1698,6 +1716,18 @@
   pointer-events: none;
 }
 .mapmodes { transition: opacity var(--dur) var(--ease), visibility 0s linear var(--dur); }
+
+/* Das Kriegsregister schiebt sich von links über die Karte. Auf breiten
+   Bildschirmen bleibt zwischen ihm und der mittigen Modusleiste Platz; auf
+   einem Tablet mit 834 Punkten nicht mehr – gemessen lagen 212 Punkte der
+   Leiste unter dem Register. Dann rückt sie um die halbe Registerbreite nach
+   rechts, so wie sie der Tafel nach links ausweicht. */
+@media (max-width: 1100px) {
+  .app:has(.battles:not([hidden])) .mapmodes {
+    transform: translateX(calc(-50% + var(--register-b) / 2));
+    max-width: min(46rem, calc(100% - var(--register-b) - 2rem));
+  }
+}
 
 @media (max-width: 900px) {
   .mapmodes { font-size: .7rem; bottom: calc(11rem + var(--safe-b)); }

@@ -492,13 +492,62 @@
     position: absolute;
     z-index: 700;
     inset: 0 0 0 auto;
-    width: min(24rem, 100%);
+    width: var(--tafel-b);
     margin: 0;
     border: 0;
     border-left: 1px solid var(--hairline);
     border-radius: 0;
     box-shadow: -14px 0 44px rgba(0, 0, 0, .34);
     animation: slideIn 260ms var(--ease);
+    /* Deckend, sobald sie über der Karte liegt.
+       Als Spalte daneben darf die Tafel durchscheinen – dahinter ist nichts.
+       Über der Karte wird daraus ein Fehler: Auf dem Tablet standen „Kairo",
+       „Istanbul" und „Äthiopien" mitten im Steckbrief und sahen aus wie
+       Schmutz auf dem Blatt. Im Querformat wurde das schon so gelöst; hier
+       fehlte es. */
+    background: var(--surface-solid);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+}
+
+/* --------------------------------- Was der Tafel weichen muss
+
+   Bis 900 Punkte ist die Tafel keine Spalte mehr, sondern legt sich über die
+   Karte. Die Bedienelemente wussten davon nichts und blieben, wo sie waren –
+   gemessen auf einem Tablet mit 834 Punkten: die Modusleiste 214 Punkte breit
+   unter der Tafel, die Werkzeugleiste ganz darunter, die Zeitleiste auf 365
+   Punkten verdeckt. Bedienbar war davon nichts mehr, und zu sehen war es auch
+   nicht, weil die Tafel deckend ist.
+
+   `min-height: 481px` schließt das liegende Telefon aus: Dort ist die Tafel
+   schon eine Spalte, die Bühne also ohnehin schmaler, und ein zweiter Versatz
+   schöbe die Modusleiste aus dem Bild – was er beim ersten Versuch auch tat.
+   Für diesen Fall steht die eigene Behandlung weiter unten. */
+@media (max-width: 900px) and (min-height: 481px) {
+  .app:has(#panel:not([hidden])) .tools {
+    right: calc(var(--tafel-b) + .9rem + var(--safe-r));
+  }
+  .app:has(#panel:not([hidden])) .timeline,
+  .app:has(#panel:not([hidden])) .rose {
+    right: calc(var(--tafel-b) + .85rem);
+  }
+  .app:has(#panel:not([hidden])) .timeline {
+    width: auto;
+    left: .85rem;
+    margin-inline: 0;
+  }
+  /* Die Modusleiste sitzt mittig über der Kartenbreite – die halbiert sich
+     nicht, sie verschiebt sich. Ihre Mitte wandert um die halbe Tafelbreite
+     nach links. */
+  .app:has(#panel:not([hidden])) .mapmodes {
+    transform: translateX(calc(-50% - var(--tafel-b) / 2));
+    /* `100%` meint hier die Bühne, und die bleibt breit, auch wenn die Tafel
+       darüberliegt. Ohne diesen Abzug war die Leiste 494 Punkte breit auf
+       834 Punkten Bildschirm, von denen 384 die Tafel einnahm – und stand
+       22 Punkte links außerhalb des Bildes. */
+    max-width: min(46rem, calc(100% - var(--tafel-b) - 2rem));
   }
 }
 

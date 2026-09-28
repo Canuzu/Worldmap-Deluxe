@@ -9,6 +9,8 @@
    Lichtstrich oben, wie ihn poliertes Messing hat. */
 .timeline {
   position: absolute;
+  /* Bezugsgröße für die Kompakt-Anordnung weiter unten. */
+  container: zeitleiste / inline-size;
   z-index: 600;
   left: 0; right: 0;
   bottom: calc(.85rem + var(--safe-b));
@@ -334,8 +336,16 @@
    drei Fingern: Jahreszahl und Epochenname liefen über den Rand, die Zahlen
    zur Zeitschicht drängten sich daneben, und der Faltknopf rutschte allein in
    eine zweite Zeile. Jetzt bleiben Wiedergabe und Jahr; alles Weitere weicht,
-   und der Faltknopf sitzt fest in der Ecke. */
-@media (max-width: 720px) {
+   und der Faltknopf sitzt fest in der Ecke.
+
+   Gefragt wird nach der Breite der Zeitleiste, nicht nach der des Fensters.
+   Das ist der Unterschied zwischen einer Regel, die meistens stimmt, und
+   einer, die immer stimmt: Auf einem Tablet mit 834 Punkten galt die weite
+   Anordnung weiter, obwohl die Leiste neben der aufgeschlagenen Tafel nur
+   noch 450 Punkte breit war – die Jahreszahl lag dann über den Zahlen zur
+   Zeitschicht. Eine Containerabfrage misst das, was wirklich zur Verfügung
+   steht. */
+@container zeitleiste (max-width: 720px) {
   .timeline { padding: .6rem .8rem .45rem; border-radius: var(--r-lg); }
   .timeline__head {
     grid-template-columns: auto minmax(0, 1fr);

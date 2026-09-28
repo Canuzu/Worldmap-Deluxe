@@ -897,6 +897,38 @@ export class AtlasMap {
     }, 140);
   }
 
+  /**
+   * Der Beschriftungsebene sagen, welche Flächen belegt sind.
+   *
+   * Mehrere Melder, eine Liste: die Ereignismarken und die Bedienflächen, die
+   * über der Karte liegen – Zeitleiste, Kopfzeile, Modusleiste, Tafel. Beide
+   * müssen sich melden können, ohne einander zu löschen, deshalb wird je
+   * Quelle abgelegt und vor dem Weitergeben zusammengeführt.
+   *
+   * Durchgereicht, nicht verarbeitet: Wer meldet, weiß wo er steht; die
+   * Beschriftungsebene weiß, wie sie ausweicht – die Karte vermittelt nur,
+   * weil sie beide hält.
+   */
+  setLabelSperren(quelle, rechtecke) {
+    (this._labelSperren ??= new Map()).set(quelle, rechtecke ?? []);
+    this.labelLayer.setSperren([...this._labelSperren.values()].flat());
+  }
+
+  /**
+   * Alles Belegte als [x0,y0,x1,y1] – die Form, in der die Ortsebene rechnet.
+   *
+   * Ohne die Quelle `orte` selbst: Sie ruft das hier ab, um ihre eigene Liste
+   * damit anzufangen, und würde sich sonst gegen ihren vorigen Stand prüfen.
+   */
+  _sperrKaesten() {
+    const aus = [];
+    for (const [quelle, liste] of this._labelSperren ?? []) {
+      if (quelle === 'orte') continue;
+      for (const r of liste) aus.push([r.x, r.y, r.x + r.w, r.y + r.h]);
+    }
+    return aus;
+  }
+
   setWaterData({ lakes, rivers }) {
     this.waterLayer.clearLayers();
     if (lakes) this.waterLayer.addData(lakes);
@@ -1620,7 +1652,12 @@ export class AtlasMap {
     const ctx = canvas.getContext('2d');
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, size.x, size.y);
-    if (!(this.showPlaces && this.places?.length) && !(this.showPhysical && this.physical?.length)) return;
+    if (!(this.showPlaces && this.places?.length) && !(this.showPhysical && this.physical?.length)) {
+      // Nichts gezeichnet heißt: nichts belegt. Ohne diese Zeile wichen die
+      // Ländernamen Ortsnamen aus, die gar nicht mehr im Bild stehen.
+      this.setLabelSperren('orte', []);
+      return;
+    }
 
     const zoom = map.getZoom();
     /* Dieselbe Rechnung wie bei den Ländernamen: Auf einem schmalen Bildschirm
@@ -1634,7 +1671,13 @@ export class AtlasMap {
     ctx.textBaseline = 'middle';
     ctx.lineJoin = 'round';
 
-    const belegt = [];
+    /* Angefangen wird mit dem, was andere schon belegt haben: die
+       Ereignismarken und die Bedienflächen über der Karte. Vier
+       Beschriftungssysteme mit vier eigenen Listen ergaben vier Karten
+       übereinander – „Marokko" quer durch „Casablanca", Ortsnamen halb unter
+       der Zeitleiste. Die Rangfolge ist jetzt festgelegt: Ereignis vor Ort
+       vor Ländername, und jede Stufe reicht ihre Belegung weiter. */
+    const belegt = this._sperrKaesten();
     const frei = (x, y, w, h) => {
       for (const b of belegt) {
         if (x < b[2] && x + w > b[0] && y < b[3] && y + h > b[1]) return false;
@@ -1745,6 +1788,13 @@ export class AtlasMap {
       ctx.fillText(ort.name, x, y);
       gezeichnet++;
     }
+
+    /* Und weiterreichen an die Ländernamen, die als letzte gesetzt werden.
+       Nur der eigene Zuwachs: Was schon vorher belegt war, steht dort
+       ohnehin. */
+    const fremd = this._sperrKaesten().length;
+    this.setLabelSperren('orte', belegt.slice(fremd)
+      .map(([x0, y0, x1, y1]) => ({ x: x0, y: y0, w: x1 - x0, h: y1 - y0 })));
   }
 
   /* ---------------------------------------------------------- Auswahl */

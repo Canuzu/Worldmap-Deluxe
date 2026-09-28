@@ -48,6 +48,7 @@ export const LabelLayer = L.Layer.extend({
   initialize(options) {
     L.setOptions(this, options);
     this._items = [];
+    this._sperren = [];
     this._style = { ink: '#fff', halo: '#000', accent: '#e6bc79' };
     this._selected = null;
     this._hover = null;
@@ -99,6 +100,30 @@ export const LabelLayer = L.Layer.extend({
   /** @param {{text:string, latlng:L.LatLng, bounds:L.LatLngBounds, rank:number, color:string}[]} items */
   setItems(items) {
     this._items = items;
+    this._reset();
+    return this;
+  },
+
+  /**
+   * Flächen, die eine andere Ebene schon belegt hat.
+   *
+   * Die Ereignismarken sind kein Teil dieser Ebene: Sie sind DOM-Elemente in
+   * einem eigenen Pane, mit eigener Kollisionsprüfung – und die prüfte bisher
+   * nur gegen andere Ereignisse. Zwei Listen, die nichts voneinander wissen,
+   * ergeben genau das Bild, das auf der Karte zu sehen war: „Die erste
+   * moderne Eisenbahnlinie" quer über „Vereinigtes Königreich".
+   *
+   * Wer weicht, ist keine Geschmacksfrage. Ein Ereignis ist eine Aussage über
+   * einen Zeitpunkt, ein Ländername der Grund, auf dem sie steht – dieselbe
+   * Rangfolge, nach der im Schlachtverlauf die Truppe vor dem Flurnamen
+   * gewinnt. Also bekommt die Beschriftungsebene die belegten Rechtecke
+   * vorgelegt und setzt ihre Namen daneben.
+   *
+   * Übergeben wird in Containerkoordinaten, dieselben, in denen hier
+   * gezeichnet wird.
+   */
+  setSperren(rechtecke) {
+    this._sperren = rechtecke ?? [];
     this._reset();
     return this;
   },
@@ -155,7 +180,9 @@ export const LabelLayer = L.Layer.extend({
     ctx.clearRect(0, 0, size.x, size.y);
 
     const zoom = map.getZoom();
-    const placed = [];
+    // Fremde Belegung zuerst: Was die Ereignisebene schon beschriftet hat,
+    // gilt hier als besetzt, bevor der erste Ländername gesetzt wird.
+    const placed = (this._sperren ?? []).slice();
     let drawn = 0;
 
     /* Auf dem Telefon eine eigene Rechnung, nicht dieselbe kleiner.
@@ -217,13 +244,37 @@ export const LabelLayer = L.Layer.extend({
         breite = breiteVon(ctx, text);
       }
 
-      const box = {
+      /* Ausweichen, bevor aufgegeben wird.
+       *
+       * Bisher gab es nur eine Stelle: den Schwerpunkt des Landes. War sie
+       * besetzt, entfiel der Name. Seit die Ereignismarken mitreden, traf das
+       * ausgerechnet dort zu, wo viel geschieht – „Vereinigtes Königreich"
+       * und „Vereinigtes Königreich der Niederlande" verschwanden beide,
+       * weil zwei Marken über ihnen standen.
+       *
+       * Ein gedruckter Atlas rückt den Namen in so einem Fall ein Stück,
+       * statt ihn wegzulassen. Versucht werden deshalb ein paar Lagen über
+       * und unter dem Schwerpunkt, nach innen beginnend. Weiter als gut zwei
+       * Zeilen wird nicht gerückt: Ein Name, der dreißig Bildpunkte neben
+       * seinem Land steht, beschriftet das falsche. */
+      const halb = fontSize * 0.62 + PAD_Y;
+      const mache = (dy) => ({
         x: pt.x - breite / 2 - PAD_X,
-        y: pt.y - fontSize * 0.62 - PAD_Y,
+        y: pt.y + dy - halb,
         w: breite + PAD_X * 2,
         h: fontSize * 1.24 + PAD_Y * 2,
-      };
-      if (!isFocus && collides(box, placed)) continue;
+      });
+      let box = mache(0);
+      if (!isFocus && collides(box, placed)) {
+        const weiten = [-1.45, 1.45, -2.6, 2.6].map((f) => f * fontSize);
+        const frei = weiten.find((dy) => !collides(mache(dy), placed));
+        if (frei === undefined) continue;
+        box = mache(frei);
+        placed.push(box);
+        paint(ctx, text, pt.x, pt.y + frei, this._style, isFocus, item.color);
+        drawn++;
+        continue;
+      }
       placed.push(box);
 
       paint(ctx, text, pt.x, pt.y, this._style, isFocus, item.color);
