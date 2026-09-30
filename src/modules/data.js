@@ -527,6 +527,22 @@ const RUECKFALL_REICHWEITE = 50;
  * Ohne Liste bleibt es beim einzelnen Namen des Abschnitts; die Wissensbasis
  * lässt sich damit Stück für Stück nachrüsten, ohne dass etwas ausfällt.
  */
+/**
+ * Sind zwei Herrschernamen dieselbe Person?
+ *
+ * Gleich, oder der eine ist der Anfang des anderen bis zu einem Leerzeichen:
+ * „Katharina II." und „Katharina II. die Große" ja, „Tokugawa Ieyasu" und
+ * „Tokugawa Ieyasu und Nachfolger" ja – aber „Wilhelm I." und „Wilhelm II."
+ * nicht, obwohl das eine buchstäblich im anderen steckt. Die Grenze muss ein
+ * Leerzeichen sein, sonst verwechselt die Prüfung Vater und Sohn.
+ */
+function gleichePerson(a, b) {
+  const x = String(a ?? '').trim().toLowerCase();
+  const y = String(b ?? '').trim().toLowerCase();
+  if (!x || !y) return false;
+  return x === y || y.startsWith(`${x} `) || x.startsWith(`${y} `);
+}
+
 export function herrscherZu(period, year) {
   if (!period) return null;
   const liste = period.rulers;
@@ -551,7 +567,27 @@ export function herrscherZu(period, year) {
    */
   const genau = liste.findLast((r) => (r.from ?? -Infinity) <= year && year <= (r.to ?? Infinity));
   if (genau) {
-    return { ...genau, title: genau.title ?? period.rulerTitle, ausListe: true };
+    /* Titel und Haus des Abschnitts gehören dessen Hauptfigur – niemandem
+     * sonst.
+     *
+     * Hier stand `genau.title ?? period.rulerTitle`: Fehlte dem Listeneintrag
+     * ein Titel, lieh er sich den des Abschnitts. Der beschreibt aber die
+     * Person, nach der der Abschnitt benannt ist. 661 Einträge trugen so einen
+     * fremden Titel, 59 davon den einer Frau: Heinrich VIII. als „Königin von
+     * England und Irland", Alexander I. als „Kaiserin und Selbstherrscherin
+     * aller Reußen", der Kaiser Puyi als „Regentin für minderjährige Kaiser".
+     * Beim Herrscherhaus dasselbe in 82 Fällen – Minamoto no Yoritomo, 1192,
+     * als „Tokugawa", ein Haus, das vierhundert Jahre später an die Macht kam.
+     *
+     * Geborgt wird jetzt nur noch, wenn es dieselbe Person ist. Sonst steht
+     * nichts da, bis der Eintrag einen eigenen Titel bekommt. */
+    const eigen = gleichePerson(genau.name, period.ruler);
+    return {
+      ...genau,
+      title: genau.title ?? (eigen ? period.rulerTitle : undefined),
+      house: genau.house ?? (eigen ? period.dynasty : undefined),
+      ausListe: true,
+    };
   }
 
   /*

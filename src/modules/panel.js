@@ -266,9 +266,11 @@ export class DetailPanel {
 
     const bits = [];
     if (ruler.title) bits.push(esc(ruler.title));
-    if (ruler.house ?? period?.dynastie ?? period?.dynasty) {
-      bits.push(esc(ruler.house ?? period.dynastie ?? period.dynasty));
-    }
+    /* Das Haus des Abschnitts nur für einen Herrscher ohne Liste – der ist
+       dann dessen Hauptfigur. Einträge aus der Liste bringen ihr Haus selbst
+       mit, oder `herrscherZu` hat es ihnen gegeben, weil sie es sind. */
+    const haus = ruler.ausListe ? ruler.house : (ruler.house ?? period?.dynastie ?? period?.dynasty);
+    if (haus) bits.push(esc(haus));
 
     const reign = ruler.reign ?? rangeText(ruler.from, ruler.to);
     const liste = period?.rulers ?? [];
