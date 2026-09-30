@@ -133,6 +133,9 @@ function jahrText(e) {
 export class EventLayer {
   constructor(atlas, { onOpen, onBelegt } = {}) {
     this.atlas = atlas;
+    // Neu setzen, sobald sich vor den Ereignissen in der Kette etwas ändert:
+    // Schlachtmarken erscheinen, die Tafel geht auf.
+    atlas.on('sperren', () => this._zeichne());
     this.onOpen = onOpen ?? (() => {});
     /* Wird nach jedem Setzen mit den Rechtecken gerufen, die die Namen der
        Ereignisse einnehmen. Die Beschriftungsebene weicht ihnen dann aus –
@@ -266,7 +269,11 @@ export class EventLayer {
     // Bildpunkte auseinanderliegen, tragen sonst zwei Beschriftungen
     // übereinander – und über den Namen der Länder darunter. Geprüft wird
     // gegen die schon gesetzten Namen, größere Ränge zuerst.
-    const belegt = [];
+    /* Angefangen wird mit dem, was vor den Ereignissen in der Kette steht:
+       Bedienflächen und Schlachtmarken. Die eigene Zeichnung meldet danach
+       nur ihren Zuwachs weiter. */
+    const belegt = this.atlas.sperrKaestenVor('ereignisse');
+    const fremd = belegt.length;
     /* Gemessen, nicht geschätzt.
      *
      * Hier stand „6,2 Bildpunkte je Zeichen ist nah genug". Für „Der Wiener
@@ -348,7 +355,7 @@ export class EventLayer {
 
     /* Der Beschriftungsebene vorlegen, was hier belegt ist. Umgerechnet auf
        die Form, in der dort gerechnet wird: Ecke, Breite, Höhe. */
-    this.onBelegt(belegt.map(([x0, y0, x1, y1]) => ({ x: x0, y: y0, w: x1 - x0, h: y1 - y0 })));
+    this.onBelegt(belegt.slice(fremd).map(([x0, y0, x1, y1]) => ({ x: x0, y: y0, w: x1 - x0, h: y1 - y0 })));
   }
 }
 

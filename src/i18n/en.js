@@ -9,6 +9,12 @@
 export const EN = {
   /* ---------------------------------------------------- Head & start-up */
   'doc.titel': 'Worldmap Deluxe – Historical World Atlas',
+  'entwurf.titel': 'Draft',
+  'entwurf.aria': 'Choose a design draft',
+  'blatt.ost': 'E',
+  'blatt.west': 'W',
+  'blatt.nord': 'N',
+  'blatt.sued': 'S',
   'doc.beschreibung': 'An interactive historical world atlas: 62 time slices from 123,000 BC to today. Watch borders shift, click an empire, read up on its rulers and background.',
   'marke.name': 'Worldmap Deluxe',
   'marke.unterzeile': 'Historical World Atlas',

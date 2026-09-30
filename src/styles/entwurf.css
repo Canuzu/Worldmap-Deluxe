@@ -1,0 +1,127 @@
+/* ============================================================
+   Entwurfsvergleich – der Umschalter
+   ============================================================
+
+   Der Umschalter gehört zu keinem Entwurf. Er ist ein Werkzeug zum
+   Vergleichen und sieht deshalb in allen gleich aus: neutral, klein, mit
+   fester Farbe statt Farbwelt-Variablen. Sonst veränderte er sich beim
+   Umschalten mit und lenkte genau dorthin, wo nicht verglichen wird.
+
+   Er erscheint nur mit `?entwurf=` in der Adresse. */
+
+.entwurfwahl {
+  position: fixed;
+  z-index: 2000;
+  top: .7rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  max-width: calc(100vw - 1.2rem);
+  padding: 3px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-radius: 9px;
+  background: #111418;
+  border: 1px solid #2c323a;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, .45);
+  font: 500 11.5px/1 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: #c9d1db;
+}
+.entwurfwahl::-webkit-scrollbar { display: none; }
+
+.entwurfwahl__t {
+  padding: 0 .55rem 0 .45rem;
+  color: #7d8894;
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.entwurfwahl button {
+  flex: none;
+  padding: .45rem .65rem;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.entwurfwahl button:hover { background: #1d2228; }
+.entwurfwahl button[aria-checked="true"] {
+  background: #f2f4f7;
+  color: #111418;
+}
+.entwurfwahl button:focus-visible { outline: 2px solid #8ab4ff; outline-offset: 1px; }
+
+.entwurfwahl__schritt { display: none; }
+
+/* Schmal: ein Blätterknopf statt einer Leiste.
+   Oben mittig ist kein Platz – links der Kopf, rechts die Werkzeugsäule, auf
+   einem Tablet mit 834 Punkten reichte der Kopf bis 345, und auf einem
+   Laptop mit 1366 lag die Leiste über der Beschriftung „Kriege & Schlachten“. Der Knopf rückt
+   deshalb nach rechts an die Werkzeugsäule heran und zeigt nur den
+   aktuellen Entwurf, mit Pfeilen davor und dahinter. */
+@media (max-width: 1400px) {
+  .entwurfwahl {
+    top: calc(.9rem + env(safe-area-inset-top, 0px));
+    left: auto;
+    right: calc(4.4rem + env(safe-area-inset-right, 0px));
+    transform: none;
+    max-width: none;
+    overflow: visible;
+  }
+  .entwurfwahl__t { display: none; }
+  .entwurfwahl__schritt {
+    display: block;
+    width: 1.9rem;
+    font-size: 15px;
+    padding: .38rem 0;
+  }
+  .entwurfwahl button[aria-checked="false"] { display: none; }
+  /* Nur der Name – der Buchstabe gehört zur Beschreibung, nicht zum Knopf.
+     „B · Instrument“ reichte auf dem Telefon in die Kopfzeile. */
+  .entwurfwahl__b { display: none; }
+}
+
+/* Bei offener Tafel weicht der Umschalter links neben sie aus. Er ist fest
+   am Fenster verankert, die Tafel aber nimmt dessen rechten Rand ein – ohne
+   diese Regel lag er über ihrer Kopfzeile, genau dort, wo der Name des
+   Landes steht, das man gerade vergleichen will. */
+@media (min-width: 901px) and (max-width: 1400px) {
+  html:has(#panel:not([hidden])) .entwurfwahl {
+    right: calc(var(--panel-w) + 5.6rem);
+  }
+}
+@media (min-width: 1401px) {
+  html:has(#panel:not([hidden])) .entwurfwahl {
+    left: calc((100vw - var(--panel-w) - 1.8rem) / 2);
+  }
+}
+/* Zwischen Kopf und Werkzeugsäule bleiben auf einem Tablet mit offener
+   Tafel 39 Punkte – kein Platz für einen Knopf. Er geht unter den Kopf.
+   (Auf dem Telefon hochkant ist die Tafel ein Bodenblatt; dort bleibt er
+   oben stehen.) */
+@media (min-width: 561px) and (max-width: 900px) and (min-height: 481px) {
+  html:has(#panel:not([hidden])) .entwurfwahl {
+    top: calc(4.1rem + env(safe-area-inset-top, 0px));
+    left: calc(.9rem + env(safe-area-inset-left, 0px));
+    right: auto;
+  }
+}
+/* Liegendes Telefon: oben rechts steht die Werkzeugsäule, links daneben die
+   Modusleiste. Der Umschalter geht unter die Säule. */
+@media (max-height: 480px) and (orientation: landscape) {
+  .entwurfwahl {
+    top: calc(.5rem + 9.6rem);
+    right: calc(.9rem + env(safe-area-inset-right, 0px));
+  }
+  /* Das Register nimmt im Querformat fast die ganze Höhe. Solange es offen
+     ist, tritt der Umschalter ab – er ist ein Vergleichswerkzeug, das Register
+     ist Inhalt. */
+  html:has(.battles:not([hidden])) .entwurfwahl { display: none; }
+}

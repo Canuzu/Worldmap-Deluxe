@@ -25,6 +25,7 @@
 import L from 'leaflet';
 import { esc } from './format.js';
 import { txt } from './sprache.js';
+import { breiteVon } from './labels.js';
 
 /** Die fünf Arten. Mehr wären an einer Zeile im Register nicht zu unterscheiden. */
 export const KONFLIKT_ARTEN = {
@@ -86,9 +87,14 @@ export function fortschritt(k, jahr) {
 }
 
 export class KonfliktLayer {
-  constructor(atlas, { onOpen } = {}) {
+  constructor(atlas, { onOpen, onBelegt } = {}) {
     this.atlas = atlas;
     this.onOpen = onOpen ?? (() => {});
+    /* Meldet nach jedem Setzen, welche Flächen Marken und Namen einnehmen.
+       Die Ereignisse weichen ihnen aus – vorher lag die Klinge einer Schlacht
+       mitten in „Das Ende der Sklaverei im Empire". */
+    this.onBelegt = onBelegt ?? (() => {});
+    this._mass = document.createElement('canvas').getContext('2d');
     this.sichtbar = false;
     this.fenster = [-Infinity, Infinity];
     this.kriege = [];
@@ -272,6 +278,7 @@ export class KonfliktLayer {
       this.marken.remove();
       this.bahn.remove();
       this.parteien.remove();
+      this.onBelegt([]);
       return;
     }
     this.parteien.addTo(map);
@@ -312,8 +319,13 @@ export class KonfliktLayer {
      * Ziffer an der Marke und die nummerierte Liste im Register sagen ohnehin,
      * welche welche ist.
      */
-    const belegt = [];
-    const passtNoch = (pt, breite) => {
+    const belegt = this.atlas.sperrKaestenVor('konflikte');
+    const fremd = belegt.length;
+    // Gemessen statt „6,4 Punkte je Zeichen"; der Schnitt steht in map.css.
+    this._mass.font = '600 11.5px ' + (getComputedStyle(document.body).getPropertyValue('--font-ui').trim()
+      || 'system-ui, sans-serif');
+    const passtNoch = (pt, name) => {
+      const breite = breiteVon(this._mass, name);
       const kasten = [pt.x + 15, pt.y - 8, pt.x + 15 + breite, pt.y + 8];
       for (const b of belegt) {
         if (kasten[0] < b[2] && kasten[2] > b[0] && kasten[1] < b[3] && kasten[3] > b[1]) return false;
@@ -326,7 +338,7 @@ export class KonfliktLayer {
       const farbe = this._siegerfarbe(s);
       const nummer = this.gewaehlt ? `<u>${i + 1}</u>` : '';
       const pt = map.latLngToContainerPoint([s.ort[1], s.ort[0]]);
-      const zeigeName = this.gewaehlt && passtNoch(pt, s.name.length * 6.4);
+      const zeigeName = this.gewaehlt && passtNoch(pt, s.name);
       const marke = L.marker([s.ort[1], s.ort[0]], {
         pane: 'konflikt',
         riseOnHover: true,
@@ -344,7 +356,10 @@ export class KonfliktLayer {
       });
       marke.on('click', () => this._oeffne(s));
       this.marken.addLayer(marke);
+      // Die Marke selbst: 24 × 24 Punkte, mittig am Ort.
+      belegt.push([pt.x - 13, pt.y - 13, pt.x + 13, pt.y + 13]);
     });
+    this.onBelegt(belegt.slice(fremd).map(([x0, y0, x1, y1]) => ({ x: x0, y: y0, w: x1 - x0, h: y1 - y0 })));
   }
 
   /**

@@ -1,0 +1,254 @@
+/* ============================================================
+   Entwurf D – „Klar": zwei Sprachen, sauber getrennt
+   ============================================================
+
+   Die Karte spricht Kupferstich, die Bedienung Glas. Das bleibt so – aber
+   jede der beiden bekommt ein Maß, an das sie sich hält. Gemessen am
+   heutigen Stand:
+
+     7 Unschärfestufen      (3, 6, 8, 14, 18, 22, 26 px)
+     7 Flächendeckungen     (62 bis 92 %)
+    10 Goldstärken          für dieselbe Aufgabe: „das ist eine Fläche“
+    39 Schriftgrade
+    12 Radien
+
+   Hier gibt es je eines davon, beziehungsweise eine kurze Leiter:
+
+     Fläche      88 % Deckung, 20 px Unschärfe, eine Haarlinie
+     Radien      10 Bedienelement · 16 Fläche · rund für Marken
+     Höhen       36 px für jede Taste, 30 px für Tasten in Leisten
+     Schrift     11 · 12.5 · 14 · 16 · 21 · 28 · 36
+     Gold        nur noch für „aktiv“ und die eine Hauptaktion
+
+   Und die helle Farbwelt heißt Pergament und sieht jetzt auch so aus.
+   ============================================================ */
+
+[data-entwurf="klar"] {
+  --k-flaeche: color-mix(in srgb, var(--surface-solid) 88%, transparent);
+  --k-unschaerfe: blur(20px) saturate(140%);
+  --k-kante: var(--hairline);
+  --k-licht: inset 0 1px 0 rgba(255, 255, 255, .05);
+  --k-r-knopf: 10px;
+  --k-r-flaeche: 16px;
+  --k-h: 36px;
+  --k-h-klein: 30px;
+
+  --k-s-1: 11px;
+  --k-s-2: 12.5px;
+  --k-s-3: 14px;
+  --k-s-4: 16px;
+  --k-s-5: 21px;
+  --k-s-6: 28px;
+  --k-s-7: 36px;
+
+  /* Rubriken: überall dieselbe Stimme. Heute wechselt sie zwischen Gold,
+     Epochenfarbe und blassem Grau, je nachdem, wo sie steht. */
+  --k-rubrik-farbe: var(--ink-faint);
+}
+
+/* ---------------------------------------------------------- Flächen */
+
+[data-entwurf="klar"] :is(.dock__mark, .dock__btn, .tools, .mapmodes, .timeline, .popover,
+  .battles, .legend, .suggest, .blgd, .beiblatt, .card) {
+  background: var(--k-flaeche);
+  border: 1px solid var(--k-kante);
+  box-shadow: var(--shadow-1), var(--k-licht);
+  backdrop-filter: var(--k-unschaerfe);
+  -webkit-backdrop-filter: var(--k-unschaerfe);
+}
+[data-entwurf="klar"] :is(.timeline, .popover, .battles, .card, .modal__card) {
+  box-shadow: var(--shadow-2), var(--k-licht);
+}
+[data-entwurf="klar"] :is(.tools, .mapmodes, .timeline, .popover, .battles, .legend,
+  .suggest, .blgd, .beiblatt, .card, .dock__mark) {
+  border-radius: var(--k-r-flaeche);
+}
+[data-entwurf="klar"] .panel {
+  border-radius: var(--k-r-flaeche);
+  box-shadow: var(--shadow-2), var(--k-licht);
+  backdrop-filter: var(--k-unschaerfe);
+  -webkit-backdrop-filter: var(--k-unschaerfe);
+}
+
+/* ------------------------------------------------------------ Tasten */
+
+/* Eine Tastenhöhe. Heute: 38, 40, 35, 36 und 41 Punkte – je nachdem, ob
+   die Taste im Kopf, in der Werkzeugsäule oder in der Zeitleiste sitzt. */
+/* Nur einfache Klassen in dieser Gruppe: `:is()` übernimmt die Spezifität
+   seines stärksten Arguments, und ein einziges `.a .b` darin hob die ganze
+   Gruppe über die Einzelregel für den Abspielknopf – der wurde eckig. */
+[data-entwurf="klar"] :is(.dock__btn, .tool, .tbtn, .panel__close) {
+  width: var(--k-h);
+  height: var(--k-h);
+  border-radius: var(--k-r-knopf);
+}
+[data-entwurf="klar"] .dock__mark { height: var(--k-h); }
+[data-entwurf="klar"] .tbtn--play {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  /* Die Hauptaktion bleibt gold – das ist genau der eine Ort, an dem Gold
+     „hier geschieht etwas“ heißt. Der Leuchtschein fällt weg; er machte den
+     Knopf zum hellsten Punkt der Seite, heller als die Karte. */
+  box-shadow: none;
+}
+[data-entwurf="klar"] .tbtn--play:hover { transform: none; }
+[data-entwurf="klar"] .dock__btn:hover { transform: none; }
+
+/* Die Sprachtaste ist Text zwischen Sinnbildern. Sie bekommt dieselbe
+   Stärke wie die Zeichen daneben statt fetter Versalien. */
+[data-entwurf="klar"] .tool--lang {
+  font-size: var(--k-s-1);
+  font-weight: 600;
+  letter-spacing: .08em;
+}
+[data-entwurf="klar"] .tool[aria-pressed="true"] {
+  color: var(--gold);
+  background: color-mix(in srgb, var(--gold) 14%, transparent);
+}
+
+/* ----------------------------------------------------- Modusleiste */
+
+[data-entwurf="klar"] .mapmodes button {
+  height: var(--k-h-klein);
+  border-radius: var(--k-r-knopf);
+  font-size: var(--k-s-2);
+}
+[data-entwurf="klar"] .mapmodes button[aria-checked="true"] {
+  background: color-mix(in srgb, var(--gold) 16%, transparent);
+  color: var(--gold);
+}
+
+/* ------------------------------------------------------- Zeitleiste */
+
+[data-entwurf="klar"] .year { font-size: var(--k-s-7); }
+[data-entwurf="klar"] .year sub { font-size: var(--k-s-2); }
+/* Der Epochenname war der einzige goldene Text im Ruhezustand – eine Rubrik
+   in Signalfarbe, die nichts signalisiert. Jetzt: Rubrikstimme, und die
+   Epochenfarbe nur als kleiner Punkt davor. */
+[data-entwurf="klar"] .year__era {
+  font-size: var(--k-s-1);
+  letter-spacing: .14em;
+  color: var(--k-rubrik-farbe);
+}
+[data-entwurf="klar"] .year__era::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: .45rem;
+  border-radius: 50%;
+  background: var(--era-color, var(--gold));
+  vertical-align: 1px;
+}
+[data-entwurf="klar"] .year__title { font-size: var(--k-s-3); }
+[data-entwurf="klar"] .timeline__stats { font-size: var(--k-s-1); }
+[data-entwurf="klar"] .timeline__stats b { font-size: var(--k-s-4); }
+
+/* ------------------------------------------------------------ Tafel */
+
+[data-entwurf="klar"] .pnl__hero {
+  padding: 22px 22px 18px;
+  /* Der Farbverlauf aus der Farbe des Landes über den ganzen Kopf nahm der
+     Überschrift den Kontrast. Übrig bleibt die Kante oben. */
+  background: none;
+}
+[data-entwurf="klar"] .pnl__hero::after { display: none; }
+[data-entwurf="klar"] .pnl__kicker { font-size: var(--k-s-1); letter-spacing: .14em; }
+[data-entwurf="klar"] .pnl__title { font-size: var(--k-s-6); }
+[data-entwurf="klar"] .pnl__alt { font-size: var(--k-s-2); }
+[data-entwurf="klar"] .chip { font-size: var(--k-s-2); padding: 4px 10px; }
+[data-entwurf="klar"] .sec { padding: 18px 22px; }
+[data-entwurf="klar"] .sec__h {
+  font-size: var(--k-s-1);
+  letter-spacing: .14em;
+  color: var(--k-rubrik-farbe);
+}
+[data-entwurf="klar"] .fact {
+  border-radius: var(--k-r-knopf);
+  padding: 10px 12px;
+}
+[data-entwurf="klar"] .fact dt { font-size: var(--k-s-1); letter-spacing: .1em; }
+[data-entwurf="klar"] .fact dd { font-size: var(--k-s-3); }
+[data-entwurf="klar"] .fact dd .num { font-size: var(--k-s-4); }
+[data-entwurf="klar"] .ruler__name { font-size: var(--k-s-5); }
+[data-entwurf="klar"] .reign { border-radius: var(--k-r-knopf); }
+
+/* ======================================================= Pergament
+
+   (Gilt auch für den Entwurf „Blatt“: Der ändert die Statik, nicht die
+   Farbe, und braucht bei Tag dasselbe Papier.)
+
+   „parchment“ war heute eine helle Karte ohne Eigenschaften: blasses Blau,
+   Pastellflächen, weiße Kästen. Nichts daran war Papier. Hier wird es
+   eines – mit den drei Mitteln, mit denen ein Atlas auf Papier arbeitet:
+
+     Papierton   warmes, leicht fleckiges Weiß statt Weiß
+     Tinte       Beschriftung und Küsten in Sepia, nicht in Schwarz
+     Lasur       die Länder als durchscheinende Wasserfarbe, in der man das
+                 Papier noch sieht – nicht als deckende Fläche
+
+   Das Meer bleibt unbemalt wie auf gestochenen Karten und bekommt seine
+   Tiefe allein von der Küstenlinie. */
+:is([data-entwurf="klar"], [data-entwurf="blatt"])[data-theme="parchment"] {
+  --ocean-1: #ece2cb;
+  --ocean-2: #e6dcc3;
+  --ocean-3: #dcd1b6;
+  --land: #efe5cf;
+  --land-edge: #6e5a3a;
+  --coast-glow: #7e9aa3;
+  --coast-glow-alpha: .55;
+  --coast-glow-blur: 6px;
+  --coast-rim: #4c3f2c;
+  --coast-rim-alpha: .75;
+
+  --ink: #3a2e1c;
+  --ink-strong: #22190c;
+  --ink-muted: #6f5d42;
+  --ink-faint: #9a8766;
+
+  --surface: rgba(246, 239, 222, .9);
+  --surface-solid: #f5eedc;
+  --surface-2: rgba(80, 58, 24, .05);
+  --surface-3: rgba(80, 58, 24, .1);
+  --hairline: rgba(92, 70, 36, .22);
+  --hairline-strong: rgba(92, 70, 36, .4);
+
+  --gold: #9c5b1b;
+  --gold-soft: #7f4812;
+
+  --shadow-1: 0 1px 2px rgba(70, 52, 20, .1), 0 6px 18px rgba(70, 52, 20, .1);
+  --shadow-2: 0 2px 6px rgba(70, 52, 20, .12), 0 18px 44px rgba(70, 52, 20, .16);
+
+  --border-line: rgba(64, 46, 20, .7);
+  --border-line-soft: rgba(64, 46, 20, .3);
+  --label-ink: #2c2112;
+  --label-halo: rgba(243, 235, 216, .92);
+  --fill-alpha: .5;
+  --grat: rgba(92, 70, 36, .14);
+  --river: rgba(70, 110, 130, .55);
+}
+/* Das Papier: Korn und leichte Fleckigkeit, in Multiplikation, damit es
+   die Farben darunter dunkelt statt sie zu überdecken. */
+:is([data-entwurf="klar"], [data-entwurf="blatt"])[data-theme="parchment"] .stage::after {
+  opacity: .5;
+  mix-blend-mode: multiply;
+  background-image:
+    radial-gradient(120% 90% at 20% 10%, rgba(160, 120, 60, .08), transparent 60%),
+    radial-gradient(90% 70% at 85% 90%, rgba(150, 110, 50, .1), transparent 55%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45  0 0 0 0 .36  0 0 0 0 .22  0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23p)' opacity='.35'/%3E%3C/svg%3E");
+}
+:is([data-entwurf="klar"], [data-entwurf="blatt"])[data-theme="parchment"] .stage::before {
+  background: radial-gradient(130% 95% at 50% 45%, transparent 55%, rgba(110, 80, 35, .2) 100%);
+}
+:is([data-entwurf="klar"], [data-entwurf="blatt"])[data-theme="parchment"] .tbtn--play { color: #f7f0de; }
+
+/* Die Quellenzeile war mit 62 % Deckung die siebte Fläche mit eigenem Maß.
+   Sie bekommt das eine. */
+[data-entwurf="klar"] .credits {
+  background: var(--k-flaeche);
+  border: 1px solid var(--k-kante);
+  border-radius: var(--k-r-knopf);
+  backdrop-filter: var(--k-unschaerfe);
+  -webkit-backdrop-filter: var(--k-unschaerfe);
+}

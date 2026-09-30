@@ -9,6 +9,13 @@ import './styles/layout.css';
 import './styles/timeline.css';
 import './styles/panel.css';
 import './styles/map.css';
+/* Die Gestaltungsentwürfe. Jedes Blatt greift nur unter seinem eigenen
+   `data-entwurf` – ohne das Merkmal ändert keines davon etwas. */
+import './styles/entwurf.css';
+import './styles/entwurf-klar.css';
+import './styles/entwurf-instrument.css';
+import './styles/entwurf-stich.css';
+import './styles/entwurf-blatt.css';
 
 import RELIGION from './data/religion/vokabular.json';
 import { atlasData } from './modules/data.js';
@@ -25,6 +32,8 @@ import { BattlePlayer, BATTLES, ladeVerlauf, darstellung } from './modules/battl
 import { Beiblatt } from './modules/beiblatt.js';
 import { bodenblatt } from './modules/blatt.js';
 import { EventLayer, ARTEN, artKurz, artLabel, zeitfenster } from './modules/ereignisse.js';
+import { entwurfEinrichten, entwurfUmschalter } from './modules/entwurf.js';
+import { Blattrand } from './modules/blattrand.js';
 import {
   KonfliktLayer, KONFLIKT_ARTEN, konfliktKurz, konfliktLabel,
   SEITENFARBEN, spanneText, fortschritt,
@@ -98,6 +107,9 @@ async function main() {
      auf der Karte – fragt das Wörterbuch. Wer das später einrichtet, hat eine
      Seite, die auf Deutsch startet und mitten im Aufbau umspringt. */
   spracheEinrichten();
+  // Unmittelbar nach der Sprache: Die Karte liest beim Anlegen Farben und
+  // Schriften aus dem Stilblatt, und die hängen am Entwurf.
+  entwurfEinrichten();
   markupBeschriften();
   document.title = txt('doc.titel');
 
@@ -175,6 +187,8 @@ async function main() {
    */
   const konflikte = new KonfliktLayer(atlas, {
     onOpen: () => { alleZu(); },
+    // Schlachtmarken stehen in der Beschriftungskette vor den Ereignissen.
+    onBelegt: (rechtecke) => atlas.setLabelSperren('konflikte', rechtecke),
   });
 
   // Für die Prüfwerkzeuge erreichbar, wie Karte und Atlas.
@@ -485,12 +499,29 @@ async function main() {
      ausgeblendet wird. Ein Beobachter auf `hidden` ist genauer als eine Liste
      von Aufrufstellen – und vergisst keine. */
   const sperrBeobachter = new MutationObserver(() => requestAnimationFrame(meldeOberflaechenSperren));
-  for (const id of ['panel', 'battlesBox', 'colorModes', 'timeline', 'brand', 'tools']) {
+  for (const id of ['panel', 'battlesBox', 'colorModes', 'timeline', 'brand', 'tools', 'credits']) {
     const el = document.getElementById(id);
     if (el) sperrBeobachter.observe(el, { attributes: true, attributeFilter: ['hidden', 'class', 'style'] });
   }
   window.addEventListener('resize', () => requestAnimationFrame(meldeOberflaechenSperren));
   requestAnimationFrame(() => requestAnimationFrame(meldeOberflaechenSperren));
+
+  /* Entwurfsvergleich: Nach dem Umschalten liest die Karte ihre Farben und
+     Schriften neu, und alles, was auf Größen hört, misst neu – im Blatt ist
+     die Kartenfläche eine andere als in den übrigen Entwürfen. Ein
+     `resize` erreicht Leaflet, die Zeitleiste und die Sperrflächen zugleich. */
+  // Der Gradnetzrand gehört zum Entwurf „Blatt“ und entsteht nur, wenn
+  // überhaupt verglichen wird – der veröffentlichte Stand bleibt unberührt.
+  const blattrand = new URLSearchParams(location.search).has('entwurf')
+    ? new Blattrand(atlas.map, document.querySelector('.stage'))
+    : null;
+  entwurfUmschalter(() => {
+    requestAnimationFrame(() => {
+      window.dispatchEvent(new Event('resize'));
+      atlas.applyTheme(prefs.theme);
+      blattrand?.planen();
+    });
+  });
 
   /* ------------------------------------------------------ Hover-Hinweis */
 
@@ -740,7 +771,12 @@ async function main() {
         angefordert = false;
         atlas.map.invalidateSize({ pan: false, animate: false });
       });
-    }).observe(buehne);
+    /* Beobachtet wird die Karte, nicht die Bühne. Meist sind beide gleich
+       groß – aber nicht im Entwurf „Blatt“: Dort liegt die Karte mit Rand in
+       der Bühne, und wenn das Kriegsregister aufgeht, wird sie schmaler,
+       während die Bühne bleibt, wie sie ist. Leaflet rechnete dann mit der
+       alten Breite, und jeder Klick traf daneben. */
+    }).observe(atlas.el ?? buehne);
   }
 
   function watchConsoleHeight() {
@@ -752,6 +788,21 @@ async function main() {
     setzen();
     if ('ResizeObserver' in window) new ResizeObserver(setzen).observe(konsole);
     window.addEventListener('resize', setzen);
+
+    /* Die Modusleiste ebenso. Auf schmalen Schirmen stapeln sich unten drei
+       Zeilen – Zeitleiste, Modusleiste, Maßstab – und die beiden oberen
+       standen auf festen Abständen: 11 rem, 11,4 rem, 14,6 rem. Das hielt,
+       solange keine Höhe sich änderte. Auf einem Tablet lag der Maßstab 21
+       Punkte unter der Modusleiste, und jede Leiste, die einen Punkt höher
+       wurde, rutschte auf die Zeitleiste. Mit gemessenen Höhen stapeln sie
+       sich, gleich wie hoch jede ist. */
+    const modi = $('colorModes');
+    const modiSetzen = () => {
+      const hoehe = modi.getBoundingClientRect().height;
+      if (hoehe > 0) document.documentElement.style.setProperty('--modi-h', `${Math.round(hoehe)}px`);
+    };
+    modiSetzen();
+    if ('ResizeObserver' in window) new ResizeObserver(modiSetzen).observe(modi);
   }
 
   /**
@@ -1256,7 +1307,7 @@ async function main() {
   function meldeOberflaechenSperren() {
     const buehne = atlas.el.getBoundingClientRect();
     const RAND = 6;
-    const flaechen = ['timeline', 'brand', 'colorModes', 'tools', 'panel', 'battlesBox']
+    const flaechen = ['timeline', 'brand', 'colorModes', 'tools', 'panel', 'battlesBox', 'credits', 'entwurfWahl']
       .map((id) => document.getElementById(id))
       .filter((el) => el && !el.hidden && el.offsetParent !== null)
       .map((el) => {

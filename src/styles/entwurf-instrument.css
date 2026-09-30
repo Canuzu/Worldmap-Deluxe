@@ -1,0 +1,264 @@
+/* ============================================================
+   Entwurf B – „Instrument": konsequent Werkzeug
+   ============================================================
+
+   Die Karte behält den Kupferstich – Antiqua, Küstenlicht, Plattenfarben.
+   Die Bedienung legt ihn ab. Sie ist hier nicht Teil des Bildes, sondern das
+   Gerät, mit dem man es betrachtet: flach, deckend, dicht, eine Schrift, ein
+   Akzent.
+
+   Die Regeln:
+     Flächen   deckend, ohne Unschärfe, ohne Verlauf, ohne Lichtkante
+     Radien    6 für Tasten, 8 für Flächen
+     Schrift   Grotesk für alles außerhalb der Karte, auch Jahr und Titel;
+               Ziffern tabellarisch, damit Zahlen beim Blättern nicht wackeln
+     Farbe     Grau in Stufen und ein einziges Blau für „aktiv“
+     Zierrat   keiner – Windrose, Vignette, Papierkorn entfallen
+     Tafel     Steckbrief als Liste statt Kacheln: Beschriftung links,
+               Wert rechts, eine Zeile je Angabe. Kacheln brauchen doppelt
+               so viel Höhe für dieselbe Auskunft.
+   ============================================================ */
+
+[data-entwurf="instrument"] {
+  --i-r: 6px;
+  --i-r-flaeche: 8px;
+  --i-schrift: var(--font-ui);
+}
+[data-entwurf="instrument"][data-theme="night"] {
+  --surface: #14181e;
+  --surface-solid: #14181e;
+  --surface-2: #1b2028;
+  --surface-3: #232a33;
+  --hairline: #262d37;
+  --hairline-strong: #36404c;
+  --ink: #dbe2ea;
+  --ink-strong: #f4f7fa;
+  --ink-muted: #9aa6b3;
+  --ink-faint: #6b7784;
+  /* Das Gold wird Blau – und zwar überall, auch in der Hervorhebung auf der
+     Karte. Ein Werkzeug hat eine Signalfarbe, nicht zwei. */
+  --gold: #5aa2ff;
+  --gold-soft: #86bbff;
+  --shadow-1: 0 1px 0 rgba(0, 0, 0, .35);
+  --shadow-2: 0 1px 0 rgba(0, 0, 0, .35), 0 8px 24px rgba(0, 0, 0, .35);
+}
+[data-entwurf="instrument"][data-theme="parchment"] {
+  --ocean-1: #e9edf1;
+  --ocean-2: #dfe5eb;
+  --ocean-3: #d2dae2;
+  --land: #f3f4f5;
+  --land-edge: #7d8792;
+  --coast-glow: #8fa6ba;
+  --coast-glow-alpha: .5;
+  --coast-glow-blur: 5px;
+  --coast-rim: #56687a;
+  --coast-rim-alpha: .6;
+
+  --surface: #ffffff;
+  --surface-solid: #ffffff;
+  --surface-2: #f3f5f7;
+  --surface-3: #e9ecf0;
+  --hairline: #e1e5ea;
+  --hairline-strong: #cbd2da;
+  --ink: #1f2933;
+  --ink-strong: #0b1117;
+  --ink-muted: #52606d;
+  --ink-faint: #7b8794;
+  --gold: #1f6feb;
+  --gold-soft: #1757c2;
+  --shadow-1: 0 1px 0 rgba(15, 23, 42, .06);
+  --shadow-2: 0 1px 0 rgba(15, 23, 42, .06), 0 8px 22px rgba(15, 23, 42, .1);
+
+  --border-line: rgba(40, 52, 66, .55);
+  --border-line-soft: rgba(40, 52, 66, .22);
+  --label-ink: #1b2530;
+  --label-halo: rgba(250, 251, 252, .94);
+  --fill-alpha: .56;
+  --grat: rgba(60, 80, 100, .1);
+  --river: rgba(70, 120, 170, .5);
+}
+
+/* --------------------------------------------------------- Zierrat aus */
+
+[data-entwurf="instrument"] .rose { display: none; }
+[data-entwurf="instrument"] .stage::before,
+[data-entwurf="instrument"] .stage::after { display: none; }
+
+/* ---------------------------------------------------------- Flächen */
+
+[data-entwurf="instrument"] :is(.dock__mark, .dock__btn, .tools, .mapmodes, .timeline, .popover,
+  .battles, .legend, .suggest, .blgd, .beiblatt, .card, .panel, .modal__card) {
+  background: var(--surface-solid);
+  border: 1px solid var(--hairline);
+  border-radius: var(--i-r-flaeche);
+  box-shadow: var(--shadow-2);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+[data-entwurf="instrument"] :is(.dock__mark, .dock__btn, .tools, .mapmodes) {
+  box-shadow: var(--shadow-1);
+}
+
+/* ------------------------------------------------------------ Tasten */
+
+[data-entwurf="instrument"] :is(.dock__btn, .tool, .tbtn, .panel__close) {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--i-r);
+}
+[data-entwurf="instrument"] .dock__mark { height: 34px; }
+[data-entwurf="instrument"] .dock__btn:hover { transform: none; }
+[data-entwurf="instrument"] .tool[aria-pressed="true"] {
+  color: var(--gold);
+  background: color-mix(in srgb, var(--gold) 14%, transparent);
+}
+/* Die Hauptaktion: gefüllt, aber eckig wie jede andere Taste. Ein goldener
+   Kreis mit Leuchtschein ist ein Blickfang; ein Werkzeug braucht keinen. */
+[data-entwurf="instrument"] .tbtn--play {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--i-r);
+  color: #fff;
+  background: var(--gold);
+  box-shadow: none;
+}
+[data-entwurf="instrument"] .tbtn--play:hover { background: var(--gold-soft); color: #fff; transform: none; }
+
+/* Grotesk auch dort, wo heute die Antiqua steht. */
+[data-entwurf="instrument"] :is(.dock__wordmark b, .year, .timeline__stats b, .pnl__title,
+  .ruler__name, .fact dd .num, .reign b, .kreg__kopf, .battles__head h3) {
+  font-family: var(--i-schrift);
+  font-variant-numeric: tabular-nums;
+}
+[data-entwurf="instrument"] .dock__wordmark b {
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: .01em;
+  text-transform: none;
+}
+[data-entwurf="instrument"] .dock__wordmark i { letter-spacing: .06em; font-size: 10px; }
+
+/* ----------------------------------------------------- Modusleiste */
+
+/* Ein Segmentschalter: gleich breite Felder, das aktive gefüllt. */
+[data-entwurf="instrument"] .mapmodes { padding: 3px; gap: 2px; }
+[data-entwurf="instrument"] .mapmodes button {
+  height: 28px;
+  border-radius: 5px;
+  font-size: 12.5px;
+}
+[data-entwurf="instrument"] .mapmodes button[aria-checked="true"] {
+  background: var(--surface-3);
+  color: var(--ink-strong);
+  box-shadow: inset 0 -2px 0 var(--gold);
+}
+[data-entwurf="instrument"] .mapmodes { -webkit-mask-image: none; mask-image: none; }
+
+/* ------------------------------------------------------- Zeitleiste */
+
+[data-entwurf="instrument"] .timeline { padding: 10px 14px 8px; }
+[data-entwurf="instrument"] .year {
+  font-size: 28px;
+  font-weight: 650;
+  letter-spacing: -.02em;
+}
+[data-entwurf="instrument"] .year sub { font-size: 12px; font-weight: 500; }
+[data-entwurf="instrument"] .year__era {
+  font-size: 11px;
+  letter-spacing: .08em;
+  color: var(--ink-faint);
+}
+[data-entwurf="instrument"] .year__era::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 6px;
+  border-radius: 2px;
+  background: var(--era-color, var(--gold));
+  vertical-align: 0;
+}
+[data-entwurf="instrument"] .year__title { font-size: 13px; }
+[data-entwurf="instrument"] .timeline__stats b { font-size: 15px; font-weight: 600; }
+/* Das Epochenband gedämpft: Es ist Maßstab, nicht Bild. */
+[data-entwurf="instrument"] .track__eras {
+  height: 10px;
+  top: .45rem;
+  border-radius: 2px;
+  filter: saturate(.55);
+}
+
+/* ------------------------------------------------------------ Tafel */
+
+[data-entwurf="instrument"] .panel { border-radius: var(--i-r-flaeche); }
+[data-entwurf="instrument"] .pnl__hero {
+  padding: 16px 18px 14px;
+  background: none;
+}
+[data-entwurf="instrument"] .pnl__hero::before { height: 2px; }
+[data-entwurf="instrument"] .pnl__hero::after { display: none; }
+[data-entwurf="instrument"] .pnl__kicker { font-size: 11px; letter-spacing: .08em; }
+[data-entwurf="instrument"] .pnl__title {
+  font-size: 22px;
+  font-weight: 650;
+  letter-spacing: -.015em;
+}
+[data-entwurf="instrument"] .pnl__title::after { display: none; }
+[data-entwurf="instrument"] .pnl__alt { font-style: normal; font-size: 12px; }
+[data-entwurf="instrument"] .chip { border-radius: var(--i-r); font-size: 12px; }
+[data-entwurf="instrument"] .sec { padding: 14px 18px; }
+[data-entwurf="instrument"] .sec__h {
+  font-size: 11px;
+  letter-spacing: .08em;
+  font-weight: 650;
+  color: var(--ink-muted);
+}
+[data-entwurf="instrument"] .sec__h::after { display: none; }
+
+/* Der Steckbrief als Liste. */
+[data-entwurf="instrument"] .facts {
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+[data-entwurf="instrument"] .fact {
+  display: grid;
+  grid-template-columns: minmax(6.5rem, 34%) 1fr;
+  gap: 12px;
+  padding: 7px 0;
+  border: 0;
+  border-bottom: 1px solid var(--hairline);
+  border-radius: 0;
+  background: none;
+}
+[data-entwurf="instrument"] .fact:last-child { border-bottom: 0; }
+[data-entwurf="instrument"] .fact dt {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink-faint);
+}
+[data-entwurf="instrument"] .fact dd { font-size: 13.5px; }
+[data-entwurf="instrument"] .fact dd .num { font-size: 13.5px; font-weight: 600; }
+
+[data-entwurf="instrument"] .ruler__name { font-size: 17px; font-weight: 650; }
+[data-entwurf="instrument"] .ruler__seal { border-radius: var(--i-r); }
+[data-entwurf="instrument"] .reign { border-radius: var(--i-r); }
+
+/* Auf Weiß wird gedämpfte Farbe zu Grau mit Schmutz darin. Heller statt
+   nur entsättigt, dann bleibt es ein Band aus Tönen. */
+[data-entwurf="instrument"][data-theme="parchment"] .track__eras {
+  filter: saturate(.7) brightness(1.28) contrast(.9);
+}
+[data-entwurf="instrument"] .ruler__seal {
+  font-family: var(--i-schrift);
+  font-weight: 650;
+  font-size: 15px;
+}
+[data-entwurf="instrument"] .credits {
+  background: var(--surface-solid);
+  border: 1px solid var(--hairline);
+  border-radius: var(--i-r);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}

@@ -1,0 +1,186 @@
+/* ============================================================
+   Entwurf C – „Blatt": die Karte bekommt einen Rand
+   ============================================================
+
+   Keine neue Haut, sondern eine neue Statik. Die Karte hört auf, randloser
+   Hintergrund zu sein, über dem die Bedienung schwebt; sie wird ein Blatt
+   mit Rahmen und Gradleiste, und alles Bedienbare liegt im Rand daneben:
+
+     oben     Titel und Suche, wie der Kopf eines Kartenblatts
+     rechts   eine Schiene: Werkzeuge, Kartenmodus, Windrose, Maßstab
+     unten    die Zeitleiste, bündig mit der Karte, wie eine Legende
+     links    nur Luft für die Gradzahlen – bis das Kriegsregister aufgeht,
+              dann schiebt es die Karte beiseite, statt über ihr zu liegen
+
+   Das beseitigt eine ganze Fehlerklasse auf einmal: Beschriftungen unter
+   der Zeitleiste, Modusleiste über Nordafrika, Tafel über den Werkzeugen –
+   das waren vier Einzelreparaturen, weil Bedienung und Karte sich denselben
+   Platz teilten. Hier teilen sie ihn nicht mehr.
+
+   Der Preis ist Kartenfläche. Auf breiten Schirmen ist sie da; unter 1100
+   Punkten nicht. Dort fällt das Blatt auf die übliche Anordnung zurück –
+   ein Rand, der die halbe Karte kostet, wäre dort die falsche Wette.
+   ============================================================ */
+
+[data-entwurf="blatt"][data-theme="night"] {
+  --b-seite: #10161e;
+  --b-linie: rgba(228, 214, 186, .6);
+  --b-linie-fein: rgba(228, 214, 186, .28);
+  --b-tinte: rgba(228, 214, 186, .85);
+}
+[data-entwurf="blatt"][data-theme="parchment"] {
+  --b-seite: #f4eddc;
+  --b-linie: rgba(60, 44, 20, .78);
+  --b-linie-fein: rgba(60, 44, 20, .36);
+  --b-tinte: rgba(48, 34, 14, .9);
+}
+
+/* Der Rand selbst – nur auf breiten Schirmen. */
+.blattrand { display: none; }
+
+@media (min-width: 1101px) {
+  [data-entwurf="blatt"] {
+    --b-schiene: 13rem;
+    --b-oben: 4.7rem;
+    --b-links: 2.4rem;
+    --b-rechts: calc(var(--b-schiene) + 2.8rem);
+    --b-unten: calc(var(--console-h, 9rem) + 3.1rem);
+  }
+
+  [data-entwurf="blatt"] .stage { background: var(--b-seite); }
+  [data-entwurf="blatt"] .map {
+    inset: var(--b-oben) var(--b-rechts) var(--b-unten) var(--b-links);
+  }
+  /* Vignette und Korn gehören zu einer randlosen Karte, die an den Kanten
+     ins Dunkel läuft. Ein Blatt hat Kanten. */
+  [data-entwurf="blatt"] .stage::before { display: none; }
+
+  [data-entwurf="blatt"] .blattrand {
+    display: block;
+    position: absolute;
+    z-index: 450;
+    pointer-events: none;
+    overflow: visible;
+  }
+  [data-entwurf="blatt"] .app.is-battle .blattrand { display: none; }
+  .blattrand__linie { fill: none; stroke: var(--b-linie); stroke-width: 1; }
+  .blattrand__linie--fein { stroke: var(--b-linie-fein); }
+  .blattrand__feld { fill: var(--b-tinte); }
+  .blattrand__zahl {
+    fill: var(--b-tinte);
+    font: italic 500 10px var(--font-display);
+    letter-spacing: .02em;
+  }
+
+  /* ------------------------------------------- Im Rand gedruckt, flach */
+
+  [data-entwurf="blatt"] :is(.dock__mark, .dock__btn, .tools, .mapmodes, .credits) {
+    background: none;
+    border-color: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  [data-entwurf="blatt"] .dock__btn:hover { background: var(--surface-3); transform: none; }
+
+  /* --------------------------------------------------------- Die Schiene */
+
+  [data-entwurf="blatt"] .tools {
+    top: var(--b-oben);
+    right: 1.1rem;
+    width: var(--b-schiene);
+    padding: 0;
+    grid-template-columns: repeat(5, 1fr);
+    justify-items: center;
+    row-gap: .25rem;
+  }
+  [data-entwurf="blatt"] .tools__sep { display: none; }
+
+  /* Der Kartenmodus als Liste in der Schiene – mit Überschrift aus seiner
+     eigenen Beschriftung für Vorlesesoftware, damit sie übersetzt ist. */
+  [data-entwurf="blatt"] .mapmodes {
+    top: calc(var(--b-oben) + 6.4rem);
+    right: 1.1rem;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    width: var(--b-schiene);
+    max-width: none;
+    padding: .75rem 0 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1px;
+    overflow: visible;
+    border-top: 1px solid var(--b-linie-fein);
+    border-radius: 0;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  [data-entwurf="blatt"] .mapmodes::before {
+    content: attr(aria-label);
+    padding: 0 .6rem .45rem;
+    font-size: .64rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  [data-entwurf="blatt"] .mapmodes button {
+    justify-content: flex-start;
+    width: 100%;
+    padding: .45rem .6rem;
+    font-size: .82rem;
+    border-radius: var(--r-sm);
+  }
+  [data-entwurf="blatt"] .mapmodes button[aria-checked="true"] {
+    box-shadow: inset 2px 0 0 var(--gold);
+  }
+
+  /* Windrose und Maßstab unten in der Schiene. */
+  [data-entwurf="blatt"] .rose {
+    right: calc(1.1rem + (var(--b-schiene) - 64px) / 2);
+    bottom: 5.2rem;
+    width: 64px;
+    opacity: .7;
+  }
+  [data-entwurf="blatt"] .credits {
+    left: auto;
+    right: 1.1rem;
+    bottom: 1.2rem;
+    width: var(--b-schiene);
+    padding: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .35rem;
+  }
+
+  /* Menüs öffnen links neben der Schiene, an der oberen Blattkante. */
+  [data-entwurf="blatt"] .popover {
+    top: var(--b-oben);
+    right: calc(var(--b-schiene) + 1.6rem);
+  }
+
+  /* ------------------------------------------ Die Zeitleiste als Legende */
+
+  [data-entwurf="blatt"] .timeline {
+    left: var(--b-links);
+    right: var(--b-rechts);
+    bottom: .9rem;
+    width: auto;
+    margin: 0;
+    padding: .7rem 0 .2rem;
+    background: none;
+    border: 0;
+    border-top: 1px solid var(--b-linie);
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  /* --------------------------------- Das Kriegsregister schiebt, statt zu decken */
+
+  [data-entwurf="blatt"] .app:has(.battles:not([hidden])) {
+    --b-links: calc(var(--register-b) + 3.2rem);
+  }
+  [data-entwurf="blatt"] .battles { top: var(--b-oben); }
+}

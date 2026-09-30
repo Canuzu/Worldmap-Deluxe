@@ -552,6 +552,22 @@ export const grundName = (id) => txt(`grund.${id}.name`);
 /** Ihre Beschreibung, ebenfalls übersetzt. */
 export const grundText = (id) => txt(`grund.${id}.text`);
 
+/**
+ * Die Rangfolge der Beschriftung.
+ *
+ * Fünf Ebenen setzen Text auf die Karte, und jede führte früher ihre eigene
+ * Liste des schon Belegten – fünf Karten übereinander, von denen jede für
+ * sich stimmte. Jetzt gibt es eine Reihenfolge: Wer weiter vorn steht,
+ * behält seinen Platz; wer weiter hinten steht, weicht aus.
+ *
+ *   oberflaeche  Zeitleiste, Tafel, Werkzeuge – was über der Karte liegt
+ *   konflikte    Schlachtmarken: der stärkste Eingriff, den die Karte kennt
+ *   ereignisse   Ereignismarken und ihre Namen
+ *   orte         Städte, Landschaften, Religionsgebiete
+ *   (Ländernamen setzen zuletzt und prüfen gegen alles)
+ */
+const SPERR_KETTE = ['oberflaeche', 'konflikte', 'ereignisse', 'orte'];
+
 /** Ab dieser Zoomstufe wird die hochaufgelöste Küstenlinie eingeblendet. */
 const COAST_HD_FROM_ZOOM = 4.2;
 
@@ -638,7 +654,7 @@ export class AtlasMap {
     this.colors = new Map();
     this.selected = null;
     this.hovered = null;
-    this._handlers = { select: [], hover: [], view: [], basemap: [] };
+    this._handlers = { select: [], hover: [], view: [], basemap: [], sperren: [] };
     this._boundsCache = new Map();
 
     this.map = L.map(el, {
@@ -910,20 +926,44 @@ export class AtlasMap {
    * weil sie beide hält.
    */
   setLabelSperren(quelle, rechtecke) {
-    (this._labelSperren ??= new Map()).set(quelle, rechtecke ?? []);
+    const liste = rechtecke ?? [];
+    this._labelSperren ??= new Map();
+    /* Unverändert gemeldet heißt: nichts zu tun. Jede Stufe meldet bei jedem
+       Schwenken neu, und ohne diesen Vergleich zöge jede Meldung die ganze
+       Kette hinter sich her, auch wenn kein Rechteck sich bewegt hat. */
+    const stempel = JSON.stringify(liste.map((r) => [Math.round(r.x), Math.round(r.y), Math.round(r.w), Math.round(r.h)]));
+    if ((this._sperrStempel ??= new Map()).get(quelle) === stempel) return;
+    this._sperrStempel.set(quelle, stempel);
+    this._labelSperren.set(quelle, liste);
+
     this.labelLayer.setSperren([...this._labelSperren.values()].flat());
+    /* Was hinter dieser Stufe kommt, muss neu setzen – nicht erst beim
+       nächsten Schwenken. Die Orte, wenn sich etwas vor ihnen geändert hat
+       („Moskau" lag sonst halb unter der Werkzeugsäule, nachdem die Tafel
+       aufging); die Ereignisse, wenn Bedienflächen oder Schlachtmarken sich
+       geändert haben. Die eigene Meldung einer Stufe löst sie selbst nicht
+       noch einmal aus, sonst liefe die Kette im Kreis. */
+    const stufe = SPERR_KETTE.indexOf(quelle);
+    if (stufe < SPERR_KETTE.indexOf('orte') && this.placeCanvas) this._planeOrte();
+    if (stufe < SPERR_KETTE.indexOf('ereignisse')) this._emit('sperren', quelle);
   }
 
   /**
-   * Alles Belegte als [x0,y0,x1,y1] – die Form, in der die Ortsebene rechnet.
+   * Alles, was vor einer Stufe der Kette belegt ist, als [x0,y0,x1,y1].
    *
-   * Ohne die Quelle `orte` selbst: Sie ruft das hier ab, um ihre eigene Liste
-   * damit anzufangen, und würde sich sonst gegen ihren vorigen Stand prüfen.
+   * Jede Stufe fängt ihre Liste damit an – und nur damit: Was nach ihr kommt,
+   * weicht ihr aus, nicht umgekehrt. Eine Stufe, die gegen ihre Nachfolger
+   * prüfte, prüfte gegen deren vorigen Stand, der sich gerade ihretwegen
+   * ändern wird.
+   *
+   * @param {string} stufe Name der Stufe in SPERR_KETTE
    */
-  _sperrKaesten() {
+  sperrKaestenVor(stufe) {
+    const grenze = SPERR_KETTE.indexOf(stufe);
     const aus = [];
     for (const [quelle, liste] of this._labelSperren ?? []) {
-      if (quelle === 'orte') continue;
+      const i = SPERR_KETTE.indexOf(quelle);
+      if (i < 0 || i >= grenze) continue;
       for (const r of liste) aus.push([r.x, r.y, r.x + r.w, r.y + r.h]);
     }
     return aus;
@@ -941,7 +981,7 @@ export class AtlasMap {
   applyTheme(theme) {
     this.theme = theme;
     if (this.placeCanvas) this._planeOrte();
-    this.palette = paletteFor(theme);
+    this.palette = paletteFor(theme, document.documentElement.dataset.entwurf);
     this._styleBase();
     if (this.epoch) {
       this._computeColors();
@@ -965,7 +1005,11 @@ export class AtlasMap {
    * ihn zu verwerfen.
    */
   _cssVar(name, fallback) {
-    const welt = document.documentElement.dataset.theme ?? '';
+    // Farbwelt und Entwurf zusammen: Beide setzen Werte im Stilblatt, und ein
+    // Speicher, der nur die eine kennt, lieferte nach einem Entwurfswechsel
+    // die Farben des vorigen.
+    const wurzel = document.documentElement.dataset;
+    const welt = `${wurzel.theme ?? ''}|${wurzel.entwurf ?? ''}`;
     if (this._cssWelt !== welt || !this._cssMerker) {
       this._cssWelt = welt;
       this._cssMerker = new Map();
@@ -1677,7 +1721,7 @@ export class AtlasMap {
        übereinander – „Marokko" quer durch „Casablanca", Ortsnamen halb unter
        der Zeitleiste. Die Rangfolge ist jetzt festgelegt: Ereignis vor Ort
        vor Ländername, und jede Stufe reicht ihre Belegung weiter. */
-    const belegt = this._sperrKaesten();
+    const belegt = this.sperrKaestenVor('orte');
     const frei = (x, y, w, h) => {
       for (const b of belegt) {
         if (x < b[2] && x + w > b[0] && y < b[3] && y + h > b[1]) return false;
@@ -1792,7 +1836,7 @@ export class AtlasMap {
     /* Und weiterreichen an die Ländernamen, die als letzte gesetzt werden.
        Nur der eigene Zuwachs: Was schon vorher belegt war, steht dort
        ohnehin. */
-    const fremd = this._sperrKaesten().length;
+    const fremd = this.sperrKaestenVor('orte').length;
     this.setLabelSperren('orte', belegt.slice(fremd)
       .map(([x0, y0, x1, y1]) => ({ x: x0, y: y0, w: x1 - x0, h: y1 - y0 })));
   }

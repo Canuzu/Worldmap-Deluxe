@@ -11,6 +11,12 @@
 export const DE = {
   /* -------------------------------------------------------- Kopf & Start */
   'doc.titel': 'Worldmap Deluxe – Historischer Weltatlas',
+  'entwurf.titel': 'Entwurf',
+  'entwurf.aria': 'Gestaltungsentwurf wählen',
+  'blatt.ost': 'O',
+  'blatt.west': 'W',
+  'blatt.nord': 'N',
+  'blatt.sued': 'S',
   'doc.beschreibung': 'Interaktiver historischer Weltatlas: 62 Zeitschnitte von 123.000 v. Chr. bis heute. Grenzen verschieben, Reiche anklicken, Herrscher und Hintergründe nachlesen.',
   'marke.name': 'Worldmap Deluxe',
   'marke.unterzeile': 'Historischer Weltatlas',

@@ -1729,9 +1729,23 @@
   }
 }
 
+/* Auf schmalen Schirmen stapeln sich unten Zeitleiste, Modusleiste und
+   Maßstab übereinander, jeweils auf der gemessenen Höhe der darunter
+   liegenden Zeile. Vorher standen feste Abstände hier (11 rem), und der
+   Maßstab lag auf einem Tablet mit 834 Punkten 21 Punkte unter der Leiste. */
 @media (max-width: 900px) {
-  .mapmodes { font-size: .7rem; bottom: calc(11rem + var(--safe-b)); }
+  .app {
+    --ueber-konsole: calc(var(--console-h, 9rem) + .85rem + .55rem + var(--safe-b));
+    --ueber-modi: calc(var(--ueber-konsole) + var(--modi-h, 2.5rem) + .45rem);
+  }
+  .mapmodes { font-size: .7rem; bottom: var(--ueber-konsole); }
   .mapmodes button { padding: .3rem .45rem; gap: .3rem; }
+  .credits { bottom: var(--ueber-modi); }
+  /* Maßstab und Quellenzeile treten zurück, solange Register oder Tafel
+     offen sind. Die Regel dafür galt nur bis 720 Punkte; auf einem Tablet
+     mit 834 lugte die Quellenzeile 29 Punkte hoch unter dem Register hervor. */
+  .stage:has(.battles:not([hidden])) .credits,
+  .app:has(#panel:not([hidden])) .credits { opacity: 0; pointer-events: none; }
 }
 @media (max-width: 520px) {
   .mapmodes button span { display: none; }
@@ -1822,7 +1836,7 @@
     right: .5rem;
     transform: none;
     max-width: none;
-    bottom: calc(11.4rem + var(--safe-b));
+    bottom: var(--ueber-konsole);
     justify-content: flex-start;
     scroll-snap-type: x proximity;
   }
@@ -1852,7 +1866,7 @@
   .credits {
     top: auto;
     left: calc(.6rem + var(--safe-l));
-    bottom: calc(14.6rem + var(--safe-b));
+    bottom: var(--ueber-modi);
     gap: .5rem;
     padding: 0;
     font-size: .58rem;
@@ -2066,6 +2080,11 @@
      419 Punkte hoch und lief unten aus dem Bild. Vergrößern, Verkleinern und
      Vollbild gehen am Telefon ohnehin mit den Fingern. */
   #btnZoomIn, #btnZoomOut, #btnFull, .tools__sep { display: none; }
-  .tools { top: .5rem; gap: 0; padding: .15rem; }
+  /* Zwei Spalten statt einer. Sechs Werkzeuge übereinander sind auf 390
+     Punkten Höhe 258 Punkte – und die Zeitleiste beginnt bei 260, auf dem
+     Telefon mit Sprachwahl darüber. Gemessen lag die Säule 29 bis 40 Punkte
+     in der Zeitleiste. Nebeneinander in zwei Spalten ist sie halb so hoch. */
+  .tools { top: .5rem; gap: 0; padding: .15rem; grid-template-columns: repeat(2, auto); }
+  .mapmodes { right: 6.8rem; }
   .credits { display: none; }
 }
