@@ -49,9 +49,9 @@ optionale Ausnahme sind die abschaltbaren Wikipedia-Auszüge.
 Der Atlas soll wie eine gestochene Tafel wirken, nicht wie ein Kartendienst.
 Sechs Entscheidungen tragen das:
 
-**Der Küstensaum.** Über dem Meer liegt eine Linienebene, in die zwei Bänder
-nacheinander gezogen werden: ein breites, blasses für die Tiefe und ein enges,
-fast scharfes für die Kante. Weich wird der Verlauf nicht durch einen
+**Der Küstensaum.** Entlang der Küste werden zwei Bänder über das Meer
+gezogen – in derselben Zeichenfläche, gleich nach der Meeresfläche: ein
+breites, blasses für die Tiefe und ein enges, fast scharfes für die Kante. Weich wird der Verlauf nicht durch einen
 Weichzeichner, sondern durch immer breitere, blassere Parallelen – genau das
 Verfahren, mit dem Kupferstecher Untiefen angelegt haben, bevor es
 Weichzeichner gab. Nichts sonst verändert das Kartenbild so stark. Der Saum
@@ -1259,14 +1259,19 @@ wurde, dreimal, weil Meer, Saum und Kante sie sich teilen. Gemessen:
 anderthalb Sekunden je Schwenk. Drei Änderungen: Die Linie ist auf 35 %
 ausgedünnt (`npm run build:kueste`) – im Sichtvergleich bei Zoomstufe 6 ist
 kein Unterschied zu erkennen, die dänischen Inseln und das Wattenmeer stehen
-unverändert. Der breite Saum bekommt weiterhin die Übersichtsküste; in einem
-weichen Band von zehn Bildpunkten Breite verschwindet ein Kilometer
-Abweichung restlos. Und eingesetzt wird nicht in einem Zug, sondern Ebene für
-Ebene über mehrere Einzelbilder.
+unverändert. Der Saum zieht bei der feinen Küste nur zwei statt vier
+Parallelen; in einem weichen Band von zehn Bildpunkten Breite verschwindet der
+Unterschied restlos. Und gebaut wird die feine Küste nicht in einem Zug,
+sondern im Leerlauf des Browsers, in Stücken von 3.000 Stützpunkten – und nur
+einmal: Danach liegt sie fertig bereit, und ein Zoom über die Schwelle tauscht
+nur noch die Ebene aus.
 
-Dazu: Der Saum zeichnet in einfacher statt doppelter Bildschirmauflösung – er
-wird ohnehin weich, vier Mal so viele Bildpunkte machen ihn nicht weicher. Und
-der Zwischenspeicher für Zeitschnitte hält sechs statt zehn Stände.
+Dazu: Der Saum bekam eine eigene Zeichenfläche in einfacher statt doppelter
+Bildschirmauflösung – er wird ohnehin weich, vier Mal so viele Bildpunkte
+machen ihn nicht weicher. Und der Zwischenspeicher für Zeitschnitte hält sechs
+statt zehn Stände. (Später wanderte der Saum in die Zeichenfläche des Meeres
+zurück: Eine bildschirmfüllende Ebene weniger spart bei *jedem* Bild, die
+höhere Auflösung kostet nur beim Neuzeichnen nach einer Bewegung.)
 
 ### Was danach noch ruckelte
 
@@ -1384,7 +1389,8 @@ Dazu ein zweiter Fund derselben Art: Ein Mausrad gibt in einer Bewegung fünf
 bis zehn Rasten ab. Leaflet wartet zwischen ihnen 40 ms und macht daraus fünf
 bis zehn einzelne Zoomvorgänge, jeder mit vollem Neuaufbau. Bei 140 ms wird
 aus einer Radbewegung ein Zoomschritt – die Karte folgt genauso weit, nur in
-einem Zug.
+einem Zug. (Inzwischen abgelöst: Das Rad zoomt jetzt stufenlos, siehe
+„Zoomen ohne Treppe“.)
 
 Gemessen in Zeichenwegen, Weltansicht im Zeitschnitt 1492:
 
@@ -1422,7 +1428,8 @@ sondern das Rastern der Flächen – in diesem Testbrowser ohne
 Grafikbeschleunigung entsprechend teuer, auf einem gewöhnlichen Gerät deutlich
 weniger. Eine höhere Vereinfachungstoleranz brächte noch einmal ein Viertel,
 kappt aber sichtbar Buchten und Landzungen; sauber wäre das nur über
-abgestufte Auflösungen je Zoomstufe zu lösen.
+abgestufte Auflösungen je Zoomstufe zu lösen. (Die Projektion ist inzwischen
+gelöst, siehe „Zoomen ohne Treppe“.)
 
 ### Was diesmal noch drin war
 
@@ -1488,6 +1495,87 @@ nachher – die Liste ist kürzer, als sie aussieht) und eine höhere
 Vereinfachungstoleranz der Epochendaten (27 % weniger Stützpunkte, zu wenig
 für einen Eingriff in die Datenpipeline). Ungeprüfte Komplexität bleibt
 draußen, auch wenn die Begründung gut klingt.
+
+### Zoomen ohne Treppe
+
+Die Rückmeldung danach war eindeutig: Am Rechner ruckelt es, vor allem beim
+Zoomen. Die Messung gab ihr recht. Jede Raste des Mausrads kostete ohne
+Drosselung rund **125 ms Hauptstrang** – 66 ms nach dem Zoomen, 59 ms nach dem
+Verschieben, weil Leaflet beide Ereignisse feuert und jede Zeichenfläche auf
+beide neu zeichnet. Sechs Rasten zeichneten das Meer fünfzehnmal. Dazwischen
+stand die Karte, weil Leaflet Rasten verwirft, die während einer laufenden
+Animation kommen. Das fühlte sich an wie eine Treppe: warten, springen,
+stocken.
+
+**Das Rad zoomt jetzt stufenlos** (`src/modules/radzoom.js`). Die Karte folgt
+dem Rad Bild für Bild, der Ort unter dem Mauszeiger bleibt unter dem
+Mauszeiger. Während der Bewegung wird nichts gerechnet – die fertigen
+Zeichenflächen werden nur per CSS skaliert, wie Leaflet es beim
+Zwei-Finger-Zoom auf dem Telefon auch tut; gemessen sind das 0,4 ms Skript je
+Bild. Neu aufgebaut wird **einmal**, wenn das Rad 140 ms stillsteht.
+
+Dieser eine Neuaufbau ist billiger geworden, an vier Stellen:
+
+1. **Die Projektion wird nicht mehr wiederholt.** Leaflet rechnet bei jedem
+   Zoomschritt für jeden Stützpunkt Sinus und Logarithmus neu – für eine
+   Zahl, die sich nie ändert. Die Lage eines Punktes in der Mercator-Ebene
+   hängt nicht vom Zoom ab; sie wird jetzt beim ersten Mal am Punkt vermerkt,
+   danach ist jede Zoomstufe eine Multiplikation und ein Runden.
+2. **Ringe außerhalb des Bildes werden nicht mehr zugeschnitten.** Jeder Ring
+   kennt nach der Projektion seinen Rahmen. Liegt er ganz außerhalb, fällt
+   er weg; liegt er ganz innen, geht er unverändert durch. Nur was die
+   Bildkante schneidet, läuft noch durch den Zuschnitt.
+3. **Neu gezeichnet wird in Etappen.** Statt dass jede Zeichenfläche auf
+   `zoomend` und `moveend` sofort zeichnet, reiht sie sich ein; die
+   Gemeinwesen zuerst, dann Meer und Saum. Jede Etappe ist eine eigene
+   Aufgabe, dazwischen kommt der Browser zum Zug – ein Klick oder eine neue
+   Raste wartet nicht auf das Ende des ganzen Aufbaus. Ein Klick, der in eine
+   auslaufende Radbewegung fällt, beendet sie zuerst; sonst träfe er die
+   Fläche unter dem Zwischenstand statt unter dem Bild.
+4. **Der Küstensaum liegt in der Zeichenfläche des Meeres.** Er zieht seine
+   Bänder auf derselben Geometrie, unmittelbar nach der Füllung – eine
+   Ebene, eine Projektion, ein Zuschnitt statt je zwei. Beide
+   Küstenauflösungen werden je einmal im Leerlauf gebaut und danach nur noch
+   ausgetauscht.
+
+Dazu drei Posten, die nicht im Skript liegen, sondern in der
+Bildzusammensetzung – sie fallen bei **jedem** Bild an, auch während die
+Karte nur skaliert wird:
+
+- Die Milchglas-Flächen der Bedienelemente (`backdrop-filter`) müssen ihren
+  Hintergrund neu weichzeichnen, sobald sich die Karte darunter bewegt.
+  Solange sie das tut, sind sie aus (`.is-karte-bewegt`); 180 ms nach dem
+  Stillstand kommen sie zurück.
+- Der Schatten der Hervorhebung lag als Filter auf dem ganzen Pane, jetzt
+  liegt er nur auf der hervorgehobenen Form.
+- Das Papierkorn über der Bühne mischte sich bildschirmfüllend per
+  `mix-blend-mode` ein; jetzt ist es eine einfache, blassere Schicht.
+
+Und der Hinweis am Mauszeiger las bei jeder Mausbewegung die Lage der Karte
+aus dem Layout, was den Browser zu einer Layoutberechnung zwang. Die Lage
+wird jetzt einmal gemerkt und nur bei Größenänderung neu gelesen; der Hinweis
+wird per `transform` verschoben statt per `left`/`top`.
+
+Gemessen, `npm run check:fluss` (vierfach gedrosselt, Startansicht):
+
+| | vorher | jetzt |
+|---|---|---|
+| Zoomsprung 1492, 95 % der Bilder | 1.030–1.050 ms | **280–380 ms** |
+| Schwenken 1815, 95 % der Bilder | 67 ms | **33–50 ms** |
+| Feine Küste einsetzen | 1.740–1.810 ms | 1.660–1.850 ms (gleich) |
+
+Und ungedrosselt, sechs Radbewegungen im Zeitschnitt 1492: **3 lange Aufgaben
+mit zusammen 413 ms statt 8 mit 1.183 ms.** Was davon übrig ist, steckt fast
+ganz in der Übergabe der Zeichenflächen an die Bildausgabe („Commit“) – in
+diesem Testbrowser Software, auf einem Rechner mit Grafikkarte ein
+Bruchteil. Das Schwenken im schwersten Zeitschnitt streut aus demselben
+Grund in beiden Fassungen gleich (67–233 ms); das Skript braucht dabei unter
+25 ms.
+
+Der Preis: Die vermerkten Projektionen und die bereitgehaltene feine Küste
+kosten Speicher – nach zehn Zeitschnitten 61 statt 44 MB, mit feiner Küste
+66 statt 67 MB. Im Sichtvergleich ist der Küstensaum vorher wie nachher
+derselbe, in beiden Farbwelten.
 
 ## Kartenmodi
 

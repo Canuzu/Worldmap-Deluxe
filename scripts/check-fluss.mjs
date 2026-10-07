@@ -23,19 +23,26 @@ const DROSSEL = Number(args[args.indexOf('--drossel') + 1]) || 4;
    Software (SwiftShader) und ist zusätzlich gedrosselt. Die Zahlen sind also
    deutlich pessimistischer als auf einem Gerät mit Grafikbeschleunigung; sie
    taugen zum Vergleich zwischen zwei Fassungen, nicht als Versprechen. */
-const GRENZE = { schwenken: 140, zoomen: 2600, epoche: 400, kueste: 4000 };
+const GRENZE = { schwenken: 250, zoomen: 900, epoche: 400, kueste: 4000 };
 
-/* Die beiden großen Zahlen sind kein Freibrief, sondern der gemessene Stand:
-   Ein Zoomsprung im schwersten Zeitschnitt (1492, 1.307 Gemeinwesen) und das
-   Einsetzen der feinen Küste kosten hier rund zwei bzw. knapp drei Sekunden –
-   auf einem Gerät mit Grafikbeschleunigung entspricht das den Bruchteil einer
-   Sekunde. Beides ist einmalig und nicht das, was man beim Bedienen als
-   Ruckeln merkt; dafür stehen die 140 ms beim Schwenken.
+/* Die Schwellen sind der gemessene Stand plus Abstand fürs Rauschen – diese
+   Umgebung teilt sich die Rechenleistung mit anderen, einzelne Läufe streuen
+   um mehr als die Hälfte. Eine Schwelle knapp über dem besten Lauf meldet
+   Rauschen statt Rückschritten.
 
-   Die Schwellen liegen bewusst über dem gemessenen Stand (Zoomsprung 2,2 s,
-   feine Küste 2,7 s): Diese Umgebung teilt sich die Rechenleistung mit
-   anderen, einzelne Läufe streuen um mehr als die Hälfte. Eine Schwelle, die
-   knapp über dem besten Lauf liegt, meldet Rauschen statt Rückschritten. */
+     Zoomsprung 1492, 95 %     vorher 1.030–1.050 ms   jetzt 280–380 ms
+     Feine Küste einsetzen     vorher 1.740–1.810 ms   jetzt 1.660–1.850 ms
+     Schwenken 1815, 95 %      vorher 67 ms            jetzt 33–50 ms
+     Schwenken 1492, 95 %      vorher und jetzt 67–233 ms
+
+   Die Zoomschwelle stand bei 2,6 s und liegt jetzt bei 0,9 s: Ein Rückfall
+   auf das alte Neuzeichnen nach jedem Schritt fiele damit sofort auf.
+
+   Das Schwenken im schwersten Zeitschnitt streut in beiden Fassungen gleich
+   stark, und zwar nicht wegen des Skripts – das braucht beim Schwenken unter
+   25 ms –, sondern weil diese Umgebung jede geänderte Zeichenfläche in
+   Software an die Bildausgabe übergibt („Commit“). Auf einem Gerät mit
+   Grafikbeschleunigung kostet genau dieser Schritt fast nichts. */
 
 const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });

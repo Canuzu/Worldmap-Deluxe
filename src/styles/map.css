@@ -14,11 +14,16 @@
 .leaflet-pane > canvas { image-rendering: auto; }
 
 /* Auswahl-Hervorhebung: eigener SVG-Layer, damit ein weicher Schein
-   möglich ist – auf Canvas ginge das nicht ohne Klimmzüge. */
-.leaflet-highlight-pane {
+   möglich ist – auf Canvas ginge das nicht ohne Klimmzüge.
+
+   Der Schein sitzt an der Form, nicht am ganzen Pane. Ein Filter auf dem
+   Pane gilt für dessen ganze Fläche – fast das Doppelte des Fensters –, und
+   der Browser rechnet ihn bei jedem Bild einer Bewegung neu, auch wenn gar
+   nichts ausgewählt ist. An der Form kostet er nur ihre eigene Fläche. */
+.sel-shape {
   filter: drop-shadow(0 0 7px rgba(0, 0, 0, .55));
 }
-[data-theme="parchment"] .leaflet-highlight-pane {
+[data-theme="parchment"] .sel-shape {
   filter: drop-shadow(0 1px 4px rgba(70, 52, 26, .4));
 }
 .sel-shape {
@@ -54,22 +59,11 @@
 
 /* ------------------------------------------------- Küstensaum
 
-   Der Saum liegt in **einer** Zeichenfläche: das breite, blasse Band für die
-   Tiefe und die enge Parallele für die Kante werden nacheinander in dieselbe
-   Fläche gezogen. Vorher waren es zwei bildschirmfüllende Zeichenflächen mit
-   je einem Blendmodus – zwei Ebenen, die der Browser bei jedem Bild einzeln
-   zusammensetzen musste.
-
-   Die Weichzeichnung entsteht in der Zeichenfläche selbst, als Folge immer
-   breiterer, blasserer Parallelen. Ein CSS-Filter hätte sie bei jedem Bild
-   neu über die ganze Fensterfläche gerechnet. Deckung und Breite kommen aus
-   atlas.js, weil sie mit der Zoomstufe zurücklaufen. */
-.leaflet-coast-pane {
-  pointer-events: none;
-  /* Über dem dunklen Meer soll der Saum leuchten, auf Papier eher färben. */
-  mix-blend-mode: screen;
-}
-[data-theme="parchment"] .leaflet-coast-pane { mix-blend-mode: multiply; }
+   Der Saum wird in der Zeichenfläche des Meeres gezogen (atlas.js,
+   MeerCanvas): als Folge immer breiterer, blasserer Parallelen, mit dem
+   Mischmodus in der Zeichenfläche statt als CSS auf einer eigenen Ebene. Ein
+   `mix-blend-mode` auf einem Pane müsste der Browser bei jedem Bild gegen
+   alles darunter neu verrechnen – beim Zoomen und Schwenken also ständig. */
 
 /* ------------------------------------------------- Kartengrundlage */
 
@@ -358,4 +352,22 @@
   margin: .3rem 0 0;
   font-size: .72rem;
   color: var(--ink-faint);
+}
+
+/* ------------------------------------------------- Während die Karte sich bewegt
+
+   Die Bedienflächen über der Karte sind Milchglas: `backdrop-filter` zeichnet
+   alles dahinter weich. Steht die Karte still, rechnet der Browser das einmal.
+   Bewegt sie sich, muss er es bei jedem einzelnen Bild neu tun – für die
+   Zeitleiste, die Tafel, die Werkzeuge, jede Fläche mit Unschärfe von 18 bis
+   26 Bildpunkten. Das ist auf vielen Rechnern der Unterschied zwischen
+   flüssigem und stockendem Schwenken und Zoomen.
+
+   Für die Dauer einer Bewegung tritt die Unschärfe deshalb zurück. Die
+   Flächen sind ohnehin zu 82 bis 92 Prozent deckend; was dahinter durchkommt,
+   ist für diesen Augenblick unscharf genug, und sobald die Karte steht, ist
+   das Milchglas wieder da. Gesetzt wird die Klasse in atlas.js. */
+.is-karte-bewegt * {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }

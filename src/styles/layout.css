@@ -107,9 +107,12 @@
   pointer-events: none;
   z-index: 401;
   /* Sehr zurückhaltend: Bei kräftigerem Korn liest sich die Karte als
-     unscharf statt als bedrucktes Papier. */
-  opacity: .06;
-  mix-blend-mode: overlay;
+     unscharf statt als bedrucktes Papier.
+     Ohne Mischmodus: Ein `mix-blend-mode` über dem ganzen Fenster zwingt den
+     Browser, bei jedem Bild einer Kartenbewegung die gesamte Karte darunter
+     neu mit dem Korn zu verrechnen. Graues Rauschen in normaler Deckung
+     sieht bei dieser Stärke gleich aus und kostet nichts. */
+  opacity: .035;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.62' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.32'/%3E%3C/svg%3E");
 }
 

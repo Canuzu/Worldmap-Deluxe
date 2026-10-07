@@ -17,6 +17,7 @@
  */
 import L from 'leaflet';
 import { createLabelLayer, breiteVon } from './labels.js';
+import { SanfterRadzoom } from './radzoom.js';
 import { txt } from './sprache.js';
 import { schriftdichte } from './dichte.js';
 import RELIGION from '../data/religion/vokabular.json';
@@ -31,17 +32,12 @@ const PANES = {
   // Über den Staatsflächen, unter dem Meer: Die Religionsgrenzen sollen auf
   // der Fläche liegen, aber an der Küste enden wie alles andere auch.
   relGrenze: 235,
+  // Das Meer trägt auch den Küstensaum (MeerCanvas): Er liegt ÜBER der
+  // Meeresfläche als Lichtkante auf beiden Seiten der Küste – seewärts als
+  // Untiefenband, landwärts als Kantenlicht. Zwei Bänder, weil eines flach
+  // aussieht: ein breites, blasses für die Tiefe und ein schmales, fast
+  // scharfes für die Kante. Genau so haben Kupferstecher Untiefen angelegt.
   ocean: 240,
-  // Der Küstensaum liegt ÜBER dem Meer, nicht darunter: Das Meer ist eine
-  // deckende Fläche mit einem Loch je Landmasse und würde alles Tiefere
-  // überdecken. Von oben legt sich der Saum als Lichtkante über beide Seiten
-  // der Küste – seewärts als Untiefenband, landwärts als Kantenlicht.
-  //
-  // Zwei Bänder, weil eines flach aussieht: ein breites, stark
-  // weichgezeichnetes für die Tiefe und ein schmales, fast scharfes für die
-  // Kante. Genau so haben Kupferstecher Untiefen angelegt – erst der weite
-  // Ton, dann die enge Parallele.
-  coast: 241,
   water: 246,
   graticule: 250,
   highlight: 256,
@@ -135,6 +131,174 @@ const RAND_ZOOM = .12;
 
 
 
+/**
+ * Projektion ohne Winkelfunktionen.
+ *
+ * Nach jedem Zoomschritt rechnet Leaflet jeden Stützpunkt jeder Fläche neu
+ * von Länge/Breite in Bildpunkte um – mit einem Sinus und einem Logarithmus
+ * je Punkt und zwei neuen Objekten, die die Speicherbereinigung danach wieder
+ * einsammeln muss. Bei rund hunderttausend Grenzpunkten und der Küstenlinie
+ * dazu war das gemessen der größte Einzelposten eines Zoomschritts.
+ *
+ * Dabei hängt der teure Teil gar nicht vom Zoom ab: Die Mercator-Lage eines
+ * Punktes ist immer dieselbe, nur der Maßstab ändert sich. Sie wird deshalb
+ * einmal je Punkt ausgerechnet und am Punkt selbst abgelegt; jeder weitere
+ * Zoomschritt ist danach eine Multiplikation und eine Rundung.
+ *
+ * Das Ergebnis ist bitgleich zu Leaflets eigener Rechnung (gleiche Formel,
+ * gleiche Rundung), gilt aber nur für die übliche Web-Mercator-Projektion –
+ * für jede andere bleibt es bei Leaflets Weg.
+ */
+const MERCATOR_GRENZE = L.Projection.SphericalMercator.MAX_LATITUDE;
+const ZUM_BOGEN = Math.PI / 180;
+const VIER_PI = 4 * Math.PI;
+const leafletProjektion = L.Polyline.prototype._projectLatlngs;
+
+/** Die Mercator-Lage eines Punktes einmal ausrechnen und am Punkt ablegen. */
+function merkeMercator(ll) {
+  const breite = ll.lat > MERCATOR_GRENZE ? MERCATOR_GRENZE : ll.lat < -MERCATOR_GRENZE ? -MERCATOR_GRENZE : ll.lat;
+  const sin = Math.sin(breite * ZUM_BOGEN);
+  ll._mu = ll.lng / 360 + 0.5;
+  ll._mv = 0.5 - Math.log((1 + sin) / (1 - sin)) / VIER_PI;
+}
+
+function projiziereRinge(latlngs, ergebnis, grenzen, s, ox, oy) {
+  if (!(latlngs[0] instanceof L.LatLng)) {
+    for (let i = 0; i < latlngs.length; i++) projiziereRinge(latlngs[i], ergebnis, grenzen, s, ox, oy);
+    return;
+  }
+  const n = latlngs.length;
+  const ring = new Array(n);
+  let x0 = Infinity;
+  let y0 = Infinity;
+  let x1 = -Infinity;
+  let y1 = -Infinity;
+  for (let i = 0; i < n; i++) {
+    const ll = latlngs[i];
+    if (ll._mu === undefined) merkeMercator(ll);
+    const x = Math.round(ll._mu * s) - ox;
+    const y = Math.round(ll._mv * s) - oy;
+    ring[i] = new L.Point(x, y);
+    if (x < x0) x0 = x;
+    if (x > x1) x1 = x;
+    if (y < y0) y0 = y;
+    if (y > y1) y1 = y;
+  }
+  // Der Rahmen des Ringes reist mit: `_clipPoints` erkennt daran Ringe, die
+  // ganz außerhalb oder ganz innerhalb des Bildes liegen, ohne jeden Punkt
+  // einzeln anzusehen.
+  ring._rahmen = [x0, y0, x1, y1];
+  ergebnis.push(ring);
+  if (n) {
+    grenzen.extend(new L.Point(x0, y0));
+    grenzen.extend(new L.Point(x1, y1));
+  }
+}
+
+/**
+ * Zuschneiden mit Abkürzung.
+ *
+ * Leaflet schneidet nach jeder Bewegung jeden Ring jeder Fläche Punkt für
+ * Punkt gegen den Bildausschnitt – auch die Hälfte der Welt, die gar nicht
+ * im Bild ist. Beim Meer sind das Tausende Inselringe mit Hunderttausenden
+ * Punkten, von denen in der Nahsicht ein Bruchteil zu sehen ist.
+ *
+ * Mit dem Rahmen aus der Projektion lässt sich das meist ohne einen einzigen
+ * Punkt entscheiden: Liegt der Ring ganz draußen, entfällt er; liegt er ganz
+ * drinnen, bleibt er, wie er ist. Nur was über den Rand ragt, wird wie bisher
+ * zugeschnitten – mit Leaflets eigenem Verfahren, das Ergebnis ist dasselbe.
+ */
+L.Polygon.prototype._clipPoints = function () {
+  const r = this._renderer._bounds;
+  const w = this.options.weight;
+  const x0 = r.min.x - w;
+  const y0 = r.min.y - w;
+  const x1 = r.max.x + w;
+  const y1 = r.max.y + w;
+  const bounds = new L.Bounds([x0, y0], [x1, y1]);
+  this._parts = [];
+  if (!this._pxBounds || !this._pxBounds.intersects(bounds)) return;
+  if (this.options.noClip) { this._parts = this._rings; return; }
+  for (const ring of this._rings) {
+    const b = ring._rahmen;
+    if (b) {
+      if (b[2] < x0 || b[0] > x1 || b[3] < y0 || b[1] > y1) continue;
+      if (b[0] >= x0 && b[2] <= x1 && b[1] >= y0 && b[3] <= y1) { this._parts.push(ring); continue; }
+    }
+    const zugeschnitten = L.PolyUtil.clipPolygon(ring, bounds, true);
+    if (zugeschnitten.length) this._parts.push(zugeschnitten);
+  }
+};
+
+L.Polyline.prototype._projectLatlngs = function (latlngs, ergebnis, grenzen) {
+  const map = this._map;
+  if (map.options.crs !== L.CRS.EPSG3857) {
+    leafletProjektion.call(this, latlngs, ergebnis, grenzen);
+    return;
+  }
+  const o = map.getPixelOrigin();
+  projiziereRinge(latlngs, ergebnis, grenzen, map.options.crs.scale(map._zoom), o.x, o.y);
+};
+
+/**
+ * Eine Küstenlinie in Leaflet-Flächen umwandeln – in Häppchen, im Leerlauf.
+ *
+ * Die feine Küstenlinie hat rund 400.000 Stützpunkte. Sie wurde bisher bei
+ * jedem Überschreiten der Zoomschwelle neu aus den Rohdaten aufgebaut, und
+ * beim Zurückzoomen die grobe ebenso – jedes Mal Hunderttausende neue Punkte,
+ * gemessen eine knappe halbe Sekunde Stillstand mitten im Zoomen.
+ *
+ * Jetzt wird jede Fassung einmal gebaut, und zwar in Stücken zu einigen
+ * tausend Punkten, immer dann, wenn der Browser nichts anderes zu tun hat.
+ * Die Mercator-Lage jedes Punktes wird dabei gleich mit abgelegt. Danach ist
+ * ein Wechsel nur noch ein Austausch zweier fertiger Ebenen.
+ */
+const LEERLAUF = window.requestIdleCallback
+  ? (f) => window.requestIdleCallback(f, { timeout: 300 })
+  : (f) => setTimeout(() => f({ timeRemaining: () => 8, didTimeout: false }), 16);
+
+function baueMeerLage(daten, optionen) {
+  const quellen = Array.isArray(daten) ? daten
+    : daten.type === 'FeatureCollection' ? daten.features : [daten];
+  // Alle Ringe in eine Arbeitsliste, mit dem Platz, an den sie gehören.
+  const flaechen = [];
+  const ringe = [];
+  for (const f of quellen) {
+    const g = f.geometry ?? f;
+    const polys = g.type === 'MultiPolygon' ? g.coordinates : g.type === 'Polygon' ? [g.coordinates] : [];
+    const aus = polys.map((p) => new Array(p.length));
+    flaechen.push({ multi: g.type === 'MultiPolygon', aus });
+    polys.forEach((p, pi) => p.forEach((r, ri) => ringe.push({ quelle: r, ziel: aus[pi], ri })));
+  }
+  return new Promise((fertig) => {
+    let i = 0;
+    let ring = null;
+    let ci = 0;
+    const schritt = (frist) => {
+      let budget = frist.didTimeout ? 6000 : 0;
+      while (i < ringe.length && (budget > 0 || frist.timeRemaining() > 2)) {
+        const { quelle, ziel, ri } = ringe[i];
+        if (!ring) { ring = new Array(quelle.length); ci = 0; }
+        const bis = Math.min(quelle.length, ci + 3000);
+        for (; ci < bis; ci++) {
+          const c = quelle[ci];
+          const ll = new L.LatLng(c[1], c[0]);
+          merkeMercator(ll);
+          ring[ci] = ll;
+        }
+        budget -= 3000;
+        if (ci >= quelle.length) { ziel[ri] = ring; ring = null; i++; }
+      }
+      if (i < ringe.length) { LEERLAUF(schritt); return; }
+      const lagen = flaechen
+        .filter((f) => f.aus.length)
+        .map((f) => L.polygon(f.multi ? f.aus : f.aus[0], optionen));
+      fertig(L.featureGroup(lagen));
+    };
+    LEERLAUF(schritt);
+  });
+}
+
 /** Größte Ausdehnung eines Ringes in Bildpunkten. */
 function ringAusdehnung(p) {
   let x0 = Infinity;
@@ -159,7 +323,136 @@ function ringAusdehnung(p) {
  * Alle Zeichenwerke des Atlas erben hiervon, damit die Regel an einer Stelle
  * steht und nicht in jeder Ebene neu.
  */
+/**
+ * Neuzeichnen in Etappen.
+ *
+ * Nach einer Bewegung – Zoom oder Zug – rechnet Leaflet jede Zeichenfläche
+ * sofort und nacheinander neu, alle in einer einzigen Aufgabe: Länder, Meer
+ * mit Küste, Religionsgrenzen, Gewässer. Solange die läuft, steht die Seite:
+ * kein Bild, keine Eingabe. Gemessen war das die längste Aufgabe des
+ * ganzen Atlas.
+ *
+ * Hier stellt sich jede Zeichenfläche stattdessen in eine Warteschlange und
+ * kommt in einer eigenen Aufgabe dran – zuerst die Länder, dann das Meer,
+ * dann der Rest. Zwischen zwei Etappen kann der Browser ein Bild ausgeben
+ * und auf Maus und Tastatur reagieren. Bis eine Fläche dran ist, zeigt sie
+ * ihr bisheriges Bild, von Leaflet passend verschoben und skaliert; sichtbar
+ * ist allenfalls, dass das Meer einen Wimpernschlag nach den Ländern scharf
+ * wird.
+ *
+ * Solange die Karte noch bewegt wird, wartet die Schlange – sonst zeichnete
+ * sie mitten in eine laufende Radbewegung hinein. Und wer klickt, bevor eine
+ * Fläche dran war, bekommt sie vorher sofort fertig gezeichnet: Ein Klick
+ * darf nie auf einem veralteten Bild landen.
+ */
+const etappen = [];
+let etappeGeplant = false;
+const etappenKanal = new MessageChannel();
+
+function karteInBewegung(map) {
+  return map._animatingZoom || map.dragging?.moving() || map.sanfterRadzoom?.aktiv();
+}
+
+etappenKanal.port1.onmessage = () => {
+  etappeGeplant = false;
+  const zeichner = etappen[0];
+  if (!zeichner) return;
+  // Bewegt sich die Karte wieder, wartet die Schlange auf deren Ende – das
+  // nächste `moveend` stößt sie erneut an.
+  if (!zeichner._map || karteInBewegung(zeichner._map)) {
+    if (!zeichner._map) etappen.shift();
+    return;
+  }
+  etappen.shift();
+  zeichner._etappe();
+  if (etappen.length) planeEtappe();
+};
+
+function planeEtappe() {
+  if (etappeGeplant || !etappen.length) return;
+  etappeGeplant = true;
+  etappenKanal.port2.postMessage(0);
+}
+
+function einreihen(zeichner) {
+  if (!etappen.includes(zeichner)) {
+    etappen.push(zeichner);
+    etappen.sort((a, b) => (a.options.rang ?? 5) - (b.options.rang ?? 5));
+  }
+  planeEtappe();
+}
+
+function austragen(zeichner) {
+  const i = etappen.indexOf(zeichner);
+  if (i >= 0) etappen.splice(i, 1);
+}
+
 const PlainCanvas = L.Canvas.extend({
+  /**
+   * Leaflet hängt Zoomende und Bewegungsende direkt an Projektion und
+   * Neuzeichnen. Hier hängen sie an der Warteschlange; die Etappe holt beides
+   * nach. Direkte Aufrufe von `_update` – beim Hinzufügen einer Ebene, beim
+   * harten Sprung (`viewreset`) – bleiben unverändert sofort.
+   */
+  getEvents() {
+    const ereignisse = L.Canvas.prototype.getEvents.call(this);
+    ereignisse.zoomend = this._nachZoom;
+    ereignisse.moveend = this._nachBewegung;
+    return ereignisse;
+  },
+
+  _nachZoom() {
+    this._projektionOffen = true;
+    einreihen(this);
+  },
+
+  _nachBewegung() {
+    einreihen(this);
+  },
+
+  /** Was Leaflet sonst bei Zoomende und Bewegungsende sofort getan hätte. */
+  _etappe() {
+    if (!this._map) return;
+    if (this._projektionOffen) {
+      this._projektionOffen = false;
+      L.Renderer.prototype._onZoomEnd.call(this);
+    }
+    this._update();
+  },
+
+  /** Steht noch eine Etappe aus, wird sie jetzt sofort erledigt. */
+  _sofortFertig() {
+    if (!etappen.includes(this)) return;
+    austragen(this);
+    this._etappe();
+  },
+
+  /** Ein harter Sprung zeichnet ohnehin sofort neu – die Etappe entfällt. */
+  _reset() {
+    austragen(this);
+    this._projektionOffen = false;
+    L.Canvas.prototype._reset.call(this);
+  },
+
+  // Ein Klick mitten in eine auslaufende Radbewegung beendet sie dort, wo sie
+  // gerade steht, und lässt die Fläche vorher fertig rechnen – sonst prüfte
+  // Leaflet den Klick gegen Umrisse im alten Maßstab und träfe ein Land am
+  // anderen Ende der Welt.
+  _onClick(e) {
+    const rad = this._map?.sanfterRadzoom;
+    if (rad?.aktiv()) rad._abschliessen();
+    this._sofortFertig();
+    L.Canvas.prototype._onClick.call(this, e);
+  },
+
+  // Solange die Karte in Bewegung ist oder eine Etappe aussteht, wird nicht
+  // gehovert: Die Flächen lägen noch im alten Maßstab, der Hinweis zeigte
+  // das falsche Land.
+  _onMouseMove(e) {
+    if (etappen.includes(this) || (this._map && karteInBewegung(this._map))) return;
+    L.Canvas.prototype._onMouseMove.call(this, e);
+  },
+
   /**
    * Beim Schwenken nur neu zeichnen, wenn der Vorrat aufgebraucht ist.
    *
@@ -267,43 +560,37 @@ const PlainCanvas = L.Canvas.extend({
 const plainCanvas = (opts) => new PlainCanvas(opts);
 
 /**
- * Zeichenwerk für den Küstensaum – bewusst in einfacher Auflösung.
+ * Meer und Küstensaum in einer Zeichenfläche.
  *
- * Leaflet legt jede Zeichenfläche auf Bildschirmen mit doppelter Punktdichte
- * in doppelter Auflösung an. Für Grenzen und Beschriftungen ist das richtig.
- * Für den Saum ist es Verschwendung: Er wird anschließend um neun Bildpunkte
- * weichgezeichnet – eine Kante, die vier Mal so viele Bildpunkte hat, wird
- * dadurch nicht weicher, sie kostet nur vier Mal so viel.
+ * Der Saum lag bis hierher in einer eigenen Ebene über dem Meer – mit
+ * derselben Geometrie, die damit nach jedem Zoomschritt zweimal projiziert,
+ * zweimal zugeschnitten und zweimal ausgedünnt wurde. Gemessen war das Paar
+ * aus Meer und Saum teurer als alle Gemeinwesen zusammen. Dazu kam ein
+ * CSS-Mischmodus auf dem Saum-Pane: Der zwingt den Browser, die Ebene bei
+ * jedem Bild gegen alles darunter neu zu verrechnen – gerade beim Zoomen und
+ * Schwenken, wo das Bild sich ständig bewegt.
  *
- * Und die Weichzeichnung ist der teuerste Posten des ganzen Kartenbildes: Sie
- * wird bei jedem Bild neu über die volle Fensterfläche gerechnet. In halber
- * Auflösung sind das ein Viertel der Bildpunkte. Gemessen: 50 ms je Bild
- * weniger beim Schwenken, ohne sichtbaren Unterschied.
+ * Jetzt zeichnet das Meer seinen Saum selbst, direkt nach der eigenen Fläche:
+ * gleiche Reihenfolge wie vorher die zwei Ebenen, eine Geometrie, eine
+ * Zeichenfläche. Der Mischmodus wandert in die Zeichenfläche
+ * (`globalCompositeOperation`) und wirkt dort, wo er zählt – auf dem Meer.
+ *
+ * Der Saum als Folge von Parallelen statt als Weichzeichner: Die Küstenlinie
+ * wird mehrfach gezogen, jedes Mal breiter und blasser. Übereinandergelegt
+ * ergeben die Züge einen weichen Verlauf – genau das Verfahren, mit dem
+ * Kupferstecher Untiefen angelegt haben, bevor es Weichzeichner gab.
  */
-const CoastCanvas = PlainCanvas.extend({
-  /**
-   * Der Saum als Folge von Parallelen statt als Weichzeichner.
-   *
-   * Ein CSS-Filter über einem Pane wird bei jedem Bild neu über die ganze
-   * Fensterfläche gerechnet – auch beim bloßen Schwenken, wo sich am Inhalt
-   * nichts ändert. Er war damit der teuerste Posten des Kartenbildes.
-   *
-   * Dasselbe Bild entsteht auch ohne ihn: Die Küstenlinie wird mehrfach
-   * gezeichnet, jedes Mal breiter und blasser. Übereinandergelegt ergeben die
-   * Züge einen weichen Verlauf – genau das Verfahren, mit dem Kupferstecher
-   * Untiefen angelegt haben, bevor es Weichzeichner gab. Die Arbeit fällt
-   * dabei einmal beim Neuzeichnen an und nicht bei jedem Bild.
-   */
+const MeerCanvas = PlainCanvas.extend({
   _fillStroke(ctx, layer) {
+    L.Canvas.prototype._fillStroke.call(this, ctx, layer);
     const baender = this.options.baender;
-    if (!baender?.length) {
-      L.Canvas.prototype._fillStroke.call(this, ctx, layer);
-      return;
-    }
+    if (!baender?.length) return;
+    ctx.save();
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
-    // Das breite, blasse Band zuerst, die enge Kante darüber – dieselbe
-    // Reihenfolge wie früher die zwei Ebenen, jetzt in einer Zeichenfläche.
+    ctx.setLineDash([]);
+    ctx.globalCompositeOperation = this.options.mischung ?? 'source-over';
+    // Das breite, blasse Band zuerst, die enge Kante darüber.
     for (const band of baender) {
       ctx.strokeStyle = band.farbe;
       for (const [breite, deckung] of band.staffel) {
@@ -312,20 +599,10 @@ const CoastCanvas = PlainCanvas.extend({
         ctx.stroke();
       }
     }
-    ctx.globalAlpha = 1;
-  },
-
-  _update() {
-    if (this._reichtNoch()) return;
-    this.options.padding = this._zoom === this._map.getZoom() ? RAND_ZUG : RAND_ZOOM;
-    // Rückwärtsauflösung: halb so viele Bildpunkte, gleiche Fläche auf dem
-    // Bildschirm. Der Saum wird ohnehin weich - vier Mal so viele Bildpunkte
-    // machen ihn nicht weicher, sie kosten nur vier Mal so viel.
-    this._legeFlaecheAn(1);
-    this._merkeStand();
+    ctx.restore();
   },
 });
-const coastCanvas = (opts) => new CoastCanvas(opts);
+const meerCanvas = (opts) => new MeerCanvas(opts);
 
 /**
  * Wie viele Parallelen der Saum bekommt – je nach Auflösung der Küstenlinie.
@@ -667,21 +944,18 @@ export class AtlasMap {
       preferCanvas: true,
       zoomSnap: 0,
       zoomDelta: 0.6,
+      // Eine Raste (rund 100 Bildpunkte Raddrehung) ist gut ein halber
+      // Zoomschritt. Das Rad selbst übernimmt `SanfterRadzoom`, nicht Leaflet.
       wheelPxPerZoomLevel: 140,
-      /*
-       * Ein Mausrad gibt in einer Bewegung fünf bis zehn Rasten ab. Leaflet
-       * wartet zwischen ihnen 40 ms und macht daraus fünf bis zehn einzelne
-       * Zoomvorgänge – und jeder davon zeichnet die ganze Karte neu. Bei
-       * 140 ms wird aus einer Radbewegung ein Zoomschritt: einmal rechnen
-       * statt achtmal. Die Karte folgt dem Rad dabei genauso weit, nur eben
-       * in einem Zug.
-       */
-      wheelDebounceTime: 140,
+      scrollWheelZoom: false,
       worldCopyJump: false,
       maxBounds: L.latLngBounds([-89, -220], [89, 220]),
       maxBoundsViscosity: .85,
       inertiaDeceleration: 2600,
     });
+
+    this.map.addHandler('sanfterRadzoom', SanfterRadzoom);
+    this.map.sanfterRadzoom.enable();
 
     for (const [name, z] of Object.entries(PANES)) {
       const pane = this.map.createPane(name);
@@ -695,8 +969,22 @@ export class AtlasMap {
     this.labelLayer = createLabelLayer({ pane: 'label' });
     this.labelLayer.addTo(this.map);
 
-    this.map.on('zoomend', () => { this._syncCoastLevel(); this._styleBase(); });
+    this.map.on('zoomend', () => { this._syncCoastLevel(); this._saumFuerZoom(); });
     this.map.on('zoomend moveend', () => this._emit('view'));
+    // Solange die Karte sich bewegt, setzen die Milchglasflächen darüber mit
+    // ihrer Unschärfe aus (map.css, „Während die Karte sich bewegt“). Erst
+    // kurz nach dem Stillstand kehrt sie zurück – sonst flackerte sie bei
+    // jeder Pause zwischen zwei Radrasten oder zwei Zügen.
+    const wurzel = document.documentElement;
+    let ruhe = 0;
+    this.map.on('movestart zoomstart', () => {
+      clearTimeout(ruhe);
+      wurzel.classList.add('is-karte-bewegt');
+    });
+    this.map.on('moveend', () => {
+      clearTimeout(ruhe);
+      ruhe = setTimeout(() => wurzel.classList.remove('is-karte-bewegt'), 180);
+    });
     this.map.on('mousedown', () => el.classList.add('is-grabbing'));
     this.map.on('mouseup', () => el.classList.remove('is-grabbing'));
 
@@ -706,31 +994,22 @@ export class AtlasMap {
   /* ------------------------------------------------------------ Aufbau */
 
   _initBaseLayers() {
-    // Meer inklusive Küstenkontur – eine Ebene, dadurch sind Fläche und
-    // Linie zwangsläufig deckungsgleich.
-    this.oceanLayer = L.geoJSON(null, {
+    // Meer inklusive Küstenkontur und Küstensaum – eine Ebene, dadurch sind
+    // Fläche, Linie und Saum zwangsläufig deckungsgleich.
+    this._meerOptionen = {
       pane: 'ocean',
-      renderer: plainCanvas({ pane: 'ocean', padding: RAND_ZUG }),
+      renderer: (this.saumZeichner = meerCanvas({ pane: 'ocean', padding: RAND_ZUG, baender: [], rang: 2 })),
       interactive: false,
       // Leaflet dünnt beim Projizieren auf Pixelgenauigkeit aus. Leaflets
       // Vorgabe von 1 px kappt sichtbar Buchten und Landzungen; 0.5 px
       // behält sie und bleibt beim Zoomen flüssig.
       smoothFactor: .5,
-    }).addTo(this.map);
-
-    // Küstensaum: dieselbe Geometrie, aber nur als Linie. Die Weichzeichnung
-    // besorgt CSS auf dem Pane – ein Filter auf einer reinen Linienebene
-    // kostet einen Kompositionsschritt und kann nichts unscharf machen, was
-    // scharf sein müsste. Zwei Ebenen übereinander ergeben den Verlauf, den
-    // Kupferstecher mit immer feineren Parallellinien erzeugt haben.
-    this.coastLayer = L.geoJSON(null, {
-      pane: 'coast',
-      renderer: (this.saumZeichner = coastCanvas({
-        pane: 'coast', padding: RAND_ZUG, baender: [],
-      })),
-      interactive: false,
-      smoothFactor: 1.2,
-    }).addTo(this.map);
+    };
+    // Je Küstenfassung (grob, fein, eiszeitlich) eine fertige Ebene; die
+    // eingesetzte steht in `oceanLayer`.
+    this.oceanLayer = null;
+    this._meerLagen = {};
+    this._meerBau = {};
 
     this.waterLayer = L.geoJSON(null, {
       pane: 'water',
@@ -760,7 +1039,7 @@ export class AtlasMap {
     this.slots = ['polityA', 'polityB'].map((pane) => ({
       pane,
       el: this.map.getPane(pane),
-      renderer: smoothCanvas({ pane, padding: RAND_ZUG }),
+      renderer: smoothCanvas({ pane, padding: RAND_ZUG, rang: 1 }),
       layer: null,
       occupation: null,
     }));
@@ -829,6 +1108,7 @@ export class AtlasMap {
   setDetailedCoastline(ocean) {
     if (!ocean) return;
     this.coast.hi = ocean;
+    this._baueMeer('hi');
     this._syncCoastLevel();
   }
 
@@ -855,34 +1135,51 @@ export class AtlasMap {
     }
   }
 
+  /** Die Ebene einer Küstenfassung bauen lassen – höchstens einmal. */
+  _baueMeer(level) {
+    const daten = this.coast[level];
+    if (!daten) return null;
+    this._meerBau[level] ??= baueMeerLage(daten, this._meerOptionen).then((lage) => {
+      this._meerLagen[level] = lage;
+      return lage;
+    });
+    return this._meerBau[level];
+  }
+
   /**
-   * Die Küstenlinie in die drei Ebenen einsetzen.
+   * Eine Küstenfassung einsetzen.
    *
-   * Eingesetzt wird nicht in einem Zug, sondern Ebene für Ebene über mehrere
-   * Einzelbilder. Die Gesamtarbeit bleibt gleich, aber der Browser kommt
-   * zwischendurch zum Zeichnen – aus einem Standbild wird ein kurzes
-   * Nachschärfen.
+   * Die allererste wird sofort gebaut – ohne Meer stünden die Länder mit
+   * ihren groben Umrissen da. Jede weitere wird im Leerlauf vorbereitet;
+   * bis sie fertig ist, bleibt die bisherige stehen. Ist sie fertig, wird
+   * nur noch ausgetauscht.
    */
   _applyCoast(level) {
-    const data = this.coast[level];
-    if (!data) return;
+    const daten = this.coast[level];
+    if (!daten) return;
     this.coast.level = level;
-    this.saumStaffel = SAUM[level] ?? SAUM.lo;
-    const schritte = [
-      () => { this.oceanLayer.clearLayers(); this.oceanLayer.addData(data); },
-      () => { this.coastLayer.clearLayers(); this.coastLayer.addData(data); },
-      () => this._styleBase(),
-    ];
+    const fertig = this._meerLagen[level];
+    if (fertig) { this._setzeMeer(fertig, level); return; }
+    if (!this.oceanLayer) {
+      const lage = L.geoJSON(daten, this._meerOptionen);
+      this._meerLagen[level] = lage;
+      this._meerBau[level] = Promise.resolve(lage);
+      this._setzeMeer(lage, level);
+      return;
+    }
+    this._baueMeer(level).then((lage) => {
+      if (this.coast.level === level) this._setzeMeer(lage, level);
+    });
+  }
 
-    clearTimeout(this._coastSchritt);
-    const naechster = () => {
-      const schritt = schritte.shift();
-      if (!schritt) return;
-      schritt();
-      if (schritte.length) this._coastSchritt = window.setTimeout(naechster, 0);
-    };
-    // Der erste Schritt sofort, damit das Meer nie fehlt.
-    naechster();
+  _setzeMeer(lage, level) {
+    if (lage === this.oceanLayer) return;
+    this.saumStaffel = SAUM[level] ?? SAUM.lo;
+    const alt = this.oceanLayer;
+    this.oceanLayer = lage;
+    this._styleBase();
+    lage.addTo(this.map);
+    if (alt) alt.remove();
   }
 
   /**
@@ -1026,7 +1323,7 @@ export class AtlasMap {
     const grat = this._cssVar('--grat', 'rgba(255,255,255,.08)');
     const ocean = this._cssVar('--ocean-2', '#0d1a28');
 
-    this.oceanLayer.setStyle({
+    this.oceanLayer?.setStyle({
       fillColor: ocean,
       // Mit Kartengrundlage bleibt das Meer eine Spur durchscheinend, sonst
       // wirkt die Kueste wie ausgeschnitten statt wie gezeichnet.
@@ -1039,20 +1336,41 @@ export class AtlasMap {
       lineJoin: 'round',
     });
 
-    // Der Saum wird schmaler, je näher man herangeht.
-    //
-    // Er ist eine Linie AUF der Küste, liegt also zur Hälfte auf dem Land. Im
-    // Weltmaßstab stört das nicht – dort umreißt er die Kontinente und gibt
-    // dem Bild seine Tiefe. In der Nahsicht überschwemmte er die Küstenländer:
-    // Irland und Dänemark verschwanden im blauen Dunst. Breite und Deckung
-    // laufen deshalb mit der Zoomstufe zurück, bis nur die Kante bleibt.
+    this._saumFuerZoom();
+    this.waterLayer.setStyle((f) => (
+      f.geometry.type.includes('Line')
+        ? { stroke: true, color: river, weight: .7, opacity: .75, fill: false }
+        : { fillColor: ocean, fillOpacity: .95, stroke: true, color: river, weight: .5, opacity: .6 }
+    ));
+    this.graticuleLayer.setStyle({ stroke: true, color: grat, weight: .6, opacity: 1, fill: false });
+  }
+
+  /**
+   * Der Saum wird schmaler, je näher man herangeht.
+   *
+   * Er ist eine Linie AUF der Küste, liegt also zur Hälfte auf dem Land. Im
+   * Weltmaßstab stört das nicht – dort umreißt er die Kontinente und gibt
+   * dem Bild seine Tiefe. In der Nahsicht überschwemmte er die Küstenländer:
+   * Irland und Dänemark verschwanden im blauen Dunst. Breite und Deckung
+   * laufen deshalb mit der Zoomstufe zurück, bis nur die Kante bleibt.
+   *
+   * Nach einem Zoomschritt läuft nur dieser Teil, nicht `_styleBase`: Dort
+   * setzt jede Ebene ihren Stil neu, und jedes `setStyle` bestellt bei Leaflet
+   * ein vollständiges Neuzeichnen für das nächste Bild – Meer und Küste wurden
+   * so nach jedem Zoomschritt zweimal gezeichnet, einmal vom Zoom selbst und
+   * gleich danach noch einmal für einen Stil, der sich nicht geändert hatte.
+   * Die Bänder hier stehen in den Optionen des Zeichenwerks; das liest sie
+   * beim Neuzeichnen, das der Zoomschritt ohnehin auslöst.
+   */
+  _saumFuerZoom() {
     const z = this.map.getZoom();
     const glow = this._cssVar('--coast-glow', '#6fb2e0');
     const nah = Math.min(1, Math.max(0, (z - 3) / 3));
-    this.el.style.setProperty('--coast-zoom-fade', (1 - nah * 0.62).toFixed(3));
     const staffel = this.saumStaffel ?? SAUM.lo;
     const fade = 1 - nah * 0.62;
     const gedaempft = this.hasBasemap ? .5 : 1;
+    // Über dem dunklen Meer soll der Saum leuchten, auf Papier eher färben.
+    this.saumZeichner.options.mischung = this.theme === 'night' ? 'screen' : 'multiply';
     this.saumZeichner.options.baender = [
       {
         farbe: glow,
@@ -1067,13 +1385,6 @@ export class AtlasMap {
         staffel: [[1, 1]],
       },
     ];
-    this.coastLayer.setStyle({ fill: false, stroke: true, opacity: 1, weight: 1 });
-    this.waterLayer.setStyle((f) => (
-      f.geometry.type.includes('Line')
-        ? { stroke: true, color: river, weight: .7, opacity: .75, fill: false }
-        : { fillColor: ocean, fillOpacity: .95, stroke: true, color: river, weight: .5, opacity: .6 }
-    ));
-    this.graticuleLayer.setStyle({ stroke: true, color: grat, weight: .6, opacity: 1, fill: false });
   }
 
   _styleLabels() {

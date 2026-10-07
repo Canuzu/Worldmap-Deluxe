@@ -529,13 +529,29 @@ async function main() {
   const mapEl = $('map');
   let pointer = { x: 0, y: 0 };
 
+  /* Die Lage der Karte wird gemerkt, nicht bei jeder Mausbewegung erfragt.
+     `getBoundingClientRect` zwingt den Browser, Stil und Anordnung sofort
+     neu zu rechnen, sobald sich seit dem letzten Bild etwas geändert hat –
+     und beim Ziehen ändert Leaflet in jedem Bild die Lage der Kartenebene.
+     Aus einer billigen Mausbewegung wurde so jedes Mal eine erzwungene
+     Neuberechnung. Die Lage der Karte selbst ändert sich nur mit ihrer Größe. */
+  let kartenRahmen = mapEl.getBoundingClientRect();
+  const rahmenNeu = () => { kartenRahmen = mapEl.getBoundingClientRect(); };
+  new ResizeObserver(rahmenNeu).observe(mapEl);
+  window.addEventListener('resize', rahmenNeu);
+  window.addEventListener('scroll', rahmenNeu, { passive: true });
+
+  /* Verschoben wird der Hinweis mit `transform`: Das erledigt die
+     Grafikkarte, ohne dass die Seite neu angeordnet werden muss. */
+  hovertip.style.left = '0px';
+  hovertip.style.top = '0px';
+  const setzeHinweis = () => {
+    hovertip.style.transform = `translate(${pointer.x}px, ${pointer.y}px) translate(-50%, -145%)`;
+  };
+
   mapEl.addEventListener('pointermove', (event) => {
-    const rect = mapEl.getBoundingClientRect();
-    pointer = { x: event.clientX - rect.left, y: event.clientY - rect.top };
-    if (!hovertip.hidden) {
-      hovertip.style.left = `${pointer.x}px`;
-      hovertip.style.top = `${pointer.y}px`;
-    }
+    pointer = { x: event.clientX - kartenRahmen.left, y: event.clientY - kartenRahmen.top };
+    if (!hovertip.hidden) setzeHinweis();
   });
 
   atlas.on('hover', (name) => {
@@ -545,8 +561,7 @@ async function main() {
     const german = atlasData.anzeigeName(name);
     hovertip.innerHTML = `${esc(german)}${entry ? `<small>${esc(areaText(entry.area))}</small>` : ''}`;
     hovertip.hidden = false;
-    hovertip.style.left = `${pointer.x}px`;
-    hovertip.style.top = `${pointer.y}px`;
+    setzeHinweis();
   });
 
   /* ------------------------------------------------------------ Legende */
