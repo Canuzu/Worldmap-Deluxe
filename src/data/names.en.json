@@ -5,6 +5,9 @@
     "Diese Datei ist deshalb fast leer, und das ist kein unfertiger Zustand, sondern das Ergebnis: Eingetragen wird nur, wo der Datensatz einer im Englischen eingebürgerten Schreibung widerspricht. Jeder Eintrag hier muss ein Schlüssel aus names.de.json sein – was nicht vorkommt, wirkt nie und täuscht Pflege vor, die nicht stattfindet. npm run check:sprache prüft das."
   ],
   "names": {
-    "Kievan Rus": "Kievan Rus'"
+    "Kievan Rus": "Kievan Rus'",
+    "Kongldom of Hawaii": "Kingdom of Hawaii",
+    "Mysore (Indian princely state)": "Mysore",
+    "Sikkim (Indian princely state)": "Sikkim"
   }
 }

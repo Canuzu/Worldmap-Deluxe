@@ -1174,6 +1174,13 @@ der Karte steht das auch so: Die betroffenen Zeitschnitte tragen das Zeichen
 `npm run test` prüft es an Doggerland: In der Eiszeit muss die Nordsee bei
 54,5° N / 3° O Land sein, 1815 Meer.
 
+Natural Earth liefert die Tiefsee in 519 Kacheln. Ihre Schnittkanten sind
+keine Küste, der Saum zog sie aber mit – als gerade Linien quer über den
+Indischen Ozean und den Atlantik. Die Fläche wird deshalb zu einer
+verschmolzen, und an der Datumsgrenze kommen je 60° aus der anderen Hälfte
+dazu, wie beim heutigen Meer: Sonst bliebe dort eine Naht, und Beringia
+liegt genau auf ihr.
+
 ### Was der erste Aufruf kostet
 
 Für das Aussehen gibt es `npm run check:layout`, für die Daten vier

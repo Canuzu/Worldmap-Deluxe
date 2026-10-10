@@ -688,10 +688,26 @@ function buildIceAgeCoast(landNet) {
     '-o', 'format=geojson', trocken,
   ]);
 
+  const meer = path.join(TMP, 'eiszeit-meer.json');
+  mapshaper([tief, '-erase', `source=${landNet}`, '-o', 'format=geojson', meer]);
+
+  // Natural Earth liefert die Tiefsee in 519 Kacheln. Ihre Schnittkanten sind
+  // keine Küste, der Saum zieht sie aber mit – als gerade Linien quer übers
+  // Meer. Deshalb wird alles zu einer Fläche verschmolzen. Dazu kommen an der
+  // Datumsgrenze je 60° aus der anderen Hälfte, wie beim heutigen Meer: Sonst
+  // bliebe dort eine Naht, und Beringia liegt genau auf ihr.
+  const ost = path.join(TMP, 'eiszeit-meer-ost.json');
+  const west = path.join(TMP, 'eiszeit-meer-west.json');
+  mapshaper([meer, '-clip', 'bbox=-180,-90,-120,90', '-affine', 'shift=360,0', '-o', ost]);
+  mapshaper([meer, '-clip', 'bbox=120,-90,180,90', '-affine', 'shift=-360,0', '-o', west]);
+
   const out = path.join(OUT_DIR, 'base', 'ocean-eiszeit.json');
   mapshaper([
-    tief,
-    '-erase', `source=${landNet}`,
+    '-i', meer, ost, west, 'combine-files',
+    '-merge-layers', 'force',
+    '-clean', 'snap-interval=0.0005',
+    '-dissolve',
+    '-rename-layers', 'tiefsee',
     '-o', 'format=topojson', `quantization=${QUANT}`, out,
   ]);
   console.log(`  ${'ocean-eiszeit'.padEnd(14)} ${(fs.statSync(out).size / 1024).toFixed(0).padStart(5)} kB  (200-m-Tiefenlinie als Näherung)`);
