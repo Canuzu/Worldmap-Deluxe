@@ -21,7 +21,8 @@ Religion, Bevölkerung, Wirtschaft, Wendepunkte und Nachbarn.
 | | |
 |---|---|
 | **Zeitregler** | jahresgenau wählbar; die Karte zeigt den nächstgelegenen der 62 Kartenstände und schreibt darunter, welcher das ist |
-| **Zeitreise** | Wiedergabetaste läuft alle Epochen durch, mit Überblendung zwischen den Zeitschnitten |
+| **Zeitreise** | Wiedergabetaste läuft alle Epochen durch; jeder Sprung läuft als **Zeitwelle** vom Regler über die Karte, die Jahreszahl rollt wie ein Zählwerk |
+| **Zeitlinse** | <kbd>Z</kbd> legt ein Glas unter den Zeiger, das einen anderen Kartenstand zeigt – draußen 1880, im Glas 1815. <kbd>,</kbd> und <kbd>.</kbd> wählen den Stand im Glas; der Ring nennt Jahr und Gemeinwesen unter dem Zeiger |
 | **Detailtafel** | Steckbrief je Gemeinwesen und Jahr – kuratierte Texte, Angaben aus dem Kartendatensatz, optional ein Wikipedia-Auszug |
 | **Herrscher zum Jahr** | 1.182 Regierungszeiten in 86 Gemeinwesen: Wer 1530 wählt, sieht Süleyman, wer 1900 wählt, Abdülhamid II. Die Regierungsfolge darunter ist anklickbar und nimmt die Karte mit |
 | **Ereignisse auf der Karte** | 174 Verträge, Gründungen, Fahrten, Seuchen, Werke und Umbrüche – eingetragen dort, wo sie geschahen. Gezeigt wird, was in die Zeitspanne des jeweiligen Kartenstands fällt; Entdeckungsfahrten laufen als Route mit |
@@ -36,7 +37,7 @@ Religion, Bevölkerung, Wirtschaft, Wendepunkte und Nachbarn.
 | **Vollbild** | <kbd>V</kbd> nimmt den ganzen Bildschirm, <kbd>F</kbd> blendet die Bedienelemente aus – beides einzeln, weil beides einzeln sinnvoll ist |
 | **Vier Einfärbungen** | nach Gemeinwesen, Oberhoheit, Kulturraum oder Genauigkeit des Grenzverlaufs |
 | **Suche** | über alle Gemeinwesen des aktuellen Zeitschnitts, deutsch und in der Schreibweise des Datensatzes |
-| **Zwei Farbwelten** | „Nachtatlas“ und „Pergament“ |
+| **Zwei Farbwelten** | „Pergament“ (Voreinstellung) und „Nacht“; der Wechsel öffnet sich als Blende aus dem Knopf |
 | **Teilbare Links** | Ausschnitt, Jahr und Auswahl stehen in der Adresszeile: `#position=3.4/48/22&year=1815&ort=Austrian%20Empire` |
 
 Die Karte kommt **ohne Kacheldienst** aus: Küstenlinien, Seen, Flüsse und
@@ -82,17 +83,46 @@ sondern gesperrt. Beides macht der Atlas jetzt auch.
 Schatten und eine schmale Kontur statt einer einzigen dicken – bei einer
 Antiqua liefen die Serifen sonst zu.
 
-**Schwebende Instrumente.** Zeitleiste, Detailtafel und Werkzeugsäule sind
-gerundete Tafeln mit haarfeiner Kante und einem Lichtstrich oben, mit Abstand
-zum Bildrand. Vorher war die Zeitleiste ein durchgehendes Band, das die Karte
-unten abschnitt wie eine Fußzeile.
+**Ein Blatt mit Rand.** Ab 1101 Punkten Breite liegt die Karte als Blatt im
+Papier, mit Rahmenlinie und Gradleiste. Die Leiste ist gerechnet, nicht
+gemalt: Jede Feldgrenze ist ein Längen- oder Breitengrad, über Leaflets
+Projektion auf den Bildpunkt gebracht, und zum Pol hin werden die Felder
+länger, wie Mercator es verlangt. Unten rechts steht die Lage des Zeigers in
+Grad und Minuten. Das Papier liegt *über* der Karte, nicht um sie herum –
+Leaflet behält seine volle Größe, und keine Rechnung in Containerpunkten
+musste sich ändern. In einer Schlacht weicht der Rand: Eine Feldkarte ist
+kein Atlasblatt, und die Kamera braucht jeden Punkt.
+
+**Platten statt Glas.** Zeitleiste, Detailtafel, Werkzeuge und Menüs sind
+deckende Platten mit Doppelrahmen und gestochenen Eckwinkeln. Milchglas sah
+nach Bildschirm aus statt nach Papier – und kostete bei jeder Kartenbewegung
+eine Unschärfe über allem, was darunter liegt.
+
+**Zwei Schriften.** EB Garamond für alles, was man liest wie in einem Buch:
+Jahre, Namen, Titel, die Kartenbeschriftung. Manrope für das, was man
+bedient. Beide liegen im Projekt (`@fontsource`), nicht bei einem
+Schriftdienst; geladen werden nur die lateinischen Teilmengen, die eine
+Seite wirklich braucht.
+
+**Drei Bewegungen, die es nur hier gibt.** Die *Zeitwelle* zeigt beim
+Zeitsprung, wo sich etwas ändert, statt zwei Karten übereinanderzublenden:
+Die neue Zeit breitet sich als Kreis von der Stelle aus, an der der Regler
+die Karte berührt. Die *Zeitlinse* vergleicht zwei Zeitschnitte am selben
+Ort. Das *Zählwerk* rollt die Jahreszahl Ziffer für Ziffer. Alle drei
+bewegen nur `transform`, `opacity` oder `clip-path`; gemessen ohne
+Grafikkarte kosten Welle und Linse je Bild so viel wie die alte
+Überblendung (Median 17 ms). Die Linse kopiert dafür je Bild nur den Kreis
+unter dem Zeiger aus verborgenen Ebenen in eine kleine eigene Leinwand – ein
+clip-path auf den Kartenebenen hatte im ersten Anlauf 100 ms je Bild
+gekostet, weil er die ganze Karte neu malen ließ.
 
 **Ein gedämpftes Epochenband.** Fünfzehn vollgesättigte Farbblöcke stritten
 mit der Karte um Aufmerksamkeit. Jetzt ist nur die Epoche hell, in der man
 gerade steht.
 
-Dazu Titelmarke und Windrose: Die Seite sagt, was sie ist, und dass hier ein
-Kartenwerk liegt.
+Dazu Titelblatt und Windrose: Beim Laden dreht sich ein Astrolabium, und die
+Karte erscheint durch eine Blende, die sich aus der Mitte öffnet – dieselbe
+Geste wie die Zeitlinse. Wer Bewegung reduziert hat, sieht keine davon.
 
 **Und ein Prüfwerkzeug dafür.** „Teils verschoben“ ist von Hand kaum zu
 finden: Es sind fünf Fenstergrößen mal sechs Zustände, und die Fehler zeigen
@@ -156,16 +186,18 @@ index.html                 Grundgerüst der Oberfläche
 src/
   main.js                  Verdrahtung: Zustand, URL-Hash, Tastatur, Werkzeuge
   modules/
-    atlas.js               Leaflet-Karte, Ebenen, Überblendung, Auswahl
+    atlas.js               Leaflet-Karte, Ebenen, Zeitwelle, Auswahl
+    zeitlinse.js           Zeitlinse: anderer Kartenstand im Glas unter dem Zeiger
+    blattrand.js           Kartenrand mit gerechneter Gradleiste und Zeigerlage
     labels.js              Beschriftungsebene mit Kollisionsprüfung
     ereignisse.js          Ereignisebene: Marken, Routen, Kartusche
-    timeline.js            Zeitleiste, Epochenband, Wiedergabe
+    timeline.js            Zeitleiste, Epochenband, Zählwerk, Lupe, Wiedergabe
     panel.js               Detailtafel
     data.js                Laden, Zwischenspeichern, Nachbarschaftsgraph
     palette.js             Farbvergabe (Kartenfärbungsproblem)
     geo.js, format.js      Geometrie- und Formatierungshelfer
     wikipedia.js           optionale Anreicherung
-  styles/                  Design-System, Farbwelten, Bausteine
+  styles/                  Bausteine je Bereich; design.css legt die Gestaltung darüber
   data/
     names.de.json          deutsche Bezeichnungen + Schreibvarianten
     knowledge/*.json       redaktionelle Steckbriefe, thematisch getrennt
