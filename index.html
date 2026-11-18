@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="de" data-theme="night">
+<html lang="de" data-theme="parchment">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -12,9 +12,27 @@
   <!-- Ladebildschirm ------------------------------------------------------ -->
   <div class="boot" id="boot">
     <div class="boot__inner">
-      <div class="boot__globe" aria-hidden="true">
-        <span></span><span></span><span></span>
-      </div>
+      <!-- Das Astrolabium: Ringe, Teilung, ein Globus, der sich dreht. Alles
+           in einem SVG, gezeichnet mit Strichlängen – kein Bild, kein Laden. -->
+      <svg class="astrolab" viewBox="-110 -110 220 220" aria-hidden="true">
+        <circle class="astrolab__ring astrolab__ring--a" r="104"/>
+        <circle class="astrolab__ring astrolab__ring--b" r="97"/>
+        <circle class="astrolab__teilung" r="100.5" pathLength="360"/>
+        <circle class="astrolab__teilung astrolab__teilung--grob" r="100.5" pathLength="360"/>
+        <g class="astrolab__bahn"><ellipse rx="86" ry="30"/><circle cx="86" cy="0" r="2.6"/></g>
+        <g class="astrolab__bahn astrolab__bahn--b"><ellipse rx="86" ry="30"/><circle cx="-86" cy="0" r="2"/></g>
+        <circle class="astrolab__kugel" r="58"/>
+        <g class="astrolab__laengen">
+          <ellipse rx="58" ry="58"/><ellipse rx="58" ry="58"/><ellipse rx="58" ry="58"/>
+          <ellipse rx="58" ry="58"/><ellipse rx="58" ry="58"/><ellipse rx="58" ry="58"/>
+        </g>
+        <g class="astrolab__breiten">
+          <path d="M-58 0H58"/><path d="M-50.2 -29H50.2"/><path d="M-50.2 29H50.2"/>
+          <path d="M-29 -50.2H29"/><path d="M-29 50.2H29"/>
+        </g>
+        <circle class="astrolab__kontur" r="58"/>
+        <circle class="astrolab__lauf" r="110" pathLength="100" id="bootLauf"/>
+      </svg>
       <p class="boot__eyebrow" data-i18n="start.spanne">123.000 v. Chr. &ndash; 2026</p>
       <h1 class="boot__title">Worldmap&nbsp;Deluxe</h1>
       <p class="boot__sub" data-i18n="marke.unterzeile">Historischer Weltatlas</p>
@@ -108,6 +126,9 @@
         </button>
         <button class="tool" id="btnTheme" type="button" data-i18n-attr="data-label:werkzeug.farbwelt; aria-label:werkzeug.farbwelt.aria" data-label="Farbwelt wechseln (T)" aria-label="Darstellung wechseln">
           <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 3a9 9 0 100 18 9 9 0 000-18zm0 2v14a7 7 0 010-14z" fill="currentColor"/></svg>
+        </button>
+        <button class="tool tool--linse" id="btnLinse" type="button" data-i18n-attr="data-label:linse.knopf; aria-label:linse.knopf" data-label="Zeitlinse (Z)" aria-label="Zeitlinse (Z)" aria-pressed="false">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.6" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M15.4 15.4L20.5 20.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M10.5 6.6v4.1l2.6 1.6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <!-- Sprachwahl. Steht bei den Sichtwerkzeugen und nicht im Ebenenmenü:
              Wer die Seite in der falschen Sprache öffnet, sucht an der Oberfläche

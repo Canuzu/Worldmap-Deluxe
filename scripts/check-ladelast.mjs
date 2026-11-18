@@ -27,16 +27,21 @@
  * ist die Grenze aber erst, wenn der gebaute Stand sie überschreitet.
  */
 import { chromium } from 'playwright';
+import { startOptionen } from './browser.mjs';
 
 const BASE = process.argv[2] ?? 'http://127.0.0.1:5173';
 /* Obergrenze für Abschnitt 1 und 2 zusammen. Gemessen wurden zuletzt 2909 kB
    im gebauten Stand; die Grenze lässt etwas Luft für redaktionelle Zuwächse,
    aber nicht genug, um einen weiteren Megabyte-Brocken zu verstecken. Vor dem
    Umbau waren es 6877 kB – die hochaufgelöste Küste und der volle Vorgriff
-   lagen darin. */
-const GRENZE_KB = 3100;
+   lagen darin.
+   Mit der neuen Gestaltung kamen die eigenen Schriften dazu – EB Garamond
+   und Manrope, fünf Schnitte, rund 250 kB, davon 130 kB nur, wenn ein Name
+   Zeichen jenseits von Latin-1 trägt. Der Stand davor lag schon bei 3142 kB;
+   gemessen danach 3407 kB. */
+const GRENZE_KB = 3500;
 
-const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
+const browser = await chromium.launch(startOptionen());
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
 
 let abschnitt = 'start';

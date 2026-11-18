@@ -11,8 +11,13 @@
 export const DE = {
   /* -------------------------------------------------------- Kopf & Start */
   'doc.titel': 'Worldmap Deluxe – Historischer Weltatlas',
-  'entwurf.titel': 'Entwurf',
-  'entwurf.aria': 'Gestaltungsentwurf wählen',
+  'taste.linse': 'Zeitlinse an und aus',
+  'taste.linsenstand': 'Zeitlinse: früherer / späterer Stand',
+  'linse.knopf': 'Zeitlinse (Z)',
+  'linse.hinweis': 'Zeitlinse: Ein Blick in einen anderen Kartenstand. Komma und Punkt wählen ihn, Z schließt.',
+  'linse.frueher': 'früherer Stand',
+  'linse.spaeter': 'späterer Stand',
+  'linse.niemand': 'ohne Herrschaft',
   'blatt.ost': 'O',
   'blatt.west': 'W',
   'blatt.nord': 'N',

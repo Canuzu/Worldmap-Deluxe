@@ -22,8 +22,12 @@ import { txt } from './sprache.js';
 import { schriftdichte } from './dichte.js';
 import RELIGION from '../data/religion/vokabular.json';
 import {
-  paletteFor, assignColorIndices, PRECISION_COLORS, withAlpha, shade, religionName,
+  paletteFor, assignColorIndices, PRECISION_COLORS, withAlpha, shade, religionName, stableIndex,
 } from './palette.js';
+
+/** Dauer der Zeitwelle – vom Zeitregler bis in die fernste Ecke. */
+export const WELLE_MS = 1150;
+const WELLE_KURVE = 'cubic-bezier(.42, .1, .3, 1)';
 
 const PANES = {
   basemap: 200,
@@ -32,6 +36,9 @@ const PANES = {
   // Über den Staatsflächen, unter dem Meer: Die Religionsgrenzen sollen auf
   // der Fläche liegen, aber an der Küste enden wie alles andere auch.
   relGrenze: 235,
+  // Die Zeitlinse: ein anderer Zeitschnitt, nur in einem Kreis sichtbar. Über
+  // allen Flächen, unter dem Meer – die Küste schneidet sie wie alles andere.
+  linse: 238,
   // Das Meer trägt auch den Küstensaum (MeerCanvas): Er liegt ÜBER der
   // Meeresfläche als Lichtkante auf beiden Seiten der Küste – seewärts als
   // Untiefenband, landwärts als Kantenlicht. Zwei Bänder, weil eines flach
@@ -127,6 +134,9 @@ const RING_MIN = 1.5;
  * einmal ein Neuzeichnen aus – danach ist wieder Vorrat da.
  */
 const RAND_ZUG = .35;
+
+/** Wer Bewegung reduziert hat, bekommt die Überblendung statt der Welle. */
+const BEWEGUNG_REDUZIERT = matchMedia('(prefers-reduced-motion: reduce)');
 const RAND_ZOOM = .12;
 
 
@@ -931,7 +941,7 @@ export class AtlasMap {
     this.colors = new Map();
     this.selected = null;
     this.hovered = null;
-    this._handlers = { select: [], hover: [], view: [], basemap: [], sperren: [] };
+    this._handlers = { select: [], hover: [], view: [], basemap: [], sperren: [], welle: [] };
     this._boundsCache = new Map();
 
     this.map = L.map(el, {
@@ -1278,7 +1288,7 @@ export class AtlasMap {
   applyTheme(theme) {
     this.theme = theme;
     if (this.placeCanvas) this._planeOrte();
-    this.palette = paletteFor(theme, document.documentElement.dataset.entwurf);
+    this.palette = paletteFor(theme);
     this._styleBase();
     if (this.epoch) {
       this._computeColors();
@@ -1302,11 +1312,7 @@ export class AtlasMap {
    * ihn zu verwerfen.
    */
   _cssVar(name, fallback) {
-    // Farbwelt und Entwurf zusammen: Beide setzen Werte im Stilblatt, und ein
-    // Speicher, der nur die eine kennt, lieferte nach einem Entwurfswechsel
-    // die Farben des vorigen.
-    const wurzel = document.documentElement.dataset;
-    const welt = `${wurzel.theme ?? ''}|${wurzel.entwurf ?? ''}`;
+    const welt = document.documentElement.dataset.theme ?? '';
     if (this._cssWelt !== welt || !this._cssMerker) {
       this._cssWelt = welt;
       this._cssMerker = new Map();
@@ -1554,6 +1560,121 @@ export class AtlasMap {
     const alpha = this._fillAlpha();
     slot.layer.setStyle((f) => this._styleFeature(f));
     slot.occupation?.setStyle((f) => this._occupationStyle(f));
+    this._linse?.layer?.setStyle((f) => this._linsenStil(f));
+  }
+
+  /* ------------------------------------------------------- Zeitlinse */
+
+  /**
+   * Einen zweiten Zeitschnitt in die Linsenebene legen – oder sie leeren.
+   *
+   * Gezeichnet wird er ganz, aber unsichtbar: Die Ebene bleibt verborgen,
+   * und die Zeitlinse (zeitlinse.js) kopiert je Bild nur den Kreis unter dem
+   * Zeiger heraus. Ein clip-path auf den Kartenebenen hätte dasselbe gezeigt,
+   * aber bei jeder Zeigerbewegung die ganze Karte neu malen lassen.
+   */
+  linseSetzen(data) {
+    const pane = this.map.getPane('linse');
+    if (!this._linse) {
+      this._linse = {
+        renderer: smoothCanvas({ pane: 'linse', padding: .15, rang: 1 }),
+        layer: null,
+      };
+    }
+    const linse = this._linse;
+    linse.layer?.remove();
+    linse.layer = null;
+    linse.data = data;
+    pane.classList.toggle('is-an', Boolean(data));
+    if (!data) return;
+    linse.layer = L.geoJSON(data.geojson, {
+      pane: 'linse',
+      renderer: linse.renderer,
+      interactive: false,
+      smoothFactor: .6,
+      style: (f) => this._linsenStil(f),
+    }).addTo(this.map);
+  }
+
+  /**
+   * Farben in der Linse: Wer in beiden Zeitschnitten vorkommt, behält seine
+   * Farbe – Frankreich bleibt Frankreich, und was sich verschoben hat, sieht
+   * man an der Grenze statt am Farbwechsel. Wer nur in der Linse lebt, bekommt
+   * eine feste Farbe aus seinem Namen.
+   */
+  _linsenStil(feature) {
+    const key = this._colorKey(feature.properties);
+    const farbe = (key && this.colors.get(key))
+      ?? this.palette[stableIndex(key ?? feature.properties.n ?? '', this.palette.length)];
+    return {
+      ...this._styleFeature(feature),
+      fillColor: farbe,
+      saumFarbe: farbe,
+      fillOpacity: Math.min(1, this._fillAlpha() + .08),
+      interactive: false,
+    };
+  }
+
+  /**
+   * Die Zeichenflächen, aus denen die Linse ihr Bild kopiert – von unten nach
+   * oben: der andere Zeitschnitt, das Meer mit dem Küstensaum, die Gewässer.
+   * Jede mit ihrer Lage in Ebenenkoordinaten.
+   */
+  linsenQuellen() {
+    const zeichner = [this._linse?.renderer, this.saumZeichner, this.waterLayer?.options.renderer];
+    return zeichner
+      .filter((z) => z?._container && z._bounds && z._map)
+      .map((z) => ({ zeichner: z, leinwand: z._container, lage: z._bounds }));
+  }
+
+  /* -------------------------------------------------------- Zeitwelle */
+
+  /**
+   * Den nächsten Zeitschnitt als Welle einlaufen lassen statt überblenden.
+   *
+   * Der Punkt ist in Containerkoordinaten – meist die Stelle, an der der
+   * Zeitregler die Karte berührt. Von dort breitet sich die neue Zeit über
+   * die Karte aus; das Auge folgt der Front und sieht, wo sich etwas ändert,
+   * statt zwei Karten übereinander zu sehen.
+   */
+  welleVon(punkt) {
+    this._welle = punkt;
+  }
+
+  _welleStarten(from, to, { x, y }) {
+    const size = this.map.getSize();
+    const r = Math.ceil(Math.hypot(Math.max(x, size.x - x), Math.max(y, size.y - y))) + 24;
+    const lp = this.map.containerPointToLayerPoint([x, y]);
+    const mitte = `${lp.x.toFixed(1)}px ${lp.y.toFixed(1)}px`;
+
+    from.el.style.transition = 'none';
+    from.el.style.opacity = '1';
+    to.el.style.transition = 'none';
+    to.el.style.opacity = '1';
+    to.el.style.zIndex = '233';
+    to.el.style.clipPath = `circle(0px at ${mitte})`;
+
+    // Als Animation, nicht als Übergang: Animationen von clip-path kann der
+    // Browser auf dem Compositor fahren, ohne die Ebene je Bild neu zu malen.
+    const lauf = to.el.animate(
+      [{ clipPath: `circle(0px at ${mitte})` }, { clipPath: `circle(${r}px at ${mitte})` }],
+      { duration: WELLE_MS, easing: WELLE_KURVE, fill: 'forwards' },
+    );
+    lauf.finished.then(() => { if (this._welleLauf?.lauf === lauf) this._welleBeenden(); }, () => {});
+    this._welleLauf = { from, to, lauf };
+    this._emit('welle', { x, y, r, ms: WELLE_MS, kurve: WELLE_KURVE });
+  }
+
+  /** Welle abschließen – regulär am Ende oder vorzeitig, wenn die nächste kommt. */
+  _welleBeenden() {
+    const lauf = this._welleLauf;
+    if (!lauf) return;
+    this._welleLauf = null;
+    lauf.lauf.cancel();
+    lauf.to.el.style.transition = 'none';
+    lauf.to.el.style.clipPath = '';
+    lauf.to.el.style.zIndex = String(PANES[lauf.to.pane]);
+    if (this.slots[this.activeSlot] === lauf.to) lauf.from.el.style.opacity = '0';
   }
 
   /**
@@ -1748,14 +1869,25 @@ export class AtlasMap {
 
     from.el.style.pointerEvents = 'none';
     to.el.style.pointerEvents = 'auto';
-    to.el.style.transition = animate ? 'opacity 300ms cubic-bezier(.32,.72,.29,1)' : 'none';
-    from.el.style.transition = animate ? 'opacity 300ms cubic-bezier(.32,.72,.29,1)' : 'none';
 
-    // Ein Frame Vorlauf, damit der Browser die Startdeckkraft übernimmt.
-    requestAnimationFrame(() => {
-      to.el.style.opacity = '1';
-      from.el.style.opacity = '0';
-    });
+    // Eine laufende Welle endet sofort, wenn die nächste Zeit kommt – wer
+    // schnell klickt, soll nicht drei Fronten übereinander sehen.
+    this._welleBeenden();
+    const welle = animate && !BEWEGUNG_REDUZIERT.matches ? this._welle : null;
+    this._welle = null;
+
+    if (welle) {
+      this._welleStarten(from, to, welle);
+    } else {
+      to.el.style.transition = animate ? 'opacity 300ms cubic-bezier(.32,.72,.29,1)' : 'none';
+      from.el.style.transition = animate ? 'opacity 300ms cubic-bezier(.32,.72,.29,1)' : 'none';
+
+      // Ein Frame Vorlauf, damit der Browser die Startdeckkraft übernimmt.
+      requestAnimationFrame(() => {
+        to.el.style.opacity = '1';
+        from.el.style.opacity = '0';
+      });
+    }
 
     this.activeSlot = next;
     window.setTimeout(() => {
@@ -1764,7 +1896,7 @@ export class AtlasMap {
       from.layer = null;
       from.religion?.remove();
       from.religion = null;
-    }, animate ? 340 : 0);
+    }, welle ? WELLE_MS + 60 : animate ? 340 : 0);
 
     this._religionsSchraffur();
     this._religionsGrenzen();

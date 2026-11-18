@@ -18,11 +18,12 @@
  * Aufruf: npm run check:layout
  */
 import { chromium } from 'playwright';
+import { startOptionen } from './browser.mjs';
 import fs from 'node:fs';
 
 const OUT = process.env.LAYOUT_SHOTS ?? '/tmp/layout-shots';
 fs.mkdirSync(OUT, { recursive: true });
-const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
+const browser = await chromium.launch(startOptionen());
 
 const GROESSEN = [
   ['gross', 1920, 1080],

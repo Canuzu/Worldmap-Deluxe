@@ -1,0 +1,1016 @@
+/* ============================================================
+   Kartenwerk – die Gestaltung
+   ============================================================
+
+   Die Oberfläche spricht die Sprache der Karte, nicht die einer App. Ein
+   gestochener Atlas hat Papier, Tinte, einen Rand mit Gradleiste, Platten
+   mit Doppelrahmen und eine Antiqua. Genau das ist hier die Bedienung:
+
+     Papier     Die Karte liegt als Blatt im Rand. Der Rand ist gerechnet –
+                jede Feldgrenze ein Längen- oder Breitengrad (blattrand.js).
+     Platten    Alle Bedienflächen sind deckend, mit Doppelrahmen und
+                Eckwinkeln. Kein Milchglas: Unschärfe über einer Karte kostet
+                bei jeder Bewegung, und sie sieht nach Bildschirm aus statt
+                nach Papier.
+     Schrift    EB Garamond für alles, was man liest wie in einem Buch –
+                Jahre, Namen, Titel. Manrope für das, was man bedient.
+     Messing    Ein einziger Akzent. In der Nacht leuchtet er, auf Papier
+                ist er Tinte.
+
+   Dazu drei Bewegungen, die es nur hier gibt:
+     Zeitwelle  Ein Zeitsprung läuft als Kreis vom Regler über die Karte.
+     Zeitlinse  Ein Glas zeigt unter dem Zeiger einen anderen Kartenstand.
+     Zählwerk   Die Jahreszahl rollt wie eine Walze zur neuen Zahl.
+
+   Alles, was sich bewegt, bewegt transform, opacity oder clip-path – nie
+   die Lage eines Elements. Und nichts davon liegt auf .stage selbst:
+   Leaflet rechnet gegen den unverschobenen Container (siehe layout.css,
+   „Auftritt“).
+   ============================================================ */
+
+@property --blende {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+:root {
+  --font-ui: Manrope, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-display: "EB Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+
+  --r-sm: 3px;
+  --r-md: 4px;
+  --r-lg: 5px;
+  --r-xl: 6px;
+
+  --ease: cubic-bezier(.22, .8, .24, 1);
+  --rahmen: 0px;
+
+  /* Papierfaser: ein einziges kleines SVG-Rauschen, gekachelt. Es wird
+     einmal gerastert und danach nur noch zusammengesetzt. */
+  --faser: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .32 0 0 0 0 .24 0 0 0 0 .12 .16 0 0 0 -.02'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
+}
+
+/* ------------------------------------------------------------ Pergament */
+
+:root[data-theme="parchment"] {
+  --papier: #efe5cd;
+  --papier-tief: #e4d7b8;
+  --platte: #fbf6e9;
+  --platte-2: #f5eedc;
+  --surface-solid: #fbf6e9;
+  --surface: rgba(251, 246, 233, .96);
+
+  --ocean-1: #d2e0de;
+  --ocean-2: #c2d6d6;
+  --ocean-3: #a9c6c9;
+  --land: #f0e6cc;
+  --land-edge: #7d6644;
+  /* Küste als Lavur: ein heller Wasserton, der zur See verläuft, und eine
+     scharfe Tintenlinie – nicht der dunkle Hof, der auf Papier wie Schmutz
+     wirkt. */
+  --coast-glow: #93b7c3;
+  --coast-glow-alpha: .7;
+  --coast-rim: #46697a;
+  --coast-rim-alpha: .78;
+
+  --ink: #2c2213;
+  --ink-strong: #160f05;
+  --ink-muted: #5f513a;
+  --ink-faint: #8b7c62;
+
+  --hairline: rgba(70, 52, 24, .2);
+  --hairline-strong: rgba(70, 52, 24, .38);
+  --linie: rgba(44, 32, 14, .72);
+
+  --gold: #9a6620;
+  --gold-soft: #7c4f12;
+  --siegel: #a33b26;
+  --messing: #a77a31;
+  --messing-hell: #e3bd6f;
+
+  --shadow-1: 0 1px 0 rgba(255, 252, 240, .7) inset, 0 1px 2px rgba(60, 44, 16, .14), 0 6px 18px -6px rgba(60, 44, 16, .28);
+  --shadow-2: 0 1px 0 rgba(255, 252, 240, .7) inset, 0 2px 4px rgba(60, 44, 16, .12), 0 18px 44px -14px rgba(60, 44, 16, .4);
+
+  --label-ink: #20180a;
+  --label-halo: rgba(250, 244, 228, .94);
+  --fill-alpha: .58;
+  --grat: rgba(80, 60, 30, .14);
+
+  --rand-linie: rgba(40, 28, 10, .82);
+  --rand-fein: rgba(40, 28, 10, .4);
+  --rand-feld: #2a1f0f;
+  --rand-zahl: rgba(40, 28, 10, .8);
+}
+
+/* ------------------------------------------------------- Observatorium */
+
+:root[data-theme="night"] {
+  --papier: #0b111b;
+  --papier-tief: #070b12;
+  --platte: #111a27;
+  --platte-2: #152031;
+  --surface-solid: #111a27;
+  --surface: rgba(17, 26, 39, .97);
+
+  --ink: #ece3cf;
+  --ink-strong: #fff8e8;
+  --ink-muted: #b3a88f;
+  --ink-faint: #7d7563;
+
+  --hairline: rgba(222, 190, 128, .15);
+  --hairline-strong: rgba(222, 190, 128, .3);
+  --linie: rgba(236, 214, 170, .55);
+
+  --gold: #dcb36c;
+  --gold-soft: #f0d39b;
+  --siegel: #e0805f;
+  --messing: #c9a05a;
+  --messing-hell: #f3d9a0;
+
+  --shadow-1: 0 1px 0 rgba(255, 236, 196, .06) inset, 0 1px 2px rgba(0, 0, 0, .5), 0 8px 22px -6px rgba(0, 0, 0, .6);
+  --shadow-2: 0 1px 0 rgba(255, 236, 196, .06) inset, 0 2px 6px rgba(0, 0, 0, .5), 0 24px 60px -16px rgba(0, 0, 0, .75);
+
+  --rand-linie: rgba(236, 214, 170, .62);
+  --rand-fein: rgba(236, 214, 170, .26);
+  --rand-feld: rgba(236, 214, 170, .78);
+  --rand-zahl: rgba(236, 214, 170, .7);
+}
+
+body {
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-feature-settings: "ss01";
+  background: var(--papier);
+}
+::selection { background: var(--messing); color: var(--platte); }
+:focus-visible { outline-color: var(--messing); border-radius: 2px; }
+
+/* -------------------------------------------------------------- Platten
+
+   Eine Platte: deckend, Doppelrahmen (die zweite Linie liegt drei Punkte
+   innen), feiner Schatten. Gilt für alles, was über der Karte liegt. */
+.card,
+.tools,
+.timeline,
+.mapmodes,
+.popover,
+.panel,
+.hovertip,
+.linsenwahl,
+.dock__mark,
+.dock__btn,
+.dock__searchwrap.is-open {
+  background-color: var(--platte);
+  border: 1px solid var(--hairline-strong);
+  box-shadow:
+    inset 0 0 0 3px var(--platte),
+    inset 0 0 0 4px var(--hairline),
+    var(--shadow-1);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.card,
+.timeline,
+.panel,
+.popover {
+  box-shadow:
+    inset 0 0 0 3px var(--platte),
+    inset 0 0 0 4px var(--hairline),
+    var(--shadow-2);
+}
+
+/* Eckwinkel: vier gestochene Winkel in den Ecken der großen Platten. */
+.timeline,
+.panel,
+.popover,
+.modal__card {
+  --ecke: var(--hairline-strong);
+  background-image:
+    linear-gradient(var(--ecke), var(--ecke)), linear-gradient(var(--ecke), var(--ecke)),
+    linear-gradient(var(--ecke), var(--ecke)), linear-gradient(var(--ecke), var(--ecke)),
+    linear-gradient(var(--ecke), var(--ecke)), linear-gradient(var(--ecke), var(--ecke)),
+    linear-gradient(var(--ecke), var(--ecke)), linear-gradient(var(--ecke), var(--ecke));
+  background-size: 11px 1px, 1px 11px, 11px 1px, 1px 11px, 11px 1px, 1px 11px, 11px 1px, 1px 11px;
+  background-position:
+    left 7px top 7px, left 7px top 7px,
+    right 7px top 7px, right 7px top 7px,
+    left 7px bottom 7px, left 7px bottom 7px,
+    right 7px bottom 7px, right 7px bottom 7px;
+  background-repeat: no-repeat;
+}
+
+/* Kleine Versalien – die Schrift der Beschilderung. */
+.year__era,
+.sec__h,
+.pnl__kicker,
+.popover h3,
+.timeline__stats,
+.dock__wordmark i,
+.linsenwahl__t,
+.track__lupe small,
+.boot__eyebrow,
+.boot__sub {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+}
+
+[data-label]::after {
+  font-family: var(--font-ui);
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: .02em;
+  border-radius: var(--r-sm);
+  background: var(--ink-strong);
+  color: var(--platte);
+  border: 0;
+  box-shadow: var(--shadow-1);
+}
+
+/* ------------------------------------------------------------- Der Rand
+
+   Ab 1101 Punkten liegt die Karte als Blatt im Papier. Die Grenze steht
+   wörtlich auch in blattrand.js (RAHMEN_AB). */
+.stage {
+  background-color: var(--papier);
+  background-image: var(--faser);
+}
+.blattrand,
+.rahmen-papier,
+.rahmen-lage { display: none; }
+
+@media (min-width: 1101px) and (min-height: 600px) {
+  :root { --rahmen: 30px; }
+
+  /* Das Papier liegt über dem Kartenrand: ein Rahmen aus einer Fläche,
+     deren Mitte per Maske ausgespart ist. Die Karte darunter behält ihre
+     volle Größe. */
+  .rahmen-papier {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 401;
+    pointer-events: none;
+    padding: var(--rahmen);
+    background-color: var(--papier);
+    background-image: var(--faser);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  }
+
+  .blattrand {
+    display: block;
+    position: absolute;
+    z-index: 402;
+    pointer-events: none;
+    overflow: visible;
+  }
+  .blattrand__linie { fill: none; stroke: var(--rand-linie); stroke-width: 1; }
+  .blattrand__linie--fein { stroke: var(--rand-fein); }
+  .blattrand__feld { fill: var(--rand-feld); }
+  .blattrand__zahl {
+    font: 500 10px/1 var(--font-display);
+    letter-spacing: .04em;
+    fill: var(--rand-zahl);
+    font-variant-numeric: lining-nums;
+  }
+
+  .rahmen-lage {
+    display: block;
+    position: absolute;
+    z-index: 403;
+    right: calc(var(--rahmen) + 3rem);
+    bottom: 1px;
+    font: italic 500 .8rem/1 var(--font-display);
+    letter-spacing: .03em;
+    color: var(--rand-zahl);
+    background: var(--papier);
+    background-image: var(--faser);
+    padding: .38rem .6rem;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 260ms var(--ease);
+    font-variant-numeric: lining-nums tabular-nums;
+    white-space: pre;
+  }
+  .rahmen-lage.is-aktiv { opacity: 1; }
+
+  /* Bedienung sitzt im Blatt, nicht auf dem Rand: Die Gradleiste bleibt
+     ringsum lesbar. */
+  .app:not(.is-battle) .dock { top: calc(var(--rahmen) + .75rem); left: calc(var(--rahmen) + .75rem); }
+  .app:not(.is-battle) .tools { top: calc(var(--rahmen) + .75rem); right: calc(var(--rahmen) + .75rem); }
+  .app:not(.is-battle) .popover { top: calc(var(--rahmen) + .8rem); right: calc(var(--rahmen) + 4.4rem); }
+  .app:not(.is-battle) .timeline { bottom: calc(var(--rahmen) + .75rem); width: min(1240px, calc(100% - 2 * var(--rahmen) - 1.6rem)); }
+  .app:not(.is-battle) .credits { left: calc(var(--rahmen) + .9rem); }
+  .app:not(.is-battle) .rose { right: calc(var(--rahmen) + 1.2rem); }
+  .app:not(.is-battle) .panel { margin: var(--rahmen) var(--rahmen) var(--rahmen) 0; }
+
+  /* Eine Schlacht ist eine Feldkarte, kein Atlasblatt: Der Rand weicht, und
+     die Kamera hat das ganze Fenster. Sie rechnet auf jeden Punkt Platz –
+     dreißig Punkte Papier ringsum ließen sie bei Azincourt pumpen. */
+  .app.is-battle .rahmen-papier,
+  .app.is-battle .blattrand,
+  .app.is-battle .rahmen-lage { display: none; }
+}
+
+/* Vignette: nur ein Hauch – das Blatt hat Kanten, es braucht kein Dunkel. */
+.stage::before {
+  inset: var(--rahmen);
+  background: radial-gradient(130% 95% at 50% 45%, transparent 66%, rgba(40, 28, 10, .12) 100%);
+}
+[data-theme="night"] .stage::before {
+  background:
+    radial-gradient(140% 110% at 50% -10%, rgba(220, 180, 110, .07), transparent 55%),
+    radial-gradient(130% 95% at 50% 45%, transparent 62%, rgba(0, 0, 0, .3) 100%);
+}
+
+/* ------------------------------------------------------------ Kopfleiste */
+
+.dock { gap: .45rem; }
+.dock__mark,
+.dock__btn { height: 2.6rem; border-radius: var(--r-md); color: var(--ink-muted); }
+.dock__btn { width: 2.6rem; }
+.dock__mark { padding: 0 1.05rem 0 .55rem; gap: .65rem; }
+.dock__mark svg { width: 30px; height: 30px; }
+.dock__disc { fill: var(--siegel); }
+.dock__grid { fill: var(--platte); }
+.dock__mark:hover .dock__grid { fill: var(--platte); }
+.dock__mark:hover .dock__disc { fill: var(--messing); }
+.dock__wordmark { gap: .14rem; }
+.dock__wordmark b {
+  font-family: var(--font-display);
+  font-size: 1.22rem;
+  font-weight: 600;
+  letter-spacing: .015em;
+  text-transform: none;
+  color: var(--ink-strong);
+}
+.dock__wordmark i { font-size: .52rem; letter-spacing: .24em; color: var(--ink-faint); }
+.dock__mark:hover .dock__wordmark b { color: var(--siegel); }
+.dock__btn:hover { color: var(--ink-strong); transform: none; background-color: var(--platte-2); }
+.dock__searchwrap.is-open { border-radius: var(--r-md); }
+.dock__searchwrap.is-open input { font-family: var(--font-display); font-size: 1.05rem; }
+.suggest {
+  background: var(--platte);
+  border-radius: var(--r-md);
+  box-shadow: inset 0 0 0 3px var(--platte), inset 0 0 0 4px var(--hairline), var(--shadow-2);
+  padding: .4rem;
+}
+.suggest .nm { font-family: var(--font-display); font-size: 1rem; }
+.suggest mark { color: var(--siegel); }
+
+/* ------------------------------------------------------------ Werkzeuge */
+
+.tools { padding: .4rem; gap: .12rem; border-radius: var(--r-md); }
+.tool { width: 2.4rem; height: 2.4rem; border-radius: var(--r-sm); color: var(--ink-muted); }
+.tool:hover { background: var(--platte-2); color: var(--ink-strong); }
+.tool[aria-pressed="true"] {
+  color: var(--platte);
+  background: var(--ink-strong);
+}
+.tools__sep { width: 1.3rem; background: var(--hairline-strong); }
+.tool--lang b { font-family: var(--font-display); font-size: .95rem; font-weight: 600; letter-spacing: .06em; }
+/* Die Zeitlinse ist neu und das Merkmal dieses Atlas – sie bekommt Messing. */
+.tool--linse { color: var(--messing); }
+.tool--linse[aria-pressed="true"] { background: var(--messing); color: var(--platte); }
+
+/* ------------------------------------------------------------- Popover */
+
+.popover { border-radius: var(--r-md); padding: 1rem 1.05rem; }
+.popover h3 { font-size: .6rem; color: var(--ink-faint); }
+
+/* ------------------------------------------------------- Kartenmodus
+
+   Register statt Knöpfe: Der gewählte Modus trägt eine Linie in der Farbe
+   der laufenden Epoche, die aus der Mitte aufgezogen wird. */
+.mapmodes { border-radius: var(--r-md); padding: .3rem; gap: .1rem; }
+.mapmodes button {
+  padding: .42rem .75rem .48rem;
+  border-radius: var(--r-sm);
+  font-size: .74rem;
+  font-weight: 500;
+  color: var(--ink-muted);
+}
+.mapmodes button::before {
+  content: "";
+  position: absolute;
+  left: .7rem; right: .7rem; bottom: .2rem;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--epoche, var(--messing));
+  transform: scaleX(0);
+  transition: transform 360ms var(--ease);
+}
+.mapmodes button:hover { background: var(--platte-2); color: var(--ink-strong); }
+.mapmodes button[aria-checked="true"] {
+  background: transparent;
+  color: var(--ink-strong);
+  font-weight: 700;
+}
+.mapmodes button[aria-checked="true"]::before { transform: scaleX(1); }
+
+/* ------------------------------------------------------------ Hovertip
+
+   Eine Kartusche: Name in der Antiqua, darunter in Versalien, was er ist. */
+.hovertip {
+  padding: .42rem .8rem .46rem;
+  border-radius: var(--r-sm);
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: .01em;
+  text-align: center;
+  transform: translate(-50%, -150%);
+}
+.hovertip::after {
+  content: "";
+  position: absolute;
+  left: 50%; bottom: -5px;
+  width: 8px; height: 8px;
+  margin-left: -4px;
+  background: var(--platte);
+  border-right: 1px solid var(--hairline-strong);
+  border-bottom: 1px solid var(--hairline-strong);
+  transform: rotate(45deg);
+}
+.hovertip small {
+  font-family: var(--font-ui);
+  font-size: .56rem;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* ------------------------------------------------------- Maßstab, Rose */
+
+@media (min-width: 561px) {
+  .credits {
+    background-color: var(--platte);
+    border: 1px solid var(--hairline-strong);
+    box-shadow: inset 0 0 0 3px var(--platte), inset 0 0 0 4px var(--hairline), var(--shadow-1);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-radius: var(--r-sm);
+    padding: .32rem .75rem;
+    font-size: .68rem;
+    color: var(--ink-muted);
+  }
+}
+.scalebar b { font-family: var(--font-display); font-size: .85rem; font-weight: 600; }
+.credits__link { font-weight: 600; letter-spacing: .02em; }
+.rose { opacity: .72; filter: none; }
+[data-theme="parchment"] .rose { opacity: .78; }
+
+/* ============================================================
+   Zeitleiste – der Zeitstrom
+   ============================================================ */
+
+.timeline {
+  border-radius: var(--r-lg);
+  padding: .7rem 1.35rem .45rem;
+}
+.timeline__head { gap: 1.4rem; margin-bottom: .45rem; }
+
+.tbtn {
+  width: 2.25rem; height: 2.25rem;
+  border-radius: 50%;
+  color: var(--ink-muted);
+  box-shadow: inset 0 0 0 1px var(--hairline-strong);
+}
+.tbtn:hover { background: var(--platte-2); color: var(--ink-strong); }
+.tbtn--fold { box-shadow: none; }
+
+/* Der Abspielknopf: eine Messingscheibe mit Teilung. Läuft die Zeitreise,
+   dreht sich die Teilung – wie die Unruh einer Uhr. */
+.tbtn--play,
+[data-theme="parchment"] .tbtn--play {
+  position: relative;
+  width: 2.7rem; height: 2.7rem;
+  color: var(--platte);
+  background: radial-gradient(circle at 34% 28%, var(--messing-hell), var(--messing) 58%, color-mix(in srgb, var(--messing) 70%, #000) 100%);
+  box-shadow:
+    0 0 0 3px var(--platte),
+    0 0 0 4px color-mix(in srgb, var(--messing) 60%, transparent),
+    0 4px 14px -4px color-mix(in srgb, var(--messing) 80%, transparent);
+}
+.tbtn--play::before {
+  content: "";
+  position: absolute;
+  inset: -9px;
+  border-radius: 50%;
+  background: repeating-conic-gradient(var(--messing) 0 1.6deg, transparent 1.6deg 15deg);
+  -webkit-mask: radial-gradient(circle, transparent calc(50% - 4px), #000 calc(50% - 3.5px));
+  mask: radial-gradient(circle, transparent calc(50% - 4px), #000 calc(50% - 3.5px));
+  opacity: .55;
+  pointer-events: none;
+}
+.tbtn--play.is-laeuft::before { animation: unruh 6s linear infinite; opacity: .9; }
+@keyframes unruh { to { transform: rotate(360deg); } }
+.tbtn--play:hover,
+[data-theme="parchment"] .tbtn--play:hover { color: var(--platte); background: radial-gradient(circle at 34% 28%, #fff1cc, var(--messing-hell) 40%, var(--messing) 100%); transform: none; }
+.tbtn--play svg { position: relative; }
+
+/* Das Zählwerk. */
+.year {
+  display: flex;
+  align-items: flex-end;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1;
+  color: var(--ink-strong);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.zw { display: inline-flex; }
+.zw__s {
+  display: inline-block;
+  height: 1.08em;
+  overflow: hidden;
+  line-height: 1.08;
+}
+.zw__r {
+  display: block;
+  transform: translateY(calc(var(--d, 0) * -1.08em));
+  transition: transform 640ms cubic-bezier(.2, .9, .25, 1.06);
+}
+.zw__r::before {
+  content: "0\A 1\A 2\A 3\A 4\A 5\A 6\A 7\A 8\A 9";
+  white-space: pre;
+  display: block;
+}
+.zw__x { line-height: 1.08; }
+.zw__x::before { content: attr(data-z); }
+.year sub {
+  position: static;
+  font-family: var(--font-ui);
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  margin: 0 0 .32rem .5rem;
+  color: var(--ink-faint);
+}
+.timeline__readout { align-items: center; }
+.year__meta { gap: .18rem; }
+.year__era { font-size: .62rem; color: var(--era-color, var(--messing)); }
+.year__title { font-family: var(--font-display); font-size: .98rem; line-height: 1.3; font-style: italic; color: var(--ink-muted); }
+.year__title b { font-style: normal; font-weight: 600; }
+.timeline__stats { font-size: .56rem; color: var(--ink-faint); gap: 1.5rem; }
+.timeline__stats b {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  line-height: 1.1;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  font-variant-numeric: lining-nums;
+}
+
+/* Der Regler. */
+.track { height: 2.5rem; }
+.track__eras {
+  top: .25rem;
+  height: 1.05rem;
+  border-radius: 1px;
+  box-shadow: 0 0 0 1px var(--hairline-strong);
+}
+.track__eras i { filter: saturate(.4) brightness(1.08) opacity(.72); }
+[data-theme="night"] .track__eras i { filter: saturate(.45) brightness(.62); }
+.track__eras i.is-now,
+[data-theme="night"] .track__eras i.is-now { filter: none; box-shadow: inset 0 -2px 0 rgba(0, 0, 0, .25); }
+.track__eras i + i,
+.track__eras i.is-now + i { box-shadow: inset 1px 0 0 color-mix(in srgb, var(--platte) 70%, transparent); }
+.track__eras i b {
+  font-family: var(--font-ui);
+  font-size: .54rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  color: rgba(255, 255, 255, .78);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, .35);
+}
+.track__eras i.is-now b { color: #fff; }
+
+.track__ticks { top: 1.55rem; height: .6rem; }
+.track__ticks i {
+  height: .32rem;
+  background: var(--hairline-strong);
+  transform-origin: 50% 100%;
+  transition: transform 160ms var(--ease), background var(--dur) var(--ease);
+}
+.track__ticks i.is-major { background: var(--ink-faint); }
+.track__ticks i.is-active { background: var(--siegel); height: .6rem; }
+/* Die Lupe vergrößert die Teilung um den Zeiger. Abstand ohne abs():
+   max(a − b, b − a). */
+.track.is-hover:not(.is-dragging) .track__ticks i {
+  --nah: max(0, 1 - max(var(--p) - var(--mx), var(--mx) - var(--p)) * 18);
+  transform: scaleY(calc(1 + var(--nah) * 1.5));
+}
+
+.track__fill {
+  top: .25rem;
+  height: 1.05rem;
+  border-radius: 0;
+  background: linear-gradient(90deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, .28));
+}
+
+/* Der Griff: ein Faden über Band und Teilung, unten ein Messingrhombus. */
+.track__handle { height: 2.2rem; }
+.track__handle::before {
+  left: -.75px; top: -.05rem;
+  width: 1.5px;
+  height: 1.95rem;
+  border-radius: 0;
+  background: var(--ink-strong);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--platte) 70%, transparent);
+}
+.track__handle b {
+  top: 1.55rem;
+  width: .78rem; height: .78rem;
+  margin-left: -.39rem;
+  border-radius: 1px;
+  background: var(--messing);
+  border: 2px solid var(--platte);
+  box-shadow: 0 0 0 1px var(--messing), 0 2px 6px rgba(0, 0, 0, .3);
+  transform: rotate(45deg);
+}
+.track.is-dragging .track__handle b,
+.track:hover .track__handle b { transform: rotate(45deg) scale(1.25); }
+
+.track__scale i { font-family: var(--font-display); font-size: .78rem; color: var(--ink-faint); font-variant-numeric: lining-nums; }
+
+.track__bubble {
+  font-family: var(--font-display);
+  font-size: .98rem;
+  font-weight: 600;
+  background: var(--ink-strong);
+  color: var(--platte);
+  border: 0;
+  border-radius: var(--r-sm);
+  bottom: 2.95rem;
+}
+
+/* Die Lupe über dem Regler. */
+.track__lupe {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + .1rem);
+  width: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 160ms var(--ease);
+  z-index: 3;
+}
+.track__lupe::after {
+  content: "";
+  position: absolute;
+  left: -.5px;
+  top: 100%;
+  width: 1px;
+  height: 2.6rem;
+  background: linear-gradient(var(--ink-faint), transparent);
+}
+.track__lupe span {
+  position: absolute;
+  bottom: .25rem;
+  left: 0;
+  transform: translateX(-50%);
+  display: grid;
+  justify-items: center;
+  gap: .05rem;
+  padding: .28rem .6rem .32rem;
+  border-radius: var(--r-sm);
+  background: var(--platte);
+  box-shadow: inset 0 0 0 1px var(--hairline-strong), var(--shadow-1);
+  white-space: nowrap;
+}
+.track__lupe b { font-family: var(--font-display); font-size: .98rem; font-weight: 600; color: var(--ink-strong); line-height: 1.1; }
+.track__lupe small { font-size: .5rem; color: var(--ink-faint); }
+.track.is-hover:not(.is-dragging) .track__lupe { opacity: 1; }
+
+.herkunft { border-radius: 2px; }
+
+/* ============================================================
+   Detailtafel – das Folio
+   ============================================================ */
+
+.panel { border-radius: var(--r-lg); animation: folio 520ms var(--ease); }
+@keyframes folio {
+  from { transform: translateX(2.5rem); opacity: 0; clip-path: inset(0 0 0 30%); }
+  to { transform: none; opacity: 1; clip-path: inset(0); }
+}
+.panel__close { border-radius: 50%; background: var(--platte); box-shadow: inset 0 0 0 1px var(--hairline-strong); top: 1rem; right: 1rem; }
+.pnl__hero {
+  padding: 1.7rem 1.6rem 1.35rem;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--accent, var(--messing)) 13%, transparent), transparent 85%);
+}
+.pnl__hero::before { height: 4px; left: 4px; right: 4px; top: 4px; }
+.pnl__hero::after {
+  right: -4.2rem; top: -4.2rem;
+  width: 14rem; height: 14rem;
+  border: 0;
+  background: repeating-conic-gradient(var(--accent, var(--messing)) 0 .7deg, transparent .7deg 6deg);
+  -webkit-mask: radial-gradient(circle, transparent 60%, #000 60.5%, #000 66%, transparent 66.5%);
+  mask: radial-gradient(circle, transparent 60%, #000 60.5%, #000 66%, transparent 66.5%);
+  box-shadow: none;
+  opacity: .32;
+}
+.pnl__kicker { font-size: .58rem; }
+.pnl__title {
+  font-family: var(--font-display);
+  font-size: 2.15rem;
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -.005em;
+}
+.pnl__title::after {
+  width: 5.5rem;
+  height: 7px;
+  margin-top: .7rem;
+  border-radius: 0;
+  opacity: 1;
+  background:
+    linear-gradient(var(--accent, var(--messing)), var(--accent, var(--messing))) left center / 2.3rem 1px no-repeat,
+    linear-gradient(var(--accent, var(--messing)), var(--accent, var(--messing))) right center / 2.3rem 1px no-repeat,
+    linear-gradient(45deg, transparent 35%, var(--accent, var(--messing)) 35% 65%, transparent 65%) center / 7px 7px no-repeat;
+}
+.pnl__alt { font-family: var(--font-display); font-size: .98rem; }
+.chip { border-radius: 2px; font-size: .7rem; font-weight: 500; background: var(--platte-2); }
+.sec { padding: 1.25rem 1.6rem; }
+.sec__h { font-size: .58rem; color: var(--ink-faint); }
+.sec__h::after { background: linear-gradient(90deg, var(--hairline-strong), transparent); }
+.ruler__seal {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--platte);
+  background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--accent, var(--siegel)) 70%, #fff), var(--accent, var(--siegel)) 55%, color-mix(in srgb, var(--accent, var(--siegel)) 70%, #000));
+  border: 0;
+  box-shadow: inset 0 0 0 3px color-mix(in srgb, #000 12%, transparent), inset 0 0 0 4px color-mix(in srgb, #fff 30%, transparent), 0 2px 6px -2px rgba(0, 0, 0, .4);
+}
+.ruler__name { font-size: 1.32rem; }
+.fact { border-radius: 2px; background: transparent; border: 0; box-shadow: inset 0 1px 0 var(--hairline-strong); padding-top: .6rem; }
+.prose { font-family: var(--font-display); font-size: 1.04rem; line-height: 1.55; }
+
+/* Gestaffelter Auftritt der Abschnitte. */
+.panel:not([hidden]) .sec { animation: blatt 560ms var(--ease) both; }
+.panel:not([hidden]) .sec:nth-child(2) { animation-delay: 60ms; }
+.panel:not([hidden]) .sec:nth-child(3) { animation-delay: 120ms; }
+.panel:not([hidden]) .sec:nth-child(4) { animation-delay: 180ms; }
+.panel:not([hidden]) .sec:nth-child(n+5) { animation-delay: 240ms; }
+@keyframes blatt { from { opacity: 0; transform: translateY(.6rem); } }
+
+/* ------------------------------------------------------------- Modal */
+
+.modal__card { border-radius: var(--r-lg); }
+.modal__card h2 { font-family: var(--font-display); font-size: 1.9rem; font-weight: 500; }
+kbd { font-family: var(--font-display); font-weight: 600; border-radius: 2px; }
+
+/* ============================================================
+   Zeitwelle
+   ============================================================ */
+
+.zeitwelle {
+  --w: var(--epoche, var(--messing));
+  position: absolute;
+  z-index: 455;
+  border-radius: 50%;
+  pointer-events: none;
+  border: 2px solid color-mix(in srgb, var(--w) 72%, #1a1206);
+  box-shadow:
+    0 0 0 4px color-mix(in srgb, var(--w) 22%, transparent),
+    0 0 22px 4px color-mix(in srgb, var(--w) 34%, transparent);
+  transform: scale(.001);
+  will-change: transform, opacity;
+}
+[data-theme="night"] .zeitwelle {
+  border-color: color-mix(in srgb, var(--w) 60%, #fff);
+  box-shadow:
+    0 0 0 4px color-mix(in srgb, var(--w) 18%, transparent),
+    0 0 26px 5px color-mix(in srgb, var(--w) 45%, transparent);
+}
+
+/* ============================================================
+   Zeitlinse
+   ============================================================ */
+
+.leaflet-linse-pane { visibility: hidden; }
+
+.linse {
+  position: absolute;
+  left: 0; top: 0;
+  z-index: 460;
+  pointer-events: none;
+  will-change: transform;
+  transition: opacity 260ms var(--ease);
+}
+.linse.is-auf,
+.linse.is-weg { opacity: 0; }
+/* Der Schatten als eigene, ruhende Fläche: Er wird einmal gemalt und
+   wandert danach nur mit. Ein drop-shadow auf der Fassung würde bei jeder
+   Drehung der Teilung neu gerechnet. */
+.linse::before {
+  content: "";
+  position: absolute;
+  inset: 2.5%;
+  border-radius: 50%;
+  box-shadow: 0 12px 30px -6px rgba(30, 18, 2, .42), 0 2px 6px rgba(30, 18, 2, .2);
+}
+.linse__bild {
+  position: absolute;
+  border-radius: 50%;
+}
+.linse__skala,
+.linse__fassung {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%; height: 100%;
+  overflow: visible;
+}
+.linse__skala { will-change: transform; transition: transform 420ms var(--ease); }
+.linse__band { fill: var(--platte); fill-opacity: .97; }
+.linse__kante { fill: none; stroke: var(--messing); stroke-width: 1.6; }
+.linse__kante--fein { stroke-width: .7; stroke: var(--hairline-strong); }
+.linse__teilung { fill: none; stroke: var(--ink-muted); stroke-width: 4; stroke-dasharray: .22 4.78; opacity: .7; }
+.linse__teilung--grob { stroke: var(--messing); stroke-width: 7; stroke-dasharray: .55 29.45; opacity: 1; }
+.linse__glanz { pointer-events: none; }
+.linse__jahr { font: 600 15px var(--font-display); letter-spacing: .08em; fill: var(--ink-strong); }
+.linse__name { font: 700 8.6px var(--font-ui); letter-spacing: .2em; text-transform: uppercase; fill: var(--messing); }
+.linse.is-leer .linse__name { fill: var(--ink-faint); }
+.linse__kreuz { fill: none; stroke: var(--ink-strong); stroke-width: 1.2; opacity: .7; stroke-linecap: round; }
+
+.app.is-linse .hovertip { display: none !important; }
+@media (pointer: fine) {
+  .app.is-linse .leaflet-container,
+  .app.is-linse .leaflet-interactive { cursor: none !important; }
+}
+
+.linsenwahl {
+  position: absolute;
+  z-index: 510;
+  top: calc(var(--rahmen) + .75rem);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+  padding: .3rem .4rem .3rem .9rem;
+  border-radius: 99px;
+  animation: linsenwahl 420ms var(--ease) both;
+}
+.linsenwahl[hidden] { display: none; }
+@keyframes linsenwahl { from { opacity: 0; transform: translate(-50%, -.6rem); } }
+.linsenwahl__t { font-size: .56rem; color: var(--messing); margin-right: .35rem; }
+.linsenwahl__jahr {
+  min-width: 7.2rem;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--ink-strong);
+  font-variant-numeric: lining-nums;
+}
+.linsenwahl button {
+  width: 1.9rem; height: 1.9rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--ink-muted);
+  box-shadow: inset 0 0 0 1px var(--hairline-strong);
+}
+.linsenwahl button:hover { background: var(--ink-strong); color: var(--platte); }
+.linsenwahl__zu { margin-left: .2rem; font-size: 1.05rem !important; }
+
+/* ============================================================
+   Farbwelt wechseln: eine Blende aus dem Knopf
+   ============================================================ */
+
+::view-transition-old(root),
+::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+::view-transition-new(root) { animation: farbwelt 820ms cubic-bezier(.55, .05, .2, 1); }
+@keyframes farbwelt {
+  from { clip-path: circle(0 at var(--vt-x, 100%) var(--vt-y, 0)); }
+  to { clip-path: circle(var(--vt-r, 150vmax) at var(--vt-x, 100%) var(--vt-y, 0)); }
+}
+
+/* ============================================================
+   Titelblatt: das Astrolabium
+   ============================================================ */
+
+.boot {
+  background-color: var(--papier);
+  background-image: var(--faser), radial-gradient(90% 70% at 50% 42%, var(--platte), var(--papier) 70%);
+  -webkit-mask-image: radial-gradient(circle at 50% 44%, transparent var(--blende), #000 calc(var(--blende) + 1px));
+  mask-image: radial-gradient(circle at 50% 44%, transparent var(--blende), #000 calc(var(--blende) + 1px));
+}
+.boot::after { display: none; }
+.boot.is-blende[hidden] {
+  opacity: 1;
+  --blende: 160vmax;
+  transition: --blende 1250ms cubic-bezier(.65, 0, .25, 1), visibility 0s linear 1250ms;
+}
+.boot__inner { width: min(90vw, 30rem); }
+
+.astrolab {
+  display: block;
+  width: clamp(170px, 30vmin, 300px);
+  height: auto;
+  margin: 0 auto 1.6rem;
+  overflow: visible;
+}
+.astrolab circle,
+.astrolab ellipse,
+.astrolab path { fill: none; vector-effect: non-scaling-stroke; }
+.astrolab__ring { stroke: var(--linie); stroke-width: 1.2; stroke-dasharray: 660; stroke-dashoffset: 660; animation: zieh 1.6s var(--ease) forwards; }
+.astrolab__ring--b { stroke-width: .7; animation-delay: .15s; }
+.astrolab__teilung { stroke: var(--ink-muted); stroke-width: 5px; stroke-dasharray: .3 4.7; opacity: 0; animation: auf .8s var(--ease) .5s forwards, dreh 60s linear infinite; transform-origin: 0 0; }
+.astrolab__teilung--grob { stroke: var(--messing); stroke-width: 9px; stroke-dasharray: .8 29.2; animation-duration: .8s, 30s; }
+.astrolab__bahn { stroke: var(--messing); stroke-width: .8; transform: rotate(-24deg); opacity: 0; animation: auf 1s var(--ease) .7s forwards; }
+.astrolab__bahn ellipse { animation: bahn 9s linear infinite; transform-origin: 0 0; }
+.astrolab__bahn circle { fill: var(--messing); stroke: none; transform-origin: 0 0; animation: bahn 9s linear infinite; }
+.astrolab__bahn--b { transform: rotate(32deg); }
+.astrolab__bahn--b circle, .astrolab__bahn--b ellipse { animation-direction: reverse; animation-duration: 13s; }
+.astrolab__kugel { fill: var(--land) !important; stroke: none; opacity: 0; animation: auf .9s var(--ease) .3s forwards; }
+.astrolab__kontur { stroke: var(--linie); stroke-width: 1.4; }
+.astrolab__laengen ellipse { stroke: var(--ink-faint); stroke-width: .8; animation: meridian 4.2s cubic-bezier(.37, 0, .63, 1) infinite alternate; transform-origin: 0 0; }
+.astrolab__laengen ellipse:nth-child(2) { animation-delay: -.7s; }
+.astrolab__laengen ellipse:nth-child(3) { animation-delay: -1.4s; }
+.astrolab__laengen ellipse:nth-child(4) { animation-delay: -2.1s; }
+.astrolab__laengen ellipse:nth-child(5) { animation-delay: -2.8s; }
+.astrolab__laengen ellipse:nth-child(6) { animation-delay: -3.5s; }
+.astrolab__breiten path { stroke: var(--ink-faint); stroke-width: .7; opacity: .8; }
+.astrolab__lauf {
+  stroke: var(--siegel);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: calc(100 - var(--lauf, 0));
+  transform: rotate(-90deg);
+  transition: stroke-dashoffset 600ms var(--ease);
+}
+@keyframes zieh { to { stroke-dashoffset: 0; } }
+@keyframes auf { to { opacity: 1; } }
+@keyframes dreh { to { transform: rotate(360deg); } }
+@keyframes bahn { to { transform: rotate(360deg); } }
+@keyframes meridian { from { transform: scaleX(1); } to { transform: scaleX(-1); } }
+
+.boot__eyebrow { font-size: .6rem; color: var(--messing); margin-bottom: .55rem; opacity: 0; animation: auf .8s var(--ease) .4s forwards; }
+.boot__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 6vw, 3.4rem);
+  font-weight: 500;
+  letter-spacing: .07em;
+  line-height: 1;
+  color: var(--ink-strong);
+  animation: titel 1.4s var(--ease) .2s both;
+}
+@keyframes titel {
+  from { opacity: 0; letter-spacing: .3em; filter: blur(6px); }
+  to { opacity: 1; letter-spacing: .07em; filter: blur(0); }
+}
+.boot__sub { font-size: .62rem; color: var(--ink-faint); margin-top: .7rem; opacity: 0; animation: auf .8s var(--ease) .8s forwards; }
+.boot__bar { display: none; }
+.boot__status { font-family: var(--font-display); font-style: italic; font-size: .98rem; color: var(--ink-muted); margin-top: 1.2rem; }
+
+/* Der Auftritt der App: Die Blende öffnet auf eine fertige Karte; nur die
+   Bedienung kommt gestaffelt dazu. */
+.app.is-entering .stage { animation: none; }
+
+/* ------------------------------------------------------------ Schmal */
+
+/* Auf Tablet und Telefon behält die Säule ihr altes Maß: Die Modusleiste
+   und die Tafel rechnen im Querformat mit ihrer Breite. */
+@media (max-width: 900px) {
+  .tools { padding: .3rem; gap: .1rem; }
+  .tool { width: 2.3rem; height: 2.3rem; }
+}
+/* Querformat am Telefon: Säule zweispaltig und eng, Modi ohne Luft – die
+   Maße aus layout.css, die die Grundregeln oben sonst überschrieben. */
+@media (max-height: 480px) and (orientation: landscape) {
+  .tools { padding: .15rem; gap: 0; box-shadow: var(--shadow-1); }
+  .mapmodes button { padding: .38rem .5rem; font-size: .7rem; }
+}
+
+@media (max-width: 680px) {
+  .dock__mark { width: 2.75rem; padding: 0; border-radius: 50%; }
+  .year { font-size: 1.6rem; }
+  .timeline { padding: .6rem .8rem .45rem; }
+  .tbtn--play,
+  [data-theme="parchment"] .tbtn--play { width: 2.5rem; height: 2.5rem; }
+  .pnl__title { font-size: 1.8rem; }
+  .linsenwahl { top: auto; bottom: calc(var(--console-h, 9rem) + 4.6rem + var(--safe-b)); }
+  .linsenwahl__t { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zw__r { transition: none; }
+  .boot.is-blende[hidden] { transition: none; }
+  ::view-transition-new(root) { animation: none; }
+}

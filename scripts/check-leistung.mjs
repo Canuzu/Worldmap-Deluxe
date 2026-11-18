@@ -25,12 +25,11 @@
  *         HANDY=1 node scripts/check-leistung.mjs
  */
 import { chromium } from 'playwright';
+import { startOptionen } from './browser.mjs';
 
 const BASE = process.argv[2] ?? 'http://127.0.0.1:4173';
 const HANDY = Boolean(process.env.HANDY);
-const browser = await chromium.launch({
-  executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome',
-});
+const browser = await chromium.launch(startOptionen());
 const page = await browser.newPage(HANDY
   ? { viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true }
   : { viewport: { width: 1440, height: 900 } });

@@ -1,5 +1,5 @@
 /**
- * Der Kartenrand des Entwurfs „Blatt“: Rahmenlinie, Gradleiste, Gradzahlen.
+ * Der Kartenrand: Rahmenlinie, Gradleiste, Gradzahlen – und die Lage.
  *
  * Jedes gedruckte Kartenblatt trägt einen Rand, an dem man die Lage abliest:
  * eine Leiste aus abwechselnd gefüllten und leeren Feldern, deren Grenzen auf
@@ -13,12 +13,15 @@
  * die Felder länger. Das ist richtig so und genau das, was der Rand zeigen
  * soll – man sieht ihm die Projektion an.
  *
- * Gezeichnet als SVG über der Karte, ohne Zeigerereignisse. Nur im Entwurf
- * „Blatt“ sichtbar; sonst bleibt die Ebene leer und kostet einen Vergleich
- * je Bewegung.
+ * Gezeichnet als SVG über der Karte, ohne Zeigerereignisse. Auf schmalen
+ * Schirmen blendet das Stilblatt den Rand aus; dann bleibt die Ebene leer
+ * und kostet einen Vergleich je Bewegung.
+ *
+ * Unten links im Rand steht, wo der Zeiger gerade ist – in Grad und Minuten,
+ * wie man es auf dem Blatt ablesen würde. Ein Instrument, das seine Lage
+ * nicht nennt, ist ein Bild.
  */
 import { txt } from './sprache.js';
-import { entwurf } from './entwurf.js';
 
 const NS = 'http://www.w3.org/2000/svg';
 /** Abstand der Leiste von der Rahmenlinie und ihre Breite (Bildpunkte). */
@@ -27,6 +30,17 @@ const LEISTE = 6;
 /** Platz für die Zahlen außerhalb der Leiste. */
 const ZAHLRAUM = 15;
 const RAND = LUFT + LEISTE + ZAHLRAUM;
+
+/** Ab dieser Breite trägt die Karte einen Rand – wörtlich wie in design.css. */
+export const RAHMEN_AB = '(min-width: 1101px) and (min-height: 600px)';
+
+/** Breite des Papierrands in Punkten – 0, wo es keinen Rand gibt. */
+export function randBreite() {
+  if (!matchMedia(RAHMEN_AB).matches) return 0;
+  if (document.getElementById('app')?.classList.contains('is-battle')) return 0;
+  const wert = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--rahmen'));
+  return Number.isFinite(wert) ? wert : 0;
+}
 
 /** Teilungen, aus denen gewählt wird – in Grad. */
 const TEILUNGEN = [90, 45, 30, 20, 15, 10, 5, 2, 1, .5, .25, 1 / 6, 1 / 12];
@@ -56,38 +70,72 @@ export class Blattrand {
   constructor(map, buehne) {
     this.map = map;
     this.buehne = buehne;
+    /* Das Papier des Randes liegt ÜBER der Karte, nicht um sie herum. Die
+       Karte behält ihre volle Größe: Leaflet, die Schlachtenkamera und jede
+       Rechnung in Containerpunkten bleiben, wie sie waren. */
+    this.papier = document.createElement('div');
+    this.papier.className = 'rahmen-papier';
+    this.papier.setAttribute('aria-hidden', 'true');
+    buehne.appendChild(this.papier);
     this.svg = document.createElementNS(NS, 'svg');
     this.svg.classList.add('blattrand');
     this.svg.setAttribute('aria-hidden', 'true');
     buehne.appendChild(this.svg);
+    // Dieselbe Grenze wie im Stilblatt (design.css, „Der Rahmen“). Gefragt
+    // wird die Medienabfrage, nicht der berechnete Stil: Der zwänge den
+    // Browser bei jedem Bild der Bewegung, seine Stile neu zu rechnen.
+    this._breit = matchMedia(RAHMEN_AB);
+    this._app = document.getElementById('app');
     this._rahmen = 0;
     const planen = () => {
       if (this._rahmen) return;
       this._rahmen = requestAnimationFrame(() => { this._rahmen = 0; this.zeichnen(); });
     };
     map.on('move zoom resize viewreset', planen);
-    window.addEventListener('resize', planen);
+    window.addEventListener('resize', () => { this._innen = null; planen(); });
     this.planen = planen;
     planen();
+
+    this.lage = document.createElement('div');
+    this.lage.className = 'rahmen-lage';
+    this.lage.setAttribute('aria-hidden', 'true');
+    buehne.appendChild(this.lage);
+    let lageRahmen = 0;
+    let letzte = null;
+    map.on('mousemove', (e) => {
+      letzte = e.latlng;
+      if (lageRahmen) return;
+      lageRahmen = requestAnimationFrame(() => {
+        lageRahmen = 0;
+        const lng = ((((letzte.lng + 180) % 360) + 360) % 360) - 180;
+        this.lage.textContent = `${grad(letzte.lat, txt('blatt.nord'), txt('blatt.sued'))}  ·  ${grad(lng, txt('blatt.ost'), txt('blatt.west'))}`;
+        this.lage.classList.add('is-aktiv');
+      });
+    });
+    map.on('mouseout', () => this.lage.classList.remove('is-aktiv'));
   }
 
   zeichnen() {
     const svg = this.svg;
-    if (entwurf() !== 'blatt') {
+    if (!this._breit.matches || this._app?.classList.contains('is-battle')) {
       if (svg.firstChild) svg.replaceChildren();
-      svg.style.display = 'none';
+      this._innen = null;
       return;
     }
-    svg.style.display = '';
     const karte = this.map.getContainer().getBoundingClientRect();
     const buehne = this.buehne.getBoundingClientRect();
-    const w = karte.width;
-    const h = karte.height;
+    // Das Blatt ist die Karte abzüglich des Papierrands ringsum.
+    // Gemerkt, nicht je Bild erfragt: getComputedStyle zwänge den Browser
+    // bei jeder Bewegung, seine Stile neu zu rechnen.
+    this._innen ??= randBreite();
+    const innen = this._innen;
+    const w = karte.width - innen * 2;
+    const h = karte.height - innen * 2;
     if (w < 40 || h < 40) return;
 
-    // Die Zeichenfläche reicht um den Rand über die Karte hinaus.
-    svg.style.left = `${karte.left - buehne.left - RAND}px`;
-    svg.style.top = `${karte.top - buehne.top - RAND}px`;
+    // Die Zeichenfläche reicht um den Rand über das Blatt hinaus.
+    svg.style.left = `${karte.left - buehne.left + innen - RAND}px`;
+    svg.style.top = `${karte.top - buehne.top + innen - RAND}px`;
     svg.setAttribute('width', String(w + RAND * 2));
     svg.setAttribute('height', String(h + RAND * 2));
 
@@ -100,11 +148,13 @@ export class Blattrand {
     teile.push(`<rect class="blattrand__linie" x="${r - aussen - .5}" y="${r - aussen - .5}" width="${w + aussen * 2 + 1}" height="${h + aussen * 2 + 1}"/>`);
     teile.push(`<rect class="blattrand__linie blattrand__linie--fein" x="${r - LUFT - .5}" y="${r - LUFT - .5}" width="${w + LUFT * 2 + 1}" height="${h + LUFT * 2 + 1}"/>`);
 
-    const b = this.map.getBounds();
-    const west = b.getWest();
-    const ost = b.getEast();
-    const sued = Math.max(b.getSouth(), -85);
-    const nord = Math.min(b.getNorth(), 85);
+    const groesse = this.map.getSize();
+    const nw = this.map.containerPointToLatLng([innen, innen]);
+    const so = this.map.containerPointToLatLng([groesse.x - innen, groesse.y - innen]);
+    const west = nw.lng;
+    const ost = so.lng;
+    const sued = Math.max(so.lat, -85);
+    const nord = Math.min(nw.lat, 85);
     const mitteLat = (sued + nord) / 2;
     const mitteLng = (west + ost) / 2;
 
@@ -121,7 +171,7 @@ export class Blattrand {
        Vielfachen der Teilung, nicht nach der Reihenfolge im Bild – sonst
        sprängen sie beim Schwenken zwischen gefüllt und leer. */
     const tl = teilungFuer(ost - west);
-    const xVon = (lng) => this.map.latLngToContainerPoint([mitteLat, lng]).x + r;
+    const xVon = (lng) => this.map.latLngToContainerPoint([mitteLat, lng]).x - innen + r;
     for (let lng = Math.floor(west / tl) * tl; lng < ost + tl; lng += tl) {
       const x0 = Math.max(r, xVon(lng));
       const x1 = Math.min(r + w, xVon(lng + tl));
@@ -141,7 +191,7 @@ export class Blattrand {
 
     // Breitengrade: links und rechts, Zahlen gedreht an der Kante entlang.
     const tb = teilungFuer(nord - sued);
-    const yVon = (lat) => this.map.latLngToContainerPoint([lat, mitteLng]).y + r;
+    const yVon = (lat) => this.map.latLngToContainerPoint([lat, mitteLng]).y - innen + r;
     for (let lat = Math.floor(sued / tb) * tb; lat < nord + tb; lat += tb) {
       const ya = Math.min(r + h, yVon(lat));
       const yb = Math.max(r, yVon(Math.min(lat + tb, 85)));

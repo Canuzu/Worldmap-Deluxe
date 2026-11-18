@@ -14,6 +14,7 @@
  * Aufruf: npm run check:fluss [-- http://127.0.0.1:4173] [--drossel 4]
  */
 import { chromium } from 'playwright';
+import { startOptionen } from './browser.mjs';
 
 const args = process.argv.slice(2);
 const BASE = args.find((a) => a.startsWith('http')) ?? 'http://127.0.0.1:4173';
@@ -44,7 +45,7 @@ const GRENZE = { schwenken: 250, zoomen: 900, epoche: 400, kueste: 4000 };
    Software an die Bildausgabe übergibt („Commit“). Auf einem Gerät mit
    Grafikbeschleunigung kostet genau dieser Schritt fast nichts. */
 
-const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
+const browser = await chromium.launch(startOptionen());
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
 const cdp = await page.context().newCDPSession(page);
 await cdp.send('Emulation.setCPUThrottlingRate', { rate: DROSSEL });

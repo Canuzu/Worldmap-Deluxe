@@ -35,6 +35,13 @@ export class Timeline {
     this._bubble.className = 'track__bubble';
     this.dom.track.appendChild(this._bubble);
 
+    // Die Lupe: Wer über die Leiste fährt, liest das Jahr unter dem Zeiger,
+    // bevor er klickt – und die Striche in der Nähe wachsen ihm entgegen.
+    this._lupe = document.createElement('div');
+    this._lupe.className = 'track__lupe';
+    this._lupe.setAttribute('aria-hidden', 'true');
+    this.dom.track.appendChild(this._lupe);
+
     const neuVermessen = () => { this._buildScale(); this._fitEraLabels(); this.render(); };
     window.addEventListener('resize', neuVermessen);
     // Nicht nur das Fenster ändert die Breite der Leiste: Beim Öffnen der
@@ -169,6 +176,9 @@ export class Timeline {
     this._tickEls = this.epochs.map((epoch, i) => {
       const el = document.createElement('i');
       el.style.left = `${(this.fraction(i) * 100).toFixed(4)}%`;
+      // Für die Lupe: Jeder Strich kennt seine Lage, das Stilblatt rechnet
+      // daraus mit der Zeigerlage (--mx) seine Höhe.
+      el.style.setProperty('--p', this.fraction(i).toFixed(4));
       el.title = yearText(epoch.year);
       // „runde“ Jahre bekommen einen längeren Strich
       if (epoch.year % 500 === 0 || [1492, 1815, 1914, 1945].includes(epoch.year)) {
@@ -240,22 +250,32 @@ export class Timeline {
     const track = this.dom.track;
     let dragging = false;
 
+    // Ein Klick ist ein Sprung, ein Zug ist ein Gleiten. Nur der Sprung
+    // bekommt die Zeitwelle; beim Gleiten jagte sonst eine Welle die nächste.
+    let start = 0;
+    let gezogen = false;
     const move = (event) => {
       const year = this._yearFromEvent(event);
-      if (year !== this.year) this.setYear(year, { commit: false });
+      if (year !== this.year) this.setYear(year, { commit: false, sprung: !gezogen });
       this._updateBubble();
     };
 
     track.addEventListener('pointerdown', (event) => {
       dragging = true;
+      gezogen = false;
+      start = event.clientX;
       track.setPointerCapture(event.pointerId);
       track.classList.add('is-dragging');
       this.stop();
       move(event);
     });
     track.addEventListener('pointermove', (event) => {
-      if (dragging) move(event);
+      this._lupeZeigen(event);
+      if (!dragging) return;
+      if (Math.abs(event.clientX - start) > 4) gezogen = true;
+      move(event);
     });
+    track.addEventListener('pointerleave', () => track.classList.remove('is-hover'));
     const end = (event) => {
       if (!dragging) return;
       dragging = false;
@@ -294,6 +314,50 @@ export class Timeline {
     });
   }
 
+  _lupeZeigen(event) {
+    if (event.pointerType !== 'mouse') return;
+    const rect = this.dom.track.getBoundingClientRect();
+    const t = Math.max(0, Math.min(1, (event.clientX - rect.left) / rect.width));
+    this.dom.track.style.setProperty('--mx', t.toFixed(4));
+    this.dom.track.classList.add('is-hover');
+    const jahr = this.yearAt(t);
+    if (jahr !== this._lupenJahr) {
+      this._lupenJahr = jahr;
+      const epoche = this.epochs[this.indexForYear(jahr)];
+      const era = this.eras.find((e) => e.id === epoche.era);
+      this._lupe.innerHTML = `<span><b>${esc(yearText(jahr))}</b><small>${esc(era?.short ?? '')}</small></span>`;
+    }
+    this._lupe.style.transform = `translateX(${(t * rect.width).toFixed(1)}px)`;
+  }
+
+  /**
+   * Das Zählwerk: Jede Ziffer ist eine Walze, die zur neuen Zahl rollt.
+   * Die Ziffernsäulen stehen im Stilblatt (::before) und nicht im Text –
+   * so bleibt der Text des Elements die Jahreszahl selbst, für Vorlesesoftware
+   * wie für alles, was sie ausliest.
+   */
+  _zaehlwerk(value, era) {
+    const el = this.dom.yearBig;
+    if (!this._zw || this._zwForm !== value.replace(/\d/g, '0')) {
+      this._zwForm = value.replace(/\d/g, '0');
+      el.innerHTML = `<span class="zw" aria-hidden="true">${[...value].map((c) => (/\d/.test(c)
+        ? `<span class="zw__s"><span class="zw__r" style="--d:${c}"></span></span>`
+        : `<span class="zw__x" data-z="${esc(c)}"></span>`)).join('')}</span>`
+        + '<span class="sr-only"></span><sub></sub>';
+      this._zw = {
+        walzen: [...el.querySelectorAll('.zw__r, .zw__x')],
+        text: el.querySelector('.sr-only'),
+        era: el.querySelector('sub'),
+      };
+    }
+    const { walzen, text } = this._zw;
+    [...value].forEach((c, i) => {
+      if (/\d/.test(c)) walzen[i].style.setProperty('--d', c);
+    });
+    text.textContent = value;
+    if (this._zw.era.textContent !== era) this._zw.era.textContent = era;
+  }
+
   _updateBubble() {
     this._bubble.textContent = yearText(this.year);
     this._bubble.style.left = `${(this.fractionForYear(this.year) * 100).toFixed(3)}%`;
@@ -311,7 +375,7 @@ export class Timeline {
    * Freies Jahr wählen. Die Karte wechselt nur, wenn dadurch ein anderer
    * Kartenstand der nächstgelegene wird.
    */
-  setYear(year, { commit = true, silent = false } = {}) {
+  setYear(year, { commit = true, silent = false, sprung = true } = {}) {
     const first = this.epochs[0].year;
     const last = this.epochs[this.count - 1].year;
     this.year = Math.max(first, Math.min(last, Math.round(year)));
@@ -321,7 +385,7 @@ export class Timeline {
     this.index = next;
     this.render();
 
-    if (!silent && (changed || commit)) this.onChange(next, { commit, year: this.year });
+    if (!silent && (changed || commit)) this.onChange(next, { commit, year: this.year, sprung });
     if (changed) this.onScrub(next);
   }
 
@@ -339,7 +403,7 @@ export class Timeline {
     this._tickEls.forEach((el, i) => el.classList.toggle('is-active', i === this.index));
 
     const { value, era } = yearParts(this.year);
-    this.dom.yearBig.innerHTML = `${value}<sub>${era}</sub>`;
+    this._zaehlwerk(value, era);
 
     const eraDef = this.eras.find((e) => e.id === epoch.era);
     this.dom.yearEra.textContent = eraDef?.name ?? '';
@@ -381,6 +445,7 @@ export class Timeline {
     this.dom.yearTitle.innerHTML = teile.length ? `· ${teile.join(' · ')}` : '';
     this.dom.yearTitle.classList.toggle('is-approx', !exact);
     this.dom.timeline.style.setProperty('--era-color', ERA_COLORS[epoch.era] ?? 'var(--gold)');
+    document.documentElement.style.setProperty('--epoche', ERA_COLORS[epoch.era] ?? 'var(--gold)');
 
     this.dom.track.setAttribute('aria-valuenow', String(this.year));
     this.dom.track.setAttribute('aria-valuetext',
@@ -430,6 +495,7 @@ export class Timeline {
     // SVGElement spiegelt das hidden-Attribut nicht als Eigenschaft – eine
     // Zuweisung an .hidden legte nur ein totes Feld an, die Schaltfläche
     // blieb stehen. Deshalb das Attribut selbst schalten.
+    btn.classList.toggle('is-laeuft', this.playing);
     btn.querySelector('.i-play').toggleAttribute('hidden', this.playing);
     btn.querySelector('.i-pause').toggleAttribute('hidden', !this.playing);
     btn.title = this.playing ? 'Zeitreise anhalten (Leertaste)' : 'Zeitreise starten (Leertaste)';

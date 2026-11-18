@@ -39,6 +39,8 @@
     "url": "https://github.com/Canuzu/Worldmap-Deluxe.git"
   },
   "dependencies": {
+    "@fontsource/eb-garamond": "^5.3.0",
+    "@fontsource/manrope": "^5.3.0",
     "leaflet": "^1.9.4",
     "topojson-client": "^3.1.0"
   },

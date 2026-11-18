@@ -9,8 +9,13 @@
 export const EN = {
   /* ---------------------------------------------------- Head & start-up */
   'doc.titel': 'Worldmap Deluxe – Historical World Atlas',
-  'entwurf.titel': 'Draft',
-  'entwurf.aria': 'Choose a design draft',
+  'taste.linse': 'Time lens on and off',
+  'taste.linsenstand': 'Time lens: earlier / later state',
+  'linse.knopf': 'Time lens (Z)',
+  'linse.hinweis': 'Time lens: a look into another map state. Comma and period choose it, Z closes.',
+  'linse.frueher': 'earlier state',
+  'linse.spaeter': 'later state',
+  'linse.niemand': 'unclaimed',
   'blatt.ost': 'E',
   'blatt.west': 'W',
   'blatt.nord': 'N',

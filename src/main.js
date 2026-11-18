@@ -9,13 +9,22 @@ import './styles/layout.css';
 import './styles/timeline.css';
 import './styles/panel.css';
 import './styles/map.css';
-/* Die Gestaltungsentwürfe. Jedes Blatt greift nur unter seinem eigenen
-   `data-entwurf` – ohne das Merkmal ändert keines davon etwas. */
-import './styles/entwurf.css';
-import './styles/entwurf-klar.css';
-import './styles/entwurf-instrument.css';
-import './styles/entwurf-stich.css';
-import './styles/entwurf-blatt.css';
+/* Die Gestaltung: Schriften, Rahmen, Platten. Zuletzt, weil sie über allem
+   liegt, was die Bausteine davor an Grundform mitbringen. */
+/* Nur die Schnitte, die gebraucht werden, und nur lateinische Teilmengen:
+   Jede weitere Datei lädt der Browser nur, wenn ein Zeichen sie verlangt,
+   aber jede Erklärung dafür steht im Stilblatt. Kursiv kommt nur in
+   deutschen und englischen Oberflächentexten vor – ohne Erweiterung. */
+import '@fontsource/eb-garamond/latin-500.css';
+import '@fontsource/eb-garamond/latin-ext-500.css';
+import '@fontsource/eb-garamond/latin-600.css';
+import '@fontsource/eb-garamond/latin-ext-600.css';
+import '@fontsource/eb-garamond/latin-500-italic.css';
+import '@fontsource/manrope/latin-500.css';
+import '@fontsource/manrope/latin-ext-500.css';
+import '@fontsource/manrope/latin-600.css';
+import '@fontsource/manrope/latin-ext-600.css';
+import './styles/design.css';
 
 import RELIGION from './data/religion/vokabular.json';
 import { atlasData } from './modules/data.js';
@@ -32,8 +41,8 @@ import { BattlePlayer, BATTLES, ladeVerlauf, darstellung } from './modules/battl
 import { Beiblatt } from './modules/beiblatt.js';
 import { bodenblatt } from './modules/blatt.js';
 import { EventLayer, ARTEN, artKurz, artLabel, zeitfenster } from './modules/ereignisse.js';
-import { entwurfEinrichten, entwurfUmschalter } from './modules/entwurf.js';
-import { Blattrand } from './modules/blattrand.js';
+import { Blattrand, randBreite } from './modules/blattrand.js';
+import { Zeitlinse } from './modules/zeitlinse.js';
 import {
   KonfliktLayer, KONFLIKT_ARTEN, konfliktKurz, konfliktLabel,
   SEITENFARBEN, spanneText, fortschritt,
@@ -44,8 +53,12 @@ const STORE_KEY = 'worldmap-deluxe:prefs';
 
 /* ------------------------------------------------------------ Zustand */
 
+/* Mit der neuen Gestaltung beginnt jeder einmal auf Papier: Wer früher die
+   Nachtkarte gespeichert hatte, sähe sonst nie, wofür sie gemacht ist. Wer
+   danach wieder umschaltet, behält seine Wahl. */
+const GESTALTUNG = 2;
 const prefs = {
-  theme: 'night',
+  theme: 'parchment',
   basemap: 'relief',
   colorMode: 'polity',
   labels: true,
@@ -60,10 +73,15 @@ const prefs = {
   focus: false,
   compactTimeline: false,
   ...readPrefs(),
+  gestaltung: GESTALTUNG,
 };
 
 function readPrefs() {
-  try { return JSON.parse(localStorage.getItem(STORE_KEY) ?? '{}'); } catch { return {}; }
+  try {
+    const gespeichert = JSON.parse(localStorage.getItem(STORE_KEY) ?? '{}');
+    if ((gespeichert.gestaltung ?? 1) < GESTALTUNG) delete gespeichert.theme;
+    return gespeichert;
+  } catch { return {}; }
 }
 function savePrefs() {
   try { localStorage.setItem(STORE_KEY, JSON.stringify(prefs)); } catch { /* egal */ }
@@ -107,16 +125,24 @@ async function main() {
      auf der Karte – fragt das Wörterbuch. Wer das später einrichtet, hat eine
      Seite, die auf Deutsch startet und mitten im Aufbau umspringt. */
   spracheEinrichten();
-  // Unmittelbar nach der Sprache: Die Karte liest beim Anlegen Farben und
-  // Schriften aus dem Stilblatt, und die hängen am Entwurf.
-  entwurfEinrichten();
   markupBeschriften();
   document.title = txt('doc.titel');
+  /* Die Kartenschrift wird auf Canvas gesetzt. Steht sie beim ersten Bild
+     noch nicht bereit, zeichnet der Browser mit einer Ersatzschrift – und
+     zeichnet nicht von selbst nach. Also wird sie früh angefordert und vor
+     dem ersten Kartenbild abgewartet, höchstens aber kurz. */
+  const schriften = Promise.race([
+    Promise.all(['500 16px "EB Garamond"', '600 16px "EB Garamond"', '500 16px Manrope', '600 16px Manrope']
+      .map((f) => document.fonts?.load(f))),
+    new Promise((fertig) => { window.setTimeout(fertig, 2200); }),
+  ]).catch(() => {});
 
   const bootBar = $('bootBar');
   const bootStatus = $('bootStatus');
+  const bootLauf = $('bootLauf');
   const progress = (value, text) => {
     bootBar.style.width = `${Math.round(value * 100)}%`;
+    bootLauf?.style.setProperty('--lauf', String(Math.round(value * 100)));
     if (text) bootStatus.textContent = text;
   };
 
@@ -239,14 +265,55 @@ async function main() {
     {
       epochs: atlasData.epochs,
       eras: atlasData.eras,
-      onChange: (index, { year } = {}) => {
+      onChange: (index, { year, sprung } = {}) => {
         if (year != null) state.year = year;
         // Ab jetzt wird gereist – der Vorgriff darf weiter greifen.
         reisebereit = true;
+        // Ein Sprung läuft als Welle über die Karte – vom Regler aus, als
+        // flösse die neue Zeit aus der Leiste in die Karte.
+        if (sprung && index !== state.index) atlas.welleVon(welleAmRegler());
         goto(index);
       },
     },
   );
+
+  /** Wo der Zeitregler die Karte berührt – in Kartenkoordinaten. */
+  function welleAmRegler() {
+    const karte = atlas.el.getBoundingClientRect();
+    const griff = $('trackHandle').getBoundingClientRect();
+    const leiste = $('timeline').getBoundingClientRect();
+    const sichtbar = leiste.height > 0 && leiste.top < karte.bottom;
+    return {
+      x: Math.max(0, Math.min(karte.width, griff.left - karte.left)),
+      y: sichtbar ? Math.max(0, leiste.top - karte.top + 8) : karte.height,
+    };
+  }
+
+  /* Die Front der Welle: ein Ring, der genau mit dem Ausschnitt mitläuft –
+     gleiche Dauer, gleiche Kurve, gleicher Mittelpunkt. */
+  atlas.on('welle', ({ x, y, r, ms, kurve }) => {
+    const ring = document.createElement('div');
+    ring.className = 'zeitwelle';
+    ring.style.cssText = `left:${x - r}px;top:${y - r}px;width:${r * 2}px;height:${r * 2}px`;
+    atlas.el.appendChild(ring);
+    ring.animate([{ transform: 'scale(.001)' }, { transform: 'scale(1)' }], { duration: ms, easing: kurve, fill: 'forwards' });
+    // Der Ring trägt die Front nur, solange sie klein ist, dann ist es die
+    // Farbkante selbst. Ein Ring über das ganze Fenster kostet ohne
+    // Grafikkarte so viel wie die ganze Überblendung noch einmal.
+    ring.animate([{ opacity: 1 }, { opacity: 1, offset: .22 }, { opacity: 0, offset: .48 }, { opacity: 0 }], { duration: ms, fill: 'forwards' })
+      .finished.then(() => ring.remove(), () => ring.remove());
+  });
+
+  /* Die Zeitlinse – siehe zeitlinse.js. */
+  const linse = new Zeitlinse(atlas, {
+    laden: (i) => atlasData.load(i),
+    jahr: (i) => atlasData.epochAt(i).year,
+    anzahl: atlasData.epochs.length,
+    index: () => state.index,
+    name: (n) => atlasData.anzeigeName(n),
+    onWechsel: (an) => $('btnLinse').setAttribute('aria-pressed', String(an)),
+  });
+  $('btnLinse').addEventListener('click', () => linse.umschalten());
 
   /* -------------------------------------------------------- Kartenlogik */
 
@@ -352,6 +419,7 @@ async function main() {
     }
     atlas.setIceAge(eiszeit);
     atlas.setEpoch(epoch, { animate });
+    linse.zeitGeaendert();
     planePrefetch(index);
 
     timeline.setStats({
@@ -506,22 +574,11 @@ async function main() {
   window.addEventListener('resize', () => requestAnimationFrame(meldeOberflaechenSperren));
   requestAnimationFrame(() => requestAnimationFrame(meldeOberflaechenSperren));
 
-  /* Entwurfsvergleich: Nach dem Umschalten liest die Karte ihre Farben und
-     Schriften neu, und alles, was auf Größen hört, misst neu – im Blatt ist
-     die Kartenfläche eine andere als in den übrigen Entwürfen. Ein
-     `resize` erreicht Leaflet, die Zeitleiste und die Sperrflächen zugleich. */
-  // Der Gradnetzrand gehört zum Entwurf „Blatt“ und entsteht nur, wenn
-  // überhaupt verglichen wird – der veröffentlichte Stand bleibt unberührt.
-  const blattrand = new URLSearchParams(location.search).has('entwurf')
-    ? new Blattrand(atlas.map, document.querySelector('.stage'))
-    : null;
-  entwurfUmschalter(() => {
-    requestAnimationFrame(() => {
-      window.dispatchEvent(new Event('resize'));
-      atlas.applyTheme(prefs.theme);
-      blattrand?.planen();
-    });
-  });
+  /* Der Kartenrand: Rahmenlinie, Gradleiste, Gradzahlen und die Lage des
+     Zeigers – gerechnet, nicht gemalt. Auf schmalen Schirmen blendet das
+     Stilblatt ihn aus; dann zeichnet er auch nichts. */
+  // eslint-disable-next-line no-new
+  new Blattrand(atlas.map, document.querySelector('.stage'));
 
   /* ------------------------------------------------------ Hover-Hinweis */
 
@@ -786,9 +843,8 @@ async function main() {
         angefordert = false;
         atlas.map.invalidateSize({ pan: false, animate: false });
       });
-    /* Beobachtet wird die Karte, nicht die Bühne. Meist sind beide gleich
-       groß – aber nicht im Entwurf „Blatt“: Dort liegt die Karte mit Rand in
-       der Bühne, und wenn das Kriegsregister aufgeht, wird sie schmaler,
+    /* Beobachtet wird die Karte, nicht die Bühne: Die Karte liegt mit Rand
+       in der Bühne, und wenn das Kriegsregister aufgeht, wird sie schmaler,
        während die Bühne bleibt, wie sie ist. Leaflet rechnete dann mit der
        alten Breite, und jeder Klick traf daneben. */
     }).observe(atlas.el ?? buehne);
@@ -797,12 +853,20 @@ async function main() {
   function watchConsoleHeight() {
     const konsole = $('timeline');
     const setzen = () => {
-      const hoehe = konsole.getBoundingClientRect().height;
+      /* Mit Kartenrand steht die Konsole um den Rand höher. Alles, was sich
+         über ihr stapelt, rechnet mit --console-h; der Rand gehört deshalb
+         hier hinein und nicht in ein Dutzend einzelner Regeln. */
+      const rand = randBreite();
+      const hoehe = konsole.getBoundingClientRect().height + (rand ? rand - 1.6 : 0);
       document.documentElement.style.setProperty('--console-h', `${Math.round(hoehe)}px`);
     };
     setzen();
     if ('ResizeObserver' in window) new ResizeObserver(setzen).observe(konsole);
     window.addEventListener('resize', setzen);
+    // Beim Öffnen einer Schlacht weicht der Kartenrand – die Konsole rückt
+    // nach unten, ohne ihre Größe zu ändern.
+    new MutationObserver(() => requestAnimationFrame(setzen))
+      .observe($('app'), { attributes: true, attributeFilter: ['class'] });
 
     /* Die Modusleiste ebenso. Auf schmalen Schirmen stapeln sich unten drei
        Zeilen – Zeitleiste, Modusleiste, Maßstab – und die beiden oberen
@@ -1322,7 +1386,7 @@ async function main() {
   function meldeOberflaechenSperren() {
     const buehne = atlas.el.getBoundingClientRect();
     const RAND = 6;
-    const flaechen = ['timeline', 'brand', 'colorModes', 'tools', 'panel', 'battlesBox', 'credits', 'entwurfWahl']
+    const flaechen = ['timeline', 'brand', 'colorModes', 'tools', 'panel', 'battlesBox', 'credits']
       .map((id) => document.getElementById(id))
       .filter((el) => el && !el.hidden && el.offsetParent !== null)
       .map((el) => {
@@ -1336,12 +1400,14 @@ async function main() {
       });
     // Der Bildrand selbst: Ein Name, der zur Hälfte draußen liegt, wird von
     // der Leinwand abgeschnitten – „Britische O…" statt „Britisches Ostindien".
+    // Mit Kartenrand endet das Sichtbare am Papier, nicht am Fenster.
     const b = buehne;
+    const i = randBreite();
     flaechen.push(
-      { x: -200, y: -200, w: b.width + 400, h: 200 },
-      { x: -200, y: b.height, w: b.width + 400, h: 200 },
-      { x: -200, y: -200, w: 200, h: b.height + 400 },
-      { x: b.width, y: -200, w: 200, h: b.height + 400 },
+      { x: -200, y: -200, w: b.width + 400, h: 200 + i },
+      { x: -200, y: b.height - i, w: b.width + 400, h: 200 + i },
+      { x: -200, y: -200, w: 200 + i, h: b.height + 400 },
+      { x: b.width - i, y: -200, w: 200 + i, h: b.height + 400 },
     );
     atlas.setLabelSperren('oberflaeche', flaechen);
   }
@@ -1789,12 +1855,30 @@ async function main() {
     alleZu();
   });
 
-  function setTheme(theme) {
+  function setTheme(theme, ursprung = $('btnTheme')) {
     prefs.theme = theme;
-    document.documentElement.dataset.theme = theme;
-    // Ein Frame warten, damit die neuen CSS-Variablen ausgelesen werden können.
-    requestAnimationFrame(() => atlas.applyTheme(theme));
     savePrefs();
+    const wechseln = () => {
+      document.documentElement.dataset.theme = theme;
+      atlas.applyTheme(theme);
+    };
+    /* Der Wechsel als Blende: Die neue Farbwelt öffnet sich als Kreis aus
+       dem Knopf, der sie gerufen hat. Der Browser hält dafür ein Standbild
+       der alten Seite; die neue ist darunter schon lebendig. */
+    if (!document.startViewTransition || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.dataset.theme = theme;
+      // Ein Frame warten, damit die neuen CSS-Variablen ausgelesen werden können.
+      requestAnimationFrame(() => atlas.applyTheme(theme));
+      return;
+    }
+    const r = ursprung?.getBoundingClientRect();
+    const x = r && r.width ? r.left + r.width / 2 : window.innerWidth - 40;
+    const y = r && r.width ? r.top + r.height / 2 : 40;
+    const wurzel = document.documentElement.style;
+    wurzel.setProperty('--vt-x', `${Math.round(x)}px`);
+    wurzel.setProperty('--vt-y', `${Math.round(y)}px`);
+    wurzel.setProperty('--vt-r', `${Math.ceil(Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y)))}px`);
+    document.startViewTransition(wechseln);
   }
   $('btnTheme').addEventListener('click', () => {
     setTheme(prefs.theme === 'night' ? 'parchment' : 'night');
@@ -1905,6 +1989,7 @@ async function main() {
     if (event.key === 'Escape') {
       if (!modal.hidden) { modal.hidden = true; return; }
       if (searchWrap.classList.contains('is-open')) { closeSearch(); return; }
+      if (linse.an) { linse.umschalten(false); return; }
       if (document.getElementById('app').classList.contains('is-focus')) { setFocusMode(false); return; }
       if (!battlesBox.hidden) { closeBattles(); return; }
       if (POPOVER.some(([el]) => !el.hidden)) {
@@ -1941,6 +2026,9 @@ async function main() {
       case 't': setTheme(prefs.theme === 'night' ? 'parchment' : 'night'); break;
       case 'e': togglePopover(layersMenu, $('btnLayers')); break;
       case 'l': togglePopover(legendBox, $('btnLegend')); break;
+      case 'z': linse.umschalten(); break;
+      case ',': linse.schritt(-1); break;
+      case '.': linse.schritt(1); break;
       case '0': atlas.home(); break;
       case '?': openModal(txt('modal.tastatur'), shortcutsHtml()); break;
       default: break;
@@ -1951,6 +2039,7 @@ async function main() {
 
   timeline.setYear(state.year, { silent: true });
   timeline.render();
+  await schriften;
   await goto(startIndex, { animate: false });
   updateScale();
   drawRoseTicks();
@@ -1963,6 +2052,9 @@ async function main() {
 
   progress(1, 'Fertig');
   window.setTimeout(() => {
+    // Der Vorhang geht als Blende auf: ein Kreis aus der Mitte, durch den
+    // man auf die Karte sieht – dieselbe Geste wie die Zeitlinse.
+    $('boot').classList.add('is-blende');
     $('boot').hidden = true;
     // Der Auftritt: Karte und Bedienelemente kommen nicht gleichzeitig, sondern
     // in der Reihenfolge, in der man sie liest – erst die Karte, dann der
@@ -2056,6 +2148,8 @@ function shortcutsHtml() {
     ['T', 'taste.farbwelt'],
     ['E', 'taste.ebenen'],
     ['L', 'taste.legende'],
+    ['Z', 'taste.linse'],
+    [', .', 'taste.linsenstand'],
     ['0', 'taste.zurueck'],
     ['V', 'taste.vollbild'],
     ['K', 'taste.schlachten'],

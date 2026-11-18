@@ -4,9 +4,10 @@
  * Aufruf: node scripts/smoke.mjs [http://127.0.0.1:5173]
  */
 import { chromium } from 'playwright';
+import { startOptionen } from './browser.mjs';
 
 const BASE = process.argv[2] ?? 'http://127.0.0.1:5173';
-const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
+const browser = await chromium.launch(startOptionen());
 /* Die Sprache festnageln.
  *
  * Der Atlas richtet sich seit der englischen Fassung nach dem Browser, und ein
@@ -86,7 +87,9 @@ await check('Klick auf die Karte wählt ein Gemeinwesen', async () => {
   // haengt an der Fenstergroesse. Warschau 1815: Kongresspolen.
   const pt = await page.evaluate(() => {
     const c = window.__atlasMap.latLngToContainerPoint([52.23, 21.01]);
-    return { x: Math.round(c.x), y: Math.round(c.y) };
+    // Containerpunkt + Lage der Karte: Mit Kartenrand liegt sie nicht bei 0,0.
+    const m = document.getElementById('map').getBoundingClientRect();
+    return { x: Math.round(m.left + c.x), y: Math.round(m.top + c.y) };
   });
   await page.mouse.click(pt.x, pt.y);
   await page.waitForSelector('#panel:not([hidden])', { timeout: 4000 });
@@ -142,11 +145,14 @@ await check('Zeitreise startet und hält an', async () => {
 });
 
 await check('Farbwelt wechselt', async () => {
+  // Seit der neuen Gestaltung beginnt der Atlas auf Pergament.
+  const vorher = await page.getAttribute('html', 'data-theme');
   await page.keyboard.press('t');
   await page.waitForTimeout(500);
   const theme = await page.getAttribute('html', 'data-theme');
-  if (theme !== 'parchment') throw new Error(`Theme: ${theme}`);
+  if (theme === vorher) throw new Error(`Theme bleibt: ${theme}`);
   await page.keyboard.press('t');
+  await page.waitForTimeout(900);
 });
 
 await check('Ebenen-Menü öffnet', async () => {
@@ -332,7 +338,9 @@ await check('Umayyaden reichen 700 bis Persien', async () => {
     const map = window.__atlasMap;
     // Isfahan – 700 n. Chr. umayyadisch
     const pt = map.latLngToContainerPoint([32.65, 51.67]);
-    return { x: Math.round(pt.x), y: Math.round(pt.y) };
+    // Containerpunkt + Lage der Karte: Mit Kartenrand liegt sie nicht bei 0,0.
+    const m = document.getElementById('map').getBoundingClientRect();
+    return { x: Math.round(m.left + pt.x), y: Math.round(m.top + pt.y) };
   });
   await page.mouse.click(found.x, found.y);
   await page.waitForSelector('#panel:not([hidden])', { timeout: 4000 });
@@ -354,7 +362,9 @@ await check('Besetztes Gebiet wird als solches ausgewiesen', async () => {
   // Minsk – November 1942 deutsch besetzt, aber weiterhin sowjetisch.
   const pt = await page.evaluate(() => {
     const c = window.__atlasMap.latLngToContainerPoint([53.90, 27.57]);
-    return { x: Math.round(c.x), y: Math.round(c.y) };
+    // Containerpunkt + Lage der Karte: Mit Kartenrand liegt sie nicht bei 0,0.
+    const m = document.getElementById('map').getBoundingClientRect();
+    return { x: Math.round(m.left + c.x), y: Math.round(m.top + c.y) };
   });
   await page.mouse.click(pt.x, pt.y);
   await page.waitForSelector('#panel:not([hidden])', { timeout: 4000 });
@@ -1065,7 +1075,9 @@ await check('Karte meldet ihren Zustand an Vorlesesoftware', async () => {
 
   const pt = await page.evaluate(() => {
     const c = window.__atlasMap.latLngToContainerPoint([53.90, 27.57]);
-    return { x: Math.round(c.x), y: Math.round(c.y) };
+    // Containerpunkt + Lage der Karte: Mit Kartenrand liegt sie nicht bei 0,0.
+    const m = document.getElementById('map').getBoundingClientRect();
+    return { x: Math.round(m.left + c.x), y: Math.round(m.top + c.y) };
   });
   await page.mouse.click(pt.x, pt.y);
   await page.waitForTimeout(900);

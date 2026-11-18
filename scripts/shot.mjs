@@ -4,13 +4,14 @@
  * Aufruf: node scripts/shot.mjs <name> [hash] [aktion]
  */
 import { chromium } from 'playwright';
+import { startOptionen } from './browser.mjs';
 import fs from 'node:fs';
 
 const [name = 'shot', hash = '', action = ''] = process.argv.slice(2);
 const OUT = '/tmp/shots';
 fs.mkdirSync(OUT, { recursive: true });
 
-const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
+const browser = await chromium.launch(startOptionen());
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 2 });
 
 const errors = [];
