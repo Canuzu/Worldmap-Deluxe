@@ -244,22 +244,23 @@ body {
 @media (min-width: 1101px) and (min-height: 600px) {
   :root { --rahmen: 30px; }
 
-  /* Das Papier liegt über dem Kartenrand: ein Rahmen aus einer Fläche,
-     deren Mitte per Maske ausgespart ist. Die Karte darunter behält ihre
-     volle Größe. */
-  .rahmen-papier {
-    display: block;
+  /* Das Papier liegt über dem Kartenrand: vier Streifen, die Karte darunter
+     behält ihre volle Größe. Vier Streifen und keine Fläche mit ausgesparter
+     Mitte: Eine Maske über dem ganzen Fenster legte der Browser als eigene
+     Zwischenfläche an und rechnete sie bei jedem Bild einer Bewegung neu
+     zusammen – das Papier kostete so viel wie eine weitere Karte. */
+  .rahmen-papier { display: contents; }
+  .rahmen-papier i {
     position: absolute;
-    inset: 0;
     z-index: 401;
     pointer-events: none;
-    padding: var(--rahmen);
     background-color: var(--papier);
     background-image: var(--faser);
-    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
   }
+  .rahmen-papier i:nth-child(1) { left: 0; right: 0; top: 0; height: var(--rahmen); }
+  .rahmen-papier i:nth-child(2) { left: 0; right: 0; bottom: 0; height: var(--rahmen); }
+  .rahmen-papier i:nth-child(3) { left: 0; top: var(--rahmen); bottom: var(--rahmen); width: var(--rahmen); }
+  .rahmen-papier i:nth-child(4) { right: 0; top: var(--rahmen); bottom: var(--rahmen); width: var(--rahmen); }
 
   .blattrand {
     display: block;
@@ -268,6 +269,9 @@ body {
     pointer-events: none;
     overflow: visible;
   }
+  /* Die Leisten schneiden sich ihren Streifen per viewBox aus – was darüber
+     hinausragt, gehört zur Nachbarleiste. */
+  .blattrand--leiste { overflow: hidden; }
   .blattrand__linie { fill: none; stroke: var(--rand-linie); stroke-width: 1; }
   .blattrand__linie--fein { stroke: var(--rand-fein); }
   .blattrand__feld { fill: var(--rand-feld); }
@@ -316,15 +320,40 @@ body {
   .app.is-battle .rahmen-lage { display: none; }
 }
 
-/* Vignette: nur ein Hauch – das Blatt hat Kanten, es braucht kein Dunkel. */
-.stage::before {
-  inset: var(--rahmen);
-  background: radial-gradient(130% 95% at 50% 45%, transparent 66%, rgba(40, 28, 10, .12) 100%);
-}
-[data-theme="night"] .stage::before {
-  background:
-    radial-gradient(140% 110% at 50% -10%, rgba(220, 180, 110, .07), transparent 55%),
-    radial-gradient(130% 95% at 50% 45%, transparent 62%, rgba(0, 0, 0, .3) 100%);
+/* Keine Vignette und kein Korn über der Karte. Beide lagen als Flächen über
+   dem ganzen Fenster, das Korn ohne eine einzige durchsichtige Stelle – der
+   Browser setzte sie bei jedem Bild einer Bewegung mit zusammen, so teuer wie
+   eine weitere Kartenebene. Das Blatt hat Kanten und das Papier ringsum seine
+   Faser; die Karte selbst braucht keinen Schleier. */
+.stage::before,
+.stage::after { display: none; }
+
+/* Kacheln der Kartengrundlage ohne Mischmodus. Leaflet gibt jeder Kachel
+   `mix-blend-mode: plus-lighter`, um Haarfugen zwischen den Kacheln zu
+   schließen. Ein Mischmodus zwingt den Browser aber, das ganze Kachelblatt
+   als eigene Zwischenfläche anzulegen und jede Kachel bei jedem Bild gegen
+   ihren Hintergrund zu verrechnen. Das Relief liegt ohnehin als durchsichtiges
+   Schattenblatt über den Flächen (map.css): Eine Haarfuge darin fehlt nur ein
+   Hauch Schatten, kein Stück Karte. */
+.leaflet-container img.leaflet-tile { mix-blend-mode: normal; }
+
+/* Beim stufenlosen Zoomen setzt Leaflet die Skalierung Bild für Bild per
+   Skript. Ohne Ankündigung rastert der Browser ein Kachelblatt dann bei jedem
+   neuen Maßstab neu – samt Filter auf jeder Kachel. Mit `will-change` hält er
+   das fertige Bild und skaliert nur noch; gemessen halbierte das die Bildzeit
+   beim Radzoom. Für die Zeichenflächen gilt dasselbe. Nach dem Zoom legt
+   Leaflet ohnehin frische Kachelblätter im neuen Maßstab an. */
+.leaflet-tile-container,
+.leaflet-pane > canvas { will-change: transform; }
+
+/* Auch die letzten Milchglasflächen werden deckend – Unschärfe über der Karte
+   müsste bei jedem Bild einer Bewegung neu gerechnet werden. */
+.beiblatt,
+.kamzur,
+.blgd,
+.panel__close {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 /* ------------------------------------------------------------ Kopfleiste */

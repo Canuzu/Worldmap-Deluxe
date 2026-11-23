@@ -19,7 +19,8 @@ import L from 'leaflet';
 import { createLabelLayer, breiteVon } from './labels.js';
 import { SanfterRadzoom } from './radzoom.js';
 import { txt } from './sprache.js';
-import { schriftdichte } from './dichte.js';
+import { schriftdichte, zeichendichte } from './dichte.js';
+import { standMerken, mitZoomen } from './mitzoom.js';
 import RELIGION from '../data/religion/vokabular.json';
 import {
   paletteFor, assignColorIndices, PRECISION_COLORS, withAlpha, shade, religionName, stableIndex,
@@ -134,6 +135,19 @@ const RING_MIN = 1.5;
  * einmal ein Neuzeichnen aus – danach ist wieder Vorrat da.
  */
 const RAND_ZUG = .35;
+
+/**
+ * Punktdichte der Zeichenflächen für Flächen und Linien.
+ *
+ * Leaflet legt jede Zeichenfläche auf jedem Bildschirm mit mehr als einem
+ * Bildpunkt je Punkt doppelt an. Auf einem Rechner mit 125 % Skalierung – der
+ * häufigste Fall unter Windows – sind das 2,56-mal so viele Bildpunkte wie
+ * nötig, bei sechs Flächen, die je fast dreimal so groß sind wie das Fenster.
+ * Jede davon muss nach jedem Neuzeichnen auf die Grafikkarte, und jede wird
+ * bei jedem Bild einer Bewegung mit zusammengesetzt. Hier gilt die echte
+ * Dichte, höchstens 2 (dichte.js).
+ */
+const FLAECHENDICHTE = zeichendichte();
 
 /** Wer Bewegung reduziert hat, bekommt die Überblendung statt der Welle. */
 const BEWEGUNG_REDUZIERT = matchMedia('(prefers-reduced-motion: reduce)');
@@ -954,10 +968,13 @@ export class AtlasMap {
       preferCanvas: true,
       zoomSnap: 0,
       zoomDelta: 0.6,
-      // Eine Raste (rund 100 Bildpunkte Raddrehung) ist gut ein halber
-      // Zoomschritt. Das Rad selbst übernimmt `SanfterRadzoom`, nicht Leaflet.
-      wheelPxPerZoomLevel: 140,
+      // Das Rad übernimmt `SanfterRadzoom` (radzoom.js), nicht Leaflet.
       scrollWheelZoom: false,
+      // Ohne Einblenden der Kacheln: Leaflet gibt sonst jeder Kachel
+      // `will-change: opacity`, und jede wird zu einer eigenen Ebene, die der
+      // Browser bei jedem Bild einer Bewegung einzeln zusammensetzt – gemessen
+      // 46 Ebenen allein für die Kartengrundlage.
+      fadeAnimation: false,
       worldCopyJump: false,
       maxBounds: L.latLngBounds([-89, -220], [89, 220]),
       maxBoundsViscosity: .85,
@@ -981,20 +998,11 @@ export class AtlasMap {
 
     this.map.on('zoomend', () => { this._syncCoastLevel(); this._saumFuerZoom(); });
     this.map.on('zoomend moveend', () => this._emit('view'));
-    // Solange die Karte sich bewegt, setzen die Milchglasflächen darüber mit
-    // ihrer Unschärfe aus (map.css, „Während die Karte sich bewegt“). Erst
-    // kurz nach dem Stillstand kehrt sie zurück – sonst flackerte sie bei
-    // jeder Pause zwischen zwei Radrasten oder zwei Zügen.
-    const wurzel = document.documentElement;
-    let ruhe = 0;
-    this.map.on('movestart zoomstart', () => {
-      clearTimeout(ruhe);
-      wurzel.classList.add('is-karte-bewegt');
-    });
-    this.map.on('moveend', () => {
-      clearTimeout(ruhe);
-      ruhe = setTimeout(() => wurzel.classList.remove('is-karte-bewegt'), 180);
-    });
+    /* Früher setzte hier eine Klasse an der Wurzel die Milchglasflächen
+       während jeder Bewegung aus. Milchglas gibt es nicht mehr – und die
+       Klasse kostete bei Beginn und Ende jeder Geste eine Stilberechnung
+       über alle 700 Elemente der Seite, gemessen 11 und 7 ms. Genau am
+       Anfang eines Zugs ist das ein spürbares Zögern. */
     this.map.on('mousedown', () => el.classList.add('is-grabbing'));
     this.map.on('mouseup', () => el.classList.remove('is-grabbing'));
 
@@ -1008,7 +1016,7 @@ export class AtlasMap {
     // Fläche, Linie und Saum zwangsläufig deckungsgleich.
     this._meerOptionen = {
       pane: 'ocean',
-      renderer: (this.saumZeichner = meerCanvas({ pane: 'ocean', padding: RAND_ZUG, baender: [], rang: 2 })),
+      renderer: (this.saumZeichner = meerCanvas({ pane: 'ocean', padding: RAND_ZUG, baender: [], rang: 2, dichte: FLAECHENDICHTE })),
       interactive: false,
       // Leaflet dünnt beim Projizieren auf Pixelgenauigkeit aus. Leaflets
       // Vorgabe von 1 px kappt sichtbar Buchten und Landzungen; 0.5 px
@@ -1023,14 +1031,14 @@ export class AtlasMap {
 
     this.waterLayer = L.geoJSON(null, {
       pane: 'water',
-      renderer: plainCanvas({ pane: 'water', padding: RAND_ZUG }),
+      renderer: plainCanvas({ pane: 'water', padding: RAND_ZUG, dichte: FLAECHENDICHTE }),
       interactive: false,
       smoothFactor: 1.2,
     });
 
     this.graticuleLayer = L.geoJSON(graticule(), {
       pane: 'graticule',
-      renderer: plainCanvas({ pane: 'graticule', padding: RAND_ZUG }),
+      renderer: plainCanvas({ pane: 'graticule', padding: RAND_ZUG, dichte: FLAECHENDICHTE }),
       interactive: false,
     });
 
@@ -1049,7 +1057,7 @@ export class AtlasMap {
     this.slots = ['polityA', 'polityB'].map((pane) => ({
       pane,
       el: this.map.getPane(pane),
-      renderer: smoothCanvas({ pane, padding: RAND_ZUG, rang: 1 }),
+      renderer: smoothCanvas({ pane, padding: RAND_ZUG, rang: 1, dichte: FLAECHENDICHTE }),
       layer: null,
       occupation: null,
     }));
@@ -1074,10 +1082,11 @@ export class AtlasMap {
       this.basemapLayer.remove();
       this.basemapLayer = null;
     }
-    this.el.classList.remove('is-basemap');
+    this.el.classList.remove('is-basemap', 'is-relief', 'is-physisch');
     this._emit('basemap');
 
     const spec = BASEMAPS[id];
+    this.grundId = spec ? id : null;
     if (!spec) { this._styleBase(); return; }
 
     const layer = L.tileLayer(spec.url, {
@@ -1089,9 +1098,21 @@ export class AtlasMap {
       crossOrigin: true,
       attribution: spec.quelle,
     });
+    /* Jede Kachel flach setzen. Leaflet stellt sie mit translate3d auf, und
+       Chrome macht daraus für jede Kachel eine eigene Ebene – gemessen 46
+       allein für die Grundlage, jede einzeln zu verwalten und bei jedem Bild
+       einer Bewegung einzeln zusammenzusetzen. Flach liegen sie zusammen in
+       der Ebene ihres Kachelblatts, das ohnehin als Ganzes verschoben und
+       skaliert wird. */
+    layer.on('tileloadstart', ({ tile }) => {
+      const t = tile.style.transform;
+      if (t.startsWith('translate3d(')) {
+        tile.style.transform = t.replace('translate3d(', 'translate(').replace(/,\s*0(px)?\)$/, ')');
+      }
+    });
     layer.once('load', () => {
       if (this.basemapLayer !== layer) return;
-      this.el.classList.add('is-basemap');
+      this.el.classList.add('is-basemap', id === 'relief' ? 'is-relief' : 'is-physisch');
       this._styleBase();
       this._restyleActive();
       this._emit('basemap');
@@ -1102,6 +1123,15 @@ export class AtlasMap {
 
   get hasBasemap() {
     return this.el.classList.contains('is-basemap');
+  }
+
+  /**
+   * Liegt eine Grundlage UNTER den Flächen? Das Relief liegt als Schattenblatt
+   * darüber (map.css, „Kartengrundlage“) – Flächen und Meer brauchen dafür
+   * nicht durchsichtig zu werden. Nur die farbige physische Karte liegt unten.
+   */
+  get grundDarunter() {
+    return this.hasBasemap && this.grundId !== 'relief';
   }
 
   setBaseData({ ocean }) {
@@ -1333,7 +1363,7 @@ export class AtlasMap {
       fillColor: ocean,
       // Mit Kartengrundlage bleibt das Meer eine Spur durchscheinend, sonst
       // wirkt die Kueste wie ausgeschnitten statt wie gezeichnet.
-      fillOpacity: this.hasBasemap ? .88 : 1,
+      fillOpacity: this.grundDarunter ? .88 : 1,
       fillRule: 'evenodd',
       stroke: true,
       color: edge,
@@ -1374,7 +1404,7 @@ export class AtlasMap {
     const nah = Math.min(1, Math.max(0, (z - 3) / 3));
     const staffel = this.saumStaffel ?? SAUM.lo;
     const fade = 1 - nah * 0.62;
-    const gedaempft = this.hasBasemap ? .5 : 1;
+    const gedaempft = this.grundDarunter ? .5 : 1;
     // Über dem dunklen Meer soll der Saum leuchten, auf Papier eher färben.
     this.saumZeichner.options.mischung = this.theme === 'night' ? 'screen' : 'multiply';
     this.saumZeichner.options.baender = [
@@ -1485,7 +1515,7 @@ export class AtlasMap {
     // und sagt nichts. Die Grenzlinien bleiben – wo eine Grenze durchs Bild
     // läuft, wie bei Tannenberg die deutsch-russische, gehört sie zur Lage.
     if (this._schlacht) return basis * .16;
-    return this.hasBasemap ? basis * .62 : basis;
+    return this.grundDarunter ? basis * .62 : basis;
   }
 
   /**
@@ -1577,7 +1607,7 @@ export class AtlasMap {
     const pane = this.map.getPane('linse');
     if (!this._linse) {
       this._linse = {
-        renderer: smoothCanvas({ pane: 'linse', padding: .15, rang: 1 }),
+        renderer: smoothCanvas({ pane: 'linse', padding: .15, rang: 1, dichte: FLAECHENDICHTE }),
         layer: null,
       };
     }
@@ -1651,7 +1681,9 @@ export class AtlasMap {
     from.el.style.opacity = '1';
     to.el.style.transition = 'none';
     to.el.style.opacity = '1';
-    to.el.style.zIndex = '233';
+    // Über der anderen Fläche, aber unter dem Reliefblatt (232) – sonst liefe
+    // die Welle ohne Relief über die Karte und es spränge am Ende herein.
+    to.el.style.zIndex = '231';
     to.el.style.clipPath = `circle(0px at ${mitte})`;
 
     // Als Animation, nicht als Übergang: Animationen von clip-path kann der
@@ -1759,7 +1791,7 @@ export class AtlasMap {
       (daten.zuege ?? []).map((zug) => zug.map(([x, y]) => [y, x])),
       {
         pane: 'relGrenze',
-        renderer: plainCanvas({ pane: 'relGrenze', padding: RAND_ZUG }),
+        renderer: plainCanvas({ pane: 'relGrenze', padding: RAND_ZUG, dichte: FLAECHENDICHTE }),
         interactive: false,
         color: farbe,
         weight: 1.3,
@@ -2059,13 +2091,16 @@ export class AtlasMap {
     canvas.className = 'place-canvas';
     canvas.style.position = 'absolute';
     canvas.style.pointerEvents = 'none';
+    canvas.style.transformOrigin = '0 0';
+    canvas.style.transition = 'opacity 160ms ease-out';
     pane.appendChild(canvas);
     this.placeCanvas = canvas;
     // Wie bei den Beschriftungen: Während einer Bewegung reitet die
     // Zeichenfläche mit der Karte mit, statt bei jedem Bild neu gesetzt und
-    // neu beschriftet zu werden.
+    // neu beschriftet zu werden – beim Zoomen samt Maßstab (mitzoom.js).
     this.map.on('moveend zoomend viewreset resize', () => this._planeOrte());
-    this.map.on('zoomstart', () => { canvas.style.visibility = 'hidden'; });
+    this.map.on('zoom', () => mitZoomen(this.map, canvas, this._orteStand));
+    this.map.on('zoomanim', () => { canvas.style.visibility = 'hidden'; });
   }
 
   /**
@@ -2135,6 +2170,8 @@ export class AtlasMap {
     const pos = map.containerPointToLayerPoint([0, 0]);
     L.DomUtil.setPosition(canvas, pos);
     canvas.style.visibility = '';
+    canvas.style.opacity = '1';
+    this._orteStand = standMerken(this.map);
 
     const ctx = canvas.getContext('2d');
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);

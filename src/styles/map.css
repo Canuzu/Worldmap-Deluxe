@@ -67,28 +67,44 @@
 
 /* ------------------------------------------------- Kartengrundlage */
 
+/* Die Kartengrundlage kostet beim Bewegen nichts mehr.
+
+   Bis hierher lag auf dem ganzen Kachel-Pane ein CSS-Filter (Tönung,
+   Helligkeit) und auf den Staatenflächen ein Mischmodus (`multiply`, nachts
+   `screen`), damit das Relief durch die Farben scheint. Beides rechnet der
+   Browser nicht einmal, sondern bei jedem Bild einer Bewegung: Der Filter
+   braucht eine eigene Zwischenfläche über das ganze Fenster, der Mischmodus
+   liest das Bild darunter zurück und verrechnet es neu. Gemessen war das die
+   halbe Bildzeit beim Schwenken – auf einem Schirm mit 150 % Skalierung mehr
+   als die Hälfte.
+
+   Jetzt sitzt der Filter auf jeder einzelnen Kachel. Dort wendet ihn der
+   Browser beim Rastern an, einmal je Kachel, und danach wird nur noch
+   verschoben.
+
+   Den Mischmodus ersetzt eine Umstellung, die rechnerisch dasselbe ergibt:
+   Ein Grauwertrelief mit `multiply` über eine Farbe zu legen ist genau
+   dasselbe, wie Schwarz mit der Deckung „1 − Helligkeit“ normal darüber zu
+   legen (c · r = c · (1 − a) mit a = 1 − r). Also liegt das Relief nicht mehr
+   unter den Flächen, sondern als Schattenblatt darüber – erzeugt per
+   SVG-Filter aus jeder Kachel (index.html, #relief-schatten). Nachts gilt
+   dasselbe Schattenblatt, etwas schwächer – das helle `screen` von früher
+   machte die Flächen nur blass. Die Fläche behält ihre volle Farbe; das
+   Relief liegt obenauf wie im gedruckten Atlas.
+
+   Die physische Karte ist farbig – dort ginge die Umstellung nicht auf. Sie
+   liegt weiter unter den Flächen, ohne Mischmodus; die Flächen werden dafür
+   durchsichtiger (atlas.js, _fillAlpha). */
+.map.is-relief .leaflet-basemap-pane { z-index: 232 !important; }
+.map.is-relief .leaflet-basemap-pane img.leaflet-tile { filter: url(#relief-schatten); }
+[data-theme="night"] .map.is-relief .leaflet-basemap-pane img.leaflet-tile { filter: url(#relief-schatten-nacht); }
+
 /* Erst wenn wirklich eine Kachel angekommen ist, tritt die eigene Landfarbe
-   zurueck. Bleibt der Dienst stumm - gesperrtes Netz, Ausfall, offline -,
+   zurück. Bleibt der Dienst stumm – gesperrtes Netz, Ausfall, offline –,
    sieht die Karte aus wie ohne Grundlage, statt halb leer zu wirken. */
-.map.leaflet-container.is-basemap { background: var(--ocean-2); }
-
-.leaflet-basemap-pane {
-  /* Die Schummerung ist fuer helles Papier gemacht. Im Nachtatlas wird sie
-     gedaempft und leicht abgekuehlt, damit sie unter den Flaechen liegt und
-     nicht darueber. */
-  filter: brightness(.52) saturate(.55) contrast(1.05);
-  transition: filter var(--dur) var(--ease);
-}
-[data-theme="parchment"] .leaflet-basemap-pane {
-  filter: sepia(.18) saturate(.85) brightness(1.02);
-}
-
-/* Ohne Grundlage bleibt unbeanspruchtes Land die Flaechenfarbe; mit Grundlage
-   soll dort das Gelaende zu sehen sein. */
-.map.is-basemap .leaflet-polityA-pane,
-.map.is-basemap .leaflet-polityB-pane { mix-blend-mode: multiply; }
-[data-theme="night"] .map.is-basemap .leaflet-polityA-pane,
-[data-theme="night"] .map.is-basemap .leaflet-polityB-pane { mix-blend-mode: screen; }
+.map.leaflet-container.is-basemap.is-physisch { background: var(--ocean-2); }
+.map.is-physisch .leaflet-basemap-pane img.leaflet-tile { filter: brightness(.52) saturate(.55) contrast(1.05); }
+[data-theme="parchment"] .map.is-physisch .leaflet-basemap-pane img.leaflet-tile { filter: sepia(.18) saturate(.85) brightness(1.02); }
 
 /* ==================================================== Ereignisse
 
@@ -354,20 +370,3 @@
   color: var(--ink-faint);
 }
 
-/* ------------------------------------------------- Während die Karte sich bewegt
-
-   Die Bedienflächen über der Karte sind Milchglas: `backdrop-filter` zeichnet
-   alles dahinter weich. Steht die Karte still, rechnet der Browser das einmal.
-   Bewegt sie sich, muss er es bei jedem einzelnen Bild neu tun – für die
-   Zeitleiste, die Tafel, die Werkzeuge, jede Fläche mit Unschärfe von 18 bis
-   26 Bildpunkten. Das ist auf vielen Rechnern der Unterschied zwischen
-   flüssigem und stockendem Schwenken und Zoomen.
-
-   Für die Dauer einer Bewegung tritt die Unschärfe deshalb zurück. Die
-   Flächen sind ohnehin zu 82 bis 92 Prozent deckend; was dahinter durchkommt,
-   ist für diesen Augenblick unscharf genug, und sobald die Karte steht, ist
-   das Milchglas wieder da. Gesetzt wird die Klasse in atlas.js. */
-.is-karte-bewegt * {
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-}

@@ -23,8 +23,39 @@ import L from 'leaflet';
 
 /** So lange darf das Rad stillstehen, bevor die Karte neu aufgebaut wird. */
 const RUHE_MS = 140;
-/** Anteil des Restwegs zum Ziel, der je Bild zurückgelegt wird. */
-const NACHZUG = 0.3;
+/**
+ * Halbwertszeit des Nachziehens: Nach so vielen Millisekunden ist die Hälfte
+ * des Restwegs zum Ziel zurückgelegt. Gerechnet in Zeit, nicht in Bildern –
+ * vorher waren es 30 % je Bild, und auf einem Rechner, der nur 25 Bilder je
+ * Sekunde schafft, kroch der Zoom dann zweieinhalb Mal so lange hinterher.
+ * Gerade dort, wo es ohnehin zäh ist, fühlte er sich doppelt zäh an.
+ */
+const HALBWERT_MS = 38;
+/** Zoomstufen je Raste eines Mausrads. Wie bei den bekannten Kartendiensten:
+ *  eine Raste, eine Stufe. */
+const STUFEN_JE_RASTE = 1;
+/** Bildpunkte Raddrehung, die einer Raste entsprechen (Chrome, Edge, Safari). */
+const PX_JE_RASTE = 100;
+
+/**
+ * Raddrehung in Zoomstufen.
+ *
+ * Leaflet rechnet mit `getWheelDelta`, und das teilt unter Windows durch die
+ * doppelte Bildschirmskalierung: Bei 125 % Skalierung wurde aus einer Raste
+ * ein Viertel einer Zoomstufe. Wer vom Weltblick nach Mitteleuropa wollte,
+ * drehte zwanzig Rasten. Hier zählt die Drehung selbst, gleich auf welchem
+ * System: Zeilen und Seiten (Firefox) werden in Bildpunkte umgerechnet, eine
+ * Raste ist eine Stufe. Ein Tastfeld liefert viele kleine Werte und zoomt
+ * damit stufenlos; die Zwei-Finger-Geste (Strg + Rad) zieht stärker, weil
+ * ihre Werte kleiner sind.
+ */
+function stufenAus(e) {
+  const px = e.deltaY * (e.deltaMode === 1 ? 33 : e.deltaMode === 2 ? 800 : 1);
+  const stufen = (-px / PX_JE_RASTE) * STUFEN_JE_RASTE * (e.ctrlKey ? 2.2 : 1);
+  // Eine einzelne Meldung bewegt höchstens eine Stufe – manche Mäuse melden
+  // schnelle Drehungen als einen einzigen großen Wert.
+  return Math.max(-1, Math.min(1, stufen));
+}
 
 export const SanfterRadzoom = L.Handler.extend({
   addHooks() {
@@ -48,7 +79,7 @@ export const SanfterRadzoom = L.Handler.extend({
   _rad(e) {
     L.DomEvent.stop(e);
     const map = this._map;
-    const delta = L.DomEvent.getWheelDelta(e);
+    const delta = stufenAus(e);
     if (!delta) return;
 
     if (!this._aktiv) {
@@ -56,11 +87,11 @@ export const SanfterRadzoom = L.Handler.extend({
       if (map._panAnim) map._panAnim.stop();
       this._aktiv = true;
       this._ziel = map.getZoom();
+      this._zuletzt = performance.now();
       map._moveStart(true, false);
     }
 
-    this._ziel = Math.max(map.getMinZoom(), Math.min(map.getMaxZoom(),
-      this._ziel + delta / map.options.wheelPxPerZoomLevel));
+    this._ziel = Math.max(map.getMinZoom(), Math.min(map.getMaxZoom(), this._ziel + delta));
     // Der Ort unter dem Mauszeiger bleibt unter dem Mauszeiger – gerechnet
     // im laufenden Zwischenstand, nicht im Stand vor der Bewegung.
     this._ankerPunkt = map.mouseEventToContainerPoint(e);
@@ -77,9 +108,15 @@ export const SanfterRadzoom = L.Handler.extend({
     const map = this._map;
     if (!this._aktiv || !map) return;
 
+    const jetzt = performance.now();
+    // Höchstens ein Zehntel Sekunde auf einmal: Nach einem Hänger soll die
+    // Karte nicht in einem Satz ans Ziel springen.
+    const dt = Math.min(100, Math.max(1, jetzt - (this._zuletzt ?? jetzt - 16)));
+    this._zuletzt = jetzt;
+    const anteil = 1 - 0.5 ** (dt / HALBWERT_MS);
     const z = map.getZoom();
-    let neu = z + (this._ziel - z) * NACHZUG;
-    if (Math.abs(this._ziel - neu) < 0.002) neu = this._ziel;
+    let neu = z + (this._ziel - z) * anteil;
+    if (Math.abs(this._ziel - neu) < 0.004) neu = this._ziel;
     if (neu !== z) {
       const mitte = map.getSize()._divideBy(2);
       const versatz = this._ankerPunkt.subtract(mitte);

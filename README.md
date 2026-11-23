@@ -1616,6 +1616,61 @@ kosten Speicher – nach zehn Zeitschnitten 61 statt 44 MB, mit feiner Küste
 66 statt 67 MB. Im Sichtvergleich ist der Küstensaum vorher wie nachher
 derselbe, in beiden Farbwelten.
 
+### Was die Grundlage gekostet hat
+
+Die nächste Rückmeldung: Zoomen und Verschieben fühlen sich am Rechner noch
+immer träge an. Diesmal lag es nicht am Skript – das braucht beim Ziehen um
+1 ms je Bild –, sondern daran, was der Browser bei **jedem** Bild einer
+Bewegung zusammensetzen muss. Gemessen mit eingeschalteter Reliefgrundlage
+(die Voreinstellung), gleiches Gerät, Median je Bild:
+
+| | vorher | jetzt |
+|---|---|---|
+| Schwenken | 50 ms | 17 ms |
+| Schwenken, 150 % Skalierung | 67 ms | 17 ms |
+| Radzoom | 83 ms | 17–33 ms |
+
+Was es war, nach Gewicht:
+
+1. **Ein CSS-Filter über der ganzen Kartengrundlage** (Tönung, Helligkeit).
+   Ein Filter auf einer Ebene, deren Inhalt sich bewegt, braucht eine eigene
+   Zwischenfläche und wird je Bild neu angewendet. Jetzt sitzt er auf jeder
+   Kachel und wird beim Rastern einmal angewendet.
+2. **`mix-blend-mode: multiply` auf den Staatenflächen**, damit das Relief
+   durch die Farben scheint. Ein Mischmodus liest je Bild das Bild darunter
+   zurück. Ersetzt durch eine Umstellung, die rechnerisch dasselbe ergibt:
+   Multiplizieren mit einem Grauwertrelief ist dasselbe, wie Schwarz mit der
+   Deckung 1 − Helligkeit darüberzulegen. Das Relief liegt jetzt als
+   Schattenblatt über den Flächen (SVG-Filter je Kachel, `index.html`); die
+   Flächen behalten ihre volle Farbe.
+3. **Leaflets eigener Mischmodus auf jeder Kachel** (`plus-lighter`) und
+   `translate3d` je Kachel – 46 eigene Ebenen allein für die Grundlage. Die
+   Kacheln liegen jetzt flach in ihrem Kachelblatt.
+4. **Beim Radzoom wurde das Kachelblatt je Bild neu gerastert**, weil die
+   Skalierung per Skript kommt. `will-change: transform` hält das fertige
+   Bild.
+5. **Die neue Gestaltung hatte selbst nachgelegt:** ein Gradrand als SVG über
+   das ganze Fenster, je Bild neu geschrieben und mit zwei erzwungenen
+   Layoutmessungen; ein Papierrand mit Maske; Korn und Vignette über der
+   Karte. Jetzt: vier schmale Leisten, die beim Ziehen nur verschoben werden,
+   vier Papierstreifen, kein Schleier.
+6. **Eine Klasse an der Wurzel** schaltete bei Beginn und Ende jeder Geste die
+   Milchglasflächen aus – eine Stilberechnung über alle 700 Elemente, 11 und
+   7 ms, genau am Anfang eines Zugs. Milchglas gibt es nicht mehr, die Klasse
+   auch nicht.
+7. **Zeichenflächen in doppelter Dichte auf jedem Skalierungsbildschirm.**
+   Leaflet legt sie bei 125 % Skalierung doppelt an – 2,56-mal so viele
+   Bildpunkte wie nötig. Jetzt gilt die echte Dichte (`dichte.js`).
+
+Dazu zwei Dinge, die man nicht misst, sondern spürt. **Eine Raste ist jetzt
+eine Zoomstufe.** Leaflet teilt die Raddrehung unter Windows durch die
+doppelte Skalierung; bei 125 % war eine Raste ein Viertel einer Stufe, und
+der Weg vom Weltblick nach Mitteleuropa kostete zwanzig Rasten. Das
+Nachziehen rechnet in Zeit statt in Bildern, damit ein langsamer Rechner
+nicht zusätzlich langsamer zoomt. Und **die Namen bleiben beim Zoomen
+stehen** (`mitzoom.js`): Sie skalieren mit und blenden erst bei großem
+Maßstabssprung aus, statt beim ersten Raddreh zu verschwinden.
+
 ## Kartenmodi
 
 Die Karte kennt fünf Sichten auf denselben Zeitschnitt. Sie standen bisher in

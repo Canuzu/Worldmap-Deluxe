@@ -8,6 +8,7 @@
  */
 import L from 'leaflet';
 import { schriftdichte } from './dichte.js';
+import { standMerken, mitZoomen } from './mitzoom.js';
 
 const PAD_X = 5;
 const PAD_Y = 3;
@@ -60,7 +61,10 @@ export const LabelLayer = L.Layer.extend({
     const canvas = (this._canvas = L.DomUtil.create('canvas', 'label-canvas'));
     canvas.style.position = 'absolute';
     canvas.style.pointerEvents = 'none';
-    canvas.style.transformOrigin = '50% 50%';
+    // Ursprung oben links, wie bei Leaflets eigenen Zeichenflächen: mitZoomen
+    // rechnet Verschiebung und Maßstab gegen diese Ecke.
+    canvas.style.transformOrigin = '0 0';
+    canvas.style.transition = 'opacity 160ms ease-out';
     this.getPane().appendChild(canvas);
 
     /*
@@ -79,22 +83,29 @@ export const LabelLayer = L.Layer.extend({
      * wird erst, wenn die Bewegung steht.
      */
     map.on('moveend zoomend viewreset resize', this._reset, this);
-    // Beim Zoomen skaliert Leaflet die ganze Kartenebene. Mitskalierter Text
-    // sieht verwaschen aus; für die Dauer der Bewegung tritt er deshalb ab.
-    map.on('zoomstart', this._verbergen, this);
+    // Beim stufenlosen Zoomen reiten die Namen mit und blenden erst bei
+    // großem Maßstabssprung aus (mitzoom.js). Nur der animierte Knopfzoom,
+    // den Leaflet als CSS-Übergang abspielt, lässt sie für die Dauer abtreten.
+    map.on('zoom', this._mitZoomen, this);
+    map.on('zoomanim', this._verbergen, this);
     this._reset();
     return this;
   },
 
   onRemove(map) {
     map.off('moveend zoomend viewreset resize', this._reset, this);
-    map.off('zoomstart', this._verbergen, this);
+    map.off('zoom', this._mitZoomen, this);
+    map.off('zoomanim', this._verbergen, this);
     this._canvas.remove();
     this._map = null;
   },
 
   _verbergen() {
     if (this._canvas) this._canvas.style.visibility = 'hidden';
+  },
+
+  _mitZoomen() {
+    if (this._map) mitZoomen(this._map, this._canvas, this._stand, this._opacity ?? 1);
   },
 
   /** @param {{text:string, latlng:L.LatLng, bounds:L.LatLngBounds, rank:number, color:string}[]} items */
@@ -174,6 +185,8 @@ export const LabelLayer = L.Layer.extend({
     L.DomUtil.setPosition(canvas, topLeft);
 
     canvas.style.visibility = '';
+    canvas.style.opacity = String(this._opacity ?? 1);
+    this._stand = standMerken(map);
 
     const ctx = canvas.getContext('2d');
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
